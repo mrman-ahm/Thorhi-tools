@@ -1,0 +1,32 @@
+[
+  {
+    "legacyUrl": "/product/operating-scissors",
+    "division": "Surgical",
+    "family": "Scissors",
+    "name": "Operating Scissors",
+    "code": "thr sc 001",
+    "description": "Seed migration fixture only.",
+    "status": "approved",
+    "image": ""
+  },
+  {
+    "legacyUrl": "/product/dental-extraction-forceps",
+    "division": "Dental",
+    "family": "Extraction",
+    "name": "Dental Extraction Forceps",
+    "code": "THR-DE-021",
+    "description": "Seed migration fixture only.",
+    "status": "approved",
+    "image": ""
+  },
+  {
+    "legacyUrl": "/product/missing-code",
+    "division": "Surgical",
+    "family": "Scissors",
+    "name": "Incomplete Legacy Product",
+    "code": "",
+    "description": "This record demonstrates rejection.",
+    "status": "approved",
+    "image": ""
+  }
+]
