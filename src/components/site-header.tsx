@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import type { CSSProperties } from "react";
+import type { CSSProperties, MouseEvent } from "react";
 import { useEffect, useRef, useState } from "react";
 import { useInquiry } from "@/components/inquiry-provider";
 
@@ -99,7 +99,7 @@ export function SiteHeader() {
   }, [open]);
 
   const closeMenu = () => setOpen(false);
-  const openSearch = (event: React.MouseEvent<HTMLAnchorElement>) => {
+  const openSearch = (event: MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
     setOpen(false);
     window.dispatchEvent(new Event("throhi:open-search"));
