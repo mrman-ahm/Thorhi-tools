@@ -6,5 +6,5 @@ import { SiteHeader } from "@/components/site-header";
 export const metadata = { title: "Inquiry Confirmation" };
 
 export default function InquirySuccessPage() {
-  return <><SiteHeader /><main id="main" className="confirmation-page"><div className="container"><Suspense fallback={<p>Loading inquiry confirmation…</p>}><InquirySuccess /></Suspense></div></main><SiteFooter /></>;
+  return <><SiteHeader /><main id="main" className="utility-v2 confirmation-page-v2"><section className="confirmation-shell"><div className="container"><Suspense fallback={<p className="utility-loading">Loading inquiry confirmation…</p>}><InquirySuccess /></Suspense></div></section></main><SiteFooter /></>;
 }
