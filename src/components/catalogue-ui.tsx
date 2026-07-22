@@ -29,7 +29,7 @@ export function AddProductButton({ product, className = "" }: { product: Product
 
   return <>
     <span className="visually-hidden" aria-live="polite">{announcement}</span>
-    <button type="button" className={`button product-action ${added ? "positive" : "primary"} ${className}`} aria-pressed={added} onClick={handleAdd}>{added ? "Added to inquiry ✓" : "Add to inquiry"}</button>
+    <button type="button" className={`button product-action ${added ? "positive" : "primary"} ${className}`} aria-label={`${added ? "Added to inquiry" : "Add to inquiry"}: ${product.name}`} aria-pressed={added} onClick={handleAdd}>{added ? "Added to inquiry ✓" : "Add to inquiry"}</button>
   </>;
 }
 
@@ -50,7 +50,7 @@ export function ProductInquiryControls({ product }: { product: Product }) {
     <span className="visually-hidden" aria-live="polite">{announcement}</span>
     <label htmlFor="detail-quantity">Quantity for inquiry</label>
     <input id="detail-quantity" type="number" min="1" max="9999" value={quantity} onChange={event => setQuantity(Math.max(1, Math.min(9999, Number(event.target.value) || 1)))} />
-    <button type="button" className={`button product-action ${existing ? "positive" : "primary"}`} onClick={add}>{existing ? "Update inquiry details" : "Add to inquiry"}</button>
+    <button type="button" className={`button product-action ${existing ? "positive" : "primary"}`} aria-label={`${existing ? "Update inquiry details for" : "Add to inquiry"}: ${product.name}`} onClick={add}>{existing ? "Update inquiry details" : "Add to inquiry"}</button>
     <label htmlFor="detail-note">Product-specific note</label>
     <textarea id="detail-note" value={note} onChange={event => setNote(event.target.value)} placeholder="Optional requirement or equivalent reference" />
   </div>;
