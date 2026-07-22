@@ -1,13 +1,15 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
-const validPayload = {
-  submissionToken: "test-submission-token-12345",
-  items: [{ code: "THR-SC-001", name: "Operating Scissors", quantity: 2, note: "Seed test", manual: false }],
-  buyer: { fullName: "Test Buyer", companyName: "Test Company", country: "Pakistan", email: "buyer@example.com", phone: "", preferredContact: "email" },
-  generalRequirements: "Browser integration test",
-  consent: true
-};
+function validPayload(projectName: string) {
+  return {
+    submissionToken: `test-submission-token-${projectName}`,
+    items: [{ code: "THR-SC-001", name: "Operating Scissors", quantity: 2, note: "Seed test", manual: false }],
+    buyer: { fullName: "Test Buyer", companyName: "Test Company", country: "Pakistan", email: "buyer@example.com", phone: "", preferredContact: "email" },
+    generalRequirements: "Browser integration test",
+    consent: true
+  };
+}
 
 test("inquiry API rejects invalid data with field errors", async ({ request }) => {
   const response = await request.post("/api/inquiries", { data: { submissionToken: "short", items: [], buyer: {}, consent: false } });
@@ -18,16 +20,16 @@ test("inquiry API rejects invalid data with field errors", async ({ request }) =
   expect(body.errors["buyer.email"]).toBeTruthy();
 });
 
-test("inquiry API validates a request and prevents duplicate submission", async ({ request }) => {
-  const first = await request.post("/api/inquiries", { data: validPayload });
+test("inquiry API validates a request and prevents duplicate submission", async ({ request }, testInfo) => {
+  const payload = validPayload(testInfo.project.name);
+  const first = await request.post("/api/inquiries", { data: payload });
   expect(first.status()).toBe(201);
   const firstBody = await first.json();
   expect(firstBody.ok).toBe(true);
   expect(firstBody.duplicate).toBe(false);
   expect(firstBody.storageMode).toBe("development-memory");
   expect(firstBody.reference).toMatch(/^THR-\d{8}-[A-Z0-9]{8}$/);
-
-  const duplicate = await request.post("/api/inquiries", { data: validPayload });
+  const duplicate = await request.post("/api/inquiries", { data: payload });
   expect(duplicate.status()).toBe(200);
   const duplicateBody = await duplicate.json();
   expect(duplicateBody.duplicate).toBe(true);
@@ -36,7 +38,7 @@ test("inquiry API validates a request and prevents duplicate submission", async 
 
 test("inquiry basket supports quantities, notes, removal, and undo", async ({ page }) => {
   await page.goto("/products/surgical/scissors/operating-scissors");
-  await page.getByRole("button", { name: "Add to inquiry" }).click();
+  await page.getByRole("button", { name: "Add to inquiry: Operating Scissors" }).click();
   await page.goto("/inquiry");
   const quantity = page.getByLabel("Quantity");
   await expect(quantity).toHaveValue("1");
@@ -64,7 +66,7 @@ test("manual item and attachment validation preserve the draft", async ({ page }
 test("full inquiry form submits and routes to explicit development confirmation", async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== "desktop-chromium", "Full form submission runs once");
   await page.goto("/products/surgical/scissors/operating-scissors");
-  await page.getByRole("button", { name: "Add to inquiry" }).click();
+  await page.getByRole("button", { name: "Add to inquiry: Operating Scissors" }).click();
   await page.goto("/inquiry");
   await page.getByLabel("Full name").fill("Test Buyer");
   await page.getByLabel("Company name").fill("Test Company");
