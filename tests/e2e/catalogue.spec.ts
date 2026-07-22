@@ -3,7 +3,7 @@ import { expect, test } from "@playwright/test";
 
 const routes = [
   ["products", "/products", /Find the object/],
-  ["division", "/products/surgical", /^Surgical$/],
+  ["division", "/products/surgical", /^Surgical Instruments$/],
   ["family", "/products/surgical/scissors", /^Scissors$/],
   ["product", "/products/surgical/scissors/operating-scissors", /Operating Scissors/],
   ["search", "/search?q=THR-SC-001", /Search names, families, and product codes/],
@@ -27,10 +27,10 @@ for (const [name, route, heading] of routes) {
 
 test("products landing preserves direct catalogue routes", async ({ page }) => {
   await page.goto("/products");
-  await expect(page.locator('a[href="/products/surgical"]')).toBeVisible();
-  await expect(page.locator('a[href="/products/dental"]')).toBeVisible();
-  await expect(page.locator('a[href="/products/surgical/scissors"]')).toBeVisible();
-  await expect(page.locator('a[href="/inquiry?manual=1"]').first()).toBeVisible();
+  await expect(page.locator('.catalogue-division-row[href="/products/surgical"]')).toBeVisible();
+  await expect(page.locator('.catalogue-division-row[href="/products/dental"]')).toBeVisible();
+  await expect(page.locator('.catalogue-family-routes a[href="/products/surgical/scissors"]')).toBeVisible();
+  await expect(page.locator('.manual-recovery-link[href="/inquiry?manual=1"]')).toBeVisible();
 });
 
 test("exact product code ranks first", async ({ page }) => {
@@ -54,7 +54,7 @@ test("family filter and sorting remain server-driven", async ({ page }) => {
   await expect(page.getByLabel("Sort results")).toHaveValue("code");
   await expect(page.getByRole("heading", { name: "1 object" })).toBeVisible();
   await expect(page.getByText("Query: operating")).toBeVisible();
-  await expect(page.locator('a[href="/products/surgical/scissors/operating-scissors"]')).toBeVisible();
+  await expect(page.getByRole("link", { name: "Operating Scissors", exact: true })).toBeVisible();
 });
 
 test("mobile family filters use a native disclosure", async ({ page }, testInfo) => {
