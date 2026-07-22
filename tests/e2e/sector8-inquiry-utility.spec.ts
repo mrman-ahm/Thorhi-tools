@@ -23,16 +23,16 @@ test.describe("Sector 8 inquiry workflow", () => {
 
   test("preserves product quantity and notes and supports remove and undo", async ({ page }) => {
     await addOperatingScissors(page);
-    await expect(page.getByRole("heading", { name: "Operating Scissors" })).toBeVisible();
-    const quantity = page.getByLabel("Quantity");
+    const item = page.locator(".inquiry-row").filter({ hasText: "Operating Scissors" });
+    await expect(item.getByRole("heading", { name: "Operating Scissors" })).toBeVisible();
+    const quantity = item.getByLabel("Quantity", { exact: true });
     await quantity.fill("4");
-    const note = page.getByLabel("Product-specific note");
+    const note = item.getByLabel("Product-specific note", { exact: true });
     await note.fill("Curved reference requested");
     await page.reload();
     await expect(quantity).toHaveValue("4");
     await expect(note).toHaveValue("Curved reference requested");
-
-    await page.getByRole("button", { name: "Remove" }).click();
+    await item.getByRole("button", { name: "Remove" }).click();
     await expect(page.getByText("Operating Scissors removed.")).toBeVisible();
     await page.getByRole("button", { name: "Undo" }).click();
     await expect(page.getByRole("heading", { name: "Operating Scissors" })).toBeVisible();
@@ -44,8 +44,9 @@ test.describe("Sector 8 inquiry workflow", () => {
     await page.getByLabel("Known name or description").fill("Reference scissors from buyer catalogue");
     await page.getByLabel("Known code or reference").fill("REF-778");
     await page.getByRole("button", { name: "Add to inquiry" }).click();
-    await expect(page.getByText("UNLISTED ITEM")).toBeVisible();
-    await expect(page.getByText("REF-778")).toBeVisible();
+    const manualItem = page.locator(".inquiry-row").filter({ hasText: "Reference scissors from buyer catalogue" });
+    await expect(manualItem.getByText("UNLISTED ITEM", { exact: true })).toBeVisible();
+    await expect(manualItem.getByText("REF-778", { exact: true })).toBeVisible();
   });
 
   test("shows buyer validation without losing inquiry contents", async ({ page }) => {
@@ -112,6 +113,5 @@ test.describe("Sector 8 utility routes", () => {
     expect(response?.status()).toBe(404);
     await expect(page.getByRole("heading", { name: "This catalogue route does not exist." })).toBeVisible();
     await expect(page.getByRole("link", { name: "Search products" })).toBeVisible();
-    await expect(page.getByRole("link", { name: "Review inquiry" })).toBeVisible().catch(() => undefined);
   });
 });
