@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ProductCatalogue, SavedInquiryPanel, type PreviewProduct } from "@/components/catalogue-preview";
 import { DiscoveryExperience } from "@/components/discovery-experience";
 import { HeroExperience } from "@/components/hero-experience";
-import { InstrumentVisual } from "@/components/instrument-visual";
+import { MacroInspectionScene, ScissorsEvolutionScene } from "@/components/signature-scenes";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
@@ -12,13 +12,6 @@ const products: readonly PreviewProduct[] = [
   { family: "SURGICAL · SUTURING", name: "Needle Holder", code: "THR-NH-007" },
   { family: "DENTAL · EXTRACTION", name: "Dental Extraction Forceps", code: "THR-DE-021" }
 ];
-
-const evolution = [
-  { index: "01", era: "ORIGIN", title: "The cutting form", color: "amber", text: "A visual reconstruction placeholder for the earliest chapter. Historical claims and imagery require later verification." },
-  { index: "02", era: "MECHANISM", title: "The pivot", color: "blue", text: "The joint becomes the central mechanical idea: two controlled edges working through one axis." },
-  { index: "03", era: "SPECIALIZATION", title: "The profile divides", color: "green", text: "Different working ends, curves, and proportions emerge for different procedures and handling needs." },
-  { index: "04", era: "PRECISION", title: "The object today", color: "mint", text: "A modern instrument silhouette closes the storyboard. Final photography or approved reconstruction will replace this placeholder." }
-] as const;
 
 const documents = ["Main catalogue", "Surgical catalogue", "Dental catalogue", "Veterinary catalogue"];
 
@@ -32,10 +25,8 @@ export default function HomePage() {
     <main id="main" className="v2-home">
       <HeroExperience />
       <DiscoveryExperience />
-
-      <section className="macro-stage" aria-labelledby="macro-title"><div className="container macro-grid"><div className="macro-object"><InstrumentVisual variant="macro" label="Temporary macro instrument study with generic annotation placeholders" /></div><div className="macro-copy"><Eyebrow>04 · UNDER EXAMINATION</Eyebrow><h2 id="macro-title">Precision becomes visible at the edge.</h2><p>The final version will reveal an approved macro instrument image through light and technical annotation. The static skeleton establishes scale, hierarchy, and placement first.</p><dl><div><dt>01</dt><dd>WORKING END</dd></div><div><dt>02</dt><dd>JOINT</dd></div><div><dt>03</dt><dd>HANDLE</dd></div></dl></div></div></section>
-
-      <section className="evolution-stage" aria-labelledby="evolution-title"><header className="container evolution-heading"><Eyebrow>05 · PRECISION THROUGH TIME</Eyebrow><h2 id="evolution-title">One form.<br />Four visual chapters.</h2><p>This is the static storyboard for the future scissors-evolution sequence. No historical image or claim is treated as approved yet.</p></header><div className="evolution-grid">{evolution.map(chapter => <article className={`evolution-card ${chapter.color}`} key={chapter.index}><div className="evolution-figure" aria-label={`${chapter.era} scissors concept placeholder`} role="img"><span className="mini-blade one" /><span className="mini-blade two" /><span className="mini-ring one" /><span className="mini-ring two" /></div><div><span>{chapter.index} · {chapter.era}</span><h3>{chapter.title}</h3><p>{chapter.text}</p></div></article>)}</div><div className="container evolution-link"><Link href="/precision-through-time">Open the editorial history route <span aria-hidden="true">↗</span></Link></div></section>
+      <MacroInspectionScene />
+      <ScissorsEvolutionScene />
 
       <section className="command-stage" aria-labelledby="command-title"><div className="container command-grid"><div><Eyebrow>06 · DIRECT UTILITY</Eyebrow><h2 id="command-title">Know the object?<br />Skip the exhibition.</h2><p>Search remains the fastest route for procurement teams and returning buyers.</p></div><form action="/search" method="get"><label htmlFor="command-query">PRODUCT COMMAND</label><div><input id="command-query" name="q" type="search" placeholder="Name, family, or code" /><button type="submit">ENTER</button></div><small>EXACT CODE → PREFIX → NAME → ALIAS → FAMILY</small></form></div></section>
 
