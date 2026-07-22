@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ProductCatalogue, SavedInquiryPanel, type PreviewProduct } from "@/components/catalogue-preview";
+import { HeroExperience } from "@/components/hero-experience";
 import { InstrumentVisual } from "@/components/instrument-visual";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -46,17 +47,7 @@ export default function HomePage() {
   return <>
     <SiteHeader />
     <main id="main" className="v2-home">
-      <section className="v2-hero" aria-labelledby="hero-title">
-        <div className="hero-index" aria-hidden="true"><span>THROHI / MEDICAL TOOLS</span><span>PRECISION OBJECTS / CATALOGUE / INQUIRY</span></div>
-        <h1 className="hero-type" id="hero-title"><span>PRECISION,</span><span>BROUGHT</span><span className="accent-green">ALIVE.</span></h1>
-        <div className="hero-object"><InstrumentVisual label="Temporary surgical scissors silhouette for the V2 homepage hero" /></div>
-        <div className="hero-statement"><p>Not a marketplace. Not a generic supplier template.</p><p>A visual catalogue for surgical, dental, veterinary, and beauty instruments.</p></div>
-        <form className="hero-search" action="/search" method="get">
-          <label htmlFor="hero-query"><span>SEARCH THE CATALOGUE</span><small>NAME · FAMILY · EXACT OR PARTIAL CODE</small></label>
-          <div><input id="hero-query" name="q" type="search" placeholder="THR-SC-001" autoComplete="off" /><button type="submit">Search <span aria-hidden="true">↗</span></button></div>
-        </form>
-        <div className="hero-scroll-note" aria-hidden="true"><span>SCROLL TO EXAMINE</span><b>↓</b></div>
-      </section>
+      <HeroExperience />
 
       <section className="division-theatre" aria-labelledby="division-title">
         <header className="section-intro container"><Eyebrow>01 · FOUR DIVISIONS</Eyebrow><h2 id="division-title">Four fields.<br /><span>One language of precision.</span></h2><p>Every division receives its own atmosphere without breaking the THROHI system.</p></header>
