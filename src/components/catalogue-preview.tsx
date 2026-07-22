@@ -78,9 +78,10 @@ export function SavedInquiryPanel({ products }: { products: readonly PreviewProd
     () => products.filter(product => savedCodes.includes(product.code)),
     [products, savedCodes]
   );
+  const itemLabel = savedProducts.length === 1 ? "ITEM" : "ITEMS";
 
   return <aside className="saved-panel" aria-labelledby="saved-inquiry-title">
-    <small>{savedProducts.length} ITEMS SAVED</small>
+    <small>{savedProducts.length} {itemLabel} SAVED</small>
     <h3 id="saved-inquiry-title">Continue the inquiry</h3>
     <p>Selected products remain available while browsing the catalogue.</p>
     {savedProducts.length === 0 ? <div className="saved-empty"><strong>No products selected yet.</strong><span>Add products above to build a structured inquiry.</span></div> : savedProducts.map((product, index) => <div className="saved-row" key={product.code}><span><strong>{product.name}</strong><code>{product.code}</code></span><b>Qty {index + 1}</b></div>)}
