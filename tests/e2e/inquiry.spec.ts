@@ -76,7 +76,7 @@ test("full inquiry form submits and routes to explicit development confirmation"
   await page.getByText("I confirm that the provided information may be used to respond to this inquiry.").click();
   await page.getByRole("button", { name: "Submit inquiry" }).click();
   await expect(page).toHaveURL(/\/inquiry\/success\?reference=/);
-  await expect(page.getByRole("heading", { name: /accepted by the current application workflow/ })).toBeVisible();
+  await expect(page.getByRole("heading", { name: /entered the current application workflow/ })).toBeVisible();
   await expect(page.getByText("Development memory adapter")).toBeVisible();
   const screenshot = await page.screenshot({ fullPage: true, animations: "disabled" });
   await testInfo.attach("inquiry-success.png", { body: screenshot, contentType: "image/png" });
