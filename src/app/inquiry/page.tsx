@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Suspense } from "react";
 import { InquiryWorkflow } from "@/components/inquiry-workflow";
 import { SiteFooter } from "@/components/site-footer";
@@ -23,6 +24,6 @@ export default function InquiryPage() {
       </div>
     </section>
     <section className="inquiry-workspace"><div className="container"><Suspense fallback={<p className="utility-loading">Loading saved inquiry…</p>}><InquiryWorkflow /></Suspense></div></section>
-    <section className="utility-assurance-band"><div className="container utility-assurance-grid"><span>NO PAYMENT COLLECTION</span><p>Submitting this form does not create an order, shipping commitment, lead-time promise, or payment obligation.</p><a href="/terms">Read inquiry terms ↗</a></div></section>
+    <section className="utility-assurance-band"><div className="container utility-assurance-grid"><span>NO PAYMENT COLLECTION</span><p>Submitting this form does not create an order, shipping commitment, lead-time promise, or payment obligation.</p><Link href="/terms">Read inquiry terms ↗</Link></div></section>
   </main><SiteFooter /></>;
 }
