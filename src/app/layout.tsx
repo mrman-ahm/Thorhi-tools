@@ -8,6 +8,7 @@ import "./v2-review-fixes.css";
 import "./v2-identity.css";
 import "./v2-sector3.css";
 import "./v2-sector4.css";
+import "./v2-sector5.css";
 
 const archivo = Archivo({ subsets: ["latin"], variable: "--font-archivo", display: "swap" });
 const instrument = Instrument_Sans({ subsets: ["latin"], variable: "--font-instrument", display: "swap" });
