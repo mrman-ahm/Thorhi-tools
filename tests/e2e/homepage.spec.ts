@@ -8,7 +8,7 @@ test.beforeEach(async ({ page }) => {
 });
 
 test("renders the homepage without horizontal overflow", async ({ page }, testInfo) => {
-  await expect(page.getByRole("heading", { level: 1, name: /Precision, brought/ })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1, name: /Precision, brought/i })).toBeVisible();
   const dimensions = await page.evaluate(() => ({ scrollWidth: document.documentElement.scrollWidth, clientWidth: document.documentElement.clientWidth }));
   expect(dimensions.scrollWidth).toBeLessThanOrEqual(dimensions.clientWidth + 1);
   const screenshot = await page.screenshot({ fullPage: true, animations: "disabled" });
