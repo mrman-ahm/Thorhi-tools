@@ -1,3 +1,12 @@
+html,
+body,
+main,
+section,
+footer{
+  max-width:100%;
+  overflow-x:clip;
+}
+
 .catalogue-hero-grid>*,
 .family-header-grid>*,
 .product-detail-grid>*,
@@ -11,6 +20,11 @@
 .footer-meta{
   color:#7c9086;
   font-size:.56rem;
+}
+
+.evolution-card>div:last-child>span{
+  color:#45564d;
+  font-size:.62rem;
 }
 
 @media(max-width:650px){
