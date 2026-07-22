@@ -28,20 +28,22 @@ test("persists inquiry selections and prevents duplicate additions", async ({ pa
   await expect(firstProduct.getByRole("button", { name: "Added to inquiry ✓" })).toHaveAttribute("aria-pressed", "true");
   await firstProduct.getByRole("button", { name: "Added to inquiry ✓" }).click();
   await expect(page.getByText("Operating Scissors is already in the inquiry.")).toBeAttached();
+  await expect(page.getByText("1 ITEM SAVED")).toBeVisible();
+  await expect.poll(() => page.evaluate(() => window.localStorage.getItem("throhi-inquiry"))).toBe('["THR-SC-001"]');
   await page.reload();
   await expect(firstProduct.getByRole("button", { name: "Added to inquiry ✓" })).toBeVisible();
-  await expect(page.getByLabel("1 saved items")).toBeVisible();
+  await expect(page.getByText("1 ITEM SAVED")).toBeVisible();
 });
 
 test("mobile menu opens, locks background scrolling, and closes with Escape", async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== "mobile-chromium", "Mobile-only behavior");
-  const menu = page.getByRole("button", { name: "Open navigation menu" });
-  await menu.click();
-  await expect(menu).toHaveAttribute("aria-expanded", "true");
+  await page.getByRole("button", { name: "Open navigation menu" }).click();
+  const closeMenu = page.getByRole("button", { name: "Close navigation menu" });
+  await expect(closeMenu).toHaveAttribute("aria-expanded", "true");
   await expect(page.getByRole("navigation", { name: "Mobile" })).toBeVisible();
   await expect.poll(() => page.evaluate(() => getComputedStyle(document.body).overflow)).toBe("hidden");
   await page.keyboard.press("Escape");
-  await expect(menu).toHaveAttribute("aria-expanded", "false");
+  await expect(page.getByRole("button", { name: "Open navigation menu" })).toHaveAttribute("aria-expanded", "false");
 });
 
 test("reduced motion disables smooth scrolling and transitions", async ({ page }) => {
