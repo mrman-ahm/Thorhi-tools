@@ -99,6 +99,11 @@ export function SiteHeader() {
   }, [open]);
 
   const closeMenu = () => setOpen(false);
+  const openSearch = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    setOpen(false);
+    window.dispatchEvent(new Event("throhi:open-search"));
+  };
   const itemLabel = `${count} saved ${count === 1 ? "item" : "items"}`;
   const headerClass = ["site-header", scrolled && "is-scrolled", hidden && "is-hidden", open && "menu-is-open"].filter(Boolean).join(" ");
 
@@ -111,7 +116,7 @@ export function SiteHeader() {
       </Link>
       <nav className="desktop-nav" aria-label="Primary">{primaryLinks.map(([label, href]) => <Link key={label} href={href}>{label}</Link>)}</nav>
       <div className="header-actions">
-        <Link className="icon-button" href="/search" aria-label="Search products"><span aria-hidden="true">⌕</span><small>SEARCH</small></Link>
+        <Link className="icon-button" href="/search" aria-label="Open catalogue search command" aria-haspopup="dialog" onClick={openSearch}><span aria-hidden="true">⌕</span><small>SEARCH</small></Link>
         <Link className="inquiry-button" href="/inquiry"><span className="inquiry-label">Inquiry</span><span aria-label={itemLabel}>{String(count).padStart(2, "0")}</span></Link>
         <button ref={triggerRef} className="menu-button" type="button" aria-expanded={open} aria-controls="site-menu" aria-label={`${open ? "Close" : "Open"} navigation menu`} onClick={() => setOpen(value => !value)}>{open ? "Close" : "Menu"}</button>
       </div>
@@ -122,7 +127,7 @@ export function SiteHeader() {
         <header className="menu-heading" aria-hidden="true"><span>THROHI / INDEX</span><span>SELECT A DIVISION OR DIRECT ROUTE</span></header>
         <div className="mobile-nav-primary">{divisionLinks.map(([index, label, href, description], itemIndex) => <Link key={label} href={href} onClick={closeMenu} style={{ "--menu-index": itemIndex } as CSSProperties}><span>{index}</span><strong>{label}</strong><small>{description}</small><b aria-hidden="true">↗</b></Link>)}</div>
         <div className="menu-utility-row">
-          <div className="mobile-nav-utility">{primaryLinks.map(([label, href]) => <Link key={label} href={href} onClick={closeMenu}>{label}</Link>)}<Link href="/contact" onClick={closeMenu}>Contact</Link></div>
+          <div className="mobile-nav-utility">{primaryLinks.map(([label, href]) => <Link key={label} href={href} onClick={label === "Search" ? openSearch : closeMenu}>{label}</Link>)}<Link href="/contact" onClick={closeMenu}>Contact</Link></div>
           <Link className="mobile-inquiry" href="/inquiry" onClick={closeMenu}><span>Review inquiry</span><strong>{itemLabel}</strong></Link>
         </div>
       </nav>
