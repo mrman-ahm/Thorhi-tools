@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ProductCatalogue, SavedInquiryPanel, type PreviewProduct } from "@/components/catalogue-preview";
 import { InstrumentVisual } from "@/components/instrument-visual";
 import { SiteHeader } from "@/components/site-header";
 
@@ -8,22 +9,136 @@ const divisions = [
   { index: "03", name: "Veterinary Instruments", description: "General veterinary, equine, hoof, obstetrical, and bone surgery families.", families: "Equine · Hoof · Obstetrical", tone: "green" },
   { index: "04", name: "Beauty Instruments", description: "Hair scissors, tweezers, manicure, pedicure, and salon tools.", families: "Hair scissors · Tweezers · Nail", tone: "warm" }
 ] as const;
+
 const families = ["Scissors", "Forceps & Clamps", "Retractors", "Needle Holders", "Dental Extraction", "Curettes & Scalers", "Hoof & Farrier", "Manicure & Pedicure"];
-const products = [["SURGICAL · SCISSORS", "Operating Scissors", "THR-SC-001", false], ["SURGICAL · FORCEPS", "Dressing Forceps", "THR-FC-014", false], ["SURGICAL · SUTURING", "Needle Holder", "THR-NH-007", false], ["DENTAL · EXTRACTION", "Dental Extraction Forceps", "THR-DE-021", true]] as const;
+
+const products: readonly PreviewProduct[] = [
+  { family: "SURGICAL · SCISSORS", name: "Operating Scissors", code: "THR-SC-001" },
+  { family: "SURGICAL · FORCEPS", name: "Dressing Forceps", code: "THR-FC-014" },
+  { family: "SURGICAL · SUTURING", name: "Needle Holder", code: "THR-NH-007" },
+  { family: "DENTAL · EXTRACTION", name: "Dental Extraction Forceps", code: "THR-DE-021" }
+];
+
 const documents = ["Main catalogue", "Surgical catalogue", "Dental catalogue", "Veterinary catalogue"];
-function Eyebrow({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) { return <p className={`eyebrow ${dark ? "dark" : ""}`}>{children}</p>; }
+
+function Eyebrow({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) {
+  return <p className={`eyebrow ${dark ? "dark" : ""}`}>{children}</p>;
+}
 
 export default function HomePage() {
-  return <><SiteHeader /><main id="main">
-    <section className="hero section-dark"><div className="container hero-grid"><div className="hero-copy"><Eyebrow dark>THROHI MEDICAL TOOLS</Eyebrow><h1>Precision, brought<br />into focus.</h1><p>Explore surgical, dental, veterinary, and beauty instruments by division, family, product name, or code.</p><div className="button-row"><Link className="button primary" href="#products">Explore instruments</Link><Link className="button inverse" href="#inquiry">Build an inquiry</Link></div></div><InstrumentVisual label="Temporary surgical instrument silhouette for the homepage hero" /></div></section>
-    <section id="search" className="search-overlap" aria-labelledby="search-title"><form className="search-card" action="/products" method="get"><label id="search-title" htmlFor="product-search">Find an instrument</label><div className="search-controls"><input id="product-search" name="q" type="search" placeholder="Product name or exact / partial code" autoComplete="off" /><button className="button primary" type="submit">Search</button><Link className="button secondary" href="/inquiry?manual=1">Manual item</Link></div><p>Exact codes are prioritized, followed by close product-name and family matches.</p></form></section>
-    <section id="products" className="section divisions-section"><div className="container"><div className="section-heading split"><div><Eyebrow>01 · PRODUCT DIVISIONS</Eyebrow><h2>Four routes into the catalogue.</h2></div><p>Each division opens a focused catalogue with relevant families, products, and documents.</p></div><div className="division-grid">{divisions.map(d => <article className="division-card" key={d.name}><div className={`division-art ${d.tone}`}><span>{d.index}</span></div><div><h3>{d.name}</h3><p>{d.description}</p><small>{d.families}</small><Link href={`/products/${d.name.split(" ")[0].toLowerCase()}`}>Explore division <span>→</span></Link></div></article>)}</div></div></section>
-    <section className="section family-section"><div className="container family-layout"><div><Eyebrow>02 · FAMILY EXPLORER</Eyebrow><h2>Browse by instrument family.</h2><p>Technical indexing keeps discovery fast without exposing a giant legacy category list.</p></div><div className="family-grid">{families.map((name, i) => <Link key={name} href={`/products?family=${encodeURIComponent(name)}`} className="family-link"><span>{String(i + 1).padStart(2, "0")}</span><strong>{name}</strong><b>→</b></Link>)}</div></div></section>
-    <section className="section section-dark precision-section"><div className="container precision-grid"><InstrumentVisual variant="macro" label="Temporary macro instrument detail with three annotation points" /><div><Eyebrow dark>03 · PRECISION DETAIL</Eyebrow><h2>Show precision through the instrument itself.</h2><p>A verified macro view will explain the working end, joint, and handle. Reduced motion presents the same information statically.</p><Link className="button inverse-light" href="/products">Explore instrument detail</Link><small>Desktop · calibrated hover or scroll<br />Mobile · tap one annotation<br />Reduced motion · static annotated view</small></div></div></section>
-    <section className="section catalogue-section"><div className="container"><div className="section-heading split"><div><Eyebrow>04 · CATALOGUE PREVIEW</Eyebrow><h2>Useful product data, not marketplace noise.</h2></div><p>Product names and codes are placeholders pending catalogue validation.</p></div><div className="product-grid">{products.map(([family, name, code, added]) => <article className="product-card" key={code}><div className="product-image"><span>Product image</span></div><small>{family}</small><h3>{name}</h3><code>{code}</code><p>Variant data pending verification</p><button type="button" className={`button product-action ${added ? "positive" : "primary"}`}>{added ? "Added to inquiry ✓" : "Add to inquiry"}</button></article>)}</div></div></section>
-    <section className="section history-section"><div className="container history-grid"><div><Eyebrow>05 · EDITORIAL HISTORY</Eyebrow><h2>Precision Through Time</h2><p>A concise preview of instrument-form evolution. This is industry and design history, not unverified THROHI corporate history.</p><Link className="button secondary" href="/precision-through-time">Explore the full story</Link></div><div className="timeline" aria-label="Instrument history preview"><span>Ancient</span><span>1700s</span><span>1800s</span><span>1900s</span><span className="current">Today</span></div></div></section>
-    <section id="inquiry" className="section inquiry-section"><div className="container inquiry-grid"><div><Eyebrow>06 · PRIMARY CONVERSION</Eyebrow><h2>Build one inquiry from multiple products.</h2><p>Add products while browsing, adjust quantities, attach references, and send one organized request.</p><ol><li>Add products</li><li>Review quantities</li><li>Send requirements</li></ol></div><aside className="saved-panel"><small>3 ITEMS SAVED</small><h3>Continue the inquiry</h3><p>Selected products remain available while browsing the catalogue.</p>{products.slice(0,3).map(([,name,code],i)=><div className="saved-row" key={code}><span><strong>{name}</strong><code>{code}</code></span><b>Qty {i+1}</b></div>)}<Link className="button positive full" href="/inquiry">Review inquiry</Link></aside></div></section>
-    <section id="company" className="section evidence-section"><div className="container evidence-grid"><div><Eyebrow>07 · VERIFIED EVIDENCE</Eyebrow><h2>Trust comes from evidence, not slogans.</h2><p>Launch with approved company information, location, contact details, and real documents. Capabilities and certifications remain excluded until verified.</p><div className="evidence-list"><span>Company & location</span><span>Product divisions</span><span>Capabilities · conditional</span><span>Quality evidence · conditional</span></div></div><div id="resources" className="documents-panel"><h3>Catalogues and resources</h3>{documents.map(name=><div className="document-row" key={name}><span><strong>{name}</strong><small>PDF · metadata pending</small></span><button type="button" disabled>Pending</button></div>)}</div></div></section>
-    <section id="contact" className="final-cta section-dark"><div className="container final-grid"><div><h2>Looking for a specific instrument?</h2><p>Search the catalogue, send a structured inquiry, or contact THROHI with a reference.</p></div><div className="button-row"><Link className="button inverse-light" href="#search">Search products</Link><Link className="button primary" href="/inquiry">Send inquiry</Link><Link className="button inverse" href="/contact">Contact THROHI</Link></div></div></section>
-  </main><footer className="site-footer"><div className="container footer-grid"><div><strong>THROHI</strong><span>MEDICAL TOOLS</span></div><nav aria-label="Footer"><Link href="#products">Products</Link><Link href="#company">Company</Link><Link href="#resources">Resources</Link><Link href="#contact">Contact</Link><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link></nav></div><p>Verified contact information only · No unsupported badges or certifications</p></footer></>;
+  return <>
+    <SiteHeader />
+    <main id="main">
+      <section className="hero section-dark">
+        <div className="container hero-grid">
+          <div className="hero-copy">
+            <Eyebrow dark>THROHI MEDICAL TOOLS</Eyebrow>
+            <h1>Precision, brought<br />into focus.</h1>
+            <p>Explore surgical, dental, veterinary, and beauty instruments by division, family, product name, or code.</p>
+            <div className="button-row">
+              <Link className="button primary" href="#products">Explore instruments</Link>
+              <Link className="button inverse" href="#inquiry">Build an inquiry</Link>
+            </div>
+          </div>
+          <InstrumentVisual label="Temporary surgical instrument silhouette for the homepage hero" />
+        </div>
+      </section>
+
+      <section id="search" className="search-overlap" aria-labelledby="search-title">
+        <form className="search-card" action="/products" method="get">
+          <label id="search-title" htmlFor="product-search">Find an instrument</label>
+          <div className="search-controls">
+            <input id="product-search" name="q" type="search" placeholder="Product name or exact / partial code" autoComplete="off" />
+            <button className="button primary" type="submit">Search</button>
+            <Link className="button secondary" href="/inquiry?manual=1">Manual item</Link>
+          </div>
+          <p>Exact codes are prioritized, followed by close product-name and family matches.</p>
+        </form>
+      </section>
+
+      <section id="products" className="section divisions-section">
+        <div className="container">
+          <div className="section-heading split">
+            <div><Eyebrow>01 · PRODUCT DIVISIONS</Eyebrow><h2>Four routes into the catalogue.</h2></div>
+            <p>Each division opens a focused catalogue with relevant families, products, and documents.</p>
+          </div>
+          <div className="division-grid">
+            {divisions.map(division => <article className="division-card" key={division.name}>
+              <div className={`division-art ${division.tone}`}><span>{division.index}</span></div>
+              <div>
+                <h3>{division.name}</h3>
+                <p>{division.description}</p>
+                <small>{division.families}</small>
+                <Link href={`/products/${division.name.split(" ")[0].toLowerCase()}`}>Explore division <span aria-hidden="true">→</span></Link>
+              </div>
+            </article>)}
+          </div>
+        </div>
+      </section>
+
+      <section className="section family-section">
+        <div className="container family-layout">
+          <div><Eyebrow>02 · FAMILY EXPLORER</Eyebrow><h2>Browse by instrument family.</h2><p>Technical indexing keeps discovery fast without exposing a giant legacy category list.</p></div>
+          <div className="family-grid">
+            {families.map((name, index) => <Link key={name} href={`/products?family=${encodeURIComponent(name)}`} className="family-link"><span>{String(index + 1).padStart(2, "0")}</span><strong>{name}</strong><b aria-hidden="true">→</b></Link>)}
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-dark precision-section">
+        <div className="container precision-grid">
+          <InstrumentVisual variant="macro" label="Temporary macro instrument detail with three annotation points" />
+          <div>
+            <Eyebrow dark>03 · PRECISION DETAIL</Eyebrow>
+            <h2>Show precision through the instrument itself.</h2>
+            <p>A verified macro view will explain the working end, joint, and handle. Reduced motion presents the same information statically.</p>
+            <Link className="button inverse-light" href="/products">Explore instrument detail</Link>
+            <small>Desktop · calibrated hover or scroll<br />Mobile · tap one annotation<br />Reduced motion · static annotated view</small>
+          </div>
+        </div>
+      </section>
+
+      <section className="section catalogue-section">
+        <div className="container">
+          <div className="section-heading split">
+            <div><Eyebrow>04 · CATALOGUE PREVIEW</Eyebrow><h2>Useful product data, not marketplace noise.</h2></div>
+            <p>Product names and codes are placeholders pending catalogue validation.</p>
+          </div>
+          <ProductCatalogue products={products} />
+        </div>
+      </section>
+
+      <section className="section history-section">
+        <div className="container history-grid">
+          <div><Eyebrow>05 · EDITORIAL HISTORY</Eyebrow><h2>Precision Through Time</h2><p>A concise preview of instrument-form evolution. This is industry and design history, not unverified THROHI corporate history.</p><Link className="button secondary" href="/precision-through-time">Explore the full story</Link></div>
+          <div className="timeline" aria-label="Instrument history preview"><span>Ancient</span><span>1700s</span><span>1800s</span><span>1900s</span><span className="current">Today</span></div>
+        </div>
+      </section>
+
+      <section id="inquiry" className="section inquiry-section">
+        <div className="container inquiry-grid">
+          <div><Eyebrow>06 · PRIMARY CONVERSION</Eyebrow><h2>Build one inquiry from multiple products.</h2><p>Add products while browsing, adjust quantities, attach references, and send one organized request.</p><ol><li>Add products</li><li>Review quantities</li><li>Send requirements</li></ol></div>
+          <SavedInquiryPanel products={products} />
+        </div>
+      </section>
+
+      <section id="company" className="section evidence-section">
+        <div className="container evidence-grid">
+          <div><Eyebrow>07 · VERIFIED EVIDENCE</Eyebrow><h2>Trust comes from evidence, not slogans.</h2><p>Launch with approved company information, location, contact details, and real documents. Capabilities and certifications remain excluded until verified.</p><div className="evidence-list"><span>Company & location</span><span>Product divisions</span><span>Capabilities · conditional</span><span>Quality evidence · conditional</span></div></div>
+          <div id="resources" className="documents-panel"><h3>Catalogues and resources</h3>{documents.map(name => <div className="document-row" key={name}><span><strong>{name}</strong><small>PDF · metadata pending</small></span><button type="button" disabled>Pending</button></div>)}</div>
+        </div>
+      </section>
+
+      <section id="contact" className="final-cta section-dark">
+        <div className="container final-grid">
+          <div><h2>Looking for a specific instrument?</h2><p>Search the catalogue, send a structured inquiry, or contact THROHI with a reference.</p></div>
+          <div className="button-row"><Link className="button inverse-light" href="#search">Search products</Link><Link className="button primary" href="/inquiry">Send inquiry</Link><Link className="button inverse" href="/contact">Contact THROHI</Link></div>
+        </div>
+      </section>
+    </main>
+    <footer className="site-footer">
+      <div className="container footer-grid"><div><strong>THROHI</strong><span>MEDICAL TOOLS</span></div><nav aria-label="Footer"><Link href="#products">Products</Link><Link href="#company">Company</Link><Link href="#resources">Resources</Link><Link href="#contact">Contact</Link><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link></nav></div>
+      <p>Verified contact information only · No unsupported badges or certifications</p>
+    </footer>
+  </>;
 }
