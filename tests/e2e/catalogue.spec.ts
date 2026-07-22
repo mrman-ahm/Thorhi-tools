@@ -6,7 +6,7 @@ const routes = [
   ["division", "/products/surgical", /^Surgical Instruments$/],
   ["family", "/products/surgical/scissors", /^Scissors$/],
   ["product", "/products/surgical/scissors/operating-scissors", /Operating Scissors/],
-  ["search", "/search?q=THR-SC-001", /Search names, families, and product codes/],
+  ["search", "/search?q=THR-SC-001", /Find the instrument/],
   ["company", "/company", /Evidence before claims/],
   ["resources", "/resources", /Documents publish only after verification/],
   ["contact", "/contact", /Send product context/]
@@ -35,7 +35,7 @@ test("products landing preserves direct catalogue routes", async ({ page }) => {
 
 test("exact product code ranks first", async ({ page }) => {
   await page.goto("/search?q=thr+sc+001");
-  const firstResult = page.locator(".search-result-wrap").first();
+  const firstResult = page.locator(".search-result-object").first();
   await expect(firstResult).toContainText("Operating Scissors");
   await expect(firstResult).toContainText("exact code");
 });
