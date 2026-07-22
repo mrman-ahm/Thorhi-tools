@@ -7,9 +7,9 @@ const routes = [
   ["family", "/products/surgical/scissors", /^Scissors$/],
   ["product", "/products/surgical/scissors/operating-scissors", /Operating Scissors/],
   ["search", "/search?q=THR-SC-001", /Find the instrument/],
-  ["company", "/company", /Evidence before claims/],
-  ["resources", "/resources", /Documents publish only after verification/],
-  ["contact", "/contact", /Send product context/]
+  ["company", "/company", /Evidence first/],
+  ["resources", "/resources", /Documents with traceable context/],
+  ["contact", "/contact", /Send the context needed to respond/]
 ] as const;
 
 for (const [name, route, heading] of routes) {
