@@ -48,8 +48,8 @@ test("family no-results recovery is explicit", async ({ page }) => {
 
 test("product addition persists across catalogue routes", async ({ page }) => {
   await page.goto("/products/surgical/scissors/operating-scissors");
-  await page.getByRole("button", { name: "Add to inquiry" }).click();
-  await expect(page.getByRole("button", { name: "Update inquiry details" })).toBeVisible();
+  await page.getByRole("button", { name: "Add to inquiry: Operating Scissors", exact: true }).click();
+  await expect(page.getByRole("button", { name: "Update inquiry details for: Operating Scissors", exact: true })).toBeVisible();
   await page.goto("/inquiry");
   await expect(page.getByRole("heading", { name: "Operating Scissors" })).toBeVisible();
   await expect(page.getByText("THR-SC-001")).toBeVisible();
