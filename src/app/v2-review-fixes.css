@@ -35,4 +35,27 @@ footer{
     font-size:clamp(2.65rem,12.8vw,3.35rem);
     overflow-wrap:anywhere;
   }
+
+  .verb-stage{
+    display:grid;
+    gap:.8rem;
+    padding:4.5rem 1rem;
+  }
+
+  .verb-row{
+    display:grid;
+    justify-content:stretch;
+    white-space:normal;
+    font-size:clamp(3.2rem,16vw,5.2rem);
+    line-height:.78;
+  }
+
+  .verb-row:nth-child(2){
+    justify-content:stretch;
+    text-align:right;
+  }
+
+  .verb-row span{
+    display:block;
+  }
 }
