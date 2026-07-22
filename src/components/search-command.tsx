@@ -107,7 +107,9 @@ export function SearchCommand() {
       window.cancelAnimationFrame(focusFrame);
       delete document.body.dataset.searchOpen;
       window.removeEventListener("keydown", handleDialogKeyboard);
-      previousFocus.current?.focus();
+      const target = previousFocus.current;
+      if (target && target !== document.body && target.isConnected) target.focus();
+      else inputRef.current?.blur();
     };
   }, [open, router]);
 
