@@ -33,6 +33,29 @@ export function AddProductButton({ product, className = "" }: { product: Product
   </>;
 }
 
+export function ProductInquiryControls({ product }: { product: Product }) {
+  const { items, addProduct, updateItem } = useInquiry();
+  const existing = items.find(item => item.code === product.code);
+  const [quantity, setQuantity] = useState(existing?.quantity ?? 1);
+  const [note, setNote] = useState(existing?.note ?? "");
+  const [announcement, setAnnouncement] = useState("");
+
+  const add = () => {
+    const result = addProduct({ productId: product.id, code: product.code, name: product.name });
+    updateItem(product.code, { quantity, note });
+    setAnnouncement(result === "added" ? `${product.name} added with quantity ${quantity}.` : `${product.name} inquiry details updated.`);
+  };
+
+  return <div className="product-purchase-actions">
+    <span className="visually-hidden" aria-live="polite">{announcement}</span>
+    <label htmlFor="detail-quantity">Quantity for inquiry</label>
+    <input id="detail-quantity" type="number" min="1" max="9999" value={quantity} onChange={event => setQuantity(Math.max(1, Math.min(9999, Number(event.target.value) || 1)))} />
+    <button type="button" className={`button product-action ${existing ? "positive" : "primary"}`} onClick={add}>{existing ? "Update inquiry details" : "Add to inquiry"}</button>
+    <label htmlFor="detail-note">Product-specific note</label>
+    <textarea id="detail-note" value={note} onChange={event => setNote(event.target.value)} placeholder="Optional requirement or equivalent reference" />
+  </div>;
+}
+
 export function ProductCard({ product, compact = false }: { product: Product; compact?: boolean }) {
   return <article className={`product-card catalogue-product-card ${compact ? "compact" : ""}`}>
     <Link href={productHref(product)} aria-label={`View ${product.name}`}><ProductImage product={product} compact={compact} /></Link>
