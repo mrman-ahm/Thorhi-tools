@@ -16,6 +16,6 @@ export function SiteFooter() {
         <Link href="/terms">Terms</Link>
       </nav>
     </div>
-    <div className="container footer-meta"><span>VERIFIED INFORMATION ONLY</span><span>SEED CATALOGUE RECORDS REMAIN IDENTIFIED</span><span>V2 STATIC SKELETON</span></div>
+    <div className="container footer-meta"><span>VERIFIED INFORMATION ONLY</span><span>SEED CATALOGUE RECORDS REMAIN IDENTIFIED</span><span>PRE-PRODUCTION REVIEW BUILD</span></div>
   </footer>;
 }
