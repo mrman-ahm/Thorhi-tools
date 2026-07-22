@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Mono, Manrope } from "next/font/google";
+import { InquiryProvider } from "@/components/inquiry-provider";
 import "./globals.css";
 import "./interaction.css";
 
@@ -14,5 +15,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en" className={`${manrope.variable} ${plex.variable}`}><body>{children}</body></html>;
+  return <html lang="en" className={`${manrope.variable} ${plex.variable}`}><body><InquiryProvider>{children}</InquiryProvider></body></html>;
 }
