@@ -1,0 +1,30 @@
+/* Sector 8 evidence-backed contrast corrections */
+
+.utility-section .eyebrow,
+.utility-evidence-band .eyebrow,
+.inquiry-block .eyebrow,
+.utility-safety-band .eyebrow,
+.utility-cta.mint .eyebrow{color:#07552f}
+
+.utility-contact-primary li span{color:#07552f}
+
+.utility-section .catalogue-document-row{color:#173a29;border-color:rgb(16 50 34/.16)}
+.utility-section .catalogue-document-row .document-index{color:#07552f}
+.utility-section .catalogue-document-row small{color:#40594c}
+.utility-section .catalogue-document-row b{color:#214e37}
+
+.inquiry-block .empty-state p{color:#40584c}
+.inquiry-block .button.secondary,
+.inquiry-workflow-section .button.secondary{border-color:#739687;background:#eef4ef;color:#173a29}
+.inquiry-block .button.secondary:hover,
+.inquiry-block .button.secondary:focus-visible,
+.inquiry-workflow-section .button.secondary:hover,
+.inquiry-workflow-section .button.secondary:focus-visible{border-color:#07552f;background:#dfece3;color:#083c24}
+
+.inquiry-item-info small{color:#07552f}
+.inquiry-thumb{color:#294d3b}
+.block-heading>span{color:#40594c}
+.inquiry-block .helper-text{color:#40594c}
+
+.utility-evidence-band .eyebrow,
+.utility-cta.mint .eyebrow{color:#07552f!important}

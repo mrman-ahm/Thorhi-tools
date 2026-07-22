@@ -8,7 +8,7 @@ const routes = [
   ["product", "/products/surgical/scissors/operating-scissors", /Operating Scissors/],
   ["search", "/search?q=THR-SC-001", /Find the instrument/],
   ["company", "/company", /Evidence before claims/],
-  ["resources", "/resources", /Documents publish only after verification/],
+  ["resources", "/resources", /document archive built on verification/],
   ["contact", "/contact", /Send product context/]
 ] as const;
 

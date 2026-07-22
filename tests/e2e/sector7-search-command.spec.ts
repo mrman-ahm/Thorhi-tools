@@ -1,23 +1,26 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
+async function waitForCommand(page: import("@playwright/test").Page) {
+  await expect.poll(() => page.evaluate(() => document.body.dataset.searchCommandReady ?? "pending")).toBe("true");
+}
+
 test.describe("Sector 7 global catalogue command", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("/");
     await page.evaluate(() => window.localStorage.clear());
     await page.reload();
+    await waitForCommand(page);
   });
 
   test("opens from the header, focuses search, closes with Escape, and restores focus", async ({ page }) => {
     const trigger = page.getByRole("link", { name: "Open catalogue search command" });
     await trigger.click();
-
     const dialog = page.getByRole("dialog", { name: "Find an instrument." });
     const input = dialog.getByRole("combobox");
     await expect(dialog).toBeVisible();
     await expect(input).toBeFocused();
     await expect.poll(() => page.evaluate(() => document.body.dataset.searchOpen)).toBe("true");
-
     await page.keyboard.press("Escape");
     await expect(trigger).toBeFocused();
     await expect(dialog).toBeHidden();
@@ -28,7 +31,6 @@ test.describe("Sector 7 global catalogue command", () => {
     await page.keyboard.press("Control+K");
     await expect(page.getByRole("dialog", { name: "Find an instrument." })).toBeVisible();
     await page.keyboard.press("Escape");
-
     await page.keyboard.press("/");
     await expect(page.getByRole("dialog", { name: "Find an instrument." })).toBeVisible();
   });
@@ -38,12 +40,10 @@ test.describe("Sector 7 global catalogue command", () => {
     const dialog = page.getByRole("dialog", { name: "Find an instrument." });
     const input = dialog.getByRole("combobox");
     await input.fill("thr sc 001");
-
     const first = dialog.getByRole("option").first();
     await expect(first).toContainText("Operating Scissors");
     await expect(first).toContainText("exact code");
     await expect(first).toHaveAttribute("aria-selected", "true");
-
     await input.press("Enter");
     await expect(page).toHaveURL(/\/products\/surgical\/scissors\/operating-scissors$/);
     await expect(page.getByRole("heading", { level: 1, name: "Operating Scissors" })).toBeVisible();
@@ -57,11 +57,9 @@ test.describe("Sector 7 global catalogue command", () => {
     const options = dialog.getByRole("option");
     expect(await options.count()).toBeGreaterThan(1);
     await expect(options.nth(0)).toHaveAttribute("aria-selected", "true");
-
     await input.press("ArrowDown");
     await expect(options.nth(1)).toHaveAttribute("aria-selected", "true");
     await expect(input).toBeFocused();
-
     await input.press("ArrowUp");
     await expect(options.nth(0)).toHaveAttribute("aria-selected", "true");
     await expect(input).toBeFocused();
