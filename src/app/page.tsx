@@ -48,7 +48,7 @@ export default function HomePage() {
     <main id="main" className="v2-home">
       <section className="v2-hero" aria-labelledby="hero-title">
         <div className="hero-index" aria-hidden="true"><span>THROHI / MEDICAL TOOLS</span><span>PRECISION OBJECTS / CATALOGUE / INQUIRY</span></div>
-        <div className="hero-type" id="hero-title"><span>PRECISION,</span><span>BROUGHT</span><span className="accent-green">ALIVE.</span></div>
+        <h1 className="hero-type" id="hero-title"><span>PRECISION,</span><span>BROUGHT</span><span className="accent-green">ALIVE.</span></h1>
         <div className="hero-object"><InstrumentVisual label="Temporary surgical scissors silhouette for the V2 homepage hero" /></div>
         <div className="hero-statement"><p>Not a marketplace. Not a generic supplier template.</p><p>A visual catalogue for surgical, dental, veterinary, and beauty instruments.</p></div>
         <form className="hero-search" action="/search" method="get">
