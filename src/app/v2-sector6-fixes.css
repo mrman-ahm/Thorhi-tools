@@ -1,0 +1,5 @@
+/* Sector 6 evidence-backed corrections */
+.product-document-band .catalogue-document-empty,
+.division-evidence-band .catalogue-document-empty{
+  color:#174a34;
+}
