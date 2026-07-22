@@ -1,0 +1,15 @@
+/* Evidence-backed Sector 8 corrections */
+.inquiry-workspace .button.primary,
+.inquiry-workspace .button.positive{
+  border-color:#075f35;
+  background:#075f35;
+  color:#fff;
+}
+.inquiry-workspace .button.primary:hover,
+.inquiry-workspace .button.primary:focus-visible,
+.inquiry-workspace .button.positive:hover,
+.inquiry-workspace .button.positive:focus-visible{
+  border-color:#064c2b;
+  background:#064c2b;
+  color:#fff;
+}
