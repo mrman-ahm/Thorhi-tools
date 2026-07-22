@@ -1,0 +1,51 @@
+/* Final screenshot-critic corrections for Phase 8.5 */
+html{scroll-behavior:auto}
+
+.family-discovery-static{
+  height:auto!important;
+  padding:clamp(4.5rem,7vw,7rem) 0;
+  background:linear-gradient(180deg,#07100c,#0a1510);
+}
+.family-discovery-static .family-sticky-stage{
+  position:relative;
+  top:auto;
+  min-height:auto;
+  padding:0;
+  overflow:visible;
+  display:block;
+}
+.family-discovery-static .family-discovery-heading{
+  margin-bottom:clamp(2rem,4vw,3.5rem);
+}
+.family-discovery-static .family-track-viewport{
+  width:min(var(--container),calc(100% - 3rem));
+  margin-inline:auto;
+  padding:0;
+  overflow:visible;
+}
+.family-discovery-static .family-track{
+  width:auto;
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px;
+  transform:none!important;
+  will-change:auto;
+}
+.family-discovery-static .family-panel{
+  width:auto;
+  min-height:390px;
+  border-radius:10px;
+  background:linear-gradient(145deg,#111f18,#09120e);
+}
+.family-discovery-static .family-panel-object{min-height:185px}
+.family-discovery-static .family-progress{display:none}
+
+@media (max-width:1100px){
+  .family-discovery-static .family-track{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:620px){
+  .family-discovery-static{padding:4rem 0}
+  .family-discovery-static .family-track-viewport{width:min(100% - 2.5rem,var(--container))}
+  .family-discovery-static .family-track{grid-template-columns:1fr}
+  .family-discovery-static .family-panel{min-height:340px}
+}
