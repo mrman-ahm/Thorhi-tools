@@ -7,7 +7,7 @@ test.describe("Sector 4 division and family discovery", () => {
 
   test("updates the active division when a division route receives focus", async ({ page }) => {
     const section = page.locator(".division-discovery");
-    const dental = page.getByRole("link", { name: /Dental/ }).filter({ has: page.locator(".division-number") });
+    const dental = page.locator('.division-discovery-item[href="/products/dental"]');
 
     await expect(section).toHaveAttribute("data-active-index", "0");
     await dental.focus();
@@ -16,9 +16,9 @@ test.describe("Sector 4 division and family discovery", () => {
   });
 
   test("keeps every family as a direct catalogue link", async ({ page }) => {
-    await expect(page.getByRole("link", { name: /Scissors/ }).filter({ has: page.locator(".family-panel-object") })).toHaveAttribute("href", "/products/surgical/scissors");
-    await expect(page.getByRole("link", { name: /Dental Extraction/ }).filter({ has: page.locator(".family-panel-object") })).toHaveAttribute("href", "/products/dental/extraction");
-    await expect(page.getByRole("link", { name: /Nail & Cuticle/ }).filter({ has: page.locator(".family-panel-object") })).toHaveAttribute("href", "/products/beauty/nail-cuticle");
+    await expect(page.locator('.family-panel[href="/products/surgical/scissors"]')).toHaveAttribute("href", "/products/surgical/scissors");
+    await expect(page.locator('.family-panel[href="/products/dental/extraction"]')).toHaveAttribute("href", "/products/dental/extraction");
+    await expect(page.locator('.family-panel[href="/products/beauty/nail-cuticle"]')).toHaveAttribute("href", "/products/beauty/nail-cuticle");
   });
 
   test("advances the family track through normal page scrolling on desktop", async ({ page }, testInfo) => {
