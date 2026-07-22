@@ -21,42 +21,38 @@ test.describe("Sector 4 division and family discovery", () => {
     await expect(page.locator('.family-panel[href="/products/beauty/nail-cuticle"]')).toHaveAttribute("href", "/products/beauty/nail-cuticle");
   });
 
-  test("advances the family track through normal page scrolling on desktop", async ({ page }, testInfo) => {
-    test.skip(testInfo.project.name !== "desktop-chromium", "Horizontal family progression is desktop-only");
+  test("uses a complete static family grid before the Anime.js phase", async ({ page }, testInfo) => {
     const section = page.locator(".family-discovery");
-    const track = page.locator(".family-track");
-
-    await section.scrollIntoViewIfNeeded();
-    await page.evaluate(() => {
-      const target = document.querySelector<HTMLElement>(".family-discovery");
-      if (target) window.scrollTo(0, target.offsetTop + window.innerHeight * 0.8);
-    });
-
-    await expect.poll(async () => Number(await section.evaluate(element => getComputedStyle(element).getPropertyValue("--family-progress")))).toBeGreaterThan(0);
-    const transform = await track.evaluate(element => getComputedStyle(element).transform);
-    expect(transform).not.toBe("none");
-  });
-
-  test("uses a stacked family archive on mobile", async ({ page }, testInfo) => {
-    test.skip(testInfo.project.name !== "mobile-chromium", "Mobile stacking is validated in the mobile project");
-    const section = page.locator(".family-discovery");
+    const stage = page.locator(".family-sticky-stage");
     const track = page.locator(".family-track");
     await section.scrollIntoViewIfNeeded();
 
-    await expect.poll(() => section.evaluate(element => element.style.height || "auto")).toBe("auto");
     expect(await track.evaluate(element => getComputedStyle(element).transform)).toBe("none");
+    expect(await stage.evaluate(element => getComputedStyle(element).position)).toBe("relative");
     await expect(page.locator(".family-panel")).toHaveCount(8);
+
+    const columns = await track.evaluate(element => getComputedStyle(element).gridTemplateColumns.split(" ").filter(Boolean).length);
+    if (testInfo.project.name === "desktop-chromium") expect(columns).toBe(4);
+    else expect(columns).toBe(1);
   });
 
-  test("provides a static reduced-motion discovery layout", async ({ page }) => {
+  test("does not reserve an artificial vertical scroll runway", async ({ page }) => {
+    const section = page.locator(".family-discovery");
+    const stage = page.locator(".family-sticky-stage");
+    const measurements = await section.evaluate(element => ({
+      sectionHeight: element.getBoundingClientRect().height,
+      viewportHeight: window.innerHeight
+    }));
+    expect(measurements.sectionHeight).toBeLessThan(measurements.viewportHeight * 3.2);
+    expect(await stage.evaluate(element => getComputedStyle(element).minHeight)).not.toBe("100vh");
+  });
+
+  test("provides the same complete grid with reduced motion", async ({ page }) => {
     await page.emulateMedia({ reducedMotion: "reduce" });
     await page.goto("/");
-    const section = page.locator(".family-discovery");
     const track = page.locator(".family-track");
-    await section.scrollIntoViewIfNeeded();
-
-    expect(await track.evaluate(element => getComputedStyle(element).transform)).toBe("none");
     await expect(page.locator(".division-discovery-item")).toHaveCount(4);
     await expect(page.locator(".family-panel")).toHaveCount(8);
+    expect(await track.evaluate(element => getComputedStyle(element).transform)).toBe("none");
   });
 });
