@@ -5,10 +5,10 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
 const divisions = [
-  { index: "01", name: "Surgical Instruments", slug: "surgical", description: "Scissors, forceps, clamps, retractors, suturing, and specialty surgery.", families: "Scissors · Forceps · Needle Holders", tone: "blue" },
-  { index: "02", name: "Dental Instruments", slug: "dental", description: "Diagnostic, extraction, restorative, periodontal, and orthodontic families.", families: "Extraction · Periodontal · Restorative", tone: "ice" },
-  { index: "03", name: "Veterinary Instruments", slug: "veterinary", description: "General veterinary, equine, hoof, obstetrical, and bone surgery families.", families: "Equine · Hoof · Obstetrical", tone: "green" },
-  { index: "04", name: "Beauty Instruments", slug: "beauty", description: "Hair scissors, tweezers, manicure, pedicure, and salon tools.", families: "Hair scissors · Tweezers · Nail", tone: "warm" }
+  { index: "01", name: "Surgical", slug: "surgical", description: "Cutting, holding, clamping, retracting, and suturing families.", verbs: "CUT · HOLD · CLAMP", tone: "green" },
+  { index: "02", name: "Dental", slug: "dental", description: "Diagnostic, extraction, periodontal, and restorative families.", verbs: "EXAMINE · EXTRACT · RESTORE", tone: "blue" },
+  { index: "03", name: "Veterinary", slug: "veterinary", description: "General, equine, hoof, obstetrical, and specialist families.", verbs: "TREAT · HOLD · SUPPORT", tone: "amber" },
+  { index: "04", name: "Beauty", slug: "beauty", description: "Hair, tweezer, nail, cuticle, and professional salon families.", verbs: "SHAPE · REFINE · DETAIL", tone: "coral" }
 ] as const;
 
 const familyRoutes = [
@@ -29,26 +29,59 @@ const products: readonly PreviewProduct[] = [
   { family: "DENTAL · EXTRACTION", name: "Dental Extraction Forceps", code: "THR-DE-021" }
 ];
 
+const evolution = [
+  { index: "01", era: "ORIGIN", title: "The cutting form", color: "amber", text: "A visual reconstruction placeholder for the earliest chapter. Historical claims and imagery require later verification." },
+  { index: "02", era: "MECHANISM", title: "The pivot", color: "blue", text: "The joint becomes the central mechanical idea: two controlled edges working through one axis." },
+  { index: "03", era: "SPECIALIZATION", title: "The profile divides", color: "green", text: "Different working ends, curves, and proportions emerge for different procedures and handling needs." },
+  { index: "04", era: "PRECISION", title: "The object today", color: "mint", text: "A modern instrument silhouette closes the storyboard. Final photography or approved reconstruction will replace this placeholder." }
+] as const;
+
 const documents = ["Main catalogue", "Surgical catalogue", "Dental catalogue", "Veterinary catalogue"];
 
-function Eyebrow({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) {
-  return <p className={`eyebrow ${dark ? "dark" : ""}`}>{children}</p>;
+function Eyebrow({ children }: { children: React.ReactNode }) {
+  return <p className="eyebrow">{children}</p>;
 }
 
 export default function HomePage() {
   return <>
     <SiteHeader />
-    <main id="main">
-      <section className="hero section-dark"><div className="container hero-grid"><div className="hero-copy"><Eyebrow dark>THROHI MEDICAL TOOLS</Eyebrow><h1>Precision, brought<br />into focus.</h1><p>Explore surgical, dental, veterinary, and beauty instruments by division, family, product name, or code.</p><div className="button-row"><Link className="button primary" href="/products">Explore instruments</Link><Link className="button inverse" href="/inquiry">Build an inquiry</Link></div></div><InstrumentVisual label="Temporary surgical instrument silhouette for the homepage hero" /></div></section>
-      <section id="search" className="search-overlap" aria-labelledby="search-title"><form className="search-card" action="/search" method="get"><label id="search-title" htmlFor="product-search">Find an instrument</label><div className="search-controls"><input id="product-search" name="q" type="search" placeholder="Product name or exact / partial code" autoComplete="off" /><button className="button primary" type="submit">Search</button><Link className="button secondary" href="/inquiry?manual=1">Manual item</Link></div><p>Exact codes are prioritized, followed by close product-name and family matches.</p></form></section>
-      <section id="products" className="section divisions-section"><div className="container"><div className="section-heading split"><div><Eyebrow>01 · PRODUCT DIVISIONS</Eyebrow><h2>Four routes into the catalogue.</h2></div><p>Each division opens a focused catalogue with relevant families, products, and documents.</p></div><div className="division-grid">{divisions.map(division => <article className="division-card" key={division.name}><div className={`division-art ${division.tone}`}><span>{division.index}</span></div><div><h3>{division.name}</h3><p>{division.description}</p><small>{division.families}</small><Link href={`/products/${division.slug}`}>Explore division <span aria-hidden="true">→</span></Link></div></article>)}</div></div></section>
-      <section className="section family-section"><div className="container family-layout"><div><Eyebrow>02 · FAMILY EXPLORER</Eyebrow><h2>Browse by instrument family.</h2><p>Technical indexing keeps discovery fast without exposing a giant legacy category list.</p></div><div className="family-grid">{familyRoutes.map(([name, href], index) => <Link key={name} href={href} className="family-link"><span>{String(index + 1).padStart(2, "0")}</span><strong>{name}</strong><b aria-hidden="true">→</b></Link>)}</div></div></section>
-      <section className="section section-dark precision-section"><div className="container precision-grid"><InstrumentVisual variant="macro" label="Temporary macro instrument detail with three annotation points" /><div><Eyebrow dark>03 · PRECISION DETAIL</Eyebrow><h2>Show precision through the instrument itself.</h2><p>A verified macro view will explain the working end, joint, and handle. Reduced motion presents the same information statically.</p><Link className="button inverse-light" href="/products">Explore instrument detail</Link><small>Desktop · calibrated hover or scroll<br />Mobile · tap one annotation<br />Reduced motion · static annotated view</small></div></div></section>
-      <section className="section catalogue-section"><div className="container"><div className="section-heading split"><div><Eyebrow>04 · CATALOGUE PREVIEW</Eyebrow><h2>Useful product data, not marketplace noise.</h2></div><p>Product names and codes are seed records pending catalogue validation.</p></div><ProductCatalogue products={products} /></div></section>
-      <section className="section history-section"><div className="container history-grid"><div><Eyebrow>05 · EDITORIAL HISTORY</Eyebrow><h2>Precision Through Time</h2><p>A concise preview of instrument-form evolution. This is industry and design history, not unverified THROHI corporate history.</p><Link className="button secondary" href="/precision-through-time">Explore the full story</Link></div><div className="timeline" aria-label="Instrument history preview"><span>Early forms</span><span>Craft</span><span>Industry</span><span>Specialization</span><span className="current">Today</span></div></div></section>
-      <section id="inquiry" className="section inquiry-section"><div className="container inquiry-grid"><div><Eyebrow>06 · PRIMARY CONVERSION</Eyebrow><h2>Build one inquiry from multiple products.</h2><p>Add products while browsing, adjust quantities, attach references, and send one organized request.</p><ol><li>Add products</li><li>Review quantities</li><li>Send requirements</li></ol></div><SavedInquiryPanel products={products} /></div></section>
-      <section id="company" className="section evidence-section"><div className="container evidence-grid"><div><Eyebrow>07 · VERIFIED EVIDENCE</Eyebrow><h2>Trust comes from evidence, not slogans.</h2><p>Launch with approved company information, location, contact details, and real documents. Capabilities and certifications remain excluded until verified.</p><div className="evidence-list"><span>Company identity · pending approval</span><span>Product divisions</span><span>Capabilities · conditional</span><span>Quality evidence · conditional</span></div></div><div id="resources" className="documents-panel"><h3>Catalogues and resources</h3>{documents.map(name => <div className="document-row" key={name}><span><strong>{name}</strong><small>PDF · metadata pending</small></span><span className="status-chip">Pending</span></div>)}</div></div></section>
-      <section id="contact" className="final-cta section-dark"><div className="container final-grid"><div><h2>Looking for a specific instrument?</h2><p>Search the catalogue, send a structured inquiry, or contact THROHI with a reference.</p></div><div className="button-row"><Link className="button inverse-light" href="/search">Search products</Link><Link className="button primary" href="/inquiry">Send inquiry</Link><Link className="button inverse" href="/contact">Contact THROHI</Link></div></div></section>
+    <main id="main" className="v2-home">
+      <section className="v2-hero" aria-labelledby="hero-title">
+        <div className="hero-index" aria-hidden="true"><span>THROHI / MEDICAL TOOLS</span><span>PRECISION OBJECTS / CATALOGUE / INQUIRY</span></div>
+        <h1 className="hero-type" id="hero-title"><span>PRECISION,</span><span>BROUGHT</span><span className="accent-green">ALIVE.</span></h1>
+        <div className="hero-object"><InstrumentVisual label="Temporary surgical scissors silhouette for the V2 homepage hero" /></div>
+        <div className="hero-statement"><p>Not a marketplace. Not a generic supplier template.</p><p>A visual catalogue for surgical, dental, veterinary, and beauty instruments.</p></div>
+        <form className="hero-search" action="/search" method="get">
+          <label htmlFor="hero-query"><span>SEARCH THE CATALOGUE</span><small>NAME · FAMILY · EXACT OR PARTIAL CODE</small></label>
+          <div><input id="hero-query" name="q" type="search" placeholder="THR-SC-001" autoComplete="off" /><button type="submit">Search <span aria-hidden="true">↗</span></button></div>
+        </form>
+        <div className="hero-scroll-note" aria-hidden="true"><span>SCROLL TO EXAMINE</span><b>↓</b></div>
+      </section>
+
+      <section className="division-theatre" aria-labelledby="division-title">
+        <header className="section-intro container"><Eyebrow>01 · FOUR DIVISIONS</Eyebrow><h2 id="division-title">Four fields.<br /><span>One language of precision.</span></h2><p>Every division receives its own atmosphere without breaking the THROHI system.</p></header>
+        <div className="division-list">{divisions.map(division => <Link className={`division-scene ${division.tone}`} href={`/products/${division.slug}`} key={division.slug}><span className="division-number">{division.index}</span><strong>{division.name}</strong><div className="division-copy"><p>{division.description}</p><small>{division.verbs}</small></div><span className="division-arrow" aria-hidden="true">↗</span></Link>)}</div>
+      </section>
+
+      <section className="verb-stage" aria-label="Instrument functions"><div className="verb-row green"><span>CUT</span><span>HOLD</span><span>CLAMP</span></div><div className="verb-row blue"><span>RETRACT</span><span>SUTURE</span></div><div className="verb-row orange"><span>EXAMINE</span><span>REFINE</span></div></section>
+
+      <section className="family-archive" aria-labelledby="family-title">
+        <div className="container family-archive-grid"><div className="family-archive-intro"><Eyebrow>02 · FAMILY INDEX</Eyebrow><h2 id="family-title">Enter through the function, the family, or the code.</h2><p>The catalogue stays direct even when the homepage becomes expressive.</p><Link href="/products">View every product route <span aria-hidden="true">↗</span></Link></div><div className="family-routes">{familyRoutes.map(([name, href], index) => <Link href={href} key={name}><span>{String(index + 1).padStart(2, "0")}</span><strong>{name}</strong><small>OPEN FAMILY</small><b aria-hidden="true">↗</b></Link>)}</div></div>
+      </section>
+
+      <section className="macro-stage" aria-labelledby="macro-title"><div className="container macro-grid"><div className="macro-object"><InstrumentVisual variant="macro" label="Temporary macro instrument study with generic annotation placeholders" /></div><div className="macro-copy"><Eyebrow>03 · UNDER EXAMINATION</Eyebrow><h2 id="macro-title">Precision becomes visible at the edge.</h2><p>The final version will reveal an approved macro instrument image through light and technical annotation. The static skeleton establishes scale, hierarchy, and placement first.</p><dl><div><dt>01</dt><dd>WORKING END</dd></div><div><dt>02</dt><dd>JOINT</dd></div><div><dt>03</dt><dd>HANDLE</dd></div></dl></div></div></section>
+
+      <section className="evolution-stage" aria-labelledby="evolution-title"><header className="container evolution-heading"><Eyebrow>04 · PRECISION THROUGH TIME</Eyebrow><h2 id="evolution-title">One form.<br />Four visual chapters.</h2><p>This is the static storyboard for the future scissors-evolution sequence. No historical image or claim is treated as approved yet.</p></header><div className="evolution-grid">{evolution.map(chapter => <article className={`evolution-card ${chapter.color}`} key={chapter.index}><div className="evolution-figure" aria-label={`${chapter.era} scissors concept placeholder`} role="img"><span className="mini-blade one" /><span className="mini-blade two" /><span className="mini-ring one" /><span className="mini-ring two" /></div><div><span>{chapter.index} · {chapter.era}</span><h3>{chapter.title}</h3><p>{chapter.text}</p></div></article>)}</div><div className="container evolution-link"><Link href="/precision-through-time">Open the editorial history route <span aria-hidden="true">↗</span></Link></div></section>
+
+      <section className="command-stage" aria-labelledby="command-title"><div className="container command-grid"><div><Eyebrow>05 · DIRECT UTILITY</Eyebrow><h2 id="command-title">Know the object?<br />Skip the exhibition.</h2><p>Search remains the fastest route for procurement teams and returning buyers.</p></div><form action="/search" method="get"><label htmlFor="command-query">PRODUCT COMMAND</label><div><input id="command-query" name="q" type="search" placeholder="Name, family, or code" /><button type="submit">ENTER</button></div><small>EXACT CODE → PREFIX → NAME → ALIAS → FAMILY</small></form></div></section>
+
+      <section className="object-catalogue" aria-labelledby="objects-title"><div className="container"><header className="object-heading"><div><Eyebrow>06 · CATALOGUE OBJECTS</Eyebrow><h2 id="objects-title">Large objects.<br /><span>Useful data.</span></h2></div><p>Seed product records remain visibly identified until the real catalogue is approved.</p></header><ProductCatalogue products={products} /></div></section>
+
+      <section className="inquiry-stage" aria-labelledby="inquiry-title"><div className="container inquiry-stage-grid"><div><Eyebrow>07 · STRUCTURED INQUIRY</Eyebrow><h2 id="inquiry-title">Collect the instruments.<br />Send one clear request.</h2><p>Products, quantities, notes, manual references, and buyer details remain connected through the existing validated inquiry system.</p><ol><li><span>01</span>Add catalogue or manual products</li><li><span>02</span>Adjust quantity and requirements</li><li><span>03</span>Submit one organized inquiry</li></ol></div><SavedInquiryPanel products={products} /></div></section>
+
+      <section className="proof-stage" aria-labelledby="proof-title"><div className="container proof-grid"><div className="proof-copy"><Eyebrow>08 · EVIDENCE BEFORE CLAIMS</Eyebrow><h2 id="proof-title">Professionalism comes from proof, not decoration.</h2><p>Company identity, capabilities, certifications, manufacturing evidence, and documents enter the public site only after verification.</p><div className="proof-lines"><span>COMPANY IDENTITY · PENDING APPROVAL</span><span>CAPABILITY EVIDENCE · CONDITIONAL</span><span>QUALITY DOCUMENTS · CONDITIONAL</span><span>CONTACT ROUTES · REQUIRED</span></div></div><div className="resource-stack"><header><span>DOCUMENT ARCHIVE</span><small>VERIFIED FILES ONLY</small></header>{documents.map((document, index) => <article key={document}><span>{String(index + 1).padStart(2, "0")}</span><strong>{document}</strong><small>PDF · METADATA PENDING</small><b>PENDING</b></article>)}</div></div></section>
+
+      <section className="contact-stage"><div className="container"><p>LOOKING FOR A SPECIFIC INSTRUMENT?</p><h2>Search it.<br /><span>Save it.</span><br />Ask for it.</h2><div><Link href="/search">Search catalogue</Link><Link href="/inquiry">Build inquiry</Link><Link href="/contact">Contact THROHI</Link></div></div></section>
     </main>
     <SiteFooter />
   </>;

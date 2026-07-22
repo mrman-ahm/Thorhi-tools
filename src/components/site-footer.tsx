@@ -2,10 +2,13 @@ import Link from "next/link";
 
 export function SiteFooter() {
   return <footer className="site-footer">
+    <div className="footer-display" aria-hidden="true"><span>T</span><span>H</span><span>R</span><span>O</span><span>H</span><span>I</span></div>
     <div className="container footer-grid">
-      <div><strong>THROHI</strong><span>MEDICAL TOOLS</span></div>
+      <div className="footer-identity"><strong>THROHI</strong><span>Medical tools · catalogue and structured inquiry</span></div>
       <nav aria-label="Footer">
         <Link href="/products">Products</Link>
+        <Link href="/search">Search</Link>
+        <Link href="/inquiry">Inquiry</Link>
         <Link href="/company">Company</Link>
         <Link href="/resources">Resources</Link>
         <Link href="/contact">Contact</Link>
@@ -13,6 +16,6 @@ export function SiteFooter() {
         <Link href="/terms">Terms</Link>
       </nav>
     </div>
-    <p>Verified information only · Seed catalogue records are identified before approval</p>
+    <div className="container footer-meta"><span>VERIFIED INFORMATION ONLY</span><span>SEED CATALOGUE RECORDS REMAIN IDENTIFIED</span><span>V2 STATIC SKELETON</span></div>
   </footer>;
 }

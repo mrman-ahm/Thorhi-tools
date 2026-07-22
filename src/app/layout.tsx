@@ -3,6 +3,8 @@ import { IBM_Plex_Mono, Manrope } from "next/font/google";
 import { InquiryProvider } from "@/components/inquiry-provider";
 import "./globals.css";
 import "./interaction.css";
+import "./v2-skeleton.css";
+import "./v2-review-fixes.css";
 
 const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope", display: "swap" });
 const plex = IBM_Plex_Mono({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-plex", display: "swap" });
