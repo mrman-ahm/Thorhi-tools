@@ -6,7 +6,7 @@ The website is being developed as a premium B2B product catalogue and inquiry pl
 
 ## Current stage
 
-The strategic foundation, sitemap, user flows, homepage information architecture, and initial decision log are complete. The next production stage is low-fidelity responsive wireframing, beginning with the homepage.
+The strategic foundation, responsive wireframes, design system, and audited high-fidelity homepage are complete. Frontend production is now active: the first Next.js implementation milestone includes the responsive homepage, semantic design tokens, temporary logo and instrument placeholders, accessibility foundations, tests, and CI quality gates.
 
 ## Core project rules
 
