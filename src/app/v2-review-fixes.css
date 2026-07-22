@@ -1,0 +1,24 @@
+.catalogue-hero-grid>*,
+.family-header-grid>*,
+.product-detail-grid>*,
+.contact-grid>*,
+.content-grid>*,
+.listing-layout>*,
+.division-card>*{
+  min-width:0;
+}
+
+.footer-meta{
+  color:#7c9086;
+  font-size:.56rem;
+}
+
+@media(max-width:650px){
+  .catalogue-hero h1,
+  .search-page-header h1,
+  .content-hero h1,
+  .inquiry-page-header h1{
+    font-size:clamp(2.65rem,12.8vw,3.35rem);
+    overflow-wrap:anywhere;
+  }
+}
