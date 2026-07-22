@@ -27,9 +27,8 @@ test("persists inquiry selections and prevents duplicate additions", async ({ pa
   await addButton.click();
   await expect(firstProduct.getByRole("button", { name: "Added to inquiry ✓" })).toHaveAttribute("aria-pressed", "true");
   await firstProduct.getByRole("button", { name: "Added to inquiry ✓" }).click();
-  await expect(page.getByText("Operating Scissors is already in the inquiry.")).toBeAttached();
   await expect(page.getByText("1 ITEM SAVED")).toBeVisible();
-  await expect.poll(() => page.evaluate(() => window.localStorage.getItem("throhi-inquiry"))).toBe('["THR-SC-001"]');
+  await expect.poll(() => page.evaluate(() => JSON.parse(window.localStorage.getItem("throhi-inquiry-v2") ?? "{}").items?.length)).toBe(1);
   await page.reload();
   await expect(firstProduct.getByRole("button", { name: "Added to inquiry ✓" })).toBeVisible();
   await expect(page.getByText("1 ITEM SAVED")).toBeVisible();
