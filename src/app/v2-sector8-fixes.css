@@ -13,3 +13,14 @@
   background:#064c2b;
   color:#fff;
 }
+.utility-light .utility-action:not(.primary){
+  border-color:rgb(11 52 31/.24);
+  background:#f8fbf9;
+  color:#173c2b;
+}
+.utility-light .utility-action:not(.primary):hover,
+.utility-light .utility-action:not(.primary):focus-visible{
+  border-color:#147448;
+  background:#e2f2e8;
+  color:#075f35;
+}
