@@ -13,6 +13,8 @@ import "./v2-sector5.css";
 import "./v2-sector6.css";
 import "./v2-sector6-fixes.css";
 import "./v2-sector7.css";
+import "./v2-sector8.css";
+import "./v2-sector8-fixes.css";
 
 const archivo = Archivo({ subsets: ["latin"], variable: "--font-archivo", display: "swap" });
 const instrument = Instrument_Sans({ subsets: ["latin"], variable: "--font-instrument", display: "swap" });
