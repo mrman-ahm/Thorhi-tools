@@ -1,6 +1,13 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
+async function openCommand(page: import("@playwright/test").Page) {
+  await page.getByRole("link", { name: "Open catalogue search command" }).click();
+  const dialog = page.getByRole("dialog", { name: "Find an instrument." });
+  await expect(dialog).toBeVisible();
+  return dialog;
+}
+
 test.describe("Sector 7 global catalogue command", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("/");
@@ -10,11 +17,8 @@ test.describe("Sector 7 global catalogue command", () => {
 
   test("opens from the header, focuses search, closes with Escape, and restores focus", async ({ page }) => {
     const trigger = page.getByRole("link", { name: "Open catalogue search command" });
-    await trigger.click();
-
-    const dialog = page.getByRole("dialog", { name: "Find an instrument." });
+    const dialog = await openCommand(page);
     const input = dialog.getByRole("combobox");
-    await expect(dialog).toBeVisible();
     await expect(input).toBeFocused();
     await expect.poll(() => page.evaluate(() => document.body.dataset.searchOpen)).toBe("true");
 
@@ -34,8 +38,7 @@ test.describe("Sector 7 global catalogue command", () => {
   });
 
   test("shows exact-code ranking and opens the active result with Enter", async ({ page }) => {
-    await page.keyboard.press("Control+K");
-    const dialog = page.getByRole("dialog", { name: "Find an instrument." });
+    const dialog = await openCommand(page);
     const input = dialog.getByRole("combobox");
     await input.fill("thr sc 001");
 
@@ -50,8 +53,7 @@ test.describe("Sector 7 global catalogue command", () => {
   });
 
   test("arrow keys move the active suggestion without disturbing input focus", async ({ page }) => {
-    await page.keyboard.press("Control+K");
-    const dialog = page.getByRole("dialog", { name: "Find an instrument." });
+    const dialog = await openCommand(page);
     const input = dialog.getByRole("combobox");
     await input.fill("surgical");
     const options = dialog.getByRole("option");
@@ -68,8 +70,8 @@ test.describe("Sector 7 global catalogue command", () => {
   });
 
   test("command has no serious automated accessibility violations", async ({ page }) => {
-    await page.keyboard.press("Control+K");
-    await page.getByRole("combobox").fill("scissors");
+    const dialog = await openCommand(page);
+    await dialog.getByRole("combobox").fill("scissors");
     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"]).analyze();
     const serious = results.violations.filter(violation => violation.impact === "critical" || violation.impact === "serious");
     expect(serious, JSON.stringify(serious, null, 2)).toEqual([]);
