@@ -23,11 +23,11 @@ test.describe("Sector 3 navigation and hero interaction", () => {
 
     const menu = page.getByRole("navigation", { name: "Mobile" });
     await expect(menu).toBeVisible();
-    await expect(page.getByRole("link", { name: /Surgical/ }).first()).toBeFocused();
+    await expect(menu.getByRole("link", { name: /Surgical/ }).first()).toBeFocused();
     await expect.poll(() => page.evaluate(() => document.body.dataset.menuOpen)).toBe("true");
 
     await page.keyboard.press("Shift+Tab");
-    await expect(page.getByRole("link", { name: /Review inquiry/ })).toBeFocused();
+    await expect(menu.getByRole("link", { name: /Review inquiry/ })).toBeFocused();
 
     await page.keyboard.press("Escape");
     await expect(trigger).toBeFocused();
