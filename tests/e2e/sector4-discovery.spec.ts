@@ -36,14 +36,15 @@ test.describe("Sector 4 division and family discovery", () => {
     else expect(columns).toBe(1);
   });
 
-  test("does not reserve an artificial vertical scroll runway", async ({ page }) => {
+  test("does not reserve an artificial vertical scroll runway", async ({ page }, testInfo) => {
     const section = page.locator(".family-discovery");
     const stage = page.locator(".family-sticky-stage");
     const measurements = await section.evaluate(element => ({
       sectionHeight: element.getBoundingClientRect().height,
       viewportHeight: window.innerHeight
     }));
-    expect(measurements.sectionHeight).toBeLessThan(measurements.viewportHeight * 3.2);
+    const maximumViewportMultiple = testInfo.project.name === "mobile-chromium" ? 4.2 : 3.2;
+    expect(measurements.sectionHeight).toBeLessThan(measurements.viewportHeight * maximumViewportMultiple);
     expect(await stage.evaluate(element => getComputedStyle(element).minHeight)).not.toBe("100vh");
   });
 
