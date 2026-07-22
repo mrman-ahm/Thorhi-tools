@@ -2,8 +2,8 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { productHref } from "@/lib/catalogue";
-import { searchProducts } from "@/lib/search";
+import { productHref, type Product } from "@/lib/catalogue";
+import { searchProducts, type SearchResult } from "@/lib/search";
 
 const OPEN_EVENT = "throhi:open-search";
 const focusableSelector = "a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex='-1'])";
@@ -28,7 +28,11 @@ export function SearchCommand() {
   const dialogRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const previousFocus = useRef<HTMLElement | null>(null);
+  const activeIndexRef = useRef(0);
+  const resultsRef = useRef<SearchResult[]>([]);
   const results = useMemo(() => searchProducts(query).slice(0, 6), [query]);
+  activeIndexRef.current = activeIndex;
+  resultsRef.current = results;
 
   useEffect(() => {
     const openCommand = () => setOpen(true);
@@ -56,27 +60,30 @@ export function SearchCommand() {
 
     const focusFrame = window.requestAnimationFrame(() => inputRef.current?.focus());
     const handleDialogKeyboard = (event: KeyboardEvent) => {
+      const currentResults = resultsRef.current;
+      const currentIndex = activeIndexRef.current;
+
       if (event.key === "Escape") {
         event.preventDefault();
         setOpen(false);
         return;
       }
 
-      if (event.key === "ArrowDown" && results.length) {
+      if (event.key === "ArrowDown" && currentResults.length) {
         event.preventDefault();
-        setActiveIndex(index => (index + 1) % results.length);
+        setActiveIndex((currentIndex + 1) % currentResults.length);
         return;
       }
 
-      if (event.key === "ArrowUp" && results.length) {
+      if (event.key === "ArrowUp" && currentResults.length) {
         event.preventDefault();
-        setActiveIndex(index => (index - 1 + results.length) % results.length);
+        setActiveIndex((currentIndex - 1 + currentResults.length) % currentResults.length);
         return;
       }
 
-      if (event.key === "Enter" && document.activeElement === inputRef.current && results[activeIndex]) {
+      if (event.key === "Enter" && document.activeElement === inputRef.current && currentResults[currentIndex]) {
         event.preventDefault();
-        router.push(productHref(results[activeIndex].product));
+        router.push(productHref(currentResults[currentIndex].product));
         setOpen(false);
         return;
       }
@@ -102,20 +109,24 @@ export function SearchCommand() {
       window.removeEventListener("keydown", handleDialogKeyboard);
       previousFocus.current?.focus();
     };
-  }, [activeIndex, open, results, router]);
+  }, [open, router]);
 
   useEffect(() => {
     if (activeIndex >= results.length) setActiveIndex(0);
   }, [activeIndex, results.length]);
 
-  const goToResult = (href: string) => {
+  const goToProduct = (product: Product) => {
+    router.push(productHref(product));
+    setOpen(false);
+  };
+
+  const goToRoute = (href: string) => {
     router.push(href);
     setOpen(false);
   };
 
   const submitSearch = () => {
-    router.push(query.trim() ? `/search?q=${encodeURIComponent(query.trim())}` : "/search");
-    setOpen(false);
+    goToRoute(query.trim() ? `/search?q=${encodeURIComponent(query.trim())}` : "/search");
   };
 
   return <div className="search-command-layer" data-open={open} aria-hidden={!open} inert={!open}>
@@ -158,7 +169,7 @@ export function SearchCommand() {
           key={result.product.id}
           onMouseEnter={() => setActiveIndex(index)}
           onFocus={() => setActiveIndex(index)}
-          onClick={() => goToResult(productHref(result.product))}
+          onClick={() => goToProduct(result.product)}
         >
           <span className="command-result-index">{String(index + 1).padStart(2, "0")}</span>
           <span className="command-result-copy"><strong>{result.product.name}</strong><small>{result.product.division.toUpperCase()} · {result.product.family.replaceAll("-", " ").toUpperCase()}</small></span>
@@ -173,7 +184,7 @@ export function SearchCommand() {
 
       <footer className="search-command-footer">
         <button type="button" onClick={submitSearch}><span>View full search</span><strong>{query || "All catalogue records"}</strong></button>
-        <button type="button" onClick={() => goToResult(`/inquiry?manual=1&reference=${encodeURIComponent(query)}`)}><span>Cannot find it?</span><strong>Add an unlisted item</strong></button>
+        <button type="button" onClick={() => goToRoute(`/inquiry?manual=1&reference=${encodeURIComponent(query)}`)}><span>Cannot find it?</span><strong>Add an unlisted item</strong></button>
       </footer>
     </div>
   </div>;
