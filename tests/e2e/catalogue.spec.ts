@@ -6,7 +6,7 @@ const routes = [
   ["division", "/products/surgical", /Surgical Instruments/],
   ["family", "/products/surgical/scissors", /Scissors/],
   ["product", "/products/surgical/scissors/operating-scissors", /Operating Scissors/],
-  ["search", "/search?q=THR-SC-001", /1 match/],
+  ["search", "/search?q=THR-SC-001", /Search names, families, and product codes/],
   ["company", "/company", /Evidence before claims/],
   ["resources", "/resources", /Documents publish only after verification/],
   ["contact", "/contact", /Send product context/]
@@ -49,7 +49,7 @@ test("family no-results recovery is explicit", async ({ page }) => {
 test("product addition persists across catalogue routes", async ({ page }) => {
   await page.goto("/products/surgical/scissors/operating-scissors");
   await page.getByRole("button", { name: "Add to inquiry" }).click();
-  await expect(page.getByRole("button", { name: "Added to inquiry ✓" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Update inquiry details" })).toBeVisible();
   await page.goto("/inquiry");
   await expect(page.getByRole("heading", { name: "Operating Scissors" })).toBeVisible();
   await expect(page.getByText("THR-SC-001")).toBeVisible();
