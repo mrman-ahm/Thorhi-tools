@@ -38,24 +38,24 @@ test("inquiry API validates a request and prevents duplicate submission", async 
 
 test("inquiry basket supports quantities, notes, removal, and undo", async ({ page }) => {
   await page.goto("/products/surgical/scissors/operating-scissors");
-  await page.getByRole("button", { name: "Add to inquiry: Operating Scissors" }).click();
+  await page.getByRole("button", { name: "Add to inquiry: Operating Scissors", exact: true }).click();
   await page.goto("/inquiry");
-  const quantity = page.getByLabel("Quantity");
+  const quantity = page.getByRole("spinbutton", { name: "Quantity", exact: true });
   await expect(quantity).toHaveValue("1");
-  await page.getByRole("button", { name: "Increase quantity for Operating Scissors" }).click();
+  await page.getByRole("button", { name: "Increase quantity for Operating Scissors", exact: true }).click();
   await expect(quantity).toHaveValue("2");
-  await page.getByLabel("Product-specific note").fill("Specific requirement");
-  await page.getByRole("button", { name: "Remove" }).click();
+  await page.getByLabel("Product-specific note", { exact: true }).fill("Specific requirement");
+  await page.getByRole("button", { name: "Remove", exact: true }).click();
   await expect(page.getByText("Operating Scissors removed.")).toBeVisible();
-  await page.getByRole("button", { name: "Undo" }).click();
-  await expect(page.getByRole("heading", { name: "Operating Scissors" })).toBeVisible();
+  await page.getByRole("button", { name: "Undo", exact: true }).click();
+  await expect(page.getByRole("heading", { name: "Operating Scissors", exact: true })).toBeVisible();
 });
 
 test("manual item and attachment validation preserve the draft", async ({ page }) => {
   await page.goto("/inquiry?manual=1&reference=KNOWN-REF");
   await expect(page.getByLabel("Known code or reference")).toHaveValue("KNOWN-REF");
   await page.getByLabel("Known name or description").fill("Unlisted reference product");
-  await page.getByRole("button", { name: "Add to inquiry" }).click();
+  await page.getByRole("button", { name: "Add to inquiry", exact: true }).click();
   await expect(page.getByRole("heading", { name: "Unlisted reference product" })).toBeVisible();
   await page.getByLabel("Requirements applying to the full inquiry").fill("Preserved requirements");
   await page.reload();
@@ -66,7 +66,7 @@ test("manual item and attachment validation preserve the draft", async ({ page }
 test("full inquiry form submits and routes to explicit development confirmation", async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== "desktop-chromium", "Full form submission runs once");
   await page.goto("/products/surgical/scissors/operating-scissors");
-  await page.getByRole("button", { name: "Add to inquiry: Operating Scissors" }).click();
+  await page.getByRole("button", { name: "Add to inquiry: Operating Scissors", exact: true }).click();
   await page.goto("/inquiry");
   await page.getByLabel("Full name").fill("Test Buyer");
   await page.getByLabel("Company name").fill("Test Company");
