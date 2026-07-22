@@ -101,13 +101,14 @@ export function InquiryProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const removeItem = useCallback((code: string) => {
-    let removed: InquiryItem | undefined;
-    setDraft(current => {
-      removed = current.items.find(item => item.code === code);
-      return { ...current, items: current.items.filter(item => item.code !== code) };
-    });
+    const removed = draft.items.find(item => item.code === code);
+    if (!removed) return undefined;
+    setDraft(current => ({
+      ...current,
+      items: current.items.filter(item => item.code !== code)
+    }));
     return removed;
-  }, []);
+  }, [draft.items]);
 
   const restoreItem = useCallback((item: InquiryItem) => {
     setDraft(current => current.items.some(existing => existing.code === item.code) ? current : { ...current, items: [...current.items, item] });
