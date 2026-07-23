@@ -55,7 +55,8 @@ test("header is quieter and no longer resembles a control-panel masthead", async
   });
 
   expect(measurements.headerHeight).toBeLessThanOrEqual(74);
-  expect(measurements.logoWidth).toBeLessThanOrEqual(96);
+  expect(measurements.logoWidth).toBeGreaterThanOrEqual(96);
+  expect(measurements.logoWidth).toBeLessThanOrEqual(112);
   expect(measurements.indexDisplay).toBe("none");
   expect(measurements.menuRadius).toBeGreaterThanOrEqual(6);
 });
