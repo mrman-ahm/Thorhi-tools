@@ -1,24 +1,25 @@
 import { expect, test } from "@playwright/test";
+import { clearCinematicCover } from "./helpers/cinematic";
 
 test.describe("Sector 3 navigation and hero interaction", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("/");
     await page.evaluate(() => window.localStorage.clear());
     await page.reload();
+    await clearCinematicCover(page);
   });
 
   test("compresses the header after scrolling and restores its initial state", async ({ page }) => {
     const header = page.locator(".site-header");
-    await expect(header).toHaveAttribute("data-scrolled", "false");
-    await page.evaluate(() => window.scrollTo(0, 620));
-    await expect.poll(() => header.getAttribute("data-scrolled")).toBe("true");
+    await expect(header).toHaveAttribute("data-scrolled", "true");
     await page.evaluate(() => window.scrollTo(0, 0));
     await expect.poll(() => header.getAttribute("data-scrolled")).toBe("false");
     await expect.poll(() => header.getAttribute("data-hidden")).toBe("false");
+    await clearCinematicCover(page);
+    await expect.poll(() => header.getAttribute("data-scrolled")).toBe("true");
   });
 
   test("traps menu focus, closes with Escape, and restores the trigger", async ({ page }) => {
-    await page.locator("#home-hero").scrollIntoViewIfNeeded();
     const trigger = page.getByRole("button", { name: "Open navigation menu" });
     await trigger.click();
 
@@ -38,7 +39,6 @@ test.describe("Sector 3 navigation and hero interaction", () => {
 
   test("replaces the removed hero inspection object with the THROHI identity", async ({ page }) => {
     const hero = page.locator("#home-hero");
-    await hero.scrollIntoViewIfNeeded();
     await expect(hero.locator(".hero-brand-stage")).toBeVisible();
     await expect(hero.getByRole("img", { name: "THROHI Medical Tools identity mark" })).toBeVisible();
     await expect(hero.locator(".instrument-half-upper")).toHaveCount(0);
