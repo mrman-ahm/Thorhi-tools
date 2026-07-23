@@ -5,19 +5,39 @@ import { useEffect, useRef, useState } from "react";
 import {
   chapterIndexForFrame,
   EVOLUTION_CHAPTERS,
-  EVOLUTION_SOURCE_HEIGHT,
-  EVOLUTION_SOURCE_WIDTH,
   exitOpacityForFrame,
   frameForEvolutionProgress,
   spriteCellForFrame
 } from "@/lib/evolution-frames";
 
+type SpriteDescriptor = {
+  src: string;
+  cellWidth: number;
+  cellHeight: number;
+  columns: number;
+};
+
 type MediaManifest = {
   available: boolean;
   sprite: string | null;
+  sprites?: {
+    desktop: SpriteDescriptor;
+    mobile: SpriteDescriptor;
+  } | null;
 };
 
-function drawFrame(canvas: HTMLCanvasElement, image: HTMLImageElement, frame: number) {
+const LEGACY_SPRITE: Omit<SpriteDescriptor, "src"> = {
+  cellWidth: 240,
+  cellHeight: 135,
+  columns: 12
+};
+
+function drawFrame(
+  canvas: HTMLCanvasElement,
+  image: HTMLImageElement,
+  descriptor: SpriteDescriptor,
+  frame: number
+) {
   const context = canvas.getContext("2d", { alpha: true });
   if (!context) return;
 
@@ -33,7 +53,7 @@ function drawFrame(canvas: HTMLCanvasElement, image: HTMLImageElement, frame: nu
 
   const { column, row } = spriteCellForFrame(frame);
   const destinationRatio = pixelWidth / pixelHeight;
-  const sourceRatio = EVOLUTION_SOURCE_WIDTH / EVOLUTION_SOURCE_HEIGHT;
+  const sourceRatio = descriptor.cellWidth / descriptor.cellHeight;
   let drawWidth = pixelWidth;
   let drawHeight = pixelHeight;
   if (destinationRatio > sourceRatio) drawHeight = drawWidth / sourceRatio;
@@ -45,10 +65,10 @@ function drawFrame(canvas: HTMLCanvasElement, image: HTMLImageElement, frame: nu
   context.globalAlpha = exitOpacityForFrame(frame);
   context.drawImage(
     image,
-    column * EVOLUTION_SOURCE_WIDTH,
-    row * EVOLUTION_SOURCE_HEIGHT,
-    EVOLUTION_SOURCE_WIDTH,
-    EVOLUTION_SOURCE_HEIGHT,
+    column * descriptor.cellWidth,
+    row * descriptor.cellHeight,
+    descriptor.cellWidth,
+    descriptor.cellHeight,
     (pixelWidth - drawWidth) / 2,
     (pixelHeight - drawHeight) / 2,
     drawWidth,
@@ -57,11 +77,21 @@ function drawFrame(canvas: HTMLCanvasElement, image: HTMLImageElement, frame: nu
   context.globalAlpha = 1;
 }
 
+function selectSprite(manifest: MediaManifest): SpriteDescriptor | null {
+  if (manifest.sprites) {
+    return window.matchMedia("(max-width: 720px), (pointer: coarse)").matches
+      ? manifest.sprites.mobile
+      : manifest.sprites.desktop;
+  }
+  return manifest.sprite ? { src: manifest.sprite, ...LEGACY_SPRITE } : null;
+}
+
 export function FrameEvolutionScene() {
   const sectionRef = useRef<HTMLElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const readoutRef = useRef<HTMLElement>(null);
   const imageRef = useRef<HTMLImageElement | null>(null);
+  const descriptorRef = useRef<SpriteDescriptor | null>(null);
   const frameRequest = useRef<number | null>(null);
   const targetFrame = useRef(1);
   const renderedFrame = useRef(1);
@@ -80,19 +110,25 @@ export function FrameEvolutionScene() {
 
     const controller = new AbortController();
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let observer: IntersectionObserver | null = null;
+    let mediaRequested = false;
 
     const render = () => {
       const image = imageRef.current;
-      if (!image || !image.complete || !image.naturalWidth) {
+      const descriptor = descriptorRef.current;
+      if (!image || !descriptor || !image.complete || !image.naturalWidth) {
         frameRequest.current = null;
         return;
       }
 
       const difference = targetFrame.current - renderedFrame.current;
-      const step = Math.sign(difference) * Math.min(Math.abs(difference), Math.max(1, Math.ceil(Math.abs(difference) * 0.28)));
+      const step = Math.sign(difference) * Math.min(
+        Math.abs(difference),
+        Math.max(1, Math.ceil(Math.abs(difference) * 0.28))
+      );
       renderedFrame.current += step;
       const frame = Math.round(renderedFrame.current);
-      drawFrame(canvas, image, frame);
+      drawFrame(canvas, image, descriptor, frame);
       section.dataset.renderedFrame = String(frame);
       if (readoutRef.current) readoutRef.current.textContent = String(frame).padStart(3, "0");
 
@@ -118,14 +154,19 @@ export function FrameEvolutionScene() {
       const rect = section.getBoundingClientRect();
       const distance = Math.max(section.offsetHeight - window.innerHeight, 1);
       const progress = Math.min(1, Math.max(0, -rect.top / distance));
-      const frame = reduced.matches ? EVOLUTION_CHAPTERS[activeChapterRef.current].startFrame : frameForEvolutionProgress(progress);
+      const frame = reduced.matches
+        ? EVOLUTION_CHAPTERS[activeChapterRef.current].startFrame
+        : frameForEvolutionProgress(progress);
       targetFrame.current = frame;
       section.style.setProperty("--evolution-sequence-progress", progress.toFixed(4));
       section.dataset.targetFrame = String(frame);
       requestRender();
     };
 
-    const loadSprite = (source: string) => {
+    const loadSprite = (descriptor: SpriteDescriptor) => {
+      if (mediaRequested) return;
+      mediaRequested = true;
+      descriptorRef.current = descriptor;
       const sprite = new Image();
       sprite.decoding = "async";
       sprite.onload = () => {
@@ -133,17 +174,34 @@ export function FrameEvolutionScene() {
         setMediaState("ready");
         renderedFrame.current = 1;
         targetFrame.current = 1;
-        drawFrame(canvas, sprite, 1);
+        drawFrame(canvas, sprite, descriptor, 1);
         update();
       };
       sprite.onerror = () => setMediaState("error");
-      sprite.src = source;
+      sprite.src = descriptor.src;
+    };
+
+    const deferSprite = (descriptor: SpriteDescriptor) => {
+      if (!("IntersectionObserver" in window)) {
+        loadSprite(descriptor);
+        return;
+      }
+      observer = new IntersectionObserver(entries => {
+        if (!entries.some(entry => entry.isIntersecting)) return;
+        observer?.disconnect();
+        observer = null;
+        loadSprite(descriptor);
+      }, { rootMargin: "1400px 0px" });
+      observer.observe(section);
     };
 
     void fetch("/media/sector9d/manifest.json", { signal: controller.signal })
-      .then(response => response.ok ? response.json() as Promise<MediaManifest> : Promise.reject(new Error("Media manifest unavailable")))
+      .then(response => response.ok
+        ? response.json() as Promise<MediaManifest>
+        : Promise.reject(new Error("Media manifest unavailable")))
       .then(manifest => {
-        if (manifest.available && manifest.sprite) loadSprite(manifest.sprite);
+        const descriptor = manifest.available ? selectSprite(manifest) : null;
+        if (descriptor) deferSprite(descriptor);
         else setMediaState("error");
       })
       .catch(error => {
@@ -158,11 +216,13 @@ export function FrameEvolutionScene() {
 
     return () => {
       controller.abort();
+      observer?.disconnect();
       window.removeEventListener("scroll", update);
       window.removeEventListener("resize", update);
       reduced.removeEventListener("change", update);
       if (frameRequest.current !== null) window.cancelAnimationFrame(frameRequest.current);
       imageRef.current = null;
+      descriptorRef.current = null;
     };
   }, []);
 
