@@ -1,6 +1,7 @@
 "use client";
 
-import { animate, createScope, createTimeline } from "animejs";
+import { createScope, createTimeline } from "animejs";
+import type { CSSProperties } from "react";
 import { useEffect, useRef, useState } from "react";
 
 const INTRO_VIDEO = "/media/sector9d/intro.mp4";
@@ -57,6 +58,7 @@ export function CinematicEntry() {
 
     return () => {
       scope.revert();
+      video?.pause();
       window.removeEventListener("scroll", requestUpdate);
       window.removeEventListener("resize", requestUpdate);
       reduced.removeEventListener("change", requestUpdate);
@@ -69,7 +71,10 @@ export function CinematicEntry() {
     const section = sectionRef.current;
     if (!section) return;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    window.scrollTo({ top: section.offsetTop + section.offsetHeight - window.innerHeight + 4, behavior: reduced ? "instant" : "smooth" });
+    window.scrollTo({
+      top: section.offsetTop + section.offsetHeight - window.innerHeight + 4,
+      behavior: reduced ? "auto" : "smooth"
+    });
   };
 
   return <section
@@ -78,14 +83,13 @@ export function CinematicEntry() {
     aria-labelledby="cinematic-entry-title"
     data-media-state={mediaState}
     data-exit-state="holding"
-    style={{ "--cinematic-progress": "0" } as React.CSSProperties}
+    style={{ "--cinematic-progress": "0" } as CSSProperties}
   >
     <div className="cinematic-entry-sticky">
       <div className="cinematic-entry-media" aria-hidden="true">
         <video
           ref={videoRef}
           src={INTRO_VIDEO}
-          autoPlay
           muted
           playsInline
           preload="auto"
