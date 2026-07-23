@@ -1,4 +1,4 @@
-import { readdirSync } from "node:fs";
+import { mkdirSync, readdirSync, writeFileSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 import { join } from "node:path";
 
@@ -14,9 +14,14 @@ for (const file of files) {
   });
 
   if (result.status !== 0) {
-    console.error(`FAILED_FILE=${path}`);
-    if (result.stdout) console.error(result.stdout);
-    if (result.stderr) console.error(result.stderr);
+    const report = [
+      `FAILED_FILE=${path}`,
+      result.stdout ?? "",
+      result.stderr ?? ""
+    ].join("\n");
+    mkdirSync("test-results", { recursive: true });
+    writeFileSync("test-results/unit-failure.txt", report);
+    console.error(`FAILED_FILE=${path}; details saved to test-results/unit-failure.txt`);
     process.exit(result.status ?? 1);
   }
 }
