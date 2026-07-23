@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { ProductCatalogue, SavedInquiryPanel, type PreviewProduct } from "@/components/catalogue-preview";
+import { CinematicEntry } from "@/components/cinematic-entry";
 import { DiscoveryExperience } from "@/components/discovery-experience";
+import { FrameEvolutionScene } from "@/components/frame-evolution-scene";
 import { HeroExperience } from "@/components/hero-experience";
-import { MacroInspectionScene, ScissorsEvolutionScene } from "@/components/signature-scenes";
+import { MacroInspectionScene } from "@/components/signature-scenes";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
@@ -21,12 +23,13 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
 
 export default function HomePage() {
   return <>
+    <CinematicEntry />
     <SiteHeader />
     <main id="main" className="v2-home">
       <HeroExperience />
       <DiscoveryExperience />
       <MacroInspectionScene />
-      <ScissorsEvolutionScene />
+      <FrameEvolutionScene />
 
       <section className="command-stage" aria-labelledby="command-title"><div className="container command-grid"><div><Eyebrow>06 · DIRECT UTILITY</Eyebrow><h2 id="command-title">Know the object?<br />Skip the exhibition.</h2><p>Search remains the fastest route for procurement teams and returning buyers.</p></div><form action="/search" method="get"><label htmlFor="command-query">PRODUCT COMMAND</label><div><input id="command-query" name="q" type="search" placeholder="Name, family, or code" /><button type="submit">ENTER</button></div><small>EXACT CODE → PREFIX → NAME → ALIAS → FAMILY</small></form></div></section>
 
