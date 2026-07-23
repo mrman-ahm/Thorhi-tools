@@ -8,6 +8,7 @@ import {
   writeFileSync
 } from "node:fs";
 import { basename, join, resolve } from "node:path";
+import { pathToFileURL } from "node:url";
 import { unzipSync } from "fflate";
 
 const root = resolve(process.cwd());
@@ -15,7 +16,7 @@ const sourceDirectory = join(root, "assets", "sector9d");
 const outputDirectory = join(root, "public", "media", "sector9d");
 const manifestPath = join(outputDirectory, "manifest.json");
 const frameCount = 260;
-const columns = 12;
+const spriteColumns = 12;
 
 const originalIntroCandidates = [
   "Instruments_reveal_vanish_sequence_202607231803.mp4",
@@ -59,11 +60,15 @@ function frameNumber(name) {
   return match ? Number(match[1]) : Number.POSITIVE_INFINITY;
 }
 
-async function createSprite(sharp, frames, config) {
-  const rows = Math.ceil(frameCount / columns);
+export async function createSprite(sharp, frames, config) {
+  const columns = config.columns ?? spriteColumns;
+  const rows = Math.ceil(frames.length / columns);
   const width = columns * config.cellWidth;
   const height = rows * config.cellHeight;
+  const targetDirectory = config.outputDirectory ?? outputDirectory;
   const layers = [];
+
+  mkdirSync(targetDirectory, { recursive: true });
 
   for (let index = 0; index < frames.length; index += 1) {
     const input = await sharp(Buffer.from(frames[index][1]))
@@ -88,7 +93,7 @@ async function createSprite(sharp, frames, config) {
   })
     .composite(layers)
     .webp({ quality: config.quality, effort: 5, smartSubsample: true })
-    .toFile(join(outputDirectory, config.filename));
+    .toFile(join(targetDirectory, config.filename));
 }
 
 async function prepareFromOriginalSources(introSource, archiveSource) {
@@ -127,13 +132,13 @@ async function prepareFromOriginalSources(introSource, archiveSource) {
         src: "/media/sector9d/evolution-sprite-desktop.webp",
         cellWidth: 400,
         cellHeight: 225,
-        columns
+        columns: spriteColumns
       },
       mobile: {
         src: "/media/sector9d/evolution-sprite-mobile.webp",
         cellWidth: 240,
         cellHeight: 135,
-        columns
+        columns: spriteColumns
       }
     },
     reason: "prepared-from-original-mp4-and-frame-archive"
@@ -176,26 +181,26 @@ function prepareFromChunkBundle() {
           src: "/media/sector9d/evolution-sprite-desktop.webp",
           cellWidth: 240,
           cellHeight: 135,
-          columns
+          columns: spriteColumns
         },
         mobile: {
           src: "/media/sector9d/evolution-sprite-mobile.webp",
           cellWidth: 240,
           cellHeight: 135,
-          columns
+          columns: spriteColumns
         }
       },
       reason: `prepared-from-${chunks.length}-source-chunks`
     });
     console.log(`Prepared Sector 9D fallback media from ${chunks.length} source chunks.`);
     return true;
-  } catch (error) {
+  } catch {
     console.warn("Sector 9D chunk bundle is incomplete or invalid; checking for original source media instead.");
     return false;
   }
 }
 
-async function main() {
+export async function main() {
   mkdirSync(sourceDirectory, { recursive: true });
   const introSource = findSource(originalIntroCandidates);
   const archiveSource = findSource(originalFrameArchiveCandidates);
@@ -220,4 +225,5 @@ async function main() {
   unavailable(`original-source-files-missing: ${missing}`);
 }
 
-await main();
+const invokedPath = process.argv[1] ? pathToFileURL(resolve(process.argv[1])).href : null;
+if (invokedPath === import.meta.url) await main();
