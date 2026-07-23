@@ -35,6 +35,9 @@ export function DiscoveryExperience() {
 
   useEffect(() => {
     const observer = new IntersectionObserver(entries => {
+      const focused = document.activeElement;
+      if (focused instanceof HTMLElement && focused.matches(".division-discovery-item")) return;
+
       const visible = entries
         .filter(entry => entry.isIntersecting)
         .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
