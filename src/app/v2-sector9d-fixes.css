@@ -1,0 +1,68 @@
+/* Sector 9D evidence-backed media fallback */
+.frame-evolution-section[data-media-state="error"]{
+  height:auto;
+  padding:clamp(4.5rem,7vw,7rem) 0;
+}
+
+.frame-evolution-section[data-media-state="error"] .frame-evolution-sticky{
+  position:relative;
+  top:auto;
+  height:auto;
+  min-height:0;
+  overflow:visible;
+  padding:0;
+}
+
+.frame-evolution-section[data-media-state="error"] .frame-evolution-layout{
+  height:auto;
+  grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
+  align-items:start;
+}
+
+.frame-evolution-section[data-media-state="error"] .frame-evolution-stage{
+  position:sticky;
+  top:7rem;
+  height:min(54vw,540px);
+  min-height:360px;
+  border:1px solid rgb(201 224 212/.1);
+  border-radius:12px;
+}
+
+.frame-evolution-section[data-media-state="error"] .frame-evolution-fallback{
+  opacity:1;
+}
+
+.frame-evolution-section[data-media-state="error"] .frame-evolution-copy-stack{
+  display:grid;
+  gap:1rem;
+  min-height:0;
+}
+
+.frame-evolution-section[data-media-state="error"] .frame-evolution-copy{
+  position:relative;
+  inset:auto;
+  opacity:1;
+  pointer-events:auto;
+  min-height:0;
+  padding:1.35rem 0 1.6rem;
+  border-top:1px solid rgb(201 224 212/.14);
+}
+
+.frame-evolution-section[data-media-state="error"] .frame-evolution-timeline,
+.frame-evolution-section[data-media-state="error"] .frame-evolution-frame-readout{
+  display:none;
+}
+
+@media (max-width:900px){
+  .frame-evolution-section[data-media-state="error"] .frame-evolution-layout{
+    grid-template-columns:1fr;
+    gap:1.5rem;
+  }
+
+  .frame-evolution-section[data-media-state="error"] .frame-evolution-stage{
+    position:relative;
+    top:auto;
+    height:min(62vw,480px);
+    min-height:280px;
+  }
+}
