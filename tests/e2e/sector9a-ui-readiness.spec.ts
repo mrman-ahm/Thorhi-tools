@@ -68,7 +68,8 @@ test("readiness layer exposes stable reduced-motion composition", async ({ page,
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
   await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
-  await expect(page.getByRole("link", { name: /Browse the catalogue/i }).first()).toBeVisible();
+  await expect(page.getByRole("searchbox").first()).toBeVisible();
+  await expect(page.getByRole("button", { name: "Search", exact: true }).first()).toBeVisible();
   const bodyOverflow = await page.evaluate(() => getComputedStyle(document.body).overflowX);
   expect(["visible", "hidden", "clip"]).toContain(bodyOverflow);
   await context.clearCookies();
