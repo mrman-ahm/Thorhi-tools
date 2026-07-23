@@ -9,6 +9,7 @@ const hero = readFileSync("src/components/hero-experience.tsx", "utf8");
 const page = readFileSync("src/app/page.tsx", "utf8");
 const styles = readFileSync("src/app/v2-sector9d.css", "utf8");
 const prepare = readFileSync("scripts/prepare-cinematic-assets.mjs", "utf8");
+const packageJson = readFileSync("package.json", "utf8");
 
 const combined = `${timing}\n${cinematic}\n${sequence}\n${hero}\n${page}\n${styles}\n${prepare}`;
 
@@ -39,12 +40,14 @@ test("normal hero uses the THROHI logo instead of the scissors placeholder", () 
   assert.doesNotMatch(page, /ScissorsEvolutionScene/);
 });
 
-test("evolution renderer uses one canvas and one sprite image", () => {
+test("evolution renderer uses one deferred canvas sprite rather than a 260-image DOM", () => {
   assert.match(sequence, /canvasRef/);
   assert.match(sequence, /drawImage/);
   assert.match(sequence, /spriteCellForFrame/);
   assert.match(sequence, /requestAnimationFrame/);
   assert.match(sequence, /imageRef/);
+  assert.match(sequence, /IntersectionObserver/);
+  assert.match(sequence, /sprites\.mobile|manifest\.sprites/);
   assert.doesNotMatch(sequence, /260\s*<img|Array\.from\(\{ length: 260/);
 });
 
@@ -61,11 +64,21 @@ test("media perimeter fades without blurring the instrument", () => {
   assert.doesNotMatch(styles, /(?:^|[;{\s])filter:\s*blur\(/m);
 });
 
-test("build pipeline reconstructs static media outside the JavaScript bundle", () => {
+test("build pipeline accepts the exact approved MP4 and 260-frame archive", () => {
+  assert.match(prepare, /Instruments_reveal_vanish_sequence_202607231803\.mp4/);
+  assert.match(prepare, /ezgif-35dd2244dafee1ab-jpg\.zip/);
+  assert.match(prepare, /frames\.length !== frameCount/);
+  assert.match(prepare, /import\("sharp"\)/);
+  assert.match(prepare, /evolution-sprite-desktop\.webp/);
+  assert.match(prepare, /evolution-sprite-mobile\.webp/);
+  assert.match(packageJson, /"sharp": "0\.35\.3"/);
+});
+
+test("build pipeline keeps generated media outside the JavaScript bundle", () => {
   assert.match(prepare, /unzipSync/);
   assert.match(prepare, /public.*media.*sector9d/s);
   assert.match(prepare, /intro\.mp4/);
-  assert.match(prepare, /evolution-sprite\.webp/);
+  assert.match(prepare, /writeManifest/);
 });
 
 test("Sector 9D retains reduced-motion and avoids prohibited spectacle", () => {
