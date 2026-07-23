@@ -10,7 +10,7 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "test": "node --test --test-reporter=dot tests/*.test.mjs",
+    "test": "for f in tests/*.test.mjs; do echo TEST_FILE=$f; node --test --test-reporter=spec \"$f\" || exit 1; done",
     "test:e2e": "playwright test",
     "data:process": "node scripts/process-catalogue.mjs"
   },
