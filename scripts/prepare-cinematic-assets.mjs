@@ -6,16 +6,29 @@ const root = resolve(process.cwd());
 const sourceDirectory = join(root, "assets", "sector9d");
 const outputDirectory = join(root, "public", "media", "sector9d");
 const expectedFiles = ["intro.mp4", "evolution-sprite.webp"];
+const manifestPath = join(outputDirectory, "manifest.json");
 
 mkdirSync(outputDirectory, { recursive: true });
 
+function writeManifest(available, reason) {
+  writeFileSync(manifestPath, JSON.stringify({
+    available,
+    intro: available ? "/media/sector9d/intro.mp4" : null,
+    sprite: available ? "/media/sector9d/evolution-sprite.webp" : null,
+    frameCount: 260,
+    reason
+  }, null, 2));
+}
+
 const alreadyPrepared = expectedFiles.every(file => existsSync(join(outputDirectory, file)));
 if (alreadyPrepared) {
+  writeManifest(true, "prepared");
   console.log("Sector 9D cinematic assets are already prepared.");
   process.exit(0);
 }
 
 if (!existsSync(sourceDirectory)) {
+  writeManifest(false, "source-bundle-missing");
   console.warn("Sector 9D source bundle is not present. The application will use its accessible media fallback.");
   process.exit(0);
 }
@@ -25,6 +38,7 @@ const chunks = readdirSync(sourceDirectory)
   .sort((left, right) => left.localeCompare(right));
 
 if (!chunks.length) {
+  writeManifest(false, "source-chunks-missing");
   console.warn("Sector 9D source chunks are not present. The application will use its accessible media fallback.");
   process.exit(0);
 }
@@ -49,7 +63,10 @@ for (const [sourceName, outputName] of aliases) {
 const missing = expectedFiles.filter(file => !existsSync(join(outputDirectory, file)));
 if (missing.length) {
   rmSync(outputDirectory, { recursive: true, force: true });
+  mkdirSync(outputDirectory, { recursive: true });
+  writeManifest(false, "bundle-incomplete");
   throw new Error(`Sector 9D media bundle is incomplete: ${missing.join(", ")}`);
 }
 
+writeManifest(true, "prepared-from-source-chunks");
 console.log(`Prepared Sector 9D cinematic media from ${chunks.length} source chunks.`);
