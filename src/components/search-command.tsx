@@ -65,6 +65,7 @@ export function SearchCommand() {
 
       if (event.key === "Escape") {
         event.preventDefault();
+        inputRef.current?.blur();
         setOpen(false);
         return;
       }
