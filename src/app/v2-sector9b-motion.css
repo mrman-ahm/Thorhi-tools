@@ -38,6 +38,11 @@ html[data-anime-motion="active"] .hero-scroll-note{
   transform-style:preserve-3d;
 }
 
+/* Technical blue for pale legal surfaces must remain above WCAG AA. */
+.legal-index a:last-child{
+  color:#076b99;
+}
+
 @media (max-width:900px){
   html[data-anime-motion="active"] .hero-marker,
   html[data-anime-motion="active"] .hero-scroll-note{
