@@ -1,5 +1,6 @@
 "use client";
 
+import { animate, createScope, createTimeline, stagger, svg } from "animejs";
 import Link from "next/link";
 import type { CSSProperties, PointerEvent as ReactPointerEvent } from "react";
 import { useEffect, useRef, useState } from "react";
@@ -12,10 +13,10 @@ const inspectionRegions = [
 ] as const;
 
 const evolutionChapters = [
-  { index: "01", era: "Origin", title: "The cutting form", tone: "amber", text: "A visual reconstruction placeholder for the opening chapter. No image or historical claim is treated as approved evidence." },
-  { index: "02", era: "Mechanism", title: "The pivot", tone: "blue", text: "The visual emphasis moves toward the axis where two controlled edges become one mechanical object." },
-  { index: "03", era: "Specialization", title: "The profile divides", tone: "green", text: "Working ends, curves, and proportions separate into distinct visual families without presenting unsupported product facts." },
-  { index: "04", era: "Precision", title: "The object today", tone: "mint", text: "A contemporary silhouette closes the sequence. Approved photography or reconstruction can replace every layer later." }
+  { index: "01", era: "Origin", title: "The cutting form", tone: "amber", text: "A visual reconstruction placeholder for the opening chapter. No image or historical claim is treated as approved evidence.", bladeOne: -19, bladeTwo: 17, rotation: -12, scaleX: .9 },
+  { index: "02", era: "Mechanism", title: "The pivot", tone: "blue", text: "The visual emphasis moves toward the axis where two controlled edges become one mechanical object.", bladeOne: -27, bladeTwo: 25, rotation: -9, scaleX: .96 },
+  { index: "03", era: "Specialization", title: "The profile divides", tone: "green", text: "Working ends, curves, and proportions separate into distinct visual families without presenting unsupported product facts.", bladeOne: -38, bladeTwo: 34, rotation: -7, scaleX: 1.04 },
+  { index: "04", era: "Precision", title: "The object today", tone: "mint", text: "A contemporary silhouette closes the sequence. Approved photography or reconstruction can replace every layer later.", bladeOne: -32, bladeTwo: 29, rotation: -8, scaleX: 1 }
 ] as const;
 
 function ScissorsPlaceholder({ tone, compact = false }: { tone: string; compact?: boolean }) {
@@ -33,6 +34,48 @@ function ScissorsPlaceholder({ tone, compact = false }: { tone: string; compact?
 export function MacroInspectionScene() {
   const sectionRef = useRef<HTMLElement>(null);
   const [activeRegion, setActiveRegion] = useState(1);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      section.dataset.specialMotion = "reduced";
+      return;
+    }
+
+    const scope = createScope({ root: sectionRef }).add(() => {
+      const activePath = section.querySelector<SVGPathElement>(`.macro-connector-path[data-region="${activeRegion}"]`);
+      const readout = Array.from(section.querySelectorAll<HTMLElement>(".inspection-readout > *"));
+      const reticle = section.querySelector<HTMLElement>(".inspection-reticle");
+      const lens = section.querySelector<HTMLElement>(".inspection-lens");
+      const sweep = section.querySelector<SVGGElement>(".instrument-steel-sweep");
+      const sweepBand = section.querySelector<SVGRectElement>(".steel-sweep-band");
+      const timeline = createTimeline({ defaults: { ease: "out(4)" } });
+
+      section.querySelectorAll<SVGPathElement>(".macro-connector-path").forEach(path => {
+        path.dataset.active = path === activePath ? "true" : "false";
+      });
+
+      if (activePath) {
+        const [drawable] = svg.createDrawable(activePath);
+        timeline.add(drawable, { draw: ["0 0", "0 1"], duration: 440, ease: "inOutSine" }, 0);
+      }
+      if (reticle) timeline.add(reticle, { rotate: { from: -8, to: 0 }, scale: { from: .82, to: 1 }, duration: 380 }, 40);
+      if (lens) timeline.add(lens, { opacity: { from: .55, to: .9 }, duration: 340 }, 40);
+      if (readout.length) timeline.add(readout, {
+        x: { from: 14 },
+        clipPath: ["inset(0 0 0 12%)", "inset(0 0 0 0%)"],
+        delay: stagger(35),
+        duration: 420
+      }, 310);
+      if (sweep && sweepBand) timeline.add(sweep, { opacity: [0, .48, 0], duration: 720, ease: "inOutSine" }, 120)
+        .add(sweepBand, { x: { from: -260, to: 1180 }, duration: 720, ease: "inOutSine" }, 120);
+
+      section.dataset.specialMotion = "ready";
+    });
+
+    return () => scope.revert();
+  }, [activeRegion]);
 
   const inspect = (event: ReactPointerEvent<HTMLDivElement>) => {
     if (event.pointerType === "touch") return;
@@ -72,6 +115,11 @@ export function MacroInspectionScene() {
     <div className="container macro-grid">
       <div className="macro-object inspection-canvas" onPointerMove={inspect} onPointerLeave={stopInspecting}>
         <InstrumentVisual variant="macro" label="Temporary macro instrument study with selectable generic examination regions" />
+        <svg className="macro-annotation-connectors" viewBox="0 0 1000 820" aria-hidden="true" focusable="false">
+          <path className="macro-connector-path" data-region="0" d="M755 206 C830 185 886 178 964 188" />
+          <path className="macro-connector-path" data-region="1" d="M500 420 C640 398 770 420 964 420" />
+          <path className="macro-connector-path" data-region="2" d="M205 602 C390 650 650 628 964 640" />
+        </svg>
         <div className="inspection-lens" aria-hidden="true"><span /></div>
         <div className="inspection-reticle" aria-hidden="true"><span /><span /></div>
       </div>
@@ -122,7 +170,7 @@ export function ScissorsEvolutionScene() {
       frameRef.current = null;
     };
 
-    const onScroll = () => {
+    const onNativeScroll = () => {
       if (frameRef.current === null) frameRef.current = window.requestAnimationFrame(updateProgress);
     };
 
@@ -136,20 +184,78 @@ export function ScissorsEvolutionScene() {
 
     chapterRefs.current.forEach(element => element && observer.observe(element));
     updateProgress();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
+    window.addEventListener("scroll", onNativeScroll, { passive: true });
+    window.addEventListener("resize", onNativeScroll);
 
     return () => {
       observer.disconnect();
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
+      window.removeEventListener("scroll", onNativeScroll);
+      window.removeEventListener("resize", onNativeScroll);
       if (frameRef.current !== null) window.cancelAnimationFrame(frameRef.current);
     };
   }, []);
 
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const mobile = window.matchMedia("(max-width: 900px)").matches;
+    if (reduced || mobile) {
+      section.dataset.specialMotion = reduced ? "reduced" : "mobile-static";
+      return;
+    }
+
+    const chapter = evolutionChapters[activeChapter];
+    const scope = createScope({ root: sectionRef }).add(() => {
+      const scissors = section.querySelector<HTMLElement>(".evolution-visual-stage .scene-scissors");
+      const bladeOne = section.querySelector<HTMLElement>(".evolution-visual-stage .blade-one");
+      const bladeTwo = section.querySelector<HTMLElement>(".evolution-visual-stage .blade-two");
+      const rings = Array.from(section.querySelectorAll<HTMLElement>(".evolution-visual-stage .scene-ring"));
+      const axes = Array.from(section.querySelectorAll<HTMLElement>(".evolution-visual-stage .scene-axis"));
+      const pivot = section.querySelector<HTMLElement>(".evolution-visual-stage .scene-pivot");
+      const stageIndex = Array.from(section.querySelectorAll<HTMLElement>(".evolution-stage-index > *"));
+      const label = section.querySelector<HTMLElement>(".reconstruction-label");
+      const timeline = createTimeline({ defaults: { ease: "out(5)" } });
+
+      if (scissors) timeline.add(scissors, {
+        rotate: chapter.rotation,
+        scaleX: chapter.scaleX,
+        scaleY: { from: .985, to: 1 },
+        duration: 720
+      }, 0);
+      if (bladeOne) timeline.add(bladeOne, { rotate: chapter.bladeOne, duration: 680 }, 20);
+      if (bladeTwo) timeline.add(bladeTwo, { rotate: chapter.bladeTwo, duration: 680 }, 20);
+      if (rings.length) timeline.add(rings, {
+        x: { from: activeChapter % 2 === 0 ? -8 : 8, to: 0 },
+        scale: { from: .98, to: 1 },
+        delay: stagger(45),
+        duration: 520
+      }, 90);
+      if (pivot) timeline.add(pivot, {
+        scale: [{ to: 1.12, duration: 220 }, { to: 1, duration: 300 }],
+        rotate: { from: -18, to: 0 },
+        duration: 520
+      }, 120);
+      if (axes.length) timeline.add(axes, {
+        scaleX: { from: 0, to: 1 },
+        scaleY: { from: 0, to: 1 },
+        delay: stagger(35),
+        duration: 420
+      }, 120);
+      if (stageIndex.length) timeline.add(stageIndex, { y: { from: 10 }, delay: stagger(35), duration: 360 }, 160);
+      if (label) timeline.add(label, { clipPath: ["inset(0 100% 0 0)", "inset(0 0% 0 0)"], duration: 460, ease: "inOutSine" }, 260);
+
+      section.dataset.specialMotion = "ready";
+    });
+
+    return () => scope.revert();
+  }, [activeChapter]);
+
+  const active = evolutionChapters[activeChapter];
+
   return <section
     ref={sectionRef}
-    className={`evolution-stage evolution-experience tone-${evolutionChapters[activeChapter].tone}`}
+    className={`evolution-stage evolution-experience tone-${active.tone}`}
     aria-labelledby="evolution-title"
     data-active-chapter={activeChapter}
     style={{ "--evolution-progress": "0" } as CSSProperties}
@@ -162,8 +268,8 @@ export function ScissorsEvolutionScene() {
 
     <div className="container evolution-experience-grid">
       <div className="evolution-visual-stage" aria-hidden="true">
-        <div className="evolution-stage-index"><span>{evolutionChapters[activeChapter].index}</span><small>{evolutionChapters[activeChapter].era}</small></div>
-        <div className="evolution-layers">{evolutionChapters.map((chapter, index) => <div className={`evolution-layer ${chapter.tone}`} data-active={activeChapter === index} key={chapter.index}><ScissorsPlaceholder tone={chapter.tone} /><span className="reconstruction-label">VISUAL RECONSTRUCTION PLACEHOLDER</span></div>)}</div>
+        <div className="evolution-stage-index"><span>{active.index}</span><small>{active.era}</small></div>
+        <div className="evolution-layers"><div className={`evolution-layer ${active.tone}`} data-active="true"><ScissorsPlaceholder tone={active.tone} /><span className="reconstruction-label">VISUAL RECONSTRUCTION PLACEHOLDER</span></div></div>
         <div className="evolution-meter"><span style={{ transform: `scaleX(${(activeChapter + 1) / evolutionChapters.length})` }} /></div>
       </div>
 

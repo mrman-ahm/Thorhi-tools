@@ -237,53 +237,6 @@ export function MotionShell({ children }: { children: ReactNode }) {
         mutationObservers.push(observer);
       }
 
-      const divisionScene = rootElement.querySelector<HTMLElement>(".division-discovery");
-      if (divisionScene) {
-        const observer = new MutationObserver(() => {
-          const targets = Array.from(divisionScene.querySelectorAll<HTMLElement>(
-            ".division-stage-index > *, .division-stage-object > *, .division-stage-copy > *"
-          ));
-          if (!targets.length) return;
-          animate(targets, {
-            x: { from: 8 }, delay: stagger(24), duration: 360, ease: "out(4)"
-          });
-        });
-        observer.observe(divisionScene, { attributes: true, attributeFilter: ["data-active-index"] });
-        mutationObservers.push(observer);
-      }
-
-      const macroScene = rootElement.querySelector<HTMLElement>(".macro-inspection-scene");
-      if (macroScene) {
-        const observer = new MutationObserver(() => {
-          const readout = Array.from(macroScene.querySelectorAll<HTMLElement>(".inspection-readout > *"));
-          animate(readout, {
-            x: { from: 10 }, delay: stagger(28), duration: 360, ease: "out(4)"
-          });
-        });
-        observer.observe(macroScene, { attributes: true, attributeFilter: ["data-active-region"] });
-        mutationObservers.push(observer);
-      }
-
-      const evolutionScene = rootElement.querySelector<HTMLElement>(".evolution-experience");
-      if (evolutionScene) {
-        const observer = new MutationObserver(() => {
-          const activeLayer = evolutionScene.querySelector<HTMLElement>(".evolution-layer[data-active='true']");
-          const activeIndex = Array.from(evolutionScene.querySelectorAll<HTMLElement>(".evolution-stage-index > *"));
-          if (activeLayer) animate(activeLayer, {
-            opacity: { from: 0.2 },
-            scale: { from: 0.97 },
-            rotate: { from: -0.6 },
-            duration: 540,
-            ease: "out(5)"
-          });
-          if (activeIndex.length) animate(activeIndex, {
-            y: { from: 8 }, delay: stagger(35), duration: 360
-          });
-        });
-        observer.observe(evolutionScene, { attributes: true, attributeFilter: ["data-active-chapter"] });
-        mutationObservers.push(observer);
-      }
-
       rootElement.dataset.motionState = "ready";
 
       return () => {

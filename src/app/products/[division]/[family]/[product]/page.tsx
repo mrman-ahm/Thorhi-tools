@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Breadcrumbs, CopyCodeButton, DocumentList, ProductCard, ProductImage, ProductInquiryControls, SeedDataNotice } from "@/components/catalogue-ui";
+import { Breadcrumbs, CopyCodeButton, DocumentList, ProductCard, ProductInquiryControls, SeedDataNotice } from "@/components/catalogue-ui";
+import { ProductExaminationMotion } from "@/components/product-examination-motion";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { getDivision, getFamily, getProduct, getRelatedProducts, products } from "@/lib/catalogue";
@@ -22,7 +23,7 @@ export default async function ProductPage({ params }: { params: Promise<{ divisi
     <section className="product-examination-section"><div className="container">
       <Breadcrumbs items={[{ label: "Products", href: "/products" }, { label: division.label, href: `/products/${division.slug}` }, { label: family.label, href: `/products/${division.slug}/${family.slug}` }, { label: product.name }]} />
       <div className="product-examination-grid">
-        <div className="product-examination-stage"><header><span>OBJECT EXAMINATION</span><small>APPROVED IMAGE REQUIRED</small></header><ProductImage product={product} /><div className="product-image-state-list"><span>01 · IMAGE LOADING RESERVED</span><span>02 · MISSING IMAGE RESERVED</span><span>03 · ALT TEXT REQUIRED</span></div></div>
+        <div className="product-examination-stage"><header><span>OBJECT EXAMINATION</span><small>APPROVED IMAGE REQUIRED</small></header><ProductExaminationMotion product={product} /><div className="product-image-state-list"><span>01 · IMAGE LOADING RESERVED</span><span>02 · MISSING IMAGE RESERVED</span><span>03 · ALT TEXT REQUIRED</span></div></div>
         <div className="product-examination-summary"><div className="product-summary-index"><p className="eyebrow">{division.label.toUpperCase()} · {family.label.toUpperCase()}</p><span>CATALOGUE OBJECT</span></div><h1>{product.name}</h1><CopyCodeButton code={product.code} /><p className="product-description">{product.description}</p><SeedDataNotice />
           <section className="verified-information" aria-labelledby="verified-title"><header><span>VERIFIED INFORMATION</span><small>{verifiedSpecifications.length ? `${verifiedSpecifications.length} approved fields` : "No approved fields"}</small></header><h2 id="verified-title">Published facts only.</h2>{verifiedSpecifications.length ? <dl>{verifiedSpecifications.map(item => <div key={item.label}><dt>{item.label}</dt><dd>{item.value}</dd></div>)}</dl> : <p>No specifications are published until they are verified against approved catalogue data.</p>}</section>
           <section className="product-inquiry-builder" aria-labelledby="inquiry-builder-title"><header><span>INQUIRY BUILDER</span><small>QUANTITY · NOTE · SAVE</small></header><h2 id="inquiry-builder-title">Add this object to your request.</h2><ProductInquiryControls product={product} /></section>

@@ -1,0 +1,217 @@
+/* THROHI V2 — Sector 9C: bespoke surgical-motion effects */
+
+.instrument-svg{overflow:visible}
+.instrument-assembly,
+.instrument-half,
+.instrument-pivot{
+  transform-box:view-box;
+  transform-origin:447px 460px;
+}
+.instrument-measurement-system,
+.instrument-connectors,
+.instrument-axis{pointer-events:none}
+.instrument-measurement-system{opacity:.72}
+.instrument-half{will-change:transform}
+.instrument-pivot{position:relative;z-index:5}
+.pivot-calibration{transform-box:view-box;transform-origin:447px 460px}
+.instrument-steel-sweep{pointer-events:none;mix-blend-mode:screen}
+.connector-label text{
+  fill:#bad0c5;
+  font:600 16px var(--font-mono);
+  letter-spacing:.14em;
+}
+.instrument-visual.macro .connector-label text{font-size:13px}
+.instrument-visual.macro .instrument-connectors{opacity:.45}
+.instrument-visual.macro .instrument-measurement-system{opacity:.48}
+
+.visual-code{position:relative;overflow:hidden}
+.visual-code>span{display:block;will-change:clip-path}
+.visual-code>i{
+  position:absolute;
+  inset:auto 0 -2px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,#d8eee4 42%,#63ffb2 52%,transparent 72%);
+  pointer-events:none;
+  transform-origin:left center;
+}
+
+.hero-object .instrument-visual{isolation:isolate}
+.hero-object .instrument-svg{filter:drop-shadow(0 18px 40px rgb(0 0 0/.18))}
+.hero-experience[data-special-motion="ready"] .hero-marker{border-color:rgb(99 255 178/.34)}
+.hero-experience[data-inspecting="true"] .instrument-measurement-system{opacity:.92}
+.hero-experience[data-inspecting="true"] .connector-label text{fill:#dff7eb}
+
+.macro-annotation-connectors{
+  position:absolute;
+  z-index:3;
+  inset:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  overflow:visible;
+}
+.macro-connector-path{
+  fill:none;
+  stroke:#63ffb2;
+  stroke-width:1.35;
+  stroke-linecap:round;
+  opacity:.12;
+}
+.macro-connector-path[data-active="true"]{opacity:.82}
+.macro-inspection-scene[data-special-motion="ready"] .inspection-readout{border-color:rgb(99 255 178/.22)}
+.macro-inspection-scene .inspection-reticle{transform-box:border-box;transform-origin:center}
+
+.evolution-visual-stage .evolution-layer{
+  opacity:1;
+  transform:none;
+  transition:none;
+}
+.evolution-visual-stage .scene-scissors,
+.evolution-visual-stage .scene-blade,
+.evolution-visual-stage .scene-ring,
+.evolution-visual-stage .scene-pivot,
+.evolution-visual-stage .scene-axis{
+  will-change:transform;
+}
+.evolution-visual-stage .scene-blade{transform-origin:left center}
+.evolution-visual-stage .scene-pivot{transform-origin:center}
+.evolution-visual-stage .scene-axis.horizontal{transform-origin:left center}
+.evolution-visual-stage .scene-axis.vertical{transform-origin:center top}
+.evolution-experience[data-special-motion="ready"] .evolution-visual-stage::after{
+  content:"PIVOT HELD / PROFILE CALIBRATED";
+  position:absolute;
+  right:1.2rem;
+  bottom:1.2rem;
+  font:600 .5rem var(--font-mono);
+  letter-spacing:.11em;
+  color:#93a9a0;
+}
+
+.product-examination-motion{
+  position:relative;
+  min-height:0;
+  isolation:isolate;
+  overflow:hidden;
+}
+.product-examination-motion>.catalogue-object-visual{position:relative;z-index:1}
+.product-inspection-sweep{
+  position:absolute;
+  z-index:4;
+  inset:-10% auto -10% -18%;
+  width:28%;
+  transform:skewX(-11deg);
+  background:linear-gradient(90deg,transparent,rgb(225 245 235/.08) 28%,rgb(225 245 235/.46) 49%,rgb(99 255 178/.13) 58%,transparent 82%);
+  mix-blend-mode:screen;
+  pointer-events:none;
+  opacity:0;
+}
+.product-measurement-overlay{
+  position:absolute;
+  z-index:3;
+  inset:0;
+  width:100%;
+  height:100%;
+  overflow:visible;
+  pointer-events:none;
+}
+.product-measurement-overlay>*{
+  fill:none;
+  stroke:rgb(99 255 178/.38);
+  stroke-width:1.2;
+  stroke-linecap:round;
+}
+.product-measurement-label{
+  position:absolute;
+  z-index:5;
+  padding:.32rem .46rem;
+  border:1px solid rgb(99 255 178/.22);
+  border-radius:4px;
+  background:rgb(5 10 7/.82);
+  font:600 .48rem var(--font-mono);
+  letter-spacing:.1em;
+  color:#b9cec3;
+  pointer-events:none;
+}
+.product-measurement-label.label-working-end{right:5%;top:18%}
+.product-measurement-label.label-pivot{right:7%;top:48%}
+.product-measurement-label.label-grip{left:5%;bottom:16%}
+.product-stage-engraving{
+  position:absolute;
+  z-index:5;
+  left:5%;
+  bottom:5%;
+  display:block;
+  overflow:hidden;
+  padding-bottom:.35rem;
+  font:600 .54rem var(--font-mono);
+  letter-spacing:.11em;
+  color:#c4d7cd;
+  pointer-events:none;
+}
+.product-stage-engraving>span{display:block}
+.product-stage-engraving>i{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:1px;
+  background:linear-gradient(90deg,transparent,#d8eee4 45%,#63ffb2 54%,transparent);
+}
+.product-examination-motion[data-special-motion="ready"]>.catalogue-object-visual{filter:saturate(1.03)}
+
+@media (max-width:900px){
+  .instrument-measurement-system .outer,
+  .instrument-connectors .connector-pivot,
+  .instrument-connectors .connector-label-pivot,
+  .measurement-ticks .measurement-tick:nth-child(even){display:none}
+  .connector-label text{font-size:13px}
+  .macro-annotation-connectors{opacity:.72}
+  .evolution-experience[data-special-motion="mobile-static"] .evolution-visual-stage{display:none}
+  .product-measurement-label.label-pivot{display:none}
+  .product-measurement-label{font-size:.44rem}
+}
+
+@media (max-width:560px){
+  .instrument-connectors{opacity:.42}
+  .instrument-connectors .connector-edge,
+  .instrument-connectors .connector-label-edge{display:none}
+  .instrument-measurement-system{opacity:.46}
+  .product-measurement-overlay{inset:2%}
+  .product-measurement-label.label-working-end{right:4%;top:14%}
+  .product-measurement-label.label-grip{left:4%;bottom:13%}
+  .product-stage-engraving{left:4%;bottom:4%;font-size:.47rem}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .instrument-half,
+  .instrument-assembly,
+  .instrument-pivot,
+  .scene-scissors,
+  .scene-blade,
+  .scene-ring,
+  .scene-pivot,
+  .scene-axis,
+  .inspection-reticle{
+    transform:none!important;
+  }
+  .instrument-steel-sweep,
+  .product-inspection-sweep,
+  .visual-code>i,
+  .product-stage-engraving>i{display:none!important}
+  .instrument-drawable,
+  .macro-connector-path,
+  .product-measurement-drawable{
+    stroke-dasharray:none!important;
+    stroke-dashoffset:0!important;
+  }
+  .connector-label,
+  .product-measurement-label,
+  .product-stage-engraving,
+  .visual-code>span{
+    opacity:1!important;
+    clip-path:none!important;
+    transform:none!important;
+  }
+  .evolution-visual-stage .blade-one{transform:rotate(-32deg)!important}
+  .evolution-visual-stage .blade-two{transform:rotate(29deg)!important}
+}
