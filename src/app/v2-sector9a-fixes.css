@@ -1,0 +1,13 @@
+/* Sector 9A evidence-backed fixes */
+.utility-light .utility-section-heading h2,
+.utility-light .utility-section-heading h3,
+.inquiry-workspace .utility-section-heading h2,
+.catalogue-family-index .catalogue-section-heading h2,
+.catalogue-family-index .catalogue-family-index-intro h2{
+  color:#0b1812;
+}
+
+.utility-light .utility-section-heading h2 span,
+.utility-light .utility-section-heading h3 span{
+  color:#126b42;
+}
