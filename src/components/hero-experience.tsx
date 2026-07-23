@@ -73,7 +73,7 @@ export function HeroExperience() {
         <span className="hero-brand-orbit orbit-two" aria-hidden="true" />
         <span className="hero-brand-axis axis-horizontal" aria-hidden="true" />
         <span className="hero-brand-axis axis-vertical" aria-hidden="true" />
-        <div className="hero-brand-mark"><Image src="/brand/throhi-logo-clean.png" alt="THROHI Medical Tools" width={1347} height={1005} priority /></div>
+        <div className="hero-brand-mark"><Image src="/brand/throhi-logo-clean.webp" alt="THROHI Medical Tools" width={900} height={671} priority /></div>
         <div className="hero-brand-meta" aria-hidden="true"><span>SURGICAL · DENTAL</span><span>VETERINARY · BEAUTY</span><span>CATALOGUE · INQUIRY</span></div>
       </div>
     </div>
