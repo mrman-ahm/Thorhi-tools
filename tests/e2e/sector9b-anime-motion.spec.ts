@@ -18,6 +18,7 @@ test("Anime.js motion initializes and reaches a stable homepage state", async ({
   await expect(shell).toHaveAttribute("data-motion-state", "ready");
   await expect(page.locator("html")).toHaveAttribute("data-anime-motion", "active");
 
+  await page.locator("#home-hero").scrollIntoViewIfNeeded();
   await page.waitForTimeout(1200);
   const heroWords = page.locator(".hero-type > span");
   await expect(heroWords).toHaveCount(3);
@@ -36,6 +37,7 @@ test("Anime.js motion initializes and reaches a stable homepage state", async ({
 test("menu animation never delays keyboard focus", async ({ page }) => {
   const errors = collectPageErrors(page);
   await page.goto("/");
+  await page.locator("#home-hero").scrollIntoViewIfNeeded();
   await page.getByRole("button", { name: "Open navigation menu" }).click();
 
   await expect(page.locator(".menu-layer")).toHaveAttribute("data-open", "true");
@@ -66,6 +68,7 @@ test("route changes revert and reinitialize the scoped motion system", async ({ 
   await page.goto("/");
   await expect(page.locator(".motion-shell")).toHaveAttribute("data-motion-route", "home");
 
+  await page.locator("#home-hero").scrollIntoViewIfNeeded();
   await page.getByRole("link", { name: "Products", exact: true }).first().click();
   await expect(page).toHaveURL(/\/products$/);
   await expect(page.locator(".motion-shell")).toHaveAttribute("data-motion-route", "catalogue");
@@ -88,7 +91,8 @@ test("reduced motion skips Anime.js transformations and keeps content complete",
 
   await expect(page.locator("html")).toHaveAttribute("data-anime-motion", "reduced");
   await expect(page.locator(".motion-shell")).toHaveAttribute("data-motion-state", "ready");
-  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1, name: "Built around the instrument." })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1, name: "PRECISION, BROUGHT ALIVE." })).toBeVisible();
   await expect(page.getByRole("searchbox").first()).toBeVisible();
 
   const inlineTransforms = await page.locator(".hero-type > span").evaluateAll(elements => elements.map(element => (element as HTMLElement).style.transform));
