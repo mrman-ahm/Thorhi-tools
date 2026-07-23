@@ -44,9 +44,11 @@ export function SearchCommand() {
       setOpen(true);
     };
 
+    document.body.dataset.searchReady = "true";
     window.addEventListener(OPEN_EVENT, openCommand);
     window.addEventListener("keydown", handleGlobalShortcut);
     return () => {
+      delete document.body.dataset.searchReady;
       window.removeEventListener(OPEN_EVENT, openCommand);
       window.removeEventListener("keydown", handleGlobalShortcut);
     };
