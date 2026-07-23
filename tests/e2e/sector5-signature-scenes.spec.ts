@@ -33,24 +33,22 @@ test.describe("Sector 5 signature visual scenes", () => {
     expect(x).not.toBe("50%");
   });
 
-  test("activates scissors chapters through normal page scrolling", async ({ page }, testInfo) => {
-    test.skip(testInfo.project.name !== "desktop-chromium", "Pinned chapter progression is desktop-only");
-    const scene = page.locator(".evolution-experience");
-    const specialization = page.locator('.evolution-chapter[data-chapter-index="2"]');
-
-    await specialization.scrollIntoViewIfNeeded();
-    await expect.poll(() => scene.getAttribute("data-active-chapter")).toBe("2");
-    await expect(specialization).toHaveAttribute("data-active", "true");
-  });
-
-  test("keeps all four evolution chapters visible in the mobile stack", async ({ page }, testInfo) => {
-    test.skip(testInfo.project.name !== "mobile-chromium", "Mobile stacking is validated in the mobile project");
-    const scene = page.locator(".evolution-experience");
+  test("presents a complete static scissors storyboard before Anime.js", async ({ page }, testInfo) => {
+    const scene = page.locator(".evolution-experience-static");
     await scene.scrollIntoViewIfNeeded();
 
-    await expect(page.locator(".evolution-visual-stage")).toBeHidden();
-    await expect(page.locator(".evolution-chapter")).toHaveCount(4);
-    await expect(page.locator(".evolution-mobile-visual")).toHaveCount(4);
+    await expect(page.locator(".evolution-visual-stage")).toHaveCount(0);
+    await expect(page.locator(".evolution-static-card")).toHaveCount(4);
+    await expect(page.locator(".evolution-static-visual")).toHaveCount(4);
+    await expect(page.locator(".evolution-static-card").first()).toContainText("The cutting form");
+    await expect(page.locator(".evolution-static-card").last()).toContainText("The object today");
+
+    const measurements = await scene.evaluate(element => ({
+      sceneHeight: element.getBoundingClientRect().height,
+      viewportHeight: window.innerHeight
+    }));
+    const maximumViewportMultiple = testInfo.project.name === "mobile-chromium" ? 6.2 : 4.4;
+    expect(measurements.sceneHeight).toBeLessThan(measurements.viewportHeight * maximumViewportMultiple);
   });
 
   test("provides complete static fallbacks for reduced motion", async ({ page }) => {
@@ -59,8 +57,7 @@ test.describe("Sector 5 signature visual scenes", () => {
 
     await expect(page.locator(".inspection-lens")).toBeHidden();
     await expect(page.locator(".inspection-reticle")).toBeHidden();
-    await expect(page.locator(".evolution-visual-stage")).toBeHidden();
-    await expect(page.locator(".evolution-chapter")).toHaveCount(4);
-    await expect(page.locator(".evolution-mobile-visual")).toHaveCount(4);
+    await expect(page.locator(".evolution-static-card")).toHaveCount(4);
+    await expect(page.locator(".evolution-static-visual")).toHaveCount(4);
   });
 });
