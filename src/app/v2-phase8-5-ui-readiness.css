@@ -1,0 +1,268 @@
+/* THROHI V2 — Phase 8.5: complete static UI readiness audit
+   This layer intentionally adds no new motion. */
+
+:root{
+  --clinical-mint:#dff3e7;
+  --clinical-mint-2:#edf7f1;
+  --clinical-ink:#0a1a12;
+  --clinical-line:rgb(20 67 43/.16);
+  --surface-dark:#07100c;
+  --surface-dark-2:#0b1510;
+  --surface-panel:#0d1913;
+  --motion-ease-standard:cubic-bezier(.22,1,.36,1);
+  --motion-fast:180ms;
+  --motion-medium:420ms;
+}
+
+/* Remove the persistent scanline treatment that made the entire interface feel game-like. */
+body{
+  background-image:
+    radial-gradient(circle at 82% 7%,rgb(27 212 119/.055),transparent 28rem),
+    radial-gradient(circle at 16% 45%,rgb(8 125 193/.035),transparent 34rem);
+}
+
+h1,h2,h3{
+  font-variation-settings:"wdth" 98;
+  letter-spacing:-.042em;
+}
+
+/* Header: quieter branding, more room for navigation, less control-panel geometry. */
+.header-inner{
+  width:min(1400px,calc(100% - 2rem));
+  height:72px;
+  grid-template-columns:180px 1fr auto;
+  gap:1.5rem;
+}
+.brand-index{display:none}
+.brand{gap:0}
+.brand-image{
+  width:92px;
+  height:40px;
+  padding:2px;
+  border-radius:6px;
+  background:#eef3ef;
+  box-shadow:inset 0 0 0 1px rgb(4 8 6/.08),0 5px 18px rgb(0 0 0/.12);
+}
+.site-header.is-scrolled .header-inner{height:62px}
+.site-header.is-scrolled .brand-image{width:82px;height:35px}
+.icon-button,.inquiry-button,.menu-button{
+  min-height:42px;
+  border-color:#314039;
+  border-radius:7px;
+  background:rgb(10 19 14/.72);
+  box-shadow:inset 0 1px rgb(255 255 255/.035);
+}
+.inquiry-button{padding-left:.85rem}
+.inquiry-button>span:last-child{
+  height:40px;
+  min-width:40px;
+  margin-left:.75rem;
+  border-radius:0 6px 6px 0;
+  background:linear-gradient(180deg,#48dd96,#22bd70);
+}
+.desktop-nav a{font-weight:600;letter-spacing:.065em}
+
+/* Controls: retain precision but remove the hard prototype/demo feel. */
+.button,
+.catalogue-inquiry-action,
+.catalogue-filter-submit,
+.catalogue-filter-clear,
+.catalogue-command button,
+.division-command button,
+.hero-search button,
+.utility-action{
+  border-radius:7px!important;
+}
+.button.primary,
+.catalogue-filter-submit,
+.catalogue-command button,
+.division-command button,
+.hero-search button{
+  background:linear-gradient(180deg,#4fe09a,#20bd70);
+  box-shadow:inset 0 1px rgb(255 255 255/.28),0 7px 20px rgb(10 70 39/.11);
+}
+
+/* Homepage hierarchy: still bold, but no longer fills every viewport with display type. */
+.hero-type{font-size:clamp(3.7rem,8vw,7.9rem);line-height:.79;letter-spacing:-.068em}
+.section-intro{padding:clamp(5rem,8vw,8.5rem) 0 3rem}
+.section-intro h2{max-width:12ch;font-size:clamp(2.9rem,5.7vw,5.9rem);line-height:.88}
+.division-discovery-item{min-height:min(51vh,500px)}
+.division-discovery-item>strong{font-size:clamp(2.6rem,4.9vw,5rem);line-height:.86}
+.function-passage{padding:clamp(4.5rem,7vw,7.5rem) 0}
+.function-lines>a{min-height:96px}
+.function-lines>a>strong{font-size:clamp(2.55rem,5vw,5rem);line-height:.88}
+.family-discovery-heading h2{font-size:clamp(2.65rem,4.8vw,5rem)}
+.family-panel{min-height:min(43vh,420px)}
+.macro-stage{padding:clamp(5.5rem,9vw,9rem) 0}
+.macro-copy h2{font-size:clamp(2.6rem,4.55vw,4.8rem);line-height:.94}
+.evolution-stage{padding:clamp(5.5rem,8.5vw,9rem) 0}
+.evolution-heading h2{font-size:clamp(3rem,5.75vw,6rem);line-height:.9}
+.command-grid h2{font-size:clamp(2.6rem,4.65vw,4.85rem)}
+.object-heading h2,.inquiry-stage h2,.proof-copy h2{font-size:clamp(2.45rem,4.2vw,4.5rem)}
+.contact-stage h2{font-size:clamp(3rem,6vw,5.9rem)}
+
+/* Replace fluorescent full-width green with a sterile, brighter clinical intermission. */
+.command-stage,
+.catalogue-recovery-band,
+.division-evidence-band,
+.product-document-band,
+.final-cta{
+  background:linear-gradient(135deg,var(--clinical-mint),var(--clinical-mint-2));
+  color:var(--clinical-ink);
+}
+.command-stage .eyebrow,
+.command-stage small,
+.catalogue-recovery-band .eyebrow,
+.division-evidence-band .eyebrow,
+.product-document-band .eyebrow,
+.final-cta .eyebrow{color:#075f35}
+.command-stage p,
+.catalogue-recovery-band p,
+.division-evidence-band p,
+.product-document-band p,
+.final-cta p{color:#365548}
+.command-stage form{border-color:#44735c}
+.command-stage input{color:#0a1a12}
+.command-stage input::placeholder{color:#60796d}
+.command-stage button,
+.catalogue-recovery-band a.primary-recovery,
+.final-cta .primary{
+  background:#0a1a12;
+  color:#dff3e7;
+}
+.product-document-band aside{background:rgb(255 255 255/.4);border-color:rgb(10 58 34/.22);border-radius:9px}
+
+/* Dark surfaces: use graphite depth and less green fog. */
+.utility-hero,
+.catalogue-hub-hero,
+.division-catalogue-hero,
+.family-catalogue-hero,
+.product-examination-section,
+.contact-route-section,
+.resource-archive-section,
+.company-evidence-section{
+  background:
+    radial-gradient(circle at 82% 18%,rgb(34 216 127/.075),transparent 31%),
+    radial-gradient(circle at 14% 82%,rgb(33 168 232/.035),transparent 31%),
+    linear-gradient(145deg,#0a1510,#040806 76%);
+}
+.catalogue-object-visual,
+.family-catalogue-object,
+.product-examination-stage{
+  background:
+    radial-gradient(circle at 52% 45%,rgb(34 216 127/.095),transparent 33%),
+    linear-gradient(145deg,#111f18,#07100c 72%);
+}
+.catalogue-object-grid,.family-object-grid{opacity:.34}
+
+/* Catalogue: lower the theatre, raise the speed of discovery. */
+.catalogue-hub-hero{min-height:min(760px,86svh);padding:clamp(6.8rem,10vw,9.5rem) 0 clamp(3.5rem,6vw,5rem)}
+.catalogue-hub-copy h1{font-size:clamp(3.35rem,6.25vw,6.9rem);line-height:.88}
+.catalogue-section-heading h2{font-size:clamp(2.3rem,4vw,4.45rem);line-height:.95}
+.catalogue-division-index,.catalogue-featured-objects,.division-family-routes,.division-product-preview,.related-object-section{padding:clamp(4rem,6.5vw,6.5rem) 0}
+.catalogue-division-row{min-height:clamp(104px,12vw,150px)}
+.division-row-title strong{font-size:clamp(2.2rem,4vw,4.4rem);line-height:.88}
+.catalogue-family-index{padding:clamp(4rem,6.5vw,6.5rem) 0}
+.catalogue-family-index-intro h2{font-size:clamp(2.25rem,4vw,4.35rem);line-height:.95}
+.catalogue-object-card h3{font-size:clamp(1.7rem,2.7vw,2.8rem);line-height:.98}
+.catalogue-object-visual{min-height:clamp(280px,30vw,470px)}
+.division-catalogue-hero{padding:clamp(6.8rem,10vw,9.5rem) 0 clamp(3rem,5vw,4.5rem)}
+.division-catalogue-hero h1{font-size:clamp(3.2rem,6vw,6.25rem);line-height:.88}
+.family-catalogue-hero{padding:clamp(6.8rem,10vw,9.5rem) 0 clamp(3rem,5vw,4.5rem)}
+.family-catalogue-hero h1{font-size:clamp(3rem,5.5vw,5.8rem);line-height:.9}
+.family-catalogue-object{min-height:390px}
+.family-listing-section{padding:clamp(3rem,5vw,5rem) 0 clamp(4.5rem,7vw,7rem)}
+.catalogue-results-toolbar h2{font-size:clamp(2rem,3.35vw,3.45rem)}
+.product-examination-section{padding:clamp(6.5rem,9vw,8rem) 0 clamp(4rem,6vw,5.5rem)}
+.product-examination-grid{gap:clamp(2rem,4.5vw,4.8rem)}
+.product-examination-summary h1{font-size:clamp(2.85rem,5vw,5.25rem);line-height:.9}
+.product-examination-stage .catalogue-object-visual{min-height:min(610px,62svh)}
+.product-document-band h2{font-size:clamp(2.15rem,3.7vw,3.95rem);line-height:.96;text-transform:none}
+.product-document-band aside h3{font-size:clamp(1.65rem,2.55vw,2.45rem);line-height:1;text-transform:none}
+
+/* Utility pages: sentence case and professional editorial rhythm rather than campaign posters. */
+.utility-hero{padding:clamp(6.8rem,9vw,8.8rem) 0 clamp(2.8rem,4.5vw,4rem)}
+.utility-hero::after{content:"THROHI MEDICAL TOOLS";color:#72877d}
+.utility-hero h1{
+  max-width:15ch;
+  font-size:clamp(2.95rem,5.15vw,5.35rem);
+  line-height:.95;
+  letter-spacing:-.045em;
+  font-weight:690;
+  text-transform:none;
+}
+.utility-section{padding:clamp(4rem,6.5vw,6.5rem) 0}
+.utility-section-heading h2{
+  font-size:clamp(2.25rem,3.9vw,4.2rem);
+  line-height:.98;
+  font-weight:690;
+  text-transform:none;
+}
+.company-foundation-grid article h2,
+.resource-rules-grid h2,
+.contact-featured-route h2,
+.contact-verification h2,
+.legal-article h2,
+.success-intro h1,
+.not-found-grid article h1{
+  font-weight:690;
+  text-transform:none;
+  line-height:.98;
+  letter-spacing:-.04em;
+}
+.company-foundation-grid article h2{font-size:clamp(2.3rem,4.1vw,4.35rem)}
+.resource-rules-grid h2{font-size:clamp(2.3rem,4.1vw,4.35rem)}
+.contact-featured-route h2{font-size:clamp(2.4rem,4.25vw,4.55rem)}
+.contact-verification h2{font-size:clamp(1.9rem,3vw,3rem)}
+.legal-article h2{font-size:clamp(1.9rem,3vw,3.1rem)}
+.success-intro h1{font-size:clamp(2.5rem,4.35vw,4.65rem)}
+.not-found-grid article h1{font-size:clamp(2.7rem,4.8vw,5rem)}
+.company-proof-placeholder{min-height:410px}
+.contact-featured-route{min-height:440px}
+.resource-archive-card{min-height:380px;background:linear-gradient(145deg,#102019,#09120e)}
+.contact-guidance-grid article{box-shadow:0 10px 28px rgb(30 67 47/.05)}
+
+/* Inquiry: reduce poster-scale introduction and shorten the working path. */
+.inquiry-progress{margin-top:clamp(2.3rem,4vw,3.6rem)}
+.inquiry-workspace{padding:clamp(2.5rem,4.5vw,4.5rem) 0}
+.inquiry-workspace .inquiry-block{box-shadow:0 12px 34px rgb(18 55 35/.05)}
+.inquiry-workspace .inquiry-block h2{font-size:clamp(1.7rem,2.55vw,2.55rem);line-height:1;text-transform:none}
+.inquiry-workspace .inquiry-item-info h3{font-size:clamp(1.25rem,1.9vw,1.85rem);text-transform:none}
+.inquiry-workspace .inquiry-review h2{font-size:clamp(1.65rem,2.35vw,2.2rem);text-transform:none}
+
+/* Footer: retain the identity signature without adding another near-full-screen scene to every page. */
+.footer-display{
+  min-height:190px!important;
+  max-height:230px;
+  background:radial-gradient(circle at 50% 50%,rgb(33 168 232/.035),transparent 42%),#07100c;
+}
+.footer-display span{
+  font-size:clamp(3.5rem,8.5vw,8rem)!important;
+  color:rgb(120 217 255/.17)!important;
+}
+.footer-grid{padding-top:2.4rem!important;padding-bottom:2rem!important}
+.footer-meta{padding-top:1rem!important;padding-bottom:1.2rem!important}
+
+@media (max-width:900px){
+  .header-inner{height:66px;grid-template-columns:1fr auto}.site-header.is-scrolled .header-inner{height:60px}.brand-image,.site-header.is-scrolled .brand-image{width:82px;height:35px}
+  .utility-hero{padding-top:6.3rem}.utility-hero h1{font-size:clamp(2.65rem,10.5vw,4.25rem)}
+  .catalogue-hub-hero{min-height:auto;padding-top:6.5rem}.catalogue-hub-copy h1{font-size:clamp(3rem,12vw,5rem)}
+  .division-catalogue-hero,.family-catalogue-hero{padding-top:6.5rem}.division-catalogue-hero h1,.family-catalogue-hero h1{font-size:clamp(2.9rem,12vw,4.8rem)}
+  .product-examination-section{padding-top:6.4rem}.product-examination-summary h1{font-size:clamp(2.75rem,11.5vw,4.6rem)}
+  .company-proof-placeholder{min-height:330px}.contact-featured-route{min-height:390px}
+  .footer-display{min-height:145px!important;max-height:165px}.footer-display span{font-size:clamp(2.5rem,12vw,5rem)!important}
+}
+
+@media (max-width:620px){
+  .hero-type{font-size:clamp(3.15rem,15vw,5rem)}
+  .section-intro h2{font-size:clamp(2.6rem,12vw,4rem)}
+  .function-lines>a>strong{font-size:clamp(2.35rem,11vw,3.8rem)}
+  .utility-hero::after{display:none}
+  .utility-hero h1{font-size:clamp(2.45rem,11.5vw,3.75rem)}
+  .catalogue-hub-copy h1,.division-catalogue-hero h1,.family-catalogue-hero h1{font-size:clamp(2.75rem,13vw,4.2rem)}
+  .footer-display{display:none}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .v2-phase8-5-ui-readiness *{scroll-behavior:auto}
+}

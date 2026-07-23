@@ -21,17 +21,9 @@ const families = [
   { index: "08", name: "Nail & Cuticle", route: "/products/beauty/nail-cuticle", division: "Beauty", function: "Refine" }
 ] as const;
 
-function clamp(value: number, minimum: number, maximum: number) {
-  return Math.min(maximum, Math.max(minimum, value));
-}
-
 export function DiscoveryExperience() {
   const [activeDivision, setActiveDivision] = useState(0);
   const divisionItems = useRef<Array<HTMLAnchorElement | null>>([]);
-  const familySection = useRef<HTMLElement>(null);
-  const familyViewport = useRef<HTMLDivElement>(null);
-  const familyTrack = useRef<HTMLDivElement>(null);
-  const frame = useRef<number | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(entries => {
@@ -45,53 +37,6 @@ export function DiscoveryExperience() {
 
     divisionItems.current.forEach(item => item && observer.observe(item));
     return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const narrow = window.matchMedia("(max-width: 900px)");
-
-    const updateFamily = () => {
-      const section = familySection.current;
-      const viewport = familyViewport.current;
-      const track = familyTrack.current;
-      if (!section || !viewport || !track) return;
-
-      if (reduced.matches || narrow.matches) {
-        section.style.removeProperty("height");
-        section.style.setProperty("--family-progress", "0");
-        track.style.transform = "none";
-        frame.current = null;
-        return;
-      }
-
-      const maximumShift = Math.max(0, track.scrollWidth - viewport.clientWidth);
-      const travel = Math.max(window.innerHeight * 1.25, maximumShift + window.innerHeight * 0.7);
-      section.style.height = `${travel + window.innerHeight}px`;
-      const rect = section.getBoundingClientRect();
-      const progress = clamp(-rect.top / travel, 0, 1);
-      section.style.setProperty("--family-progress", progress.toFixed(4));
-      track.style.transform = `translate3d(${-maximumShift * progress}px,0,0)`;
-      frame.current = null;
-    };
-
-    const requestUpdate = () => {
-      if (frame.current === null) frame.current = window.requestAnimationFrame(updateFamily);
-    };
-
-    updateFamily();
-    window.addEventListener("scroll", requestUpdate, { passive: true });
-    window.addEventListener("resize", requestUpdate);
-    reduced.addEventListener("change", requestUpdate);
-    narrow.addEventListener("change", requestUpdate);
-
-    return () => {
-      window.removeEventListener("scroll", requestUpdate);
-      window.removeEventListener("resize", requestUpdate);
-      reduced.removeEventListener("change", requestUpdate);
-      narrow.removeEventListener("change", requestUpdate);
-      if (frame.current !== null) window.cancelAnimationFrame(frame.current);
-    };
   }, []);
 
   const active = divisions[activeDivision];
@@ -137,17 +82,16 @@ export function DiscoveryExperience() {
       </div>
     </section>
 
-    <section ref={familySection} className="family-discovery" aria-labelledby="family-title">
+    <section className="family-discovery family-discovery-static" aria-labelledby="family-title">
       <div className="family-sticky-stage">
-        <header className="container family-discovery-heading"><div><p className="eyebrow">03 · FAMILY INDEX</p><h2 id="family-title">Enter through the family.</h2></div><p>Vertical scrolling advances the archive on larger screens. Every panel remains a direct catalogue link.</p></header>
-        <div ref={familyViewport} className="family-track-viewport">
-          <div ref={familyTrack} className="family-track">{families.map(family => <Link className="family-panel" href={family.route} key={family.route}>
+        <header className="container family-discovery-heading"><div><p className="eyebrow">03 · FAMILY INDEX</p><h2 id="family-title">Enter through the family.</h2></div><p>Every family is presented as a complete direct catalogue route before motion choreography is introduced.</p></header>
+        <div className="family-track-viewport">
+          <div className="family-track">{families.map(family => <Link className="family-panel" href={family.route} key={family.route}>
             <header><span>{family.index}</span><small>{family.division}</small></header>
             <div className="family-panel-object" aria-hidden="true"><span /><span /><i /></div>
             <div><p>{family.function}</p><h3>{family.name}</h3><b>Open family ↗</b></div>
           </Link>)}</div>
         </div>
-        <div className="container family-progress" aria-hidden="true"><span>START</span><i><b /></i><span>END</span></div>
       </div>
     </section>
   </>;

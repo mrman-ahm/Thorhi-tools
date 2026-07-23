@@ -29,12 +29,16 @@ test.describe("Sector 7 global catalogue command", () => {
   });
 
   test("opens with Control+K and slash outside typing fields", async ({ page }) => {
+    await expect.poll(() => page.evaluate(() => document.body.dataset.searchReady)).toBe("true");
+
     await page.keyboard.press("Control+K");
-    await expect(page.getByRole("dialog", { name: "Find an instrument." })).toBeVisible();
+    const dialog = page.getByRole("dialog", { name: "Find an instrument." });
+    await expect(dialog).toBeVisible();
     await page.keyboard.press("Escape");
+    await expect(dialog).toBeHidden();
 
     await page.keyboard.press("/");
-    await expect(page.getByRole("dialog", { name: "Find an instrument." })).toBeVisible();
+    await expect(dialog).toBeVisible();
   });
 
   test("shows exact-code ranking and opens the active result with Enter", async ({ page }) => {

@@ -1,0 +1,98 @@
+/* Final screenshot-critic corrections for Phase 8.5 */
+html{scroll-behavior:auto}
+
+/* Keep the temporary logo visible without restoring the oversized header block. */
+.brand-image{width:108px;height:44px}
+.site-header.is-scrolled .brand-image{width:98px;height:40px}
+
+/* Family discovery must be a complete static composition before Anime.js. */
+.family-discovery-static{
+  height:auto!important;
+  padding:clamp(4.5rem,7vw,7rem) 0;
+  background:linear-gradient(180deg,#07100c,#0a1510);
+}
+.family-discovery-static .family-sticky-stage{
+  position:relative;
+  top:auto;
+  min-height:auto;
+  padding:0;
+  overflow:visible;
+  display:block;
+}
+.family-discovery-static .family-discovery-heading{
+  margin-bottom:clamp(2rem,4vw,3.5rem);
+}
+.family-discovery-static .family-track-viewport{
+  width:min(var(--container),calc(100% - 3rem));
+  margin-inline:auto;
+  padding:0;
+  overflow:visible;
+}
+.family-discovery-static .family-track{
+  width:auto;
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px;
+  transform:none!important;
+  will-change:auto;
+}
+.family-discovery-static .family-panel{
+  width:auto;
+  min-height:390px;
+  border-radius:10px;
+  background:linear-gradient(145deg,#111f18,#09120e);
+}
+.family-discovery-static .family-panel-object{min-height:185px}
+.family-discovery-static .family-progress{display:none}
+
+/* Scissors history is now a readable static storyboard. Anime.js will later own its timeline. */
+.evolution-experience-static{padding-block:clamp(4.8rem,7vw,7.5rem)}
+.evolution-experience-static .evolution-heading{padding-bottom:clamp(2.5rem,4vw,4rem)}
+.evolution-static-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.evolution-experience-static .evolution-static-card{
+  min-height:auto;
+  display:grid;
+  grid-template-rows:minmax(300px,36vw) auto;
+  justify-content:stretch;
+  padding:0;
+  border:1px solid rgb(16 35 27/.18);
+  border-radius:10px;
+  overflow:hidden;
+  background:rgb(255 255 255/.34);
+  transform:none!important;
+}
+.evolution-static-visual{
+  position:relative;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  background:radial-gradient(circle at 52% 46%,rgb(34 216 127/.12),transparent 35%),linear-gradient(145deg,#09120e,#030504);
+}
+.evolution-static-visual.tone-amber{background:radial-gradient(circle at 52% 46%,rgb(255 154 54/.14),transparent 35%),linear-gradient(145deg,#21180c,#090704)}
+.evolution-static-visual.tone-blue{background:radial-gradient(circle at 52% 46%,rgb(33 168 232/.14),transparent 35%),linear-gradient(145deg,#071925,#03080c)}
+.evolution-static-visual.tone-green{background:radial-gradient(circle at 52% 46%,rgb(34 216 127/.14),transparent 35%),linear-gradient(145deg,#071b12,#030704)}
+.evolution-static-visual.tone-mint{background:radial-gradient(circle at 52% 46%,rgb(99 255 178/.14),transparent 35%),linear-gradient(145deg,#0a1812,#030704)}
+.evolution-static-visual .scene-scissors{width:min(68%,470px)}
+.evolution-static-visual>span{position:absolute;left:1rem;bottom:1rem;font:500 .5rem var(--font-mono);letter-spacing:.1em;color:#a9b9b1}
+.evolution-static-copy{padding:1.3rem}
+.evolution-static-copy>span{font:600 .57rem var(--font-mono);letter-spacing:.11em;color:#486057}
+.evolution-static-copy h3{margin:.7rem 0 .6rem;font:690 clamp(2rem,3.2vw,3.25rem)/.96 var(--font-display);letter-spacing:-.04em;text-transform:none;color:#0d1813}
+.evolution-static-copy p{margin:0;max-width:38rem;color:#3d5148}
+.evolution-experience-static .evolution-link{padding-top:2rem}
+
+@media (max-width:1100px){
+  .family-discovery-static .family-track{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:900px){
+  .brand-image,.site-header.is-scrolled .brand-image{width:96px;height:40px}
+  .evolution-static-grid{grid-template-columns:1fr}
+  .evolution-experience-static .evolution-static-card{grid-template-columns:minmax(220px,.7fr) minmax(0,1fr);grid-template-rows:auto}
+}
+@media (max-width:620px){
+  .family-discovery-static{padding:4rem 0}
+  .family-discovery-static .family-track-viewport{width:min(100% - 2.5rem,var(--container))}
+  .family-discovery-static .family-track{grid-template-columns:1fr}
+  .family-discovery-static .family-panel{min-height:340px}
+  .evolution-experience-static .evolution-static-card{grid-template-columns:1fr;grid-template-rows:260px auto}
+  .evolution-static-copy h3{font-size:clamp(1.9rem,10vw,2.8rem)}
+}
