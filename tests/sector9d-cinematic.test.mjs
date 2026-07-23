@@ -64,8 +64,9 @@ test("media perimeter fades without blurring the instrument", () => {
   assert.doesNotMatch(styles, /(?:^|[;{\s])filter:\s*blur\(/m);
 });
 
-test("build pipeline accepts the exact approved MP4 and 260-frame archive", () => {
-  assert.match(prepare, /Instruments_reveal_vanish_sequence_202607231803\.mp4/);
+test("build pipeline accepts only the corrected approved MP4 and 260-frame archive", () => {
+  assert.match(prepare, /Medical_instruments_moving_on_black_202607231715\.mp4/);
+  assert.doesNotMatch(prepare, /Instruments_reveal_vanish_sequence_202607231803\.mp4/);
   assert.match(prepare, /ezgif-35dd2244dafee1ab-jpg\.zip/);
   assert.match(prepare, /frames\.length !== frameCount/);
   assert.match(prepare, /import\("sharp"\)/);
