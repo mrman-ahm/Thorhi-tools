@@ -13,7 +13,18 @@ function syntheticSprite() {
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">${cells}</svg>`;
 }
 
-async function installSprite(page: import("@playwright/test").Page) {
+async function installSyntheticMedia(page: import("@playwright/test").Page) {
+  await page.route("**/media/sector9d/manifest.json", route => route.fulfill({
+    status: 200,
+    contentType: "application/json",
+    body: JSON.stringify({
+      available: true,
+      intro: null,
+      sprite: "/media/sector9d/evolution-sprite.webp",
+      frameCount: 260,
+      reason: "playwright-synthetic"
+    })
+  }));
   await page.route("**/media/sector9d/evolution-sprite.webp", route => route.fulfill({
     status: 200,
     contentType: "image/svg+xml",
@@ -29,8 +40,8 @@ async function scrollSequenceTo(page: import("@playwright/test").Page, progress:
   }, progress);
 }
 
-test("opening cinematic plays as the native-scroll first stage and hands off to the brand hero", async ({ page }) => {
-  await installSprite(page);
+test("opening cinematic is the native-scroll first stage and hands off to the brand hero", async ({ page }) => {
+  await installSyntheticMedia(page);
   await page.goto("/");
   const entry = page.locator(".cinematic-entry");
   await expect(entry).toBeVisible();
@@ -45,7 +56,7 @@ test("opening cinematic plays as the native-scroll first stage and hands off to 
 });
 
 test("frame sequence chapter copy changes only after analyzed frame boundaries", async ({ page }) => {
-  await installSprite(page);
+  await installSyntheticMedia(page);
   await page.goto("/");
   const section = page.locator(".frame-evolution-section");
   await section.scrollIntoViewIfNeeded();
@@ -69,7 +80,7 @@ test("frame sequence chapter copy changes only after analyzed frame boundaries",
 });
 
 test("sequence uses one canvas and preserves the black-stage edge feather", async ({ page }) => {
-  await installSprite(page);
+  await installSyntheticMedia(page);
   await page.goto("/");
   const section = page.locator(".frame-evolution-section");
   await section.scrollIntoViewIfNeeded();
@@ -84,7 +95,7 @@ test("sequence uses one canvas and preserves the black-stage edge feather", asyn
 });
 
 test("exit segment reaches frames 248 through 260 without introducing a fifth text chapter", async ({ page }) => {
-  await installSprite(page);
+  await installSyntheticMedia(page);
   await page.goto("/");
   const section = page.locator(".frame-evolution-section");
   await section.scrollIntoViewIfNeeded();
@@ -96,16 +107,16 @@ test("exit segment reaches frames 248 through 260 without introducing a fifth te
 
 test("reduced motion shows a static cinematic and all chapter copy", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
-  await installSprite(page);
+  await installSyntheticMedia(page);
   await page.goto("/");
-  await expect(page.locator(".cinematic-entry video")).toBeHidden();
+  await expect(page.locator(".cinematic-entry video")).toHaveCount(0);
   const chapters = page.locator(".frame-evolution-copy");
   await expect(chapters).toHaveCount(4);
   for (let index = 0; index < 4; index += 1) await expect(chapters.nth(index)).toBeVisible();
 });
 
 test("cinematic routes remain accessible and free of horizontal overflow", async ({ page }, testInfo) => {
-  await installSprite(page);
+  await installSyntheticMedia(page);
   await page.goto("/");
   await page.waitForTimeout(900);
   const dimensions = await page.evaluate(() => ({
