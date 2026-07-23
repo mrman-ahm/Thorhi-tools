@@ -10,6 +10,7 @@
   transform:translate3d(0,calc(var(--cinematic-progress) * -100svh),0)!important;
   opacity:1!important;
   box-shadow:0 44px 90px rgb(0 0 0/.68),0 10px 24px rgb(0 0 0/.46);
+  will-change:transform;
 }
 
 .cinematic-entry-sticky::after{
@@ -69,6 +70,16 @@
   object-fit:contain;
 }
 
+/* Preserve the 16:9 geometry of the supplied 1280 × 720 frames.
+   The previous tall stage forced crop and extra upscaling, making otherwise clean frames appear soft. */
+.frame-evolution-stage{
+  width:100%;
+  height:auto!important;
+  min-height:0!important;
+  max-height:min(68svh,720px);
+  aspect-ratio:16/9;
+}
+
 .frame-evolution-stage canvas{
   image-rendering:auto;
 }
@@ -81,6 +92,12 @@
 
   .hero-brand-mark{
     width:min(86%,520px);
+  }
+
+  .frame-evolution-stage{
+    width:min(100%,920px);
+    max-height:52svh;
+    justify-self:center;
   }
 }
 
@@ -101,6 +118,10 @@
   .brand-image{
     width:108px;
     height:48px;
+  }
+
+  .frame-evolution-stage{
+    max-height:42svh;
   }
 }
 
