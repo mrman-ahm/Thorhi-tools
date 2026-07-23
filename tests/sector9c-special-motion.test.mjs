@@ -12,8 +12,10 @@ const styles = readFileSync("src/app/v2-sector9c.css", "utf8");
 
 const combined = `${hero}\n${instrument}\n${scenes}\n${productMotion}\n${discovery}\n${styles}`;
 
-test("hero uses Anime.js scroll synchronisation and SVG drawing", () => {
-  assert.match(hero, /onScroll/);
+test("hero uses deterministic Anime.js scroll seeking and SVG drawing", () => {
+  assert.match(hero, /autoplay: false/);
+  assert.match(hero, /animation\.seek\(animation\.duration \* progress/);
+  assert.match(hero, /addEventListener\("scroll"/);
   assert.match(hero, /svg\.createDrawable/);
   assert.match(hero, /instrument-half-upper/);
   assert.match(hero, /instrument-half-lower/);
