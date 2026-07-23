@@ -45,6 +45,11 @@
   pointer-events:none;
 }
 
+.cinematic-entry[data-exit-state="cleared"]{
+  z-index:0;
+  pointer-events:none;
+}
+
 .hero-brand-mark{
   width:min(82%,560px);
 }
@@ -130,6 +135,7 @@
     height:auto!important;
     min-height:100svh;
     margin-bottom:0;
+    pointer-events:auto;
   }
 
   .cinematic-entry-sticky{
