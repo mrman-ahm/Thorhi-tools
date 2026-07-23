@@ -57,12 +57,18 @@ function drawFrame(canvas: HTMLCanvasElement, image: HTMLImageElement, frame: nu
 export function FrameEvolutionScene() {
   const sectionRef = useRef<HTMLElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const readoutRef = useRef<HTMLElement>(null);
   const imageRef = useRef<HTMLImageElement | null>(null);
   const frameRequest = useRef<number | null>(null);
   const targetFrame = useRef(1);
   const renderedFrame = useRef(1);
+  const activeChapterRef = useRef(0);
   const [activeChapter, setActiveChapter] = useState(0);
   const [mediaState, setMediaState] = useState<"loading" | "ready" | "error">("loading");
+
+  useEffect(() => {
+    activeChapterRef.current = activeChapter;
+  }, [activeChapter]);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -88,9 +94,13 @@ export function FrameEvolutionScene() {
       const frame = Math.round(renderedFrame.current);
       drawFrame(canvas, image, frame);
       section.dataset.renderedFrame = String(frame);
+      if (readoutRef.current) readoutRef.current.textContent = String(frame).padStart(3, "0");
 
       const nextChapter = chapterIndexForFrame(frame);
-      setActiveChapter(previous => previous === nextChapter ? previous : nextChapter);
+      if (nextChapter !== activeChapterRef.current) {
+        activeChapterRef.current = nextChapter;
+        setActiveChapter(nextChapter);
+      }
 
       if (Math.abs(targetFrame.current - renderedFrame.current) > 0.35) {
         frameRequest.current = window.requestAnimationFrame(render);
@@ -108,7 +118,7 @@ export function FrameEvolutionScene() {
       const rect = section.getBoundingClientRect();
       const distance = Math.max(section.offsetHeight - window.innerHeight, 1);
       const progress = Math.min(1, Math.max(0, -rect.top / distance));
-      const frame = reduced.matches ? EVOLUTION_CHAPTERS[activeChapter].startFrame : frameForEvolutionProgress(progress);
+      const frame = reduced.matches ? EVOLUTION_CHAPTERS[activeChapterRef.current].startFrame : frameForEvolutionProgress(progress);
       targetFrame.current = frame;
       section.style.setProperty("--evolution-sequence-progress", progress.toFixed(4));
       section.dataset.targetFrame = String(frame);
@@ -136,7 +146,7 @@ export function FrameEvolutionScene() {
       if (frameRequest.current !== null) window.cancelAnimationFrame(frameRequest.current);
       imageRef.current = null;
     };
-  }, [activeChapter]);
+  }, []);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -144,7 +154,7 @@ export function FrameEvolutionScene() {
 
     const scope = createScope({ root: sectionRef }).add(() => {
       const active = section.querySelector<HTMLElement>(`.frame-evolution-copy[data-chapter="${activeChapter}"]`);
-      const parts = active ? Array.from(active.querySelectorAll<HTMLElement>("span, h3, p")) : [];
+      const parts = active ? Array.from(active.querySelectorAll<HTMLElement>("span, h3, p, small")) : [];
       const timeline = createTimeline({ defaults: { ease: "out(5)" } });
       if (parts.length) timeline.add(parts, {
         opacity: { from: 0 },
@@ -185,7 +195,7 @@ export function FrameEvolutionScene() {
           <canvas ref={canvasRef} aria-hidden="true" />
           <div className="frame-evolution-fallback" aria-hidden="true"><span>EVOLUTION SEQUENCE</span><small>MEDIA LOADING</small></div>
           <div className="frame-evolution-feather" aria-hidden="true" />
-          <div className="frame-evolution-frame-readout" aria-hidden="true"><span>FRAME</span><b>{String(Number(sectionRef.current?.dataset.renderedFrame ?? 1)).padStart(3, "0")}</b><small>/ 260</small></div>
+          <div className="frame-evolution-frame-readout" aria-hidden="true"><span>FRAME</span><b ref={readoutRef}>001</b><small>/ 260</small></div>
         </div>
 
         <div className="frame-evolution-copy-stack" aria-live="polite">
