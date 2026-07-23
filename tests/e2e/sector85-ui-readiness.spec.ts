@@ -63,7 +63,8 @@ test("pre-motion foundation avoids smooth scrolling, broad clipping, and permane
     scrollBehavior: getComputedStyle(document.documentElement).scrollBehavior,
     bodyBackground: getComputedStyle(document.body).backgroundImage,
     mainOverflow: getComputedStyle(document.querySelector("main")!).overflowX,
-    sectionOverflow: getComputedStyle(document.querySelector(".macro-stage")!).overflowX,
+    genericSectionOverflow: getComputedStyle(document.querySelector(".section-intro")!).overflowX,
+    intentionalCanvasOverflow: getComputedStyle(document.querySelector(".inspection-canvas")!).overflowX,
     willChange: [".family-track", ".hero-type", ".hero-object", ".division-discovery-item", ".evolution-layer"].map(selector => ({
       selector,
       value: getComputedStyle(document.querySelector(selector)!).willChange
@@ -73,7 +74,8 @@ test("pre-motion foundation avoids smooth scrolling, broad clipping, and permane
   expect(foundation.scrollBehavior).toBe("auto");
   expect(foundation.bodyBackground).not.toContain("repeating-linear-gradient");
   expect(foundation.mainOverflow).toBe("visible");
-  expect(foundation.sectionOverflow).toBe("visible");
+  expect(foundation.genericSectionOverflow).toBe("visible");
+  expect(["hidden", "clip"]).toContain(foundation.intentionalCanvasOverflow);
   expect(foundation.willChange.every(item => item.value === "auto")).toBe(true);
 });
 
