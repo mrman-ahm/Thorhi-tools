@@ -1,10 +1,12 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
+import { clearCinematicCover } from "./helpers/cinematic";
 
 test.beforeEach(async ({ page }) => {
   await page.goto("/");
   await page.evaluate(() => window.localStorage.clear());
   await page.reload();
+  await clearCinematicCover(page);
 });
 
 test("renders the homepage without horizontal overflow", async ({ page }, testInfo) => {
@@ -30,6 +32,7 @@ test("persists inquiry selections and prevents duplicate additions", async ({ pa
   await expect(page.getByText("1 ITEM SAVED")).toBeVisible();
   await expect.poll(() => page.evaluate(() => JSON.parse(window.localStorage.getItem("throhi-inquiry-v2") ?? "{}").items?.length)).toBe(1);
   await page.reload();
+  await clearCinematicCover(page);
   await expect(firstProduct.getByRole("button", { name: "Added to inquiry ✓" })).toBeVisible();
   await expect(page.getByText("1 ITEM SAVED")).toBeVisible();
 });
