@@ -29,16 +29,15 @@ export function CinematicIntro() {
     window.sessionStorage.setItem(SESSION_KEY, "1");
     if (reduced.matches) {
       setState("reduced");
-      return;
+    } else {
+      setState("active");
+      const attempt = video.play();
+      attempt?.then(() => setState("playing")).catch(() => setState("fallback"));
     }
-
-    setState("active");
-    const attempt = video.play();
-    attempt?.then(() => setState("playing")).catch(() => setState("fallback"));
 
     const update = () => {
       const rect = section.getBoundingClientRect();
-      const travel = Math.max(section.offsetHeight - window.innerHeight, 1);
+      const travel = Math.max(window.innerHeight, 1);
       const progress = Math.min(1, Math.max(0, -rect.top / travel));
       section.style.setProperty("--intro-progress", progress.toFixed(4));
       section.dataset.exited = progress > 0.94 ? "true" : "false";
