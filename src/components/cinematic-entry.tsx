@@ -4,20 +4,47 @@ import { createScope, createTimeline } from "animejs";
 import type { CSSProperties } from "react";
 import { useEffect, useRef, useState } from "react";
 
-const INTRO_VIDEO = "/media/sector9d/intro.mp4";
+type MediaManifest = {
+  available: boolean;
+  intro: string | null;
+};
 
 export function CinematicEntry() {
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const frameRef = useRef<number | null>(null);
+  const [videoSource, setVideoSource] = useState<string | null>(null);
+  const [motionAllowed, setMotionAllowed] = useState(false);
   const [mediaState, setMediaState] = useState<"loading" | "ready" | "error">("loading");
 
   useEffect(() => {
+    const controller = new AbortController();
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updateMotionPreference = () => setMotionAllowed(!reduced.matches);
+    updateMotionPreference();
+    reduced.addEventListener("change", updateMotionPreference);
+
+    void fetch("/media/sector9d/manifest.json", { signal: controller.signal })
+      .then(response => response.ok ? response.json() as Promise<MediaManifest> : Promise.reject(new Error("Media manifest unavailable")))
+      .then(manifest => {
+        if (manifest.available && manifest.intro) setVideoSource(manifest.intro);
+        else setMediaState("error");
+      })
+      .catch(error => {
+        if (error instanceof DOMException && error.name === "AbortError") return;
+        setMediaState("error");
+      });
+
+    return () => {
+      controller.abort();
+      reduced.removeEventListener("change", updateMotionPreference);
+    };
+  }, []);
+
+  useEffect(() => {
     const section = sectionRef.current;
-    const video = videoRef.current;
     if (!section) return;
 
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
     const scope = createScope({ root: sectionRef }).add(() => {
       const index = section.querySelector<HTMLElement>(".cinematic-entry-index");
       const title = section.querySelector<HTMLElement>(".cinematic-entry-title");
@@ -49,23 +76,23 @@ export function CinematicEntry() {
     update();
     window.addEventListener("scroll", requestUpdate, { passive: true });
     window.addEventListener("resize", requestUpdate);
-    reduced.addEventListener("change", requestUpdate);
-
-    if (!reduced.matches && video) {
-      video.muted = true;
-      void video.play().catch(() => setMediaState("error"));
-    }
 
     return () => {
       scope.revert();
-      video?.pause();
       window.removeEventListener("scroll", requestUpdate);
       window.removeEventListener("resize", requestUpdate);
-      reduced.removeEventListener("change", requestUpdate);
       if (frameRef.current !== null) window.cancelAnimationFrame(frameRef.current);
       delete document.body.dataset.cinematicActive;
     };
   }, []);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || !motionAllowed || !videoSource) return;
+    video.muted = true;
+    void video.play().catch(() => setMediaState("error"));
+    return () => video.pause();
+  }, [motionAllowed, videoSource]);
 
   const skip = () => {
     const section = sectionRef.current;
@@ -87,16 +114,16 @@ export function CinematicEntry() {
   >
     <div className="cinematic-entry-sticky">
       <div className="cinematic-entry-media" aria-hidden="true">
-        <video
+        {videoSource && motionAllowed ? <video
           ref={videoRef}
-          src={INTRO_VIDEO}
+          src={videoSource}
           muted
           playsInline
           preload="auto"
           onCanPlay={() => setMediaState("ready")}
           onError={() => setMediaState("error")}
           onEnded={event => { event.currentTarget.dataset.ended = "true"; }}
-        />
+        /> : null}
         <div className="cinematic-entry-fallback"><span>THROHI</span><small>MEDICAL TOOLS</small></div>
         <div className="cinematic-entry-feather" />
       </div>
