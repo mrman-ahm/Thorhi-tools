@@ -152,23 +152,26 @@ This phase does not change:
 - duplicate-submission handling
 - migration pipeline
 
-## Required validation
+## Final validation
+
+Passed on final commit `75c1bfb4dd04d66dbf35e91132802b72a94db6ba` through workflow run `29999247898`:
 
 - ESLint
 - strict TypeScript
-- unit tests
+- unit and catalogue-pipeline tests
 - production build
 - desktop and mobile Chromium
 - all primary route overflow checks
 - automated accessibility scans
 - typography ceilings
-- header proportions
+- reviewed header proportions
 - clinical intermission palette
-- footer height
+- footer-height limits
 - family and scissors runway limits
 - deterministic search-command hydration
+- catalogue, search, inquiry, API, and migration regressions
 - screenshot generation
 
 ## Exit condition
 
-The interface is ready for the Anime.js motion phase only when this branch is green and the rendered desktop/mobile critic pass confirms that no remaining static weakness would be hidden by animation.
+The interface is ready for the Anime.js motion phase. Pull request #13 remains a review checkpoint and should be merged before the Anime.js branch is created from `main`.
