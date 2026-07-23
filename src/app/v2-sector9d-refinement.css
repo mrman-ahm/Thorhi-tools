@@ -10,7 +10,6 @@
   transform:translate3d(0,calc(var(--cinematic-progress) * -100svh),0)!important;
   opacity:1!important;
   box-shadow:0 44px 90px rgb(0 0 0/.68),0 10px 24px rgb(0 0 0/.46);
-  will-change:transform;
 }
 
 .cinematic-entry-sticky::after{
