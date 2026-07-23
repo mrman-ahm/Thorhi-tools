@@ -1,5 +1,24 @@
 import { expect, test } from "@playwright/test";
 
+function syntheticSprite() {
+  const width = 12 * 240;
+  const height = 22 * 135;
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}"><rect width="100%" height="100%" fill="#030504"/><path d="M40 98 L200 36" stroke="#b9d7c8" stroke-width="8"/></svg>`;
+}
+
+async function installEvolutionMedia(page: import("@playwright/test").Page) {
+  await page.route("**/media/sector9d/manifest.json", route => route.fulfill({
+    status: 200,
+    contentType: "application/json",
+    body: JSON.stringify({ available: true, intro: null, sprite: "/media/sector9d/evolution-sprite.webp", frameCount: 260 })
+  }));
+  await page.route("**/media/sector9d/evolution-sprite.webp", route => route.fulfill({
+    status: 200,
+    contentType: "image/svg+xml",
+    body: syntheticSprite()
+  }));
+}
+
 async function scrollSequenceTo(page: import("@playwright/test").Page, progress: number) {
   await page.locator(".frame-evolution-section").evaluate((element, value) => {
     const section = element as HTMLElement;
@@ -10,6 +29,7 @@ async function scrollSequenceTo(page: import("@playwright/test").Page, progress:
 
 test.describe("Sector 5 signature visual scenes", () => {
   test.beforeEach(async ({ page }) => {
+    await installEvolutionMedia(page);
     await page.goto("/");
   });
 
@@ -45,6 +65,7 @@ test.describe("Sector 5 signature visual scenes", () => {
     test.skip(testInfo.project.name !== "desktop-chromium", "Pinned chapter progression is desktop-only");
     const scene = page.locator(".frame-evolution-section");
     await scene.scrollIntoViewIfNeeded();
+    await expect(scene).toHaveAttribute("data-media-state", "ready");
     await scrollSequenceTo(page, 0.60);
     await expect.poll(() => scene.getAttribute("data-active-chapter")).toBe("2");
     await expect(scene.locator('.frame-evolution-copy[data-chapter="2"]')).toHaveAttribute("data-active", "true");
