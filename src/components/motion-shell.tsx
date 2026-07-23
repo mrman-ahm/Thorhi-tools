@@ -6,7 +6,7 @@ import type { ReactNode } from "react";
 import { useEffect, useRef } from "react";
 
 const SECTION_SELECTOR = [
-  "main > section:not(.v2-hero)",
+  "main > section:not(.v2-hero):not(.frame-evolution-section)",
   ".utility-section",
   ".family-listing-section",
   ".related-object-section",
