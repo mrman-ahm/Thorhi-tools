@@ -2,8 +2,10 @@
 
 Place the two approved source files in this directory with these exact names:
 
-- `Instruments_reveal_vanish_sequence_202607231803.mp4`
+- `Medical_instruments_moving_on_black_202607231715.mp4`
 - `ezgif-35dd2244dafee1ab-jpg.zip`
+
+The MP4 is the approved 8-second, 1280×720, 24 FPS opening cinematic. Do not substitute the earlier reveal/vanish file.
 
 The ZIP must contain exactly 260 JPG frames. Frame filenames may keep their original `ezgif-frame-001.jpg` style; the build sorts them by their trailing frame number.
 

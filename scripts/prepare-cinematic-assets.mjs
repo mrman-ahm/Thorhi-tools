@@ -19,9 +19,7 @@ const frameCount = 260;
 const spriteColumns = 12;
 
 const originalIntroCandidates = [
-  "Instruments_reveal_vanish_sequence_202607231803.mp4",
-  "intro-source.mp4",
-  "intro.mp4"
+  "Medical_instruments_moving_on_black_202607231715.mp4"
 ];
 const originalFrameArchiveCandidates = [
   "ezgif-35dd2244dafee1ab-jpg.zip",
