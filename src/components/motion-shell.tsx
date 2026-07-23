@@ -93,11 +93,11 @@ export function MotionShell({ children }: { children: ReactNode }) {
         const heroTimeline = createTimeline({ defaults: { ease: "out(5)" } });
         const heroIndex = rootElement.querySelectorAll<HTMLElement>(".hero-index > span");
         const heroWords = rootElement.querySelectorAll<HTMLElement>(".hero-type > span");
-        const heroObject = rootElement.querySelector<HTMLElement>(".hero-object");
+        const heroObjectParts = rootElement.querySelectorAll<HTMLElement>(".hero-object .instrument-visual > *");
         const heroMarkers = rootElement.querySelectorAll<HTMLElement>(".hero-marker");
         const heroStatement = rootElement.querySelectorAll<HTMLElement>(".hero-statement > p");
-        const heroSearch = rootElement.querySelector<HTMLElement>(".hero-search");
-        const heroScroll = rootElement.querySelector<HTMLElement>(".hero-scroll-note");
+        const heroSearchParts = rootElement.querySelectorAll<HTMLElement>(".hero-search > *");
+        const heroScrollParts = rootElement.querySelectorAll<HTMLElement>(".hero-scroll-note > *");
 
         if (heroIndex.length) heroTimeline.add(heroIndex, {
           opacity: { from: 0 },
@@ -112,13 +112,13 @@ export function MotionShell({ children }: { children: ReactNode }) {
           delay: stagger(narrowViewport ? 70 : 95),
           duration: narrowViewport ? 650 : 820
         }, 80);
-        if (heroObject) heroTimeline.add(heroObject, {
+        if (heroObjectParts.length) heroTimeline.add(heroObjectParts, {
           opacity: { from: 0 },
-          x: { from: narrowViewport ? 16 : 46 },
-          y: { from: narrowViewport ? 24 : 34 },
-          rotate: { from: narrowViewport ? 0.4 : 1.2 },
-          scale: { from: narrowViewport ? 0.985 : 0.965 },
-          duration: narrowViewport ? 720 : 930
+          x: { from: narrowViewport ? 12 : 30 },
+          y: { from: narrowViewport ? 18 : 28 },
+          scale: { from: narrowViewport ? 0.99 : 0.975 },
+          delay: stagger(45),
+          duration: narrowViewport ? 690 : 880
         }, 170);
         if (heroMarkers.length && !coarsePointer) heroTimeline.add(heroMarkers, {
           opacity: { from: 0 },
@@ -132,16 +132,17 @@ export function MotionShell({ children }: { children: ReactNode }) {
           delay: stagger(45),
           duration: 480
         }, 360);
-        if (heroSearch) heroTimeline.add(heroSearch, {
+        if (heroSearchParts.length) heroTimeline.add(heroSearchParts, {
           opacity: { from: 0 },
-          y: { from: 18 },
-          scale: { from: 0.992 },
-          duration: 590
+          y: { from: 15 },
+          delay: stagger(40),
+          duration: 540
         }, 430);
-        if (heroScroll && !narrowViewport) heroTimeline.add(heroScroll, {
+        if (heroScrollParts.length && !narrowViewport) heroTimeline.add(heroScrollParts, {
           opacity: { from: 0 },
-          y: { from: 10 },
-          duration: 440
+          y: { from: 8 },
+          delay: stagger(35),
+          duration: 420
         }, 610);
       } else {
         const routeHeroTargets = Array.from(rootElement.querySelectorAll<HTMLElement>([
@@ -225,7 +226,7 @@ export function MotionShell({ children }: { children: ReactNode }) {
         observers.push(menuObserver);
       }
 
-      const searchLayer = document.querySelector<HTMLElement>(".search-command-layer");
+      const searchLayer = rootElement.querySelector<HTMLElement>(".search-command-layer");
       if (searchLayer) {
         const animateSearchResults = () => {
           const results = Array.from(searchLayer.querySelectorAll<HTMLElement>(".search-command-result"));
