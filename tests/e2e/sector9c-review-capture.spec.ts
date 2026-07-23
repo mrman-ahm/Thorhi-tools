@@ -45,6 +45,11 @@ test("capture Sector 9D cinematic and synchronized sequence review", async ({ br
   });
   const page = await context.newPage();
   const video = page.video();
+  await page.route("**/media/sector9d/manifest.json", route => route.fulfill({
+    status: 200,
+    contentType: "application/json",
+    body: JSON.stringify({ available: true, intro: null, sprite: "/media/sector9d/evolution-sprite.webp", frameCount: 260 })
+  }));
   await page.route("**/media/sector9d/evolution-sprite.webp", route => route.fulfill({ status: 200, contentType: "image/svg+xml", body: syntheticSprite() }));
 
   await page.goto("/");
