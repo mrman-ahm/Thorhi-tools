@@ -1,5 +1,6 @@
 "use client";
 
+import { animate, createScope, createTimeline, stagger } from "animejs";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
@@ -27,6 +28,7 @@ function clamp(value: number, minimum: number, maximum: number) {
 
 export function DiscoveryExperience() {
   const [activeDivision, setActiveDivision] = useState(0);
+  const divisionSection = useRef<HTMLElement>(null);
   const divisionItems = useRef<Array<HTMLAnchorElement | null>>([]);
   const familySection = useRef<HTMLElement>(null);
   const familyViewport = useRef<HTMLDivElement>(null);
@@ -46,6 +48,59 @@ export function DiscoveryExperience() {
     divisionItems.current.forEach(item => item && observer.observe(item));
     return () => observer.disconnect();
   }, []);
+
+  useEffect(() => {
+    const section = divisionSection.current;
+    if (!section) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      section.dataset.specialMotion = "reduced";
+      return;
+    }
+
+    const scope = createScope({ root: divisionSection }).add(() => {
+      const axes = Array.from(section.querySelectorAll<HTMLElement>(".division-active-stage .stage-axis"));
+      const blades = Array.from(section.querySelectorAll<HTMLElement>(".division-active-stage .stage-blade"));
+      const pivot = section.querySelector<HTMLElement>(".division-active-stage .stage-pivot");
+      const indexParts = Array.from(section.querySelectorAll<HTMLElement>(".division-stage-index > *"));
+      const copyParts = Array.from(section.querySelectorAll<HTMLElement>(".division-stage-copy > *"));
+      const verbs = Array.from(section.querySelectorAll<HTMLElement>(".division-stage-copy span"));
+      const activeItem = divisionItems.current[activeDivision];
+      const activeItemParts = activeItem ? Array.from(activeItem.querySelectorAll<HTMLElement>(".division-number, strong, div, b")) : [];
+      const timeline = createTimeline({ defaults: { ease: "out(5)" } });
+
+      if (axes.length) timeline.add(axes, {
+        scaleX: { from: 0, to: 1 },
+        scaleY: { from: 0, to: 1 },
+        delay: stagger(45),
+        duration: 360
+      }, 0);
+      if (blades.length) timeline.add(blades, {
+        x: (_, index) => index === 0 ? [-18, 0] : [18, 0],
+        y: (_, index) => index === 0 ? [10, 0] : [-10, 0],
+        rotate: (_, index) => index === 0 ? [-7, 0] : [7, 0],
+        delay: stagger(55),
+        duration: 520
+      }, 50);
+      if (pivot) timeline.add(pivot, {
+        scale: [{ from: .7, to: 1.12, duration: 240 }, { to: 1, duration: 260 }],
+        rotate: { from: -28, to: 0 },
+        duration: 500
+      }, 180);
+      if (indexParts.length) timeline.add(indexParts, { y: { from: 8 }, delay: stagger(35), duration: 340 }, 180);
+      if (copyParts.length) timeline.add(copyParts, { x: { from: 12 }, delay: stagger(45), duration: 420 }, 250);
+      if (verbs.length) timeline.add(verbs, {
+        clipPath: ["inset(0 100% 0 0)", "inset(0 0% 0 0)"],
+        delay: stagger(55),
+        duration: 360,
+        ease: "inOutSine"
+      }, 330);
+      if (activeItemParts.length) timeline.add(activeItemParts, { x: { from: 8 }, delay: stagger(28), duration: 340 }, 80);
+
+      section.dataset.specialMotion = "ready";
+    });
+
+    return () => scope.revert();
+  }, [activeDivision]);
 
   useEffect(() => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -97,7 +152,7 @@ export function DiscoveryExperience() {
   const active = divisions[activeDivision];
 
   return <>
-    <section className="division-discovery" aria-labelledby="division-title" data-active-tone={active.tone} data-active-index={activeDivision}>
+    <section ref={divisionSection} className="division-discovery" aria-labelledby="division-title" data-active-tone={active.tone} data-active-index={activeDivision}>
       <header className="section-intro container"><p className="eyebrow">01 · FOUR DIVISIONS</p><h2 id="division-title">Four fields.<br /><span>One language of precision.</span></h2><p>Each division keeps a distinct working character while remaining part of one catalogue system.</p></header>
 
       <div className="container division-discovery-grid">
