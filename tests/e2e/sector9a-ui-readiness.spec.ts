@@ -67,7 +67,8 @@ test("representative routes remain accessible after readiness calibration", asyn
 test("readiness layer exposes stable reduced-motion composition", async ({ page, context }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
-  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1, name: "Built around the instrument." })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1, name: "PRECISION, BROUGHT ALIVE." })).toBeVisible();
   await expect(page.getByRole("searchbox").first()).toBeVisible();
   await expect(page.getByRole("button", { name: "Search", exact: true }).first()).toBeVisible();
   const bodyOverflow = await page.evaluate(() => getComputedStyle(document.body).overflowX);
