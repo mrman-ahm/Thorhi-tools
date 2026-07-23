@@ -3,9 +3,14 @@ import { expect, test } from "@playwright/test";
 
 function rotationFromMatrix(transform: string) {
   if (!transform || transform === "none") return 0;
-  const match = transform.match(/matrix\(([^)]+)\)/);
-  if (!match) return 0;
-  const values = match[1].split(",").map(Number);
+  const matrix3d = transform.match(/matrix3d\(([^)]+)\)/);
+  if (matrix3d) {
+    const values = matrix3d[1].split(",").map(Number);
+    return Math.atan2(values[1], values[0]) * 180 / Math.PI;
+  }
+  const matrix = transform.match(/matrix\(([^)]+)\)/);
+  if (!matrix) return 0;
+  const values = matrix[1].split(",").map(Number);
   return Math.atan2(values[1], values[0]) * 180 / Math.PI;
 }
 
@@ -49,6 +54,8 @@ test("hero opens blades around a fixed pivot within the approved angle", async (
 
   const upperAngle = rotationFromMatrix(after.upper);
   const lowerAngle = rotationFromMatrix(after.lower);
+  expect(Math.abs(upperAngle)).toBeGreaterThan(0.1);
+  expect(Math.abs(lowerAngle)).toBeGreaterThan(0.1);
   expect(Math.abs(upperAngle)).toBeLessThanOrEqual(4.8);
   expect(Math.abs(lowerAngle)).toBeLessThanOrEqual(4.8);
   expect(Math.sign(upperAngle)).not.toBe(Math.sign(lowerAngle));
@@ -108,11 +115,12 @@ test("product examination completes without delaying inquiry controls", async ({
   await page.goto("/products/surgical/scissors/operating-scissors");
   const motion = await waitForSpecialMotion(page, ".product-examination-motion");
   await expect(motion.locator(".product-stage-engraving")).toContainText("THR-SC-001");
-  const submit = page.getByRole("button", { name: /Add to inquiry: Operating Scissors/i });
+  const submit = page.locator(".catalogue-detail-submit");
   await expect(submit).toBeVisible();
   await expect(submit).toBeEnabled();
+  await expect(submit).toHaveAttribute("aria-label", /Add to inquiry: Operating Scissors/i);
   await submit.click();
-  await expect(submit).toHaveAttribute("aria-label", /Update inquiry details/);
+  await expect(submit).toHaveAttribute("aria-label", /Update inquiry details for: Operating Scissors/i);
 });
 
 test("mobile blade opening remains smaller than desktop", async ({ page }, testInfo) => {
@@ -126,7 +134,10 @@ test("mobile blade opening remains smaller than desktop", async ({ page }, testI
     const lower = document.querySelector<SVGGElement>(".hero-experience .instrument-half-lower");
     return [upper, lower].map(element => element ? getComputedStyle(element).transform : "none");
   });
-  transforms.forEach(transform => expect(Math.abs(rotationFromMatrix(transform))).toBeLessThanOrEqual(2.9));
+  transforms.forEach(transform => {
+    expect(Math.abs(rotationFromMatrix(transform))).toBeGreaterThan(0.1);
+    expect(Math.abs(rotationFromMatrix(transform))).toBeLessThanOrEqual(2.9);
+  });
 });
 
 test("reduced motion keeps the hero mechanism closed and fully readable", async ({ page }) => {
