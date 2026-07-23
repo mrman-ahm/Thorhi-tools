@@ -112,7 +112,7 @@ export function SiteHeader() {
     <div className="header-inner">
       <Link className="brand" href="/" aria-label="THROHI Medical Tools home">
         <span className="brand-index">TM / 01</span>
-        <span className="brand-image"><Image src="/brand/throhi-logo-clean.png" alt="THROHI Medical Tools" width={1347} height={1005} priority /></span>
+        <span className="brand-image"><Image src="/brand/throhi-logo-clean.webp" alt="THROHI Medical Tools" width={900} height={671} priority /></span>
       </Link>
       <nav className="desktop-nav" aria-label="Primary">{primaryLinks.map(([label, href]) => <Link key={label} href={href}>{label}</Link>)}</nav>
       <div className="header-actions">
