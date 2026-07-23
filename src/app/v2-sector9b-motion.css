@@ -1,0 +1,70 @@
+/* THROHI V2 — Sector 9B: Anime.js foundational motion */
+
+.motion-shell{display:contents}
+
+html[data-anime-motion="active"] .hero-experience .hero-index,
+html[data-anime-motion="active"] .hero-experience .hero-type,
+html[data-anime-motion="active"] .hero-experience .hero-object,
+html[data-anime-motion="active"] .hero-experience .hero-statement,
+html[data-anime-motion="active"] .hero-experience .hero-search,
+html[data-anime-motion="active"] .hero-experience .hero-scroll-note{
+  transition-property:none!important;
+}
+
+html[data-anime-motion="active"] .mobile-nav-primary a{
+  transition-property:background-color,color!important;
+}
+
+html[data-anime-motion="active"] .search-command-dialog,
+html[data-anime-motion="active"] .search-command-result{
+  will-change:transform,opacity;
+}
+
+html[data-anime-motion="active"] .hero-type>span,
+html[data-anime-motion="active"] .hero-object .instrument-visual>*,
+html[data-anime-motion="active"] .catalogue-object-card,
+html[data-anime-motion="active"] .family-panel,
+html[data-anime-motion="active"] .resource-document-card,
+html[data-anime-motion="active"] .contact-route-card{
+  backface-visibility:hidden;
+}
+
+html[data-anime-motion="active"] .site-header,
+html[data-anime-motion="active"] .hero-type,
+html[data-anime-motion="active"] .hero-object,
+html[data-anime-motion="active"] .hero-search,
+html[data-anime-motion="active"] .hero-statement,
+html[data-anime-motion="active"] .hero-scroll-note{
+  transform-style:preserve-3d;
+}
+
+@media (max-width:900px){
+  html[data-anime-motion="active"] .hero-marker,
+  html[data-anime-motion="active"] .hero-scroll-note{
+    will-change:auto;
+  }
+}
+
+@media (prefers-reduced-motion:reduce){
+  html[data-anime-motion="reduced"] *,
+  html[data-anime-motion="reduced"] *::before,
+  html[data-anime-motion="reduced"] *::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    scroll-behavior:auto!important;
+  }
+
+  html[data-anime-motion="reduced"] .hero-experience .hero-index,
+  html[data-anime-motion="reduced"] .hero-experience .hero-type,
+  html[data-anime-motion="reduced"] .hero-experience .hero-object,
+  html[data-anime-motion="reduced"] .hero-experience .hero-statement,
+  html[data-anime-motion="reduced"] .hero-experience .hero-search,
+  html[data-anime-motion="reduced"] .hero-experience .hero-scroll-note,
+  html[data-anime-motion="reduced"] .mobile-nav-primary a,
+  html[data-anime-motion="reduced"] .search-command-dialog,
+  html[data-anime-motion="reduced"] .search-command-result{
+    opacity:1!important;
+    transform:none!important;
+    transition:none!important;
+  }
+}
