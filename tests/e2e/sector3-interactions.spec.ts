@@ -10,7 +10,7 @@ test.describe("Sector 3 navigation and hero interaction", () => {
   test("compresses the header after scrolling and restores its initial state", async ({ page }) => {
     const header = page.locator(".site-header");
     await expect(header).toHaveAttribute("data-scrolled", "false");
-    await page.evaluate(() => window.scrollTo(0, 520));
+    await page.evaluate(() => window.scrollTo(0, 620));
     await expect.poll(() => header.getAttribute("data-scrolled")).toBe("true");
     await page.evaluate(() => window.scrollTo(0, 0));
     await expect.poll(() => header.getAttribute("data-scrolled")).toBe("false");
@@ -18,6 +18,7 @@ test.describe("Sector 3 navigation and hero interaction", () => {
   });
 
   test("traps menu focus, closes with Escape, and restores the trigger", async ({ page }) => {
+    await page.locator("#home-hero").scrollIntoViewIfNeeded();
     const trigger = page.getByRole("button", { name: "Open navigation menu" });
     await trigger.click();
 
@@ -35,26 +36,19 @@ test.describe("Sector 3 navigation and hero interaction", () => {
     await expect.poll(() => page.evaluate(() => document.body.dataset.menuOpen ?? "closed")).toBe("closed");
   });
 
-  test("updates the hero inspection position on fine pointers", async ({ page }, testInfo) => {
-    test.skip(testInfo.project.name !== "desktop-chromium", "Fine-pointer interaction is validated on desktop");
-    const hero = page.locator(".hero-experience");
-    const box = await hero.boundingBox();
-    expect(box).not.toBeNull();
-    if (!box) return;
-
-    await page.mouse.move(box.x + box.width * 0.22, box.y + box.height * 0.35);
-    await expect(hero).toHaveAttribute("data-inspecting", "true");
-    const position = await hero.evaluate(element => getComputedStyle(element).getPropertyValue("--hero-x").trim());
-    expect(position).not.toBe("72%");
-
-    await page.mouse.move(2, 2);
-    await expect(hero).not.toHaveAttribute("data-inspecting", "true");
+  test("replaces the removed hero inspection object with the THROHI identity", async ({ page }) => {
+    const hero = page.locator("#home-hero");
+    await hero.scrollIntoViewIfNeeded();
+    await expect(hero.locator(".hero-brand-stage")).toBeVisible();
+    await expect(hero.getByRole("img", { name: "THROHI Medical Tools identity mark" })).toBeVisible();
+    await expect(hero.locator(".instrument-half-upper")).toHaveCount(0);
+    await expect(hero).toHaveAttribute("data-special-motion", "identity-ready");
   });
 
   test("removes hero and header movement when reduced motion is requested", async ({ page }) => {
     await page.emulateMedia({ reducedMotion: "reduce" });
     await page.goto("/");
-    await page.evaluate(() => window.scrollTo(0, 520));
+    await page.evaluate(() => window.scrollTo(0, 620));
 
     const headingTransform = await page.locator(".hero-type").evaluate(element => getComputedStyle(element).transform);
     const headerTransform = await page.locator(".site-header").evaluate(element => getComputedStyle(element).transform);
