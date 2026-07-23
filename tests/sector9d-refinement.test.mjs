@@ -19,6 +19,13 @@ test("opening cinematic behaves as a rigid cover sliding over the real website",
   assert.doesNotMatch(styles, /opacity:calc\(1 - var\(--cinematic-progress\)/);
 });
 
+test("cleared cinematic cover releases the underlying homepage", () => {
+  assert.match(cinematic, /data\.exitState = cleared \? "cleared"/);
+  assert.match(cinematic, /section\.inert = cleared/);
+  assert.match(styles, /data-exit-state="cleared"/);
+  assert.match(styles, /pointer-events:none/);
+});
+
 test("evolution compiler generates higher-resolution responsive sprites", () => {
   assert.match(prepare, /cellWidth: 640/);
   assert.match(prepare, /cellHeight: 360/);
