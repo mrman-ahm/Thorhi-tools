@@ -13,6 +13,7 @@ export function CinematicEntry() {
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const frameRef = useRef<number | null>(null);
+  const clearedRef = useRef(false);
   const [videoSource, setVideoSource] = useState<string | null>(null);
   const [motionAllowed, setMotionAllowed] = useState(false);
   const [videoEnded, setVideoEnded] = useState(false);
@@ -71,6 +72,11 @@ export function CinematicEntry() {
       section.dataset.exitState = cleared ? "cleared" : progress > 0.04 ? "leaving" : "holding";
       section.inert = cleared;
 
+      if (cleared !== clearedRef.current) {
+        clearedRef.current = cleared;
+        window.dispatchEvent(new CustomEvent("throhi:cinematic-state", { detail: { cleared } }));
+      }
+
       if (progress < 0.94) document.body.dataset.cinematicActive = "true";
       else delete document.body.dataset.cinematicActive;
 
@@ -92,6 +98,7 @@ export function CinematicEntry() {
       window.removeEventListener("resize", requestUpdate);
       if (frameRef.current !== null) window.cancelAnimationFrame(frameRef.current);
       section.inert = false;
+      clearedRef.current = false;
       delete document.body.dataset.cinematicActive;
     };
   }, []);
