@@ -29,6 +29,13 @@ test("evolution compiler generates higher-resolution responsive sprites", () => 
   assert.match(prepare, /8192 texture ceiling/);
 });
 
+test("evolution stage preserves the original sixteen-by-nine frame geometry", () => {
+  assert.match(styles, /\.frame-evolution-stage\{/);
+  assert.match(styles, /aspect-ratio:16\/9/);
+  assert.match(styles, /height:auto!important/);
+  assert.match(styles, /min-height:0!important/);
+});
+
 test("homepage and header use the cleaned transparent THROHI identity", () => {
   assert.ok(existsSync("public/brand/throhi-logo-clean.webp"));
   assert.match(hero, /\/brand\/throhi-logo-clean\.webp/);
