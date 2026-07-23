@@ -170,7 +170,7 @@ export function SearchCommand() {
           aria-selected={index === activeIndex}
           className={`search-command-result match-${matchClass(result.reason)}`}
           key={result.product.id}
-          onMouseEnter={() => setActiveIndex(index)}
+          onPointerEnter={event => { if (event.pointerType === "mouse") setActiveIndex(index); }}
           onFocus={() => setActiveIndex(index)}
           onClick={() => goToProduct(result.product)}
         >
