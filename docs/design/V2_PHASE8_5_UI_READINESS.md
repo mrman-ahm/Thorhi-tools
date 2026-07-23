@@ -68,7 +68,7 @@ The vertical index, oversized white logo block, square counter, and hard control
 Corrections:
 
 - removed the decorative vertical index from visual presentation
-- reduced the temporary logo block
+- reduced the temporary logo block without making the logo illegible
 - softened header control radii and borders
 - reduced header height
 - retained search, inquiry, and menu access
@@ -109,16 +109,30 @@ Corrections:
 - reduced evidence, resource, contact, legal, success, and 404 heading scale
 - retained pale reading surfaces and explicit recovery paths
 
+### 8. Existing scroll scenes reserved space before motion was finalized
+
+The family passage and scissors-history sequence still relied on sticky layouts and long scroll runways. That made the static page feel incomplete and would have forced Anime.js to inherit competing motion logic.
+
+Corrections:
+
+- converted the family passage into a complete responsive grid
+- converted the scissors sequence into a complete four-card reconstruction storyboard
+- removed the native scissors scroll observer and active-chapter state
+- removed artificial vertical runway from both scenes
+- retained every family route, history chapter, label, and reconstruction disclaimer
+- preserved the macro examination as a direct accessible interaction
+
 ## Motion-readiness rules established
 
 - Anime.js is not installed in this phase.
 - No new motion is added.
-- Static composition must remain complete with all animation disabled.
+- Static composition remains complete with all animation disabled.
 - Native scrolling remains untouched.
 - Motion tokens are defined for the next phase but not yet used.
-- Transform targets must not be required for access to content.
+- Transform targets are not required for access to content.
 - Reduced-motion behavior remains mandatory.
 - Utility, legal, form, and failure routes remain low-motion zones.
+- Anime.js will own future family and scissors choreography rather than layering over old scroll observers.
 
 ## Protected behavior
 
@@ -151,6 +165,8 @@ This phase does not change:
 - header proportions
 - clinical intermission palette
 - footer height
+- family and scissors runway limits
+- deterministic search-command hydration
 - screenshot generation
 
 ## Exit condition
