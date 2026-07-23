@@ -31,9 +31,10 @@ test("opening cinematic uses native scroll rather than scroll locking", () => {
   assert.doesNotMatch(cinematic, /preventDefault\(\)|overflow\s*=\s*["']hidden|wheel/);
 });
 
-test("normal hero uses the THROHI logo instead of the scissors placeholder", () => {
+test("normal hero uses the cleaned THROHI logo instead of the scissors placeholder", () => {
   assert.match(hero, /hero-brand-stage/);
-  assert.match(hero, /\/logo\.webp/);
+  assert.match(hero, /\/brand\/throhi-logo-clean\.webp/);
+  assert.doesNotMatch(hero, /\/logo\.webp/);
   assert.doesNotMatch(hero, /InstrumentVisual/);
   assert.match(page, /CinematicEntry/);
   assert.match(page, /FrameEvolutionScene/);
