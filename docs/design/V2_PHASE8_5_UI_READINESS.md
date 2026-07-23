@@ -154,7 +154,9 @@ This phase does not change:
 
 ## Final validation
 
-Passed on final commit `75c1bfb4dd04d66dbf35e91132802b72a94db6ba` through workflow run `29999247898`:
+The complete code and browser matrix passed on workflow run `29999247898`. The documentation-only follow-up also passed on workflow run `29999625780`.
+
+Validated:
 
 - ESLint
 - strict TypeScript
