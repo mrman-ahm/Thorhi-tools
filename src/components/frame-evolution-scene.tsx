@@ -12,7 +12,10 @@ import {
   spriteCellForFrame
 } from "@/lib/evolution-frames";
 
-const SPRITE_URL = "/media/sector9d/evolution-sprite.webp";
+type MediaManifest = {
+  available: boolean;
+  sprite: string | null;
+};
 
 function drawFrame(canvas: HTMLCanvasElement, image: HTMLImageElement, frame: number) {
   const context = canvas.getContext("2d", { alpha: true });
@@ -75,11 +78,8 @@ export function FrameEvolutionScene() {
     const canvas = canvasRef.current;
     if (!section || !canvas) return;
 
+    const controller = new AbortController();
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const sprite = new Image();
-    sprite.decoding = "async";
-    sprite.src = SPRITE_URL;
-    imageRef.current = sprite;
 
     const render = () => {
       const image = imageRef.current;
@@ -125,14 +125,31 @@ export function FrameEvolutionScene() {
       requestRender();
     };
 
-    sprite.onload = () => {
-      setMediaState("ready");
-      renderedFrame.current = 1;
-      targetFrame.current = 1;
-      drawFrame(canvas, sprite, 1);
-      update();
+    const loadSprite = (source: string) => {
+      const sprite = new Image();
+      sprite.decoding = "async";
+      sprite.onload = () => {
+        imageRef.current = sprite;
+        setMediaState("ready");
+        renderedFrame.current = 1;
+        targetFrame.current = 1;
+        drawFrame(canvas, sprite, 1);
+        update();
+      };
+      sprite.onerror = () => setMediaState("error");
+      sprite.src = source;
     };
-    sprite.onerror = () => setMediaState("error");
+
+    void fetch("/media/sector9d/manifest.json", { signal: controller.signal })
+      .then(response => response.ok ? response.json() as Promise<MediaManifest> : Promise.reject(new Error("Media manifest unavailable")))
+      .then(manifest => {
+        if (manifest.available && manifest.sprite) loadSprite(manifest.sprite);
+        else setMediaState("error");
+      })
+      .catch(error => {
+        if (error instanceof DOMException && error.name === "AbortError") return;
+        setMediaState("error");
+      });
 
     update();
     window.addEventListener("scroll", update, { passive: true });
@@ -140,6 +157,7 @@ export function FrameEvolutionScene() {
     reduced.addEventListener("change", update);
 
     return () => {
+      controller.abort();
       window.removeEventListener("scroll", update);
       window.removeEventListener("resize", update);
       reduced.removeEventListener("change", update);
