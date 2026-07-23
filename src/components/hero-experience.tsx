@@ -1,6 +1,6 @@
 "use client";
 
-import { animate, createScope, createTimeline, onScroll, stagger, svg } from "animejs";
+import { animate, createScope, createTimeline, stagger, svg } from "animejs";
 import type { CSSProperties, PointerEvent as ReactPointerEvent } from "react";
 import { useEffect, useRef, useState } from "react";
 import { InstrumentVisual } from "@/components/instrument-visual";
@@ -11,9 +11,15 @@ const initialStyle = {
   "--hero-progress": "0"
 } as CSSProperties;
 
+type SeekableAnimation = {
+  duration: number;
+  seek: (time: number, muteCallbacks?: boolean) => unknown;
+};
+
 export function HeroExperience() {
   const sectionRef = useRef<HTMLElement>(null);
   const frameRef = useRef<number | null>(null);
+  const bladeAnimationsRef = useRef<SeekableAnimation[]>([]);
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
@@ -25,8 +31,10 @@ export function HeroExperience() {
       if (!section) return;
       const rect = section.getBoundingClientRect();
       const distance = Math.max(section.offsetHeight * 0.82, 1);
-      const progress = Math.min(1, Math.max(0, -rect.top / distance));
-      section.style.setProperty("--hero-progress", media.matches ? "0" : progress.toFixed(4));
+      const rawProgress = Math.min(1, Math.max(0, -rect.top / distance));
+      const progress = media.matches ? 0 : rawProgress;
+      section.style.setProperty("--hero-progress", progress.toFixed(4));
+      bladeAnimationsRef.current.forEach(animation => animation.seek(animation.duration * progress, true));
       frameRef.current = null;
     };
 
@@ -37,11 +45,13 @@ export function HeroExperience() {
     updateProgress();
     window.addEventListener("scroll", onNativeScroll, { passive: true });
     window.addEventListener("resize", onNativeScroll);
+    media.addEventListener("change", onNativeScroll);
 
     return () => {
       window.cancelAnimationFrame(readyFrame);
       window.removeEventListener("scroll", onNativeScroll);
       window.removeEventListener("resize", onNativeScroll);
+      media.removeEventListener("change", onNativeScroll);
       if (frameRef.current !== null) window.cancelAnimationFrame(frameRef.current);
     };
   }, []);
@@ -72,26 +82,24 @@ export function HeroExperience() {
 
       if (upperHalf && lowerHalf) {
         const openAngle = narrow ? 2.4 : 4.2;
-        animate(upperHalf, {
-          rotate: -openAngle,
+        const upperAnimation = animate(upperHalf, {
+          rotate: ["0deg", `${-openAngle}deg`],
+          duration: 1000,
           ease: "linear",
-          autoplay: onScroll({
-            target: section,
-            enter: "top top",
-            leave: "bottom top",
-            sync: narrow ? 0.42 : 0.3
-          })
+          autoplay: false
         });
-        animate(lowerHalf, {
-          rotate: openAngle,
+        const lowerAnimation = animate(lowerHalf, {
+          rotate: ["0deg", `${openAngle}deg`],
+          duration: 1000,
           ease: "linear",
-          autoplay: onScroll({
-            target: section,
-            enter: "top top",
-            leave: "bottom top",
-            sync: narrow ? 0.42 : 0.3
-          })
+          autoplay: false
         });
+        bladeAnimationsRef.current = [upperAnimation, lowerAnimation];
+
+        const rect = section.getBoundingClientRect();
+        const distance = Math.max(section.offsetHeight * 0.82, 1);
+        const initialProgress = Math.min(1, Math.max(0, -rect.top / distance));
+        bladeAnimationsRef.current.forEach(animation => animation.seek(animation.duration * initialProgress, true));
       }
 
       const calibration = createTimeline({ defaults: { ease: "out(5)" } });
@@ -148,6 +156,7 @@ export function HeroExperience() {
     });
 
     return () => {
+      bladeAnimationsRef.current = [];
       scope.revert();
       delete section.dataset.specialMotion;
     };
