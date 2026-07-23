@@ -191,7 +191,7 @@ export function FrameEvolutionScene() {
       </header>
 
       <div className="frame-evolution-layout container">
-        <div className="frame-evolution-stage" aria-label="Scroll-controlled evolution of cutting and surgical instruments">
+        <div className="frame-evolution-stage" role="img" aria-label="Scroll-controlled evolution of cutting and surgical instruments">
           <canvas ref={canvasRef} aria-hidden="true" />
           <div className="frame-evolution-fallback" aria-hidden="true"><span>EVOLUTION SEQUENCE</span><small>MEDIA LOADING</small></div>
           <div className="frame-evolution-feather" aria-hidden="true" />
