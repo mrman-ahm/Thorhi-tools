@@ -56,6 +56,19 @@ export function SiteHeader() {
   }, [open]);
 
   useEffect(() => {
+    const handleCinematicState = (event: Event) => {
+      const cleared = (event as CustomEvent<{ cleared?: boolean }>).detail?.cleared;
+      if (!cleared) return;
+      lastScroll.current = window.scrollY;
+      setScrolled(window.scrollY > 24);
+      setHidden(false);
+    };
+
+    window.addEventListener("throhi:cinematic-state", handleCinematicState);
+    return () => window.removeEventListener("throhi:cinematic-state", handleCinematicState);
+  }, []);
+
+  useEffect(() => {
     if (!open) return;
 
     const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : triggerRef.current;
