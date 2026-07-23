@@ -31,7 +31,7 @@ The hero SVG is divided into explicit mechanical groups:
 
 The upper and lower halves rotate around the same `447 × 460` SVG pivot. Desktop opening is capped at `4.2°` per half. Mobile opening is capped at `2.4°` per half.
 
-Anime.js `onScroll()` synchronises the small blade opening with native page scroll. The parent hero retains ownership of its existing departure transform.
+The existing native scroll loop calculates one bounded progress value. Two paused Anime.js animations render the upper and lower blade rotations, and `.seek()` advances both animations to the exact same progress. This replaced the initial `onScroll()` link after browser evidence showed inconsistent SVG-group advancement in this App Router context. The parent hero retains ownership of its existing departure transform.
 
 ## Measurement and annotation
 
@@ -93,7 +93,7 @@ Keyboard and touch-equivalent controls:
 
 The desktop stage now uses one persistent reconstruction mechanism. The active chapter changes its profile rather than replacing the stage with four unrelated DOM objects.
 
-The pivot remains fixed while blade angle, overall rotation, and horizontal profile change.
+The pivot remains fixed relative to the sticky visual stage while blade angle, overall rotation, and horizontal profile change.
 
 Mobile continues to use complete stacked chapter reconstructions.
 
@@ -150,6 +150,13 @@ The global `MotionShell` no longer observes division, macro, or evolution state 
 
 Every scope uses `scope.revert()` during cleanup.
 
+## Evidence-backed corrections
+
+1. The initial `onScroll()` SVG-group link did not advance reliably in Chromium. It was replaced with deterministic Anime.js `.seek()` synchronization driven by the existing native scroll loop.
+2. Evolution pivot validation originally used viewport coordinates while the sticky stage was engaging. The invariant is now measured relative to the visual stage.
+3. Browser contracts now read Anime.js individual CSS `rotate` properties as well as combined transform matrices.
+4. Independent keyboard-shortcut checks wait for the previous dialog close state before testing the next shortcut.
+
 ## Validation
 
 - source contracts
@@ -164,4 +171,5 @@ Every scope uses `scope.revert()` during cleanup.
 - mobile intensity
 - accessibility
 - overflow
+- successful review video and motion-state stills
 - complete existing test suite
