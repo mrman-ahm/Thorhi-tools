@@ -66,8 +66,10 @@ export function CinematicEntry() {
       const rect = section.getBoundingClientRect();
       const travel = Math.max(section.offsetHeight - window.innerHeight, 1);
       const progress = Math.min(1, Math.max(0, -rect.top / travel));
+      const cleared = progress >= 0.995;
       section.style.setProperty("--cinematic-progress", progress.toFixed(4));
-      section.dataset.exitState = progress > 0.04 ? "leaving" : "holding";
+      section.dataset.exitState = cleared ? "cleared" : progress > 0.04 ? "leaving" : "holding";
+      section.inert = cleared;
 
       if (progress < 0.94) document.body.dataset.cinematicActive = "true";
       else delete document.body.dataset.cinematicActive;
@@ -89,6 +91,7 @@ export function CinematicEntry() {
       window.removeEventListener("scroll", requestUpdate);
       window.removeEventListener("resize", requestUpdate);
       if (frameRef.current !== null) window.cancelAnimationFrame(frameRef.current);
+      section.inert = false;
       delete document.body.dataset.cinematicActive;
     };
   }, []);
