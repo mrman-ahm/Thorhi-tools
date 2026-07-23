@@ -13,4 +13,5 @@ export async function clearCinematicCover(page: Page) {
 
   await expect(entry).toHaveAttribute("data-exit-state", "cleared");
   await expect.poll(() => page.evaluate(() => document.body.dataset.cinematicActive ?? "cleared")).toBe("cleared");
+  await expect(page.locator(".site-header")).toHaveAttribute("data-hidden", "false");
 }
