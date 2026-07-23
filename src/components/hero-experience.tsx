@@ -72,19 +72,21 @@ export function HeroExperience() {
     style={initialStyle}
     onPointerMove={updateInspection}
     onPointerLeave={resetInspection}
+    data-motion-zone="hero"
+    data-motion-policy="anime"
   >
-    <div className="hero-inspection-light" aria-hidden="true" />
-    <div className="hero-index" aria-hidden="true"><span>THROHI / MEDICAL TOOLS</span><span>PRECISION OBJECTS / CATALOGUE / INQUIRY</span></div>
-    <h1 className="hero-type" id="hero-title"><span>PRECISION,</span><span>BROUGHT</span><span className="accent-green">ALIVE.</span></h1>
-    <div className="hero-object">
+    <div className="hero-inspection-light" aria-hidden="true" data-motion-static="pointer-light" />
+    <div className="hero-index" aria-hidden="true" data-motion-item="metadata"><span>THROHI / MEDICAL TOOLS</span><span>PRECISION OBJECTS / CATALOGUE / INQUIRY</span></div>
+    <h1 className="hero-type" id="hero-title" data-motion-item="headline"><span>PRECISION,</span><span>BROUGHT</span><span className="accent-green">ALIVE.</span></h1>
+    <div className="hero-object" data-motion-item="instrument">
       <InstrumentVisual label="Temporary surgical scissors silhouette for the V2 homepage hero" />
-      <div className="hero-marker-set" aria-hidden="true"><span className="hero-marker marker-one">01 · EDGE</span><span className="hero-marker marker-two">02 · PIVOT</span><span className="hero-marker marker-three">03 · GRIP</span></div>
+      <div className="hero-marker-set" aria-hidden="true" data-motion-item="annotations"><span className="hero-marker marker-one">01 · EDGE</span><span className="hero-marker marker-two">02 · PIVOT</span><span className="hero-marker marker-three">03 · GRIP</span></div>
     </div>
-    <div className="hero-statement"><p>Not a marketplace. Not a generic supplier template.</p><p>A visual catalogue for surgical, dental, veterinary, and beauty instruments.</p></div>
-    <form className="hero-search" action="/search" method="get">
+    <div className="hero-statement" data-motion-item="statement"><p>Not a marketplace. Not a generic supplier template.</p><p>A visual catalogue for surgical, dental, veterinary, and beauty instruments.</p></div>
+    <form className="hero-search" action="/search" method="get" data-motion-item="search" data-motion-static="interactive-control">
       <label htmlFor="hero-query"><span>SEARCH THE CATALOGUE</span><small>NAME · FAMILY · EXACT OR PARTIAL CODE</small></label>
       <div><input id="hero-query" name="q" type="search" placeholder="THR-SC-001" autoComplete="off" /><button type="submit">Search <span aria-hidden="true">↗</span></button></div>
     </form>
-    <div className="hero-scroll-note" aria-hidden="true"><span>SCROLL TO EXAMINE</span><b>↓</b></div>
+    <div className="hero-scroll-note" aria-hidden="true" data-motion-item="scroll-cue"><span>SCROLL TO EXAMINE</span><b>↓</b></div>
   </section>;
 }
