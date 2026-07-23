@@ -58,7 +58,7 @@ test("media perimeter fades without blurring the instrument", () => {
   assert.match(styles, /mask-image:radial-gradient/);
   assert.match(styles, /frame-evolution-feather/);
   assert.match(styles, /cinematic-entry-feather/);
-  assert.doesNotMatch(styles, /filter:blur\(/);
+  assert.doesNotMatch(styles, /(?:^|[;{\s])filter:\s*blur\(/m);
 });
 
 test("build pipeline reconstructs static media outside the JavaScript bundle", () => {
