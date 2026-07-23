@@ -107,18 +107,26 @@ test("evolution transforms one persistent mechanism and keeps its pivot centered
   const section = page.locator(".evolution-experience");
   await section.scrollIntoViewIfNeeded();
   await expect(section.locator(".evolution-visual-stage .evolution-layer")).toHaveCount(1);
-  const pivot = section.locator(".evolution-visual-stage .scene-pivot");
-  const before = await pivot.boundingBox();
+
+  const relativePivot = async () => page.evaluate(() => {
+    const stage = document.querySelector<HTMLElement>(".evolution-visual-stage");
+    const pivot = document.querySelector<HTMLElement>(".evolution-visual-stage .scene-pivot");
+    if (!stage || !pivot) throw new Error("Evolution mechanism is incomplete");
+    const stageBox = stage.getBoundingClientRect();
+    const pivotBox = pivot.getBoundingClientRect();
+    return {
+      x: pivotBox.x + pivotBox.width / 2 - stageBox.x,
+      y: pivotBox.y + pivotBox.height / 2 - stageBox.y
+    };
+  });
+
+  const before = await relativePivot();
   await section.locator(".evolution-chapter").nth(2).focus();
   await expect(section).toHaveAttribute("data-active-chapter", "2");
   await page.waitForTimeout(850);
-  const after = await pivot.boundingBox();
-  expect(before).not.toBeNull();
-  expect(after).not.toBeNull();
-  if (before && after) {
-    expect(Math.abs((before.x + before.width / 2) - (after.x + after.width / 2))).toBeLessThanOrEqual(2);
-    expect(Math.abs((before.y + before.height / 2) - (after.y + after.height / 2))).toBeLessThanOrEqual(2);
-  }
+  const after = await relativePivot();
+  expect(Math.abs(before.x - after.x)).toBeLessThanOrEqual(2);
+  expect(Math.abs(before.y - after.y)).toBeLessThanOrEqual(2);
 });
 
 test("product examination completes without delaying inquiry controls", async ({ page }) => {
