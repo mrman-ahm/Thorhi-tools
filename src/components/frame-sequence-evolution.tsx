@@ -146,9 +146,11 @@ function StaticFrame({ frame, label }: { frame: number; label: string }) {
 
 export function FrameSequenceEvolution() {
   const sectionRef = useRef<HTMLElement>(null);
+  const stickyRef = useRef<HTMLDivElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
   const sharpCanvasRef = useRef<HTMLCanvasElement>(null);
   const underlayCanvasRef = useRef<HTMLCanvasElement>(null);
+  const frameReadoutRef = useRef<HTMLElement>(null);
   const copyRefs = useRef<Array<HTMLElement | null>>([]);
   const cacheRef = useRef(new Map<number, HTMLImageElement>());
   const loadingRef = useRef(new Map<number, Promise<HTMLImageElement>>());
@@ -162,14 +164,21 @@ export function FrameSequenceEvolution() {
 
   useEffect(() => {
     const section = sectionRef.current;
+    const sticky = stickyRef.current;
     const sharpCanvas = sharpCanvasRef.current;
     const underlayCanvas = underlayCanvasRef.current;
-    if (!section || !sharpCanvas || !underlayCanvas) return;
+    if (!section || !sticky || !sharpCanvas || !underlayCanvas) return;
 
     const reducedQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     const mobileQuery = window.matchMedia("(max-width: 900px)");
+    if (reducedQuery.matches) {
+      setReduced(true);
+      section.dataset.sequenceMode = "static";
+      return;
+    }
+
+    section.dataset.sequenceMode = mobileQuery.matches ? "mobile" : "desktop";
     const cacheLimit = mobileQuery.matches ? 3 : 5;
-    setReduced(reducedQuery.matches);
 
     const trimCache = (protectedSheet: number) => {
       while (cacheRef.current.size > cacheLimit) {
@@ -229,6 +238,13 @@ export function FrameSequenceEvolution() {
       return nearest;
     };
 
+    const commitRenderedFrame = (frame: number) => {
+      renderedFrameRef.current = frame;
+      section.dataset.renderedFrame = String(frame);
+      sharpCanvas.setAttribute("aria-label", `Instrument evolution frame ${frame + 1} of ${FRAME_COUNT}`);
+      if (frameReadoutRef.current) frameReadoutRef.current.textContent = `${String(frame + 1).padStart(3, "0")} / 260`;
+    };
+
     const render = (requestedFrame: number) => {
       const target = Math.min(LAST_FRAME, Math.max(0, requestedFrame));
       targetFrameRef.current = target;
@@ -241,8 +257,7 @@ export function FrameSequenceEvolution() {
         const dpr = Math.min(window.devicePixelRatio || 1, mobileQuery.matches ? 1.25 : 1.5);
         drawFrame(sharpCanvas, fallbackImage, frameToDraw, dpr);
         drawFrame(underlayCanvas, fallbackImage, frameToDraw, Math.min(dpr, 1.2));
-        renderedFrameRef.current = frameToDraw;
-        section.dataset.renderedFrame = String(frameToDraw);
+        commitRenderedFrame(frameToDraw);
       }
 
       void loadSheet(sheet).then(loaded => {
@@ -250,15 +265,14 @@ export function FrameSequenceEvolution() {
         const dpr = Math.min(window.devicePixelRatio || 1, mobileQuery.matches ? 1.25 : 1.5);
         drawFrame(sharpCanvas, loaded, target, dpr);
         drawFrame(underlayCanvas, loaded, target, Math.min(dpr, 1.2));
-        renderedFrameRef.current = target;
-        section.dataset.renderedFrame = String(target);
+        commitRenderedFrame(target);
         setReady(true);
       }).catch(() => {
         section.dataset.sequenceError = "true";
       });
 
-      void loadSheet(sheet - 1).catch(() => undefined);
-      void loadSheet(sheet + 1).catch(() => undefined);
+      if (sheet > 0) void loadSheet(sheet - 1).catch(() => undefined);
+      if (sheet < SHEET_COUNT - 1) void loadSheet(sheet + 1).catch(() => undefined);
     };
 
     const updateCopy = (frame: number) => {
@@ -294,13 +308,10 @@ export function FrameSequenceEvolution() {
     };
 
     const update = () => {
-      if (reducedQuery.matches) {
-        frameRequestRef.current = null;
-        return;
-      }
       const rect = section.getBoundingClientRect();
-      const travel = Math.max(section.offsetHeight - window.innerHeight, 1);
-      const progress = Math.min(1, Math.max(0, -rect.top / travel));
+      const startOffset = sticky.offsetTop;
+      const travel = Math.max(section.offsetHeight - window.innerHeight - startOffset, 1);
+      const progress = Math.min(1, Math.max(0, (-rect.top - startOffset) / travel));
       const frame = Math.min(LAST_FRAME, Math.max(0, Math.round(progress * LAST_FRAME)));
       section.style.setProperty("--sequence-progress", progress.toFixed(5));
       section.dataset.frame = String(frame);
@@ -321,11 +332,17 @@ export function FrameSequenceEvolution() {
     });
 
     const idleLoad = () => {
-      if (document.hidden) return;
+      if (document.hidden) {
+        idleRef.current = null;
+        return;
+      }
       const boundarySheets = [2, 3, 6, 7, 9, 10, 12];
       let index = 0;
       const next = () => {
-        if (index >= boundarySheets.length || document.hidden) return;
+        if (index >= boundarySheets.length || document.hidden) {
+          idleRef.current = null;
+          return;
+        }
         void loadSheet(boundarySheets[index++]).catch(() => undefined).finally(() => {
           idleRef.current = window.setTimeout(next, 180);
         });
@@ -342,15 +359,11 @@ export function FrameSequenceEvolution() {
     update();
     window.addEventListener("scroll", requestUpdate, { passive: true });
     window.addEventListener("resize", requestUpdate);
-    reducedQuery.addEventListener("change", requestUpdate);
-    mobileQuery.addEventListener("change", requestUpdate);
     document.addEventListener("visibilitychange", onVisibility);
 
     return () => {
       window.removeEventListener("scroll", requestUpdate);
       window.removeEventListener("resize", requestUpdate);
-      reducedQuery.removeEventListener("change", requestUpdate);
-      mobileQuery.removeEventListener("change", requestUpdate);
       document.removeEventListener("visibilitychange", onVisibility);
       resizeObserver.disconnect();
       if (frameRequestRef.current !== null) window.cancelAnimationFrame(frameRequestRef.current);
@@ -379,14 +392,14 @@ export function FrameSequenceEvolution() {
       <p>The uploaded reconstruction sequence is scrubbed directly by native scrolling. Copy changes only as each new instrument becomes visually dominant.</p>
     </header>
 
-    <div className="sequence-sticky-stage">
+    <div ref={stickyRef} className="sequence-sticky-stage">
       <div className="container sequence-layout">
         <div ref={stageRef} className="sequence-media-stage" data-loading={ready ? "false" : "true"}>
           <canvas ref={underlayCanvasRef} className="sequence-canvas sequence-canvas-underlay" aria-hidden="true" />
-          <canvas ref={sharpCanvasRef} className="sequence-canvas sequence-canvas-sharp" role="img" aria-label={`Instrument evolution frame ${Number(sectionRef.current?.dataset.renderedFrame ?? 0) + 1} of ${FRAME_COUNT}`} />
+          <canvas ref={sharpCanvasRef} className="sequence-canvas sequence-canvas-sharp" role="img" aria-label={`Instrument evolution frame 1 of ${FRAME_COUNT}`} />
           <div className="sequence-edge-feather" aria-hidden="true" />
           <div className="sequence-loading" aria-hidden="true"><span>LOADING FRAME SEQUENCE</span><i /></div>
-          <div className="sequence-frame-readout" aria-hidden="true"><span>FRAME</span><b>{String(Math.min(LAST_FRAME, Math.max(0, Number(sectionRef.current?.dataset.frame ?? 0))) + 1).padStart(3, "0")} / 260</b></div>
+          <div className="sequence-frame-readout" aria-hidden="true"><span>FRAME</span><b ref={frameReadoutRef}>001 / 260</b></div>
         </div>
 
         <div className="sequence-copy-stage" aria-live="polite">
@@ -406,12 +419,12 @@ export function FrameSequenceEvolution() {
       </div>
     </div>
 
-    <div className="container sequence-static-grid" data-reduced={reduced ? "true" : "false"}>{chapters.map((chapter, index) => <article key={chapter.index}>
+    {reduced && <div className="container sequence-static-grid" data-reduced="true">{chapters.map((chapter, index) => <article key={chapter.index}>
       <StaticFrame frame={representativeFrames[index]} label={`${chapter.era} instrument reconstruction`} />
       <span>{chapter.index} · {chapter.era.toUpperCase()}</span>
       <h3>{chapter.title}</h3>
       <p>{chapter.text}</p>
-    </article>)}</div>
+    </article>)}</div>}
 
     <div className="container sequence-evolution-link"><Link href="/precision-through-time">Open the editorial history route <span aria-hidden="true">↗</span></Link></div>
   </section>;
