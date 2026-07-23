@@ -154,7 +154,7 @@ This phase does not change:
 
 ## Final validation
 
-The complete code and browser matrix passed on workflow run `29999247898`. The documentation-only follow-up also passed on workflow run `29999625780`.
+The complete code and browser matrix passed twice after the final structural changes. The documentation-only follow-up also passed.
 
 Validated:
 
