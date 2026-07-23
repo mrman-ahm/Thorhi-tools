@@ -48,8 +48,10 @@ const archive = Buffer.from(base64, "base64");
 const extracted = unzipSync(archive);
 
 const aliases = new Map([
+  ["intro-tiny.mp4", "intro.mp4"],
   ["intro-lite.mp4", "intro.mp4"],
   ["intro-web.mp4", "intro.mp4"],
+  ["evolution-sprite-tiny.webp", "evolution-sprite.webp"],
   ["evolution-sprite-lite.webp", "evolution-sprite.webp"],
   ["evolution-sprite.webp", "evolution-sprite.webp"]
 ]);
