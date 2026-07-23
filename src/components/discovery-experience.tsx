@@ -35,6 +35,9 @@ export function DiscoveryExperience() {
 
   useEffect(() => {
     const observer = new IntersectionObserver(entries => {
+      const focused = document.activeElement;
+      if (focused instanceof HTMLElement && focused.matches(".division-discovery-item")) return;
+
       const visible = entries
         .filter(entry => entry.isIntersecting)
         .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
@@ -97,22 +100,23 @@ export function DiscoveryExperience() {
   const active = divisions[activeDivision];
 
   return <>
-    <section className="division-discovery" aria-labelledby="division-title" data-active-tone={active.tone} data-active-index={activeDivision}>
-      <header className="section-intro container"><p className="eyebrow">01 · FOUR DIVISIONS</p><h2 id="division-title">Four fields.<br /><span>One language of precision.</span></h2><p>Each division keeps a distinct working character while remaining part of one catalogue system.</p></header>
+    <section className="division-discovery" aria-labelledby="division-title" data-active-tone={active.tone} data-active-index={activeDivision} data-motion-zone="divisions" data-motion-policy="anime">
+      <header className="section-intro container" data-motion-item="intro"><p className="eyebrow">01 · FOUR DIVISIONS</p><h2 id="division-title">Four fields.<br /><span>One language of precision.</span></h2><p>Each division keeps a distinct working character while remaining part of one catalogue system.</p></header>
 
       <div className="container division-discovery-grid">
-        <aside className="division-active-stage" aria-live="polite">
+        <aside className="division-active-stage" aria-live="polite" data-motion-item="stage">
           <div className="division-stage-index"><span>{active.index}</span><small>ACTIVE DIVISION</small></div>
-          <div className="division-stage-object" aria-hidden="true"><span className="stage-axis horizontal" /><span className="stage-axis vertical" /><span className="stage-pivot" /><span className="stage-blade blade-one" /><span className="stage-blade blade-two" /></div>
+          <div className="division-stage-object" aria-hidden="true" data-motion-item="instrument"><span className="stage-axis horizontal" /><span className="stage-axis vertical" /><span className="stage-pivot" /><span className="stage-blade blade-one" /><span className="stage-blade blade-two" /></div>
           <div className="division-stage-copy"><p>{active.description}</p><div>{active.verbs.map(verb => <span key={verb}>{verb}</span>)}</div></div>
         </aside>
 
-        <div className="division-scroll-list">{divisions.map((division, index) => <Link
+        <div className="division-scroll-list" data-motion-group="division-links">{divisions.map((division, index) => <Link
           ref={element => { divisionItems.current[index] = element; }}
           className={`division-discovery-item ${division.tone}`}
           href={`/products/${division.slug}`}
           key={division.slug}
           data-division-index={index}
+          data-motion-item="division"
           aria-current={activeDivision === index ? "true" : undefined}
           onPointerEnter={() => setActiveDivision(index)}
           onFocus={() => setActiveDivision(index)}
@@ -125,29 +129,29 @@ export function DiscoveryExperience() {
       </div>
     </section>
 
-    <section className="function-passage" aria-labelledby="function-title">
-      <div className="container function-heading"><p className="eyebrow">02 · WORKING LANGUAGE</p><h2 id="function-title">Find the instrument through what it must do.</h2></div>
-      <div className="function-lines" aria-label="Instrument functions">
-        <Link href="/search?q=cut"><span>01</span><strong>CUT</strong><small>Scissors and cutting families</small></Link>
-        <Link href="/search?q=hold"><span>02</span><strong>HOLD</strong><small>Forceps, clamps, and holders</small></Link>
-        <Link href="/search?q=retract"><span>03</span><strong>RETRACT</strong><small>Retraction families</small></Link>
-        <Link href="/search?q=suture"><span>04</span><strong>SUTURE</strong><small>Needle-holding families</small></Link>
-        <Link href="/search?q=examine"><span>05</span><strong>EXAMINE</strong><small>Diagnostic families</small></Link>
-        <Link href="/search?q=extract"><span>06</span><strong>EXTRACT</strong><small>Dental extraction families</small></Link>
+    <section className="function-passage" aria-labelledby="function-title" data-motion-zone="functions" data-motion-policy="anime">
+      <div className="container function-heading" data-motion-item="intro"><p className="eyebrow">02 · WORKING LANGUAGE</p><h2 id="function-title">Find the instrument through what it must do.</h2></div>
+      <div className="function-lines" aria-label="Instrument functions" data-motion-group="function-links">
+        <Link href="/search?q=cut" data-motion-item="function"><span>01</span><strong>CUT</strong><small>Scissors and cutting families</small></Link>
+        <Link href="/search?q=hold" data-motion-item="function"><span>02</span><strong>HOLD</strong><small>Forceps, clamps, and holders</small></Link>
+        <Link href="/search?q=retract" data-motion-item="function"><span>03</span><strong>RETRACT</strong><small>Retraction families</small></Link>
+        <Link href="/search?q=suture" data-motion-item="function"><span>04</span><strong>SUTURE</strong><small>Needle-holding families</small></Link>
+        <Link href="/search?q=examine" data-motion-item="function"><span>05</span><strong>EXAMINE</strong><small>Diagnostic families</small></Link>
+        <Link href="/search?q=extract" data-motion-item="function"><span>06</span><strong>EXTRACT</strong><small>Dental extraction families</small></Link>
       </div>
     </section>
 
-    <section ref={familySection} className="family-discovery" aria-labelledby="family-title">
+    <section ref={familySection} className="family-discovery" aria-labelledby="family-title" data-motion-zone="families" data-motion-policy="anime">
       <div className="family-sticky-stage">
-        <header className="container family-discovery-heading"><div><p className="eyebrow">03 · FAMILY INDEX</p><h2 id="family-title">Enter through the family.</h2></div><p>Vertical scrolling advances the archive on larger screens. Every panel remains a direct catalogue link.</p></header>
+        <header className="container family-discovery-heading" data-motion-item="intro"><div><p className="eyebrow">03 · FAMILY INDEX</p><h2 id="family-title">Enter through the family.</h2></div><p>Vertical scrolling advances the archive on larger screens. Every panel remains a direct catalogue link.</p></header>
         <div ref={familyViewport} className="family-track-viewport">
-          <div ref={familyTrack} className="family-track">{families.map(family => <Link className="family-panel" href={family.route} key={family.route}>
+          <div ref={familyTrack} className="family-track" data-motion-group="family-panels">{families.map(family => <Link className="family-panel" href={family.route} key={family.route} data-motion-item="family">
             <header><span>{family.index}</span><small>{family.division}</small></header>
             <div className="family-panel-object" aria-hidden="true"><span /><span /><i /></div>
             <div><p>{family.function}</p><h3>{family.name}</h3><b>Open family ↗</b></div>
           </Link>)}</div>
         </div>
-        <div className="container family-progress" aria-hidden="true"><span>START</span><i><b /></i><span>END</span></div>
+        <div className="container family-progress" aria-hidden="true" data-motion-static="progress"><span>START</span><i><b /></i><span>END</span></div>
       </div>
     </section>
   </>;

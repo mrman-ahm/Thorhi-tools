@@ -1,0 +1,223 @@
+/* THROHI V2 — Sector 8.5: UI readiness normalization before Anime.js */
+
+:root{
+  --soft-control:8px;
+  --soft-panel:12px;
+  --soft-panel-large:18px;
+  --surface-dark:#050906;
+  --surface-dark-raised:#0b1510;
+  --surface-dark-soft:#111d16;
+  --surface-light:#f1f5f1;
+  --surface-light-raised:#fbfdfb;
+  --display-green:#98f4c3;
+  --display-blue:#8ed5f5;
+  --display-orange:#ff9858;
+  --display-coral:#ff786d;
+  --motion-fast:160ms;
+  --motion-medium:360ms;
+  --motion-slow:720ms;
+  --motion-ease:cubic-bezier(.22,1,.36,1);
+}
+
+html{scroll-behavior:auto}
+body{
+  background-color:var(--surface-dark);
+  background-image:
+    radial-gradient(circle at 84% 8%,rgb(27 212 119/.055),transparent 25rem),
+    radial-gradient(circle at 18% 42%,rgb(8 125 193/.032),transparent 31rem);
+}
+
+/* Motion zones are explicit and isolated. Interactive and legal content are excluded later. */
+[data-motion-zone]{position:relative;isolation:isolate;scroll-margin-top:92px}
+[data-motion-item]{backface-visibility:hidden;transform-origin:center center}
+[data-motion-static]{will-change:auto!important}
+
+/* Remove broad clipping from legacy review fixes. Only visual stages keep deliberate clipping. */
+main,main section,footer{overflow-x:visible}
+html,body{overflow-x:clip}
+.v2-hero,
+.division-discovery,
+.function-passage,
+.family-sticky-stage,
+.inspection-canvas,
+.evolution-visual-stage,
+.command-stage,
+.catalogue-object-visual,
+.search-command-layer,
+.search-command-dialog{overflow:clip}
+
+/* Permanent will-change wastes memory and can produce stale layers before Anime.js. */
+.family-track,
+.hero-type,
+.hero-object,
+.division-discovery-item,
+.function-lines>a>strong,
+.evolution-layer{will-change:auto}
+
+/* One final shape language: precise, not game-like and not pill-heavy. */
+.button,
+.menu-button,
+.icon-button,
+.inquiry-button,
+.mobile-inquiry,
+.catalogue-inquiry-action,
+.catalogue-filter-submit,
+.catalogue-filter-clear,
+.catalogue-command button,
+.division-command button,
+.hero-search button,
+.search-v2 button,
+.search-v2 a,
+.search-command-dialog button,
+.utility-action,
+input,
+select,
+textarea{border-radius:var(--soft-control)}
+
+.catalogue-command,
+.division-command,
+.catalogue-filter-panel,
+.product-examination-stage,
+.verified-information,
+.product-inquiry-builder,
+.catalogue-seed-notice,
+.family-catalogue-object,
+.catalogue-empty-state,
+.catalogue-object-card,
+.family-panel,
+.inquiry-workspace .inquiry-block,
+.inquiry-workspace .inquiry-review,
+.utility-card,
+.resource-entry,
+.contact-primary,
+.legal-index,
+.legal-content,
+.success-card{border-radius:var(--soft-panel)}
+
+.search-command-dialog,
+.company-media-placeholder,
+.utility-feature{border-radius:var(--soft-panel-large)}
+
+/* Calibrated display scale. Motion will add hierarchy, so static type no longer carries all the weight. */
+.hero-type{font-size:clamp(3.7rem,8.15vw,8.25rem);line-height:.79;letter-spacing:-.074em}
+.section-intro{padding:clamp(5rem,8.2vw,8.6rem) 0 3rem}
+.section-intro h2{font-size:clamp(2.95rem,5.85vw,6.25rem);line-height:.9}
+.division-discovery-item{min-height:min(54vh,520px);opacity:.62}
+.division-discovery-item>strong{font-size:clamp(2.65rem,5vw,5.2rem);line-height:.86}
+.division-discovery-item[aria-current="true"],
+.division-discovery-item:hover,
+.division-discovery-item:focus-visible{transform:translate3d(-5px,0,0)}
+.division-stage-index span{font-size:clamp(2.45rem,4.3vw,4.65rem)}
+
+.function-passage{padding:clamp(5.5rem,8.4vw,8.8rem) 0}
+.function-heading{margin-bottom:3rem}
+.function-heading h2{font-size:clamp(2.7rem,4.9vw,5.2rem);line-height:.94}
+.function-lines>a{min-height:108px}
+.function-lines>a>strong{font-size:clamp(2.75rem,5.45vw,5.65rem);line-height:.84}
+.function-lines>a:hover strong,.function-lines>a:focus-visible strong{transform:translate3d(.7rem,0,0)}
+
+.family-sticky-stage{padding:clamp(4.5rem,6.5vw,6.2rem) 0 2rem}
+.family-discovery-heading h2{font-size:clamp(2.75rem,4.9vw,5.2rem);line-height:.93}
+.family-panel{min-height:min(46vh,455px)}
+.family-panel:hover,.family-panel:focus-visible{transform:translate3d(0,-3px,0)}
+
+.macro-stage{padding:clamp(5.5rem,8.8vw,9.2rem) 0}
+.macro-object{min-height:600px}
+.macro-copy h2{font-size:clamp(2.55rem,4.4vw,4.75rem);line-height:.94}
+
+.evolution-stage{padding:clamp(5.5rem,8.5vw,9rem) 0;background-color:var(--surface-light)}
+.evolution-heading{margin-bottom:3rem}
+.evolution-heading h2{font-size:clamp(3rem,5.4vw,5.9rem);line-height:.88}
+.evolution-chapter{opacity:1}
+
+.command-stage{background:linear-gradient(135deg,#b8efd0,#86deb1 60%,#5cc98f);color:#092016}
+.command-stage .eyebrow,.command-stage small{color:#135538}
+.command-stage p{color:#245b43}
+.command-stage form{border-color:#2d7453}
+.command-stage button{background:#0a2619;color:#b9f7d5}
+.command-grid h2{font-size:clamp(2.7rem,4.55vw,4.75rem);line-height:.94}
+
+.object-catalogue,
+.inquiry-stage,
+.proof-stage{padding-block:clamp(5.2rem,8vw,8.3rem)}
+.object-heading h2,
+.inquiry-stage h2,
+.proof-copy h2{font-size:clamp(2.65rem,4.4vw,4.65rem);line-height:.94}
+.contact-stage h2{font-size:clamp(3.45rem,6.6vw,6.4rem);line-height:.84}
+.site-footer .footer-word,.site-footer [class*="footer-word"]{font-size:clamp(4.8rem,11.5vw,11.2rem)}
+
+/* Calm the accent palette so motion can become the active layer. */
+.eyebrow{color:#a8f0c8}
+.hero-type .accent-green,
+.section-intro h2 span,
+.contact-stage h2 span{color:transparent;background:linear-gradient(90deg,var(--display-green),#6fd9a5);-webkit-background-clip:text;background-clip:text}
+.division-discovery[data-active-tone="coral"]{--division-accent:var(--display-coral)}
+.division-discovery[data-active-tone="amber"]{--division-accent:var(--display-orange)}
+.function-lines>a:nth-child(2n)>strong{color:var(--display-blue)}
+.function-lines>a:nth-child(3n)>strong{color:var(--display-orange)}
+.macro-copy dt{color:var(--display-orange)}
+.footer-word{background:linear-gradient(90deg,#edf7f1 0 32%,var(--display-green) 48% 66%,var(--display-blue) 82%,#edf7f1);-webkit-background-clip:text;background-clip:text}
+
+/* Dark surfaces use fewer simultaneous effects. */
+.catalogue-object-visual,
+.family-catalogue-object,
+.product-examination-stage{
+  background:
+    radial-gradient(circle at 54% 42%,rgb(34 216 127/.09),transparent 36%),
+    linear-gradient(145deg,#101d17,#07100c 72%);
+}
+.catalogue-object-grid,.family-object-grid{opacity:.48}
+.catalogue-product-card,.product-card,.saved-panel,.documents-panel,.resource-card,.contact-primary,.verification-panel,.inquiry-block,.inquiry-review,.not-found-page article,.success-card{box-shadow:inset 0 1px rgb(255 255 255/.035),0 16px 45px rgb(0 0 0/.14)}
+
+/* Light utility surfaces share one quieter palette. */
+.utility-light,.inquiry-workspace{background:var(--surface-light)}
+.inquiry-workspace .inquiry-block{background:var(--surface-light-raised);box-shadow:0 14px 38px rgb(18 55 35/.045)}
+.inquiry-workspace .button.primary,.inquiry-workspace .button.positive{background:#0f7d48;border-color:#0f7d48;color:#fff}
+.inquiry-workspace .inquiry-review{background:radial-gradient(circle at 100% 0,rgb(34 216 127/.1),transparent 36%),linear-gradient(145deg,#102019,#08110d)}
+.utility-hero{padding:clamp(7rem,10vw,9rem) 0 clamp(3.2rem,5vw,4.6rem)}
+.utility-hero h1{font-size:clamp(3rem,5.35vw,5.55rem);line-height:.91}
+.utility-section{padding:clamp(4rem,6.5vw,6.5rem) 0}
+.utility-section-heading h2{font-size:clamp(2.4rem,4.1vw,4.55rem);line-height:.94}
+.utility-light .eyebrow,.inquiry-workspace .eyebrow{color:#0b6940}
+
+/* Search and catalogue pages keep command clarity but lose excessive scale. */
+.catalogue-hub-hero{min-height:min(760px,86svh);padding:clamp(6.5rem,10vw,9.5rem) 0 clamp(4rem,6vw,5.7rem)}
+.catalogue-hub-copy h1{font-size:clamp(3.45rem,6.35vw,6.9rem);line-height:.88}
+.division-catalogue-hero h1{font-size:clamp(3.35rem,6.25vw,6.7rem);line-height:.9}
+.family-catalogue-hero h1{font-size:clamp(3.2rem,5.75vw,6.25rem);line-height:.91}
+.product-examination-summary h1{font-size:clamp(2.9rem,4.85vw,5.4rem);line-height:.92}
+.search-v2-hero h1{font-size:clamp(3rem,5.3vw,5.75rem);line-height:.91}
+
+@media(max-width:900px){
+  .hero-type{font-size:clamp(3.35rem,14vw,5.65rem);line-height:.82}
+  .section-intro h2{font-size:clamp(2.65rem,10.2vw,4.2rem)}
+  .division-discovery-item{min-height:210px;opacity:1}
+  .division-discovery-item>strong{font-size:clamp(2.35rem,10.8vw,3.9rem)}
+  .function-heading h2{font-size:clamp(2.35rem,9.5vw,3.85rem)}
+  .function-lines>a>strong{font-size:clamp(2.55rem,11.5vw,4.25rem)}
+  .family-discovery-heading h2{font-size:clamp(2.5rem,9.8vw,4rem)}
+  .family-panel{min-height:400px}
+  .macro-object{min-height:430px}
+  .macro-copy h2{font-size:clamp(2.4rem,9.5vw,4rem)}
+  .evolution-heading h2{font-size:clamp(2.7rem,10.5vw,4.35rem)}
+  .command-grid h2,.object-heading h2,.inquiry-stage h2,.proof-copy h2{font-size:clamp(2.45rem,9vw,3.9rem)}
+  .contact-stage h2{font-size:clamp(3rem,12vw,4.9rem)}
+  .utility-hero h1{font-size:clamp(2.75rem,11vw,4.35rem)}
+  .utility-section-heading h2{font-size:clamp(2.25rem,8.5vw,3.65rem)}
+}
+
+@media(max-width:650px){
+  .section-intro{padding:4.5rem 0 2.2rem}
+  .function-passage,.macro-stage,.evolution-stage,.object-catalogue,.inquiry-stage,.proof-stage{padding-block:4.5rem}
+  .hero-type{font-size:clamp(3.05rem,13.7vw,4.9rem)}
+  .catalogue-hub-copy h1,.division-catalogue-hero h1,.family-catalogue-hero h1,.search-v2-hero h1{font-size:clamp(2.75rem,11.5vw,4.35rem)}
+  .product-examination-summary h1{font-size:clamp(2.6rem,10.8vw,4rem)}
+  .site-footer .footer-word,.site-footer [class*="footer-word"]{font-size:clamp(4rem,18vw,6.8rem)}
+}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto!important}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0s!important}
+  [data-motion-zone],[data-motion-item]{transform:none!important;opacity:1!important;filter:none!important}
+  [data-motion-zone]{scroll-margin-top:82px}
+}
