@@ -1,5 +1,6 @@
 "use client";
 
+import { animate, createScope, createTimeline, onScroll, stagger, svg } from "animejs";
 import type { CSSProperties, PointerEvent as ReactPointerEvent } from "react";
 import { useEffect, useRef, useState } from "react";
 import { InstrumentVisual } from "@/components/instrument-visual";
@@ -29,19 +30,126 @@ export function HeroExperience() {
       frameRef.current = null;
     };
 
-    const onScroll = () => {
+    const onNativeScroll = () => {
       if (frameRef.current === null) frameRef.current = window.requestAnimationFrame(updateProgress);
     };
 
     updateProgress();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
+    window.addEventListener("scroll", onNativeScroll, { passive: true });
+    window.addEventListener("resize", onNativeScroll);
 
     return () => {
       window.cancelAnimationFrame(readyFrame);
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
+      window.removeEventListener("scroll", onNativeScroll);
+      window.removeEventListener("resize", onNativeScroll);
       if (frameRef.current !== null) window.cancelAnimationFrame(frameRef.current);
+    };
+  }, []);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const narrow = window.matchMedia("(max-width: 900px)").matches;
+    if (reduced) {
+      section.dataset.specialMotion = "reduced";
+      return;
+    }
+
+    const scope = createScope({ root: sectionRef }).add(() => {
+      const upperHalf = section.querySelector<SVGGElement>(".instrument-half-upper");
+      const lowerHalf = section.querySelector<SVGGElement>(".instrument-half-lower");
+      const assembly = section.querySelector<SVGGElement>(".instrument-assembly");
+      const pivotCalibration = section.querySelector<SVGCircleElement>(".pivot-calibration");
+      const sweep = section.querySelector<SVGGElement>(".instrument-steel-sweep");
+      const sweepBand = section.querySelector<SVGRectElement>(".steel-sweep-band");
+      const labels = Array.from(section.querySelectorAll<SVGGElement>(".connector-label"));
+      const code = section.querySelector<HTMLElement>(".visual-code > span");
+      const codeScan = section.querySelector<HTMLElement>(".visual-code > i");
+      const geometry = Array.from(section.querySelectorAll<SVGGeometryElement>(".instrument-drawable"));
+      const drawables = geometry.flatMap(element => svg.createDrawable(element));
+
+      if (upperHalf && lowerHalf) {
+        const openAngle = narrow ? 2.4 : 4.2;
+        animate(upperHalf, {
+          rotate: -openAngle,
+          ease: "linear",
+          autoplay: onScroll({
+            target: section,
+            enter: "top top",
+            leave: "bottom top",
+            sync: narrow ? 0.42 : 0.3
+          })
+        });
+        animate(lowerHalf, {
+          rotate: openAngle,
+          ease: "linear",
+          autoplay: onScroll({
+            target: section,
+            enter: "top top",
+            leave: "bottom top",
+            sync: narrow ? 0.42 : 0.3
+          })
+        });
+      }
+
+      const calibration = createTimeline({ defaults: { ease: "out(5)" } });
+      if (assembly) calibration.add(assembly, {
+        scale: { from: narrow ? 0.992 : 0.978 },
+        rotate: { from: narrow ? 0.25 : 0.7 },
+        duration: narrow ? 720 : 940
+      }, 90);
+      if (drawables.length) calibration.add(drawables, {
+        draw: ["0 0", "0 1"],
+        delay: stagger(narrow ? 14 : 22),
+        duration: narrow ? 620 : 880,
+        ease: "inOutSine"
+      }, 220);
+      if (pivotCalibration) calibration.add(pivotCalibration, {
+        rotate: { from: -28, to: 34 },
+        opacity: { from: 0, to: 0.62 },
+        duration: 760
+      }, 300);
+      if (labels.length) calibration.add(labels, {
+        opacity: { from: 0 },
+        x: { from: narrow ? 4 : 9 },
+        delay: stagger(70),
+        duration: 420
+      }, 820);
+      if (code) calibration.add(code, {
+        clipPath: ["inset(0 100% 0 0)", "inset(0 0% 0 0)"],
+        opacity: { from: 0.3 },
+        duration: 680,
+        ease: "inOutSine"
+      }, 700);
+      if (codeScan) calibration.add(codeScan, {
+        scaleX: { from: 0, to: 1 },
+        transformOrigin: "left center",
+        duration: 460,
+        ease: "inOutSine"
+      }, 700).add(codeScan, {
+        x: { from: "0%", to: "112%" },
+        opacity: { from: 0.8, to: 0 },
+        duration: 520,
+        ease: "inOutSine"
+      }, 1040);
+      if (sweep && sweepBand) calibration.add(sweep, {
+        opacity: [0, 0.82, 0],
+        duration: 980,
+        ease: "inOutSine"
+      }, 420).add(sweepBand, {
+        x: { from: 0, to: 1550 },
+        duration: 980,
+        ease: "inOutSine"
+      }, 420);
+
+      section.dataset.specialMotion = "ready";
+    });
+
+    return () => {
+      scope.revert();
+      delete section.dataset.specialMotion;
     };
   }, []);
 
