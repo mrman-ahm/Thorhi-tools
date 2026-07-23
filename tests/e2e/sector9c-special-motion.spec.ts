@@ -1,6 +1,8 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
+type RotationStyle = { rotate: string; transform: string };
+
 function rotationFromMatrix(transform: string) {
   if (!transform || transform === "none") return 0;
   const matrix3d = transform.match(/matrix3d\(([^)]+)\)/);
@@ -12,6 +14,14 @@ function rotationFromMatrix(transform: string) {
   if (!matrix) return 0;
   const values = matrix[1].split(",").map(Number);
   return Math.atan2(values[1], values[0]) * 180 / Math.PI;
+}
+
+function rotationFromStyle(style: RotationStyle) {
+  if (style.rotate && style.rotate !== "none") {
+    const value = Number.parseFloat(style.rotate);
+    if (Number.isFinite(value)) return value;
+  }
+  return rotationFromMatrix(style.transform);
 }
 
 async function waitForSpecialMotion(page: import("@playwright/test").Page, selector: string) {
@@ -30,11 +40,11 @@ test("hero opens blades around a fixed pivot within the approved angle", async (
     const upper = document.querySelector<SVGGElement>(".hero-experience .instrument-half-upper");
     const lower = document.querySelector<SVGGElement>(".hero-experience .instrument-half-lower");
     if (!pivot || !upper || !lower) throw new Error("Hero mechanism is incomplete");
-    return {
-      pivot: getComputedStyle(pivot).transform,
-      upper: getComputedStyle(upper).transform,
-      lower: getComputedStyle(lower).transform
+    const motion = (element: Element) => {
+      const style = getComputedStyle(element);
+      return { rotate: style.rotate, transform: style.transform };
     };
+    return { pivot: motion(pivot), upper: motion(upper), lower: motion(lower) };
   });
 
   await page.evaluate(() => window.scrollTo({ top: Math.min(720, document.documentElement.scrollHeight / 5), behavior: "instant" }));
@@ -45,21 +55,21 @@ test("hero opens blades around a fixed pivot within the approved angle", async (
     const upper = document.querySelector<SVGGElement>(".hero-experience .instrument-half-upper");
     const lower = document.querySelector<SVGGElement>(".hero-experience .instrument-half-lower");
     if (!pivot || !upper || !lower) throw new Error("Hero mechanism is incomplete");
-    return {
-      pivot: getComputedStyle(pivot).transform,
-      upper: getComputedStyle(upper).transform,
-      lower: getComputedStyle(lower).transform
+    const motion = (element: Element) => {
+      const style = getComputedStyle(element);
+      return { rotate: style.rotate, transform: style.transform };
     };
+    return { pivot: motion(pivot), upper: motion(upper), lower: motion(lower) };
   });
 
-  const upperAngle = rotationFromMatrix(after.upper);
-  const lowerAngle = rotationFromMatrix(after.lower);
+  const upperAngle = rotationFromStyle(after.upper);
+  const lowerAngle = rotationFromStyle(after.lower);
   expect(Math.abs(upperAngle)).toBeGreaterThan(0.1);
   expect(Math.abs(lowerAngle)).toBeGreaterThan(0.1);
   expect(Math.abs(upperAngle)).toBeLessThanOrEqual(4.8);
   expect(Math.abs(lowerAngle)).toBeLessThanOrEqual(4.8);
   expect(Math.sign(upperAngle)).not.toBe(Math.sign(lowerAngle));
-  expect(rotationFromMatrix(after.pivot)).toBeCloseTo(rotationFromMatrix(before.pivot), 1);
+  expect(rotationFromStyle(after.pivot)).toBeCloseTo(rotationFromStyle(before.pivot), 1);
 });
 
 test("hero measurements draw and engraving finishes readable", async ({ page }) => {
@@ -129,14 +139,18 @@ test("mobile blade opening remains smaller than desktop", async ({ page }, testI
   await waitForSpecialMotion(page, ".hero-experience");
   await page.evaluate(() => window.scrollTo({ top: 540, behavior: "instant" }));
   await page.waitForTimeout(850);
-  const transforms = await page.evaluate(() => {
+  const styles = await page.evaluate(() => {
     const upper = document.querySelector<SVGGElement>(".hero-experience .instrument-half-upper");
     const lower = document.querySelector<SVGGElement>(".hero-experience .instrument-half-lower");
-    return [upper, lower].map(element => element ? getComputedStyle(element).transform : "none");
+    return [upper, lower].map(element => {
+      if (!element) return { rotate: "none", transform: "none" };
+      const style = getComputedStyle(element);
+      return { rotate: style.rotate, transform: style.transform };
+    });
   });
-  transforms.forEach(transform => {
-    expect(Math.abs(rotationFromMatrix(transform))).toBeGreaterThan(0.1);
-    expect(Math.abs(rotationFromMatrix(transform))).toBeLessThanOrEqual(2.9);
+  styles.forEach(style => {
+    expect(Math.abs(rotationFromStyle(style))).toBeGreaterThan(0.1);
+    expect(Math.abs(rotationFromStyle(style))).toBeLessThanOrEqual(2.9);
   });
 });
 
@@ -144,12 +158,16 @@ test("reduced motion keeps the hero mechanism closed and fully readable", async 
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
   await expect(page.locator(".hero-experience")).toHaveAttribute("data-special-motion", "reduced");
-  const transforms = await page.evaluate(() => {
+  const styles = await page.evaluate(() => {
     const upper = document.querySelector<SVGGElement>(".hero-experience .instrument-half-upper");
     const lower = document.querySelector<SVGGElement>(".hero-experience .instrument-half-lower");
-    return [upper, lower].map(element => element ? getComputedStyle(element).transform : "none");
+    return [upper, lower].map(element => {
+      if (!element) return { rotate: "none", transform: "none" };
+      const style = getComputedStyle(element);
+      return { rotate: style.rotate, transform: style.transform };
+    });
   });
-  transforms.forEach(transform => expect(transform).toBe("none"));
+  styles.forEach(style => expect(rotationFromStyle(style)).toBe(0));
   await expect(page.locator(".hero-experience .visual-code")).toContainText("THR / OBJECT STUDY / 001");
 });
 
