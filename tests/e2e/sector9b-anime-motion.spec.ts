@@ -39,7 +39,7 @@ test("menu animation never delays keyboard focus", async ({ page }) => {
   await page.getByRole("button", { name: "Open navigation menu" }).click();
 
   await expect(page.locator(".menu-layer")).toHaveAttribute("data-open", "true");
-  await expect(page.getByRole("link", { name: "Surgical", exact: true })).toBeFocused();
+  await expect(page.locator(".mobile-nav-primary a").first()).toBeFocused();
   await page.keyboard.press("Escape");
   await expect(page.getByRole("button", { name: "Open navigation menu" })).toBeFocused();
   expect(errors).toEqual([]);
