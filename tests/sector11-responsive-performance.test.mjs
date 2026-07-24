@@ -5,7 +5,7 @@ import test from "node:test";
 const layout = readFileSync("src/app/layout.tsx", "utf8");
 const header = readFileSync("src/components/site-header.tsx", "utf8");
 const hero = readFileSync("src/components/hero-experience.tsx", "utf8");
-const evolution = readFileSync("src/components/frame-evolution-scene.tsx", "utf8");
+const evolution = readFileSync("src/components/frame-evolution-renderer.tsx", "utf8");
 const prepare = readFileSync("scripts/prepare-cinematic-assets.mjs", "utf8");
 const styles = readFileSync("src/app/v2-sector11-responsive.css", "utf8");
 const logo = readFileSync("public/brand/throhi-logo-clean.svg", "utf8");
@@ -34,6 +34,7 @@ test("evolution quality is preserved through bounded decoded sheets", () => {
   assert.match(evolution, /evictSheets/);
   assert.match(evolution, /image\.src = ""/);
   assert.match(evolution, /mobileMedia\.addEventListener\("change"/);
+  assert.match(evolution, /mediaGeneration/);
 });
 
 test("Sector 11 loads last and defines compact touch-safe header behavior", () => {
