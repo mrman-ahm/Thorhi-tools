@@ -8,7 +8,8 @@ async function expectNoHorizontalOverflow(page: Page) {
 async function expectVisibleHeaderIdentity(page: Page) {
   const logo = page.locator(".brand-image img");
   await expect(logo).toBeVisible();
-  await expect.poll(() => logo.evaluate(image => (image as HTMLImageElement).naturalWidth)).toBeGreaterThan(100);
+  const naturalWidth = await logo.evaluate(image => (image as HTMLImageElement).naturalWidth);
+  expect(naturalWidth).toBeGreaterThan(100);
   const box = await logo.boundingBox();
   expect(box?.width ?? 0).toBeGreaterThan(60);
   expect(box?.height ?? 0).toBeGreaterThan(38);
