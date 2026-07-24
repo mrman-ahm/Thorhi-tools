@@ -35,7 +35,7 @@ test("secret state ignores typing fields and preserves normal interactions", () 
 test("precision layer remains restrained and reduced-motion safe", () => {
   assert.match(styles, /prefers-reduced-motion:reduce/);
   assert.match(styles, /animation:none!important/);
-  assert.match(styles, /PRECISION LAYER/);
+  assert.match(component, /PRECISION LAYER/);
   assert.doesNotMatch(styles, /infinite/);
   assert.doesNotMatch(component, /audio|Audio\(|WebGL|particle|cursor trail|magnetic/i);
 });
