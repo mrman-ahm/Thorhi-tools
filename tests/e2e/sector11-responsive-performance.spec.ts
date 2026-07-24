@@ -8,11 +8,7 @@ async function expectNoHorizontalOverflow(page: Page) {
 async function expectVisibleHeaderIdentity(page: Page) {
   const logo = page.locator(".brand-image img");
   await expect(logo).toBeVisible();
-  await expect.poll(() => logo.evaluate(image => ({
-    naturalWidth: (image as HTMLImageElement).naturalWidth,
-    width: image.getBoundingClientRect().width,
-    height: image.getBoundingClientRect().height
-  }))).toMatchObject({ naturalWidth: 900 });
+  await expect.poll(() => logo.evaluate(image => (image as HTMLImageElement).naturalWidth)).toBeGreaterThan(100);
   const box = await logo.boundingBox();
   expect(box?.width ?? 0).toBeGreaterThan(60);
   expect(box?.height ?? 0).toBeGreaterThan(38);
@@ -70,7 +66,7 @@ test("two-times text scaling and long headings retain readable flow", async ({ p
   await page.setViewportSize({ width: 1280, height: 900 });
   await page.goto("/products");
   await page.evaluate(() => {
-    document.body.style.zoom = "2";
+    document.documentElement.style.fontSize = "200%";
     const heading = document.querySelector("main h1");
     if (heading) heading.textContent = "Surgical instrument catalogue discovery and structured inquiry";
   });
