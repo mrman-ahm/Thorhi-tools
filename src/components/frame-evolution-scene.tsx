@@ -1,6 +1,7 @@
 "use client";
 
 import { animate, createScope, createTimeline, stagger } from "animejs";
+import type { CSSProperties } from "react";
 import { useEffect, useRef, useState } from "react";
 import {
   chapterIndexForFrame,
@@ -26,24 +27,56 @@ type MediaManifest = {
   } | null;
 };
 
+type ConnectionHint = {
+  saveData?: boolean;
+  effectiveType?: string;
+};
+
+type NavigatorWithDeviceHints = Navigator & {
+  connection?: ConnectionHint;
+  deviceMemory?: number;
+};
+
+type SpriteMode = "none" | "desktop" | "mobile" | "static";
+
+type SpriteSelection = {
+  descriptor: SpriteDescriptor;
+  mode: Exclude<SpriteMode, "none" | "static">;
+  constrained: boolean;
+};
+
 const LEGACY_SPRITE: Omit<SpriteDescriptor, "src"> = {
   cellWidth: 240,
   cellHeight: 135,
   columns: 12
 };
 
+function deviceHints() {
+  const navigatorWithHints = navigator as NavigatorWithDeviceHints;
+  const connection = navigatorWithHints.connection;
+  const effectiveType = connection?.effectiveType ?? "";
+  const constrained = Boolean(
+    connection?.saveData ||
+    /(^|-)2g$|^3g$/.test(effectiveType) ||
+    (navigatorWithHints.deviceMemory !== undefined && navigatorWithHints.deviceMemory <= 4)
+  );
+  const compact = constrained || window.matchMedia("(max-width: 900px), (pointer: coarse)").matches;
+  return { constrained, compact };
+}
+
 function drawFrame(
   canvas: HTMLCanvasElement,
   image: HTMLImageElement,
   descriptor: SpriteDescriptor,
-  frame: number
+  frame: number,
+  pixelRatioCap: number
 ) {
   const context = canvas.getContext("2d", { alpha: true });
   if (!context) return;
 
   const width = canvas.clientWidth;
   const height = canvas.clientHeight;
-  const ratio = Math.min(window.devicePixelRatio || 1, 1.5);
+  const ratio = Math.min(window.devicePixelRatio || 1, pixelRatioCap);
   const pixelWidth = Math.max(1, Math.round(width * ratio));
   const pixelHeight = Math.max(1, Math.round(height * ratio));
   if (canvas.width !== pixelWidth || canvas.height !== pixelHeight) {
@@ -77,13 +110,16 @@ function drawFrame(
   context.globalAlpha = 1;
 }
 
-function selectSprite(manifest: MediaManifest): SpriteDescriptor | null {
+function selectSprite(manifest: MediaManifest): SpriteSelection | null {
+  const hints = deviceHints();
   if (manifest.sprites) {
-    return window.matchMedia("(max-width: 720px), (pointer: coarse)").matches
-      ? manifest.sprites.mobile
-      : manifest.sprites.desktop;
+    return hints.compact
+      ? { descriptor: manifest.sprites.mobile, mode: "mobile", constrained: hints.constrained }
+      : { descriptor: manifest.sprites.desktop, mode: "desktop", constrained: false };
   }
-  return manifest.sprite ? { src: manifest.sprite, ...LEGACY_SPRITE } : null;
+  return manifest.sprite
+    ? { descriptor: { src: manifest.sprite, ...LEGACY_SPRITE }, mode: "mobile", constrained: hints.constrained }
+    : null;
 }
 
 export function FrameEvolutionScene() {
@@ -92,11 +128,13 @@ export function FrameEvolutionScene() {
   const readoutRef = useRef<HTMLElement>(null);
   const imageRef = useRef<HTMLImageElement | null>(null);
   const descriptorRef = useRef<SpriteDescriptor | null>(null);
+  const pixelRatioCapRef = useRef(1.25);
   const frameRequest = useRef<number | null>(null);
   const targetFrame = useRef(1);
   const renderedFrame = useRef(1);
   const activeChapterRef = useRef(0);
   const [activeChapter, setActiveChapter] = useState(0);
+  const [spriteMode, setSpriteMode] = useState<SpriteMode>("none");
   const [mediaState, setMediaState] = useState<"loading" | "ready" | "error">("loading");
 
   useEffect(() => {
@@ -111,6 +149,7 @@ export function FrameEvolutionScene() {
     const controller = new AbortController();
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
     let observer: IntersectionObserver | null = null;
+    let resizeObserver: ResizeObserver | null = null;
     let mediaRequested = false;
 
     const render = () => {
@@ -128,7 +167,7 @@ export function FrameEvolutionScene() {
       );
       renderedFrame.current += step;
       const frame = Math.round(renderedFrame.current);
-      drawFrame(canvas, image, descriptor, frame);
+      drawFrame(canvas, image, descriptor, frame, pixelRatioCapRef.current);
       section.dataset.renderedFrame = String(frame);
       if (readoutRef.current) readoutRef.current.textContent = String(frame).padStart(3, "0");
 
@@ -152,7 +191,8 @@ export function FrameEvolutionScene() {
 
     const update = () => {
       const rect = section.getBoundingClientRect();
-      const distance = Math.max(section.offsetHeight - window.innerHeight, 1);
+      const viewportHeight = Math.max(1, window.visualViewport?.height ?? window.innerHeight);
+      const distance = Math.max(section.offsetHeight - viewportHeight, 1);
       const progress = Math.min(1, Math.max(0, -rect.top / distance));
       const frame = reduced.matches
         ? EVOLUTION_CHAPTERS[activeChapterRef.current].startFrame
@@ -163,35 +203,38 @@ export function FrameEvolutionScene() {
       requestRender();
     };
 
-    const loadSprite = (descriptor: SpriteDescriptor) => {
+    const loadSprite = (selection: SpriteSelection) => {
       if (mediaRequested) return;
       mediaRequested = true;
-      descriptorRef.current = descriptor;
+      descriptorRef.current = selection.descriptor;
+      pixelRatioCapRef.current = selection.mode === "mobile" || selection.constrained ? 1.25 : 1.5;
+      setSpriteMode(selection.mode);
       const sprite = new Image();
       sprite.decoding = "async";
+      sprite.fetchPriority = selection.constrained ? "low" : "auto";
       sprite.onload = () => {
         imageRef.current = sprite;
         setMediaState("ready");
         renderedFrame.current = 1;
         targetFrame.current = 1;
-        drawFrame(canvas, sprite, descriptor, 1);
+        drawFrame(canvas, sprite, selection.descriptor, 1, pixelRatioCapRef.current);
         update();
       };
       sprite.onerror = () => setMediaState("error");
-      sprite.src = descriptor.src;
+      sprite.src = selection.descriptor.src;
     };
 
-    const deferSprite = (descriptor: SpriteDescriptor) => {
+    const deferSprite = (selection: SpriteSelection) => {
       if (!("IntersectionObserver" in window)) {
-        loadSprite(descriptor);
+        loadSprite(selection);
         return;
       }
       observer = new IntersectionObserver(entries => {
         if (!entries.some(entry => entry.isIntersecting)) return;
         observer?.disconnect();
         observer = null;
-        loadSprite(descriptor);
-      }, { rootMargin: "1400px 0px" });
+        loadSprite(selection);
+      }, { rootMargin: selection.constrained ? "500px 0px" : "1200px 0px" });
       observer.observe(section);
     };
 
@@ -200,8 +243,13 @@ export function FrameEvolutionScene() {
         ? response.json() as Promise<MediaManifest>
         : Promise.reject(new Error("Media manifest unavailable")))
       .then(manifest => {
-        const descriptor = manifest.available ? selectSprite(manifest) : null;
-        if (descriptor) deferSprite(descriptor);
+        if (reduced.matches) {
+          setSpriteMode("static");
+          setMediaState("error");
+          return;
+        }
+        const selection = manifest.available ? selectSprite(manifest) : null;
+        if (selection) deferSprite(selection);
         else setMediaState("error");
       })
       .catch(error => {
@@ -209,18 +257,30 @@ export function FrameEvolutionScene() {
         setMediaState("error");
       });
 
+    const visualViewport = window.visualViewport;
     update();
     window.addEventListener("scroll", update, { passive: true });
     window.addEventListener("resize", update);
+    window.addEventListener("orientationchange", update);
+    visualViewport?.addEventListener("resize", update);
     reduced.addEventListener("change", update);
+
+    if ("ResizeObserver" in window) {
+      resizeObserver = new ResizeObserver(() => requestRender());
+      resizeObserver.observe(canvas);
+    }
 
     return () => {
       controller.abort();
       observer?.disconnect();
+      resizeObserver?.disconnect();
       window.removeEventListener("scroll", update);
       window.removeEventListener("resize", update);
+      window.removeEventListener("orientationchange", update);
+      visualViewport?.removeEventListener("resize", update);
       reduced.removeEventListener("change", update);
       if (frameRequest.current !== null) window.cancelAnimationFrame(frameRequest.current);
+      if (imageRef.current) imageRef.current.src = "";
       imageRef.current = null;
       descriptorRef.current = null;
     };
@@ -258,9 +318,10 @@ export function FrameEvolutionScene() {
     aria-labelledby="frame-evolution-title"
     data-active-chapter={activeChapter}
     data-media-state={mediaState}
+    data-sprite-mode={spriteMode}
     data-rendered-frame="1"
     data-target-frame="1"
-    style={{ "--evolution-sequence-progress": "0" } as React.CSSProperties}
+    style={{ "--evolution-sequence-progress": "0" } as CSSProperties}
   >
     <div className="frame-evolution-sticky">
       <header className="frame-evolution-heading container">
