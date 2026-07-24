@@ -20,7 +20,8 @@ jobs:
         run: npm run typecheck 2>&1 | tee typecheck.log
       - name: Run unit contracts
         run: npm test 2>&1 | tee unit-test.log
-      - run: npm run build
+      - name: Run production build
+        run: npm run build 2>&1 | tee build.log
       - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e
       - name: Upload browser validation artifacts
@@ -31,6 +32,7 @@ jobs:
           path: |
             typecheck.log
             unit-test.log
+            build.log
             test-results/results.json
             test-results/**/*.png
             test-results/**/error-context.md
