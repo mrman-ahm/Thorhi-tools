@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Archivo, IBM_Plex_Mono, Instrument_Sans } from "next/font/google";
 import { InquiryProvider } from "@/components/inquiry-provider";
 import { MotionShell } from "@/components/motion-shell";
+import { PrecisionSecrets } from "@/components/precision-secrets";
 import { SearchCommand } from "@/components/search-command";
 import "./globals.css";
 import "./interaction.css";
@@ -24,6 +25,7 @@ import "./v2-sector9c-fixes.css";
 import "./v2-sector9d.css";
 import "./v2-sector9d-fixes.css";
 import "./v2-sector9d-refinement.css";
+import "./v2-sector10-secrets.css";
 
 const archivo = Archivo({ subsets: ["latin"], variable: "--font-archivo", display: "swap" });
 const instrument = Instrument_Sans({ subsets: ["latin"], variable: "--font-instrument", display: "swap" });
@@ -37,5 +39,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en" className={`${archivo.variable} ${instrument.variable} ${plex.variable}`}><body><InquiryProvider><MotionShell><SearchCommand />{children}</MotionShell></InquiryProvider></body></html>;
+  return <html lang="en" className={`${archivo.variable} ${instrument.variable} ${plex.variable}`}><body><InquiryProvider><MotionShell><PrecisionSecrets /><SearchCommand />{children}</MotionShell></InquiryProvider></body></html>;
 }
