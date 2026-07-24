@@ -6,8 +6,7 @@ import {
   chapterIndexForFrame,
   EVOLUTION_CHAPTERS,
   exitOpacityForFrame,
-  frameForEvolutionProgress,
-  spriteCellForFrame
+  frameForEvolutionProgress
 } from "@/lib/evolution-frames";
 
 type SpriteDescriptor = {
@@ -15,6 +14,13 @@ type SpriteDescriptor = {
   cellWidth: number;
   cellHeight: number;
   columns: number;
+  startFrame?: number;
+  endFrame?: number;
+};
+
+type EvolutionVariant = {
+  maxDecodedSheets: number;
+  sheets: Required<Pick<SpriteDescriptor, "src" | "cellWidth" | "cellHeight" | "columns" | "startFrame" | "endFrame">>[];
 };
 
 type MediaManifest = {
@@ -24,7 +30,18 @@ type MediaManifest = {
     desktop: SpriteDescriptor;
     mobile: SpriteDescriptor;
   } | null;
+  evolution?: {
+    framesPerSheet: number;
+    desktop: EvolutionVariant;
+    mobile: EvolutionVariant;
+  } | null;
 };
+
+type MediaSelection =
+  | { kind: "sheets"; variant: EvolutionVariant }
+  | { kind: "legacy"; descriptor: SpriteDescriptor };
+
+type CachedSheet = { image: HTMLImageElement; lastUsed: number };
 
 const LEGACY_SPRITE: Omit<SpriteDescriptor, "src"> = {
   cellWidth: 240,
@@ -51,7 +68,9 @@ function drawFrame(
     canvas.height = pixelHeight;
   }
 
-  const { column, row } = spriteCellForFrame(frame);
+  const localIndex = Math.max(0, frame - (descriptor.startFrame ?? 1));
+  const column = localIndex % descriptor.columns;
+  const row = Math.floor(localIndex / descriptor.columns);
   const destinationRatio = pixelWidth / pixelHeight;
   const sourceRatio = descriptor.cellWidth / descriptor.cellHeight;
   let drawWidth = pixelWidth;
@@ -77,21 +96,30 @@ function drawFrame(
   context.globalAlpha = 1;
 }
 
-function selectSprite(manifest: MediaManifest): SpriteDescriptor | null {
-  if (manifest.sprites) {
-    return window.matchMedia("(max-width: 720px), (pointer: coarse)").matches
-      ? manifest.sprites.mobile
-      : manifest.sprites.desktop;
+function selectMedia(manifest: MediaManifest, useMobile: boolean): MediaSelection | null {
+  if (manifest.evolution) {
+    return { kind: "sheets", variant: useMobile ? manifest.evolution.mobile : manifest.evolution.desktop };
   }
-  return manifest.sprite ? { src: manifest.sprite, ...LEGACY_SPRITE } : null;
+  if (manifest.sprites) {
+    return { kind: "legacy", descriptor: useMobile ? manifest.sprites.mobile : manifest.sprites.desktop };
+  }
+  return manifest.sprite ? { kind: "legacy", descriptor: { src: manifest.sprite, ...LEGACY_SPRITE } } : null;
+}
+
+function sheetIndexForFrame(variant: EvolutionVariant, frame: number) {
+  const index = variant.sheets.findIndex(sheet => frame >= sheet.startFrame && frame <= sheet.endFrame);
+  return index < 0 ? 0 : index;
 }
 
 export function FrameEvolutionScene() {
   const sectionRef = useRef<HTMLElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const readoutRef = useRef<HTMLElement>(null);
-  const imageRef = useRef<HTMLImageElement | null>(null);
-  const descriptorRef = useRef<SpriteDescriptor | null>(null);
+  const legacyImageRef = useRef<HTMLImageElement | null>(null);
+  const legacyDescriptorRef = useRef<SpriteDescriptor | null>(null);
+  const variantRef = useRef<EvolutionVariant | null>(null);
+  const sheetCacheRef = useRef(new Map<number, CachedSheet>());
+  const sheetLoadingRef = useRef(new Map<number, Promise<HTMLImageElement>>());
   const frameRequest = useRef<number | null>(null);
   const targetFrame = useRef(1);
   const renderedFrame = useRef(1);
@@ -110,24 +138,113 @@ export function FrameEvolutionScene() {
 
     const controller = new AbortController();
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const mobileMedia = window.matchMedia("(max-width: 720px), (pointer: coarse)");
     let observer: IntersectionObserver | null = null;
+    let manifest: MediaManifest | null = null;
     let mediaRequested = false;
+    let disposed = false;
 
-    const render = () => {
-      const image = imageRef.current;
-      const descriptor = descriptorRef.current;
-      if (!image || !descriptor || !image.complete || !image.naturalWidth) {
-        frameRequest.current = null;
-        return;
+    const clearMedia = () => {
+      legacyImageRef.current = null;
+      legacyDescriptorRef.current = null;
+      variantRef.current = null;
+      for (const cached of sheetCacheRef.current.values()) cached.image.src = "";
+      sheetCacheRef.current.clear();
+      sheetLoadingRef.current.clear();
+    };
+
+    const evictSheets = (protectedIndexes: number[]) => {
+      const variant = variantRef.current;
+      if (!variant || sheetCacheRef.current.size <= variant.maxDecodedSheets) return;
+      const protectedSet = new Set(protectedIndexes);
+      const candidates = Array.from(sheetCacheRef.current.entries())
+        .filter(([index]) => !protectedSet.has(index))
+        .sort((left, right) => left[1].lastUsed - right[1].lastUsed);
+
+      while (sheetCacheRef.current.size > variant.maxDecodedSheets && candidates.length) {
+        const [index, cached] = candidates.shift()!;
+        cached.image.src = "";
+        sheetCacheRef.current.delete(index);
       }
+    };
 
+    const requestRender = () => {
+      if (frameRequest.current === null) frameRequest.current = window.requestAnimationFrame(render);
+    };
+
+    const loadSheet = (index: number) => {
+      const variant = variantRef.current;
+      const descriptor = variant?.sheets[index];
+      if (!variant || !descriptor) return Promise.reject(new Error("Evolution sheet unavailable"));
+      const cached = sheetCacheRef.current.get(index);
+      if (cached) {
+        cached.lastUsed = performance.now();
+        return Promise.resolve(cached.image);
+      }
+      const pending = sheetLoadingRef.current.get(index);
+      if (pending) return pending;
+
+      const promise = new Promise<HTMLImageElement>((resolve, reject) => {
+        const image = new Image();
+        image.decoding = "async";
+        image.onload = () => {
+          sheetLoadingRef.current.delete(index);
+          if (disposed) return;
+          sheetCacheRef.current.set(index, { image, lastUsed: performance.now() });
+          evictSheets([index]);
+          requestRender();
+          resolve(image);
+        };
+        image.onerror = () => {
+          sheetLoadingRef.current.delete(index);
+          reject(new Error(`Unable to load evolution sheet ${index + 1}`));
+        };
+        image.src = descriptor.src;
+      });
+
+      sheetLoadingRef.current.set(index, promise);
+      return promise;
+    };
+
+    function render() {
       const difference = targetFrame.current - renderedFrame.current;
       const step = Math.sign(difference) * Math.min(
         Math.abs(difference),
         Math.max(1, Math.ceil(Math.abs(difference) * 0.28))
       );
-      renderedFrame.current += step;
-      const frame = Math.round(renderedFrame.current);
+      const nextFrame = Math.round(renderedFrame.current + step);
+      let image: HTMLImageElement | null = null;
+      let descriptor: SpriteDescriptor | null = null;
+
+      const variant = variantRef.current;
+      if (variant) {
+        const sheetIndex = sheetIndexForFrame(variant, nextFrame);
+        const cached = sheetCacheRef.current.get(sheetIndex);
+        if (!cached) {
+          frameRequest.current = null;
+          void loadSheet(sheetIndex).catch(() => setMediaState("error"));
+          return;
+        }
+        cached.lastUsed = performance.now();
+        image = cached.image;
+        descriptor = variant.sheets[sheetIndex];
+        const adjacent = targetFrame.current >= nextFrame ? sheetIndex + 1 : sheetIndex - 1;
+        if (adjacent >= 0 && adjacent < variant.sheets.length) {
+          void loadSheet(adjacent).catch(() => undefined);
+        }
+        evictSheets([sheetIndex, adjacent]);
+      } else {
+        image = legacyImageRef.current;
+        descriptor = legacyDescriptorRef.current;
+      }
+
+      if (!image || !descriptor || !image.complete || !image.naturalWidth) {
+        frameRequest.current = null;
+        return;
+      }
+
+      renderedFrame.current = nextFrame;
+      const frame = nextFrame;
       drawFrame(canvas, image, descriptor, frame);
       section.dataset.renderedFrame = String(frame);
       if (readoutRef.current) readoutRef.current.textContent = String(frame).padStart(3, "0");
@@ -144,11 +261,7 @@ export function FrameEvolutionScene() {
         renderedFrame.current = targetFrame.current;
         frameRequest.current = null;
       }
-    };
-
-    const requestRender = () => {
-      if (frameRequest.current === null) frameRequest.current = window.requestAnimationFrame(render);
-    };
+    }
 
     const update = () => {
       const rect = section.getBoundingClientRect();
@@ -163,66 +276,96 @@ export function FrameEvolutionScene() {
       requestRender();
     };
 
-    const loadSprite = (descriptor: SpriteDescriptor) => {
-      if (mediaRequested) return;
-      mediaRequested = true;
-      descriptorRef.current = descriptor;
+    const configureMedia = (nextManifest: MediaManifest) => {
+      clearMedia();
+      const selection = nextManifest.available ? selectMedia(nextManifest, mobileMedia.matches) : null;
+      if (!selection) {
+        setMediaState("error");
+        return;
+      }
+
+      setMediaState("loading");
+      renderedFrame.current = Math.max(1, Math.round(renderedFrame.current));
+      if (selection.kind === "sheets") {
+        variantRef.current = selection.variant;
+        const initialIndex = sheetIndexForFrame(selection.variant, targetFrame.current);
+        void loadSheet(initialIndex)
+          .then(() => {
+            if (disposed) return;
+            setMediaState("ready");
+            update();
+          })
+          .catch(() => setMediaState("error"));
+        return;
+      }
+
+      legacyDescriptorRef.current = selection.descriptor;
       const sprite = new Image();
       sprite.decoding = "async";
       sprite.onload = () => {
-        imageRef.current = sprite;
+        if (disposed) return;
+        legacyImageRef.current = sprite;
         setMediaState("ready");
-        renderedFrame.current = 1;
-        targetFrame.current = 1;
-        drawFrame(canvas, sprite, descriptor, 1);
+        drawFrame(canvas, sprite, selection.descriptor, renderedFrame.current);
         update();
       };
       sprite.onerror = () => setMediaState("error");
-      sprite.src = descriptor.src;
+      sprite.src = selection.descriptor.src;
     };
 
-    const deferSprite = (descriptor: SpriteDescriptor) => {
+    const requestMedia = () => {
+      if (mediaRequested) return;
+      mediaRequested = true;
+      void fetch("/media/sector9d/manifest.json", { signal: controller.signal })
+        .then(response => response.ok
+          ? response.json() as Promise<MediaManifest>
+          : Promise.reject(new Error("Media manifest unavailable")))
+        .then(nextManifest => {
+          manifest = nextManifest;
+          configureMedia(nextManifest);
+        })
+        .catch(error => {
+          if (error instanceof DOMException && error.name === "AbortError") return;
+          setMediaState("error");
+        });
+    };
+
+    const deferMedia = () => {
       if (!("IntersectionObserver" in window)) {
-        loadSprite(descriptor);
+        requestMedia();
         return;
       }
       observer = new IntersectionObserver(entries => {
         if (!entries.some(entry => entry.isIntersecting)) return;
         observer?.disconnect();
         observer = null;
-        loadSprite(descriptor);
-      }, { rootMargin: "1400px 0px" });
+        requestMedia();
+      }, { rootMargin: "1200px 0px" });
       observer.observe(section);
     };
 
-    void fetch("/media/sector9d/manifest.json", { signal: controller.signal })
-      .then(response => response.ok
-        ? response.json() as Promise<MediaManifest>
-        : Promise.reject(new Error("Media manifest unavailable")))
-      .then(manifest => {
-        const descriptor = manifest.available ? selectSprite(manifest) : null;
-        if (descriptor) deferSprite(descriptor);
-        else setMediaState("error");
-      })
-      .catch(error => {
-        if (error instanceof DOMException && error.name === "AbortError") return;
-        setMediaState("error");
-      });
+    const handleMediaChange = () => {
+      if (manifest) configureMedia(manifest);
+      update();
+    };
 
+    deferMedia();
     update();
     window.addEventListener("scroll", update, { passive: true });
     window.addEventListener("resize", update);
     reduced.addEventListener("change", update);
+    mobileMedia.addEventListener("change", handleMediaChange);
 
     return () => {
+      disposed = true;
       controller.abort();
       observer?.disconnect();
       window.removeEventListener("scroll", update);
       window.removeEventListener("resize", update);
       reduced.removeEventListener("change", update);
+      mobileMedia.removeEventListener("change", handleMediaChange);
       if (frameRequest.current !== null) window.cancelAnimationFrame(frameRequest.current);
-      imageRef.current = null;
-      descriptorRef.current = null;
+      clearMedia();
     };
   }, []);
 
