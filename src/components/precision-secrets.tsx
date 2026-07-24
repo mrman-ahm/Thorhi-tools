@@ -7,6 +7,7 @@ const SECRET_WORD = "THROHI";
 const ACTIVE_DURATION = 9000;
 const PRESS_DURATION = 720;
 const RESET_DELAY = 1500;
+const SUPPRESS_CLICK_WINDOW = 900;
 const triggerSelector = ".brand, .hero-brand-mark, .footer-identity";
 
 function clearTimer(timer: MutableRefObject<number | null>) {
@@ -32,6 +33,7 @@ export function PrecisionSecrets() {
   const activeTimer = useRef<number | null>(null);
   const resetTimer = useRef<number | null>(null);
   const pressTimer = useRef<number | null>(null);
+  const suppressTimer = useRef<number | null>(null);
   const pressTarget = useRef<HTMLElement | null>(null);
   const suppressClick = useRef(false);
 
@@ -58,6 +60,11 @@ export function PrecisionSecrets() {
       pressTarget.current = null;
     };
 
+    const clearSuppression = () => {
+      clearTimer(suppressTimer);
+      suppressClick.current = false;
+    };
+
     const handleKeydown = (event: KeyboardEvent) => {
       if (event.key === "Escape" && activeRef.current) {
         deactivate();
@@ -81,10 +88,12 @@ export function PrecisionSecrets() {
       const trigger = secretTrigger(event.target);
       if (!trigger) return;
       clearPress();
+      clearSuppression();
       pressTarget.current = trigger;
       pressTimer.current = window.setTimeout(() => {
         if (!pressTarget.current?.isConnected) return;
         suppressClick.current = true;
+        suppressTimer.current = window.setTimeout(clearSuppression, SUPPRESS_CLICK_WINDOW);
         activate();
       }, PRESS_DURATION);
     };
@@ -93,7 +102,7 @@ export function PrecisionSecrets() {
       if (!suppressClick.current || !secretTrigger(event.target)) return;
       event.preventDefault();
       event.stopPropagation();
-      suppressClick.current = false;
+      clearSuppression();
     };
 
     const handleContextMenu = (event: MouseEvent) => {
@@ -118,7 +127,9 @@ export function PrecisionSecrets() {
       clearTimer(activeTimer);
       clearTimer(resetTimer);
       clearTimer(pressTimer);
+      clearTimer(suppressTimer);
       activeRef.current = false;
+      suppressClick.current = false;
       delete document.documentElement.dataset.precisionSecret;
     };
   }, [activate, deactivate]);
