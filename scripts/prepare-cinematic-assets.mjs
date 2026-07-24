@@ -16,7 +16,9 @@ const sourceDirectory = join(root, "assets", "sector9d");
 const outputDirectory = join(root, "public", "media", "sector9d");
 const manifestPath = join(outputDirectory, "manifest.json");
 const frameCount = 260;
-const spriteColumns = 12;
+const legacySpriteColumns = 12;
+const framesPerSheet = 20;
+const sheetColumns = 5;
 
 const originalIntroCandidates = [
   "Medical_instruments_moving_on_black_202607231715.mp4"
@@ -48,6 +50,7 @@ function unavailable(reason) {
     intro: null,
     sprite: null,
     sprites: null,
+    evolution: null,
     reason
   });
   console.warn(`Sector 9D media unavailable (${reason}). The accessible designed fallback will be used.`);
@@ -59,7 +62,7 @@ function frameNumber(name) {
 }
 
 export async function createSprite(sharp, frames, config) {
-  const columns = config.columns ?? spriteColumns;
+  const columns = config.columns ?? legacySpriteColumns;
   const rows = Math.ceil(frames.length / columns);
   const width = columns * config.cellWidth;
   const height = rows * config.cellHeight;
@@ -94,6 +97,35 @@ export async function createSprite(sharp, frames, config) {
     .toFile(join(targetDirectory, config.filename));
 }
 
+async function createSheetSet(sharp, frames, config) {
+  const sheets = [];
+  const sheetCount = Math.ceil(frames.length / framesPerSheet);
+
+  for (let sheetIndex = 0; sheetIndex < sheetCount; sheetIndex += 1) {
+    const startIndex = sheetIndex * framesPerSheet;
+    const subset = frames.slice(startIndex, startIndex + framesPerSheet);
+    const filename = `evolution-${config.name}-${String(sheetIndex + 1).padStart(2, "0")}.webp`;
+    await createSprite(sharp, subset, {
+      filename,
+      cellWidth: config.cellWidth,
+      cellHeight: config.cellHeight,
+      quality: config.quality,
+      columns: sheetColumns
+    });
+
+    sheets.push({
+      src: `/media/sector9d/${filename}`,
+      startFrame: startIndex + 1,
+      endFrame: startIndex + subset.length,
+      cellWidth: config.cellWidth,
+      cellHeight: config.cellHeight,
+      columns: sheetColumns
+    });
+  }
+
+  return sheets;
+}
+
 async function prepareFromOriginalSources(introSource, archiveSource) {
   resetOutput();
   copyFileSync(introSource, join(outputDirectory, "intro.mp4"));
@@ -108,15 +140,14 @@ async function prepareFromOriginalSources(introSource, archiveSource) {
   }
 
   const { default: sharp } = await import("sharp");
-  // 12 × 22 cells keeps the 7680 × 7920 desktop sheet below the common 8192 texture ceiling.
-  await createSprite(sharp, frames, {
-    filename: "evolution-sprite-desktop.webp",
+  const desktopSheets = await createSheetSet(sharp, frames, {
+    name: "desktop",
     cellWidth: 640,
     cellHeight: 360,
     quality: 90
   });
-  await createSprite(sharp, frames, {
-    filename: "evolution-sprite-mobile.webp",
+  const mobileSheets = await createSheetSet(sharp, frames, {
+    name: "mobile",
     cellWidth: 400,
     cellHeight: 225,
     quality: 86
@@ -125,25 +156,23 @@ async function prepareFromOriginalSources(introSource, archiveSource) {
   writeManifest({
     available: true,
     intro: "/media/sector9d/intro.mp4",
-    sprite: "/media/sector9d/evolution-sprite-desktop.webp",
-    sprites: {
+    sprite: null,
+    sprites: null,
+    evolution: {
+      framesPerSheet,
       desktop: {
-        src: "/media/sector9d/evolution-sprite-desktop.webp",
-        cellWidth: 640,
-        cellHeight: 360,
-        columns: spriteColumns
+        maxDecodedSheets: 3,
+        sheets: desktopSheets
       },
       mobile: {
-        src: "/media/sector9d/evolution-sprite-mobile.webp",
-        cellWidth: 400,
-        cellHeight: 225,
-        columns: spriteColumns
+        maxDecodedSheets: 2,
+        sheets: mobileSheets
       }
     },
-    reason: "prepared-from-original-mp4-and-frame-archive-hq"
+    reason: "prepared-from-original-mp4-and-bounded-high-quality-frame-sheets"
   });
 
-  console.log(`Prepared high-quality Sector 9D media from the original MP4 and ${frames.length} source frames.`);
+  console.log(`Prepared high-quality Sector 9D media as ${desktopSheets.length} bounded desktop sheets and ${mobileSheets.length} bounded mobile sheets.`);
 }
 
 function prepareFromChunkBundle() {
@@ -180,15 +209,16 @@ function prepareFromChunkBundle() {
           src: "/media/sector9d/evolution-sprite-desktop.webp",
           cellWidth: 240,
           cellHeight: 135,
-          columns: spriteColumns
+          columns: legacySpriteColumns
         },
         mobile: {
           src: "/media/sector9d/evolution-sprite-mobile.webp",
           cellWidth: 240,
           cellHeight: 135,
-          columns: spriteColumns
+          columns: legacySpriteColumns
         }
       },
+      evolution: null,
       reason: `prepared-from-${chunks.length}-source-chunks`
     });
     console.log(`Prepared Sector 9D fallback media from ${chunks.length} source chunks.`);
