@@ -33,22 +33,23 @@ test("opening cinematic uses native scroll rather than scroll locking", () => {
 
 test("normal hero uses the cleaned THROHI logo instead of the scissors placeholder", () => {
   assert.match(hero, /hero-brand-stage/);
-  assert.match(hero, /\/brand\/throhi-logo-clean\.webp/);
-  assert.doesNotMatch(hero, /\/logo\.webp/);
+  assert.match(hero, /\/brand\/throhi-logo-clean\.svg/);
+  assert.doesNotMatch(hero, /\/brand\/throhi-logo-clean\.webp/);
   assert.doesNotMatch(hero, /InstrumentVisual/);
   assert.match(page, /CinematicEntry/);
   assert.match(page, /FrameEvolutionScene/);
   assert.doesNotMatch(page, /ScissorsEvolutionScene/);
 });
 
-test("evolution renderer uses one deferred canvas sprite rather than a 260-image DOM", () => {
+test("evolution renderer uses one canvas with bounded decoded sheet caching", () => {
   assert.match(sequence, /canvasRef/);
   assert.match(sequence, /drawImage/);
-  assert.match(sequence, /spriteCellForFrame/);
-  assert.match(sequence, /requestAnimationFrame/);
-  assert.match(sequence, /imageRef/);
+  assert.match(sequence, /sheetCacheRef/);
+  assert.match(sequence, /sheetLoadingRef/);
+  assert.match(sequence, /maxDecodedSheets/);
+  assert.match(sequence, /manifest\.evolution|manifest\.sprites/);
   assert.match(sequence, /IntersectionObserver/);
-  assert.match(sequence, /sprites\.mobile|manifest\.sprites/);
+  assert.match(sequence, /requestAnimationFrame/);
   assert.doesNotMatch(sequence, /260\s*<img|Array\.from\(\{ length: 260/);
 });
 
@@ -71,8 +72,9 @@ test("build pipeline accepts only the corrected approved MP4 and 260-frame archi
   assert.match(prepare, /ezgif-35dd2244dafee1ab-jpg\.zip/);
   assert.match(prepare, /frames\.length !== frameCount/);
   assert.match(prepare, /import\("sharp"\)/);
-  assert.match(prepare, /evolution-sprite-desktop\.webp/);
-  assert.match(prepare, /evolution-sprite-mobile\.webp/);
+  assert.match(prepare, /evolution-\$\{config\.name\}/);
+  assert.match(prepare, /framesPerSheet/);
+  assert.match(prepare, /sheetColumns/);
   assert.match(packageJson, /"sharp": "0\.35\.3"/);
 });
 
