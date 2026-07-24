@@ -1,0 +1,13 @@
+/* THROHI V2 — Sector 11 evidence-backed responsive corrections */
+
+@media (max-width:900px){
+  .header-actions>.icon-button,
+  .header-actions>.inquiry-button,
+  .header-actions>.menu-button{
+    flex-shrink:0;
+  }
+
+  .header-actions>.icon-button{
+    min-width:44px;
+  }
+}
