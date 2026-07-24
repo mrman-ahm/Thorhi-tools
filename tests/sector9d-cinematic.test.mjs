@@ -4,7 +4,7 @@ import test from "node:test";
 
 const timing = readFileSync("src/lib/evolution-frames.ts", "utf8");
 const cinematic = readFileSync("src/components/cinematic-entry.tsx", "utf8");
-const sequence = readFileSync("src/components/frame-evolution-scene.tsx", "utf8");
+const sequence = readFileSync("src/components/frame-evolution-renderer.tsx", "utf8");
 const hero = readFileSync("src/components/hero-experience.tsx", "utf8");
 const page = readFileSync("src/app/page.tsx", "utf8");
 const styles = readFileSync("src/app/v2-sector9d.css", "utf8");
