@@ -26,14 +26,18 @@ test("cleared cinematic cover releases the underlying homepage", () => {
   assert.match(styles, /pointer-events:none/);
 });
 
-test("evolution compiler generates higher-resolution responsive sprites", () => {
+test("evolution compiler keeps high-resolution frames in bounded sheets", () => {
+  assert.match(prepare, /const framesPerSheet = 20/);
+  assert.match(prepare, /const sheetColumns = 5/);
   assert.match(prepare, /cellWidth: 640/);
   assert.match(prepare, /cellHeight: 360/);
   assert.match(prepare, /quality: 90/);
   assert.match(prepare, /cellWidth: 400/);
   assert.match(prepare, /cellHeight: 225/);
   assert.match(prepare, /quality: 86/);
-  assert.match(prepare, /8192 texture ceiling/);
+  assert.match(prepare, /maxDecodedSheets: 3/);
+  assert.match(prepare, /maxDecodedSheets: 2/);
+  assert.doesNotMatch(prepare, /7680 × 7920|8192 texture ceiling/);
 });
 
 test("evolution stage preserves the original sixteen-by-nine frame geometry", () => {
@@ -43,12 +47,12 @@ test("evolution stage preserves the original sixteen-by-nine frame geometry", ()
   assert.match(styles, /min-height:0!important/);
 });
 
-test("homepage and header use the cleaned transparent THROHI identity", () => {
-  assert.ok(existsSync("public/brand/throhi-logo-clean.webp"));
-  assert.match(hero, /\/brand\/throhi-logo-clean\.webp/);
-  assert.match(header, /\/brand\/throhi-logo-clean\.webp/);
-  assert.doesNotMatch(hero, /\/logo\.webp/);
-  assert.doesNotMatch(header, /\/logo\.webp/);
+test("homepage and header use the visible transparent THROHI vector identity", () => {
+  assert.ok(existsSync("public/brand/throhi-logo-clean.svg"));
+  assert.match(hero, /\/brand\/throhi-logo-clean\.svg/);
+  assert.match(header, /\/brand\/throhi-logo-clean\.svg/);
+  assert.doesNotMatch(hero, /\/brand\/throhi-logo-clean\.webp/);
+  assert.doesNotMatch(header, /\/brand\/throhi-logo-clean\.webp/);
 });
 
 test("reduced motion removes the cover overlap and keeps entry accessible", () => {
