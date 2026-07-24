@@ -8,6 +8,7 @@ const hero = readFileSync("src/components/hero-experience.tsx", "utf8");
 const evolution = readFileSync("src/components/frame-evolution-renderer.tsx", "utf8");
 const prepare = readFileSync("scripts/prepare-cinematic-assets.mjs", "utf8");
 const styles = readFileSync("src/app/v2-sector11-responsive.css", "utf8");
+const fixes = readFileSync("src/app/v2-sector11-fixes.css", "utf8");
 const logo = readFileSync("public/brand/throhi-logo-clean.svg", "utf8");
 
 test("visible vector logo replaces the empty raster identity", () => {
@@ -39,11 +40,16 @@ test("evolution quality is preserved through bounded decoded sheets", () => {
 
 test("Sector 11 loads last and defines compact touch-safe header behavior", () => {
   assert.match(layout, /v2-sector11-responsive\.css/);
+  assert.match(layout, /v2-sector11-fixes\.css/);
+  assert.ok(layout.indexOf("v2-sector11-fixes.css") > layout.indexOf("v2-sector11-responsive.css"));
   assert.match(styles, /@media \(max-width:560px\)/);
   assert.match(styles, /@media \(max-width:340px\)/);
   assert.match(styles, /min-height:48px/);
   assert.match(styles, /min-width:44px/);
   assert.match(styles, /grid-template-columns:minmax\(72px,1fr\) auto/);
+  assert.match(fixes, /max-width:900px/);
+  assert.match(fixes, /flex-shrink:0/);
+  assert.match(fixes, /min-width:44px/);
 });
 
 test("reduced-height and reduced-motion modes retain critical controls", () => {
