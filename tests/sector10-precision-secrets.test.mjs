@@ -20,6 +20,7 @@ test("secret activation has keyboard, pointer, timeout, and Escape paths", () =>
   assert.match(component, /PRESS_DURATION = 720/);
   assert.match(component, /event\.key === "Escape"/);
   assert.match(component, /ACTIVE_DURATION = 9000/);
+  assert.match(component, /data-ready=\{ready\}/);
   assert.match(component, /delete document\.documentElement\.dataset\.precisionSecret/);
 });
 
@@ -32,7 +33,10 @@ test("secret state ignores typing fields and preserves normal interactions", () 
   assert.match(styles, /input:focus/);
 });
 
-test("precision layer remains restrained and reduced-motion safe", () => {
+test("precision layer remains restrained, clear of the header, and reduced-motion safe", () => {
+  assert.match(styles, /\.precision-secret-mark\{/);
+  assert.match(styles, /top:clamp\(104px,11vh,132px\)/);
+  assert.match(styles, /\.precision-secret-mark\{top:172px;left:24px\}/);
   assert.match(styles, /prefers-reduced-motion:reduce/);
   assert.match(styles, /animation:none!important/);
   assert.match(component, /PRECISION LAYER/);
