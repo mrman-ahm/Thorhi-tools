@@ -1,12 +1,18 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import type { MutableRefObject } from "react";
 
 const SECRET_WORD = "THROHI";
 const ACTIVE_DURATION = 9000;
 const PRESS_DURATION = 720;
 const RESET_DELAY = 1500;
 const triggerSelector = ".brand, .hero-brand-mark, .footer-identity";
+
+function clearTimer(timer: MutableRefObject<number | null>) {
+  if (timer.current !== null) window.clearTimeout(timer.current);
+  timer.current = null;
+}
 
 function isTypingTarget(target: EventTarget | null) {
   if (!(target instanceof HTMLElement)) return false;
@@ -26,11 +32,6 @@ export function PrecisionSecrets() {
   const pressTimer = useRef<number | null>(null);
   const pressTarget = useRef<HTMLElement | null>(null);
   const suppressClick = useRef(false);
-
-  const clearTimer = (timer: React.MutableRefObject<number | null>) => {
-    if (timer.current !== null) window.clearTimeout(timer.current);
-    timer.current = null;
-  };
 
   const deactivate = useCallback(() => {
     clearTimer(activeTimer);
