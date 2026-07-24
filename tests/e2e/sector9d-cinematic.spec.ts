@@ -45,13 +45,14 @@ test("opening cinematic is the native-scroll first stage and hands off to the br
   await page.goto("/");
   const entry = page.locator(".cinematic-entry");
   await expect(entry).toBeVisible();
-  await expect(entry.getByRole("button", { name: /Scroll to enter/i })).toBeVisible();
+  await expect(entry.getByRole("button", { name: /Slide the opening cover away/i })).toBeVisible();
   await expect.poll(() => page.evaluate(() => document.body.dataset.cinematicActive)).toBe("true");
 
   const hero = page.locator("#home-hero");
   await hero.scrollIntoViewIfNeeded();
   await expect(hero.getByRole("img", { name: "THROHI Medical Tools identity mark" })).toBeVisible();
   await expect.poll(() => page.evaluate(() => document.body.dataset.cinematicActive ?? "cleared")).toBe("cleared");
+  await expect(entry).toHaveAttribute("data-exit-state", "cleared");
   await expect(page.locator(".site-header")).toBeVisible();
 });
 

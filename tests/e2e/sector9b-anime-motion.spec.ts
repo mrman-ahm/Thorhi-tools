@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { clearCinematicCover } from "./helpers/cinematic";
 
 function collectPageErrors(page: import("@playwright/test").Page) {
   const errors: string[] = [];
@@ -18,7 +19,7 @@ test("Anime.js motion initializes and reaches a stable homepage state", async ({
   await expect(shell).toHaveAttribute("data-motion-state", "ready");
   await expect(page.locator("html")).toHaveAttribute("data-anime-motion", "active");
 
-  await page.locator("#home-hero").scrollIntoViewIfNeeded();
+  await clearCinematicCover(page);
   await page.waitForTimeout(1200);
   const heroWords = page.locator(".hero-type > span");
   await expect(heroWords).toHaveCount(3);
@@ -37,7 +38,7 @@ test("Anime.js motion initializes and reaches a stable homepage state", async ({
 test("menu animation never delays keyboard focus", async ({ page }) => {
   const errors = collectPageErrors(page);
   await page.goto("/");
-  await page.locator("#home-hero").scrollIntoViewIfNeeded();
+  await clearCinematicCover(page);
   await page.getByRole("button", { name: "Open navigation menu" }).click();
 
   await expect(page.locator(".menu-layer")).toHaveAttribute("data-open", "true");
@@ -68,7 +69,7 @@ test("route changes revert and reinitialize the scoped motion system", async ({ 
   await page.goto("/");
   await expect(page.locator(".motion-shell")).toHaveAttribute("data-motion-route", "home");
 
-  await page.locator("#home-hero").scrollIntoViewIfNeeded();
+  await clearCinematicCover(page);
   await page.getByRole("link", { name: "Products", exact: true }).first().click();
   await expect(page).toHaveURL(/\/products$/);
   await expect(page.locator(".motion-shell")).toHaveAttribute("data-motion-route", "catalogue");

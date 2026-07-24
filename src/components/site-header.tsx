@@ -56,6 +56,19 @@ export function SiteHeader() {
   }, [open]);
 
   useEffect(() => {
+    const handleCinematicState = (event: Event) => {
+      const cleared = (event as CustomEvent<{ cleared?: boolean }>).detail?.cleared;
+      if (!cleared) return;
+      lastScroll.current = window.scrollY;
+      setScrolled(window.scrollY > 24);
+      setHidden(false);
+    };
+
+    window.addEventListener("throhi:cinematic-state", handleCinematicState);
+    return () => window.removeEventListener("throhi:cinematic-state", handleCinematicState);
+  }, []);
+
+  useEffect(() => {
     if (!open) return;
 
     const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : triggerRef.current;
@@ -112,7 +125,7 @@ export function SiteHeader() {
     <div className="header-inner">
       <Link className="brand" href="/" aria-label="THROHI Medical Tools home">
         <span className="brand-index">TM / 01</span>
-        <span className="brand-image"><Image src="/logo.webp" alt="THROHI Medical Tools" width={161} height={121} priority /></span>
+        <span className="brand-image"><Image src="/brand/throhi-logo-clean.webp" alt="THROHI Medical Tools" width={900} height={671} priority /></span>
       </Link>
       <nav className="desktop-nav" aria-label="Primary">{primaryLinks.map(([label, href]) => <Link key={label} href={href}>{label}</Link>)}</nav>
       <div className="header-actions">

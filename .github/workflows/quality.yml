@@ -27,7 +27,8 @@ jobs:
         with:
           name: homepage-browser-validation
           path: |
-            playwright-report
-            test-results
+            test-results/results.json
+            test-results/**/*.png
+            test-results/**/error-context.md
           if-no-files-found: ignore
           retention-days: 14

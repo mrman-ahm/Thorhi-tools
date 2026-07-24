@@ -1,5 +1,6 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
+import { clearCinematicCover } from "./helpers/cinematic";
 
 async function openCommand(page: import("@playwright/test").Page) {
   await page.getByRole("link", { name: "Open catalogue search command" }).click();
@@ -13,6 +14,7 @@ test.describe("Sector 7 global catalogue command", () => {
     await page.goto("/");
     await page.evaluate(() => window.localStorage.clear());
     await page.reload();
+    await clearCinematicCover(page);
   });
 
   test("opens from the header, focuses search, closes with Escape, and restores focus", async ({ page }) => {

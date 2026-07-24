@@ -14,7 +14,8 @@ const combined = `${hero}\n${instrument}\n${scenes}\n${productMotion}\n${discove
 
 test("homepage hero hands instrument theatre to the cinematic entry", () => {
   assert.match(hero, /hero-brand-stage/);
-  assert.match(hero, /\/logo\.webp/);
+  assert.match(hero, /\/brand\/throhi-logo-clean\.webp/);
+  assert.doesNotMatch(hero, /\/logo\.webp/);
   assert.doesNotMatch(hero, /InstrumentVisual|instrument-half-upper|instrument-half-lower/);
   assert.match(hero, /scope\?\.revert\(\)/);
 });

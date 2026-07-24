@@ -71,7 +71,7 @@ export async function createSprite(sharp, frames, config) {
   for (let index = 0; index < frames.length; index += 1) {
     const input = await sharp(Buffer.from(frames[index][1]))
       .resize(config.cellWidth, config.cellHeight, { fit: "fill", kernel: "lanczos3" })
-      .jpeg({ quality: 88, mozjpeg: true })
+      .jpeg({ quality: 92, mozjpeg: true })
       .toBuffer();
 
     layers.push({
@@ -90,7 +90,7 @@ export async function createSprite(sharp, frames, config) {
     }
   })
     .composite(layers)
-    .webp({ quality: config.quality, effort: 5, smartSubsample: true })
+    .webp({ quality: config.quality, effort: 6, smartSubsample: true })
     .toFile(join(targetDirectory, config.filename));
 }
 
@@ -108,17 +108,18 @@ async function prepareFromOriginalSources(introSource, archiveSource) {
   }
 
   const { default: sharp } = await import("sharp");
+  // 12 × 22 cells keeps the 7680 × 7920 desktop sheet below the common 8192 texture ceiling.
   await createSprite(sharp, frames, {
     filename: "evolution-sprite-desktop.webp",
-    cellWidth: 400,
-    cellHeight: 225,
-    quality: 84
+    cellWidth: 640,
+    cellHeight: 360,
+    quality: 90
   });
   await createSprite(sharp, frames, {
     filename: "evolution-sprite-mobile.webp",
-    cellWidth: 240,
-    cellHeight: 135,
-    quality: 80
+    cellWidth: 400,
+    cellHeight: 225,
+    quality: 86
   });
 
   writeManifest({
@@ -128,21 +129,21 @@ async function prepareFromOriginalSources(introSource, archiveSource) {
     sprites: {
       desktop: {
         src: "/media/sector9d/evolution-sprite-desktop.webp",
-        cellWidth: 400,
-        cellHeight: 225,
+        cellWidth: 640,
+        cellHeight: 360,
         columns: spriteColumns
       },
       mobile: {
         src: "/media/sector9d/evolution-sprite-mobile.webp",
-        cellWidth: 240,
-        cellHeight: 135,
+        cellWidth: 400,
+        cellHeight: 225,
         columns: spriteColumns
       }
     },
-    reason: "prepared-from-original-mp4-and-frame-archive"
+    reason: "prepared-from-original-mp4-and-frame-archive-hq"
   });
 
-  console.log(`Prepared Sector 9D media from the original MP4 and ${frames.length} source frames.`);
+  console.log(`Prepared high-quality Sector 9D media from the original MP4 and ${frames.length} source frames.`);
 }
 
 function prepareFromChunkBundle() {
