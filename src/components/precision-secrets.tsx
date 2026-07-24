@@ -25,6 +25,7 @@ function secretTrigger(target: EventTarget | null) {
 
 export function PrecisionSecrets() {
   const [active, setActive] = useState(false);
+  const [ready, setReady] = useState(false);
   const [announcement, setAnnouncement] = useState("");
   const activeRef = useRef(false);
   const buffer = useRef("");
@@ -105,6 +106,7 @@ export function PrecisionSecrets() {
     document.addEventListener("pointercancel", clearPress, true);
     document.addEventListener("click", handleClick, true);
     document.addEventListener("contextmenu", handleContextMenu, true);
+    setReady(true);
 
     return () => {
       window.removeEventListener("keydown", handleKeydown);
@@ -122,7 +124,7 @@ export function PrecisionSecrets() {
   }, [activate, deactivate]);
 
   return <>
-    <div className="precision-secret-layer" aria-hidden="true" data-active={active}>
+    <div className="precision-secret-layer" aria-hidden="true" data-active={active} data-ready={ready}>
       <span className="precision-secret-line line-horizontal" />
       <span className="precision-secret-line line-vertical" />
       <span className="precision-secret-corner corner-a" />
