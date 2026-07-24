@@ -88,11 +88,11 @@ export function PrecisionSecrets() {
       const trigger = secretTrigger(event.target);
       if (!trigger) return;
       clearPress();
-      clearSuppression();
       pressTarget.current = trigger;
       pressTimer.current = window.setTimeout(() => {
         if (!pressTarget.current?.isConnected) return;
         suppressClick.current = true;
+        clearTimer(suppressTimer);
         suppressTimer.current = window.setTimeout(clearSuppression, SUPPRESS_CLICK_WINDOW);
         activate();
       }, PRESS_DURATION);
