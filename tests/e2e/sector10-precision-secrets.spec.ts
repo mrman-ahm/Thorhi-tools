@@ -39,7 +39,7 @@ test.describe("Sector 10 restrained precision secrets", () => {
     await expect(page.locator(".precision-secret-layer")).toBeHidden();
   });
 
-  test("holding the brand activates the same layer without following the home link", async ({ page }) => {
+  test("holding the brand suppresses only the generated click and preserves later navigation", async ({ page }) => {
     const brand = page.locator(".brand").first();
     await brand.dispatchEvent("pointerdown", { button: 0, pointerType: "mouse", isPrimary: true });
     await page.waitForTimeout(780);
@@ -48,6 +48,9 @@ test.describe("Sector 10 restrained precision secrets", () => {
 
     await brand.click();
     await expect(page).toHaveURL(/\/products$/);
+
+    await brand.click();
+    await expect(page).toHaveURL(/\/$/);
   });
 
   test("reduced motion uses a static accessible state", async ({ page }) => {
