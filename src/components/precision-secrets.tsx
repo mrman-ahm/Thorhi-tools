@@ -26,6 +26,7 @@ function secretTrigger(target: EventTarget | null) {
 export function PrecisionSecrets() {
   const [active, setActive] = useState(false);
   const [announcement, setAnnouncement] = useState("");
+  const activeRef = useRef(false);
   const buffer = useRef("");
   const activeTimer = useRef<number | null>(null);
   const resetTimer = useRef<number | null>(null);
@@ -35,6 +36,7 @@ export function PrecisionSecrets() {
 
   const deactivate = useCallback(() => {
     clearTimer(activeTimer);
+    activeRef.current = false;
     delete document.documentElement.dataset.precisionSecret;
     setActive(false);
     setAnnouncement("");
@@ -42,6 +44,7 @@ export function PrecisionSecrets() {
 
   const activate = useCallback(() => {
     clearTimer(activeTimer);
+    activeRef.current = true;
     document.documentElement.dataset.precisionSecret = "active";
     setActive(true);
     setAnnouncement("THROHI precision layer active. Press Escape to close.");
@@ -55,7 +58,7 @@ export function PrecisionSecrets() {
     };
 
     const handleKeydown = (event: KeyboardEvent) => {
-      if (event.key === "Escape" && active) {
+      if (event.key === "Escape" && activeRef.current) {
         deactivate();
         return;
       }
@@ -113,9 +116,10 @@ export function PrecisionSecrets() {
       clearTimer(activeTimer);
       clearTimer(resetTimer);
       clearTimer(pressTimer);
+      activeRef.current = false;
       delete document.documentElement.dataset.precisionSecret;
     };
-  }, [activate, active, deactivate]);
+  }, [activate, deactivate]);
 
   return <>
     <div className="precision-secret-layer" aria-hidden="true" data-active={active}>
