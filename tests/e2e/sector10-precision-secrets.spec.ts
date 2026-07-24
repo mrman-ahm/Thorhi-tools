@@ -1,7 +1,12 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
+async function waitForSecrets(page: import("@playwright/test").Page) {
+  await expect(page.locator(".precision-secret-layer")).toHaveAttribute("data-ready", "true");
+}
+
 async function activateWithKeyboard(page: import("@playwright/test").Page) {
+  await waitForSecrets(page);
   await page.keyboard.type("THROHI", { delay: 35 });
   await expect(page.locator("html")).toHaveAttribute("data-precision-secret", "active");
 }
@@ -9,12 +14,16 @@ async function activateWithKeyboard(page: import("@playwright/test").Page) {
 test.describe("Sector 10 restrained precision secrets", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("/products");
+    await waitForSecrets(page);
   });
 
-  test("THROHI key sequence activates the temporary layer and Escape closes it", async ({ page }) => {
+  test("THROHI key sequence activates the temporary layer and Escape closes it", async ({ page }, testInfo) => {
     await activateWithKeyboard(page);
     await expect(page.locator(".precision-secret-layer")).toBeVisible();
     await expect(page.getByRole("status")).toContainText("precision layer active");
+
+    const screenshot = await page.screenshot({ animations: "disabled" });
+    await testInfo.attach(`sector10-precision-layer-${testInfo.project.name}.png`, { body: screenshot, contentType: "image/png" });
 
     await page.keyboard.press("Escape");
     await expect.poll(() => page.locator("html").getAttribute("data-precision-secret")).toBeNull();
