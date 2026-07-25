@@ -27,6 +27,7 @@ import "./v2-sector9d-refinement.css";
 import "./v3-optical-system.css";
 import "./v3-cinematic-hero.css";
 import "./v3-home-chapters.css";
+import "./v3-catalogue-system.css";
 
 const archivo = Archivo({ subsets: ["latin"], variable: "--font-archivo", display: "swap" });
 const instrument = Instrument_Sans({ subsets: ["latin"], variable: "--font-instrument", display: "swap" });
