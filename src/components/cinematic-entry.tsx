@@ -1,6 +1,7 @@
 "use client";
 
 import { createScope, createTimeline } from "animejs";
+import Image from "next/image";
 import type { CSSProperties } from "react";
 import { useEffect, useRef, useState } from "react";
 
@@ -128,7 +129,7 @@ export function CinematicEntry() {
 
   return <section
     ref={sectionRef}
-    className="cinematic-entry"
+    className="cinematic-entry v3-cinematic-entry"
     aria-labelledby="cinematic-entry-title"
     data-media-state={mediaState}
     data-video-ended={entryReady ? "true" : "false"}
@@ -142,7 +143,7 @@ export function CinematicEntry() {
           src={videoSource}
           muted
           playsInline
-          preload="auto"
+          preload="metadata"
           onCanPlay={() => setMediaState("ready")}
           onError={() => {
             setMediaState("error");
@@ -154,13 +155,29 @@ export function CinematicEntry() {
         <div className="cinematic-entry-feather" />
       </div>
 
-      <div className="cinematic-entry-index"><span>THROHI / OPENING STUDY</span><span>INSTRUMENTS IN TRANSITION</span></div>
-      <div className="cinematic-entry-copy">
-        <p>PRECISION THROUGH FORM</p>
-        <h1 id="cinematic-entry-title" className="cinematic-entry-title">Built around<br />the instrument.</h1>
+      <div className="cinematic-entry-index">
+        <span>THROHI / OPENING STUDY</span>
+        <span>MEDICAL INSTRUMENTS / MOTION</span>
       </div>
-      <button className="cinematic-entry-scroll" type="button" onClick={skip} aria-label="Slide the opening cover away and enter the THROHI website">
-        <span>SCROLL TO ENTER</span><b aria-hidden="true">↓</b>
+
+      <div className="cinematic-entry-logo" aria-hidden="true">
+        <Image src="/brand/throhi-logo-clean.webp" alt="" width={900} height={671} priority />
+      </div>
+
+      <div className="cinematic-entry-copy">
+        <p>Precision in motion</p>
+        <h1 id="cinematic-entry-title" className="cinematic-entry-title">The instrument<br />comes first.</h1>
+      </div>
+
+      <button
+        className="cinematic-entry-scroll v3-glass"
+        data-glass="smoked"
+        type="button"
+        onClick={skip}
+        aria-label="Slide the opening cover away and enter the THROHI website"
+      >
+        <span><small>Opening complete</small>Scroll to enter</span>
+        <b aria-hidden="true">↓</b>
       </button>
     </div>
   </section>;
