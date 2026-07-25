@@ -56,6 +56,25 @@
 .cinematic-entry-media video,
 .frame-evolution-stage canvas{transform:translateZ(0)}
 
+@media (max-width:960px){
+  .catalogue-filter-shell>summary{
+    min-height:52px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:1rem;
+    padding:.8rem 1rem;
+    border-bottom:1px solid rgb(65 88 77/.13);
+    color:var(--v3-text-on-light);
+    font:550 .62rem var(--font-mono);
+    cursor:pointer;
+  }
+
+  .catalogue-filter-shell>summary::marker{color:var(--v3-surgical-green-deep)}
+  .catalogue-filter-shell>summary b{color:var(--v3-surgical-green-deep);font-weight:550}
+  .catalogue-filter-shell:not([open])>.catalogue-filter-panel{display:none}
+}
+
 @media (max-width:900px){
   .v3-glass,
   .header-inner,
