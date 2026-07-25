@@ -56,6 +56,13 @@
 .cinematic-entry-media video,
 .frame-evolution-stage canvas{transform:translateZ(0)}
 
+@media (max-width:1100px){
+  .header-inner{height:64px;grid-template-columns:1fr auto;width:calc(100% - 1rem);border-radius:14px}
+  .desktop-nav,.icon-button,.inquiry-label{display:none}
+  .menu-button{display:inline-flex}
+  .brand-image{width:108px;height:44px}
+}
+
 @media (max-width:960px){
   .catalogue-filter-shell>summary{
     min-height:52px;
