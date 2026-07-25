@@ -1,14 +1,55 @@
 "use client";
 
-import { animate, createScope, createTimeline, stagger } from "animejs";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
+import {
+  GlassPanel,
+  SectionIndex,
+  TechnicalReadout
+} from "@/components/v3/optical-primitives";
 
 const divisions = [
-  { index: "01", name: "Surgical", slug: "surgical", description: "Cutting, holding, clamping, retracting, and suturing families.", verbs: ["CUT", "HOLD", "CLAMP"], tone: "green" },
-  { index: "02", name: "Dental", slug: "dental", description: "Diagnostic, extraction, periodontal, and restorative families.", verbs: ["EXAMINE", "EXTRACT", "RESTORE"], tone: "blue" },
-  { index: "03", name: "Veterinary", slug: "veterinary", description: "General, equine, hoof, obstetrical, and specialist families.", verbs: ["TREAT", "HOLD", "SUPPORT"], tone: "amber" },
-  { index: "04", name: "Beauty", slug: "beauty", description: "Hair, tweezer, nail, cuticle, and professional salon families.", verbs: ["SHAPE", "REFINE", "DETAIL"], tone: "coral" }
+  {
+    index: "01",
+    name: "Surgical",
+    slug: "surgical",
+    description: "Cutting, holding, clamping, retracting, and suturing families.",
+    verbs: ["Cut", "Hold", "Clamp"],
+    tone: "green"
+  },
+  {
+    index: "02",
+    name: "Dental",
+    slug: "dental",
+    description: "Diagnostic, extraction, periodontal, and restorative families.",
+    verbs: ["Examine", "Extract", "Restore"],
+    tone: "blue"
+  },
+  {
+    index: "03",
+    name: "Veterinary",
+    slug: "veterinary",
+    description: "General, equine, hoof, obstetrical, and specialist families.",
+    verbs: ["Treat", "Hold", "Support"],
+    tone: "amber"
+  },
+  {
+    index: "04",
+    name: "Beauty",
+    slug: "beauty",
+    description: "Hair, tweezer, nail, cuticle, and professional salon families.",
+    verbs: ["Shape", "Refine", "Detail"],
+    tone: "coral"
+  }
+] as const;
+
+const functions = [
+  { index: "01", name: "Cut", note: "Scissors and cutting families", query: "cut" },
+  { index: "02", name: "Hold", note: "Forceps, clamps, and holders", query: "hold" },
+  { index: "03", name: "Retract", note: "Retraction families", query: "retract" },
+  { index: "04", name: "Suture", note: "Needle-holding families", query: "suture" },
+  { index: "05", name: "Examine", note: "Diagnostic families", query: "examine" },
+  { index: "06", name: "Extract", note: "Dental extraction families", query: "extract" }
 ] as const;
 
 const families = [
@@ -22,187 +63,130 @@ const families = [
   { index: "08", name: "Nail & Cuticle", route: "/products/beauty/nail-cuticle", division: "Beauty", function: "Refine" }
 ] as const;
 
-function clamp(value: number, minimum: number, maximum: number) {
-  return Math.min(maximum, Math.max(minimum, value));
-}
-
 export function DiscoveryExperience() {
   const [activeDivision, setActiveDivision] = useState(0);
-  const divisionSection = useRef<HTMLElement>(null);
-  const divisionItems = useRef<Array<HTMLAnchorElement | null>>([]);
-  const familySection = useRef<HTMLElement>(null);
-  const familyViewport = useRef<HTMLDivElement>(null);
-  const familyTrack = useRef<HTMLDivElement>(null);
-  const frame = useRef<number | null>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(entries => {
-      const visible = entries
-        .filter(entry => entry.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-      if (!visible) return;
-      const index = Number((visible.target as HTMLElement).dataset.divisionIndex ?? 0);
-      setActiveDivision(index);
-    }, { rootMargin: "-20% 0px -48% 0px", threshold: [0.2, 0.38, 0.58, 0.78] });
-
-    divisionItems.current.forEach(item => item && observer.observe(item));
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    const section = divisionSection.current;
-    if (!section) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      section.dataset.specialMotion = "reduced";
-      return;
-    }
-
-    const scope = createScope({ root: divisionSection }).add(() => {
-      const axes = Array.from(section.querySelectorAll<HTMLElement>(".division-active-stage .stage-axis"));
-      const blades = Array.from(section.querySelectorAll<HTMLElement>(".division-active-stage .stage-blade"));
-      const pivot = section.querySelector<HTMLElement>(".division-active-stage .stage-pivot");
-      const indexParts = Array.from(section.querySelectorAll<HTMLElement>(".division-stage-index > *"));
-      const copyParts = Array.from(section.querySelectorAll<HTMLElement>(".division-stage-copy > *"));
-      const verbs = Array.from(section.querySelectorAll<HTMLElement>(".division-stage-copy span"));
-      const activeItem = divisionItems.current[activeDivision];
-      const activeItemParts = activeItem ? Array.from(activeItem.querySelectorAll<HTMLElement>(".division-number, strong, div, b")) : [];
-      const timeline = createTimeline({ defaults: { ease: "out(5)" } });
-
-      if (axes.length) timeline.add(axes, {
-        scaleX: { from: 0, to: 1 },
-        scaleY: { from: 0, to: 1 },
-        delay: stagger(45),
-        duration: 360
-      }, 0);
-      if (blades.length) timeline.add(blades, {
-        x: (_, index) => index === 0 ? [-18, 0] : [18, 0],
-        y: (_, index) => index === 0 ? [10, 0] : [-10, 0],
-        rotate: (_, index) => index === 0 ? [-7, 0] : [7, 0],
-        delay: stagger(55),
-        duration: 520
-      }, 50);
-      if (pivot) timeline.add(pivot, {
-        scale: [{ from: .7, to: 1.12, duration: 240 }, { to: 1, duration: 260 }],
-        rotate: { from: -28, to: 0 },
-        duration: 500
-      }, 180);
-      if (indexParts.length) timeline.add(indexParts, { y: { from: 8 }, delay: stagger(35), duration: 340 }, 180);
-      if (copyParts.length) timeline.add(copyParts, { x: { from: 12 }, delay: stagger(45), duration: 420 }, 250);
-      if (verbs.length) timeline.add(verbs, {
-        clipPath: ["inset(0 100% 0 0)", "inset(0 0% 0 0)"],
-        delay: stagger(55),
-        duration: 360,
-        ease: "inOutSine"
-      }, 330);
-      if (activeItemParts.length) timeline.add(activeItemParts, { x: { from: 8 }, delay: stagger(28), duration: 340 }, 80);
-
-      section.dataset.specialMotion = "ready";
-    });
-
-    return () => scope.revert();
-  }, [activeDivision]);
-
-  useEffect(() => {
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const narrow = window.matchMedia("(max-width: 900px)");
-
-    const updateFamily = () => {
-      const section = familySection.current;
-      const viewport = familyViewport.current;
-      const track = familyTrack.current;
-      if (!section || !viewport || !track) return;
-
-      if (reduced.matches || narrow.matches) {
-        section.style.removeProperty("height");
-        section.style.setProperty("--family-progress", "0");
-        track.style.transform = "none";
-        frame.current = null;
-        return;
-      }
-
-      const maximumShift = Math.max(0, track.scrollWidth - viewport.clientWidth);
-      const travel = Math.max(window.innerHeight * 1.25, maximumShift + window.innerHeight * 0.7);
-      section.style.height = `${travel + window.innerHeight}px`;
-      const rect = section.getBoundingClientRect();
-      const progress = clamp(-rect.top / travel, 0, 1);
-      section.style.setProperty("--family-progress", progress.toFixed(4));
-      track.style.transform = `translate3d(${-maximumShift * progress}px,0,0)`;
-      frame.current = null;
-    };
-
-    const requestUpdate = () => {
-      if (frame.current === null) frame.current = window.requestAnimationFrame(updateFamily);
-    };
-
-    updateFamily();
-    window.addEventListener("scroll", requestUpdate, { passive: true });
-    window.addEventListener("resize", requestUpdate);
-    reduced.addEventListener("change", requestUpdate);
-    narrow.addEventListener("change", requestUpdate);
-
-    return () => {
-      window.removeEventListener("scroll", requestUpdate);
-      window.removeEventListener("resize", requestUpdate);
-      reduced.removeEventListener("change", requestUpdate);
-      narrow.removeEventListener("change", requestUpdate);
-      if (frame.current !== null) window.cancelAnimationFrame(frame.current);
-    };
-  }, []);
-
   const active = divisions[activeDivision];
 
   return <>
-    <section ref={divisionSection} className="division-discovery" aria-labelledby="division-title" data-active-tone={active.tone} data-active-index={activeDivision}>
-      <header className="section-intro container"><p className="eyebrow">01 · FOUR DIVISIONS</p><h2 id="division-title">Four fields.<br /><span>One language of precision.</span></h2><p>Each division keeps a distinct working character while remaining part of one catalogue system.</p></header>
+    <section
+      className="division-discovery v3-division-index v3-surface"
+      aria-labelledby="division-title"
+      data-active-tone={active.tone}
+      data-active-index={activeDivision}
+    >
+      <div className="container v3-division-shell">
+        <header className="v3-chapter-heading">
+          <SectionIndex>01 · Precision index</SectionIndex>
+          <div>
+            <h2 id="division-title">Four fields.<br /><span>One catalogue language.</span></h2>
+            <p>Move through the divisions without losing the shared product-code, search, and inquiry structure.</p>
+          </div>
+        </header>
 
-      <div className="container division-discovery-grid">
-        <aside className="division-active-stage" aria-live="polite">
-          <div className="division-stage-index"><span>{active.index}</span><small>ACTIVE DIVISION</small></div>
-          <div className="division-stage-object" aria-hidden="true"><span className="stage-axis horizontal" /><span className="stage-axis vertical" /><span className="stage-pivot" /><span className="stage-blade blade-one" /><span className="stage-blade blade-two" /></div>
-          <div className="division-stage-copy"><p>{active.description}</p><div>{active.verbs.map(verb => <span key={verb}>{verb}</span>)}</div></div>
-        </aside>
+        <div className="v3-division-layout">
+          <GlassPanel variant="optical" className="v3-division-active" aria-live="polite">
+            <div className="v3-division-stage-index">
+              <TechnicalReadout label="Active division" value={`${active.index} / 04`} />
+              <TechnicalReadout label="Primary route" value={`/products/${active.slug}`} />
+            </div>
 
-        <div className="division-scroll-list">{divisions.map((division, index) => <Link
-          ref={element => { divisionItems.current[index] = element; }}
-          className={`division-discovery-item ${division.tone}`}
-          href={`/products/${division.slug}`}
-          key={division.slug}
-          data-division-index={index}
-          aria-current={activeDivision === index ? "true" : undefined}
-          onPointerEnter={() => setActiveDivision(index)}
-          onFocus={() => setActiveDivision(index)}
-        >
-          <span className="division-number">{division.index}</span>
-          <strong>{division.name}</strong>
-          <div><p>{division.description}</p><small>{division.verbs.join(" · ")}</small></div>
-          <b aria-hidden="true">↗</b>
-        </Link>)}</div>
-      </div>
-    </section>
+            <div className="v3-division-instrument" aria-hidden="true">
+              <span className="v3-division-orbit orbit-a" />
+              <span className="v3-division-orbit orbit-b" />
+              <span className="v3-division-blade blade-a" />
+              <span className="v3-division-blade blade-b" />
+              <span className="v3-division-pivot" />
+              <span className="v3-division-axis horizontal" />
+              <span className="v3-division-axis vertical" />
+            </div>
 
-    <section className="function-passage" aria-labelledby="function-title">
-      <div className="container function-heading"><p className="eyebrow">02 · WORKING LANGUAGE</p><h2 id="function-title">Find the instrument through what it must do.</h2></div>
-      <div className="function-lines" aria-label="Instrument functions">
-        <Link href="/search?q=cut"><span>01</span><strong>CUT</strong><small>Scissors and cutting families</small></Link>
-        <Link href="/search?q=hold"><span>02</span><strong>HOLD</strong><small>Forceps, clamps, and holders</small></Link>
-        <Link href="/search?q=retract"><span>03</span><strong>RETRACT</strong><small>Retraction families</small></Link>
-        <Link href="/search?q=suture"><span>04</span><strong>SUTURE</strong><small>Needle-holding families</small></Link>
-        <Link href="/search?q=examine"><span>05</span><strong>EXAMINE</strong><small>Diagnostic families</small></Link>
-        <Link href="/search?q=extract"><span>06</span><strong>EXTRACT</strong><small>Dental extraction families</small></Link>
-      </div>
-    </section>
+            <div className="v3-division-copy">
+              <p>{active.description}</p>
+              <div>{active.verbs.map(verb => <span key={verb}>{verb}</span>)}</div>
+              <Link href={`/products/${active.slug}`}>Open {active.name} catalogue <span aria-hidden="true">↗</span></Link>
+            </div>
+          </GlassPanel>
 
-    <section ref={familySection} className="family-discovery" aria-labelledby="family-title">
-      <div className="family-sticky-stage">
-        <header className="container family-discovery-heading"><div><p className="eyebrow">03 · FAMILY INDEX</p><h2 id="family-title">Enter through the family.</h2></div><p>Vertical scrolling advances the archive on larger screens. Every panel remains a direct catalogue link.</p></header>
-        <div ref={familyViewport} className="family-track-viewport">
-          <div ref={familyTrack} className="family-track">{families.map(family => <Link className="family-panel" href={family.route} key={family.route}>
-            <header><span>{family.index}</span><small>{family.division}</small></header>
-            <div className="family-panel-object" aria-hidden="true"><span /><span /><i /></div>
-            <div><p>{family.function}</p><h3>{family.name}</h3><b>Open family ↗</b></div>
-          </Link>)}</div>
+          <nav className="v3-division-rail" aria-label="Product divisions">
+            {divisions.map((division, index) => <Link
+              className="v3-division-option"
+              href={`/products/${division.slug}`}
+              key={division.slug}
+              data-tone={division.tone}
+              data-active={activeDivision === index}
+              aria-current={activeDivision === index ? "page" : undefined}
+              onPointerEnter={() => setActiveDivision(index)}
+              onFocus={() => setActiveDivision(index)}
+            >
+              <span>{division.index}</span>
+              <strong>{division.name}</strong>
+              <small>{division.verbs.join(" · ")}</small>
+              <b aria-hidden="true">↗</b>
+            </Link>)}
+          </nav>
         </div>
-        <div className="container family-progress" aria-hidden="true"><span>START</span><i><b /></i><span>END</span></div>
+      </div>
+    </section>
+
+    <section className="function-passage v3-function-archive" aria-labelledby="function-title">
+      <div className="container">
+        <header className="v3-chapter-heading is-compact">
+          <SectionIndex>02 · Working language</SectionIndex>
+          <div>
+            <h2 id="function-title">Begin with what the instrument must do.</h2>
+            <p>Every function opens a real catalogue search rather than a decorative category.</p>
+          </div>
+        </header>
+
+        <nav className="v3-function-list" aria-label="Browse instruments by working function">
+          {functions.map(item => <Link href={`/search?q=${item.query}`} key={item.query}>
+            <span>{item.index}</span>
+            <strong>{item.name}</strong>
+            <small>{item.note}</small>
+            <b aria-hidden="true">↗</b>
+          </Link>)}
+        </nav>
+      </div>
+    </section>
+
+    <section className="family-discovery v3-family-archive v3-surface" data-tone="light" aria-labelledby="family-title">
+      <div className="container">
+        <header className="v3-chapter-heading">
+          <SectionIndex>03 · Family archive</SectionIndex>
+          <div>
+            <h2 id="family-title">Enter through the family.</h2>
+            <p>Eight direct routes, presented in normal document flow without an artificial horizontal scroll runway.</p>
+          </div>
+        </header>
+
+        <div className="v3-family-layout">
+          <aside className="v3-family-note">
+            <p>Catalogue structure</p>
+            <strong>Division → family → product → inquiry</strong>
+            <small>Every family remains keyboard accessible and directly linkable.</small>
+          </aside>
+
+          <nav className="v3-family-shelves" aria-label="Instrument families">
+            {families.map((family, index) => <Link
+              className="v3-family-object"
+              href={family.route}
+              key={family.route}
+              style={{ "--family-order": index } as React.CSSProperties}
+            >
+              <header><span>{family.index}</span><small>{family.division}</small></header>
+              <div className="v3-family-object-study" aria-hidden="true">
+                <i className="edge edge-a" />
+                <i className="edge edge-b" />
+                <i className="pivot" />
+              </div>
+              <footer>
+                <span>{family.function}</span>
+                <h3>{family.name}</h3>
+                <b>Open family <span aria-hidden="true">↗</span></b>
+              </footer>
+            </Link>)}
+          </nav>
+        </div>
       </div>
     </section>
   </>;
