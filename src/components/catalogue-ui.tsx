@@ -46,6 +46,7 @@ export function ProductInquiryControls({ product }: { product: Product }) {
   const [note, setNote] = useState(existing?.note ?? "");
   const [announcement, setAnnouncement] = useState("");
 
+  const setSafeQuantity = (value: number) => setQuantity(Math.max(1, Math.min(9999, value || 1)));
   const add = () => {
     const result = addProduct({ productId: product.id, code: product.code, name: product.name });
     updateItem(product.code, { quantity, note });
@@ -54,7 +55,14 @@ export function ProductInquiryControls({ product }: { product: Product }) {
 
   return <div className="product-purchase-actions catalogue-detail-actions">
     <span className="visually-hidden" aria-live="polite">{announcement}</span>
-    <div className="detail-field quantity-field"><label htmlFor="detail-quantity">Quantity for inquiry</label><input id="detail-quantity" type="number" min="1" max="9999" value={quantity} onChange={event => setQuantity(Math.max(1, Math.min(9999, Number(event.target.value) || 1)))} /></div>
+    <div className="detail-field quantity-field">
+      <label htmlFor="detail-quantity">Quantity for inquiry</label>
+      <div className="catalogue-quantity-control">
+        <button type="button" aria-label={`Decrease quantity for ${product.name}`} disabled={quantity <= 1} onClick={() => setSafeQuantity(quantity - 1)}>−</button>
+        <input id="detail-quantity" type="number" min="1" max="9999" inputMode="numeric" value={quantity} onChange={event => setSafeQuantity(Number(event.target.value))} />
+        <button type="button" aria-label={`Increase quantity for ${product.name}`} disabled={quantity >= 9999} onClick={() => setSafeQuantity(quantity + 1)}>+</button>
+      </div>
+    </div>
     <div className="detail-field note-field"><label htmlFor="detail-note">Product-specific note</label><textarea id="detail-note" value={note} onChange={event => setNote(event.target.value)} placeholder="Optional requirement or equivalent reference" /></div>
     <button type="button" className={`button product-action catalogue-detail-submit ${existing ? "positive" : "primary"}`} aria-label={`${existing ? "Update inquiry details for" : "Add to inquiry"}: ${product.name}`} onClick={add}><span>{existing ? "Update inquiry details" : "Add to inquiry"}</span><b aria-hidden="true">↗</b></button>
   </div>;
