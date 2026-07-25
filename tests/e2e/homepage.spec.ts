@@ -1,6 +1,7 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 import { clearCinematicCover } from "./helpers/cinematic";
+import { prepareVisualCapture } from "./helpers/visual";
 
 test.beforeEach(async ({ page }) => {
   await page.goto("/");
@@ -14,6 +15,7 @@ test("renders the V3 homepage without horizontal overflow", async ({ page }, tes
   await expect(page.getByRole("heading", { level: 2, name: /Four fields\. One catalogue language\./i })).toBeVisible();
   const dimensions = await page.evaluate(() => ({ scrollWidth: document.documentElement.scrollWidth, clientWidth: document.documentElement.clientWidth }));
   expect(dimensions.scrollWidth).toBeLessThanOrEqual(dimensions.clientWidth + 1);
+  await prepareVisualCapture(page);
   const screenshot = await page.screenshot({ fullPage: true, animations: "disabled" });
   await testInfo.attach(`homepage-v3-${testInfo.project.name}.png`, { body: screenshot, contentType: "image/png" });
 });
