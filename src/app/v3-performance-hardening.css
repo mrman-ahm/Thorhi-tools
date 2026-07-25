@@ -1,0 +1,124 @@
+/* THROHI V3 — Phase 6 responsive and performance hardening */
+
+.v3-cinematic-entry[data-exit-state="holding"] .cinematic-entry-sticky,
+.v3-cinematic-entry[data-exit-state="leaving"] .cinematic-entry-sticky{will-change:transform}
+.v3-cinematic-entry[data-exit-state="cleared"] .cinematic-entry-sticky{will-change:auto}
+
+.motion-shell[data-data-saver="true"] .v3-surgical-light-beam,
+.motion-shell[data-data-saver="true"] .hero-brand-orbit,
+.motion-shell[data-data-saver="true"] .v3-division-orbit,
+.motion-shell[data-data-saver="true"] .hero-inspection-light{display:none}
+
+.motion-shell[data-data-saver="true"] .v3-glass,
+.motion-shell[data-data-saver="true"] .header-inner,
+.motion-shell[data-data-saver="true"] .search-command-dialog,
+.motion-shell[data-data-saver="true"] .inquiry-review{
+  -webkit-backdrop-filter:none;
+  backdrop-filter:none;
+}
+
+.motion-shell[data-data-saver="true"] .v3-glass{background:var(--v3-graphite)}
+.motion-shell[data-data-saver="true"] .v3-glass[data-glass="clinical"]{background:var(--v3-clinical-mint)}
+
+.v3-home>.v3-division-index,
+.v3-home>.v3-function-archive,
+.v3-home>.v3-family-archive,
+.v3-home>.macro-stage,
+.v3-home>.v3-catalogue-command,
+.v3-home>.v3-catalogue-objects,
+.v3-home>.v3-inquiry-path,
+.v3-home>.v3-verification,
+.v3-home>.v3-surgical-light,
+.catalogue-featured-objects,
+.division-family-routes,
+.division-product-preview,
+.family-listing-section,
+.related-object-section,
+.search-results-section,
+.utility-section,
+.legal-reading-section{
+  content-visibility:auto;
+  contain-intrinsic-size:auto 900px;
+}
+
+.cinematic-entry,
+.frame-evolution-section,
+.site-header,
+.search-command-layer{content-visibility:visible}
+
+.catalogue-object-card,
+.v3-family-object,
+.v3-glass,
+.inquiry-block,
+.resource-archive-card,
+.contact-guidance-grid article{contain:layout paint}
+
+.cinematic-entry-media video,
+.frame-evolution-stage canvas{transform:translateZ(0)}
+
+@media (max-width:900px){
+  .v3-glass,
+  .header-inner,
+  .search-command-dialog,
+  .inquiry-review,
+  .division-documents,
+  .product-document-grid aside{
+    -webkit-backdrop-filter:blur(10px) saturate(108%);
+    backdrop-filter:blur(10px) saturate(108%);
+  }
+
+  .v3-home>.v3-division-index,
+  .v3-home>.v3-function-archive,
+  .v3-home>.v3-family-archive,
+  .v3-home>.macro-stage,
+  .v3-home>.v3-catalogue-command,
+  .v3-home>.v3-catalogue-objects,
+  .v3-home>.v3-inquiry-path,
+  .v3-home>.v3-verification,
+  .v3-home>.v3-surgical-light{contain-intrinsic-size:auto 720px}
+}
+
+@media (max-width:560px){
+  .v3-glass,
+  .header-inner,
+  .search-command-dialog,
+  .inquiry-review,
+  .division-documents,
+  .product-document-grid aside{
+    -webkit-backdrop-filter:blur(7px) saturate(104%);
+    backdrop-filter:blur(7px) saturate(104%);
+  }
+
+  .catalogue-object-card,
+  .v3-family-object,
+  .inquiry-block,
+  .resource-archive-card{box-shadow:0 14px 30px rgb(70 90 80/.13),inset 0 1px 0 rgb(255 255 255/.74)}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto!important}
+  *,*::before,*::after{scroll-behavior:auto!important}
+
+  .cinematic-entry-sticky,
+  .frame-evolution-stage canvas,
+  .hero-object,
+  .v3-surgical-light-beam,
+  .hero-brand-orbit,
+  .v3-division-orbit{will-change:auto!important}
+
+  .v3-surgical-light-beam,
+  .hero-brand-orbit,
+  .v3-division-orbit{display:none}
+}
+
+@media (prefers-reduced-transparency:reduce){
+  .v3-glass,
+  .header-inner,
+  .search-command-dialog,
+  .inquiry-review,
+  .division-documents,
+  .product-document-grid aside{
+    -webkit-backdrop-filter:none!important;
+    backdrop-filter:none!important;
+  }
+}
