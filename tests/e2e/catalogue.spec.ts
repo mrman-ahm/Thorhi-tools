@@ -18,10 +18,8 @@ for (const [name, route, heading] of routes) {
     await expect(page.getByRole("heading", { level: 1, name: heading })).toBeVisible();
     const dimensions = await page.evaluate(() => ({ scrollWidth: document.documentElement.scrollWidth, clientWidth: document.documentElement.clientWidth }));
     expect(dimensions.scrollWidth).toBeLessThanOrEqual(dimensions.clientWidth + 1);
-    if (["products", "division", "family", "product", "search"].includes(name)) {
-      const screenshot = await page.screenshot({ fullPage: true, animations: "disabled" });
-      await testInfo.attach(`${name}-${testInfo.project.name}.png`, { body: screenshot, contentType: "image/png" });
-    }
+    const screenshot = await page.screenshot({ fullPage: true, animations: "disabled" });
+    await testInfo.attach(`${name}-v3-${testInfo.project.name}.png`, { body: screenshot, contentType: "image/png" });
   });
 }
 
@@ -80,6 +78,8 @@ test("product detail keeps code, quantity, note, and inquiry action", async ({ p
   await expect(page.getByRole("button", { name: /THR-SC-001 Copy code/ })).toBeVisible();
   await expect(page.getByLabel("Quantity for inquiry")).toHaveValue("1");
   await expect(page.getByLabel("Product-specific note")).toBeVisible();
+  await expect(page.getByRole("button", { name: "Decrease quantity for Operating Scissors", exact: true })).toBeDisabled();
+  await expect(page.getByRole("button", { name: "Increase quantity for Operating Scissors", exact: true })).toBeVisible();
   await expect(page.getByRole("button", { name: "Add to inquiry: Operating Scissors", exact: true })).toBeVisible();
 });
 
