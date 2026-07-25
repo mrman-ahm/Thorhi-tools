@@ -10,6 +10,11 @@ type MediaManifest = {
   intro: string | null;
 };
 
+function saveDataEnabled() {
+  const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
+  return Boolean(connection?.saveData);
+}
+
 export function CinematicEntry() {
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -17,6 +22,7 @@ export function CinematicEntry() {
   const clearedRef = useRef(false);
   const [videoSource, setVideoSource] = useState<string | null>(null);
   const [motionAllowed, setMotionAllowed] = useState(false);
+  const [dataSaver, setDataSaver] = useState(false);
   const [videoEnded, setVideoEnded] = useState(false);
   const [mediaState, setMediaState] = useState<"loading" | "ready" | "error">("loading");
 
@@ -24,7 +30,9 @@ export function CinematicEntry() {
     const controller = new AbortController();
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
     const updateMotionPreference = () => {
-      const allowed = !reduced.matches;
+      const savingData = saveDataEnabled();
+      const allowed = !reduced.matches && !savingData;
+      setDataSaver(savingData);
       setMotionAllowed(allowed);
       if (!allowed) setVideoEnded(true);
     };
@@ -56,7 +64,8 @@ export function CinematicEntry() {
     const section = sectionRef.current;
     if (!section) return;
 
-    const scope = createScope({ root: sectionRef }).add(() => {
+    const constrained = window.matchMedia("(prefers-reduced-motion: reduce)").matches || saveDataEnabled();
+    const scope = constrained ? null : createScope({ root: sectionRef }).add(() => {
       const index = section.querySelector<HTMLElement>(".cinematic-entry-index");
       const title = section.querySelector<HTMLElement>(".cinematic-entry-title");
       const timeline = createTimeline({ defaults: { ease: "out(5)" } });
@@ -94,7 +103,7 @@ export function CinematicEntry() {
     window.addEventListener("resize", requestUpdate);
 
     return () => {
-      scope.revert();
+      scope?.revert();
       window.removeEventListener("scroll", requestUpdate);
       window.removeEventListener("resize", requestUpdate);
       if (frameRef.current !== null) window.cancelAnimationFrame(frameRef.current);
@@ -118,10 +127,10 @@ export function CinematicEntry() {
   const skip = () => {
     const section = sectionRef.current;
     if (!section) return;
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const constrained = window.matchMedia("(prefers-reduced-motion: reduce)").matches || saveDataEnabled();
     window.scrollTo({
       top: section.offsetTop + section.offsetHeight - window.innerHeight + 2,
-      behavior: reduced ? "auto" : "smooth"
+      behavior: constrained ? "auto" : "smooth"
     });
   };
 
@@ -133,6 +142,7 @@ export function CinematicEntry() {
     aria-labelledby="cinematic-entry-title"
     data-media-state={mediaState}
     data-video-ended={entryReady ? "true" : "false"}
+    data-save-data={dataSaver ? "true" : "false"}
     data-exit-state="holding"
     style={{ "--cinematic-progress": "0" } as CSSProperties}
   >
@@ -176,7 +186,7 @@ export function CinematicEntry() {
         onClick={skip}
         aria-label="Slide the opening cover away and enter the THROHI website"
       >
-        <span><small>Opening complete</small>Scroll to enter</span>
+        <span><small>{dataSaver ? "Data saver active" : "Opening complete"}</small>Scroll to enter</span>
         <b aria-hidden="true">↓</b>
       </button>
     </div>
