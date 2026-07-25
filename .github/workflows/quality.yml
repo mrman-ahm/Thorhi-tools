@@ -3,7 +3,10 @@ name: Quality
 on:
   pull_request:
   push:
-    branches: [main, phase-6-7-production-homepage]
+    branches:
+      - main
+      - phase-6-7-production-homepage
+      - experiment/v3-surgical-editorial-glass
 
 jobs:
   verify:
