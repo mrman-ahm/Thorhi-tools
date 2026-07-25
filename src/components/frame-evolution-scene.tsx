@@ -32,6 +32,11 @@ const LEGACY_SPRITE: Omit<SpriteDescriptor, "src"> = {
   columns: 12
 };
 
+function saveDataEnabled() {
+  const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
+  return Boolean(connection?.saveData);
+}
+
 function drawFrame(
   canvas: HTMLCanvasElement,
   image: HTMLImageElement,
@@ -43,7 +48,7 @@ function drawFrame(
 
   const width = canvas.clientWidth;
   const height = canvas.clientHeight;
-  const ratio = Math.min(window.devicePixelRatio || 1, 1.5);
+  const ratio = Math.min(window.devicePixelRatio || 1, saveDataEnabled() ? 1 : 1.5);
   const pixelWidth = Math.max(1, Math.round(width * ratio));
   const pixelHeight = Math.max(1, Math.round(height * ratio));
   if (canvas.width !== pixelWidth || canvas.height !== pixelHeight) {
@@ -79,7 +84,7 @@ function drawFrame(
 
 function selectSprite(manifest: MediaManifest): SpriteDescriptor | null {
   if (manifest.sprites) {
-    return window.matchMedia("(max-width: 720px), (pointer: coarse)").matches
+    return saveDataEnabled() || window.matchMedia("(max-width: 720px), (pointer: coarse)").matches
       ? manifest.sprites.mobile
       : manifest.sprites.desktop;
   }
@@ -93,9 +98,11 @@ export function FrameEvolutionScene() {
   const imageRef = useRef<HTMLImageElement | null>(null);
   const descriptorRef = useRef<SpriteDescriptor | null>(null);
   const frameRequest = useRef<number | null>(null);
+  const updateRequest = useRef<number | null>(null);
   const targetFrame = useRef(1);
   const renderedFrame = useRef(1);
   const activeChapterRef = useRef(0);
+  const visibleRef = useRef(false);
   const [activeChapter, setActiveChapter] = useState(0);
   const [mediaState, setMediaState] = useState<"loading" | "ready" | "error">("loading");
 
@@ -110,13 +117,16 @@ export function FrameEvolutionScene() {
 
     const controller = new AbortController();
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let observer: IntersectionObserver | null = null;
+    let loadObserver: IntersectionObserver | null = null;
+    let visibilityObserver: IntersectionObserver | null = null;
     let mediaRequested = false;
+
+    section.dataset.dataSaver = saveDataEnabled() ? "true" : "false";
 
     const render = () => {
       const image = imageRef.current;
       const descriptor = descriptorRef.current;
-      if (!image || !descriptor || !image.complete || !image.naturalWidth) {
+      if (document.hidden || !visibleRef.current || !image || !descriptor || !image.complete || !image.naturalWidth) {
         frameRequest.current = null;
         return;
       }
@@ -147,10 +157,14 @@ export function FrameEvolutionScene() {
     };
 
     const requestRender = () => {
-      if (frameRequest.current === null) frameRequest.current = window.requestAnimationFrame(render);
+      if (frameRequest.current === null && visibleRef.current && !document.hidden) {
+        frameRequest.current = window.requestAnimationFrame(render);
+      }
     };
 
     const update = () => {
+      updateRequest.current = null;
+      if (!visibleRef.current || document.hidden) return;
       const rect = section.getBoundingClientRect();
       const distance = Math.max(section.offsetHeight - window.innerHeight, 1);
       const progress = Math.min(1, Math.max(0, -rect.top / distance));
@@ -161,6 +175,10 @@ export function FrameEvolutionScene() {
       section.style.setProperty("--evolution-sequence-progress", progress.toFixed(4));
       section.dataset.targetFrame = String(frame);
       requestRender();
+    };
+
+    const requestUpdate = () => {
+      if (updateRequest.current === null) updateRequest.current = window.requestAnimationFrame(update);
     };
 
     const loadSprite = (descriptor: SpriteDescriptor) => {
@@ -175,7 +193,7 @@ export function FrameEvolutionScene() {
         renderedFrame.current = 1;
         targetFrame.current = 1;
         drawFrame(canvas, sprite, descriptor, 1);
-        update();
+        requestUpdate();
       };
       sprite.onerror = () => setMediaState("error");
       sprite.src = descriptor.src;
@@ -183,16 +201,44 @@ export function FrameEvolutionScene() {
 
     const deferSprite = (descriptor: SpriteDescriptor) => {
       if (!("IntersectionObserver" in window)) {
+        visibleRef.current = true;
         loadSprite(descriptor);
         return;
       }
-      observer = new IntersectionObserver(entries => {
+      loadObserver = new IntersectionObserver(entries => {
         if (!entries.some(entry => entry.isIntersecting)) return;
-        observer?.disconnect();
-        observer = null;
+        loadObserver?.disconnect();
+        loadObserver = null;
         loadSprite(descriptor);
       }, { rootMargin: "1400px 0px" });
-      observer.observe(section);
+      loadObserver.observe(section);
+    };
+
+    if ("IntersectionObserver" in window) {
+      visibilityObserver = new IntersectionObserver(entries => {
+        visibleRef.current = entries.some(entry => entry.isIntersecting);
+        section.dataset.visible = visibleRef.current ? "true" : "false";
+        if (visibleRef.current) requestUpdate();
+        else if (frameRequest.current !== null) {
+          window.cancelAnimationFrame(frameRequest.current);
+          frameRequest.current = null;
+        }
+      }, { rootMargin: "260px 0px", threshold: 0.01 });
+      visibilityObserver.observe(section);
+    } else {
+      visibleRef.current = true;
+      section.dataset.visible = "true";
+    }
+
+    const handleVisibility = () => {
+      if (document.hidden) {
+        if (frameRequest.current !== null) window.cancelAnimationFrame(frameRequest.current);
+        frameRequest.current = null;
+        if (updateRequest.current !== null) window.cancelAnimationFrame(updateRequest.current);
+        updateRequest.current = null;
+      } else {
+        requestUpdate();
+      }
     };
 
     void fetch("/media/sector9d/manifest.json", { signal: controller.signal })
@@ -209,26 +255,33 @@ export function FrameEvolutionScene() {
         setMediaState("error");
       });
 
-    update();
-    window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update);
-    reduced.addEventListener("change", update);
+    requestUpdate();
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate);
+    document.addEventListener("visibilitychange", handleVisibility);
+    reduced.addEventListener("change", requestUpdate);
 
     return () => {
       controller.abort();
-      observer?.disconnect();
-      window.removeEventListener("scroll", update);
-      window.removeEventListener("resize", update);
-      reduced.removeEventListener("change", update);
+      loadObserver?.disconnect();
+      visibilityObserver?.disconnect();
+      window.removeEventListener("scroll", requestUpdate);
+      window.removeEventListener("resize", requestUpdate);
+      document.removeEventListener("visibilitychange", handleVisibility);
+      reduced.removeEventListener("change", requestUpdate);
       if (frameRequest.current !== null) window.cancelAnimationFrame(frameRequest.current);
+      if (updateRequest.current !== null) window.cancelAnimationFrame(updateRequest.current);
       imageRef.current = null;
       descriptorRef.current = null;
+      visibleRef.current = false;
+      delete section.dataset.visible;
+      delete section.dataset.dataSaver;
     };
   }, []);
 
   useEffect(() => {
     const section = sectionRef.current;
-    if (!section || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!section || window.matchMedia("(prefers-reduced-motion: reduce)").matches || saveDataEnabled()) return;
 
     const scope = createScope({ root: sectionRef }).add(() => {
       const active = section.querySelector<HTMLElement>(`.frame-evolution-copy[data-chapter="${activeChapter}"]`);
@@ -260,6 +313,8 @@ export function FrameEvolutionScene() {
     data-media-state={mediaState}
     data-rendered-frame="1"
     data-target-frame="1"
+    data-visible="false"
+    data-data-saver="false"
     style={{ "--evolution-sequence-progress": "0" } as React.CSSProperties}
   >
     <div className="frame-evolution-sticky">
