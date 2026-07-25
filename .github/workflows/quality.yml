@@ -8,16 +8,20 @@ on:
       - phase-6-7-production-homepage
       - experiment/v3-surgical-editorial-glass
 
+concurrency:
+  group: quality-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: npm install
+      - run: npm install --no-audit --no-fund
       - run: npm run lint
       - run: npm run typecheck
       - run: npm test
