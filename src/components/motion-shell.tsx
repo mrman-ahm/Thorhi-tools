@@ -69,6 +69,7 @@ export function MotionShell({ children }: { children: ReactNode }) {
     rootElement.dataset.motionRoute = kind;
     rootElement.dataset.motionState = constrained ? "reduced" : "initializing";
     rootElement.dataset.dataSaver = saveDataEnabled() ? "true" : "false";
+    rootElement.dataset.pointer = coarsePointer ? "coarse" : "fine";
     document.documentElement.dataset.animeMotion = constrained ? "reduced" : "active";
 
     if (constrained) {
@@ -77,6 +78,7 @@ export function MotionShell({ children }: { children: ReactNode }) {
         delete rootElement.dataset.motionState;
         delete rootElement.dataset.motionRoute;
         delete rootElement.dataset.dataSaver;
+        delete rootElement.dataset.pointer;
         delete document.documentElement.dataset.animeMotion;
       };
     }
@@ -228,6 +230,7 @@ export function MotionShell({ children }: { children: ReactNode }) {
       delete rootElement.dataset.motionState;
       delete rootElement.dataset.motionRoute;
       delete rootElement.dataset.dataSaver;
+      delete rootElement.dataset.pointer;
       delete document.documentElement.dataset.animeMotion;
     };
   }, [pathname]);
