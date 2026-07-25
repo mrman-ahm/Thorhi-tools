@@ -29,6 +29,7 @@ import "./v3-cinematic-hero.css";
 import "./v3-home-chapters.css";
 import "./v3-catalogue-system.css";
 import "./v3-utility-routes.css";
+import "./v3-performance-hardening.css";
 
 const archivo = Archivo({ subsets: ["latin"], variable: "--font-archivo", display: "swap" });
 const instrument = Instrument_Sans({ subsets: ["latin"], variable: "--font-instrument", display: "swap" });
