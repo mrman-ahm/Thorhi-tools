@@ -1,5 +1,6 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
+import { prepareVisualCapture } from "./helpers/visual";
 
 const routes = [
   ["products", "/products", /Find the object/],
@@ -18,6 +19,7 @@ for (const [name, route, heading] of routes) {
     await expect(page.getByRole("heading", { level: 1, name: heading })).toBeVisible();
     const dimensions = await page.evaluate(() => ({ scrollWidth: document.documentElement.scrollWidth, clientWidth: document.documentElement.clientWidth }));
     expect(dimensions.scrollWidth).toBeLessThanOrEqual(dimensions.clientWidth + 1);
+    await prepareVisualCapture(page);
     const screenshot = await page.screenshot({ fullPage: true, animations: "disabled" });
     await testInfo.attach(`${name}-v3-${testInfo.project.name}.png`, { body: screenshot, contentType: "image/png" });
   });
