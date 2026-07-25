@@ -4,6 +4,11 @@ import { createScope, createTimeline, stagger } from "animejs";
 import Image from "next/image";
 import type { CSSProperties } from "react";
 import { useEffect, useRef, useState } from "react";
+import {
+  GlassPanel,
+  SurgicalLink,
+  TechnicalReadout
+} from "@/components/v3/optical-primitives";
 
 const initialStyle = { "--hero-progress": "0" } as CSSProperties;
 
@@ -40,9 +45,9 @@ export function HeroExperience() {
       const rings = Array.from(section.querySelectorAll<HTMLElement>(".hero-brand-orbit"));
       const labels = Array.from(section.querySelectorAll<HTMLElement>(".hero-brand-meta > *"));
       const timeline = createTimeline({ defaults: { ease: "out(5)" } });
-      if (mark) timeline.add(mark, { scale: { from: .94 }, rotate: { from: -2.4 }, opacity: { from: 0 }, duration: 900 }, 120);
-      if (rings.length) timeline.add(rings, { scale: { from: .72 }, opacity: { from: 0 }, delay: stagger(90), duration: 720 }, 220);
-      if (labels.length) timeline.add(labels, { x: { from: 12 }, opacity: { from: 0 }, delay: stagger(60), duration: 460 }, 540);
+      if (mark) timeline.add(mark, { scale: { from: .965 }, rotate: { from: -1.2 }, opacity: { from: 0 }, duration: 900 }, 120);
+      if (rings.length) timeline.add(rings, { scale: { from: .82 }, opacity: { from: 0 }, delay: stagger(90), duration: 720 }, 220);
+      if (labels.length) timeline.add(labels, { x: { from: 10 }, opacity: { from: 0 }, delay: stagger(60), duration: 460 }, 540);
       section.dataset.specialMotion = "identity-ready";
     });
 
@@ -60,28 +65,63 @@ export function HeroExperience() {
   return <section
     ref={sectionRef}
     id="home-hero"
-    className={`v2-hero hero-experience hero-brand-handoff${ready ? " is-ready" : ""}`}
+    className={`v2-hero hero-experience hero-brand-handoff v3-hero v3-surface${ready ? " is-ready" : ""}`}
     aria-labelledby="hero-title"
     style={initialStyle}
   >
     <div className="hero-inspection-light" aria-hidden="true" />
-    <div className="hero-index" aria-hidden="true"><span>THROHI / MEDICAL TOOLS</span><span>PRECISION OBJECTS / CATALOGUE / INQUIRY</span></div>
-    <h1 className="hero-type" id="hero-title"><span>PRECISION,</span><span>BROUGHT</span><span className="accent-green">ALIVE.</span></h1>
+    <div className="hero-index" aria-hidden="true">
+      <span>THROHI / MEDICAL TOOLS</span>
+      <span>CATALOGUE · PRODUCT CODE · STRUCTURED INQUIRY</span>
+    </div>
+
+    <div className="v3-hero-copy">
+      <p className="v3-eyebrow">Surgical editorial catalogue</p>
+      <h1 className="hero-type" id="hero-title">
+        <span>Precision that</span>
+        <span>begins with</span>
+        <span className="accent-green">the instrument.</span>
+      </h1>
+      <div className="hero-statement v3-body-copy">
+        <p>Search by name, family, or catalogue code.</p>
+        <p>Explore surgical, dental, veterinary, and beauty instruments, then collect the exact items into one structured inquiry.</p>
+      </div>
+      <div className="v3-hero-actions">
+        <SurgicalLink href="/products" variant="primary">Explore catalogue <span aria-hidden="true">↗</span></SurgicalLink>
+        <SurgicalLink href="/inquiry" variant="quiet">Build an inquiry</SurgicalLink>
+      </div>
+    </div>
+
     <div className="hero-object hero-brand-object">
-      <div className="hero-brand-stage" role="img" aria-label="THROHI Medical Tools identity mark">
+      <GlassPanel variant="optical" className="hero-brand-stage" role="img" aria-label="THROHI Medical Tools identity mark">
         <span className="hero-brand-orbit orbit-one" aria-hidden="true" />
         <span className="hero-brand-orbit orbit-two" aria-hidden="true" />
         <span className="hero-brand-axis axis-horizontal" aria-hidden="true" />
         <span className="hero-brand-axis axis-vertical" aria-hidden="true" />
         <div className="hero-brand-mark"><Image src="/brand/throhi-logo-clean.webp" alt="THROHI Medical Tools" width={900} height={671} priority /></div>
-        <div className="hero-brand-meta" aria-hidden="true"><span>SURGICAL · DENTAL</span><span>VETERINARY · BEAUTY</span><span>CATALOGUE · INQUIRY</span></div>
-      </div>
+        <div className="hero-brand-meta" aria-hidden="true">
+          <span>SURGICAL · DENTAL</span>
+          <span>VETERINARY · BEAUTY</span>
+          <span>SEARCH · SAVE · INQUIRE</span>
+        </div>
+        <div className="v3-hero-readouts" aria-hidden="true">
+          <TechnicalReadout label="System" value="Optical precision" />
+          <TechnicalReadout label="Entry" value="Catalogue code" />
+        </div>
+      </GlassPanel>
     </div>
-    <div className="hero-statement"><p>Not a marketplace. Not a generic supplier template.</p><p>A visual catalogue for surgical, dental, veterinary, and beauty instruments.</p></div>
-    <form className="hero-search" action="/search" method="get">
-      <label htmlFor="hero-query"><span>SEARCH THE CATALOGUE</span><small>NAME · FAMILY · EXACT OR PARTIAL CODE</small></label>
-      <div><input id="hero-query" name="q" type="search" placeholder="THR-SC-001" autoComplete="off" /><button type="submit">Search <span aria-hidden="true">↗</span></button></div>
+
+    <form className="hero-search v3-machined" data-state="inset" action="/search" method="get">
+      <label htmlFor="hero-query">
+        <span>Catalogue command</span>
+        <small>Name · family · exact or partial code</small>
+      </label>
+      <div>
+        <input id="hero-query" name="q" type="search" placeholder="Search an instrument" autoComplete="off" />
+        <button type="submit">Search <span aria-hidden="true">↗</span></button>
+      </div>
     </form>
-    <div className="hero-scroll-note" aria-hidden="true"><span>SCROLL TO EXPLORE</span><b>↓</b></div>
+
+    <div className="hero-scroll-note" aria-hidden="true"><span>CONTINUE TO THE PRECISION INDEX</span><b>↓</b></div>
   </section>;
 }
