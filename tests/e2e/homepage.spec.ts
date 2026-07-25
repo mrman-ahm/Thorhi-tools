@@ -9,12 +9,13 @@ test.beforeEach(async ({ page }) => {
   await clearCinematicCover(page);
 });
 
-test("renders the homepage without horizontal overflow", async ({ page }, testInfo) => {
-  await expect(page.getByRole("heading", { level: 1, name: /Precision, brought/i })).toBeVisible();
+test("renders the V3 homepage without horizontal overflow", async ({ page }, testInfo) => {
+  await expect(page.getByRole("heading", { level: 1, name: /Precision that begins with the instrument/i })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 2, name: /Four fields\. One catalogue language\./i })).toBeVisible();
   const dimensions = await page.evaluate(() => ({ scrollWidth: document.documentElement.scrollWidth, clientWidth: document.documentElement.clientWidth }));
   expect(dimensions.scrollWidth).toBeLessThanOrEqual(dimensions.clientWidth + 1);
   const screenshot = await page.screenshot({ fullPage: true, animations: "disabled" });
-  await testInfo.attach(`homepage-${testInfo.project.name}.png`, { body: screenshot, contentType: "image/png" });
+  await testInfo.attach(`homepage-v3-${testInfo.project.name}.png`, { body: screenshot, contentType: "image/png" });
 });
 
 test("has no serious automated accessibility violations", async ({ page }) => {
