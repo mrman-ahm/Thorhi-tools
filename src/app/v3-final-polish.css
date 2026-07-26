@@ -42,6 +42,13 @@
   align-self:end;
 }
 
+.v3-saved-inquiry-shell .saved-row small{
+  color:var(--v3-text-muted-light);
+  font:500 .52rem/1.4 var(--font-mono);
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+
 /* Keep preview state visual rather than falsely marking a homepage route as current. */
 .v3-division-option[data-active="true"]{
   border-color:rgb(120 221 176/.28);
@@ -154,6 +161,29 @@
 
 :is(#home-hero,#products,.v3-division-index,.v3-function-archive,.v3-family-archive,.macro-stage,.frame-evolution-section,.v3-catalogue-command,.v3-inquiry-path,.v3-verification){
   scroll-margin-top:96px;
+}
+
+/* Long words, product codes, and 200% text scaling must not create page overflow. */
+.header-inner,
+.header-actions,
+.desktop-nav,
+:is(.v3-home,.catalogue-v2,.search-v2,.utility-v2,.site-footer,.search-command-layer)
+:is(h1,h2,h3,p,code,.catalogue-card-index,.command-result-copy,.saved-row>span){
+  min-width:0;
+}
+
+:is(.v3-home,.catalogue-v2,.search-v2,.utility-v2,.site-footer,.search-command-layer)
+:is(h1,h2,h3,p,code,.catalogue-card-index,.command-result-copy,.saved-row>span){
+  overflow-wrap:anywhere;
+}
+
+.desktop-nav{overflow:hidden}
+
+.quantity-control button:disabled,
+.catalogue-quantity-control button:disabled{
+  opacity:.48;
+  cursor:not-allowed;
+  box-shadow:var(--v3-shadow-inset-light);
 }
 
 /* Refine long-form rhythm without returning to oversized campaign typography. */
