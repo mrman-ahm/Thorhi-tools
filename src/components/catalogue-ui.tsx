@@ -1,24 +1,50 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, type CSSProperties } from "react";
 import { useInquiry } from "@/components/inquiry-provider";
-import { productHref, type CatalogueDocument, type Product } from "@/lib/catalogue";
+import { catalogueCounts, productHref, type CatalogueDocument, type Product } from "@/lib/catalogue";
 
 export function SeedDataNotice() {
-  return <aside className="seed-notice catalogue-seed-notice" role="note"><span className="seed-mark" aria-hidden="true">SEED / 00</span><div><strong>Demonstration catalogue data</strong><span>Names and codes on this development build are seed records pending approval and migration.</span></div></aside>;
+  return <aside className="seed-notice catalogue-seed-notice" role="note"><span className="seed-mark" aria-hidden="true">SOURCE / FM</span><div><strong>Client-supplied catalogue data</strong><span>{catalogueCounts.products} instrument groups and {catalogueCounts.variants} documented variants are imported from the supplied FineMed catalogues. Verify critical dimensions before regulatory or technical publication.</span></div></aside>;
 }
 
 export function Breadcrumbs({ items }: { items: readonly { label: string; href?: string }[] }) {
   return <nav className="breadcrumbs catalogue-breadcrumbs" aria-label="Breadcrumb"><ol>{items.map((item, index) => <li key={`${item.label}-${index}`}>{item.href ? <Link href={item.href}>{item.label}</Link> : <span aria-current="page">{item.label}</span>}</li>)}</ol></nav>;
 }
 
+function spriteStyle(product: Product) {
+  const sprite = product.imageSprite;
+  if (!sprite) return undefined;
+  return {
+    "--sprite-columns": sprite.columns,
+    "--sprite-rows": sprite.rows,
+    "--sprite-column": sprite.column,
+    "--sprite-row": sprite.row
+  } as CSSProperties;
+}
+
 export function ProductImage({ product, compact = false }: { product: Product; compact?: boolean }) {
-  const label = product.imageState === "available" ? product.name : `Temporary image placeholder for ${product.name}`;
-  return <div className={`catalogue-image catalogue-object-visual ${compact ? "compact" : ""} state-${product.imageState}`} role="img" aria-label={label}>
-    <span className="catalogue-object-grid" aria-hidden="true" />
-    <span className="catalogue-object-form" aria-hidden="true"><i className="object-arm one" /><i className="object-arm two" /><i className="object-joint" /><i className="object-ring one" /><i className="object-ring two" /></span>
-    <span className="catalogue-object-status">{product.imageState === "missing" ? "Image unavailable" : "Replaceable product image"}</span>
+  const available = product.imageState === "available" && product.image && product.imageSprite;
+  const label = available ? product.name : `Image unavailable for ${product.name}`;
+  const sprite = product.imageSprite;
+
+  return <div className={`catalogue-image catalogue-object-visual ${compact ? "compact" : ""} state-${product.imageState}`} role="img" aria-label={label} style={spriteStyle(product)}>
+    {available && sprite ? <Image
+      className="catalogue-sprite-image"
+      src={product.image as string}
+      alt=""
+      aria-hidden="true"
+      width={sprite.columns * sprite.cellSize}
+      height={sprite.rows * sprite.cellSize}
+      sizes="(max-width: 720px) 100vw, 25vw"
+      unoptimized
+    /> : <>
+      <span className="catalogue-object-grid" aria-hidden="true" />
+      <span className="catalogue-object-form" aria-hidden="true"><i className="object-arm one" /><i className="object-arm two" /><i className="object-joint" /><i className="object-ring one" /><i className="object-ring two" /></span>
+    </>}
+    <span className="catalogue-object-status">{available ? `${product.variants.length} documented ${product.variants.length === 1 ? "variant" : "variants"}` : "Image unavailable"}</span>
     <code>{product.code}</code>
   </div>;
 }
@@ -72,12 +98,21 @@ export function ProductCard({ product, compact = false }: { product: Product; co
   return <article className={`product-card catalogue-product-card catalogue-object-card ${compact ? "compact" : ""}`}>
     <Link className="catalogue-card-media" href={productHref(product)} aria-label={`View ${product.name}`}><ProductImage product={product} compact={compact} /><span className="catalogue-card-open" aria-hidden="true">OPEN OBJECT ↗</span></Link>
     <div className="catalogue-card-body">
-      <div className="catalogue-card-index"><small>{product.division.toUpperCase()} · {product.family.replaceAll("-", " ").toUpperCase()}</small><code>{product.code}</code></div>
+      <div className="catalogue-card-index"><small>{product.catalogue.toUpperCase()} · {product.family.replaceAll("-", " ").toUpperCase()}</small><code>{product.code}</code></div>
       <h3><Link href={productHref(product)}>{product.name}</Link></h3>
-      <p>{product.status === "seed" ? "Seed record · specifications pending approval" : product.description}</p>
+      <p>{product.variants.length} documented {product.variants.length === 1 ? "variant" : "variants"} · source page {product.sourcePdfPage}</p>
       <div className="card-actions catalogue-card-actions"><Link className="catalogue-text-link" href={productHref(product)}>View details <span aria-hidden="true">↗</span></Link><AddProductButton product={product} /></div>
     </div>
   </article>;
+}
+
+export function ProductVariantTable({ product }: { product: Product }) {
+  return <div className="catalogue-variant-table" role="region" aria-label={`Documented variants for ${product.name}`} tabIndex={0}>
+    <table>
+      <thead><tr><th scope="col">Code</th><th scope="col">Catalogue description</th><th scope="col">Source</th></tr></thead>
+      <tbody>{product.variants.map(variant => <tr key={variant.id}><th scope="row"><code>{variant.label}</code></th><td>{variant.value}</td><td><span>PDF {variant.pdfPage ?? "—"}</span>{variant.printedPage ? <small>Printed {variant.printedPage}</small> : null}</td></tr>)}</tbody>
+    </table>
+  </div>;
 }
 
 export function DocumentList({ documents }: { documents: readonly CatalogueDocument[] }) {
