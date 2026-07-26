@@ -15,40 +15,40 @@ import {
 
 const divisionPresentation: Record<DivisionSlug, {
   verbs: readonly string[];
-  tone: "green" | "blue" | "amber" | "coral";
+  tone: "green" | "blue";
 }> = {
-  surgical: { verbs: ["Cut", "Hold", "Clamp"], tone: "green" },
-  dental: { verbs: ["Examine", "Extract", "Restore"], tone: "blue" },
-  veterinary: { verbs: ["Treat", "Hold", "Support"], tone: "amber" },
-  beauty: { verbs: ["Shape", "Refine", "Detail"], tone: "coral" }
+  surgical: { verbs: ["Cut", "Hold", "Clamp", "Retract"], tone: "green" },
+  dental: { verbs: ["Cut", "Bend", "Place", "Remove"], tone: "blue" }
 };
 
 const divisions = catalogueDivisions.map(division => ({
   index: division.index,
-  name: division.label.replace(" Instruments", ""),
+  name: division.label,
   slug: division.slug,
   description: division.description,
+  productCount: division.productCount,
+  variantCount: division.variantCount,
   ...divisionPresentation[division.slug]
 }));
 
 const functions = [
-  { index: "01", name: "Cut", note: "Scissors and cutting families", query: "cut" },
+  { index: "01", name: "Cut", note: "Scissors, cutters, and osteotomes", query: "cut" },
   { index: "02", name: "Hold", note: "Forceps, clamps, and holders", query: "hold" },
-  { index: "03", name: "Retract", note: "Retraction families", query: "retract" },
-  { index: "04", name: "Suture", note: "Needle-holding families", query: "suture" },
-  { index: "05", name: "Examine", note: "Diagnostic families", query: "examine" },
-  { index: "06", name: "Extract", note: "Dental extraction families", query: "extract" }
+  { index: "03", name: "Retract", note: "Hand and self-retaining retractors", query: "retract" },
+  { index: "04", name: "Suture", note: "Needle holders and suturing families", query: "needle holder" },
+  { index: "05", name: "Bend", note: "Wire bending and loop-forming pliers", query: "wire bending" },
+  { index: "06", name: "Position", note: "Bracket, band, and measuring instruments", query: "positioning" }
 ] as const;
 
 const familyPresentation = [
   { division: "surgical", slug: "scissors", function: "Cut" },
-  { division: "surgical", slug: "forceps-clamps", function: "Hold" },
+  { division: "surgical", slug: "dressing-tissue-forceps", function: "Hold" },
   { division: "surgical", slug: "needle-holders", function: "Suture" },
-  { division: "dental", slug: "extraction", function: "Extract" },
-  { division: "dental", slug: "periodontal", function: "Examine" },
-  { division: "veterinary", slug: "hoof-farrier", function: "Treat" },
-  { division: "beauty", slug: "hair-scissors", function: "Shape" },
-  { division: "beauty", slug: "nail-cuticle", function: "Refine" }
+  { division: "surgical", slug: "hemostatic-forceps", function: "Clamp" },
+  { division: "dental", slug: "ligature-wire-cutters", function: "Cut" },
+  { division: "dental", slug: "wire-bending-loop-forming-pliers", function: "Bend" },
+  { division: "dental", slug: "bracket-positioning-forceps", function: "Position" },
+  { division: "dental", slug: "aligner-technic-pliers", function: "Align" }
 ] as const;
 
 const families = familyPresentation.flatMap((entry, index) => {
@@ -59,8 +59,10 @@ const families = familyPresentation.flatMap((entry, index) => {
     index: String(index + 1).padStart(2, "0"),
     name: family.label,
     route: `/products/${family.division}/${family.slug}`,
-    division: division.label.replace(" Instruments", ""),
-    function: entry.function
+    division: division.label,
+    function: entry.function,
+    productCount: family.productCount,
+    variantCount: family.variantCount
   }];
 });
 
@@ -77,18 +79,18 @@ export function DiscoveryExperience() {
     >
       <div className="container v3-division-shell">
         <header className="v3-chapter-heading">
-          <SectionIndex>01 · Precision index</SectionIndex>
+          <SectionIndex>01 · Catalogue index</SectionIndex>
           <div>
-            <h2 id="division-title">Four fields.<br /><span>One catalogue language.</span></h2>
-            <p>Move through the divisions without losing the shared product-code, search, and inquiry structure.</p>
+            <h2 id="division-title">Two catalogues.<br /><span>One inquiry language.</span></h2>
+            <p>Move between General Surgery and Orthodontic Instruments without losing product codes, documented variants, source references, search, or inquiry context.</p>
           </div>
         </header>
 
         <div className="v3-division-layout">
           <GlassPanel variant="optical" className="v3-division-active">
             <div className="v3-division-stage-index">
-              <TechnicalReadout label="Active division" value={`${active.index} / ${String(divisions.length).padStart(2, "0")}`} />
-              <TechnicalReadout label="Primary route" value={`/products/${active.slug}`} />
+              <TechnicalReadout label="Active catalogue" value={`${active.index} / ${String(divisions.length).padStart(2, "0")}`} />
+              <TechnicalReadout label="Catalogue depth" value={`${active.productCount} groups · ${active.variantCount} variants`} />
             </div>
 
             <div className="v3-division-instrument" aria-hidden="true">
@@ -104,11 +106,11 @@ export function DiscoveryExperience() {
             <div className="v3-division-copy">
               <p>{active.description}</p>
               <div>{active.verbs.map(verb => <span key={verb}>{verb}</span>)}</div>
-              <Link href={`/products/${active.slug}`}>Open {active.name} catalogue <span aria-hidden="true">↗</span></Link>
+              <Link href={`/products/${active.slug}`}>Open {active.name} <span aria-hidden="true">↗</span></Link>
             </div>
           </GlassPanel>
 
-          <nav className="v3-division-rail" aria-label="Product divisions">
+          <nav className="v3-division-rail" aria-label="Product catalogues">
             {divisions.map((division, index) => <Link
               className="v3-division-option"
               href={`/products/${division.slug}`}
@@ -120,7 +122,7 @@ export function DiscoveryExperience() {
             >
               <span>{division.index}</span>
               <strong>{division.name}</strong>
-              <small>{division.verbs.join(" · ")}</small>
+              <small>{division.productCount} groups · {division.variantCount} variants</small>
               <b aria-hidden="true">↗</b>
             </Link>)}
           </nav>
@@ -134,12 +136,12 @@ export function DiscoveryExperience() {
           <SectionIndex>02 · Working language</SectionIndex>
           <div>
             <h2 id="function-title">Begin with what the instrument must do.</h2>
-            <p>Every function opens a real catalogue search rather than a decorative category.</p>
+            <p>Each function searches the complete catalogue, including representative codes and all documented variants.</p>
           </div>
         </header>
 
         <nav className="v3-function-list" aria-label="Browse instruments by working function">
-          {functions.map(item => <Link href={`/search?q=${item.query}`} key={item.query}>
+          {functions.map(item => <Link href={`/search?q=${encodeURIComponent(item.query)}`} key={item.query}>
             <span>{item.index}</span>
             <strong>{item.name}</strong>
             <small>{item.note}</small>
@@ -155,18 +157,18 @@ export function DiscoveryExperience() {
           <SectionIndex>03 · Family archive</SectionIndex>
           <div>
             <h2 id="family-title">Enter through the family.</h2>
-            <p>Eight direct routes, presented in normal document flow without an artificial horizontal scroll runway.</p>
+            <p>Featured routes open real catalogue families. The complete family index contains 53 categories across both supplied catalogues.</p>
           </div>
         </header>
 
         <div className="v3-family-layout">
           <aside className="v3-family-note">
             <p>Catalogue structure</p>
-            <strong>Division → family → product → inquiry</strong>
-            <small>Every family remains keyboard accessible and directly linkable.</small>
+            <strong>Catalogue → family → instrument group → variant → inquiry</strong>
+            <small>626 representative groups · 1,434 source variants</small>
           </aside>
 
-          <nav className="v3-family-shelves" aria-label="Instrument families">
+          <nav className="v3-family-shelves" aria-label="Featured instrument families">
             {families.map((family, index) => <Link
               className="v3-family-object"
               href={family.route}
@@ -180,9 +182,9 @@ export function DiscoveryExperience() {
                 <i className="pivot" />
               </div>
               <footer>
-                <span>{family.function}</span>
+                <span>{family.function} · {family.productCount} groups</span>
                 <h3>{family.name}</h3>
-                <b>Open family <span aria-hidden="true">↗</span></b>
+                <b>{family.variantCount} variants <span aria-hidden="true">↗</span></b>
               </footer>
             </Link>)}
           </nav>
