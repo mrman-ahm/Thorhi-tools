@@ -108,7 +108,7 @@ export function HomepageUtilityChapters({
           </ol>
         </div>
         <GlassPanel variant="clinical" className="v3-saved-inquiry-shell">
-          <SavedInquiryPanel products={products} />
+          <SavedInquiryPanel />
         </GlassPanel>
       </div>
     </section>
