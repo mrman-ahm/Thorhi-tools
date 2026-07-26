@@ -32,6 +32,18 @@ test("division preview follows keyboard focus without false current-page state",
   await expect(section.getByText("/products/dental", { exact: true })).toBeVisible();
 });
 
+test("homepage summary includes products selected outside its featured set", async ({ page }) => {
+  await page.goto("/products/dental/periodontal/periodontal-curette");
+  await page.getByRole("button", { name: "Add to inquiry: Periodontal Curette", exact: true }).click();
+  await page.goto("/");
+  await clearCinematicCover(page);
+
+  const summary = page.locator(".v3-saved-inquiry-shell");
+  await expect(summary.getByText("1 ITEM SAVED", { exact: true })).toBeVisible();
+  await expect(summary.getByText("Periodontal Curette", { exact: true })).toBeVisible();
+  await expect(summary.getByText("THR-DP-010", { exact: true })).toBeVisible();
+});
+
 test("resources publication accordion remains native and keyboard operable", async ({ page }) => {
   await page.goto("/resources");
   const accordion = page.getByLabel("Document publication requirements");
