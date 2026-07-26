@@ -7,10 +7,12 @@ const inquiryPage = readFileSync("src/app/inquiry/page.tsx", "utf8");
 const workflow = readFileSync("src/components/inquiry-workflow.tsx", "utf8");
 const company = readFileSync("src/app/company/page.tsx", "utf8");
 const resources = readFileSync("src/app/resources/page.tsx", "utf8");
+const accordion = readFileSync("src/components/v3/technical-accordion.tsx", "utf8");
 const contact = readFileSync("src/app/contact/page.tsx", "utf8");
 const privacy = readFileSync("src/app/privacy/page.tsx", "utf8");
 const success = readFileSync("src/components/inquiry-success.tsx", "utf8");
 const styles = readFileSync("src/app/v3-utility-routes.css", "utf8");
+const polish = readFileSync("src/app/v3-final-polish.css", "utf8");
 
 test("V3 utility layer loads after catalogue system", () => {
   const catalogue = layout.indexOf('import "./v3-catalogue-system.css"');
@@ -48,6 +50,17 @@ test("supporting pages preserve evidence-first publication boundaries", () => {
   assert.match(contact, /Do not send passwords/);
   assert.match(privacy, /LEGAL REVIEW REQUIRED/);
   assert.match(privacy, /No analytics or advertising behaviour is claimed/);
+});
+
+test("resources use a native semantic technical accordion", () => {
+  assert.match(resources, /<TechnicalAccordion items=\{publicationRules\}/);
+  assert.match(resources, /Document publication requirements/);
+  assert.match(accordion, /<details/);
+  assert.match(accordion, /<summary>/);
+  assert.match(accordion, /open=\{index === 0\}/);
+  assert.match(polish, /\.v3-technical-accordion/);
+  assert.match(polish, /details\[open\] summary>b/);
+  assert.doesNotMatch(accordion, /onClick|useState|useEffect/);
 });
 
 test("confirmation preserves truthful delivery and response boundaries", () => {
