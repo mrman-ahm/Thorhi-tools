@@ -46,7 +46,7 @@ test("homepage summary includes products selected outside its featured set", asy
 
 test("resources publication accordion remains native and keyboard operable", async ({ page }) => {
   await page.goto("/resources");
-  const accordion = page.getByLabel("Document publication requirements");
+  const accordion = page.getByRole("group", { name: "Document publication requirements" });
   const firstDisclosure = accordion.locator("details").first();
   const firstSummary = firstDisclosure.locator("summary");
 
