@@ -31,6 +31,12 @@ test("opening cinematic preserves source media loading and uses metadata-first p
   assert.match(cinematic, /\/brand\/throhi-logo-clean\.webp/);
 });
 
+test("the editorial hero remains the single homepage level-one heading", () => {
+  assert.doesNotMatch(cinematic, /<h1/);
+  assert.match(cinematic, /<p id="cinematic-entry-title" className="cinematic-entry-title">/);
+  assert.match(hero, /<h1 className="hero-type" id="hero-title">/);
+});
+
 test("hero uses official identity, evidence-led copy, and real catalogue actions", () => {
   assert.match(hero, /\/brand\/throhi-logo-clean\.webp/);
   assert.match(hero, /Precision that/);
