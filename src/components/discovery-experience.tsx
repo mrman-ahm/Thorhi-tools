@@ -7,41 +7,29 @@ import {
   SectionIndex,
   TechnicalReadout
 } from "@/components/v3/optical-primitives";
+import {
+  divisions as catalogueDivisions,
+  families as catalogueFamilies,
+  type DivisionSlug
+} from "@/lib/catalogue";
 
-const divisions = [
-  {
-    index: "01",
-    name: "Surgical",
-    slug: "surgical",
-    description: "Cutting, holding, clamping, retracting, and suturing families.",
-    verbs: ["Cut", "Hold", "Clamp"],
-    tone: "green"
-  },
-  {
-    index: "02",
-    name: "Dental",
-    slug: "dental",
-    description: "Diagnostic, extraction, periodontal, and restorative families.",
-    verbs: ["Examine", "Extract", "Restore"],
-    tone: "blue"
-  },
-  {
-    index: "03",
-    name: "Veterinary",
-    slug: "veterinary",
-    description: "General, equine, hoof, obstetrical, and specialist families.",
-    verbs: ["Treat", "Hold", "Support"],
-    tone: "amber"
-  },
-  {
-    index: "04",
-    name: "Beauty",
-    slug: "beauty",
-    description: "Hair, tweezer, nail, cuticle, and professional salon families.",
-    verbs: ["Shape", "Refine", "Detail"],
-    tone: "coral"
-  }
-] as const;
+const divisionPresentation: Record<DivisionSlug, {
+  verbs: readonly string[];
+  tone: "green" | "blue" | "amber" | "coral";
+}> = {
+  surgical: { verbs: ["Cut", "Hold", "Clamp"], tone: "green" },
+  dental: { verbs: ["Examine", "Extract", "Restore"], tone: "blue" },
+  veterinary: { verbs: ["Treat", "Hold", "Support"], tone: "amber" },
+  beauty: { verbs: ["Shape", "Refine", "Detail"], tone: "coral" }
+};
+
+const divisions = catalogueDivisions.map(division => ({
+  index: division.index,
+  name: division.label.replace(" Instruments", ""),
+  slug: division.slug,
+  description: division.description,
+  ...divisionPresentation[division.slug]
+}));
 
 const functions = [
   { index: "01", name: "Cut", note: "Scissors and cutting families", query: "cut" },
@@ -52,20 +40,33 @@ const functions = [
   { index: "06", name: "Extract", note: "Dental extraction families", query: "extract" }
 ] as const;
 
-const families = [
-  { index: "01", name: "Scissors", route: "/products/surgical/scissors", division: "Surgical", function: "Cut" },
-  { index: "02", name: "Forceps & Clamps", route: "/products/surgical/forceps-clamps", division: "Surgical", function: "Hold" },
-  { index: "03", name: "Needle Holders", route: "/products/surgical/needle-holders", division: "Surgical", function: "Suture" },
-  { index: "04", name: "Dental Extraction", route: "/products/dental/extraction", division: "Dental", function: "Extract" },
-  { index: "05", name: "Periodontal", route: "/products/dental/periodontal", division: "Dental", function: "Examine" },
-  { index: "06", name: "Hoof & Farrier", route: "/products/veterinary/hoof-farrier", division: "Veterinary", function: "Treat" },
-  { index: "07", name: "Hair Scissors", route: "/products/beauty/hair-scissors", division: "Beauty", function: "Shape" },
-  { index: "08", name: "Nail & Cuticle", route: "/products/beauty/nail-cuticle", division: "Beauty", function: "Refine" }
+const familyPresentation = [
+  { division: "surgical", slug: "scissors", function: "Cut" },
+  { division: "surgical", slug: "forceps-clamps", function: "Hold" },
+  { division: "surgical", slug: "needle-holders", function: "Suture" },
+  { division: "dental", slug: "extraction", function: "Extract" },
+  { division: "dental", slug: "periodontal", function: "Examine" },
+  { division: "veterinary", slug: "hoof-farrier", function: "Treat" },
+  { division: "beauty", slug: "hair-scissors", function: "Shape" },
+  { division: "beauty", slug: "nail-cuticle", function: "Refine" }
 ] as const;
+
+const families = familyPresentation.flatMap((entry, index) => {
+  const family = catalogueFamilies.find(item => item.division === entry.division && item.slug === entry.slug);
+  const division = catalogueDivisions.find(item => item.slug === entry.division);
+  if (!family || !division) return [];
+  return [{
+    index: String(index + 1).padStart(2, "0"),
+    name: family.label,
+    route: `/products/${family.division}/${family.slug}`,
+    division: division.label.replace(" Instruments", ""),
+    function: entry.function
+  }];
+});
 
 export function DiscoveryExperience() {
   const [activeDivision, setActiveDivision] = useState(0);
-  const active = divisions[activeDivision];
+  const active = divisions[activeDivision] ?? divisions[0];
 
   return <>
     <section
@@ -86,7 +87,7 @@ export function DiscoveryExperience() {
         <div className="v3-division-layout">
           <GlassPanel variant="optical" className="v3-division-active">
             <div className="v3-division-stage-index">
-              <TechnicalReadout label="Active division" value={`${active.index} / 04`} />
+              <TechnicalReadout label="Active division" value={`${active.index} / ${String(divisions.length).padStart(2, "0")}`} />
               <TechnicalReadout label="Primary route" value={`/products/${active.slug}`} />
             </div>
 
