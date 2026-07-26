@@ -4,26 +4,37 @@ import test from "node:test";
 
 const page = readFileSync("src/app/page.tsx", "utf8");
 const discovery = readFileSync("src/components/discovery-experience.tsx", "utf8");
+const preview = readFileSync("src/components/catalogue-preview.tsx", "utf8");
 const utility = readFileSync("src/components/v3/homepage-utility-chapters.tsx", "utf8");
 const footer = readFileSync("src/components/site-footer.tsx", "utf8");
 const evolution = readFileSync("src/components/frame-evolution-scene.tsx", "utf8");
 const styles = readFileSync("src/app/v3-home-chapters.css", "utf8");
 const layout = readFileSync("src/app/layout.tsx", "utf8");
 
+const sequence = [
+  "<HeroExperience />",
+  "<DiscoveryExperience />",
+  "<MacroInspectionScene />",
+  "<FrameEvolutionScene />",
+  "<HomepageUtilityChapters products={featuredProducts} />"
+];
+
 test("homepage renders the complete V3 chapter sequence", () => {
-  const sequence = [
-    "<HeroExperience />",
-    "<DiscoveryExperience />",
-    "<MacroInspectionScene />",
-    "<FrameEvolutionScene />",
-    "<HomepageUtilityChapters products={products} />"
-  ];
   let cursor = -1;
   for (const chapter of sequence) {
     const next = page.indexOf(chapter);
     assert.ok(next > cursor, `${chapter} must follow the previous chapter`);
     cursor = next;
   }
+});
+
+test("homepage featured objects come from the canonical catalogue", () => {
+  assert.match(page, /products as catalogueProducts/);
+  assert.match(page, /catalogueProducts\.filter/);
+  assert.match(page, /featuredCodes/);
+  assert.match(preview, /import \{ ProductCard \}/);
+  assert.match(preview, /<ProductCard product=\{product\}/);
+  assert.doesNotMatch(preview, /Temporary image placeholder for \$\{product\.name\}/);
 });
 
 test("division, function, and family chapters use real direct routes", () => {
