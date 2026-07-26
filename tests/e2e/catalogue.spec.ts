@@ -30,18 +30,37 @@ const catalogue = catalogueData as {
   families: GeneratedFamily[];
   products: GeneratedProduct[];
 };
-const representative = catalogue.products.find(product => product.variants.length > 0) ?? catalogue.products[0];
-const representativeDivision = catalogue.divisions.find(item => item.slug === representative.division) ?? catalogue.divisions[0];
-const representativeFamily = catalogue.families.find(item => item.division === representative.division && item.slug === representative.family) ?? catalogue.families[0];
+
+function required<T>(value: T | undefined, message: string): T {
+  if (!value) throw new Error(message);
+  return value;
+}
+
+function escapeRegExp(value: string) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+const representative = required(
+  catalogue.products.find(product => product.variants.length > 0) ?? catalogue.products[0],
+  "Generated catalogue requires at least one product"
+);
+const representativeDivision = required(
+  catalogue.divisions.find(item => item.slug === representative.division) ?? catalogue.divisions[0],
+  "Generated catalogue requires a matching division"
+);
+const representativeFamily = required(
+  catalogue.families.find(item => item.division === representative.division && item.slug === representative.family) ?? catalogue.families[0],
+  "Generated catalogue requires a matching family"
+);
 const representativeRoute = `/products/${representative.division}/${representative.family}/${representative.slug}`;
 const familyRoute = `/products/${representativeFamily.division}/${representativeFamily.slug}`;
 const paginatedFamily = catalogue.families.find(item => item.productCount > 36);
 
 const routes = [
   ["products", "/products", /documented variants/i],
-  ["division", `/products/${representativeDivision.slug}`, new RegExp(`^${representativeDivision.label}$`, "i")],
-  ["family", familyRoute, new RegExp(`^${representativeFamily.label}$`, "i")],
-  ["product", representativeRoute, new RegExp(representative.name, "i")],
+  ["division", `/products/${representativeDivision.slug}`, new RegExp(`^${escapeRegExp(representativeDivision.label)}$`, "i")],
+  ["family", familyRoute, new RegExp(`^${escapeRegExp(representativeFamily.label)}$`, "i")],
+  ["product", representativeRoute, new RegExp(`^${escapeRegExp(representative.name)}$`, "i")],
   ["search", `/search?q=${encodeURIComponent(representative.code)}`, /Find the instrument/i],
   ["company", "/company", /Evidence first/i],
   ["resources", "/resources", /Documents with traceable context/i],
@@ -100,10 +119,11 @@ test("family filters and sorting remain server-driven", async ({ page }) => {
 
 test("large family catalogues paginate without losing route context", async ({ page }) => {
   test.skip(!paginatedFamily, "No generated family currently exceeds one page");
-  const route = `/products/${paginatedFamily?.division}/${paginatedFamily?.slug}`;
+  const family = required(paginatedFamily, "Paginated family disappeared after test skip");
+  const route = `/products/${family.division}/${family.slug}`;
   await page.goto(`${route}?sort=variants&page=2`);
   await expect(page.getByLabel("Sort results")).toHaveValue("variants");
-  await expect(page.getByRole("navigation", { name: `${paginatedFamily?.label} result pages` })).toBeVisible();
+  await expect(page.getByRole("navigation", { name: `${family.label} result pages` })).toBeVisible();
   await expect(page.getByText(/Page 2 of/i)).toBeVisible();
   await expect(page.getByRole("link", { name: "← Previous" })).toHaveAttribute("href", /sort=variants/);
 });
@@ -144,19 +164,18 @@ test("configured quantity and note persist on the first product addition", async
 });
 
 test("an exact variant enters the inquiry with its source description", async ({ page }) => {
-  const variant = representative.variants[0];
-  test.skip(!variant, "Representative product has no documented variant");
+  const variant = required(representative.variants[0], "Generated representative requires a variant");
   await page.goto(representativeRoute);
-  await page.getByRole("button", { name: `Add exact variant: ${variant?.label} for ${representative.name}`, exact: true }).click();
+  await page.getByRole("button", { name: `Add exact variant: ${variant.label} for ${representative.name}`, exact: true }).click();
 
   const saved = await page.evaluate(code => {
     const draft = JSON.parse(window.localStorage.getItem("throhi-inquiry-v2") ?? "{}") as { items?: Array<{ code: string; name: string; note: string }> };
     return draft.items?.find(item => item.code === code);
-  }, variant?.label);
+  }, variant.label);
   expect(saved).toMatchObject({
-    code: variant?.label,
-    name: `${representative.name} — ${variant?.label}`,
-    note: variant?.value
+    code: variant.label,
+    name: `${representative.name} — ${variant.label}`,
+    note: variant.value
   });
 });
 
