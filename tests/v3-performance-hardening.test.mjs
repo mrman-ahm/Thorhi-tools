@@ -73,6 +73,14 @@ test("final polish restores canonical homepage card structure and stronger prefe
   assert.match(polish, /@media \(hover:none\)/);
 });
 
+test("final polish protects text scaling and disabled quantity boundaries", () => {
+  assert.match(polish, /overflow-wrap:anywhere/);
+  assert.match(polish, /\.desktop-nav\{overflow:hidden\}/);
+  assert.match(polish, /\.quantity-control button:disabled/);
+  assert.match(polish, /\.catalogue-quantity-control button:disabled/);
+  assert.match(polish, /cursor:not-allowed/);
+});
+
 test("liquid action is used once and degrades without authored motion", () => {
   assert.match(utility, /className="v3-liquid-action"/);
   assert.equal((utility.match(/v3-liquid-action/g) ?? []).length, 1);
