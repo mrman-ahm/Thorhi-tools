@@ -17,6 +17,21 @@ test("global search command restores focus after Escape", async ({ page }) => {
   await expect(trigger).toBeFocused();
 });
 
+test("division preview follows keyboard focus without false current-page state", async ({ page }) => {
+  await page.goto("/");
+  await clearCinematicCover(page);
+
+  const section = page.locator(".v3-division-index");
+  const navigation = page.getByRole("navigation", { name: "Product divisions" });
+  const dental = navigation.getByRole("link", { name: /Dental/ });
+
+  await dental.focus();
+  await expect(dental).toBeFocused();
+  await expect(dental).not.toHaveAttribute("aria-current", "page");
+  await expect(section).toHaveAttribute("data-active-index", "1");
+  await expect(section.getByText("/products/dental", { exact: true })).toBeVisible();
+});
+
 test("data saver keeps the cinematic static and avoids media requests", async ({ page }) => {
   const mediaRequests: string[] = [];
   page.on("request", request => {
