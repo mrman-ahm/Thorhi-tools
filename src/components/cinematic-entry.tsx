@@ -176,7 +176,7 @@ export function CinematicEntry() {
 
       <div className="cinematic-entry-copy">
         <p>Precision in motion</p>
-        <h1 id="cinematic-entry-title" className="cinematic-entry-title">The instrument<br />comes first.</h1>
+        <p id="cinematic-entry-title" className="cinematic-entry-title">The instrument<br />comes first.</p>
       </div>
 
       <button
