@@ -1,0 +1,1 @@
+Temporary asset recovery bridge pending. This file will be removed after the complete FineMed catalogue bundle is restored and validated.
