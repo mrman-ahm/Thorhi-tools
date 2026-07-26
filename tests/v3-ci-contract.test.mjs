@@ -3,6 +3,7 @@ import { existsSync, readFileSync } from "node:fs";
 import test from "node:test";
 
 const workflow = readFileSync(".github/workflows/quality.yml", "utf8");
+const packageJson = JSON.parse(readFileSync("package.json", "utf8"));
 const hasLockfile = existsSync("package-lock.json") || existsSync("npm-shrinkwrap.json");
 
 test("quality workflow validates the isolated V3 branch", () => {
@@ -19,6 +20,12 @@ test("dependency installation matches the repository lockfile state", () => {
     assert.doesNotMatch(workflow, /cache: npm/);
     assert.doesNotMatch(workflow, /npm ci/);
   }
+});
+
+test("catalogue assets are prepared before static and browser validation", () => {
+  assert.equal(packageJson.scripts.pretest, "npm run prepare:catalogue");
+  assert.equal(packageJson.scripts["pretest:e2e"], "npm run prepare:assets");
+  assert.match(packageJson.scripts.prebuild, /prepare:assets/);
 });
 
 test("quality workflow runs every required validation stage", () => {
