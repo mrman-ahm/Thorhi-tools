@@ -152,11 +152,10 @@ test("configured quantity and note persist on the first product addition", async
   await page.getByLabel("Product-specific note").fill("Confirm this exact working pattern.");
   await page.getByRole("button", { name: `Add to inquiry: ${representative.name}`, exact: true }).click();
 
-  const saved = await page.evaluate(code => {
+  await expect.poll(() => page.evaluate(code => {
     const draft = JSON.parse(window.localStorage.getItem("throhi-inquiry-v2") ?? "{}") as { items?: Array<{ code: string; quantity: number; note: string }> };
     return draft.items?.find(item => item.code === code);
-  }, representative.code);
-  expect(saved).toMatchObject({
+  }, representative.code)).toMatchObject({
     code: representative.code,
     quantity: 4,
     note: "Confirm this exact working pattern."
@@ -168,11 +167,10 @@ test("an exact variant enters the inquiry with its source description", async ({
   await page.goto(representativeRoute);
   await page.getByRole("button", { name: `Add exact variant: ${variant.label} for ${representative.name}`, exact: true }).click();
 
-  const saved = await page.evaluate(code => {
+  await expect.poll(() => page.evaluate(code => {
     const draft = JSON.parse(window.localStorage.getItem("throhi-inquiry-v2") ?? "{}") as { items?: Array<{ code: string; name: string; note: string }> };
     return draft.items?.find(item => item.code === code);
-  }, variant.label);
-  expect(saved).toMatchObject({
+  }, variant.label)).toMatchObject({
     code: variant.label,
     name: `${representative.name} — ${variant.label}`,
     note: variant.value
