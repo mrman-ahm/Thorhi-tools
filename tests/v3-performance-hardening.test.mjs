@@ -7,15 +7,16 @@ const motion = readFileSync("src/components/motion-shell.tsx", "utf8");
 const cinematic = readFileSync("src/components/cinematic-entry.tsx", "utf8");
 const evolution = readFileSync("src/components/frame-evolution-scene.tsx", "utf8");
 const discovery = readFileSync("src/components/discovery-experience.tsx", "utf8");
+const utility = readFileSync("src/components/v3/homepage-utility-chapters.tsx", "utf8");
 const styles = readFileSync("src/app/v3-performance-hardening.css", "utf8");
 const polish = readFileSync("src/app/v3-final-polish.css", "utf8");
 
 test("performance safeguards load before the final non-destructive polish layer", () => {
-  const utility = layout.indexOf('import "./v3-utility-routes.css"');
+  const utilityLayer = layout.indexOf('import "./v3-utility-routes.css"');
   const hardening = layout.indexOf('import "./v3-performance-hardening.css"');
   const finalPolish = layout.indexOf('import "./v3-final-polish.css"');
-  assert.ok(utility >= 0);
-  assert.ok(hardening > utility);
+  assert.ok(utilityLayer >= 0);
+  assert.ok(hardening > utilityLayer);
   assert.ok(finalPolish > hardening);
 });
 
@@ -70,6 +71,14 @@ test("final polish restores canonical homepage card structure and stronger prefe
   assert.match(polish, /prefers-contrast:more/);
   assert.match(polish, /forced-colors:active/);
   assert.match(polish, /@media \(hover:none\)/);
+});
+
+test("liquid action is used once and degrades without authored motion", () => {
+  assert.match(utility, /className="v3-liquid-action"/);
+  assert.equal((utility.match(/v3-liquid-action/g) ?? []).length, 1);
+  assert.match(polish, /\.v3-liquid-action::before/);
+  assert.match(polish, /prefers-reduced-motion:reduce[\s\S]*\.v3-liquid-action::before\{display:none\}/);
+  assert.match(polish, /@media \(hover:none\)[\s\S]*\.v3-liquid-action::before\{display:none\}/);
 });
 
 test("division preview interaction avoids false current-page semantics and touch hover", () => {
