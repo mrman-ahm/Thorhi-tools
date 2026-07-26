@@ -32,6 +32,21 @@ test("division preview follows keyboard focus without false current-page state",
   await expect(section.getByText("/products/dental", { exact: true })).toBeVisible();
 });
 
+test("resources publication accordion remains native and keyboard operable", async ({ page }) => {
+  await page.goto("/resources");
+  const accordion = page.getByLabel("Document publication requirements");
+  const firstDisclosure = accordion.locator("details").first();
+  const firstSummary = firstDisclosure.locator("summary");
+
+  await expect(firstDisclosure).toHaveAttribute("open", "");
+  await firstSummary.focus();
+  await expect(firstSummary).toBeFocused();
+  await page.keyboard.press("Enter");
+  await expect(firstDisclosure).not.toHaveAttribute("open", "");
+  await page.keyboard.press("Enter");
+  await expect(firstDisclosure).toHaveAttribute("open", "");
+});
+
 test("data saver keeps the cinematic static and avoids media requests", async ({ page }) => {
   const mediaRequests: string[] = [];
   page.on("request", request => {
