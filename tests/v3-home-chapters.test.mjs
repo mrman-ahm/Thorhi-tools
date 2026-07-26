@@ -37,12 +37,17 @@ test("homepage featured objects come from the canonical catalogue", () => {
   assert.doesNotMatch(preview, /Temporary image placeholder for \$\{product\.name\}/);
 });
 
-test("division, function, and family chapters use real direct routes", () => {
+test("division and family discovery derive from canonical catalogue records", () => {
+  assert.match(discovery, /divisions as catalogueDivisions/);
+  assert.match(discovery, /families as catalogueFamilies/);
+  assert.match(discovery, /catalogueDivisions\.map/);
+  assert.match(discovery, /catalogueFamilies\.find/);
+  assert.match(discovery, /route: `\/products\/\$\{family\.division\}\/\$\{family\.slug\}`/);
   assert.match(discovery, /href=\{`\/products\/\$\{division\.slug\}`\}/);
   assert.match(discovery, /href=\{`\/search\?q=\$\{item\.query\}`\}/);
   assert.match(discovery, /href=\{family\.route\}/);
-  assert.match(discovery, /\/products\/surgical\/scissors/);
-  assert.match(discovery, /\/products\/dental\/extraction/);
+  assert.match(discovery, /division: "surgical", slug: "scissors"/);
+  assert.match(discovery, /division: "dental", slug: "extraction"/);
 });
 
 test("family archive no longer creates an artificial horizontal scroll runway", () => {
