@@ -11,6 +11,7 @@ const familyPage = readFileSync("src/app/products/[division]/[family]/page.tsx",
 const productPage = readFileSync("src/app/products/[division]/[family]/[product]/page.tsx", "utf8");
 const searchPage = readFileSync("src/app/search/page.tsx", "utf8");
 const styles = readFileSync("src/app/v3-catalogue-system.css", "utf8");
+const dataStyles = readFileSync("src/app/v3-catalogue-data.css", "utf8");
 
 test("V3 catalogue layer loads after homepage visual layers", () => {
   const chapters = layout.indexOf('import "./v3-home-chapters.css"');
@@ -29,9 +30,10 @@ test("catalogue routes preserve direct search and manual recovery", () => {
   assert.match(familyPage, /manual=1&division=/);
 });
 
-test("product route keeps verification, inquiry, documents, and related objects", () => {
+test("product route keeps verification, inquiry, documents, variants, and related objects", () => {
   assert.match(productPage, /verifiedSpecifications/);
   assert.match(productPage, /<ProductInquiryControls product=\{product\} \/>/);
+  assert.match(productPage, /<ProductVariantTable product=\{product\} \/>/);
   assert.match(productPage, /<DocumentList documents=\{product\.documents\} \/>/);
   assert.match(productPage, /getRelatedProducts/);
   assert.match(productPage, /manual=1&reference=/);
@@ -63,8 +65,16 @@ test("search command preserves keyboard navigation, naming, and focus restoratio
   assert.match(searchCommand, /<kbd aria-hidden="true">/);
 });
 
-test("full search retains ranking context, filters, and manual fallback", () => {
+test("full search retains ranking, material and finish filters, pagination, and manual fallback", () => {
   assert.match(searchPage, /searchProducts\(q, \{ division, family \}\)/);
+  assert.match(searchPage, /materialFilters/);
+  assert.match(searchPage, /productContains/);
+  assert.match(searchPage, /name="material"/);
+  assert.match(searchPage, /pageSize = 48/);
+  assert.match(searchPage, /totalPages/);
+  assert.match(searchPage, /catalogue-pagination/);
+  assert.match(searchPage, /rel="prev"/);
+  assert.match(searchPage, /rel="next"/);
   assert.match(searchPage, /result\.reason/);
   assert.match(searchPage, /result\.score/);
   assert.match(searchPage, /name="division"/);
@@ -73,12 +83,15 @@ test("full search retains ranking context, filters, and manual fallback", () => 
   assert.match(searchPage, /manual=1&reference=/);
 });
 
-test("V3 catalogue styling provides optical, clinical, responsive, and preference fallbacks", () => {
+test("V3 catalogue styling provides optical, clinical, responsive, pagination, and preference fallbacks", () => {
   assert.match(styles, /\.catalogue-command,/);
   assert.match(styles, /\.catalogue-object-card\{/);
   assert.match(styles, /\.product-examination-stage\{/);
   assert.match(styles, /\.search-command-dialog\{/);
   assert.match(styles, /\.catalogue-quantity-control\{/);
+  assert.match(dataStyles, /\.catalogue-pagination\{/);
+  assert.match(dataStyles, /aria-disabled="true"/);
+  assert.match(dataStyles, /@media \(max-width:720px\)/);
   assert.match(styles, /@media \(max-width:960px\)/);
   assert.match(styles, /@media \(max-width:720px\)/);
   assert.match(styles, /prefers-reduced-motion:reduce/);
@@ -86,6 +99,6 @@ test("V3 catalogue styling provides optical, clinical, responsive, and preferenc
 });
 
 test("catalogue system does not introduce checkout, price, globe, or WebGL behavior", () => {
-  const combined = `${catalogueUi}\n${productsPage}\n${divisionPage}\n${familyPage}\n${productPage}\n${searchPage}\n${styles}`;
+  const combined = `${catalogueUi}\n${productsPage}\n${divisionPage}\n${familyPage}\n${productPage}\n${searchPage}\n${styles}\n${dataStyles}`;
   assert.doesNotMatch(combined, /checkout|add to cart|price\s*[:=]|WebGL|WebGPU|3D globe|three\.js/i);
 });
