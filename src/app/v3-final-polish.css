@@ -51,6 +51,95 @@
 
 .v3-division-option[data-active="true"]>strong{color:var(--v3-text-on-dark)}
 
+/* One restrained optical-liquid action, adapted without another runtime dependency. */
+.v3-liquid-action{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  color:var(--v3-text-on-dark)!important;
+  background:linear-gradient(120deg,var(--v3-surgical-green-deep),#154f3b)!important;
+  transition:color .28s ease,transform .18s ease,border-color .18s ease!important;
+}
+
+.v3-liquid-action::before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  left:50%;
+  bottom:-190%;
+  width:180%;
+  aspect-ratio:1;
+  border-radius:42% 58% 54% 46%/48% 42% 58% 52%;
+  background:var(--v3-surgical-green);
+  transform:translateX(-50%) rotate(-8deg);
+  transition:bottom .44s cubic-bezier(.22,.8,.24,1),transform .44s cubic-bezier(.22,.8,.24,1);
+}
+
+.v3-liquid-action:hover,
+.v3-liquid-action:focus-visible{
+  color:#04110b!important;
+  border-color:rgb(120 221 176/.7)!important;
+}
+
+.v3-liquid-action:hover::before,
+.v3-liquid-action:focus-visible::before{
+  bottom:-72%;
+  transform:translateX(-50%) rotate(7deg);
+}
+
+/* Native disclosure system derived from the accordion research references. */
+.v3-technical-accordion{
+  display:grid;
+  border-top:1px solid rgb(65 88 77/.16);
+}
+
+.v3-technical-accordion details{
+  border-bottom:1px solid rgb(65 88 77/.16);
+}
+
+.v3-technical-accordion summary{
+  min-height:86px;
+  display:grid;
+  grid-template-columns:38px minmax(150px,.6fr) minmax(0,1fr) 34px;
+  align-items:center;
+  gap:.9rem;
+  padding:.85rem 0;
+  color:var(--v3-text-on-light);
+  cursor:pointer;
+  list-style:none;
+}
+
+.v3-technical-accordion summary::-webkit-details-marker{display:none}
+.v3-technical-accordion summary::marker{content:""}
+.v3-technical-accordion summary>span{font:500 .58rem var(--font-mono);color:var(--v3-surgical-green-deep)}
+.v3-technical-accordion summary>strong{font-weight:560}
+.v3-technical-accordion summary>small{color:var(--v3-text-muted-light);font-size:.86rem;line-height:1.45}
+.v3-technical-accordion summary>b{
+  width:32px;
+  height:32px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgb(65 88 77/.16);
+  border-radius:9px;
+  background:rgb(248 250 247/.58);
+  box-shadow:var(--v3-shadow-raised-light);
+  color:var(--v3-surgical-green-deep);
+  font-weight:500;
+  transition:transform .24s ease,box-shadow .24s ease;
+}
+
+.v3-technical-accordion details[open] summary>b{
+  transform:rotate(45deg);
+  box-shadow:var(--v3-shadow-inset-light);
+}
+
+.v3-technical-accordion-panel{
+  padding:0 3.1rem 1.15rem calc(38px + .9rem);
+  color:var(--v3-text-muted-light);
+}
+
+.v3-technical-accordion-panel p{max-width:66ch;line-height:1.65}
+
 /* Consistent focus treatment across every V3 route. */
 :is(.v3-home,.catalogue-v2,.search-v2,.utility-v2,.site-footer,.site-header,.search-command-layer)
 :is(a,button,input,select,textarea,summary):focus-visible{
@@ -86,6 +175,9 @@
   .catalogue-division-row:hover{
     transform:none;
   }
+
+  .v3-liquid-action::before{display:none}
+  .v3-liquid-action{color:#04110b!important;background:var(--v3-surgical-green)!important}
 }
 
 @media (max-width:1200px){
@@ -110,6 +202,17 @@
   .v3-catalogue-objects .v3-home-product-grid .catalogue-inquiry-action{
     width:100%;
   }
+
+  .v3-technical-accordion summary{
+    min-height:0;
+    grid-template-columns:32px 1fr 34px;
+    gap:.7rem;
+    padding:1rem 0;
+  }
+
+  .v3-technical-accordion summary>small{grid-column:2;grid-row:2}
+  .v3-technical-accordion summary>b{grid-column:3;grid-row:1/3}
+  .v3-technical-accordion-panel{padding:0 0 1rem calc(32px + .7rem)}
 }
 
 @media (prefers-contrast:more){
@@ -124,7 +227,8 @@
   .header-inner,
   .catalogue-object-card,
   .inquiry-block,
-  .search-command-dialog{
+  .search-command-dialog,
+  .v3-technical-accordion details{
     border-width:2px;
   }
 
@@ -141,7 +245,8 @@
   .header-inner,
   .catalogue-object-card,
   .inquiry-block,
-  .search-command-dialog{
+  .search-command-dialog,
+  .v3-technical-accordion details{
     background:Canvas;
     color:CanvasText;
     border:1px solid CanvasText;
@@ -161,7 +266,11 @@
   .catalogue-object-card,
   .v3-family-object,
   .v3-division-option,
-  .v3-button{
+  .v3-button,
+  .v3-technical-accordion summary>b{
     transition:none!important;
   }
+
+  .v3-liquid-action::before{display:none}
+  .v3-liquid-action{color:#04110b!important;background:var(--v3-surgical-green)!important}
 }
