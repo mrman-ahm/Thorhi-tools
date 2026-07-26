@@ -72,16 +72,14 @@ export function InquiryProvider({ children }: { children: ReactNode }) {
   }, [draft, hydrated]);
 
   const addProduct = useCallback((item: Omit<InquiryItem, "quantity" | "note" | "manual">) => {
-    let result: "added" | "duplicate" = "added";
+    if (draft.items.some(existing => existing.code === item.code)) return "duplicate";
+
     setDraft(current => {
-      if (current.items.some(existing => existing.code === item.code)) {
-        result = "duplicate";
-        return current;
-      }
+      if (current.items.some(existing => existing.code === item.code)) return current;
       return { ...current, items: [...current.items, { ...item, quantity: 1, note: "", manual: false }] };
     });
-    return result;
-  }, []);
+    return "added";
+  }, [draft.items]);
 
   const addManualItem = useCallback((name: string, code = "") => {
     const normalizedName = name.trim();
@@ -89,14 +87,22 @@ export function InquiryProvider({ children }: { children: ReactNode }) {
     const manualCode = code.trim() || `MANUAL-${Date.now()}`;
     setDraft(current => ({
       ...current,
-      items: [...current.items, { code: manualCode, name: normalizedName, quantity: 1, note: "", manual: true }]
+      items: current.items.some(item => item.code === manualCode)
+        ? current.items
+        : [...current.items, { code: manualCode, name: normalizedName, quantity: 1, note: "", manual: true }]
     }));
   }, []);
 
   const updateItem = useCallback((code: string, updates: Partial<Pick<InquiryItem, "quantity" | "note" | "name">>) => {
     setDraft(current => ({
       ...current,
-      items: current.items.map(item => item.code === code ? { ...item, ...updates, quantity: updates.quantity ? Math.max(1, Math.min(9999, Math.floor(updates.quantity))) : item.quantity } : item)
+      items: current.items.map(item => {
+        if (item.code !== code) return item;
+        const quantity = updates.quantity === undefined
+          ? item.quantity
+          : Math.max(1, Math.min(9999, Math.floor(updates.quantity)));
+        return { ...item, ...updates, quantity };
+      })
     }));
   }, []);
 
@@ -116,7 +122,7 @@ export function InquiryProvider({ children }: { children: ReactNode }) {
 
   const setGeneralRequirements = useCallback((value: string) => setDraft(current => ({ ...current, generalRequirements: value })), []);
   const setAttachment = useCallback((value: InquiryDraft["attachment"]) => setDraft(current => ({ ...current, attachment: value })), []);
-  const clearInquiry = useCallback(() => setDraft(initialDraft), []);
+  const clearInquiry = useCallback(() => setDraft({ ...initialDraft, items: [] }), []);
 
   const value = useMemo<InquiryContextValue>(() => ({
     ...draft,
