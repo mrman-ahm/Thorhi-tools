@@ -158,6 +158,31 @@ Primary files:
 - `src/components/frame-evolution-scene.tsx`
 - `src/app/v3-performance-hardening.css`
 
+### Phase 7 — Canonical data and final interaction polish
+
+Completed:
+
+- homepage product objects now come from the canonical `src/lib/catalogue.ts` records
+- homepage product cards now open real division/family/product routes
+- duplicate homepage-only product definitions removed
+- saved inquiry summary remains connected to the same canonical product codes
+- temporary homepage card assumptions neutralized after canonical `ProductCard` adoption
+- active division preview no longer uses false `aria-current="page"` semantics
+- active division changes on mouse hover and keyboard focus, not touch hover
+- noisy hover-driven live-region announcements removed
+- consistent visible focus treatment across V3 routes
+- higher-contrast and forced-colour fallbacks
+- hover elevation disabled on non-hover devices
+- route anchors receive header-safe scroll margins
+- final card behavior hardened at desktop, tablet, and mobile breakpoints
+
+Primary files:
+
+- `src/components/catalogue-preview.tsx`
+- `src/app/page.tsx`
+- `src/components/discovery-experience.tsx`
+- `src/app/v3-final-polish.css`
+
 ## Protected source media
 
 The branch does not modify the approved source-media files.
@@ -186,6 +211,8 @@ Static contract tests:
 Browser review updates:
 
 - homepage assertions updated for V3 copy
+- canonical homepage product-route verification
+- canonical inquiry-state persistence verification
 - desktop, tablet, and mobile Playwright projects
 - full-page screenshots for homepage and principal catalogue/utility routes
 - native mobile filter disclosure
@@ -198,7 +225,7 @@ Browser review updates:
 
 ## Continuous validation
 
-The branch is now included in `.github/workflows/quality.yml` for push-based validation.
+The branch is included in `.github/workflows/quality.yml` for push-based validation.
 
 The workflow runs:
 
@@ -217,7 +244,9 @@ Concurrency cancels superseded runs on the same branch so only the latest V3 com
 
 This environment cannot currently resolve `github.com` from the local container, so the repository could not be cloned locally and the commands have not been executed inside this chat runtime.
 
-Do not claim a successful build until the branch workflow reports completion. The branch contains the validation workflow and tests required to expose failures rather than concealing them.
+The GitHub connector available here exposes commit status records but not the push-triggered Actions check-run stream used by this workflow. Do not claim a successful build until the branch workflow itself reports completion in GitHub Actions.
+
+The branch contains the validation workflow and tests required to expose failures rather than conceal them.
 
 ## Final review gate
 
@@ -226,6 +255,7 @@ Before calling the experiment visually complete, review the generated artifacts 
 - glass contrast over the brightest and darkest video frames
 - mobile header and menu geometry
 - hero balance at 1024 × 768
+- canonical homepage cards at 390 × 844
 - catalogue cards at 390 × 844
 - family filter disclosure
 - product quantity control
