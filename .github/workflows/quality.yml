@@ -58,12 +58,14 @@ jobs:
         run: |
           set -o pipefail
           npm run test:e2e 2>&1 | tee validation-logs/browser.log
-      - name: Upload validation logs
+      - name: Upload validation logs and catalogue bundle
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: throhi-v3-validation-logs
-          path: validation-logs/*.log
+          path: |
+            validation-logs/*.log
+            assets/catalogue/fine-med-catalogue.bundle.b64
           if-no-files-found: ignore
           retention-days: 14
       - name: Upload browser validation artifacts
