@@ -1,41 +1,41 @@
 # THROHI V3 — Component Reference Matrix
 
-This file records whether each supplied reference is used, adapted, or rejected. External snippets are research material, not automatic dependencies. Any reused code must be license-checked, rewritten into THROHI primitives, and tested for semantics, keyboard behavior, focus, reduced motion, mobile layout, and runtime cost.
+This file records whether each supplied reference is used, adapted, or rejected. External snippets are research material, not automatic dependencies. No third-party component package or source snippet has been copied into the branch. The implemented interactions are original React, native HTML, CSS, and Anime.js work shaped by the reference-level ideas.
 
-| Reference | Decision | Intended use | Required adaptation | Main concern |
+| Reference | Final decision | Implemented location | Adaptation | Main safeguard |
 |---|---|---|---|---|
-| Animate UI Radix Accordion | Adapt | Resources, technical disclosures, concise FAQs | Preserve semantic disclosure behavior; restyle as quiet optical rows; remove springy overshoot | Avoid animated height instability and excessive nesting |
-| Animate UI Liquid Button | Adapt sparingly | One primary action in a major scene | Convert playful liquid fill into restrained surgical-green optical pressure; keep clear focus/active states | Must not obscure labels or become a site-wide gimmick |
-| Animate UI Flip Button | Adapt sparingly | Non-critical secondary links such as family navigation | Small directional face change; no full dramatic flip; static reduced-motion state | Never use for submit, delete, quantity, consent, or error recovery |
-| Animate UI Theme Toggler | Reject | None | THROHI uses authored dark/pale chapters rather than a user-facing theme trick | Unnecessary global state and inconsistent art direction |
-| Animate UI Radial Intro | Concept only | Optional one-time instrument-family assembly | Rebuild in Anime.js; run once; settle completely; omit on constrained devices | Continuous orbiting would feel decorative and expensive |
-| Aceternity 3D Globe | Reject | None | No replacement | Adds 3D cost and may imply unsupported geographic reach |
-| Aceternity Lamp Effect | Adapt once | Final major catalogue/inquiry call to action | Reinterpret as controlled surgical examination light; reduce bloom; retain text contrast | Excessive glow can overpower the footer and harm readability |
-| Aceternity GitHub Globe | Reject | None | No replacement | Developer-oriented and irrelevant to medical procurement |
-| Uiverse `gharsh11032000/loud-chicken-53` | Study | Surface and control construction | Extract only useful depth/border behavior into THROHI primitives | Do not paste its visual identity directly |
-| Uiverse `liyaxu123/warm-eel-62` | Study/adapt | Search/input behavior | Merge useful field behavior into one unified `MachinedField` | Multiple unrelated input styles would fragment the system |
-| Uiverse `kamehame-ha/chilly-snake-91` | Study | Catalogue object edge treatment | Retain only layered border/hover-light ideas | Avoid novelty card appearance |
-| Cult UI Canvas Fractal Grid | Adapt once, optional | Subtle background field near catalogue command or optical hero | Lazy load; low contrast; DPR cap; pause offscreen; disable for Save-Data, reduced motion, coarse pointers, and constrained devices | Canvas cannot run continuously across the whole site |
-| Cult UI Text Animate | Concept only | Calm group entrances | Recreate masking/fade/shift with the existing Anime.js dependency | Do not install Framer Motion; reject pop, whip, roll, and novelty word effects |
-| Uiverse `joe-watson-sbf/rude-shrimp-21` | Study | Inset and elevation cues | Translate into `OpticalPanel` or `CatalogueObject` tokens | Avoid component-showcase styling |
-| Uiverse `Smit-Prajapati/spicy-rat-83` | Adapt concept | One decorative THROHI abbreviation slab | Use a secondary `T` or `TH` object while preserving the official logo | Must not replace the actual THROHI identity |
-| Uiverse `Smit-Prajapati/massive-insect-5` | Study | Layered card construction | Extract structural depth only | Do not repeat monogram/card effects throughout pages |
-| Uiverse `Lakshay-art/curvy-earwig-22` | Study/adapt | Catalogue command input | Merge useful focus/field behavior into the unified search system | Must preserve labels, semantics, and contrast |
-| Uiverse `Tiagoadag/cuddly-catfish-6` | Study | Panel/card depth | Translate into shallow machined surface tokens | Avoid soft claymorphism |
-| FreeFrontend CSS Neon Effects | Microscopic adaptation only | Focus edge, active search result, tiny status light | Use narrow green/blue edge light, never full neon typography or global glow | Neon can quickly make the site look cyberpunk |
-| Cult UI 3D Carousel | Reject as implementation | None as actual 3D | A flat DOM-based layered archive may borrow its composition idea | 3D transforms, accessibility, and performance risk |
-| Uiverse `satyamchaudharydev/splendid-husky-54` | Adapt | Compact inline loading state | Restrict to search, catalogue loading, or inquiry submission | Never use as a decorative full-screen blocker |
-| Uiverse `PriyanshuGupta28/tender-fish-11` | Adapt | Quantity control | Build semantic number input with visible label, typed entry, plus/minus, minimum validation, disabled states, and 44px targets | Must work without pointer input and without placeholder-only labeling |
-| Uiverse `mrhyddenn/fluffy-bird-66` | Study/adapt | Input-link or attachment field | Merge useful interaction into `MachinedField`; preserve native input behavior | Avoid hidden labels and animation while typing |
-| Uiverse `alexruix/slippery-snail-18` | Study/adapt | Input-link field | Consolidate into the same THROHI field system | Do not introduce a second visibly unrelated input language |
-| Kokonut UI Avatar Picker | Reject | None | No replacement | User avatars are not part of the procurement journey |
-| CodePen `soju22/qEbdVjK` tubes cursor | Reject | None | Preserve native cursor | WebGL/WebGPU cost, accessibility risk, and constant GPU use |
-| Uiverse `andrew-demchenk0/lucky-bobcat-25` | Reject by default | None | Reconsider only if a narrow utility control is discovered during audit | Portfolio-oriented effect is not inherently relevant |
-| Uiverse `vinodjangid07/wonderful-yak-52` | Reject by default | None | Reconsider only for a justified secondary control | Portfolio-oriented effect can distract from product content |
+| Animate UI Radix Accordion | Implemented as an original native disclosure | Resources publication standard | Native `<details>` / `<summary>` technical accordion with THROHI optical styling; no Radix or Animate UI dependency | Keyboard behavior remains browser-native; no animated-height instability |
+| Animate UI Liquid Button | Implemented once as original CSS | Final homepage catalogue CTA | Restrained surgical-green optical fill using one pseudo-element | Disabled on reduced motion and non-hover devices; never used on form-critical actions |
+| Animate UI Flip Button | Rejected after review | None | Quiet directional links provide clearer behavior without a face-flip transition | Avoids hidden labels and motion on critical navigation |
+| Animate UI Theme Toggler | Rejected | None | THROHI uses authored dark and pale chapters | Avoids unnecessary global state and inconsistent art direction |
+| Animate UI Radial Intro | Concept only; not shipped | None | Existing logo and instrument assembly motion already provides the needed one-time calibration language | Avoids continuous orbiting and another complex scene |
+| Aceternity 3D Globe | Rejected | None | No replacement | Avoids 3D cost and unsupported geographic implications |
+| Aceternity Lamp Effect | Implemented as an original CSS interpretation | Final homepage catalogue/inquiry scene | Controlled surgical examination light with restrained green-white beam | No imported component, heavy bloom, canvas, or runtime dependency |
+| Aceternity GitHub Globe | Rejected | None | No replacement | Developer-oriented and irrelevant to medical procurement |
+| Uiverse `gharsh11032000/loud-chicken-53` | Studied only | Optical primitives | General depth and border observations translated into independent tokens | No copied markup or styling identity |
+| Uiverse `liyaxu123/warm-eel-62` | Studied only | Search and machined fields | Unified recessed field language created independently | No fragmented input system |
+| Uiverse `kamehame-ha/chilly-snake-91` | Studied only | Catalogue object borders | Layered edge treatment interpreted through THROHI tokens | No novelty card behavior |
+| Cult UI Canvas Fractal Grid | Rejected after performance review | None | Static CSS calibration grids provide sufficient structure | Avoids continuous canvas cost and Save-Data complexity |
+| Cult UI Text Animate | Concept implemented through existing Anime.js | Route and chapter entrances | Calm mask, fade, and shift motion only | No Framer Motion dependency; no novelty word effects |
+| Uiverse `joe-watson-sbf/rude-shrimp-21` | Studied only | Optical and clinical panels | Inset/elevation principles translated into original shadow tokens | Avoids component-showcase styling |
+| Uiverse `Smit-Prajapati/spicy-rat-83` | Concept rejected in final pass | None | Official THROHI identity remains visually authoritative | Avoids replacing the logo with a fashion-style monogram |
+| Uiverse `Smit-Prajapati/massive-insect-5` | Studied only | Catalogue surface construction | Structural depth interpreted through the common card system | No repeated monogram/card effect |
+| Uiverse `Lakshay-art/curvy-earwig-22` | Studied only | Catalogue command field | Focus and field hierarchy recreated independently | Real labels, semantics, and contrast retained |
+| Uiverse `Tiagoadag/cuddly-catfish-6` | Studied only | Machined surface tokens | Shallow professional depth rather than soft claymorphism | No inflated toy-like surfaces |
+| FreeFrontend CSS Neon Effects | Microscopic concept only | Focus edges and active search result | Narrow green/blue optical edge light | No neon text, cyberpunk glow, or global effect |
+| Cult UI 3D Carousel | Rejected as implementation | None | Family archive uses accessible normal document flow | Avoids 3D transforms, artificial scroll distance, and accessibility risk |
+| Uiverse `satyamchaudharydev/splendid-husky-54` | Rejected after review | None | Existing textual loading states are clearer and cheaper | No decorative full-screen loader |
+| Uiverse `PriyanshuGupta28/tender-fish-11` | Implemented as original semantic control | Product detail and inquiry quantity controls | Native number input with typed entry, plus/minus controls, boundaries, disabled states, and 44px targets | Keyboard and touch behavior do not depend on visual buttons |
+| Uiverse `mrhyddenn/fluffy-bird-66` | Studied only | Attachment and form-field language | Native inputs retained with THROHI field treatment | Labels remain visible and typing remains motion-free |
+| Uiverse `alexruix/slippery-snail-18` | Studied only | Attachment and form-field language | Consolidated into the same field system | No second unrelated input language |
+| Kokonut UI Avatar Picker | Rejected | None | No replacement | User avatars are outside the procurement journey |
+| CodePen `soju22/qEbdVjK` tubes cursor | Rejected | None | Native cursor preserved | Avoids WebGL/WebGPU, accessibility risk, and permanent GPU use |
+| Uiverse `andrew-demchenk0/lucky-bobcat-25` | Rejected | None | No replacement | Portfolio-oriented effect is irrelevant |
+| Uiverse `vinodjangid07/wonderful-yak-52` | Rejected | None | No replacement | Portfolio-oriented effect distracts from product content |
 
-## Approved V3 extraction principles
+## Implemented reference-level ideas
 
-The references may contribute only these underlying ideas:
+The branch uses only the following abstract ideas from the supplied research:
 
 - optical edge lighting
 - shallow inset and raised states
@@ -43,21 +43,20 @@ The references may contribute only these underlying ideas:
 - controlled reveal masking
 - compact information hierarchy
 - tactile quantity controls
-- semantic disclosure motion
+- native semantic disclosure
 - one restrained liquid primary action
 - one surgical-light closing composition
 
-They must be translated into a small coherent set:
+These ideas are expressed through a coherent internal set:
 
-- `OpticalPanel`
-- `SmokedGlassPanel`
-- `ClinicalGlassPanel`
+- `GlassPanel`
+- `MachinedSurface`
 - `MachinedField`
-- `CatalogueObject`
-- `SurgicalButton`
-- `LiquidPrimaryAction`
-- `InquiryQuantityControl`
+- `CatalogueObject` styling
+- `SurgicalButton` / `SurgicalLink`
+- `ProductInquiryControls`
 - `TechnicalAccordion`
+- `TechnicalReadout`
 
 ## Explicitly prohibited additions
 
@@ -74,13 +73,17 @@ They must be translated into a small coherent set:
 - hidden or placeholder-only form labels
 - hover-only functionality
 
-## Source-attribution rule
+## Source-use record
 
-Before materially copying any source implementation:
+No supplied third-party source code, package, or component implementation has been imported or copied into this branch.
 
-1. verify its license;
-2. record the original URL and author in the final source-attribution document;
-3. rewrite it to use THROHI tokens and semantics;
+The branch continues to depend only on its existing application stack, including React, Next.js, Anime.js, native HTML controls, and original CSS. Therefore no new third-party component license notice is required for the V3 implementation.
+
+Any future material code reuse must still follow this gate:
+
+1. verify the source license;
+2. record the original URL and author;
+3. rewrite the implementation to use THROHI tokens and semantics;
 4. remove unused dependencies and styling;
 5. add keyboard, focus, reduced-motion, and responsive tests;
-6. reject it when the same outcome can be achieved more safely with existing React, CSS, and Anime.js infrastructure.
+6. reject the source when the same result is safer with existing infrastructure.
