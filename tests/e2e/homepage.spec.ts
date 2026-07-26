@@ -26,17 +26,24 @@ test("has no serious automated accessibility violations", async ({ page }) => {
   expect(serious, JSON.stringify(serious, null, 2)).toEqual([]);
 });
 
-test("persists inquiry selections and prevents duplicate additions", async ({ page }) => {
-  const firstProduct = page.getByRole("article").filter({ hasText: "Operating Scissors" });
-  const addButton = firstProduct.getByRole("button", { name: "Add to inquiry" });
+test("homepage catalogue objects open real routes and persist inquiry selections", async ({ page }) => {
+  const firstProduct = page.getByRole("article").filter({ hasText: "Operating Scissors" }).first();
+  await expect(firstProduct.getByRole("link", { name: "Operating Scissors", exact: true })).toHaveAttribute(
+    "href",
+    "/products/surgical/scissors/operating-scissors"
+  );
+
+  const addButton = firstProduct.getByRole("button", { name: "Add to inquiry: Operating Scissors", exact: true });
   await addButton.click();
-  await expect(firstProduct.getByRole("button", { name: "Added to inquiry ✓" })).toHaveAttribute("aria-pressed", "true");
-  await firstProduct.getByRole("button", { name: "Added to inquiry ✓" }).click();
+  const addedButton = firstProduct.getByRole("button", { name: "Added to inquiry: Operating Scissors", exact: true });
+  await expect(addedButton).toHaveAttribute("aria-pressed", "true");
+  await addedButton.click();
+
   await expect(page.getByText("1 ITEM SAVED")).toBeVisible();
   await expect.poll(() => page.evaluate(() => JSON.parse(window.localStorage.getItem("throhi-inquiry-v2") ?? "{}").items?.length)).toBe(1);
   await page.reload();
   await clearCinematicCover(page);
-  await expect(firstProduct.getByRole("button", { name: "Added to inquiry ✓" })).toBeVisible();
+  await expect(firstProduct.getByRole("button", { name: "Added to inquiry: Operating Scissors", exact: true })).toBeVisible();
   await expect(page.getByText("1 ITEM SAVED")).toBeVisible();
 });
 
