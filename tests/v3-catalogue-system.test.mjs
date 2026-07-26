@@ -49,15 +49,18 @@ test("quantity control supports typing and accessible increment and decrement bu
   assert.match(catalogueUi, /disabled=\{quantity >= 9999\}/);
 });
 
-test("search command preserves keyboard navigation and focus restoration", () => {
+test("search command preserves keyboard navigation, naming, and focus restoration", () => {
   assert.match(searchCommand, /event\.key === "ArrowDown"/);
   assert.match(searchCommand, /event\.key === "ArrowUp"/);
   assert.match(searchCommand, /event\.key === "Enter"/);
   assert.match(searchCommand, /event\.key === "Escape"/);
   assert.match(searchCommand, /previousFocus\.current/);
+  assert.match(searchCommand, /aria-label="Search catalogue by name, family, or product code"/);
+  assert.match(searchCommand, /aria-autocomplete="list"/);
   assert.match(searchCommand, /aria-activedescendant/);
   assert.match(searchCommand, /role="listbox"/);
   assert.match(searchCommand, /role="option"/);
+  assert.match(searchCommand, /<kbd aria-hidden="true">/);
 });
 
 test("full search retains ranking context, filters, and manual fallback", () => {
