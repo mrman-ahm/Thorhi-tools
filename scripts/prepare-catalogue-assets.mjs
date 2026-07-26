@@ -1,10 +1,11 @@
-import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { brotliDecompressSync } from "node:zlib";
 import { unzipSync } from "fflate";
 
 const root = resolve(process.cwd());
-const bundlePath = join(root, "assets", "catalogue", "fine-med-catalogue.bundle.b64");
+const bundleDirectory = join(root, "assets", "catalogue");
+const bundlePath = join(bundleDirectory, "fine-med-catalogue.bundle.b64");
 const dataDirectory = join(root, "src", "data");
 const publicDirectory = join(root, "public", "catalogue");
 const cataloguePath = join(dataDirectory, "catalogue.generated.json");
@@ -14,6 +15,23 @@ const spritePath = join(publicDirectory, "catalogue-sheet.avif");
 
 function fail(message) {
   throw new Error(`FineMed catalogue preparation failed: ${message}`);
+}
+
+function readEncodedBundle() {
+  const partNames = existsSync(bundleDirectory)
+    ? readdirSync(bundleDirectory)
+      .filter(name => /^fine-med-catalogue\.bundle\.part-\d+\.b64$/.test(name))
+      .sort()
+    : [];
+
+  if (partNames.length > 0) {
+    return partNames
+      .map(name => readFileSync(join(bundleDirectory, name), "utf8").replace(/\s+/g, ""))
+      .join("");
+  }
+
+  if (!existsSync(bundlePath)) fail(`missing bundle at ${bundlePath}`);
+  return readFileSync(bundlePath, "utf8").replace(/\s+/g, "");
 }
 
 function buildSearchIndex(catalogue) {
@@ -31,9 +49,7 @@ function buildSearchIndex(catalogue) {
 }
 
 export function prepareCatalogueAssets() {
-  if (!existsSync(bundlePath)) fail(`missing bundle at ${bundlePath}`);
-
-  const encoded = readFileSync(bundlePath, "utf8").replace(/\s+/g, "");
+  const encoded = readEncodedBundle();
   if (!encoded) fail("bundle is empty");
 
   let archive;
