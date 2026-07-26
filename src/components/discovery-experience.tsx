@@ -84,7 +84,7 @@ export function DiscoveryExperience() {
         </header>
 
         <div className="v3-division-layout">
-          <GlassPanel variant="optical" className="v3-division-active" aria-live="polite">
+          <GlassPanel variant="optical" className="v3-division-active">
             <div className="v3-division-stage-index">
               <TechnicalReadout label="Active division" value={`${active.index} / 04`} />
               <TechnicalReadout label="Primary route" value={`/products/${active.slug}`} />
@@ -114,8 +114,7 @@ export function DiscoveryExperience() {
               key={division.slug}
               data-tone={division.tone}
               data-active={activeDivision === index}
-              aria-current={activeDivision === index ? "page" : undefined}
-              onPointerEnter={() => setActiveDivision(index)}
+              onMouseEnter={() => setActiveDivision(index)}
               onFocus={() => setActiveDivision(index)}
             >
               <span>{division.index}</span>
