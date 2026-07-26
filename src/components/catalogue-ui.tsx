@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, type CSSProperties } from "react";
 import { useInquiry } from "@/components/inquiry-provider";
-import { catalogueCounts, productHref, type CatalogueDocument, type Product } from "@/lib/catalogue";
+import { catalogueCounts, productHref, type CatalogueDocument, type Product, type ProductVariant } from "@/lib/catalogue";
 
 export function SeedDataNotice() {
   return <aside className="seed-notice catalogue-seed-notice" role="note"><span className="seed-mark" aria-hidden="true">SOURCE / FM</span><div><strong>Client-supplied catalogue data</strong><span>{catalogueCounts.products} instrument groups and {catalogueCounts.variants} documented variants are imported from the supplied FineMed catalogues. Verify critical dimensions before regulatory or technical publication.</span></div></aside>;
@@ -106,11 +106,40 @@ export function ProductCard({ product, compact = false }: { product: Product; co
   </article>;
 }
 
+function ExactVariantAction({ product, variant }: { product: Product; variant: ProductVariant }) {
+  const { items, addProduct } = useInquiry();
+  const [announcement, setAnnouncement] = useState("");
+  const added = items.some(item => item.code === variant.label);
+  const variantName = `${product.name} — ${variant.label}`;
+
+  const addVariant = () => {
+    const result = addProduct({
+      productId: `${product.id}:${variant.id}`,
+      code: variant.label,
+      name: variantName
+    });
+    setAnnouncement(result === "added"
+      ? `${variant.label} added to the inquiry.`
+      : `${variant.label} is already in the inquiry.`);
+  };
+
+  return <>
+    <span className="visually-hidden" aria-live="polite">{announcement}</span>
+    <button
+      type="button"
+      className={`catalogue-variant-action ${added ? "is-added" : ""}`}
+      aria-label={`${added ? "Exact variant added" : "Add exact variant"}: ${variant.label} for ${product.name}`}
+      aria-pressed={added}
+      onClick={addVariant}
+    ><span>{added ? "Added" : "Add exact code"}</span><b aria-hidden="true">{added ? "✓" : "+"}</b></button>
+  </>;
+}
+
 export function ProductVariantTable({ product }: { product: Product }) {
   return <div className="catalogue-variant-table" role="region" aria-label={`Documented variants for ${product.name}`} tabIndex={0}>
     <table>
-      <thead><tr><th scope="col">Code</th><th scope="col">Catalogue description</th><th scope="col">Source</th></tr></thead>
-      <tbody>{product.variants.map(variant => <tr key={variant.id}><th scope="row"><code>{variant.label}</code></th><td>{variant.value}</td><td><span>PDF {variant.pdfPage ?? "—"}</span>{variant.printedPage ? <small>Printed {variant.printedPage}</small> : null}</td></tr>)}</tbody>
+      <thead><tr><th scope="col">Code</th><th scope="col">Catalogue description</th><th scope="col">Source</th><th scope="col">Inquiry</th></tr></thead>
+      <tbody>{product.variants.map(variant => <tr key={variant.id}><th scope="row"><code>{variant.label}</code></th><td>{variant.value}</td><td><span>PDF {variant.pdfPage ?? "—"}</span>{variant.printedPage ? <small>Printed {variant.printedPage}</small> : null}</td><td><ExactVariantAction product={product} variant={variant} /></td></tr>)}</tbody>
     </table>
   </div>;
 }
