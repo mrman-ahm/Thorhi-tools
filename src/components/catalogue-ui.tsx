@@ -73,10 +73,23 @@ export function ProductInquiryControls({ product }: { product: Product }) {
   const [announcement, setAnnouncement] = useState("");
 
   const setSafeQuantity = (value: number) => setQuantity(Math.max(1, Math.min(9999, value || 1)));
-  const add = () => {
-    const result = addProduct({ productId: product.id, code: product.code, name: product.name });
-    updateItem(product.code, { quantity, note });
-    setAnnouncement(result === "added" ? `${product.name} added with quantity ${quantity}.` : `${product.name} inquiry details updated.`);
+  const save = () => {
+    if (existing) {
+      updateItem(product.code, { quantity, note });
+      setAnnouncement(`${product.name} inquiry details updated.`);
+      return;
+    }
+
+    const result = addProduct({
+      productId: product.id,
+      code: product.code,
+      name: product.name,
+      quantity,
+      note
+    });
+    setAnnouncement(result === "added"
+      ? `${product.name} added with quantity ${quantity}.`
+      : `${product.name} is already in the inquiry.`);
   };
 
   return <div className="product-purchase-actions catalogue-detail-actions">
@@ -90,7 +103,7 @@ export function ProductInquiryControls({ product }: { product: Product }) {
       </div>
     </div>
     <div className="detail-field note-field"><label htmlFor="detail-note">Product-specific note</label><textarea id="detail-note" value={note} onChange={event => setNote(event.target.value)} placeholder="Optional requirement or equivalent reference" /></div>
-    <button type="button" className={`button product-action catalogue-detail-submit ${existing ? "positive" : "primary"}`} aria-label={`${existing ? "Update inquiry details for" : "Add to inquiry"}: ${product.name}`} onClick={add}><span>{existing ? "Update inquiry details" : "Add to inquiry"}</span><b aria-hidden="true">↗</b></button>
+    <button type="button" className={`button product-action catalogue-detail-submit ${existing ? "positive" : "primary"}`} aria-label={`${existing ? "Update inquiry details for" : "Add to inquiry"}: ${product.name}`} onClick={save}><span>{existing ? "Update inquiry details" : "Add to inquiry"}</span><b aria-hidden="true">↗</b></button>
   </div>;
 }
 
@@ -116,10 +129,11 @@ function ExactVariantAction({ product, variant }: { product: Product; variant: P
     const result = addProduct({
       productId: `${product.id}:${variant.id}`,
       code: variant.label,
-      name: variantName
+      name: variantName,
+      note: variant.value
     });
     setAnnouncement(result === "added"
-      ? `${variant.label} added to the inquiry.`
+      ? `${variant.label} added to the inquiry with its catalogue description.`
       : `${variant.label} is already in the inquiry.`);
   };
 
