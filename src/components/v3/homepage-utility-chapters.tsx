@@ -1,8 +1,7 @@
 import Link from "next/link";
 import {
   ProductCatalogue,
-  SavedInquiryPanel,
-  type PreviewProduct
+  SavedInquiryPanel
 } from "@/components/catalogue-preview";
 import {
   GlassPanel,
@@ -10,12 +9,14 @@ import {
   SurgicalLink,
   TechnicalReadout
 } from "@/components/v3/optical-primitives";
+import type { Product } from "@/lib/catalogue";
 
 const documents = [
   { index: "01", title: "Main catalogue", note: "Metadata pending" },
   { index: "02", title: "Surgical catalogue", note: "Metadata pending" },
   { index: "03", title: "Dental catalogue", note: "Metadata pending" },
-  { index: "04", title: "Veterinary catalogue", note: "Metadata pending" }
+  { index: "04", title: "Veterinary catalogue", note: "Metadata pending" },
+  { index: "05", title: "Beauty catalogue", note: "Metadata pending" }
 ] as const;
 
 const inquirySteps = [
@@ -39,7 +40,7 @@ const inquirySteps = [
 export function HomepageUtilityChapters({
   products
 }: {
-  products: readonly PreviewProduct[];
+  products: readonly Product[];
 }) {
   return <>
     <section className="v3-catalogue-command v3-surface" aria-labelledby="catalogue-command-title">
