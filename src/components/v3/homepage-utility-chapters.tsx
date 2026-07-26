@@ -143,7 +143,7 @@ export function HomepageUtilityChapters({
         <p>Catalogue to inquiry</p>
         <h2 id="surgical-light-title">Find the instrument.<br /><span>Build the inquiry.</span></h2>
         <div>
-          <SurgicalLink href="/search" variant="primary">Search catalogue <span aria-hidden="true">↗</span></SurgicalLink>
+          <SurgicalLink className="v3-liquid-action" href="/search" variant="primary">Search catalogue <span aria-hidden="true">↗</span></SurgicalLink>
           <SurgicalLink href="/inquiry" variant="quiet">Review inquiry</SurgicalLink>
           <Link href="/contact">Contact THROHI</Link>
         </div>
