@@ -8,9 +8,16 @@ on:
       - phase-6-7-production-homepage
       - experiment/v3-surgical-editorial-glass
 
+permissions:
+  contents: read
+
 concurrency:
   group: quality-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
+
+env:
+  CI: true
+  NEXT_TELEMETRY_DISABLED: 1
 
 jobs:
   verify:
@@ -21,7 +28,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: npm install --no-audit --no-fund
+          cache: npm
+      - run: npm ci --no-audit --no-fund
       - run: npm run lint
       - run: npm run typecheck
       - run: npm test
@@ -32,7 +40,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: homepage-browser-validation
+          name: throhi-v3-browser-validation
           path: |
             test-results/results.json
             test-results/**/*.png
