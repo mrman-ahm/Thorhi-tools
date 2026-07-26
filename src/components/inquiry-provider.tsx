@@ -11,6 +11,9 @@ export type InquiryItem = {
   manual: boolean;
 };
 
+export type InquiryProductInput = Pick<InquiryItem, "productId" | "code" | "name"> &
+  Partial<Pick<InquiryItem, "quantity" | "note">>;
+
 export type InquiryDraft = {
   items: InquiryItem[];
   generalRequirements: string;
@@ -20,7 +23,7 @@ export type InquiryDraft = {
 type InquiryContextValue = InquiryDraft & {
   hydrated: boolean;
   count: number;
-  addProduct: (item: Omit<InquiryItem, "quantity" | "note" | "manual">) => "added" | "duplicate";
+  addProduct: (item: InquiryProductInput) => "added" | "duplicate";
   addManualItem: (name: string, code?: string) => void;
   updateItem: (code: string, updates: Partial<Pick<InquiryItem, "quantity" | "note" | "name">>) => void;
   removeItem: (code: string) => InquiryItem | undefined;
@@ -35,19 +38,52 @@ const legacyStorageKey = "throhi-inquiry";
 const initialDraft: InquiryDraft = { items: [], generalRequirements: "" };
 const InquiryContext = createContext<InquiryContextValue | null>(null);
 
+function normalizeQuantity(value: number | undefined) {
+  if (value === undefined || !Number.isFinite(value)) return 1;
+  return Math.max(1, Math.min(9999, Math.floor(value)));
+}
+
+function normalizeStoredItem(value: unknown): InquiryItem | null {
+  if (!value || typeof value !== "object") return null;
+  const item = value as Partial<InquiryItem>;
+  if (typeof item.code !== "string" || !item.code.trim()) return null;
+  if (typeof item.name !== "string" || !item.name.trim()) return null;
+  return {
+    productId: typeof item.productId === "string" ? item.productId : undefined,
+    code: item.code.trim(),
+    name: item.name.trim(),
+    quantity: normalizeQuantity(item.quantity),
+    note: typeof item.note === "string" ? item.note : "",
+    manual: Boolean(item.manual)
+  };
+}
+
 function readDraft(): InquiryDraft {
   try {
     const stored = window.localStorage.getItem(storageKey);
     if (stored) {
-      const parsed = JSON.parse(stored) as InquiryDraft;
-      return { ...initialDraft, ...parsed, items: Array.isArray(parsed.items) ? parsed.items : [] };
+      const parsed = JSON.parse(stored) as Partial<InquiryDraft>;
+      const items = Array.isArray(parsed.items)
+        ? parsed.items.map(normalizeStoredItem).filter((item): item is InquiryItem => Boolean(item))
+        : [];
+      return {
+        items,
+        generalRequirements: typeof parsed.generalRequirements === "string" ? parsed.generalRequirements : "",
+        attachment: parsed.attachment
+      };
     }
     const legacy = window.localStorage.getItem(legacyStorageKey);
     if (legacy) {
       const codes = JSON.parse(legacy) as string[];
       return {
         ...initialDraft,
-        items: codes.map(code => ({ code, name: code, quantity: 1, note: "", manual: false }))
+        items: codes.filter(code => typeof code === "string" && code.trim()).map(code => ({
+          code: code.trim(),
+          name: code.trim(),
+          quantity: 1,
+          note: "",
+          manual: false
+        }))
       };
     }
   } catch {
@@ -71,12 +107,23 @@ export function InquiryProvider({ children }: { children: ReactNode }) {
     window.localStorage.setItem(legacyStorageKey, JSON.stringify(draft.items.filter(item => !item.manual).map(item => item.code)));
   }, [draft, hydrated]);
 
-  const addProduct = useCallback((item: Omit<InquiryItem, "quantity" | "note" | "manual">) => {
-    if (draft.items.some(existing => existing.code === item.code)) return "duplicate";
+  const addProduct = useCallback((item: InquiryProductInput) => {
+    const code = item.code.trim();
+    const name = item.name.trim();
+    if (!code || !name || draft.items.some(existing => existing.code === code)) return "duplicate";
+
+    const nextItem: InquiryItem = {
+      productId: item.productId,
+      code,
+      name,
+      quantity: normalizeQuantity(item.quantity),
+      note: item.note ?? "",
+      manual: false
+    };
 
     setDraft(current => {
-      if (current.items.some(existing => existing.code === item.code)) return current;
-      return { ...current, items: [...current.items, { ...item, quantity: 1, note: "", manual: false }] };
+      if (current.items.some(existing => existing.code === code)) return current;
+      return { ...current, items: [...current.items, nextItem] };
     });
     return "added";
   }, [draft.items]);
@@ -98,10 +145,11 @@ export function InquiryProvider({ children }: { children: ReactNode }) {
       ...current,
       items: current.items.map(item => {
         if (item.code !== code) return item;
-        const quantity = updates.quantity === undefined
-          ? item.quantity
-          : Math.max(1, Math.min(9999, Math.floor(updates.quantity)));
-        return { ...item, ...updates, quantity };
+        return {
+          ...item,
+          ...updates,
+          quantity: updates.quantity === undefined ? item.quantity : normalizeQuantity(updates.quantity)
+        };
       })
     }));
   }, []);
@@ -117,7 +165,9 @@ export function InquiryProvider({ children }: { children: ReactNode }) {
   }, [draft.items]);
 
   const restoreItem = useCallback((item: InquiryItem) => {
-    setDraft(current => current.items.some(existing => existing.code === item.code) ? current : { ...current, items: [...current.items, item] });
+    setDraft(current => current.items.some(existing => existing.code === item.code)
+      ? current
+      : { ...current, items: [...current.items, { ...item, quantity: normalizeQuantity(item.quantity) }] });
   }, []);
 
   const setGeneralRequirements = useCallback((value: string) => setDraft(current => ({ ...current, generalRequirements: value })), []);
