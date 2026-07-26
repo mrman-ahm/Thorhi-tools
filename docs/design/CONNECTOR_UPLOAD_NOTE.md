@@ -1,0 +1,1 @@
+Temporary note for catalogue asset upload coordination. Remove after validation.
