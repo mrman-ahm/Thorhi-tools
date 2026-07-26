@@ -37,6 +37,14 @@ test("homepage featured objects come from the canonical catalogue", () => {
   assert.doesNotMatch(preview, /Temporary image placeholder for \$\{product\.name\}/);
 });
 
+test("homepage inquiry summary represents the complete basket, not only featured objects", () => {
+  assert.match(utility, /<SavedInquiryPanel \/>/);
+  assert.match(preview, /const \{ items \} = useInquiry\(\)/);
+  assert.match(preview, /items\.map\(item =>/);
+  assert.match(preview, /item\.manual \? <small>Unlisted reference<\/small>/);
+  assert.doesNotMatch(preview, /products\.filter\(product => items\.some/);
+});
+
 test("division and family discovery derive from canonical catalogue records", () => {
   assert.match(discovery, /divisions as catalogueDivisions/);
   assert.match(discovery, /families as catalogueFamilies/);
@@ -60,7 +68,7 @@ test("catalogue command and inquiry workflow remain functional", () => {
   assert.match(utility, /action="\/search"/);
   assert.match(utility, /name="q"/);
   assert.match(utility, /<ProductCatalogue products=\{products\} \/>/);
-  assert.match(utility, /<SavedInquiryPanel products=\{products\} \/>/);
+  assert.match(utility, /<SavedInquiryPanel \/>/);
   assert.match(utility, /href="\/inquiry"/);
   assert.match(utility, /href="\/contact"/);
 });
