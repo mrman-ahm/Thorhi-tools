@@ -31,6 +31,7 @@ import "./v3-catalogue-system.css";
 import "./v3-utility-routes.css";
 import "./v3-performance-hardening.css";
 import "./v3-final-polish.css";
+import "./v3-catalogue-data.css";
 
 const archivo = Archivo({ subsets: ["latin"], variable: "--font-archivo", display: "swap" });
 const instrument = Instrument_Sans({ subsets: ["latin"], variable: "--font-instrument", display: "swap" });
@@ -38,7 +39,7 @@ const plex = IBM_Plex_Mono({ subsets: ["latin"], weight: ["400", "500", "600"], 
 
 export const metadata: Metadata = {
   title: { default: "THROHI Medical Tools", template: "%s | THROHI" },
-  description: "Explore surgical, dental, veterinary, and beauty instruments by division, family, product name, or code.",
+  description: "Explore 626 general-surgery and orthodontic instrument groups with 1,434 documented catalogue variants.",
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://throhi.com"),
   robots: { index: false, follow: false }
 };
