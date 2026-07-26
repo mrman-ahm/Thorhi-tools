@@ -14,7 +14,7 @@ export function TechnicalAccordion({
   items: readonly TechnicalAccordionItem[];
   label: string;
 }) {
-  return <div className="v3-technical-accordion" aria-label={label}>
+  return <div className="v3-technical-accordion" role="group" aria-label={label}>
     {items.map((item, index) => <details key={item.index} open={index === 0}>
       <summary>
         <span>{item.index}</span>
