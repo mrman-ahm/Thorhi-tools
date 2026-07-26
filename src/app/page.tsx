@@ -8,8 +8,10 @@ import { SiteHeader } from "@/components/site-header";
 import { HomepageUtilityChapters } from "@/components/v3/homepage-utility-chapters";
 import { products as catalogueProducts } from "@/lib/catalogue";
 
-const featuredCodes = new Set(["THR-SC-001", "THR-FC-014", "THR-NH-007", "THR-DE-021"]);
-const featuredProducts = catalogueProducts.filter(product => featuredCodes.has(product.code));
+const featuredCodes = ["04-0101", "01-0501", "SC-01T", "SP-28"];
+const featuredProducts = featuredCodes
+  .map(code => catalogueProducts.find(product => product.code === code))
+  .filter((product): product is NonNullable<typeof product> => Boolean(product));
 
 export default function HomePage() {
   return <>
