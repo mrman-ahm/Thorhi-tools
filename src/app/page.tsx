@@ -6,14 +6,10 @@ import { MacroInspectionScene } from "@/components/signature-scenes";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { HomepageUtilityChapters } from "@/components/v3/homepage-utility-chapters";
-import type { PreviewProduct } from "@/components/catalogue-preview";
+import { products as catalogueProducts } from "@/lib/catalogue";
 
-const products: readonly PreviewProduct[] = [
-  { family: "SURGICAL · SCISSORS", name: "Operating Scissors", code: "THR-SC-001" },
-  { family: "SURGICAL · FORCEPS", name: "Dressing Forceps", code: "THR-FC-014" },
-  { family: "SURGICAL · SUTURING", name: "Needle Holder", code: "THR-NH-007" },
-  { family: "DENTAL · EXTRACTION", name: "Dental Extraction Forceps", code: "THR-DE-021" }
-];
+const featuredCodes = new Set(["THR-SC-001", "THR-FC-014", "THR-NH-007", "THR-DE-021"]);
+const featuredProducts = catalogueProducts.filter(product => featuredCodes.has(product.code));
 
 export default function HomePage() {
   return <>
@@ -24,7 +20,7 @@ export default function HomePage() {
       <DiscoveryExperience />
       <MacroInspectionScene />
       <FrameEvolutionScene />
-      <HomepageUtilityChapters products={products} />
+      <HomepageUtilityChapters products={featuredProducts} />
     </main>
     <SiteFooter />
   </>;
