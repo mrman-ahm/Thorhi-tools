@@ -9,15 +9,19 @@ import {
   SurgicalLink,
   TechnicalReadout
 } from "@/components/v3/optical-primitives";
-import type { Product } from "@/lib/catalogue";
+import {
+  divisions as catalogueDivisions,
+  type Product
+} from "@/lib/catalogue";
 
 const documents = [
   { index: "01", title: "Main catalogue", note: "Metadata pending" },
-  { index: "02", title: "Surgical catalogue", note: "Metadata pending" },
-  { index: "03", title: "Dental catalogue", note: "Metadata pending" },
-  { index: "04", title: "Veterinary catalogue", note: "Metadata pending" },
-  { index: "05", title: "Beauty catalogue", note: "Metadata pending" }
-] as const;
+  ...catalogueDivisions.map((division, index) => ({
+    index: String(index + 2).padStart(2, "0"),
+    title: `${division.label.replace(" Instruments", "")} catalogue`,
+    note: "Metadata pending"
+  }))
+];
 
 const inquirySteps = [
   {
