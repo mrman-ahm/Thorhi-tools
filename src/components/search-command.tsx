@@ -148,13 +148,15 @@ export function SearchCommand() {
           value={query}
           onChange={event => { setQuery(event.target.value); setActiveIndex(0); }}
           placeholder="Name, family, or exact / partial code"
+          aria-label="Search catalogue by name, family, or product code"
           role="combobox"
+          aria-autocomplete="list"
           aria-expanded="true"
           aria-controls="search-command-results"
           aria-activedescendant={results[activeIndex] ? `search-command-result-${results[activeIndex].product.id}` : undefined}
           autoComplete="off"
         />
-        <kbd>⌘K</kbd>
+        <kbd aria-hidden="true">⌘K</kbd>
       </div>
 
       <div className="search-command-summary" aria-live="polite">
