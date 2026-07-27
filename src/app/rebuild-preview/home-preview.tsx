@@ -49,8 +49,8 @@ export function HomePreview({ onView }: { onView: (view: PreviewView) => void })
     <section className={styles.divisions} aria-labelledby="division-heading">
       <header className={styles.sectionHeading}><h2 id="division-heading">Four product divisions.</h2><p>Enter the range that matches your work, then search by family, name or code.</p></header>
       <div className={styles.divisionRows}>
-        {rebuildDivisionNavigation.map((division, index) => {
-          const family = verifiedPreviewFamilies[index];
+        {rebuildDivisionNavigation.map((division) => {
+          const family = verifiedPreviewFamilies.find((item) => item.division === division.slug);
           const content = <>
             <h3>{division.label}</h3>
             <p>{division.description}</p>
