@@ -46,10 +46,41 @@ function readBundleArchive() {
   return Buffer.from(encoded, "base64");
 }
 
+function repairSplitVariant(catalogue, { targetCode, donorCode, description }) {
+  const target = catalogue.products.find(product => product.code === targetCode);
+  const donor = catalogue.products.find(product => product.code === donorCode);
+
+  if (!target || !donor || target.variants?.length) return;
+
+  const variantIndex = donor.variants?.findIndex(variant => variant.value === description) ?? -1;
+  if (variantIndex < 0) {
+    fail(`cannot repair ${targetCode}; matching source variant is missing`);
+  }
+
+  const [variant] = donor.variants.splice(variantIndex, 1);
+  target.variants = [variant];
+}
+
 function normalizeCatalogue(catalogue) {
   if (!Array.isArray(catalogue?.products)) {
     fail("catalogue products are missing");
   }
+
+  repairSplitVariant(catalogue, {
+    targetCode: "06-1913",
+    donorCode: "06-1909",
+    description: "TC METZENBAUM ScissorsSTR cum BL/BL 18.0 cm"
+  });
+  repairSplitVariant(catalogue, {
+    targetCode: "04-3102-2",
+    donorCode: "04-3102",
+    description: "Pane Scissors ANGLED 18.0cm"
+  });
+  repairSplitVariant(catalogue, {
+    targetCode: "21-0104-2",
+    donorCode: "21-0104",
+    description: "ARAGAWA Rectal Speculum 60X12mm HJM PATT"
+  });
 
   for (const product of catalogue.products) {
     product.catalogue = product.catalogue ?? product.catalog ?? "";
