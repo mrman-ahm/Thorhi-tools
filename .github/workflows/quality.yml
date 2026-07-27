@@ -2,30 +2,78 @@ name: Quality
 
 on:
   pull_request:
+    branches:
+      - main
   push:
-    branches: [main, phase-6-7-production-homepage]
+    branches:
+      - main
+      - phase-6-7-production-homepage
+
+permissions:
+  contents: read
+
+concurrency:
+  group: quality-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  CI: true
+  NEXT_TELEMETRY_DISABLED: 1
 
 jobs:
   verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: npm install
-      - run: npm run lint
-      - run: npm run typecheck
-      - run: npm test
-      - run: npm run build
-      - run: npx playwright install --with-deps chromium
-      - run: npm run test:e2e
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Lint
+        shell: bash
+        run: |
+          mkdir -p validation-logs
+          set -o pipefail
+          npm run lint 2>&1 | tee validation-logs/lint.log
+      - name: Typecheck
+        shell: bash
+        run: |
+          set -o pipefail
+          npm run typecheck 2>&1 | tee validation-logs/typecheck.log
+      - name: Unit and source-contract tests
+        shell: bash
+        run: |
+          set -o pipefail
+          npm test 2>&1 | tee validation-logs/unit.log
+      - name: Production build
+        shell: bash
+        run: |
+          set -o pipefail
+          npm run build 2>&1 | tee validation-logs/build.log
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Browser validation
+        shell: bash
+        run: |
+          set -o pipefail
+          npm run test:e2e 2>&1 | tee validation-logs/browser.log
+      - name: Upload validation logs and catalogue bundle
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: throhi-v3-validation-logs
+          path: |
+            validation-logs/*.log
+            assets/catalogue/fine-med-catalogue.bundle.zip
+          if-no-files-found: ignore
+          retention-days: 14
       - name: Upload browser validation artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: homepage-browser-validation
+          name: throhi-v3-browser-validation
           path: |
             test-results/results.json
             test-results/**/*.png

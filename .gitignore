@@ -31,3 +31,7 @@ pnpm-debug.log*
 tmp/
 .cache/
 public/media/sector9d/
+public/catalogue/
+src/data/catalogue.generated.json
+src/data/catalogue-search.generated.json
+data/catalogue/source/

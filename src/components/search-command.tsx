@@ -2,8 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { productHref, type Product } from "@/lib/catalogue";
-import { searchProducts, type SearchResult } from "@/lib/search";
+import { clientSearchProducts, type ClientSearchProduct, type ClientSearchResult } from "@/lib/client-search";
 
 const OPEN_EVENT = "throhi:open-search";
 const focusableSelector = "a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex='-1'])";
@@ -13,8 +12,12 @@ function isTypingTarget(target: EventTarget | null) {
   return target.matches("input, textarea, select, [contenteditable='true']") || Boolean(target.closest("input, textarea, select, [contenteditable='true']"));
 }
 
+function productHref(product: ClientSearchProduct) {
+  return `/products/${product.division}/${product.family}/${product.slug}`;
+}
+
 function matchClass(reason: string) {
-  if (reason === "exact code") return "exact";
+  if (reason === "exact code" || reason === "exact variant code") return "exact";
   if (reason.includes("code")) return "technical";
   if (reason.includes("family") || reason.includes("division")) return "contextual";
   return "name";
@@ -29,8 +32,8 @@ export function SearchCommand() {
   const inputRef = useRef<HTMLInputElement>(null);
   const previousFocus = useRef<HTMLElement | null>(null);
   const activeIndexRef = useRef(0);
-  const resultsRef = useRef<SearchResult[]>([]);
-  const results = useMemo(() => searchProducts(query).slice(0, 6), [query]);
+  const resultsRef = useRef<ClientSearchResult[]>([]);
+  const results = useMemo(() => clientSearchProducts(query).slice(0, 6), [query]);
   activeIndexRef.current = activeIndex;
   resultsRef.current = results;
 
@@ -58,14 +61,15 @@ export function SearchCommand() {
     document.body.dataset.searchOpen = "true";
     setActiveIndex(0);
 
-    const focusFrame = window.requestAnimationFrame(() => inputRef.current?.focus());
+    const input = inputRef.current;
+    const focusFrame = window.requestAnimationFrame(() => input?.focus());
     const handleDialogKeyboard = (event: KeyboardEvent) => {
       const currentResults = resultsRef.current;
       const currentIndex = activeIndexRef.current;
 
       if (event.key === "Escape") {
         event.preventDefault();
-        inputRef.current?.blur();
+        input?.blur();
         setOpen(false);
         return;
       }
@@ -82,7 +86,7 @@ export function SearchCommand() {
         return;
       }
 
-      if (event.key === "Enter" && document.activeElement === inputRef.current && currentResults[currentIndex]) {
+      if (event.key === "Enter" && document.activeElement === input && currentResults[currentIndex]) {
         event.preventDefault();
         router.push(productHref(currentResults[currentIndex].product));
         setOpen(false);
@@ -110,7 +114,7 @@ export function SearchCommand() {
       window.removeEventListener("keydown", handleDialogKeyboard);
       const target = previousFocus.current;
       if (target && target !== document.body && target.isConnected) target.focus();
-      else inputRef.current?.blur();
+      else input?.blur();
     };
   }, [open, router]);
 
@@ -118,7 +122,7 @@ export function SearchCommand() {
     if (activeIndex >= results.length) setActiveIndex(0);
   }, [activeIndex, results.length]);
 
-  const goToProduct = (product: Product) => {
+  const goToProduct = (product: ClientSearchProduct) => {
     router.push(productHref(product));
     setOpen(false);
   };
@@ -148,17 +152,19 @@ export function SearchCommand() {
           value={query}
           onChange={event => { setQuery(event.target.value); setActiveIndex(0); }}
           placeholder="Name, family, or exact / partial code"
+          aria-label="Search catalogue by name, family, or product code"
           role="combobox"
+          aria-autocomplete="list"
           aria-expanded="true"
           aria-controls="search-command-results"
           aria-activedescendant={results[activeIndex] ? `search-command-result-${results[activeIndex].product.id}` : undefined}
           autoComplete="off"
         />
-        <kbd>⌘K</kbd>
+        <kbd aria-hidden="true">⌘K</kbd>
       </div>
 
       <div className="search-command-summary" aria-live="polite">
-        <span>{query ? `${results.length} preview ${results.length === 1 ? "result" : "results"}` : "Recent catalogue structure"}</span>
+        <span>{query ? `${results.length} preview ${results.length === 1 ? "result" : "results"}` : "626 catalogue objects · 1,434 variants"}</span>
         <small>↑ ↓ SELECT · ENTER OPEN · ESC CLOSE</small>
       </div>
 
@@ -181,7 +187,7 @@ export function SearchCommand() {
           <b aria-hidden="true">↗</b>
         </button>) : <div className="search-command-empty">
           <span>NO PREVIEW MATCH</span>
-          <strong>Search the full catalogue or add the known reference manually.</strong>
+          <strong>Search all 1,434 variants or add the known reference manually.</strong>
         </div>}
       </div>
 

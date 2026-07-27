@@ -1,0 +1,306 @@
+/* THROHI V3 — final interaction, route-consistency, and visual-polish layer */
+
+/* The homepage now renders canonical ProductCard objects. Neutralize the earlier
+   temporary-card grid assumptions without altering the shared catalogue component. */
+.v3-catalogue-objects .v3-home-product-grid.catalogue-editorial-grid{
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  align-items:stretch;
+}
+
+.v3-catalogue-objects .v3-home-product-grid .catalogue-object-card{
+  min-height:100%;
+  grid-template-rows:minmax(250px,1fr) auto;
+  gap:0;
+  padding:0;
+  border-radius:18px;
+  overflow:hidden;
+}
+
+.v3-catalogue-objects .v3-home-product-grid .catalogue-card-media{
+  min-height:250px;
+}
+
+.v3-catalogue-objects .v3-home-product-grid .catalogue-object-visual{
+  min-height:250px;
+  border:0;
+  border-radius:0;
+}
+
+.v3-catalogue-objects .v3-home-product-grid .catalogue-card-body{
+  min-height:250px;
+  align-content:start;
+  padding:1rem;
+}
+
+.v3-catalogue-objects .v3-home-product-grid .catalogue-card-body h3,
+.v3-catalogue-objects .v3-home-product-grid .catalogue-card-body code,
+.v3-catalogue-objects .v3-home-product-grid .catalogue-card-body p{
+  position:static;
+}
+
+.v3-catalogue-objects .v3-home-product-grid .catalogue-card-actions{
+  align-self:end;
+}
+
+.v3-saved-inquiry-shell .saved-row small{
+  color:var(--v3-text-muted-light);
+  font:500 .52rem/1.4 var(--font-mono);
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+
+/* Keep preview state visual rather than falsely marking a homepage route as current. */
+.v3-division-option[data-active="true"]{
+  border-color:rgb(120 221 176/.28);
+  background:linear-gradient(145deg,rgb(236 244 239/.10),rgb(39 199 123/.055));
+  box-shadow:inset 0 1px 0 rgb(255 255 255/.08);
+}
+
+.v3-division-option[data-active="true"]>strong{color:var(--v3-text-on-dark)}
+
+/* One restrained optical-liquid action, adapted without another runtime dependency. */
+.v3-liquid-action{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  color:var(--v3-text-on-dark)!important;
+  background:linear-gradient(120deg,var(--v3-surgical-green-deep),#154f3b)!important;
+  transition:color .28s ease,transform .18s ease,border-color .18s ease!important;
+}
+
+.v3-liquid-action::before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  left:50%;
+  bottom:-190%;
+  width:180%;
+  aspect-ratio:1;
+  border-radius:42% 58% 54% 46%/48% 42% 58% 52%;
+  background:var(--v3-surgical-green);
+  transform:translateX(-50%) rotate(-8deg);
+  transition:bottom .44s cubic-bezier(.22,.8,.24,1),transform .44s cubic-bezier(.22,.8,.24,1);
+}
+
+.v3-liquid-action:hover,
+.v3-liquid-action:focus-visible{
+  color:#04110b!important;
+  border-color:rgb(120 221 176/.7)!important;
+}
+
+.v3-liquid-action:hover::before,
+.v3-liquid-action:focus-visible::before{
+  bottom:-72%;
+  transform:translateX(-50%) rotate(7deg);
+}
+
+/* Native disclosure system derived from the accordion research references. */
+.v3-technical-accordion{
+  display:grid;
+  border-top:1px solid rgb(65 88 77/.16);
+}
+
+.v3-technical-accordion details{
+  border-bottom:1px solid rgb(65 88 77/.16);
+}
+
+.v3-technical-accordion summary{
+  min-height:86px;
+  display:grid;
+  grid-template-columns:38px minmax(150px,.6fr) minmax(0,1fr) 34px;
+  align-items:center;
+  gap:.9rem;
+  padding:.85rem 0;
+  color:var(--v3-text-on-light);
+  cursor:pointer;
+  list-style:none;
+}
+
+.v3-technical-accordion summary::-webkit-details-marker{display:none}
+.v3-technical-accordion summary::marker{content:""}
+.v3-technical-accordion summary>span{font:500 .58rem var(--font-mono);color:var(--v3-surgical-green-deep)}
+.v3-technical-accordion summary>strong{font-weight:560}
+.v3-technical-accordion summary>small{color:var(--v3-text-muted-light);font-size:.86rem;line-height:1.45}
+.v3-technical-accordion summary>b{
+  width:32px;
+  height:32px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgb(65 88 77/.16);
+  border-radius:9px;
+  background:rgb(248 250 247/.58);
+  box-shadow:var(--v3-shadow-raised-light);
+  color:var(--v3-surgical-green-deep);
+  font-weight:500;
+  transition:transform .24s ease,box-shadow .24s ease;
+}
+
+.v3-technical-accordion details[open] summary>b{
+  transform:rotate(45deg);
+  box-shadow:var(--v3-shadow-inset-light);
+}
+
+.v3-technical-accordion-panel{
+  padding:0 3.1rem 1.15rem calc(38px + .9rem);
+  color:var(--v3-text-muted-light);
+}
+
+.v3-technical-accordion-panel p{max-width:66ch;line-height:1.65}
+
+/* Consistent focus treatment across every V3 route. */
+:is(.v3-home,.catalogue-v2,.search-v2,.utility-v2,.site-footer,.site-header,.search-command-layer)
+:is(a,button,input,select,textarea,summary):focus-visible{
+  outline:2px solid var(--v3-surgical-green-soft);
+  outline-offset:3px;
+}
+
+:is(.catalogue-v2,.search-v2,.utility-v2)
+:is(input,select,textarea):focus-visible{
+  outline-offset:1px;
+}
+
+:is(#home-hero,#products,.v3-division-index,.v3-function-archive,.v3-family-archive,.macro-stage,.frame-evolution-section,.v3-catalogue-command,.v3-inquiry-path,.v3-verification){
+  scroll-margin-top:96px;
+}
+
+/* Long words, product codes, and 200% text scaling must not create page overflow. */
+.header-inner,
+.header-actions,
+.desktop-nav,
+:is(.v3-home,.catalogue-v2,.search-v2,.utility-v2,.site-footer,.search-command-layer)
+:is(h1,h2,h3,p,code,.catalogue-card-index,.command-result-copy,.saved-row>span){
+  min-width:0;
+}
+
+:is(.v3-home,.catalogue-v2,.search-v2,.utility-v2,.site-footer,.search-command-layer)
+:is(h1,h2,h3,p,code,.catalogue-card-index,.command-result-copy,.saved-row>span){
+  overflow-wrap:anywhere;
+}
+
+.desktop-nav{overflow:hidden}
+
+.quantity-control button:disabled,
+.catalogue-quantity-control button:disabled{
+  opacity:.48;
+  cursor:not-allowed;
+  box-shadow:var(--v3-shadow-inset-light);
+}
+
+/* Refine long-form rhythm without returning to oversized campaign typography. */
+.utility-v2 .utility-hero-copy>p,
+.catalogue-v2 .catalogue-hub-copy>p,
+.catalogue-v2 .division-catalogue-hero-grid>div:first-child>p,
+.catalogue-v2 .family-catalogue-hero-grid>div:first-child>p,
+.search-v2 .search-v2-intro>p{
+  max-width:58ch;
+}
+
+.legal-article p{max-width:72ch}
+
+/* Touch and pen should not inherit desktop elevation theatrics. */
+@media (hover:none){
+  .catalogue-object-card:hover,
+  .v3-family-object:hover,
+  .v3-button:hover,
+  .catalogue-division-row:hover{
+    transform:none;
+  }
+
+  .v3-liquid-action::before{display:none}
+  .v3-liquid-action{color:#04110b!important;background:var(--v3-surgical-green)!important}
+}
+
+@media (max-width:1200px){
+  .v3-catalogue-objects .v3-home-product-grid.catalogue-editorial-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+
+@media (max-width:720px){
+  .v3-catalogue-objects .v3-home-product-grid.catalogue-editorial-grid{
+    grid-template-columns:1fr;
+  }
+
+  .v3-catalogue-objects .v3-home-product-grid .catalogue-card-body{
+    min-height:0;
+  }
+
+  .v3-catalogue-objects .v3-home-product-grid .catalogue-card-actions{
+    grid-template-columns:1fr;
+  }
+
+  .v3-catalogue-objects .v3-home-product-grid .catalogue-inquiry-action{
+    width:100%;
+  }
+
+  .v3-technical-accordion summary{
+    min-height:0;
+    grid-template-columns:32px 1fr 34px;
+    gap:.7rem;
+    padding:1rem 0;
+  }
+
+  .v3-technical-accordion summary>small{grid-column:2;grid-row:2}
+  .v3-technical-accordion summary>b{grid-column:3;grid-row:1/3}
+  .v3-technical-accordion-panel{padding:0 0 1rem calc(32px + .7rem)}
+}
+
+@media (prefers-contrast:more){
+  :root{
+    --v3-text-muted-dark:#c7d4cd;
+    --v3-text-muted-light:#34483f;
+    --v3-glass-line-dark:rgb(255 255 255/.28);
+    --v3-glass-line-light:rgb(38 61 50/.34);
+  }
+
+  .v3-glass,
+  .header-inner,
+  .catalogue-object-card,
+  .inquiry-block,
+  .search-command-dialog,
+  .v3-technical-accordion details{
+    border-width:2px;
+  }
+
+  .v3-button,
+  .catalogue-inquiry-action,
+  .quantity-control button{
+    border-color:currentColor;
+  }
+}
+
+@media (forced-colors:active){
+  .v3-glass,
+  .v3-machined,
+  .header-inner,
+  .catalogue-object-card,
+  .inquiry-block,
+  .search-command-dialog,
+  .v3-technical-accordion details{
+    background:Canvas;
+    color:CanvasText;
+    border:1px solid CanvasText;
+    box-shadow:none;
+    -webkit-backdrop-filter:none;
+    backdrop-filter:none;
+  }
+
+  .v3-button,
+  .catalogue-inquiry-action,
+  .quantity-control button{
+    forced-color-adjust:auto;
+  }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .catalogue-object-card,
+  .v3-family-object,
+  .v3-division-option,
+  .v3-button,
+  .v3-technical-accordion summary>b{
+    transition:none!important;
+  }
+
+  .v3-liquid-action::before{display:none}
+  .v3-liquid-action{color:#04110b!important;background:var(--v3-surgical-green)!important}
+}

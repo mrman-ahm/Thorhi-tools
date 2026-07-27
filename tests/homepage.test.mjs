@@ -6,13 +6,15 @@ const page = await readFile(new URL("../src/app/page.tsx", import.meta.url), "ut
 const discovery = await readFile(new URL("../src/components/discovery-experience.tsx", import.meta.url), "utf8");
 const css = await readFile(new URL("../src/app/globals.css", import.meta.url), "utf8");
 
-test("homepage keeps the four confirmed divisions and routes", () => {
+test("homepage exposes the two supplied catalogue divisions and canonical routes", () => {
   assert.match(page, /<DiscoveryExperience\s*\/>/);
-  for (const [name, slug] of [["Surgical", "surgical"], ["Dental", "dental"], ["Veterinary", "veterinary"], ["Beauty", "beauty"]]) {
-    assert.match(discovery, new RegExp(`name: "${name}"`));
-    assert.match(discovery, new RegExp(`slug: "${slug}"`));
-    assert.match(discovery, new RegExp(`/products/\\$\\{division\\.slug\\}`));
-  }
+  assert.match(discovery, /divisions as catalogueDivisions/);
+  assert.match(discovery, /catalogueDivisions\.map/);
+  assert.match(discovery, /surgical:\s*\{/);
+  assert.match(discovery, /dental:\s*\{/);
+  assert.match(discovery, /Two catalogues/);
+  assert.match(discovery, /href=\{`\/products\/\$\{division\.slug\}`\}/);
+  assert.doesNotMatch(discovery, /\b(?:veterinary|beauty):\s*\{/);
 });
 
 test("homepage avoids ecommerce language", () => {

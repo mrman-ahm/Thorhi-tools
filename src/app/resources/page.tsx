@@ -2,9 +2,37 @@ import Link from "next/link";
 import { DocumentList } from "@/components/catalogue-ui";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { TechnicalAccordion } from "@/components/v3/technical-accordion";
 import { divisions } from "@/lib/catalogue";
 
 export const metadata = { title: "Resources" };
+
+const publicationRules = [
+  {
+    index: "01",
+    title: "Identity and division",
+    summary: "Every file needs an approved title and the correct instrument division.",
+    detail: <p>A document is not published until its title, purpose, and catalogue division are unambiguous.</p>
+  },
+  {
+    index: "02",
+    title: "Format and file size",
+    summary: "The visible metadata must match the actual downloadable file.",
+    detail: <p>Format and size are verified against the final asset rather than estimated from a draft or placeholder.</p>
+  },
+  {
+    index: "03",
+    title: "Publication context",
+    summary: "An issue or update date is shown only when the source record supports it.",
+    detail: <p>Dates, revision labels, and catalogue editions remain unpublished until their source and meaning are confirmed.</p>
+  },
+  {
+    index: "04",
+    title: "Working delivery route",
+    summary: "A download control appears only when the file can actually be opened.",
+    detail: <p>Pending files stay visibly unavailable. The interface never presents a false or dead download action.</p>
+  }
+] as const;
 
 export default function ResourcesPage() {
   return <><SiteHeader /><main id="main" className="utility-v2 resources-v2">
@@ -12,7 +40,7 @@ export default function ResourcesPage() {
 
     <section className="utility-section resource-archive-section"><div className="container"><header className="utility-section-heading"><div><p className="eyebrow">DOCUMENT ARCHIVE</p><h2>Organized by instrument division.</h2></div><p>Pending resources remain visibly unavailable rather than presenting a non-functional download control.</p></header><div className="resource-archive-grid">{divisions.map(division => <article className={`resource-archive-card tone-${division.slug}`} key={division.slug}><header><span>{division.index}</span><small>{division.label.toUpperCase()}</small></header><div><h3>{division.label} documents</h3><p>Approved catalogue and supporting files for this division will appear with complete metadata.</p></div><DocumentList documents={division.documents} /><Link href={`/products/${division.slug}`}>Browse {division.label.toLowerCase()} instruments <b aria-hidden="true">↗</b></Link></article>)}</div></div></section>
 
-    <section className="utility-light resource-rules-section"><div className="container resource-rules-grid"><div><p className="eyebrow">PUBLICATION STANDARD</p><h2>A file is more than a button.</h2></div><dl><div><dt>01</dt><dd>Approved title and division</dd></div><div><dt>02</dt><dd>Verified format and file size</dd></div><div><dt>03</dt><dd>Publication or update date</dd></div><div><dt>04</dt><dd>Working download route</dd></div></dl></div></section>
+    <section className="utility-light resource-rules-section"><div className="container resource-rules-grid"><div><p className="eyebrow">PUBLICATION STANDARD</p><h2>A file is more than a button.</h2><p>Each publication checkpoint stays inspectable through a native disclosure rather than an animated decorative panel.</p></div><TechnicalAccordion items={publicationRules} label="Document publication requirements" /></div></section>
 
     <section className="utility-assurance-band"><div className="container utility-assurance-grid"><span>DOCUMENT NOT AVAILABLE?</span><p>Send the known product name, code, or external reference through the structured inquiry route.</p><Link href="/inquiry?manual=1">Add unlisted item ↗</Link></div></section>
   </main><SiteFooter /></>;

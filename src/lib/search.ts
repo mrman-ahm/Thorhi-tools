@@ -51,6 +51,25 @@ export function scoreProduct(product: Product, query: string): SearchResult | nu
     reason = "partial code";
   }
 
+  for (const variant of product.variants) {
+    const normalizedVariantCode = normalizeCode(variant.label);
+    const variantCodeScore = normalizedVariantCode === normalizedQueryCode
+      ? 970
+      : normalizedQueryCode.length >= 3 && normalizedVariantCode.includes(normalizedQueryCode)
+        ? 790
+        : 0;
+    if (variantCodeScore > score) {
+      score = variantCodeScore;
+      reason = variantCodeScore === 970 ? "exact variant code" : "variant-code match";
+    }
+
+    const descriptionScore = tokenScore(raw, variant.value) - 190;
+    if (descriptionScore > score) {
+      score = descriptionScore;
+      reason = "variant-description match";
+    }
+  }
+
   const nameScore = tokenScore(raw, product.name);
   if (nameScore > score) {
     score = nameScore;
