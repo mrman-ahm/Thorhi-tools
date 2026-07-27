@@ -30,8 +30,9 @@ test("homepage renders the complete V3 chapter sequence", () => {
 
 test("homepage featured objects come from the canonical catalogue", () => {
   assert.match(page, /products as catalogueProducts/);
-  assert.match(page, /catalogueProducts\.filter/);
   assert.match(page, /featuredCodes/);
+  assert.match(page, /featuredCodes\s*\n\s*\.map\(code => catalogueProducts\.find\(product => product\.code === code\)\)/);
+  assert.match(page, /\.filter\(\(product\): product is NonNullable/);
   assert.match(preview, /import \{ ProductCard \}/);
   assert.match(preview, /<ProductCard product=\{product\}/);
   assert.doesNotMatch(preview, /Temporary image placeholder for \$\{product\.name\}/);
@@ -52,16 +53,17 @@ test("division and family discovery derive from canonical catalogue records", ()
   assert.match(discovery, /catalogueFamilies\.find/);
   assert.match(discovery, /route: `\/products\/\$\{family\.division\}\/\$\{family\.slug\}`/);
   assert.match(discovery, /href=\{`\/products\/\$\{division\.slug\}`\}/);
-  assert.match(discovery, /href=\{`\/search\?q=\$\{item\.query\}`\}/);
+  assert.match(discovery, /href=\{`\/search\?q=\$\{encodeURIComponent\(item\.query\)\}`\}/);
   assert.match(discovery, /href=\{family\.route\}/);
   assert.match(discovery, /division: "surgical", slug: "scissors"/);
-  assert.match(discovery, /division: "dental", slug: "extraction"/);
+  assert.match(discovery, /division: "dental", slug: "ligature-wire-cutters"/);
 });
 
-test("family archive no longer creates an artificial horizontal scroll runway", () => {
+test("family archive stays in normal document flow without a synthetic scroll runway", () => {
   assert.doesNotMatch(discovery, /scrollWidth|maximumShift|translate3d\(\$\{-maximumShift|style\.height|window\.innerHeight \* 1\.25/);
   assert.doesNotMatch(discovery, /addEventListener\("scroll"/);
-  assert.match(discovery, /normal document flow/);
+  assert.match(discovery, /<nav className="v3-family-shelves"/);
+  assert.match(discovery, /families\.map/);
 });
 
 test("catalogue command and inquiry workflow remain functional", () => {
@@ -74,8 +76,9 @@ test("catalogue command and inquiry workflow remain functional", () => {
 });
 
 test("verification chapter does not expose false document downloads", () => {
-  assert.match(utility, /Verified files only/);
-  assert.match(utility, /No false download action/);
+  assert.match(utility, /Source archive/);
+  assert.match(utility, /Client-supplied materials/);
+  assert.match(utility, /Public download controls remain withheld until approved source files are intentionally published/);
   assert.doesNotMatch(utility, /download=|href=.*\.pdf/i);
 });
 
