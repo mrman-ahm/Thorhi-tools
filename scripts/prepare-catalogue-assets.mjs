@@ -5,7 +5,8 @@ import { unzipSync } from "fflate";
 
 const root = resolve(process.cwd());
 const bundleDirectory = join(root, "assets", "catalogue");
-const bundlePath = join(bundleDirectory, "fine-med-catalogue.bundle.b64");
+const zipBundlePath = join(bundleDirectory, "fine-med-catalogue.bundle.zip");
+const base64BundlePath = join(bundleDirectory, "fine-med-catalogue.bundle.b64");
 const dataDirectory = join(root, "src", "data");
 const publicDirectory = join(root, "public", "catalogue");
 const cataloguePath = join(dataDirectory, "catalogue.generated.json");
@@ -17,21 +18,49 @@ function fail(message) {
   throw new Error(`FineMed catalogue preparation failed: ${message}`);
 }
 
-function readEncodedBundle() {
+function readBundleArchive() {
+  if (existsSync(zipBundlePath)) {
+    const archive = readFileSync(zipBundlePath);
+    if (!archive.length) fail(`bundle is empty at ${zipBundlePath}`);
+    return archive;
+  }
+
   const partNames = existsSync(bundleDirectory)
     ? readdirSync(bundleDirectory)
       .filter(name => /^fine-med-catalogue\.bundle\.part-\d+\.b64$/.test(name))
       .sort()
     : [];
 
-  if (partNames.length > 0) {
-    return partNames
+  const encoded = partNames.length > 0
+    ? partNames
       .map(name => readFileSync(join(bundleDirectory, name), "utf8").replace(/\s+/g, ""))
-      .join("");
+      .join("")
+    : existsSync(base64BundlePath)
+      ? readFileSync(base64BundlePath, "utf8").replace(/\s+/g, "")
+      : "";
+
+  if (!encoded) {
+    fail(`missing bundle at ${zipBundlePath}`);
   }
 
-  if (!existsSync(bundlePath)) fail(`missing bundle at ${bundlePath}`);
-  return readFileSync(bundlePath, "utf8").replace(/\s+/g, "");
+  return Buffer.from(encoded, "base64");
+}
+
+function normalizeCatalogue(catalogue) {
+  if (!Array.isArray(catalogue?.products)) {
+    fail("catalogue products are missing");
+  }
+
+  for (const product of catalogue.products) {
+    product.catalogue = product.catalogue ?? product.catalog ?? "";
+    delete product.catalog;
+
+    if (product.legacyUrl == null) {
+      delete product.legacyUrl;
+    }
+  }
+
+  return catalogue;
 }
 
 function buildSearchIndex(catalogue) {
@@ -49,14 +78,11 @@ function buildSearchIndex(catalogue) {
 }
 
 export function prepareCatalogueAssets() {
-  const encoded = readEncodedBundle();
-  if (!encoded) fail("bundle is empty");
-
   let archive;
   try {
-    archive = unzipSync(Buffer.from(encoded, "base64"));
+    archive = unzipSync(readBundleArchive());
   } catch (error) {
-    fail(error instanceof Error ? `invalid base64 or ZIP archive (${error.message})` : "invalid bundle");
+    fail(error instanceof Error ? `invalid ZIP archive (${error.message})` : "invalid bundle");
   }
 
   const sprite = archive["catalogue-sheet.avif"];
@@ -67,15 +93,18 @@ export function prepareCatalogueAssets() {
   let catalogue;
   try {
     const json = brotliDecompressSync(Buffer.from(compressedCatalogue)).toString("utf8");
-    catalogue = JSON.parse(json);
+    catalogue = normalizeCatalogue(JSON.parse(json));
   } catch (error) {
     fail(error instanceof Error ? `cannot decode catalogue payload (${error.message})` : "cannot decode catalogue payload");
   }
 
   const expected = { divisions: 2, families: 53, products: 626, variants: 1434, images: 626 };
   for (const [key, value] of Object.entries(expected)) {
-    if (catalogue.counts?.[key] !== value) fail(`expected ${value} ${key}, received ${catalogue.counts?.[key] ?? "none"}`);
+    if (catalogue.counts?.[key] !== value) {
+      fail(`expected ${value} ${key}, received ${catalogue.counts?.[key] ?? "none"}`);
+    }
   }
+
   if (catalogue.products.some(product => !product.imageSprite || !product.variants?.length)) {
     fail("every catalogue object must have a sprite position and at least one documented variant");
   }
