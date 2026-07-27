@@ -18,9 +18,11 @@ test("motion is scoped, route-aware, and reverted during cleanup", () => {
   assert.match(motionShell, /MutationObserver/);
 });
 
-test("reduced motion bypasses Anime.js timelines and exposes static content", () => {
+test("reduced motion and data saver bypass Anime.js timelines and expose static content", () => {
   assert.match(motionShell, /prefers-reduced-motion: reduce/);
-  assert.match(motionShell, /if \(reducedMotion\)/);
+  assert.match(motionShell, /const constrained = reducedMotion \|\| saveDataEnabled\(\)/);
+  assert.match(motionShell, /if \(constrained\)/);
+  assert.match(motionShell, /dataset\.animeMotion = constrained \? "reduced" : "active"/);
   assert.match(motionCss, /data-anime-motion="reduced"/);
   assert.match(motionCss, /opacity:1!important/);
   assert.match(motionCss, /transform:none!important/);
