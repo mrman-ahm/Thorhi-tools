@@ -37,10 +37,14 @@ test("macro examination retains scoped bespoke motion", () => {
 });
 
 test("division state uses controlled mechanical alignment", () => {
-  assert.match(discovery, /stage-axis/);
-  assert.match(discovery, /stage-blade/);
-  assert.match(discovery, /stage-pivot/);
-  assert.match(discovery, /createTimeline/);
+  assert.match(discovery, /data-active-index=\{activeDivision\}/);
+  assert.match(discovery, /v3-division-blade blade-a/);
+  assert.match(discovery, /v3-division-blade blade-b/);
+  assert.match(discovery, /v3-division-pivot/);
+  assert.match(discovery, /v3-division-axis horizontal/);
+  assert.match(discovery, /v3-division-axis vertical/);
+  assert.match(discovery, /onMouseEnter=\{\(\) => setActiveDivision\(index\)\}/);
+  assert.match(discovery, /onFocus=\{\(\) => setActiveDivision\(index\)\}/);
   assert.doesNotMatch(discovery, /spring|elastic|bounce/i);
 });
 
