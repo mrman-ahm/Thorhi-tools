@@ -26,8 +26,9 @@ test("frame timing uses the analyzed visual boundaries", () => {
 
 test("opening cinematic uses native scroll rather than scroll locking", () => {
   assert.match(cinematic, /addEventListener\("scroll"/);
-  assert.match(cinematic, /video/);
-  assert.match(cinematic, /SCROLL TO ENTER/);
+  assert.match(cinematic, /requestAnimationFrame\(update\)/);
+  assert.match(cinematic, /<video/);
+  assert.match(cinematic, /Scroll to enter/i);
   assert.doesNotMatch(cinematic, /preventDefault\(\)|overflow\s*=\s*["']hidden|wheel/);
 });
 
