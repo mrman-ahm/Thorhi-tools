@@ -61,14 +61,15 @@ export function SearchCommand() {
     document.body.dataset.searchOpen = "true";
     setActiveIndex(0);
 
-    const focusFrame = window.requestAnimationFrame(() => inputRef.current?.focus());
+    const input = inputRef.current;
+    const focusFrame = window.requestAnimationFrame(() => input?.focus());
     const handleDialogKeyboard = (event: KeyboardEvent) => {
       const currentResults = resultsRef.current;
       const currentIndex = activeIndexRef.current;
 
       if (event.key === "Escape") {
         event.preventDefault();
-        inputRef.current?.blur();
+        input?.blur();
         setOpen(false);
         return;
       }
@@ -85,7 +86,7 @@ export function SearchCommand() {
         return;
       }
 
-      if (event.key === "Enter" && document.activeElement === inputRef.current && currentResults[currentIndex]) {
+      if (event.key === "Enter" && document.activeElement === input && currentResults[currentIndex]) {
         event.preventDefault();
         router.push(productHref(currentResults[currentIndex].product));
         setOpen(false);
@@ -113,7 +114,7 @@ export function SearchCommand() {
       window.removeEventListener("keydown", handleDialogKeyboard);
       const target = previousFocus.current;
       if (target && target !== document.body && target.isConnected) target.focus();
-      else inputRef.current?.blur();
+      else input?.blur();
     };
   }, [open, router]);
 
