@@ -83,7 +83,7 @@ export type Product = {
   sourceFile: string;
   sourcePdfPage: number;
   sourcePrintedPage?: number;
-  legacyUrl?: string;
+  legacyUrl?: string | null;
   updatedAt: string;
   approvalNotes: string;
 };
@@ -106,7 +106,7 @@ type GeneratedCatalogue = {
   uncoveredVariantImageAssignments: unknown[];
 };
 
-const generated = catalogueData as GeneratedCatalogue;
+const generated = catalogueData as unknown as GeneratedCatalogue;
 
 export const catalogueGeneratedAt = generated.generatedAt;
 export const catalogueSource = generated.source;
