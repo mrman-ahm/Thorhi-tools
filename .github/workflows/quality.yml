@@ -2,11 +2,12 @@ name: Quality
 
 on:
   pull_request:
+    branches:
+      - main
   push:
     branches:
       - main
       - phase-6-7-production-homepage
-      - experiment/v3-surgical-editorial-glass
 
 permissions:
   contents: read
@@ -29,7 +30,7 @@ jobs:
         with:
           node-version: 22
       - name: Install dependencies
-        run: npm install --no-audit --no-fund
+        run: npm ci --no-audit --no-fund
       - name: Lint
         shell: bash
         run: |
@@ -65,7 +66,7 @@ jobs:
           name: throhi-v3-validation-logs
           path: |
             validation-logs/*.log
-            assets/catalogue/fine-med-catalogue.bundle.b64
+            assets/catalogue/fine-med-catalogue.bundle.zip
           if-no-files-found: ignore
           retention-days: 14
       - name: Upload browser validation artifacts
