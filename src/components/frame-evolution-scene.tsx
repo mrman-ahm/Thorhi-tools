@@ -1,13 +1,14 @@
 "use client";
 
 import { animate, createScope, createTimeline, stagger } from "animejs";
+import type { ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
 import {
   chapterIndexForFrame,
   EVOLUTION_CHAPTERS,
   exitOpacityForFrame,
   frameForEvolutionProgress,
-  spriteCellForFrame
+  spriteCellForFrame,
 } from "@/lib/evolution-frames";
 
 type SpriteDescriptor = {
@@ -26,17 +27,24 @@ type MediaManifest = {
   } | null;
 };
 
+export type FrameEvolutionSceneProps = {
+  variant?: "full" | "preview";
+  eyebrow?: string;
+  title?: ReactNode;
+  accessibleLabel?: string;
+};
+
 const LEGACY_SPRITE: Omit<SpriteDescriptor, "src"> = {
   cellWidth: 240,
   cellHeight: 135,
-  columns: 12
+  columns: 12,
 };
 
 function drawFrame(
   canvas: HTMLCanvasElement,
   image: HTMLImageElement,
   descriptor: SpriteDescriptor,
-  frame: number
+  frame: number,
 ) {
   const context = canvas.getContext("2d", { alpha: true });
   if (!context) return;
@@ -72,7 +80,7 @@ function drawFrame(
     (pixelWidth - drawWidth) / 2,
     (pixelHeight - drawHeight) / 2,
     drawWidth,
-    drawHeight
+    drawHeight,
   );
   context.globalAlpha = 1;
 }
@@ -86,7 +94,19 @@ function selectSprite(manifest: MediaManifest): SpriteDescriptor | null {
   return manifest.sprite ? { src: manifest.sprite, ...LEGACY_SPRITE } : null;
 }
 
-export function FrameEvolutionScene() {
+export function FrameEvolutionScene({
+  variant = "full",
+  eyebrow = "05 · PRECISION THROUGH TIME",
+  title = (
+    <>
+      The instrument changes.
+      <br />
+      <span>The text follows.</span>
+    </>
+  ),
+  accessibleLabel =
+    "Scroll-controlled evolution of cutting and surgical instruments",
+}: FrameEvolutionSceneProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const readoutRef = useRef<HTMLElement>(null);
@@ -97,7 +117,9 @@ export function FrameEvolutionScene() {
   const renderedFrame = useRef(1);
   const activeChapterRef = useRef(0);
   const [activeChapter, setActiveChapter] = useState(0);
-  const [mediaState, setMediaState] = useState<"loading" | "ready" | "error">("loading");
+  const [mediaState, setMediaState] = useState<"loading" | "ready" | "error">(
+    "loading",
+  );
 
   useEffect(() => {
     activeChapterRef.current = activeChapter;
@@ -122,15 +144,19 @@ export function FrameEvolutionScene() {
       }
 
       const difference = targetFrame.current - renderedFrame.current;
-      const step = Math.sign(difference) * Math.min(
-        Math.abs(difference),
-        Math.max(1, Math.ceil(Math.abs(difference) * 0.28))
-      );
+      const step =
+        Math.sign(difference) *
+        Math.min(
+          Math.abs(difference),
+          Math.max(1, Math.ceil(Math.abs(difference) * 0.28)),
+        );
       renderedFrame.current += step;
       const frame = Math.round(renderedFrame.current);
       drawFrame(canvas, image, descriptor, frame);
       section.dataset.renderedFrame = String(frame);
-      if (readoutRef.current) readoutRef.current.textContent = String(frame).padStart(3, "0");
+      if (readoutRef.current) {
+        readoutRef.current.textContent = String(frame).padStart(3, "0");
+      }
 
       const nextChapter = chapterIndexForFrame(frame);
       if (nextChapter !== activeChapterRef.current) {
@@ -147,7 +173,9 @@ export function FrameEvolutionScene() {
     };
 
     const requestRender = () => {
-      if (frameRequest.current === null) frameRequest.current = window.requestAnimationFrame(render);
+      if (frameRequest.current === null) {
+        frameRequest.current = window.requestAnimationFrame(render);
+      }
     };
 
     const update = () => {
@@ -158,7 +186,10 @@ export function FrameEvolutionScene() {
         ? EVOLUTION_CHAPTERS[activeChapterRef.current].startFrame
         : frameForEvolutionProgress(progress);
       targetFrame.current = frame;
-      section.style.setProperty("--evolution-sequence-progress", progress.toFixed(4));
+      section.style.setProperty(
+        "--evolution-sequence-progress",
+        progress.toFixed(4),
+      );
       section.dataset.targetFrame = String(frame);
       requestRender();
     };
@@ -186,25 +217,30 @@ export function FrameEvolutionScene() {
         loadSprite(descriptor);
         return;
       }
-      observer = new IntersectionObserver(entries => {
-        if (!entries.some(entry => entry.isIntersecting)) return;
-        observer?.disconnect();
-        observer = null;
-        loadSprite(descriptor);
-      }, { rootMargin: "1400px 0px" });
+      observer = new IntersectionObserver(
+        (entries) => {
+          if (!entries.some((entry) => entry.isIntersecting)) return;
+          observer?.disconnect();
+          observer = null;
+          loadSprite(descriptor);
+        },
+        { rootMargin: "1400px 0px" },
+      );
       observer.observe(section);
     };
 
     void fetch("/media/sector9d/manifest.json", { signal: controller.signal })
-      .then(response => response.ok
-        ? response.json() as Promise<MediaManifest>
-        : Promise.reject(new Error("Media manifest unavailable")))
-      .then(manifest => {
+      .then((response) =>
+        response.ok
+          ? (response.json() as Promise<MediaManifest>)
+          : Promise.reject(new Error("Media manifest unavailable")),
+      )
+      .then((manifest) => {
         const descriptor = manifest.available ? selectSprite(manifest) : null;
         if (descriptor) deferSprite(descriptor);
         else setMediaState("error");
       })
-      .catch(error => {
+      .catch((error) => {
         if (error instanceof DOMException && error.name === "AbortError") return;
         setMediaState("error");
       });
@@ -220,7 +256,9 @@ export function FrameEvolutionScene() {
       window.removeEventListener("scroll", update);
       window.removeEventListener("resize", update);
       reduced.removeEventListener("change", update);
-      if (frameRequest.current !== null) window.cancelAnimationFrame(frameRequest.current);
+      if (frameRequest.current !== null) {
+        window.cancelAnimationFrame(frameRequest.current);
+      }
       imageRef.current = null;
       descriptorRef.current = null;
     };
@@ -228,73 +266,109 @@ export function FrameEvolutionScene() {
 
   useEffect(() => {
     const section = sectionRef.current;
-    if (!section || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!section || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
 
     const scope = createScope({ root: sectionRef }).add(() => {
-      const active = section.querySelector<HTMLElement>(`.frame-evolution-copy[data-chapter="${activeChapter}"]`);
-      const parts = active ? Array.from(active.querySelectorAll<HTMLElement>("span, h3, p, small")) : [];
+      const active = section.querySelector<HTMLElement>(
+        `.frame-evolution-copy[data-chapter="${activeChapter}"]`,
+      );
+      const parts = active
+        ? Array.from(active.querySelectorAll<HTMLElement>("span, h3, p, small"))
+        : [];
       const timeline = createTimeline({ defaults: { ease: "out(5)" } });
-      if (parts.length) timeline.add(parts, {
-        opacity: { from: 0 },
-        y: { from: 18 },
-        clipPath: ["inset(0 0 18% 0)", "inset(0 0 0% 0)"],
-        delay: stagger(55),
-        duration: 520
-      });
+      if (parts.length) {
+        timeline.add(parts, {
+          opacity: { from: 0 },
+          y: { from: 18 },
+          clipPath: ["inset(0 0 18% 0)", "inset(0 0 0% 0)"],
+          delay: stagger(55),
+          duration: 520,
+        });
+      }
       animate(".frame-evolution-chapter-marker", {
-        scaleY: (_, index) => index === activeChapter ? 1 : 0.24,
-        opacity: (_, index) => index === activeChapter ? 1 : 0.35,
+        scaleY: (_, index) => (index === activeChapter ? 1 : 0.24),
+        opacity: (_, index) => (index === activeChapter ? 1 : 0.35),
         duration: 420,
-        ease: "out(4)"
+        ease: "out(4)",
       });
     });
 
     return () => scope.revert();
   }, [activeChapter]);
 
-  return <section
-    ref={sectionRef}
-    className="frame-evolution-section"
-    aria-labelledby="frame-evolution-title"
-    data-active-chapter={activeChapter}
-    data-media-state={mediaState}
-    data-rendered-frame="1"
-    data-target-frame="1"
-    style={{ "--evolution-sequence-progress": "0" } as React.CSSProperties}
-  >
-    <div className="frame-evolution-sticky">
-      <header className="frame-evolution-heading container">
-        <p className="eyebrow">05 · PRECISION THROUGH TIME</p>
-        <h2 id="frame-evolution-title">The instrument changes.<br /><span>The text follows.</span></h2>
-      </header>
+  return (
+    <section
+      ref={sectionRef}
+      className="frame-evolution-section"
+      aria-labelledby="frame-evolution-title"
+      data-variant={variant}
+      data-active-chapter={activeChapter}
+      data-media-state={mediaState}
+      data-rendered-frame="1"
+      data-target-frame="1"
+      style={{ "--evolution-sequence-progress": "0" } as React.CSSProperties}
+    >
+      <div className="frame-evolution-sticky">
+        <header className="frame-evolution-heading container">
+          <p className="eyebrow">{eyebrow}</p>
+          <h2 id="frame-evolution-title">{title}</h2>
+        </header>
 
-      <div className="frame-evolution-layout container">
-        <div className="frame-evolution-stage" role="img" aria-label="Scroll-controlled evolution of cutting and surgical instruments">
-          <canvas ref={canvasRef} aria-hidden="true" />
-          <div className="frame-evolution-fallback" aria-hidden="true"><span>EVOLUTION SEQUENCE</span><small>MEDIA LOADING</small></div>
-          <div className="frame-evolution-feather" aria-hidden="true" />
-          <div className="frame-evolution-frame-readout" aria-hidden="true"><span>FRAME</span><b ref={readoutRef}>001</b><small>/ 260</small></div>
-        </div>
-
-        <div className="frame-evolution-copy-stack" aria-live="polite">
-          {EVOLUTION_CHAPTERS.map((chapter, index) => <article
-            className="frame-evolution-copy"
-            data-chapter={index}
-            data-active={activeChapter === index}
-            key={chapter.id}
+        <div className="frame-evolution-layout container">
+          <div
+            className="frame-evolution-stage"
+            role="img"
+            aria-label={accessibleLabel}
           >
-            <span>{chapter.index} · {chapter.eyebrow}</span>
-            <h3>{chapter.title}</h3>
-            <p>{chapter.description}</p>
-            <small>FRAMES {String(chapter.startFrame).padStart(3, "0")}–{String(chapter.endFrame).padStart(3, "0")}</small>
-          </article>)}
+            <canvas ref={canvasRef} aria-hidden="true" />
+            <div className="frame-evolution-fallback" aria-hidden="true">
+              <span>EVOLUTION SEQUENCE</span>
+              <small>{mediaState === "error" ? "MEDIA UNAVAILABLE" : "MEDIA LOADING"}</small>
+            </div>
+            <div className="frame-evolution-feather" aria-hidden="true" />
+            <div className="frame-evolution-frame-readout" aria-hidden="true">
+              <span>FRAME</span>
+              <b ref={readoutRef}>001</b>
+              <small>/ 260</small>
+            </div>
+          </div>
+
+          <div className="frame-evolution-copy-stack" aria-live="polite">
+            {EVOLUTION_CHAPTERS.map((chapter, index) => (
+              <article
+                className="frame-evolution-copy"
+                data-chapter={index}
+                data-active={activeChapter === index}
+                key={chapter.id}
+              >
+                <span>
+                  {chapter.index} · {chapter.eyebrow}
+                </span>
+                <h3>{chapter.title}</h3>
+                <p>{chapter.description}</p>
+                <small>
+                  FRAMES {String(chapter.startFrame).padStart(3, "0")}–
+                  {String(chapter.endFrame).padStart(3, "0")}
+                </small>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <div className="frame-evolution-timeline container" aria-hidden="true">
+          {EVOLUTION_CHAPTERS.map((chapter, index) => (
+            <span className="frame-evolution-chapter-marker" key={chapter.id}>
+              <i />
+              {chapter.index}
+            </span>
+          ))}
+          <b>
+            <i />
+          </b>
         </div>
       </div>
-
-      <div className="frame-evolution-timeline container" aria-hidden="true">
-        {EVOLUTION_CHAPTERS.map((chapter, index) => <span className="frame-evolution-chapter-marker" key={chapter.id}><i />{chapter.index}</span>)}
-        <b><i /></b>
-      </div>
-    </div>
-  </section>;
+    </section>
+  );
 }
