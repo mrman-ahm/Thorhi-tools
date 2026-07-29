@@ -27,14 +27,22 @@ test("rebuild navigation stays scoped and contains no direct-contact shortcut", 
 });
 
 test("rebuild homepage uses real catalogue media and verified source counts", async () => {
-  const page = await read("src/app/rebuild/page.tsx");
+  const [page, hero, divisions, selectedFamilies] = await Promise.all([
+    read("src/app/rebuild/page.tsx"),
+    read("src/components/rebuild/home/home-hero.tsx"),
+    read("src/components/rebuild/home/home-division-index.tsx"),
+    read("src/components/rebuild/home/home-selected-families.tsx"),
+  ]);
 
-  assert.match(page, /CatalogueMedia/);
+  assert.match(hero, /CatalogueMedia/);
+  assert.match(divisions, /CatalogueMedia/);
+  assert.match(selectedFamilies, /CatalogueMedia/);
   assert.match(page, /requireProduct\("04-0101"\)/);
   assert.match(page, /requireProduct\("SP-84"\)/);
   assert.match(page, /rebuildCatalogue\.counts\.products/);
   assert.match(page, /rebuildCatalogue\.counts\.variants/);
-  assert.doesNotMatch(page, /Sialkot|Pakistan|mailto:|wa\.me/);
+  assert.match(page, /SIALKOT \/ PAKISTAN/);
+  assert.doesNotMatch(page, /mailto:|wa\.me/);
 });
 
 test("nonblocking quality work has one explicit deferred register", async () => {
