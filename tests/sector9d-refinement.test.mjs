@@ -20,7 +20,10 @@ test("opening cinematic behaves as a rigid cover sliding over the real website",
 });
 
 test("cleared cinematic cover releases the underlying homepage", () => {
-  assert.match(cinematic, /dataset\.exitState = cleared \? "cleared"/);
+  assert.match(
+    cinematic,
+    /section\.dataset\.exitState\s*=\s*cleared\s*\?\s*"cleared"/,
+  );
   assert.match(cinematic, /section\.inert = cleared/);
   assert.match(styles, /data-exit-state="cleared"/);
   assert.match(styles, /pointer-events:none/);
