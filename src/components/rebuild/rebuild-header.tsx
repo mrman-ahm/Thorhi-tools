@@ -47,7 +47,9 @@ export function RebuildHeader() {
       if (
         productsTriggerRef.current?.contains(target) ||
         productsPanelRef.current?.contains(target)
-      ) return;
+      ) {
+        return;
+      }
       setProductsOpen(false);
     };
 
@@ -70,7 +72,8 @@ export function RebuildHeader() {
     if (!searchOpen) return;
     const frame = window.requestAnimationFrame(() => searchInputRef.current?.focus());
     const close = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setSearchOpen(false);
+      if (event.key !== "Escape") return;
+      setSearchOpen(false);
     };
     window.addEventListener("keydown", close);
     return () => {
@@ -103,7 +106,7 @@ export function RebuildHeader() {
 
       if (event.key !== "Tab" || !mobileMenuRef.current) return;
       const focusable = Array.from(
-        mobileMenuRef.current.querySelectorAll<HTMLElement>(focusableSelector)
+        mobileMenuRef.current.querySelectorAll<HTMLElement>(focusableSelector),
       );
       const first = focusable[0];
       const last = focusable.at(-1);
@@ -146,7 +149,7 @@ export function RebuildHeader() {
     router.push(
       value
         ? `/rebuild/products?q=${encodeURIComponent(value)}`
-        : "/rebuild/products"
+        : "/rebuild/products",
     );
   };
 
@@ -154,12 +157,14 @@ export function RebuildHeader() {
 
   return (
     <header className={styles.header}>
-      <a className={styles.skipLink} href="#main">Skip to content</a>
+      <a className={styles.skipLink} href="#main">
+        Skip to content
+      </a>
       <div className={styles.inner}>
         <Link
           className={styles.brand}
           href="/rebuild"
-          aria-label="THROHI Medical Tools rebuild home"
+          aria-label="THROHI Medical Tools home"
           onClick={closeNavigation}
         >
           <Image
@@ -188,7 +193,8 @@ export function RebuildHeader() {
                     setProductsOpen((value) => !value);
                   }}
                 >
-                  {route.label}<span aria-hidden="true">{productsOpen ? "−" : "+"}</span>
+                  {route.label}
+                  <span aria-hidden="true">{productsOpen ? "−" : "+"}</span>
                 </button>
               </div>
             ) : (
@@ -202,7 +208,7 @@ export function RebuildHeader() {
               >
                 {route.label}
               </Link>
-            )
+            ),
           )}
         </nav>
 
@@ -245,8 +251,8 @@ export function RebuildHeader() {
         aria-hidden={!searchOpen}
         inert={!searchOpen}
       >
-        <form role="search" onSubmit={submitSearch}>
-          <label htmlFor="rebuild-desktop-search">Search the catalogue</label>
+        <form role="search" aria-label="Header catalogue search" onSubmit={submitSearch}>
+          <label htmlFor="rebuild-desktop-search">Search by name or code</label>
           <div>
             <input
               ref={searchInputRef}
@@ -270,7 +276,7 @@ export function RebuildHeader() {
         inert={!productsOpen}
       >
         <div className={styles.productsPanelInner}>
-          <p>Product divisions</p>
+          <p>Instrument divisions</p>
           <nav aria-label="Product divisions">
             {rebuildDivisionNavigation.map((division) =>
               division.catalogueState === "structured" && division.href ? (
@@ -287,15 +293,16 @@ export function RebuildHeader() {
                     <strong>{division.label}</strong>
                     <small>{division.description}</small>
                   </span>
-                  <b>Pending source</b>
+                  <b>Catalogue pending</b>
                 </div>
-              )
+              ),
             )}
           </nav>
           <div className={styles.productUtilities}>
             {rebuildProductUtilities.map((utility) => (
               <Link href={utility.href} key={utility.href} onClick={closeNavigation}>
-                {utility.label}<b aria-hidden="true">↗</b>
+                {utility.label}
+                <b aria-hidden="true">↗</b>
               </Link>
             ))}
           </div>
@@ -314,8 +321,13 @@ export function RebuildHeader() {
         aria-label="Site navigation"
       >
         <div className={styles.mobilePanelInner}>
-          <form className={styles.mobileSearchForm} role="search" onSubmit={submitSearch}>
-            <label htmlFor="rebuild-mobile-search">Search the catalogue</label>
+          <form
+            className={styles.mobileSearchForm}
+            role="search"
+            aria-label="Mobile catalogue search"
+            onSubmit={submitSearch}
+          >
+            <label htmlFor="rebuild-mobile-search">Search by name or code</label>
             <div>
               <input
                 id="rebuild-mobile-search"
@@ -333,13 +345,15 @@ export function RebuildHeader() {
               {rebuildDivisionNavigation.map((division) =>
                 division.catalogueState === "structured" && division.href ? (
                   <Link href={division.href} key={division.slug} onClick={closeNavigation}>
-                    <span>{division.label}</span><b aria-hidden="true">↗</b>
+                    <span>{division.label}</span>
+                    <b aria-hidden="true">↗</b>
                   </Link>
                 ) : (
                   <div className={styles.mobilePending} key={division.slug}>
-                    <span>{division.label}</span><small>Pending source</small>
+                    <span>{division.label}</span>
+                    <small>Catalogue pending</small>
                   </div>
-                )
+                ),
               )}
               <Link
                 className={styles.mobileAllProducts}
@@ -354,14 +368,16 @@ export function RebuildHeader() {
                 .filter((route) => !route.productsMenu)
                 .map((route) => (
                   <Link href={route.href} key={route.href} onClick={closeNavigation}>
-                    <span>{route.label}</span><b aria-hidden="true">↗</b>
+                    <span>{route.label}</span>
+                    <b aria-hidden="true">↗</b>
                   </Link>
                 ))}
             </section>
           </nav>
           <footer>
             <Link href={rebuildPersistentUtilities.inquiry.href} onClick={closeNavigation}>
-              <span>Review Inquiry List</span><strong>{inquiryLabel}</strong>
+              <span>Review Inquiry List</span>
+              <strong>{inquiryLabel}</strong>
             </Link>
           </footer>
         </div>
