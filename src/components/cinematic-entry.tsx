@@ -1,7 +1,7 @@
 "use client";
 
 import { createScope, createTimeline } from "animejs";
-import type { CSSProperties } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
 
 type MediaManifest = {
@@ -9,7 +9,29 @@ type MediaManifest = {
   intro: string | null;
 };
 
-export function CinematicEntry() {
+export type CinematicEntryProps = {
+  variant?: "default" | "rebuild";
+  indexLeft?: string;
+  indexRight?: string;
+  eyebrow?: string;
+  title?: ReactNode;
+  titleElement?: "h1" | "p";
+};
+
+export function CinematicEntry({
+  variant = "default",
+  indexLeft = "THROHI / OPENING STUDY",
+  indexRight = "INSTRUMENTS IN TRANSITION",
+  eyebrow = "PRECISION THROUGH FORM",
+  title = (
+    <>
+      Built around
+      <br />
+      the instrument.
+    </>
+  ),
+  titleElement = "h1",
+}: CinematicEntryProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const frameRef = useRef<number | null>(null);
@@ -17,7 +39,10 @@ export function CinematicEntry() {
   const [videoSource, setVideoSource] = useState<string | null>(null);
   const [motionAllowed, setMotionAllowed] = useState(false);
   const [videoEnded, setVideoEnded] = useState(false);
-  const [mediaState, setMediaState] = useState<"loading" | "ready" | "error">("loading");
+  const [mediaState, setMediaState] = useState<"loading" | "ready" | "error">(
+    "loading",
+  );
+  const Title = titleElement;
 
   useEffect(() => {
     const controller = new AbortController();
@@ -31,15 +56,19 @@ export function CinematicEntry() {
     reduced.addEventListener("change", updateMotionPreference);
 
     void fetch("/media/sector9d/manifest.json", { signal: controller.signal })
-      .then(response => response.ok ? response.json() as Promise<MediaManifest> : Promise.reject(new Error("Media manifest unavailable")))
-      .then(manifest => {
+      .then((response) =>
+        response.ok
+          ? (response.json() as Promise<MediaManifest>)
+          : Promise.reject(new Error("Media manifest unavailable")),
+      )
+      .then((manifest) => {
         if (manifest.available && manifest.intro) setVideoSource(manifest.intro);
         else {
           setMediaState("error");
           setVideoEnded(true);
         }
       })
-      .catch(error => {
+      .catch((error) => {
         if (error instanceof DOMException && error.name === "AbortError") return;
         setMediaState("error");
         setVideoEnded(true);
@@ -57,10 +86,18 @@ export function CinematicEntry() {
 
     const scope = createScope({ root: sectionRef }).add(() => {
       const index = section.querySelector<HTMLElement>(".cinematic-entry-index");
-      const title = section.querySelector<HTMLElement>(".cinematic-entry-title");
+      const titleNode = section.querySelector<HTMLElement>(".cinematic-entry-title");
       const timeline = createTimeline({ defaults: { ease: "out(5)" } });
-      if (index) timeline.add(index, { opacity: { from: 0 }, y: { from: -8 }, duration: 520 }, 100);
-      if (title) timeline.add(title, { opacity: { from: 0 }, y: { from: 18 }, duration: 760 }, 260);
+      if (index) {
+        timeline.add(index, { opacity: { from: 0 }, y: { from: -8 }, duration: 520 }, 100);
+      }
+      if (titleNode) {
+        timeline.add(
+          titleNode,
+          { opacity: { from: 0 }, y: { from: 18 }, duration: 760 },
+          260,
+        );
+      }
     });
 
     const update = () => {
@@ -69,12 +106,15 @@ export function CinematicEntry() {
       const progress = Math.min(1, Math.max(0, -rect.top / travel));
       const cleared = progress >= 0.995;
       section.style.setProperty("--cinematic-progress", progress.toFixed(4));
-      section.dataset.exitState = cleared ? "cleared" : progress > 0.04 ? "leaving" : "holding";
+      section.dataset.exitState =
+        cleared ? "cleared" : progress > 0.04 ? "leaving" : "holding";
       section.inert = cleared;
 
       if (cleared !== clearedRef.current) {
         clearedRef.current = cleared;
-        window.dispatchEvent(new CustomEvent("throhi:cinematic-state", { detail: { cleared } }));
+        window.dispatchEvent(
+          new CustomEvent("throhi:cinematic-state", { detail: { cleared } }),
+        );
       }
 
       if (progress < 0.94) document.body.dataset.cinematicActive = "true";
@@ -84,7 +124,9 @@ export function CinematicEntry() {
     };
 
     const requestUpdate = () => {
-      if (frameRef.current === null) frameRef.current = window.requestAnimationFrame(update);
+      if (frameRef.current === null) {
+        frameRef.current = window.requestAnimationFrame(update);
+      }
     };
 
     document.body.dataset.cinematicActive = "true";
@@ -120,48 +162,67 @@ export function CinematicEntry() {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     window.scrollTo({
       top: section.offsetTop + section.offsetHeight - window.innerHeight + 2,
-      behavior: reduced ? "auto" : "smooth"
+      behavior: reduced ? "auto" : "smooth",
     });
   };
 
   const entryReady = videoEnded || mediaState === "error" || !motionAllowed;
 
-  return <section
-    ref={sectionRef}
-    className="cinematic-entry"
-    aria-labelledby="cinematic-entry-title"
-    data-media-state={mediaState}
-    data-video-ended={entryReady ? "true" : "false"}
-    data-exit-state="holding"
-    style={{ "--cinematic-progress": "0" } as CSSProperties}
-  >
-    <div className="cinematic-entry-sticky">
-      <div className="cinematic-entry-media" aria-hidden="true">
-        {videoSource && motionAllowed ? <video
-          ref={videoRef}
-          src={videoSource}
-          muted
-          playsInline
-          preload="auto"
-          onCanPlay={() => setMediaState("ready")}
-          onError={() => {
-            setMediaState("error");
-            setVideoEnded(true);
-          }}
-          onEnded={() => setVideoEnded(true)}
-        /> : null}
-        <div className="cinematic-entry-fallback"><span>THROHI</span><small>MEDICAL TOOLS</small></div>
-        <div className="cinematic-entry-feather" />
-      </div>
+  return (
+    <section
+      ref={sectionRef}
+      className="cinematic-entry"
+      aria-labelledby="cinematic-entry-title"
+      data-variant={variant}
+      data-media-state={mediaState}
+      data-video-ended={entryReady ? "true" : "false"}
+      data-exit-state="holding"
+      style={{ "--cinematic-progress": "0" } as CSSProperties}
+    >
+      <div className="cinematic-entry-sticky">
+        <div className="cinematic-entry-media" aria-hidden="true">
+          {videoSource && motionAllowed ? (
+            <video
+              ref={videoRef}
+              src={videoSource}
+              muted
+              playsInline
+              preload="metadata"
+              onCanPlay={() => setMediaState("ready")}
+              onError={() => {
+                setMediaState("error");
+                setVideoEnded(true);
+              }}
+              onEnded={() => setVideoEnded(true)}
+            />
+          ) : null}
+          <div className="cinematic-entry-fallback">
+            <span>THROHI</span>
+            <small>MEDICAL TOOLS</small>
+          </div>
+          <div className="cinematic-entry-feather" />
+        </div>
 
-      <div className="cinematic-entry-index"><span>THROHI / OPENING STUDY</span><span>INSTRUMENTS IN TRANSITION</span></div>
-      <div className="cinematic-entry-copy">
-        <p>PRECISION THROUGH FORM</p>
-        <h1 id="cinematic-entry-title" className="cinematic-entry-title">Built around<br />the instrument.</h1>
+        <div className="cinematic-entry-index">
+          <span>{indexLeft}</span>
+          <span>{indexRight}</span>
+        </div>
+        <div className="cinematic-entry-copy">
+          <p>{eyebrow}</p>
+          <Title id="cinematic-entry-title" className="cinematic-entry-title">
+            {title}
+          </Title>
+        </div>
+        <button
+          className="cinematic-entry-scroll"
+          type="button"
+          onClick={skip}
+          aria-label="Enter the THROHI website by sliding the opening cover away"
+        >
+          <span>ENTER WEBSITE</span>
+          <b aria-hidden="true">↓</b>
+        </button>
       </div>
-      <button className="cinematic-entry-scroll" type="button" onClick={skip} aria-label="Slide the opening cover away and enter the THROHI website">
-        <span>SCROLL TO ENTER</span><b aria-hidden="true">↓</b>
-      </button>
-    </div>
-  </section>;
+    </section>
+  );
 }
