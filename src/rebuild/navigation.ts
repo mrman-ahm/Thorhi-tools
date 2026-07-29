@@ -54,6 +54,7 @@ export const rebuildDivisionNavigation: readonly RebuildDivisionRoute[] = [
 
 export const rebuildProductUtilities = [
   { label: "Browse all products", href: "/rebuild/products" },
+  { label: "Search by name or code", href: "/rebuild/products?q=" },
 ] as const;
 
 export const rebuildPersistentUtilities = {
