@@ -14,19 +14,43 @@ All meaningful project changes are recorded here.
 - Independent client confirmation gates for representative images, variant
   codes, and source-page references
 - Approval-boundary and review-workspace contract tests
+- Approved `Surgical Precision Archive` experience specification and homepage
+  implementation plan
+- Isolated `Surgical Precision Archive` design-token layer for rebuild routes
+- Company-led rebuild hero with one real Operating Scissors composition and
+  immediate catalogue search
+- Truthful four-division homepage index with structured and pending states
+- Selected real instrument-family presentation using high-resolution catalogue media
+- Verified company introduction limited to THROHI, Sialkot, and the four public ranges
+- Rebuild cinematic variant using the supplied instrument MP4 with an immediate
+  Skip action, media fallback, and reduced-motion behavior
+- Homepage evolution preview using the supplied 260-frame desktop/mobile sprites
+  with complete readable copy in reduced-motion mode
+- Catalogue, Inquiry List, and unlisted-instrument homepage utilities
+- Verified-contact configuration that omits unconfirmed channels instead of
+  rendering empty controls
+- Focused Playwright acceptance contract for company identity, search, divisions,
+  shell navigation, Inquiry List state, cinematic behavior, evolution behavior,
+  responsive overflow, keyboard access, media failure, and Axe findings
 
 ### Changed
 
-- Rebuilt the `/rebuild` homepage hero as a steel-blue, multi-instrument
-  composition using three real catalogue assets and reduced-motion-safe entry
-  behavior
-- Strengthened homepage hierarchy, division presentation, catalogue lookup,
-  evidence messaging, product references, and inquiry calls to action
-- Applied the project display and body font system to the shared rebuild header,
-  footer, homepage, and internal review workspace
+- Replaced the previous steel-blue multi-instrument rebuild homepage with the
+  approved company-led clean-split composition
+- Refined the shared rebuild header and footer into a calmer corporate shell
+  while preserving global search, product navigation, mobile focus trapping,
+  Escape handling, body scroll lock, and live Inquiry List count
+- Exposed Browse All Products and Search by Name or Code from the Products panel
+- Preserved public root defaults while adding rebuild-specific variants to the
+  cinematic and frame-evolution components
+- Reduced homepage evolution scroll travel and removed technical frame readout
+  from the preview variant
 - Kept approved catalogue output partial by design: unresolved and rejected
   records are excluded, while technical and commercial fields cannot enter the
   Phase 11 promotion schema
+- Recorded Design Milestone 1 as implemented but not complete; local lint,
+  typecheck, tests, production build, browser screenshots, and Playwright/Axe
+  execution remain required before approval
 
 ## 2026-07-29
 
