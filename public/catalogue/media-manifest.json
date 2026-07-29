@@ -1,0 +1,14 @@
+{
+  "generatedAt": "2026-07-27T00:00:00.000Z",
+  "source": "FineMed organized instrument extraction",
+  "count": 626,
+  "delivery": {
+    "format": "avif",
+    "quality": 68,
+    "maximumWidth": 1200,
+    "maximumHeight": 900,
+    "loading": "native-lazy-except-priority-media",
+    "fallback": "/catalogue/catalogue-sheet.avif",
+    "totalBytes": 4276520
+  }
+}

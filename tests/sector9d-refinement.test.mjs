@@ -44,9 +44,9 @@ test("evolution stage preserves the original sixteen-by-nine frame geometry", ()
 });
 
 test("homepage and header use the cleaned transparent THROHI identity", () => {
-  assert.ok(existsSync("public/brand/throhi-logo-clean.webp"));
-  assert.match(hero, /\/brand\/throhi-logo-clean\.webp/);
-  assert.match(header, /\/brand\/throhi-logo-clean\.webp/);
+  assert.ok(existsSync("public/brand/throhi-logo-temporary.webp"));
+  assert.match(hero, /\/brand\/throhi-logo-temporary\.webp/);
+  assert.match(header, /\/brand\/throhi-logo-temporary\.webp/);
   assert.doesNotMatch(hero, /\/logo\.webp/);
   assert.doesNotMatch(header, /\/logo\.webp/);
 });

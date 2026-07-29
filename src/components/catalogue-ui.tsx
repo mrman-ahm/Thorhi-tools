@@ -30,7 +30,7 @@ export function AddProductButton({ product, className = "" }: { product: Product
 
   const handleAdd = () => {
     const result = addProduct({ productId: product.id, code: product.code, name: product.name });
-    setAnnouncement(result === "added" ? `${product.name} added to the inquiry.` : `${product.name} is already in the inquiry.`);
+    setAnnouncement(result === "added" ? `${product.name} added to the inquiry.` : `${product.name} quantity increased.`);
   };
 
   return <>

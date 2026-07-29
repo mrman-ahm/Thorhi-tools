@@ -1,0 +1,175 @@
+- generic [ref=f4e3]:
+  - banner [ref=f4e4]:
+    - link "Skip to content" [ref=f4e5] [cursor=pointer]:
+      - /url: "#main"
+    - generic [ref=f4e6]:
+      - link "THROHI Medical Tools rebuild home" [ref=f4e7] [cursor=pointer]:
+        - /url: /rebuild
+        - img "THROHI Medical Tools" [ref=f4e8]
+      - navigation "Primary navigation" [ref=f4e9]:
+        - button "Products" [ref=f4e11] [cursor=pointer]:
+          - text: Products
+          - generic [ref=f4e12]: +
+        - link "Company" [ref=f4e13] [cursor=pointer]:
+          - /url: /rebuild#company
+        - link "Contact" [ref=f4e14] [cursor=pointer]:
+          - /url: /rebuild#contact
+      - generic [ref=f4e15]:
+        - button "Search" [ref=f4e16] [cursor=pointer]
+        - link "0 instruments in Inquiry List" [ref=f4e17] [cursor=pointer]:
+          - /url: /rebuild/inquiry
+          - generic [ref=f4e18]: Inquiry List
+          - generic [ref=f4e19]: "00"
+  - main [ref=f4e20]:
+    - generic [ref=f4e21]:
+      - generic [ref=f4e22]:
+        - generic [ref=f4e23]: CAT / 626
+        - generic [ref=f4e24]: DATA / SOURCE-DERIVED
+        - generic [ref=f4e25]: REF / 01-02
+      - generic [ref=f4e26]:
+        - generic [ref=f4e27]: 04-0101
+        - generic [ref=f4e31]:
+          - generic [ref=f4e32]: SP-84
+          - img "OLIVER WIRE BENDING PLIER, catalogue code SP-84" [ref=f4e35]
+        - generic [ref=f4e36]: 09-1301
+        - generic [ref=f4e40]: 04-0101 / Surgical
+        - generic [ref=f4e41]: SP-84 / Orthodontic
+      - generic [ref=f4e42]:
+        - paragraph [ref=f4e43]: Surgical / Dental & Orthodontic
+        - heading "THROHI Medical Tools" [level=1] [ref=f4e44]:
+          - generic [ref=f4e45]: THROHI
+          - generic [ref=f4e46]: Medical Tools
+        - paragraph [ref=f4e47]: Find instruments by catalogue code or name, then bring every quantity and note into one clear inquiry.
+        - generic [ref=f4e48]:
+          - link "Browse catalogue" [ref=f4e49] [cursor=pointer]:
+            - /url: /rebuild/products
+          - link "Open Inquiry List" [ref=f4e50] [cursor=pointer]:
+            - /url: /rebuild/inquiry
+      - paragraph [ref=f4e51]: Source-derived catalogue / Technical claims pending
+      - generic [ref=f4e52]:
+        - generic [ref=f4e53]:
+          - generic [ref=f4e54]: "626"
+          - text: Product identities
+        - generic [ref=f4e55]:
+          - generic [ref=f4e56]: 1,434
+          - text: Variant codes
+        - generic [ref=f4e57]:
+          - generic [ref=f4e58]: "02"
+          - text: Supplied divisions
+    - region [ref=f4e59]:
+      - generic [ref=f4e60]:
+        - generic [ref=f4e61]:
+          - paragraph [ref=f4e62]: Direct catalogue lookup
+          - heading "Code known? Go straight there." [level=2] [ref=f4e63]: Code known?Go straight there.
+        - search [ref=f4e64]:
+          - generic [ref=f4e65]: Product name or catalogue code
+          - generic [ref=f4e66]:
+            - searchbox "Product name or catalogue code" [ref=f4e67]
+            - button "Find product" [ref=f4e68] [cursor=pointer]
+          - generic [ref=f4e69]: Exact code, compact code, family name, or product identity
+    - region [ref=f4e70]:
+      - generic [ref=f4e71]:
+        - paragraph [ref=f4e72]: Supplied catalogues
+        - heading "Explore by division." [level=2] [ref=f4e73]
+        - paragraph [ref=f4e74]: Surgical and Dental & Orthodontic records are indexed in this rebuild. Other divisions remain unpublished until catalogue sources are supplied and reviewed.
+      - generic [ref=f4e75]:
+        - link "01 Surgical Instruments 359 indexed product families / source-derived Browse" [ref=f4e76] [cursor=pointer]:
+          - /url: /rebuild/products?division=surgical
+          - generic [ref=f4e77]: "01"
+          - generic [ref=f4e78]: 04-0101
+          - generic [ref=f4e82]:
+            - strong [ref=f4e83]: Surgical Instruments
+            - generic [ref=f4e84]: 359 indexed product families / source-derived
+          - generic [ref=f4e85]:
+            - text: Browse
+            - generic [ref=f4e86]: +
+        - link "02 Dental & Orthodontic 267 indexed product families / source-derived Browse" [ref=f4e87] [cursor=pointer]:
+          - /url: /rebuild/products?division=dental
+          - generic [ref=f4e88]: "02"
+          - generic [ref=f4e89]: SP-84
+          - generic [ref=f4e93]:
+            - strong [ref=f4e94]: Dental & Orthodontic
+            - generic [ref=f4e95]: 267 indexed product families / source-derived
+          - generic [ref=f4e96]:
+            - text: Browse
+            - generic [ref=f4e97]: +
+    - region [ref=f4e98]:
+      - generic [ref=f4e99]:
+        - paragraph [ref=f4e100]: Catalogue reference
+        - heading "Start with a known family." [level=2] [ref=f4e101]
+        - link "View all products" [ref=f4e102] [cursor=pointer]:
+          - /url: /rebuild/products
+      - generic [ref=f4e103]:
+        - article [ref=f4e104]:
+          - link "OPERATING Scissors, catalogue code 04-0101 04-0101 surgical OPERATING Scissors Scissors" [ref=f4e105] [cursor=pointer]:
+            - /url: /rebuild/products/surgical-scissors-04-0101
+            - generic [ref=f4e106]:
+              - generic [ref=f4e107]: 04-0101
+              - img "OPERATING Scissors, catalogue code 04-0101" [ref=f4e110]
+            - generic [ref=f4e111]:
+              - generic [ref=f4e112]:
+                - code [ref=f4e113]: 04-0101
+                - generic [ref=f4e114]: surgical
+              - strong [ref=f4e115]: OPERATING Scissors
+              - emphasis [ref=f4e116]: Scissors
+        - article [ref=f4e117]:
+          - link "MAYO HEGAR Needle Holder, catalogue code 09-1301 09-1301 surgical MAYO HEGAR Needle Holder Needle Holders" [ref=f4e118] [cursor=pointer]:
+            - /url: /rebuild/products/surgical-needle-holders-09-1301
+            - generic [ref=f4e119]:
+              - generic [ref=f4e120]: 09-1301
+              - img "MAYO HEGAR Needle Holder, catalogue code 09-1301" [ref=f4e123]
+            - generic [ref=f4e124]:
+              - generic [ref=f4e125]:
+                - code [ref=f4e126]: 09-1301
+                - generic [ref=f4e127]: surgical
+              - strong [ref=f4e128]: MAYO HEGAR Needle Holder
+              - emphasis [ref=f4e129]: Needle Holders
+        - article [ref=f4e130]:
+          - link "STILLE Osteotome, catalogue code 36-6901 36-6901 surgical STILLE Osteotome Bone Chisels & Osteotomes" [ref=f4e131] [cursor=pointer]:
+            - /url: /rebuild/products/surgical-bone-chisels-and-osteotomes-36-6901
+            - generic [ref=f4e132]:
+              - generic [ref=f4e133]: 36-6901
+              - img "STILLE Osteotome, catalogue code 36-6901" [ref=f4e136]
+            - generic [ref=f4e137]:
+              - generic [ref=f4e138]:
+                - code [ref=f4e139]: 36-6901
+                - generic [ref=f4e140]: surgical
+              - strong [ref=f4e141]: STILLE Osteotome
+              - emphasis [ref=f4e142]: Bone Chisels & Osteotomes
+    - generic [ref=f4e144]:
+      - generic [ref=f4e145]:
+        - paragraph [ref=f4e146]: 01 / Evidence boundary
+        - heading "Identity first. Claims after proof." [level=2] [ref=f4e147]: Identity first.Claims after proof.
+      - generic [ref=f4e148]:
+        - paragraph [ref=f4e149]: THROHI Medical Tools is presented here through the supplied Surgical and Dental & Orthodontic catalogue identities. Product codes, family names, and representative images are available for discovery.
+        - paragraph [ref=f4e150]: Materials, measurements, finishes, certifications, availability, company profile details, and direct contact information remain withheld until client verification.
+    - generic [ref=f4e151]:
+      - generic [ref=f4e152]:
+        - paragraph [ref=f4e153]: 02 / Structured inquiry
+        - heading "Build one precise request across every instrument." [level=2] [ref=f4e154]
+      - generic [ref=f4e155]:
+        - link "Choose instruments" [ref=f4e156] [cursor=pointer]:
+          - /url: /rebuild/products
+        - link "Review Inquiry List" [ref=f4e157] [cursor=pointer]:
+          - /url: /rebuild/inquiry
+  - contentinfo [ref=f4e158]:
+    - generic [ref=f4e159]:
+      - generic [ref=f4e160]:
+        - img "THROHI Medical Tools" [ref=f4e161]
+        - paragraph [ref=f4e162]: Medical instrument catalogue and structured inquiry workspace.
+      - navigation "Footer navigation" [ref=f4e163]:
+        - generic [ref=f4e164]:
+          - paragraph [ref=f4e165]: Catalogue
+          - link "Browse products" [ref=f4e166] [cursor=pointer]:
+            - /url: /rebuild/products
+          - link "Inquiry List" [ref=f4e167] [cursor=pointer]:
+            - /url: /rebuild/inquiry
+        - generic [ref=f4e168]:
+          - paragraph [ref=f4e169]: Rebuild
+          - link "Company" [ref=f4e170] [cursor=pointer]:
+            - /url: /rebuild#company
+          - link "Contact" [ref=f4e171] [cursor=pointer]:
+            - /url: /rebuild#contact
+    - generic [ref=f4e172]:
+      - paragraph [ref=f4e173]: Development preview. Search indexing is disabled.
+      - paragraph [ref=f4e174]: Technical catalogue details remain under client review.

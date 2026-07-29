@@ -17,7 +17,7 @@ The desktop sheet is 7680 × 7920, which stays below the common 8192-pixel textu
 
 ## Identity asset
 
-The homepage hero and persistent site header use `public/brand/throhi-logo-clean.webp`, a cleaned transparent export with the checkerboard and residual inter-letter background removed.
+The homepage hero and persistent site header now use `public/brand/throhi-logo-temporary.webp`, the valid high-resolution transparent client-supplied derivative. Final vector artwork remains pending.
 
 ## Safety
 

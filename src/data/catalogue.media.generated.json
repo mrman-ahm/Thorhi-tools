@@ -1,0 +1,5024 @@
+{
+  "generatedAt": "2026-07-27T00:00:00.000Z",
+  "source": "FineMed organized instrument extraction",
+  "count": 626,
+  "delivery": {
+    "format": "avif",
+    "quality": 68,
+    "maximumWidth": 1200,
+    "maximumHeight": 900,
+    "loading": "native-lazy-except-priority-media",
+    "fallback": "/catalogue/catalogue-sheet.avif",
+    "totalBytes": 4276520
+  },
+  "products": {
+    "dental-ligature-and-wire-cutters-sc-01t": {
+      "path": "/catalogue/products/dental-ligature-and-wire-cutters-sc-01t.avif",
+      "width": 1200,
+      "height": 539,
+      "bytes": 13230,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-and-wire-cutters-sc-02t": {
+      "path": "/catalogue/products/dental-ligature-and-wire-cutters-sc-02t.avif",
+      "width": 1200,
+      "height": 474,
+      "bytes": 12680,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-and-wire-cutters-sc-03t": {
+      "path": "/catalogue/products/dental-ligature-and-wire-cutters-sc-03t.avif",
+      "width": 1200,
+      "height": 450,
+      "bytes": 11478,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-and-wire-cutters-sc-04t": {
+      "path": "/catalogue/products/dental-ligature-and-wire-cutters-sc-04t.avif",
+      "width": 1200,
+      "height": 586,
+      "bytes": 13943,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-and-wire-cutters-sc-06t": {
+      "path": "/catalogue/products/dental-ligature-and-wire-cutters-sc-06t.avif",
+      "width": 1200,
+      "height": 595,
+      "bytes": 12576,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-and-wire-cutters-sc-10t": {
+      "path": "/catalogue/products/dental-ligature-and-wire-cutters-sc-10t.avif",
+      "width": 1200,
+      "height": 684,
+      "bytes": 16853,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-and-wire-cutters-sc-12t": {
+      "path": "/catalogue/products/dental-ligature-and-wire-cutters-sc-12t.avif",
+      "width": 1200,
+      "height": 566,
+      "bytes": 15178,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-and-wire-cutters-sc-13t": {
+      "path": "/catalogue/products/dental-ligature-and-wire-cutters-sc-13t.avif",
+      "width": 1200,
+      "height": 637,
+      "bytes": 13942,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-and-wire-cutters-sc-123t": {
+      "path": "/catalogue/products/dental-ligature-and-wire-cutters-sc-123t.avif",
+      "width": 1200,
+      "height": 595,
+      "bytes": 19016,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-and-wire-cutters-sc-124t": {
+      "path": "/catalogue/products/dental-ligature-and-wire-cutters-sc-124t.avif",
+      "width": 1200,
+      "height": 506,
+      "bytes": 14802,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-and-wire-cutters-sc-205t": {
+      "path": "/catalogue/products/dental-ligature-and-wire-cutters-sc-205t.avif",
+      "width": 1200,
+      "height": 628,
+      "bytes": 13016,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-and-wire-cutters-sc-212t": {
+      "path": "/catalogue/products/dental-ligature-and-wire-cutters-sc-212t.avif",
+      "width": 1200,
+      "height": 630,
+      "bytes": 13273,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-and-wire-cutters-sc-213t": {
+      "path": "/catalogue/products/dental-ligature-and-wire-cutters-sc-213t.avif",
+      "width": 1200,
+      "height": 577,
+      "bytes": 13439,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-and-wire-cutters-sc-214t": {
+      "path": "/catalogue/products/dental-ligature-and-wire-cutters-sc-214t.avif",
+      "width": 1200,
+      "height": 499,
+      "bytes": 12094,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-and-wire-cutters-sc-231t": {
+      "path": "/catalogue/products/dental-ligature-and-wire-cutters-sc-231t.avif",
+      "width": 1200,
+      "height": 491,
+      "bytes": 12206,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-and-wire-cutters-sc-231tm": {
+      "path": "/catalogue/products/dental-ligature-and-wire-cutters-sc-231tm.avif",
+      "width": 1200,
+      "height": 413,
+      "bytes": 11401,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-and-wire-cutters-sc-232t": {
+      "path": "/catalogue/products/dental-ligature-and-wire-cutters-sc-232t.avif",
+      "width": 1200,
+      "height": 452,
+      "bytes": 11984,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-and-wire-cutters-sc-232tm": {
+      "path": "/catalogue/products/dental-ligature-and-wire-cutters-sc-232tm.avif",
+      "width": 1200,
+      "height": 468,
+      "bytes": 12365,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-and-wire-cutters-sc-229t": {
+      "path": "/catalogue/products/dental-ligature-and-wire-cutters-sc-229t.avif",
+      "width": 1200,
+      "height": 479,
+      "bytes": 13946,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-and-wire-cutters-sc-240t": {
+      "path": "/catalogue/products/dental-ligature-and-wire-cutters-sc-240t.avif",
+      "width": 1200,
+      "height": 578,
+      "bytes": 13471,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-and-wire-cutters-lp-02t": {
+      "path": "/catalogue/products/dental-ligature-and-wire-cutters-lp-02t.avif",
+      "width": 1200,
+      "height": 437,
+      "bytes": 11364,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-and-wire-cutters-sc-225t": {
+      "path": "/catalogue/products/dental-ligature-and-wire-cutters-sc-225t.avif",
+      "width": 1200,
+      "height": 495,
+      "bytes": 11916,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-distal-and-flush-end-cutters-lp-03t": {
+      "path": "/catalogue/products/dental-distal-and-flush-end-cutters-lp-03t.avif",
+      "width": 1200,
+      "height": 462,
+      "bytes": 11054,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-distal-and-flush-end-cutters-sc-15t": {
+      "path": "/catalogue/products/dental-distal-and-flush-end-cutters-sc-15t.avif",
+      "width": 1200,
+      "height": 468,
+      "bytes": 11343,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-distal-and-flush-end-cutters-sc-15tlh": {
+      "path": "/catalogue/products/dental-distal-and-flush-end-cutters-sc-15tlh.avif",
+      "width": 1200,
+      "height": 479,
+      "bytes": 11425,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-distal-and-flush-end-cutters-sc-189t": {
+      "path": "/catalogue/products/dental-distal-and-flush-end-cutters-sc-189t.avif",
+      "width": 1200,
+      "height": 489,
+      "bytes": 11563,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-distal-and-flush-end-cutters-sc-189tw": {
+      "path": "/catalogue/products/dental-distal-and-flush-end-cutters-sc-189tw.avif",
+      "width": 1200,
+      "height": 505,
+      "bytes": 12420,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-distal-and-flush-end-cutters-sc-215t": {
+      "path": "/catalogue/products/dental-distal-and-flush-end-cutters-sc-215t.avif",
+      "width": 1200,
+      "height": 466,
+      "bytes": 10560,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-distal-and-flush-end-cutters-sc-215tlh": {
+      "path": "/catalogue/products/dental-distal-and-flush-end-cutters-sc-215tlh.avif",
+      "width": 1200,
+      "height": 521,
+      "bytes": 13895,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-distal-and-flush-end-cutters-sc-215ta": {
+      "path": "/catalogue/products/dental-distal-and-flush-end-cutters-sc-215ta.avif",
+      "width": 1200,
+      "height": 537,
+      "bytes": 14803,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-lp-04": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-lp-04.avif",
+      "width": 1200,
+      "height": 538,
+      "bytes": 11386,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-20": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-20.avif",
+      "width": 1200,
+      "height": 619,
+      "bytes": 13562,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-21": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-21.avif",
+      "width": 1200,
+      "height": 472,
+      "bytes": 12576,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-23": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-23.avif",
+      "width": 1200,
+      "height": 607,
+      "bytes": 13901,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-23t": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-23t.avif",
+      "width": 1200,
+      "height": 574,
+      "bytes": 14233,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-25": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-25.avif",
+      "width": 1200,
+      "height": 547,
+      "bytes": 12836,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-26": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-26.avif",
+      "width": 1200,
+      "height": 548,
+      "bytes": 12744,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-27": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-27.avif",
+      "width": 1200,
+      "height": 612,
+      "bytes": 12268,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-27t": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-27t.avif",
+      "width": 1200,
+      "height": 684,
+      "bytes": 15696,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-28": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-28.avif",
+      "width": 1200,
+      "height": 609,
+      "bytes": 13852,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-35": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-35.avif",
+      "width": 1200,
+      "height": 758,
+      "bytes": 13709,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-36": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-36.avif",
+      "width": 1200,
+      "height": 646,
+      "bytes": 13030,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-37": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-37.avif",
+      "width": 1200,
+      "height": 626,
+      "bytes": 13246,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-38": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-38.avif",
+      "width": 1200,
+      "height": 568,
+      "bytes": 14802,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-39": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-39.avif",
+      "width": 1200,
+      "height": 645,
+      "bytes": 14602,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-39t": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-39t.avif",
+      "width": 1200,
+      "height": 679,
+      "bytes": 17262,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-40": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-40.avif",
+      "width": 1200,
+      "height": 608,
+      "bytes": 13325,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-41": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-41.avif",
+      "width": 1200,
+      "height": 665,
+      "bytes": 16293,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-41a": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-41a.avif",
+      "width": 1200,
+      "height": 600,
+      "bytes": 15205,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-42": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-42.avif",
+      "width": 1200,
+      "height": 601,
+      "bytes": 12496,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-42t": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-42t.avif",
+      "width": 1200,
+      "height": 643,
+      "bytes": 15525,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-43": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-43.avif",
+      "width": 1200,
+      "height": 651,
+      "bytes": 14992,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-44": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-44.avif",
+      "width": 1200,
+      "height": 535,
+      "bytes": 12891,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-44a": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-44a.avif",
+      "width": 1200,
+      "height": 543,
+      "bytes": 13024,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-45": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-45.avif",
+      "width": 1189,
+      "height": 648,
+      "bytes": 14748,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-45n": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-45n.avif",
+      "width": 1200,
+      "height": 707,
+      "bytes": 13190,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-47": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-47.avif",
+      "width": 1200,
+      "height": 546,
+      "bytes": 12292,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-48": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-48.avif",
+      "width": 1200,
+      "height": 523,
+      "bytes": 12615,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-49": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-49.avif",
+      "width": 1200,
+      "height": 574,
+      "bytes": 13329,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-50": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-50.avif",
+      "width": 1200,
+      "height": 593,
+      "bytes": 14096,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-51": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-51.avif",
+      "width": 1200,
+      "height": 482,
+      "bytes": 12178,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-52": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-52.avif",
+      "width": 1200,
+      "height": 517,
+      "bytes": 12628,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-58": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-58.avif",
+      "width": 1200,
+      "height": 539,
+      "bytes": 11720,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-84": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-84.avif",
+      "width": 1200,
+      "height": 545,
+      "bytes": 11894,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-88": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-88.avif",
+      "width": 1200,
+      "height": 580,
+      "bytes": 13502,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-89": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-89.avif",
+      "width": 1200,
+      "height": 624,
+      "bytes": 13879,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-90": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-90.avif",
+      "width": 1200,
+      "height": 549,
+      "bytes": 14697,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-92": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-92.avif",
+      "width": 1200,
+      "height": 578,
+      "bytes": 14243,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-93": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-93.avif",
+      "width": 1200,
+      "height": 679,
+      "bytes": 14121,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-94": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-94.avif",
+      "width": 1162,
+      "height": 746,
+      "bytes": 16636,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-96": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-96.avif",
+      "width": 1200,
+      "height": 677,
+      "bytes": 14565,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-107": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-107.avif",
+      "width": 1200,
+      "height": 608,
+      "bytes": 14468,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-199": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-199.avif",
+      "width": 1173,
+      "height": 652,
+      "bytes": 13486,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-206": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-206.avif",
+      "width": 1200,
+      "height": 608,
+      "bytes": 12350,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-206t": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-206t.avif",
+      "width": 1200,
+      "height": 619,
+      "bytes": 12741,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-216": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-216.avif",
+      "width": 1200,
+      "height": 663,
+      "bytes": 15599,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-217": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-217.avif",
+      "width": 1200,
+      "height": 624,
+      "bytes": 12831,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-217t": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-217t.avif",
+      "width": 1200,
+      "height": 623,
+      "bytes": 13840,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-236": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-236.avif",
+      "width": 1200,
+      "height": 591,
+      "bytes": 12728,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-237": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-237.avif",
+      "width": 1200,
+      "height": 542,
+      "bytes": 12215,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-241": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-241.avif",
+      "width": 1200,
+      "height": 610,
+      "bytes": 13885,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-wire-bending-and-loop-forming-pliers-sp-249": {
+      "path": "/catalogue/products/dental-wire-bending-and-loop-forming-pliers-sp-249.avif",
+      "width": 1200,
+      "height": 642,
+      "bytes": 15341,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-step-and-torque-contouring-and-universal-pliers-sp-191": {
+      "path": "/catalogue/products/dental-step-and-torque-contouring-and-universal-pliers-sp-191.avif",
+      "width": 1158,
+      "height": 696,
+      "bytes": 14564,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-step-and-torque-contouring-and-universal-pliers-sp-192": {
+      "path": "/catalogue/products/dental-step-and-torque-contouring-and-universal-pliers-sp-192.avif",
+      "width": 1157,
+      "height": 717,
+      "bytes": 14491,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-step-and-torque-contouring-and-universal-pliers-sp-193": {
+      "path": "/catalogue/products/dental-step-and-torque-contouring-and-universal-pliers-sp-193.avif",
+      "width": 1157,
+      "height": 728,
+      "bytes": 14746,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-step-and-torque-contouring-and-universal-pliers-sp-194": {
+      "path": "/catalogue/products/dental-step-and-torque-contouring-and-universal-pliers-sp-194.avif",
+      "width": 1157,
+      "height": 737,
+      "bytes": 14404,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-step-and-torque-contouring-and-universal-pliers-sp-195": {
+      "path": "/catalogue/products/dental-step-and-torque-contouring-and-universal-pliers-sp-195.avif",
+      "width": 1200,
+      "height": 584,
+      "bytes": 14771,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-step-and-torque-contouring-and-universal-pliers-sp-196": {
+      "path": "/catalogue/products/dental-step-and-torque-contouring-and-universal-pliers-sp-196.avif",
+      "width": 1200,
+      "height": 542,
+      "bytes": 12723,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-step-and-torque-contouring-and-universal-pliers-dp-65": {
+      "path": "/catalogue/products/dental-step-and-torque-contouring-and-universal-pliers-dp-65.avif",
+      "width": 1200,
+      "height": 514,
+      "bytes": 12206,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-step-and-torque-contouring-and-universal-pliers-sp-197": {
+      "path": "/catalogue/products/dental-step-and-torque-contouring-and-universal-pliers-sp-197.avif",
+      "width": 1200,
+      "height": 509,
+      "bytes": 11993,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-step-and-torque-contouring-and-universal-pliers-dp-66": {
+      "path": "/catalogue/products/dental-step-and-torque-contouring-and-universal-pliers-dp-66.avif",
+      "width": 1200,
+      "height": 580,
+      "bytes": 12852,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-step-and-torque-contouring-and-universal-pliers-sp-112": {
+      "path": "/catalogue/products/dental-step-and-torque-contouring-and-universal-pliers-sp-112.avif",
+      "width": 1200,
+      "height": 635,
+      "bytes": 13915,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-step-and-torque-contouring-and-universal-pliers-sp-113": {
+      "path": "/catalogue/products/dental-step-and-torque-contouring-and-universal-pliers-sp-113.avif",
+      "width": 1200,
+      "height": 608,
+      "bytes": 12816,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-step-and-torque-contouring-and-universal-pliers-sp-46": {
+      "path": "/catalogue/products/dental-step-and-torque-contouring-and-universal-pliers-sp-46.avif",
+      "width": 1200,
+      "height": 726,
+      "bytes": 13682,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-step-and-torque-contouring-and-universal-pliers-sp-46a": {
+      "path": "/catalogue/products/dental-step-and-torque-contouring-and-universal-pliers-sp-46a.avif",
+      "width": 1200,
+      "height": 615,
+      "bytes": 12636,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-step-and-torque-contouring-and-universal-pliers-sp-46s": {
+      "path": "/catalogue/products/dental-step-and-torque-contouring-and-universal-pliers-sp-46s.avif",
+      "width": 1200,
+      "height": 704,
+      "bytes": 15212,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-step-and-torque-contouring-and-universal-pliers-sp-114": {
+      "path": "/catalogue/products/dental-step-and-torque-contouring-and-universal-pliers-sp-114.avif",
+      "width": 1200,
+      "height": 592,
+      "bytes": 12443,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-universal-and-wire-gripping-pliers-sp-30": {
+      "path": "/catalogue/products/dental-universal-and-wire-gripping-pliers-sp-30.avif",
+      "width": 1200,
+      "height": 439,
+      "bytes": 10620,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-universal-and-wire-gripping-pliers-sp-30s": {
+      "path": "/catalogue/products/dental-universal-and-wire-gripping-pliers-sp-30s.avif",
+      "width": 1200,
+      "height": 457,
+      "bytes": 11740,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-universal-and-wire-gripping-pliers-lp-01": {
+      "path": "/catalogue/products/dental-universal-and-wire-gripping-pliers-lp-01.avif",
+      "width": 1200,
+      "height": 457,
+      "bytes": 10310,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-universal-and-wire-gripping-pliers-lp-01t": {
+      "path": "/catalogue/products/dental-universal-and-wire-gripping-pliers-lp-01t.avif",
+      "width": 1200,
+      "height": 437,
+      "bytes": 10115,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-universal-and-wire-gripping-pliers-sp-31t": {
+      "path": "/catalogue/products/dental-universal-and-wire-gripping-pliers-sp-31t.avif",
+      "width": 1200,
+      "height": 478,
+      "bytes": 12349,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-universal-and-wire-gripping-pliers-sp-32": {
+      "path": "/catalogue/products/dental-universal-and-wire-gripping-pliers-sp-32.avif",
+      "width": 1200,
+      "height": 454,
+      "bytes": 12310,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-universal-and-wire-gripping-pliers-sp-204": {
+      "path": "/catalogue/products/dental-universal-and-wire-gripping-pliers-sp-204.avif",
+      "width": 1200,
+      "height": 408,
+      "bytes": 11211,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-universal-and-wire-gripping-pliers-sp-204t": {
+      "path": "/catalogue/products/dental-universal-and-wire-gripping-pliers-sp-204t.avif",
+      "width": 1200,
+      "height": 480,
+      "bytes": 11663,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-universal-and-wire-gripping-pliers-sp-204lh": {
+      "path": "/catalogue/products/dental-universal-and-wire-gripping-pliers-sp-204lh.avif",
+      "width": 1200,
+      "height": 483,
+      "bytes": 13283,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-universal-and-wire-gripping-pliers-sp-33sa": {
+      "path": "/catalogue/products/dental-universal-and-wire-gripping-pliers-sp-33sa.avif",
+      "width": 1200,
+      "height": 509,
+      "bytes": 11350,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-universal-and-wire-gripping-pliers-sp-34sa": {
+      "path": "/catalogue/products/dental-universal-and-wire-gripping-pliers-sp-34sa.avif",
+      "width": 1200,
+      "height": 500,
+      "bytes": 12386,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-universal-and-wire-gripping-pliers-sp-97": {
+      "path": "/catalogue/products/dental-universal-and-wire-gripping-pliers-sp-97.avif",
+      "width": 1200,
+      "height": 481,
+      "bytes": 12309,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-universal-and-wire-gripping-pliers-sp-118": {
+      "path": "/catalogue/products/dental-universal-and-wire-gripping-pliers-sp-118.avif",
+      "width": 1200,
+      "height": 596,
+      "bytes": 16343,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-universal-and-wire-gripping-pliers-sp-119": {
+      "path": "/catalogue/products/dental-universal-and-wire-gripping-pliers-sp-119.avif",
+      "width": 1200,
+      "height": 564,
+      "bytes": 17830,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-hook-crimping-pliers-sp-110": {
+      "path": "/catalogue/products/dental-hook-crimping-pliers-sp-110.avif",
+      "width": 1200,
+      "height": 626,
+      "bytes": 13110,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-hook-crimping-pliers-sp-200": {
+      "path": "/catalogue/products/dental-hook-crimping-pliers-sp-200.avif",
+      "width": 1200,
+      "height": 572,
+      "bytes": 13150,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-hook-crimping-pliers-sp-200t": {
+      "path": "/catalogue/products/dental-hook-crimping-pliers-sp-200t.avif",
+      "width": 1200,
+      "height": 610,
+      "bytes": 13985,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-hook-crimping-pliers-sp-222t": {
+      "path": "/catalogue/products/dental-hook-crimping-pliers-sp-222t.avif",
+      "width": 1200,
+      "height": 564,
+      "bytes": 13003,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-bracket-band-and-bond-removing-pliers-sp-64": {
+      "path": "/catalogue/products/dental-bracket-band-and-bond-removing-pliers-sp-64.avif",
+      "width": 1200,
+      "height": 537,
+      "bytes": 12495,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-bracket-band-and-bond-removing-pliers-sp-65": {
+      "path": "/catalogue/products/dental-bracket-band-and-bond-removing-pliers-sp-65.avif",
+      "width": 1200,
+      "height": 466,
+      "bytes": 12175,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-bracket-band-and-bond-removing-pliers-sp-66": {
+      "path": "/catalogue/products/dental-bracket-band-and-bond-removing-pliers-sp-66.avif",
+      "width": 1200,
+      "height": 582,
+      "bytes": 12497,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-bracket-band-and-bond-removing-pliers-sp-67": {
+      "path": "/catalogue/products/dental-bracket-band-and-bond-removing-pliers-sp-67.avif",
+      "width": 1200,
+      "height": 495,
+      "bytes": 11434,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-bracket-band-and-bond-removing-pliers-sp-68": {
+      "path": "/catalogue/products/dental-bracket-band-and-bond-removing-pliers-sp-68.avif",
+      "width": 1200,
+      "height": 434,
+      "bytes": 10931,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-bracket-band-and-bond-removing-pliers-sp-68l": {
+      "path": "/catalogue/products/dental-bracket-band-and-bond-removing-pliers-sp-68l.avif",
+      "width": 1200,
+      "height": 438,
+      "bytes": 10445,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-bracket-band-and-bond-removing-pliers-sp-68t": {
+      "path": "/catalogue/products/dental-bracket-band-and-bond-removing-pliers-sp-68t.avif",
+      "width": 1200,
+      "height": 457,
+      "bytes": 11368,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-bracket-band-and-bond-removing-pliers-sp-2r": {
+      "path": "/catalogue/products/dental-bracket-band-and-bond-removing-pliers-sp-2r.avif",
+      "width": 212,
+      "height": 284,
+      "bytes": 1399,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-bracket-band-and-bond-removing-pliers-sp-233": {
+      "path": "/catalogue/products/dental-bracket-band-and-bond-removing-pliers-sp-233.avif",
+      "width": 1200,
+      "height": 412,
+      "bytes": 10542,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-bracket-band-and-bond-removing-pliers-sp-238": {
+      "path": "/catalogue/products/dental-bracket-band-and-bond-removing-pliers-sp-238.avif",
+      "width": 1200,
+      "height": 487,
+      "bytes": 10616,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-bracket-band-and-bond-removing-pliers-sp-246": {
+      "path": "/catalogue/products/dental-bracket-band-and-bond-removing-pliers-sp-246.avif",
+      "width": 1200,
+      "height": 508,
+      "bytes": 11810,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-bracket-band-and-bond-removing-pliers-sp-253": {
+      "path": "/catalogue/products/dental-bracket-band-and-bond-removing-pliers-sp-253.avif",
+      "width": 1200,
+      "height": 534,
+      "bytes": 13823,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-bracket-band-and-bond-removing-pliers-sp-254": {
+      "path": "/catalogue/products/dental-bracket-band-and-bond-removing-pliers-sp-254.avif",
+      "width": 1200,
+      "height": 403,
+      "bytes": 10752,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-bracket-band-and-bond-removing-pliers-sp-500": {
+      "path": "/catalogue/products/dental-bracket-band-and-bond-removing-pliers-sp-500.avif",
+      "width": 1200,
+      "height": 657,
+      "bytes": 13478,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-technic-pliers-lp-03t-2": {
+      "path": "/catalogue/products/dental-ligature-technic-pliers-lp-03t-2.avif",
+      "width": 1200,
+      "height": 461,
+      "bytes": 11004,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-technic-pliers-lp-04-2": {
+      "path": "/catalogue/products/dental-ligature-technic-pliers-lp-04-2.avif",
+      "width": 1200,
+      "height": 531,
+      "bytes": 10803,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-technic-pliers-lp-05": {
+      "path": "/catalogue/products/dental-ligature-technic-pliers-lp-05.avif",
+      "width": 1200,
+      "height": 573,
+      "bytes": 12183,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-technic-pliers-lp-05s": {
+      "path": "/catalogue/products/dental-ligature-technic-pliers-lp-05s.avif",
+      "width": 1200,
+      "height": 591,
+      "bytes": 12752,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-technic-pliers-lp-05lh": {
+      "path": "/catalogue/products/dental-ligature-technic-pliers-lp-05lh.avif",
+      "width": 1200,
+      "height": 582,
+      "bytes": 11710,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-technic-pliers-lp-05lhs": {
+      "path": "/catalogue/products/dental-ligature-technic-pliers-lp-05lhs.avif",
+      "width": 1200,
+      "height": 598,
+      "bytes": 12570,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-technic-pliers-lp-05m": {
+      "path": "/catalogue/products/dental-ligature-technic-pliers-lp-05m.avif",
+      "width": 1200,
+      "height": 531,
+      "bytes": 11564,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-aligner-technic-pliers-b-190": {
+      "path": "/catalogue/products/dental-aligner-technic-pliers-b-190.avif",
+      "width": 1029,
+      "height": 144,
+      "bytes": 5371,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-aligner-technic-pliers-ca-05": {
+      "path": "/catalogue/products/dental-aligner-technic-pliers-ca-05.avif",
+      "width": 1200,
+      "height": 459,
+      "bytes": 10618,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-aligner-technic-pliers-ca-06": {
+      "path": "/catalogue/products/dental-aligner-technic-pliers-ca-06.avif",
+      "width": 1200,
+      "height": 434,
+      "bytes": 10209,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-aligner-technic-pliers-ca-07": {
+      "path": "/catalogue/products/dental-aligner-technic-pliers-ca-07.avif",
+      "width": 1200,
+      "height": 497,
+      "bytes": 10885,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-aligner-technic-pliers-ca-08": {
+      "path": "/catalogue/products/dental-aligner-technic-pliers-ca-08.avif",
+      "width": 1200,
+      "height": 632,
+      "bytes": 13266,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-aligner-technic-pliers-ca-21": {
+      "path": "/catalogue/products/dental-aligner-technic-pliers-ca-21.avif",
+      "width": 1200,
+      "height": 509,
+      "bytes": 15055,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-aligner-technic-pliers-ca-22": {
+      "path": "/catalogue/products/dental-aligner-technic-pliers-ca-22.avif",
+      "width": 1200,
+      "height": 556,
+      "bytes": 13869,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-aligner-technic-pliers-ca-23": {
+      "path": "/catalogue/products/dental-aligner-technic-pliers-ca-23.avif",
+      "width": 1200,
+      "height": 677,
+      "bytes": 14491,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-aligner-technic-pliers-ca-24": {
+      "path": "/catalogue/products/dental-aligner-technic-pliers-ca-24.avif",
+      "width": 1200,
+      "height": 493,
+      "bytes": 11596,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-and-elastic-placing-and-separating-sn-136": {
+      "path": "/catalogue/products/dental-ligature-and-elastic-placing-and-separating-sn-136.avif",
+      "width": 1200,
+      "height": 522,
+      "bytes": 13032,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-and-elastic-placing-and-separating-sn-135c": {
+      "path": "/catalogue/products/dental-ligature-and-elastic-placing-and-separating-sn-135c.avif",
+      "width": 1200,
+      "height": 507,
+      "bytes": 12981,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-and-elastic-placing-and-separating-sn-136c": {
+      "path": "/catalogue/products/dental-ligature-and-elastic-placing-and-separating-sn-136c.avif",
+      "width": 1200,
+      "height": 460,
+      "bytes": 11739,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-and-elastic-placing-and-separating-sn-137": {
+      "path": "/catalogue/products/dental-ligature-and-elastic-placing-and-separating-sn-137.avif",
+      "width": 1200,
+      "height": 485,
+      "bytes": 13671,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-and-elastic-placing-and-separating-sn-137s": {
+      "path": "/catalogue/products/dental-ligature-and-elastic-placing-and-separating-sn-137s.avif",
+      "width": 1039,
+      "height": 503,
+      "bytes": 13269,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-and-elastic-placing-and-separating-sn-138": {
+      "path": "/catalogue/products/dental-ligature-and-elastic-placing-and-separating-sn-138.avif",
+      "width": 1200,
+      "height": 487,
+      "bytes": 12955,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-and-elastic-placing-and-separating-sn-138m": {
+      "path": "/catalogue/products/dental-ligature-and-elastic-placing-and-separating-sn-138m.avif",
+      "width": 1200,
+      "height": 421,
+      "bytes": 12107,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-and-elastic-placing-and-separating-sn-149": {
+      "path": "/catalogue/products/dental-ligature-and-elastic-placing-and-separating-sn-149.avif",
+      "width": 1038,
+      "height": 521,
+      "bytes": 12885,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-scissors-and-needle-holders-ss-128": {
+      "path": "/catalogue/products/dental-scissors-and-needle-holders-ss-128.avif",
+      "width": 1200,
+      "height": 597,
+      "bytes": 13662,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-scissors-and-needle-holders-ss-129": {
+      "path": "/catalogue/products/dental-scissors-and-needle-holders-ss-129.avif",
+      "width": 1200,
+      "height": 582,
+      "bytes": 14598,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-scissors-and-needle-holders-ss-126a": {
+      "path": "/catalogue/products/dental-scissors-and-needle-holders-ss-126a.avif",
+      "width": 1200,
+      "height": 549,
+      "bytes": 14073,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-scissors-and-needle-holders-ss-127a": {
+      "path": "/catalogue/products/dental-scissors-and-needle-holders-ss-127a.avif",
+      "width": 1200,
+      "height": 513,
+      "bytes": 12968,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-scissors-and-needle-holders-ss-135": {
+      "path": "/catalogue/products/dental-scissors-and-needle-holders-ss-135.avif",
+      "width": 1183,
+      "height": 536,
+      "bytes": 13173,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-scissors-and-needle-holders-04-3000": {
+      "path": "/catalogue/products/dental-scissors-and-needle-holders-04-3000.avif",
+      "width": 1200,
+      "height": 473,
+      "bytes": 11469,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-scissors-and-needle-holders-06-3000": {
+      "path": "/catalogue/products/dental-scissors-and-needle-holders-06-3000.avif",
+      "width": 1200,
+      "height": 482,
+      "bytes": 16436,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-scissors-and-needle-holders-sn-140": {
+      "path": "/catalogue/products/dental-scissors-and-needle-holders-sn-140.avif",
+      "width": 1200,
+      "height": 586,
+      "bytes": 14500,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-scissors-and-needle-holders-sn-141": {
+      "path": "/catalogue/products/dental-scissors-and-needle-holders-sn-141.avif",
+      "width": 1200,
+      "height": 472,
+      "bytes": 12859,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-scissors-and-needle-holders-sn-140t": {
+      "path": "/catalogue/products/dental-scissors-and-needle-holders-sn-140t.avif",
+      "width": 1200,
+      "height": 478,
+      "bytes": 16011,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-scissors-and-needle-holders-sn-141t": {
+      "path": "/catalogue/products/dental-scissors-and-needle-holders-sn-141t.avif",
+      "width": 1200,
+      "height": 478,
+      "bytes": 16161,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-scissors-and-needle-holders-sn-142t": {
+      "path": "/catalogue/products/dental-scissors-and-needle-holders-sn-142t.avif",
+      "width": 1200,
+      "height": 472,
+      "bytes": 14349,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-scissors-and-needle-holders-sn-144": {
+      "path": "/catalogue/products/dental-scissors-and-needle-holders-sn-144.avif",
+      "width": 1200,
+      "height": 451,
+      "bytes": 11906,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-scissors-and-needle-holders-sn-145": {
+      "path": "/catalogue/products/dental-scissors-and-needle-holders-sn-145.avif",
+      "width": 1200,
+      "height": 529,
+      "bytes": 14628,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-scissors-and-needle-holders-sn-144t": {
+      "path": "/catalogue/products/dental-scissors-and-needle-holders-sn-144t.avif",
+      "width": 1200,
+      "height": 485,
+      "bytes": 14678,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-scissors-and-needle-holders-sn-1445t": {
+      "path": "/catalogue/products/dental-scissors-and-needle-holders-sn-1445t.avif",
+      "width": 1200,
+      "height": 486,
+      "bytes": 14642,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-directors-and-band-pushers-sb-152": {
+      "path": "/catalogue/products/dental-ligature-directors-and-band-pushers-sb-152.avif",
+      "width": 1200,
+      "height": 115,
+      "bytes": 8405,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-directors-and-band-pushers-sb-188": {
+      "path": "/catalogue/products/dental-ligature-directors-and-band-pushers-sb-188.avif",
+      "width": 1200,
+      "height": 115,
+      "bytes": 5973,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-directors-and-band-pushers-sb-239": {
+      "path": "/catalogue/products/dental-ligature-directors-and-band-pushers-sb-239.avif",
+      "width": 1200,
+      "height": 110,
+      "bytes": 8882,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-directors-and-band-pushers-sb-239r": {
+      "path": "/catalogue/products/dental-ligature-directors-and-band-pushers-sb-239r.avif",
+      "width": 1200,
+      "height": 98,
+      "bytes": 5949,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-directors-and-band-pushers-sb-246": {
+      "path": "/catalogue/products/dental-ligature-directors-and-band-pushers-sb-246.avif",
+      "width": 1200,
+      "height": 98,
+      "bytes": 8662,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-directors-and-band-pushers-sb-148a": {
+      "path": "/catalogue/products/dental-ligature-directors-and-band-pushers-sb-148a.avif",
+      "width": 1200,
+      "height": 115,
+      "bytes": 7019,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-directors-and-band-pushers-sb-150a": {
+      "path": "/catalogue/products/dental-ligature-directors-and-band-pushers-sb-150a.avif",
+      "width": 1200,
+      "height": 107,
+      "bytes": 5888,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-directors-and-band-pushers-sb-188a": {
+      "path": "/catalogue/products/dental-ligature-directors-and-band-pushers-sb-188a.avif",
+      "width": 1200,
+      "height": 112,
+      "bytes": 5983,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-directors-and-band-pushers-sb-234": {
+      "path": "/catalogue/products/dental-ligature-directors-and-band-pushers-sb-234.avif",
+      "width": 1200,
+      "height": 112,
+      "bytes": 6520,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-directors-and-band-pushers-sb-252": {
+      "path": "/catalogue/products/dental-ligature-directors-and-band-pushers-sb-252.avif",
+      "width": 1200,
+      "height": 117,
+      "bytes": 9229,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-directors-and-band-pushers-sb-88a": {
+      "path": "/catalogue/products/dental-ligature-directors-and-band-pushers-sb-88a.avif",
+      "width": 1200,
+      "height": 122,
+      "bytes": 7727,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-directors-and-band-pushers-sb-147": {
+      "path": "/catalogue/products/dental-ligature-directors-and-band-pushers-sb-147.avif",
+      "width": 1200,
+      "height": 242,
+      "bytes": 7807,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-directors-and-band-pushers-sb-223": {
+      "path": "/catalogue/products/dental-ligature-directors-and-band-pushers-sb-223.avif",
+      "width": 1200,
+      "height": 113,
+      "bytes": 6527,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-directors-and-band-pushers-sb-223d": {
+      "path": "/catalogue/products/dental-ligature-directors-and-band-pushers-sb-223d.avif",
+      "width": 1200,
+      "height": 113,
+      "bytes": 7984,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-directors-and-band-pushers-sb-209": {
+      "path": "/catalogue/products/dental-ligature-directors-and-band-pushers-sb-209.avif",
+      "width": 1200,
+      "height": 124,
+      "bytes": 5742,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-directors-and-band-pushers-sb-256": {
+      "path": "/catalogue/products/dental-ligature-directors-and-band-pushers-sb-256.avif",
+      "width": 1200,
+      "height": 143,
+      "bytes": 6311,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-directors-and-band-pushers-sb-260": {
+      "path": "/catalogue/products/dental-ligature-directors-and-band-pushers-sb-260.avif",
+      "width": 1200,
+      "height": 106,
+      "bytes": 8612,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-directors-and-band-pushers-sb-261": {
+      "path": "/catalogue/products/dental-ligature-directors-and-band-pushers-sb-261.avif",
+      "width": 1200,
+      "height": 123,
+      "bytes": 7905,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-directors-and-band-pushers-sb-250": {
+      "path": "/catalogue/products/dental-ligature-directors-and-band-pushers-sb-250.avif",
+      "width": 1200,
+      "height": 103,
+      "bytes": 6623,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-directors-and-band-pushers-sb-227": {
+      "path": "/catalogue/products/dental-ligature-directors-and-band-pushers-sb-227.avif",
+      "width": 1200,
+      "height": 211,
+      "bytes": 4876,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-ligature-directors-and-band-pushers-sb-257": {
+      "path": "/catalogue/products/dental-ligature-directors-and-band-pushers-sb-257.avif",
+      "width": 1200,
+      "height": 121,
+      "bytes": 7324,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-measuring-instruments-sg-257": {
+      "path": "/catalogue/products/dental-measuring-instruments-sg-257.avif",
+      "width": 1200,
+      "height": 96,
+      "bytes": 4493,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-measuring-instruments-sg-146": {
+      "path": "/catalogue/products/dental-measuring-instruments-sg-146.avif",
+      "width": 1200,
+      "height": 141,
+      "bytes": 7202,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-measuring-instruments-sg-210m": {
+      "path": "/catalogue/products/dental-measuring-instruments-sg-210m.avif",
+      "width": 1200,
+      "height": 139,
+      "bytes": 8598,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-measuring-instruments-sg-210": {
+      "path": "/catalogue/products/dental-measuring-instruments-sg-210.avif",
+      "width": 1200,
+      "height": 154,
+      "bytes": 6724,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-measuring-instruments-sg-210a": {
+      "path": "/catalogue/products/dental-measuring-instruments-sg-210a.avif",
+      "width": 1200,
+      "height": 156,
+      "bytes": 6107,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-measuring-instruments-sg-211": {
+      "path": "/catalogue/products/dental-measuring-instruments-sg-211.avif",
+      "width": 1200,
+      "height": 187,
+      "bytes": 6332,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-measuring-instruments-sg-212": {
+      "path": "/catalogue/products/dental-measuring-instruments-sg-212.avif",
+      "width": 1200,
+      "height": 225,
+      "bytes": 7532,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-measuring-instruments-sg-207": {
+      "path": "/catalogue/products/dental-measuring-instruments-sg-207.avif",
+      "width": 691,
+      "height": 612,
+      "bytes": 10347,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-measuring-instruments-sg-153": {
+      "path": "/catalogue/products/dental-measuring-instruments-sg-153.avif",
+      "width": 1200,
+      "height": 715,
+      "bytes": 32579,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-measuring-instruments-sg-155": {
+      "path": "/catalogue/products/dental-measuring-instruments-sg-155.avif",
+      "width": 1200,
+      "height": 429,
+      "bytes": 15222,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-measuring-instruments-sg-156": {
+      "path": "/catalogue/products/dental-measuring-instruments-sg-156.avif",
+      "width": 1200,
+      "height": 175,
+      "bytes": 18756,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-measuring-instruments-sg-221": {
+      "path": "/catalogue/products/dental-measuring-instruments-sg-221.avif",
+      "width": 1200,
+      "height": 355,
+      "bytes": 12425,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-crown-grippers-forceps-and-twisters-sf-159": {
+      "path": "/catalogue/products/dental-crown-grippers-forceps-and-twisters-sf-159.avif",
+      "width": 1200,
+      "height": 532,
+      "bytes": 9233,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-crown-grippers-forceps-and-twisters-sf-158c": {
+      "path": "/catalogue/products/dental-crown-grippers-forceps-and-twisters-sf-158c.avif",
+      "width": 1200,
+      "height": 532,
+      "bytes": 9298,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-crown-grippers-forceps-and-twisters-sf-459c": {
+      "path": "/catalogue/products/dental-crown-grippers-forceps-and-twisters-sf-459c.avif",
+      "width": 1200,
+      "height": 531,
+      "bytes": 8945,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-crown-grippers-forceps-and-twisters-sf-201": {
+      "path": "/catalogue/products/dental-crown-grippers-forceps-and-twisters-sf-201.avif",
+      "width": 1200,
+      "height": 532,
+      "bytes": 8996,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-crown-grippers-forceps-and-twisters-sb-247": {
+      "path": "/catalogue/products/dental-crown-grippers-forceps-and-twisters-sb-247.avif",
+      "width": 1200,
+      "height": 250,
+      "bytes": 10457,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-crown-grippers-forceps-and-twisters-sp-198": {
+      "path": "/catalogue/products/dental-crown-grippers-forceps-and-twisters-sp-198.avif",
+      "width": 1200,
+      "height": 160,
+      "bytes": 7268,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-bracket-positioning-forceps-sf-163s": {
+      "path": "/catalogue/products/dental-bracket-positioning-forceps-sf-163s.avif",
+      "width": 1200,
+      "height": 199,
+      "bytes": 6199,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-bracket-positioning-forceps-sf-163": {
+      "path": "/catalogue/products/dental-bracket-positioning-forceps-sf-163.avif",
+      "width": 1200,
+      "height": 217,
+      "bytes": 6650,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-bracket-positioning-forceps-sf-163a": {
+      "path": "/catalogue/products/dental-bracket-positioning-forceps-sf-163a.avif",
+      "width": 1200,
+      "height": 206,
+      "bytes": 6605,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-bracket-positioning-forceps-sf-164": {
+      "path": "/catalogue/products/dental-bracket-positioning-forceps-sf-164.avif",
+      "width": 1200,
+      "height": 185,
+      "bytes": 6069,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-bracket-positioning-forceps-sf-185": {
+      "path": "/catalogue/products/dental-bracket-positioning-forceps-sf-185.avif",
+      "width": 1200,
+      "height": 136,
+      "bytes": 6629,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-bracket-positioning-forceps-sf-186": {
+      "path": "/catalogue/products/dental-bracket-positioning-forceps-sf-186.avif",
+      "width": 1200,
+      "height": 195,
+      "bytes": 8722,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-bracket-positioning-forceps-sf-245": {
+      "path": "/catalogue/products/dental-bracket-positioning-forceps-sf-245.avif",
+      "width": 1200,
+      "height": 193,
+      "bytes": 7015,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-bracket-positioning-forceps-sf-247": {
+      "path": "/catalogue/products/dental-bracket-positioning-forceps-sf-247.avif",
+      "width": 1200,
+      "height": 193,
+      "bytes": 5756,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-bracket-positioning-forceps-sf-224": {
+      "path": "/catalogue/products/dental-bracket-positioning-forceps-sf-224.avif",
+      "width": 1200,
+      "height": 186,
+      "bytes": 8188,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-bracket-positioning-forceps-sf-208": {
+      "path": "/catalogue/products/dental-bracket-positioning-forceps-sf-208.avif",
+      "width": 1200,
+      "height": 178,
+      "bytes": 6812,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-bracket-positioning-forceps-sf-228": {
+      "path": "/catalogue/products/dental-bracket-positioning-forceps-sf-228.avif",
+      "width": 1200,
+      "height": 182,
+      "bytes": 5539,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-bracket-positioning-forceps-sf-228s": {
+      "path": "/catalogue/products/dental-bracket-positioning-forceps-sf-228s.avif",
+      "width": 1200,
+      "height": 187,
+      "bytes": 5837,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-bracket-positioning-forceps-sf-228al": {
+      "path": "/catalogue/products/dental-bracket-positioning-forceps-sf-228al.avif",
+      "width": 1200,
+      "height": 198,
+      "bytes": 6672,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-bracket-positioning-forceps-sf-259": {
+      "path": "/catalogue/products/dental-bracket-positioning-forceps-sf-259.avif",
+      "width": 1200,
+      "height": 141,
+      "bytes": 5492,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-miscellaneous-sw-175": {
+      "path": "/catalogue/products/dental-miscellaneous-sw-175.avif",
+      "width": 1200,
+      "height": 151,
+      "bytes": 7014,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-miscellaneous-sw-176": {
+      "path": "/catalogue/products/dental-miscellaneous-sw-176.avif",
+      "width": 1200,
+      "height": 135,
+      "bytes": 6868,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-miscellaneous-sw-177": {
+      "path": "/catalogue/products/dental-miscellaneous-sw-177.avif",
+      "width": 1200,
+      "height": 185,
+      "bytes": 9091,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-miscellaneous-sw-182": {
+      "path": "/catalogue/products/dental-miscellaneous-sw-182.avif",
+      "width": 1200,
+      "height": 210,
+      "bytes": 12326,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-miscellaneous-sw-187": {
+      "path": "/catalogue/products/dental-miscellaneous-sw-187.avif",
+      "width": 1200,
+      "height": 192,
+      "bytes": 10176,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-miscellaneous-sw-170": {
+      "path": "/catalogue/products/dental-miscellaneous-sw-170.avif",
+      "width": 1200,
+      "height": 197,
+      "bytes": 7139,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-miscellaneous-sw-178": {
+      "path": "/catalogue/products/dental-miscellaneous-sw-178.avif",
+      "width": 1200,
+      "height": 212,
+      "bytes": 7926,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-miscellaneous-sw-179": {
+      "path": "/catalogue/products/dental-miscellaneous-sw-179.avif",
+      "width": 1200,
+      "height": 162,
+      "bytes": 7301,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-miscellaneous-sw-180": {
+      "path": "/catalogue/products/dental-miscellaneous-sw-180.avif",
+      "width": 1200,
+      "height": 155,
+      "bytes": 6514,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-miscellaneous-sw-183": {
+      "path": "/catalogue/products/dental-miscellaneous-sw-183.avif",
+      "width": 1200,
+      "height": 145,
+      "bytes": 6671,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-miscellaneous-sw-184": {
+      "path": "/catalogue/products/dental-miscellaneous-sw-184.avif",
+      "width": 1200,
+      "height": 171,
+      "bytes": 7303,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-miscellaneous-sw-185": {
+      "path": "/catalogue/products/dental-miscellaneous-sw-185.avif",
+      "width": 1200,
+      "height": 186,
+      "bytes": 9473,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-miscellaneous-sw-181": {
+      "path": "/catalogue/products/dental-miscellaneous-sw-181.avif",
+      "width": 1200,
+      "height": 272,
+      "bytes": 7785,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-miscellaneous-sw-186": {
+      "path": "/catalogue/products/dental-miscellaneous-sw-186.avif",
+      "width": 1200,
+      "height": 270,
+      "bytes": 7523,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-miscellaneous-sa-211": {
+      "path": "/catalogue/products/dental-miscellaneous-sa-211.avif",
+      "width": 1123,
+      "height": 658,
+      "bytes": 58926,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-miscellaneous-sa-220": {
+      "path": "/catalogue/products/dental-miscellaneous-sa-220.avif",
+      "width": 679,
+      "height": 900,
+      "bytes": 26695,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-miscellaneous-sa-220a": {
+      "path": "/catalogue/products/dental-miscellaneous-sa-220a.avif",
+      "width": 867,
+      "height": 900,
+      "bytes": 35468,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-miscellaneous-sp-218": {
+      "path": "/catalogue/products/dental-miscellaneous-sp-218.avif",
+      "width": 1200,
+      "height": 374,
+      "bytes": 11093,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-miscellaneous-sp-219": {
+      "path": "/catalogue/products/dental-miscellaneous-sp-219.avif",
+      "width": 1200,
+      "height": 394,
+      "bytes": 12826,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-miscellaneous-sb-227-2": {
+      "path": "/catalogue/products/dental-miscellaneous-sb-227-2.avif",
+      "width": 1200,
+      "height": 164,
+      "bytes": 10668,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-miscellaneous-sb-231": {
+      "path": "/catalogue/products/dental-miscellaneous-sb-231.avif",
+      "width": 1200,
+      "height": 153,
+      "bytes": 8325,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-miscellaneous-sb-229": {
+      "path": "/catalogue/products/dental-miscellaneous-sb-229.avif",
+      "width": 1200,
+      "height": 118,
+      "bytes": 8411,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-miscellaneous-sp-221": {
+      "path": "/catalogue/products/dental-miscellaneous-sp-221.avif",
+      "width": 322,
+      "height": 456,
+      "bytes": 4439,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-miscellaneous-sb-230": {
+      "path": "/catalogue/products/dental-miscellaneous-sb-230.avif",
+      "width": 544,
+      "height": 224,
+      "bytes": 4713,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-miscellaneous-sb-225": {
+      "path": "/catalogue/products/dental-miscellaneous-sb-225.avif",
+      "width": 1200,
+      "height": 117,
+      "bytes": 8027,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-miscellaneous-sb-226": {
+      "path": "/catalogue/products/dental-miscellaneous-sb-226.avif",
+      "width": 1200,
+      "height": 127,
+      "bytes": 8221,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-special-heat-pliers-collection-tp-01": {
+      "path": "/catalogue/products/dental-special-heat-pliers-collection-tp-01.avif",
+      "width": 1200,
+      "height": 564,
+      "bytes": 14056,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-special-heat-pliers-collection-tp-02": {
+      "path": "/catalogue/products/dental-special-heat-pliers-collection-tp-02.avif",
+      "width": 1200,
+      "height": 554,
+      "bytes": 14522,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-special-heat-pliers-collection-tp-05": {
+      "path": "/catalogue/products/dental-special-heat-pliers-collection-tp-05.avif",
+      "width": 1200,
+      "height": 521,
+      "bytes": 14729,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-special-heat-pliers-collection-tp-06": {
+      "path": "/catalogue/products/dental-special-heat-pliers-collection-tp-06.avif",
+      "width": 1200,
+      "height": 521,
+      "bytes": 14297,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-special-heat-pliers-collection-tp-07": {
+      "path": "/catalogue/products/dental-special-heat-pliers-collection-tp-07.avif",
+      "width": 1200,
+      "height": 603,
+      "bytes": 14899,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-special-heat-pliers-collection-tp-11": {
+      "path": "/catalogue/products/dental-special-heat-pliers-collection-tp-11.avif",
+      "width": 1200,
+      "height": 547,
+      "bytes": 15760,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-special-heat-pliers-collection-tp-12": {
+      "path": "/catalogue/products/dental-special-heat-pliers-collection-tp-12.avif",
+      "width": 1200,
+      "height": 546,
+      "bytes": 15429,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-special-heat-pliers-collection-tp-13": {
+      "path": "/catalogue/products/dental-special-heat-pliers-collection-tp-13.avif",
+      "width": 1200,
+      "height": 545,
+      "bytes": 15353,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-special-cold-pliers-collection-tp-14": {
+      "path": "/catalogue/products/dental-special-cold-pliers-collection-tp-14.avif",
+      "width": 1200,
+      "height": 621,
+      "bytes": 15038,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-special-cold-pliers-collection-tp-15": {
+      "path": "/catalogue/products/dental-special-cold-pliers-collection-tp-15.avif",
+      "width": 1200,
+      "height": 647,
+      "bytes": 15112,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-special-cold-pliers-collection-tp-17": {
+      "path": "/catalogue/products/dental-special-cold-pliers-collection-tp-17.avif",
+      "width": 1200,
+      "height": 626,
+      "bytes": 14571,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-special-cold-pliers-collection-tp-18": {
+      "path": "/catalogue/products/dental-special-cold-pliers-collection-tp-18.avif",
+      "width": 1200,
+      "height": 560,
+      "bytes": 14861,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-special-hybrid-pliers-collection-tp-03": {
+      "path": "/catalogue/products/dental-special-hybrid-pliers-collection-tp-03.avif",
+      "width": 1200,
+      "height": 580,
+      "bytes": 15714,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-special-hybrid-pliers-collection-tp-04": {
+      "path": "/catalogue/products/dental-special-hybrid-pliers-collection-tp-04.avif",
+      "width": 1200,
+      "height": 513,
+      "bytes": 13684,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-special-hybrid-pliers-collection-tp-09": {
+      "path": "/catalogue/products/dental-special-hybrid-pliers-collection-tp-09.avif",
+      "width": 1200,
+      "height": 506,
+      "bytes": 13443,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-special-hybrid-pliers-collection-tp-10": {
+      "path": "/catalogue/products/dental-special-hybrid-pliers-collection-tp-10.avif",
+      "width": 1200,
+      "height": 495,
+      "bytes": 12908,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-special-hybrid-pliers-collection-tp-12-2": {
+      "path": "/catalogue/products/dental-special-hybrid-pliers-collection-tp-12-2.avif",
+      "width": 1200,
+      "height": 507,
+      "bytes": 14290,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-special-hybrid-pliers-collection-tp-06-2": {
+      "path": "/catalogue/products/dental-special-hybrid-pliers-collection-tp-06-2.avif",
+      "width": 1200,
+      "height": 573,
+      "bytes": 15454,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "dental-special-hybrid-pliers-collection-tp-16": {
+      "path": "/catalogue/products/dental-special-hybrid-pliers-collection-tp-16.avif",
+      "width": 1200,
+      "height": 562,
+      "bytes": 14583,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-scalpel-handles-18-0103": {
+      "path": "/catalogue/products/surgical-scalpel-handles-18-0103.avif",
+      "width": 351,
+      "height": 57,
+      "bytes": 1637,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-scalpel-handles-18-0104": {
+      "path": "/catalogue/products/surgical-scalpel-handles-18-0104.avif",
+      "width": 369,
+      "height": 57,
+      "bytes": 1677,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-scalpel-handles-18-0107": {
+      "path": "/catalogue/products/surgical-scalpel-handles-18-0107.avif",
+      "width": 407,
+      "height": 53,
+      "bytes": 1411,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-scalpel-handles-18-0103s": {
+      "path": "/catalogue/products/surgical-scalpel-handles-18-0103s.avif",
+      "width": 400,
+      "height": 62,
+      "bytes": 1963,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-scalpel-handles-18-0104s": {
+      "path": "/catalogue/products/surgical-scalpel-handles-18-0104s.avif",
+      "width": 398,
+      "height": 61,
+      "bytes": 2095,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-scalpel-handles-18-0103l": {
+      "path": "/catalogue/products/surgical-scalpel-handles-18-0103l.avif",
+      "width": 407,
+      "height": 52,
+      "bytes": 1754,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-scalpel-handles-18-0104l": {
+      "path": "/catalogue/products/surgical-scalpel-handles-18-0104l.avif",
+      "width": 410,
+      "height": 49,
+      "bytes": 1655,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-scissors-04-0800": {
+      "path": "/catalogue/products/surgical-scissors-04-0800.avif",
+      "width": 372,
+      "height": 133,
+      "bytes": 2733,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-scissors-06-0802": {
+      "path": "/catalogue/products/surgical-scissors-06-0802.avif",
+      "width": 372,
+      "height": 133,
+      "bytes": 3228,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-scissors-05-0802": {
+      "path": "/catalogue/products/surgical-scissors-05-0802.avif",
+      "width": 373,
+      "height": 139,
+      "bytes": 2977,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-scissors-04-0901": {
+      "path": "/catalogue/products/surgical-scissors-04-0901.avif",
+      "width": 296,
+      "height": 163,
+      "bytes": 2609,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-scissors-06-0901": {
+      "path": "/catalogue/products/surgical-scissors-06-0901.avif",
+      "width": 311,
+      "height": 154,
+      "bytes": 3305,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-scissors-05-0901": {
+      "path": "/catalogue/products/surgical-scissors-05-0901.avif",
+      "width": 328,
+      "height": 156,
+      "bytes": 2816,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-scissors-04-1050": {
+      "path": "/catalogue/products/surgical-scissors-04-1050.avif",
+      "width": 286,
+      "height": 137,
+      "bytes": 2355,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-scissors-04-1901": {
+      "path": "/catalogue/products/surgical-scissors-04-1901.avif",
+      "width": 306,
+      "height": 142,
+      "bytes": 2260,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-scissors-06-1901": {
+      "path": "/catalogue/products/surgical-scissors-06-1901.avif",
+      "width": 396,
+      "height": 160,
+      "bytes": 3044,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-scissors-06-1902": {
+      "path": "/catalogue/products/surgical-scissors-06-1902.avif",
+      "width": 410,
+      "height": 152,
+      "bytes": 3270,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-scissors-06-1909": {
+      "path": "/catalogue/products/surgical-scissors-06-1909.avif",
+      "width": 391,
+      "height": 180,
+      "bytes": 3818,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-scissors-06-1913": {
+      "path": "/catalogue/products/surgical-scissors-06-1913.avif",
+      "width": 413,
+      "height": 163,
+      "bytes": 3367,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-scissors-05-1901": {
+      "path": "/catalogue/products/surgical-scissors-05-1901.avif",
+      "width": 410,
+      "height": 161,
+      "bytes": 3597,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-scissors-04-0101": {
+      "path": "/catalogue/products/surgical-scissors-04-0101.avif",
+      "width": 415,
+      "height": 170,
+      "bytes": 3576,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-scissors-06-0101": {
+      "path": "/catalogue/products/surgical-scissors-06-0101.avif",
+      "width": 384,
+      "height": 184,
+      "bytes": 4346,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-scissors-05-0101": {
+      "path": "/catalogue/products/surgical-scissors-05-0101.avif",
+      "width": 391,
+      "height": 183,
+      "bytes": 4147,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-scissors-04-0401": {
+      "path": "/catalogue/products/surgical-scissors-04-0401.avif",
+      "width": 384,
+      "height": 166,
+      "bytes": 4080,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-scissors-06-0401": {
+      "path": "/catalogue/products/surgical-scissors-06-0401.avif",
+      "width": 407,
+      "height": 165,
+      "bytes": 4193,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-scissors-05-0401": {
+      "path": "/catalogue/products/surgical-scissors-05-0401.avif",
+      "width": 406,
+      "height": 170,
+      "bytes": 4188,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-scissors-05-0414": {
+      "path": "/catalogue/products/surgical-scissors-05-0414.avif",
+      "width": 407,
+      "height": 162,
+      "bytes": 3741,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-scissors-04-2601": {
+      "path": "/catalogue/products/surgical-scissors-04-2601.avif",
+      "width": 406,
+      "height": 166,
+      "bytes": 3795,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-scissors-04-2902": {
+      "path": "/catalogue/products/surgical-scissors-04-2902.avif",
+      "width": 362,
+      "height": 167,
+      "bytes": 3691,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-scissors-04-3502": {
+      "path": "/catalogue/products/surgical-scissors-04-3502.avif",
+      "width": 391,
+      "height": 153,
+      "bytes": 3247,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-scissors-06-3502": {
+      "path": "/catalogue/products/surgical-scissors-06-3502.avif",
+      "width": 400,
+      "height": 158,
+      "bytes": 3653,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-scissors-04-3000-2": {
+      "path": "/catalogue/products/surgical-scissors-04-3000-2.avif",
+      "width": 386,
+      "height": 162,
+      "bytes": 3538,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-scissors-06-3000-2": {
+      "path": "/catalogue/products/surgical-scissors-06-3000-2.avif",
+      "width": 387,
+      "height": 152,
+      "bytes": 3884,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-scissors-04-3102": {
+      "path": "/catalogue/products/surgical-scissors-04-3102.avif",
+      "width": 409,
+      "height": 182,
+      "bytes": 3616,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-scissors-04-3102-2": {
+      "path": "/catalogue/products/surgical-scissors-04-3102-2.avif",
+      "width": 399,
+      "height": 194,
+      "bytes": 4396,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-scissors-04-3110": {
+      "path": "/catalogue/products/surgical-scissors-04-3110.avif",
+      "width": 381,
+      "height": 183,
+      "bytes": 4205,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-scissors-04-3203": {
+      "path": "/catalogue/products/surgical-scissors-04-3203.avif",
+      "width": 393,
+      "height": 181,
+      "bytes": 4058,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-micro-scissors-08-0601": {
+      "path": "/catalogue/products/surgical-micro-scissors-08-0601.avif",
+      "width": 355,
+      "height": 90,
+      "bytes": 2303,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-micro-scissors-08-0602": {
+      "path": "/catalogue/products/surgical-micro-scissors-08-0602.avif",
+      "width": 354,
+      "height": 96,
+      "bytes": 2686,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-micro-scissors-08-0611": {
+      "path": "/catalogue/products/surgical-micro-scissors-08-0611.avif",
+      "width": 419,
+      "height": 116,
+      "bytes": 3333,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-micro-scissors-08-0753": {
+      "path": "/catalogue/products/surgical-micro-scissors-08-0753.avif",
+      "width": 426,
+      "height": 111,
+      "bytes": 3040,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-dressing-and-tissue-forceps-01-0102": {
+      "path": "/catalogue/products/surgical-dressing-and-tissue-forceps-01-0102.avif",
+      "width": 416,
+      "height": 59,
+      "bytes": 1719,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-dressing-and-tissue-forceps-01-0230": {
+      "path": "/catalogue/products/surgical-dressing-and-tissue-forceps-01-0230.avif",
+      "width": 399,
+      "height": 63,
+      "bytes": 1873,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-dressing-and-tissue-forceps-01-0501": {
+      "path": "/catalogue/products/surgical-dressing-and-tissue-forceps-01-0501.avif",
+      "width": 359,
+      "height": 61,
+      "bytes": 1622,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-dressing-and-tissue-forceps-01-0601": {
+      "path": "/catalogue/products/surgical-dressing-and-tissue-forceps-01-0601.avif",
+      "width": 384,
+      "height": 78,
+      "bytes": 2036,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-dressing-and-tissue-forceps-01-0503": {
+      "path": "/catalogue/products/surgical-dressing-and-tissue-forceps-01-0503.avif",
+      "width": 400,
+      "height": 72,
+      "bytes": 2325,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-dressing-and-tissue-forceps-01-0701": {
+      "path": "/catalogue/products/surgical-dressing-and-tissue-forceps-01-0701.avif",
+      "width": 384,
+      "height": 74,
+      "bytes": 1967,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-dressing-and-tissue-forceps-01-0901": {
+      "path": "/catalogue/products/surgical-dressing-and-tissue-forceps-01-0901.avif",
+      "width": 368,
+      "height": 79,
+      "bytes": 2454,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-dressing-and-tissue-forceps-01-1101": {
+      "path": "/catalogue/products/surgical-dressing-and-tissue-forceps-01-1101.avif",
+      "width": 384,
+      "height": 171,
+      "bytes": 2357,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-dressing-and-tissue-forceps-01-1211": {
+      "path": "/catalogue/products/surgical-dressing-and-tissue-forceps-01-1211.avif",
+      "width": 382,
+      "height": 60,
+      "bytes": 1777,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-dressing-and-tissue-forceps-01-1301": {
+      "path": "/catalogue/products/surgical-dressing-and-tissue-forceps-01-1301.avif",
+      "width": 380,
+      "height": 61,
+      "bytes": 1611,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-dressing-and-tissue-forceps-01-1701": {
+      "path": "/catalogue/products/surgical-dressing-and-tissue-forceps-01-1701.avif",
+      "width": 419,
+      "height": 85,
+      "bytes": 2552,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-dressing-and-tissue-forceps-01-1901": {
+      "path": "/catalogue/products/surgical-dressing-and-tissue-forceps-01-1901.avif",
+      "width": 403,
+      "height": 60,
+      "bytes": 1825,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-dressing-and-tissue-forceps-01-2201": {
+      "path": "/catalogue/products/surgical-dressing-and-tissue-forceps-01-2201.avif",
+      "width": 406,
+      "height": 153,
+      "bytes": 3094,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-dressing-and-tissue-forceps-01-2801": {
+      "path": "/catalogue/products/surgical-dressing-and-tissue-forceps-01-2801.avif",
+      "width": 405,
+      "height": 121,
+      "bytes": 2480,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-dressing-and-tissue-forceps-01-3201": {
+      "path": "/catalogue/products/surgical-dressing-and-tissue-forceps-01-3201.avif",
+      "width": 415,
+      "height": 65,
+      "bytes": 1827,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-dressing-and-tissue-forceps-02-1801": {
+      "path": "/catalogue/products/surgical-dressing-and-tissue-forceps-02-1801.avif",
+      "width": 418,
+      "height": 55,
+      "bytes": 1690,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-dressing-and-tissue-forceps-02-1802": {
+      "path": "/catalogue/products/surgical-dressing-and-tissue-forceps-02-1802.avif",
+      "width": 404,
+      "height": 71,
+      "bytes": 1933,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-dressing-and-tissue-forceps-01-5004": {
+      "path": "/catalogue/products/surgical-dressing-and-tissue-forceps-01-5004.avif",
+      "width": 416,
+      "height": 74,
+      "bytes": 2141,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-tc-dressing-and-tissue-forceps-03-0101": {
+      "path": "/catalogue/products/surgical-tc-dressing-and-tissue-forceps-03-0101.avif",
+      "width": 391,
+      "height": 61,
+      "bytes": 1921,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-tc-dressing-and-tissue-forceps-03-0201": {
+      "path": "/catalogue/products/surgical-tc-dressing-and-tissue-forceps-03-0201.avif",
+      "width": 412,
+      "height": 57,
+      "bytes": 1866,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-tc-dressing-and-tissue-forceps-03-0202": {
+      "path": "/catalogue/products/surgical-tc-dressing-and-tissue-forceps-03-0202.avif",
+      "width": 415,
+      "height": 63,
+      "bytes": 2075,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-tc-dressing-and-tissue-forceps-03-0301": {
+      "path": "/catalogue/products/surgical-tc-dressing-and-tissue-forceps-03-0301.avif",
+      "width": 415,
+      "height": 76,
+      "bytes": 2428,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-tc-dressing-and-tissue-forceps-03-0302": {
+      "path": "/catalogue/products/surgical-tc-dressing-and-tissue-forceps-03-0302.avif",
+      "width": 402,
+      "height": 79,
+      "bytes": 2715,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-tc-dressing-and-tissue-forceps-03-0501": {
+      "path": "/catalogue/products/surgical-tc-dressing-and-tissue-forceps-03-0501.avif",
+      "width": 415,
+      "height": 73,
+      "bytes": 2391,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-tc-dressing-and-tissue-forceps-03-0603": {
+      "path": "/catalogue/products/surgical-tc-dressing-and-tissue-forceps-03-0603.avif",
+      "width": 408,
+      "height": 82,
+      "bytes": 2443,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-tc-dressing-and-tissue-forceps-03-0701g": {
+      "path": "/catalogue/products/surgical-tc-dressing-and-tissue-forceps-03-0701g.avif",
+      "width": 408,
+      "height": 83,
+      "bytes": 2701,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-tc-dressing-and-tissue-forceps-03-0901": {
+      "path": "/catalogue/products/surgical-tc-dressing-and-tissue-forceps-03-0901.avif",
+      "width": 418,
+      "height": 58,
+      "bytes": 1785,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-tc-dressing-and-tissue-forceps-03-1102": {
+      "path": "/catalogue/products/surgical-tc-dressing-and-tissue-forceps-03-1102.avif",
+      "width": 418,
+      "height": 59,
+      "bytes": 1879,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-tc-dressing-and-tissue-forceps-03-1701": {
+      "path": "/catalogue/products/surgical-tc-dressing-and-tissue-forceps-03-1701.avif",
+      "width": 418,
+      "height": 79,
+      "bytes": 2066,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-micro-forceps-01-4303": {
+      "path": "/catalogue/products/surgical-micro-forceps-01-4303.avif",
+      "width": 406,
+      "height": 66,
+      "bytes": 1623,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-micro-forceps-01-4304": {
+      "path": "/catalogue/products/surgical-micro-forceps-01-4304.avif",
+      "width": 418,
+      "height": 74,
+      "bytes": 1738,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-micro-forceps-01-4307": {
+      "path": "/catalogue/products/surgical-micro-forceps-01-4307.avif",
+      "width": 407,
+      "height": 80,
+      "bytes": 1994,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-micro-forceps-01-4309": {
+      "path": "/catalogue/products/surgical-micro-forceps-01-4309.avif",
+      "width": 429,
+      "height": 74,
+      "bytes": 1983,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-micro-forceps-01-4325": {
+      "path": "/catalogue/products/surgical-micro-forceps-01-4325.avif",
+      "width": 427,
+      "height": 71,
+      "bytes": 1579,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-micro-forceps-02-0101": {
+      "path": "/catalogue/products/surgical-micro-forceps-02-0101.avif",
+      "width": 415,
+      "height": 160,
+      "bytes": 2782,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-micro-forceps-02-3304": {
+      "path": "/catalogue/products/surgical-micro-forceps-02-3304.avif",
+      "width": 412,
+      "height": 74,
+      "bytes": 2394,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-micro-forceps-02-2953": {
+      "path": "/catalogue/products/surgical-micro-forceps-02-2953.avif",
+      "width": 408,
+      "height": 73,
+      "bytes": 2321,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-micro-forceps-02-2950": {
+      "path": "/catalogue/products/surgical-micro-forceps-02-2950.avif",
+      "width": 412,
+      "height": 74,
+      "bytes": 2240,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-probes-and-directors-29-0501": {
+      "path": "/catalogue/products/surgical-probes-and-directors-29-0501.avif",
+      "width": 381,
+      "height": 35,
+      "bytes": 757,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-probes-and-directors-29-0602": {
+      "path": "/catalogue/products/surgical-probes-and-directors-29-0602.avif",
+      "width": 395,
+      "height": 71,
+      "bytes": 1294,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-probes-and-directors-21-2401": {
+      "path": "/catalogue/products/surgical-probes-and-directors-21-2401.avif",
+      "width": 412,
+      "height": 70,
+      "bytes": 1190,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-probes-and-directors-21-2402": {
+      "path": "/catalogue/products/surgical-probes-and-directors-21-2402.avif",
+      "width": 415,
+      "height": 71,
+      "bytes": 1430,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-probes-and-directors-21-2403": {
+      "path": "/catalogue/products/surgical-probes-and-directors-21-2403.avif",
+      "width": 418,
+      "height": 72,
+      "bytes": 1418,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-probes-and-directors-21-2404": {
+      "path": "/catalogue/products/surgical-probes-and-directors-21-2404.avif",
+      "width": 424,
+      "height": 69,
+      "bytes": 1312,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-probes-and-directors-21-2400": {
+      "path": "/catalogue/products/surgical-probes-and-directors-21-2400.avif",
+      "width": 421,
+      "height": 269,
+      "bytes": 4371,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-suction-tubes-38-2210": {
+      "path": "/catalogue/products/surgical-suction-tubes-38-2210.avif",
+      "width": 392,
+      "height": 62,
+      "bytes": 1495,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-suction-tubes-38-2211": {
+      "path": "/catalogue/products/surgical-suction-tubes-38-2211.avif",
+      "width": 406,
+      "height": 103,
+      "bytes": 2463,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-suction-tubes-38-2217": {
+      "path": "/catalogue/products/surgical-suction-tubes-38-2217.avif",
+      "width": 418,
+      "height": 104,
+      "bytes": 2132,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-suction-tubes-26-0200": {
+      "path": "/catalogue/products/surgical-suction-tubes-26-0200.avif",
+      "width": 392,
+      "height": 52,
+      "bytes": 1734,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-suction-tubes-26-0101": {
+      "path": "/catalogue/products/surgical-suction-tubes-26-0101.avif",
+      "width": 400,
+      "height": 88,
+      "bytes": 1979,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-needle-holders-09-1101": {
+      "path": "/catalogue/products/surgical-needle-holders-09-1101.avif",
+      "width": 387,
+      "height": 176,
+      "bytes": 3142,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-needle-holders-11-1111": {
+      "path": "/catalogue/products/surgical-needle-holders-11-1111.avif",
+      "width": 385,
+      "height": 197,
+      "bytes": 3970,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-needle-holders-11-1401": {
+      "path": "/catalogue/products/surgical-needle-holders-11-1401.avif",
+      "width": 399,
+      "height": 200,
+      "bytes": 4016,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-needle-holders-11-3001": {
+      "path": "/catalogue/products/surgical-needle-holders-11-3001.avif",
+      "width": 407,
+      "height": 192,
+      "bytes": 4483,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-needle-holders-09-1301": {
+      "path": "/catalogue/products/surgical-needle-holders-09-1301.avif",
+      "width": 342,
+      "height": 178,
+      "bytes": 3136,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-needle-holders-11-1301": {
+      "path": "/catalogue/products/surgical-needle-holders-11-1301.avif",
+      "width": 351,
+      "height": 191,
+      "bytes": 3615,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-needle-holders-09-0700": {
+      "path": "/catalogue/products/surgical-needle-holders-09-0700.avif",
+      "width": 361,
+      "height": 189,
+      "bytes": 3278,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-needle-holders-11-0700": {
+      "path": "/catalogue/products/surgical-needle-holders-11-0700.avif",
+      "width": 385,
+      "height": 197,
+      "bytes": 4122,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-micro-needle-holders-10-0401": {
+      "path": "/catalogue/products/surgical-micro-needle-holders-10-0401.avif",
+      "width": 410,
+      "height": 105,
+      "bytes": 3435,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-micro-needle-holders-10-1202": {
+      "path": "/catalogue/products/surgical-micro-needle-holders-10-1202.avif",
+      "width": 415,
+      "height": 85,
+      "bytes": 2441,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-micro-needle-holders-10-0702": {
+      "path": "/catalogue/products/surgical-micro-needle-holders-10-0702.avif",
+      "width": 344,
+      "height": 81,
+      "bytes": 2198,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-micro-needle-holders-12-0301d": {
+      "path": "/catalogue/products/surgical-micro-needle-holders-12-0301d.avif",
+      "width": 403,
+      "height": 110,
+      "bytes": 3730,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-hemostatic-forceps-13-0301": {
+      "path": "/catalogue/products/surgical-hemostatic-forceps-13-0301.avif",
+      "width": 295,
+      "height": 190,
+      "bytes": 3197,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-hemostatic-forceps-13-0101": {
+      "path": "/catalogue/products/surgical-hemostatic-forceps-13-0101.avif",
+      "width": 359,
+      "height": 216,
+      "bytes": 3817,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-hemostatic-forceps-13-0501": {
+      "path": "/catalogue/products/surgical-hemostatic-forceps-13-0501.avif",
+      "width": 360,
+      "height": 202,
+      "bytes": 3499,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-hemostatic-forceps-13-0650": {
+      "path": "/catalogue/products/surgical-hemostatic-forceps-13-0650.avif",
+      "width": 376,
+      "height": 215,
+      "bytes": 3415,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-hemostatic-forceps-13-1001": {
+      "path": "/catalogue/products/surgical-hemostatic-forceps-13-1001.avif",
+      "width": 377,
+      "height": 224,
+      "bytes": 4625,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-hemostatic-forceps-13-1101": {
+      "path": "/catalogue/products/surgical-hemostatic-forceps-13-1101.avif",
+      "width": 418,
+      "height": 198,
+      "bytes": 4812,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-hemostatic-forceps-13-1501": {
+      "path": "/catalogue/products/surgical-hemostatic-forceps-13-1501.avif",
+      "width": 409,
+      "height": 191,
+      "bytes": 4451,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-hemostatic-forceps-13-1601": {
+      "path": "/catalogue/products/surgical-hemostatic-forceps-13-1601.avif",
+      "width": 337,
+      "height": 185,
+      "bytes": 3384,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-hemostatic-forceps-13-1911": {
+      "path": "/catalogue/products/surgical-hemostatic-forceps-13-1911.avif",
+      "width": 408,
+      "height": 188,
+      "bytes": 3814,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-hemostatic-forceps-13-1912": {
+      "path": "/catalogue/products/surgical-hemostatic-forceps-13-1912.avif",
+      "width": 400,
+      "height": 213,
+      "bytes": 3604,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-hemostatic-forceps-13-3211": {
+      "path": "/catalogue/products/surgical-hemostatic-forceps-13-3211.avif",
+      "width": 392,
+      "height": 182,
+      "bytes": 3336,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-hemostatic-forceps-32-0601": {
+      "path": "/catalogue/products/surgical-hemostatic-forceps-32-0601.avif",
+      "width": 416,
+      "height": 208,
+      "bytes": 3887,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-tubing-and-towel-clamps-22-0101": {
+      "path": "/catalogue/products/surgical-tubing-and-towel-clamps-22-0101.avif",
+      "width": 346,
+      "height": 182,
+      "bytes": 3385,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-tubing-and-towel-clamps-22-0401": {
+      "path": "/catalogue/products/surgical-tubing-and-towel-clamps-22-0401.avif",
+      "width": 344,
+      "height": 224,
+      "bytes": 4222,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-tubing-and-towel-clamps-22-0501": {
+      "path": "/catalogue/products/surgical-tubing-and-towel-clamps-22-0501.avif",
+      "width": 373,
+      "height": 199,
+      "bytes": 3316,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-tubing-and-towel-clamps-22-0601": {
+      "path": "/catalogue/products/surgical-tubing-and-towel-clamps-22-0601.avif",
+      "width": 289,
+      "height": 91,
+      "bytes": 1885,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-tubing-and-towel-clamps-13-4501": {
+      "path": "/catalogue/products/surgical-tubing-and-towel-clamps-13-4501.avif",
+      "width": 408,
+      "height": 179,
+      "bytes": 3423,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-sponge-holding-forceps-23-0101": {
+      "path": "/catalogue/products/surgical-sponge-holding-forceps-23-0101.avif",
+      "width": 393,
+      "height": 280,
+      "bytes": 4988,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-sponge-holding-forceps-23-0801": {
+      "path": "/catalogue/products/surgical-sponge-holding-forceps-23-0801.avif",
+      "width": 376,
+      "height": 160,
+      "bytes": 3415,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-skin-hooks-17-0101": {
+      "path": "/catalogue/products/surgical-skin-hooks-17-0101.avif",
+      "width": 398,
+      "height": 43,
+      "bytes": 1143,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-skin-hooks-17-0700": {
+      "path": "/catalogue/products/surgical-skin-hooks-17-0700.avif",
+      "width": 376,
+      "height": 50,
+      "bytes": 1259,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-skin-hooks-17-0500": {
+      "path": "/catalogue/products/surgical-skin-hooks-17-0500.avif",
+      "width": 348,
+      "height": 97,
+      "bytes": 1887,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-skin-hooks-17-0901": {
+      "path": "/catalogue/products/surgical-skin-hooks-17-0901.avif",
+      "width": 402,
+      "height": 49,
+      "bytes": 1254,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-skin-hooks-17-1101": {
+      "path": "/catalogue/products/surgical-skin-hooks-17-1101.avif",
+      "width": 409,
+      "height": 47,
+      "bytes": 1249,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-skin-hooks-17-1102": {
+      "path": "/catalogue/products/surgical-skin-hooks-17-1102.avif",
+      "width": 423,
+      "height": 53,
+      "bytes": 1824,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-skin-hooks-17-2500": {
+      "path": "/catalogue/products/surgical-skin-hooks-17-2500.avif",
+      "width": 411,
+      "height": 63,
+      "bytes": 1388,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-hand-retractors-15-5203": {
+      "path": "/catalogue/products/surgical-hand-retractors-15-5203.avif",
+      "width": 327,
+      "height": 87,
+      "bytes": 1387,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-hand-retractors-15-5800": {
+      "path": "/catalogue/products/surgical-hand-retractors-15-5800.avif",
+      "width": 326,
+      "height": 73,
+      "bytes": 1066,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-hand-retractors-15-0200": {
+      "path": "/catalogue/products/surgical-hand-retractors-15-0200.avif",
+      "width": 303,
+      "height": 97,
+      "bytes": 1559,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-hand-retractors-15-0600": {
+      "path": "/catalogue/products/surgical-hand-retractors-15-0600.avif",
+      "width": 384,
+      "height": 96,
+      "bytes": 1913,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-hand-retractors-15-0700": {
+      "path": "/catalogue/products/surgical-hand-retractors-15-0700.avif",
+      "width": 335,
+      "height": 137,
+      "bytes": 2826,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-hand-retractors-15-4601": {
+      "path": "/catalogue/products/surgical-hand-retractors-15-4601.avif",
+      "width": 332,
+      "height": 49,
+      "bytes": 1239,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-hand-retractors-15-6800": {
+      "path": "/catalogue/products/surgical-hand-retractors-15-6800.avif",
+      "width": 388,
+      "height": 112,
+      "bytes": 1971,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-hand-retractors-15-1101": {
+      "path": "/catalogue/products/surgical-hand-retractors-15-1101.avif",
+      "width": 342,
+      "height": 118,
+      "bytes": 2014,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-hand-retractors-15-4302": {
+      "path": "/catalogue/products/surgical-hand-retractors-15-4302.avif",
+      "width": 416,
+      "height": 53,
+      "bytes": 1179,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-hand-retractors-15-4502": {
+      "path": "/catalogue/products/surgical-hand-retractors-15-4502.avif",
+      "width": 418,
+      "height": 84,
+      "bytes": 2301,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-hand-retractors-15-1701": {
+      "path": "/catalogue/products/surgical-hand-retractors-15-1701.avif",
+      "width": 399,
+      "height": 110,
+      "bytes": 1990,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-hand-retractors-15-1001": {
+      "path": "/catalogue/products/surgical-hand-retractors-15-1001.avif",
+      "width": 393,
+      "height": 116,
+      "bytes": 1783,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-hand-retractors-15-3901": {
+      "path": "/catalogue/products/surgical-hand-retractors-15-3901.avif",
+      "width": 384,
+      "height": 94,
+      "bytes": 2551,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-hand-retractors-15-4101": {
+      "path": "/catalogue/products/surgical-hand-retractors-15-4101.avif",
+      "width": 408,
+      "height": 105,
+      "bytes": 2937,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-self-retaining-retractors-16-0101": {
+      "path": "/catalogue/products/surgical-self-retaining-retractors-16-0101.avif",
+      "width": 289,
+      "height": 175,
+      "bytes": 3403,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-self-retaining-retractors-16-1100": {
+      "path": "/catalogue/products/surgical-self-retaining-retractors-16-1100.avif",
+      "width": 280,
+      "height": 135,
+      "bytes": 3225,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-self-retaining-retractors-16-1202": {
+      "path": "/catalogue/products/surgical-self-retaining-retractors-16-1202.avif",
+      "width": 342,
+      "height": 165,
+      "bytes": 3980,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-self-retaining-retractors-16-1203": {
+      "path": "/catalogue/products/surgical-self-retaining-retractors-16-1203.avif",
+      "width": 360,
+      "height": 172,
+      "bytes": 3892,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-self-retaining-retractors-16-1301": {
+      "path": "/catalogue/products/surgical-self-retaining-retractors-16-1301.avif",
+      "width": 383,
+      "height": 182,
+      "bytes": 4611,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-self-retaining-retractors-16-2401": {
+      "path": "/catalogue/products/surgical-self-retaining-retractors-16-2401.avif",
+      "width": 343,
+      "height": 184,
+      "bytes": 3978,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-self-retaining-retractors-16-2950": {
+      "path": "/catalogue/products/surgical-self-retaining-retractors-16-2950.avif",
+      "width": 190,
+      "height": 182,
+      "bytes": 2665,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-self-retaining-retractors-16-2901": {
+      "path": "/catalogue/products/surgical-self-retaining-retractors-16-2901.avif",
+      "width": 247,
+      "height": 253,
+      "bytes": 3686,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-self-retaining-retractors-16-2910": {
+      "path": "/catalogue/products/surgical-self-retaining-retractors-16-2910.avif",
+      "width": 286,
+      "height": 304,
+      "bytes": 4635,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-files-and-elevators-37-5700": {
+      "path": "/catalogue/products/surgical-bone-files-and-elevators-37-5700.avif",
+      "width": 399,
+      "height": 66,
+      "bytes": 1680,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-files-and-elevators-37-0950": {
+      "path": "/catalogue/products/surgical-bone-files-and-elevators-37-0950.avif",
+      "width": 406,
+      "height": 64,
+      "bytes": 1681,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-files-and-elevators-37-0801": {
+      "path": "/catalogue/products/surgical-bone-files-and-elevators-37-0801.avif",
+      "width": 388,
+      "height": 57,
+      "bytes": 1341,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-files-and-elevators-37-0101": {
+      "path": "/catalogue/products/surgical-bone-files-and-elevators-37-0101.avif",
+      "width": 388,
+      "height": 44,
+      "bytes": 1395,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-files-and-elevators-37-0103": {
+      "path": "/catalogue/products/surgical-bone-files-and-elevators-37-0103.avif",
+      "width": 401,
+      "height": 71,
+      "bytes": 1608,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-files-and-elevators-37-0104": {
+      "path": "/catalogue/products/surgical-bone-files-and-elevators-37-0104.avif",
+      "width": 408,
+      "height": 60,
+      "bytes": 1739,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-mallets-36-8601": {
+      "path": "/catalogue/products/surgical-mallets-36-8601.avif",
+      "width": 347,
+      "height": 102,
+      "bytes": 1858,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-mallets-36-8615": {
+      "path": "/catalogue/products/surgical-mallets-36-8615.avif",
+      "width": 367,
+      "height": 128,
+      "bytes": 2871,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-mallets-800-506": {
+      "path": "/catalogue/products/surgical-mallets-800-506.avif",
+      "width": 373,
+      "height": 118,
+      "bytes": 2162,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-mallets-800-512": {
+      "path": "/catalogue/products/surgical-mallets-800-512.avif",
+      "width": 374,
+      "height": 127,
+      "bytes": 2648,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-mallets-36-8630": {
+      "path": "/catalogue/products/surgical-mallets-36-8630.avif",
+      "width": 375,
+      "height": 139,
+      "bytes": 2110,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-chisels-and-osteotomes-36-8002": {
+      "path": "/catalogue/products/surgical-bone-chisels-and-osteotomes-36-8002.avif",
+      "width": 374,
+      "height": 52,
+      "bytes": 1797,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-chisels-and-osteotomes-36-8012": {
+      "path": "/catalogue/products/surgical-bone-chisels-and-osteotomes-36-8012.avif",
+      "width": 406,
+      "height": 70,
+      "bytes": 1518,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-chisels-and-osteotomes-36-7381": {
+      "path": "/catalogue/products/surgical-bone-chisels-and-osteotomes-36-7381.avif",
+      "width": 429,
+      "height": 108,
+      "bytes": 1708,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-chisels-and-osteotomes-36-7382": {
+      "path": "/catalogue/products/surgical-bone-chisels-and-osteotomes-36-7382.avif",
+      "width": 426,
+      "height": 105,
+      "bytes": 1687,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-chisels-and-osteotomes-36-7393": {
+      "path": "/catalogue/products/surgical-bone-chisels-and-osteotomes-36-7393.avif",
+      "width": 425,
+      "height": 92,
+      "bytes": 1544,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-chisels-and-osteotomes-36-7001": {
+      "path": "/catalogue/products/surgical-bone-chisels-and-osteotomes-36-7001.avif",
+      "width": 400,
+      "height": 129,
+      "bytes": 2239,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-chisels-and-osteotomes-36-6901": {
+      "path": "/catalogue/products/surgical-bone-chisels-and-osteotomes-36-6901.avif",
+      "width": 406,
+      "height": 112,
+      "bytes": 1654,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-chisels-and-osteotomes-36-6931": {
+      "path": "/catalogue/products/surgical-bone-chisels-and-osteotomes-36-6931.avif",
+      "width": 417,
+      "height": 124,
+      "bytes": 1651,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-chisels-and-osteotomes-36-6450": {
+      "path": "/catalogue/products/surgical-bone-chisels-and-osteotomes-36-6450.avif",
+      "width": 408,
+      "height": 52,
+      "bytes": 1574,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-curettes-37-2001": {
+      "path": "/catalogue/products/surgical-bone-curettes-37-2001.avif",
+      "width": 391,
+      "height": 82,
+      "bytes": 2125,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-curettes-37-2300": {
+      "path": "/catalogue/products/surgical-bone-curettes-37-2300.avif",
+      "width": 404,
+      "height": 67,
+      "bytes": 2499,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-curettes-37-2315": {
+      "path": "/catalogue/products/surgical-bone-curettes-37-2315.avif",
+      "width": 387,
+      "height": 62,
+      "bytes": 1525,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-curettes-37-2321": {
+      "path": "/catalogue/products/surgical-bone-curettes-37-2321.avif",
+      "width": 403,
+      "height": 63,
+      "bytes": 1513,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-curettes-37-2325": {
+      "path": "/catalogue/products/surgical-bone-curettes-37-2325.avif",
+      "width": 400,
+      "height": 69,
+      "bytes": 1508,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-curettes-37-2521": {
+      "path": "/catalogue/products/surgical-bone-curettes-37-2521.avif",
+      "width": 402,
+      "height": 69,
+      "bytes": 1616,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-rongeurs-36-1901": {
+      "path": "/catalogue/products/surgical-bone-rongeurs-36-1901.avif",
+      "width": 380,
+      "height": 189,
+      "bytes": 3641,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-rongeurs-36-2002": {
+      "path": "/catalogue/products/surgical-bone-rongeurs-36-2002.avif",
+      "width": 376,
+      "height": 205,
+      "bytes": 3657,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-rongeurs-36-2200": {
+      "path": "/catalogue/products/surgical-bone-rongeurs-36-2200.avif",
+      "width": 371,
+      "height": 197,
+      "bytes": 3339,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-rongeurs-36-2501": {
+      "path": "/catalogue/products/surgical-bone-rongeurs-36-2501.avif",
+      "width": 370,
+      "height": 183,
+      "bytes": 4010,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-rongeurs-36-2601": {
+      "path": "/catalogue/products/surgical-bone-rongeurs-36-2601.avif",
+      "width": 382,
+      "height": 153,
+      "bytes": 3630,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-rongeurs-36-2902": {
+      "path": "/catalogue/products/surgical-bone-rongeurs-36-2902.avif",
+      "width": 370,
+      "height": 183,
+      "bytes": 3214,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-rongeurs-36-3000": {
+      "path": "/catalogue/products/surgical-bone-rongeurs-36-3000.avif",
+      "width": 387,
+      "height": 172,
+      "bytes": 3612,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-rongeurs-36-3500": {
+      "path": "/catalogue/products/surgical-bone-rongeurs-36-3500.avif",
+      "width": 353,
+      "height": 162,
+      "bytes": 3454,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-rongeurs-36-3901": {
+      "path": "/catalogue/products/surgical-bone-rongeurs-36-3901.avif",
+      "width": 384,
+      "height": 165,
+      "bytes": 3331,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-rongeurs-36-3911": {
+      "path": "/catalogue/products/surgical-bone-rongeurs-36-3911.avif",
+      "width": 390,
+      "height": 164,
+      "bytes": 3945,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-rongeurs-36-4502": {
+      "path": "/catalogue/products/surgical-bone-rongeurs-36-4502.avif",
+      "width": 400,
+      "height": 172,
+      "bytes": 4323,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-rongeurs-36-4801": {
+      "path": "/catalogue/products/surgical-bone-rongeurs-36-4801.avif",
+      "width": 386,
+      "height": 168,
+      "bytes": 4763,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-holding-and-cutters-36-5101": {
+      "path": "/catalogue/products/surgical-bone-holding-and-cutters-36-5101.avif",
+      "width": 396,
+      "height": 199,
+      "bytes": 3785,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-holding-and-cutters-36-5402": {
+      "path": "/catalogue/products/surgical-bone-holding-and-cutters-36-5402.avif",
+      "width": 394,
+      "height": 199,
+      "bytes": 3661,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-holding-and-cutters-36-5701": {
+      "path": "/catalogue/products/surgical-bone-holding-and-cutters-36-5701.avif",
+      "width": 373,
+      "height": 177,
+      "bytes": 3464,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-holding-and-cutters-36-5711": {
+      "path": "/catalogue/products/surgical-bone-holding-and-cutters-36-5711.avif",
+      "width": 394,
+      "height": 175,
+      "bytes": 3876,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-holding-and-cutters-36-5911": {
+      "path": "/catalogue/products/surgical-bone-holding-and-cutters-36-5911.avif",
+      "width": 393,
+      "height": 155,
+      "bytes": 3503,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-holding-and-cutters-36-6100": {
+      "path": "/catalogue/products/surgical-bone-holding-and-cutters-36-6100.avif",
+      "width": 383,
+      "height": 188,
+      "bytes": 3472,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-holding-and-cutters-36-1801": {
+      "path": "/catalogue/products/surgical-bone-holding-and-cutters-36-1801.avif",
+      "width": 352,
+      "height": 181,
+      "bytes": 3167,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-holding-and-cutters-36-0201": {
+      "path": "/catalogue/products/surgical-bone-holding-and-cutters-36-0201.avif",
+      "width": 395,
+      "height": 176,
+      "bytes": 3864,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-holding-and-cutters-36-0203": {
+      "path": "/catalogue/products/surgical-bone-holding-and-cutters-36-0203.avif",
+      "width": 351,
+      "height": 116,
+      "bytes": 3201,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-holding-and-cutters-36-0701": {
+      "path": "/catalogue/products/surgical-bone-holding-and-cutters-36-0701.avif",
+      "width": 386,
+      "height": 162,
+      "bytes": 3530,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-holding-and-cutters-36-1201": {
+      "path": "/catalogue/products/surgical-bone-holding-and-cutters-36-1201.avif",
+      "width": 398,
+      "height": 180,
+      "bytes": 3503,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-holding-and-cutters-36-1508": {
+      "path": "/catalogue/products/surgical-bone-holding-and-cutters-36-1508.avif",
+      "width": 374,
+      "height": 201,
+      "bytes": 3908,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-bone-holding-and-cutters-37-5500": {
+      "path": "/catalogue/products/surgical-bone-holding-and-cutters-37-5500.avif",
+      "width": 396,
+      "height": 115,
+      "bytes": 2845,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-dermatology-instruments-19-0100": {
+      "path": "/catalogue/products/surgical-dermatology-instruments-19-0100.avif",
+      "width": 368,
+      "height": 106,
+      "bytes": 2004,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-dermatology-instruments-19-0200": {
+      "path": "/catalogue/products/surgical-dermatology-instruments-19-0200.avif",
+      "width": 360,
+      "height": 151,
+      "bytes": 2884,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-dermatology-instruments-19-0300": {
+      "path": "/catalogue/products/surgical-dermatology-instruments-19-0300.avif",
+      "width": 376,
+      "height": 72,
+      "bytes": 2155,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-dermatology-instruments-19-0401": {
+      "path": "/catalogue/products/surgical-dermatology-instruments-19-0401.avif",
+      "width": 377,
+      "height": 42,
+      "bytes": 1175,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-dermatology-instruments-19-0402": {
+      "path": "/catalogue/products/surgical-dermatology-instruments-19-0402.avif",
+      "width": 375,
+      "height": 47,
+      "bytes": 1322,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-dermatology-instruments-19-0404": {
+      "path": "/catalogue/products/surgical-dermatology-instruments-19-0404.avif",
+      "width": 386,
+      "height": 46,
+      "bytes": 1246,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-dermatology-instruments-19-0502": {
+      "path": "/catalogue/products/surgical-dermatology-instruments-19-0502.avif",
+      "width": 408,
+      "height": 44,
+      "bytes": 1267,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-dermatology-instruments-19-0702": {
+      "path": "/catalogue/products/surgical-dermatology-instruments-19-0702.avif",
+      "width": 353,
+      "height": 55,
+      "bytes": 1852,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-dermatology-instruments-19-0800": {
+      "path": "/catalogue/products/surgical-dermatology-instruments-19-0800.avif",
+      "width": 287,
+      "height": 156,
+      "bytes": 3969,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-laryngoscopes-45-7510": {
+      "path": "/catalogue/products/surgical-laryngoscopes-45-7510.avif",
+      "width": 418,
+      "height": 419,
+      "bytes": 9728,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-laryngoscopes-45-7525": {
+      "path": "/catalogue/products/surgical-laryngoscopes-45-7525.avif",
+      "width": 288,
+      "height": 391,
+      "bytes": 10768,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-anesthesia-and-mouth-instruments-24-0101": {
+      "path": "/catalogue/products/surgical-anesthesia-and-mouth-instruments-24-0101.avif",
+      "width": 409,
+      "height": 197,
+      "bytes": 4390,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-anesthesia-and-mouth-instruments-24-0200": {
+      "path": "/catalogue/products/surgical-anesthesia-and-mouth-instruments-24-0200.avif",
+      "width": 362,
+      "height": 174,
+      "bytes": 4189,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-anesthesia-and-mouth-instruments-24-0300": {
+      "path": "/catalogue/products/surgical-anesthesia-and-mouth-instruments-24-0300.avif",
+      "width": 402,
+      "height": 150,
+      "bytes": 3313,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-anesthesia-and-mouth-instruments-27-0202": {
+      "path": "/catalogue/products/surgical-anesthesia-and-mouth-instruments-27-0202.avif",
+      "width": 298,
+      "height": 231,
+      "bytes": 5021,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-anesthesia-and-mouth-instruments-27-0300": {
+      "path": "/catalogue/products/surgical-anesthesia-and-mouth-instruments-27-0300.avif",
+      "width": 346,
+      "height": 166,
+      "bytes": 3545,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-anesthesia-and-mouth-instruments-27-0801": {
+      "path": "/catalogue/products/surgical-anesthesia-and-mouth-instruments-27-0801.avif",
+      "width": 359,
+      "height": 63,
+      "bytes": 1558,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-anesthesia-and-mouth-instruments-27-0900": {
+      "path": "/catalogue/products/surgical-anesthesia-and-mouth-instruments-27-0900.avif",
+      "width": 372,
+      "height": 60,
+      "bytes": 1799,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-anesthesia-and-mouth-instruments-27-1001": {
+      "path": "/catalogue/products/surgical-anesthesia-and-mouth-instruments-27-1001.avif",
+      "width": 368,
+      "height": 162,
+      "bytes": 2865,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-stomach-intestinal-instruments-14-0102": {
+      "path": "/catalogue/products/surgical-stomach-intestinal-instruments-14-0102.avif",
+      "width": 369,
+      "height": 193,
+      "bytes": 3402,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-stomach-intestinal-instruments-14-0202": {
+      "path": "/catalogue/products/surgical-stomach-intestinal-instruments-14-0202.avif",
+      "width": 394,
+      "height": 159,
+      "bytes": 3136,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-stomach-intestinal-instruments-14-0500": {
+      "path": "/catalogue/products/surgical-stomach-intestinal-instruments-14-0500.avif",
+      "width": 416,
+      "height": 170,
+      "bytes": 3442,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-stomach-intestinal-instruments-14-1000": {
+      "path": "/catalogue/products/surgical-stomach-intestinal-instruments-14-1000.avif",
+      "width": 401,
+      "height": 164,
+      "bytes": 3386,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-stomach-intestinal-instruments-14-2101": {
+      "path": "/catalogue/products/surgical-stomach-intestinal-instruments-14-2101.avif",
+      "width": 423,
+      "height": 184,
+      "bytes": 3340,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-stomach-intestinal-instruments-14-1701": {
+      "path": "/catalogue/products/surgical-stomach-intestinal-instruments-14-1701.avif",
+      "width": 385,
+      "height": 159,
+      "bytes": 3060,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-stomach-intestinal-instruments-14-1801": {
+      "path": "/catalogue/products/surgical-stomach-intestinal-instruments-14-1801.avif",
+      "width": 384,
+      "height": 151,
+      "bytes": 3278,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-stomach-intestinal-instruments-14-1812": {
+      "path": "/catalogue/products/surgical-stomach-intestinal-instruments-14-1812.avif",
+      "width": 392,
+      "height": 158,
+      "bytes": 2829,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-stomach-intestinal-instruments-14-2301": {
+      "path": "/catalogue/products/surgical-stomach-intestinal-instruments-14-2301.avif",
+      "width": 396,
+      "height": 165,
+      "bytes": 3435,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-stomach-intestinal-instruments-14-2311": {
+      "path": "/catalogue/products/surgical-stomach-intestinal-instruments-14-2311.avif",
+      "width": 375,
+      "height": 120,
+      "bytes": 2984,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-rectal-instruments-21-1010r": {
+      "path": "/catalogue/products/surgical-rectal-instruments-21-1010r.avif",
+      "width": 399,
+      "height": 155,
+      "bytes": 2599,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-rectal-instruments-21-0101": {
+      "path": "/catalogue/products/surgical-rectal-instruments-21-0101.avif",
+      "width": 415,
+      "height": 148,
+      "bytes": 3050,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-rectal-instruments-21-0103": {
+      "path": "/catalogue/products/surgical-rectal-instruments-21-0103.avif",
+      "width": 327,
+      "height": 176,
+      "bytes": 4246,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-rectal-instruments-21-0104": {
+      "path": "/catalogue/products/surgical-rectal-instruments-21-0104.avif",
+      "width": 384,
+      "height": 113,
+      "bytes": 2040,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-rectal-instruments-21-0104-2": {
+      "path": "/catalogue/products/surgical-rectal-instruments-21-0104-2.avif",
+      "width": 370,
+      "height": 173,
+      "bytes": 3892,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-rectal-instruments-21-0105": {
+      "path": "/catalogue/products/surgical-rectal-instruments-21-0105.avif",
+      "width": 353,
+      "height": 162,
+      "bytes": 4454,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-rectal-instruments-21-0200": {
+      "path": "/catalogue/products/surgical-rectal-instruments-21-0200.avif",
+      "width": 362,
+      "height": 167,
+      "bytes": 3657,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-rectal-instruments-21-0500": {
+      "path": "/catalogue/products/surgical-rectal-instruments-21-0500.avif",
+      "width": 382,
+      "height": 166,
+      "bytes": 4254,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-rectal-instruments-21-0700": {
+      "path": "/catalogue/products/surgical-rectal-instruments-21-0700.avif",
+      "width": 320,
+      "height": 372,
+      "bytes": 6239,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-rectal-instruments-21-0301": {
+      "path": "/catalogue/products/surgical-rectal-instruments-21-0301.avif",
+      "width": 371,
+      "height": 213,
+      "bytes": 3240,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-rectal-instruments-21-0331": {
+      "path": "/catalogue/products/surgical-rectal-instruments-21-0331.avif",
+      "width": 311,
+      "height": 291,
+      "bytes": 3088,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-rectal-instruments-21-2304": {
+      "path": "/catalogue/products/surgical-rectal-instruments-21-2304.avif",
+      "width": 370,
+      "height": 51,
+      "bytes": 1088,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-rectal-instruments-21-1800": {
+      "path": "/catalogue/products/surgical-rectal-instruments-21-1800.avif",
+      "width": 375,
+      "height": 175,
+      "bytes": 3041,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-vein-hooks-and-strippers-17-5001": {
+      "path": "/catalogue/products/surgical-vein-hooks-and-strippers-17-5001.avif",
+      "width": 248,
+      "height": 102,
+      "bytes": 1598,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-vein-hooks-and-strippers-17-5005": {
+      "path": "/catalogue/products/surgical-vein-hooks-and-strippers-17-5005.avif",
+      "width": 350,
+      "height": 399,
+      "bytes": 7090,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-vein-hooks-and-strippers-17-5009": {
+      "path": "/catalogue/products/surgical-vein-hooks-and-strippers-17-5009.avif",
+      "width": 352,
+      "height": 258,
+      "bytes": 5319,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-vein-hooks-and-strippers-17-5015": {
+      "path": "/catalogue/products/surgical-vein-hooks-and-strippers-17-5015.avif",
+      "width": 403,
+      "height": 265,
+      "bytes": 6337,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-vein-hooks-and-strippers-28-0101": {
+      "path": "/catalogue/products/surgical-vein-hooks-and-strippers-28-0101.avif",
+      "width": 417,
+      "height": 566,
+      "bytes": 9729,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-urology-instruments-35-0400": {
+      "path": "/catalogue/products/surgical-urology-instruments-35-0400.avif",
+      "width": 374,
+      "height": 244,
+      "bytes": 4989,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-urology-instruments-35-0101": {
+      "path": "/catalogue/products/surgical-urology-instruments-35-0101.avif",
+      "width": 384,
+      "height": 360,
+      "bytes": 6457,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-urology-instruments-35-0201": {
+      "path": "/catalogue/products/surgical-urology-instruments-35-0201.avif",
+      "width": 442,
+      "height": 166,
+      "bytes": 2632,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-gynecology-instruments-45-0101": {
+      "path": "/catalogue/products/surgical-gynecology-instruments-45-0101.avif",
+      "width": 337,
+      "height": 222,
+      "bytes": 4486,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-gynecology-instruments-45-0200": {
+      "path": "/catalogue/products/surgical-gynecology-instruments-45-0200.avif",
+      "width": 293,
+      "height": 238,
+      "bytes": 4976,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-gynecology-instruments-45-0601": {
+      "path": "/catalogue/products/surgical-gynecology-instruments-45-0601.avif",
+      "width": 343,
+      "height": 204,
+      "bytes": 4886,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-gynecology-instruments-45-0501": {
+      "path": "/catalogue/products/surgical-gynecology-instruments-45-0501.avif",
+      "width": 359,
+      "height": 233,
+      "bytes": 2799,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-gynecology-instruments-45-0701": {
+      "path": "/catalogue/products/surgical-gynecology-instruments-45-0701.avif",
+      "width": 326,
+      "height": 172,
+      "bytes": 2359,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-gynecology-instruments-45-1202": {
+      "path": "/catalogue/products/surgical-gynecology-instruments-45-1202.avif",
+      "width": 376,
+      "height": 151,
+      "bytes": 2758,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-gynecology-instruments-45-1700a": {
+      "path": "/catalogue/products/surgical-gynecology-instruments-45-1700a.avif",
+      "width": 404,
+      "height": 397,
+      "bytes": 12340,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-gynecology-instruments-45-1800": {
+      "path": "/catalogue/products/surgical-gynecology-instruments-45-1800.avif",
+      "width": 351,
+      "height": 320,
+      "bytes": 13937,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-gynecology-instruments-45-2002": {
+      "path": "/catalogue/products/surgical-gynecology-instruments-45-2002.avif",
+      "width": 418,
+      "height": 53,
+      "bytes": 1318,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-gynecology-instruments-45-2003": {
+      "path": "/catalogue/products/surgical-gynecology-instruments-45-2003.avif",
+      "width": 425,
+      "height": 63,
+      "bytes": 1640,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-gynecology-instruments-45-2501": {
+      "path": "/catalogue/products/surgical-gynecology-instruments-45-2501.avif",
+      "width": 394,
+      "height": 150,
+      "bytes": 2743,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-gynecology-instruments-45-2502": {
+      "path": "/catalogue/products/surgical-gynecology-instruments-45-2502.avif",
+      "width": 375,
+      "height": 127,
+      "bytes": 2805,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-gynecology-instruments-45-3001": {
+      "path": "/catalogue/products/surgical-gynecology-instruments-45-3001.avif",
+      "width": 408,
+      "height": 120,
+      "bytes": 3193,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-gynecology-instruments-45-3101": {
+      "path": "/catalogue/products/surgical-gynecology-instruments-45-3101.avif",
+      "width": 408,
+      "height": 126,
+      "bytes": 2840,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-gynecology-instruments-45-3401": {
+      "path": "/catalogue/products/surgical-gynecology-instruments-45-3401.avif",
+      "width": 400,
+      "height": 184,
+      "bytes": 3639,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-gynecology-instruments-45-3621": {
+      "path": "/catalogue/products/surgical-gynecology-instruments-45-3621.avif",
+      "width": 391,
+      "height": 168,
+      "bytes": 3580,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-gynecology-instruments-45-6602": {
+      "path": "/catalogue/products/surgical-gynecology-instruments-45-6602.avif",
+      "width": 400,
+      "height": 248,
+      "bytes": 6723,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-gynecology-instruments-45-6501": {
+      "path": "/catalogue/products/surgical-gynecology-instruments-45-6501.avif",
+      "width": 392,
+      "height": 139,
+      "bytes": 2871,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-gynecology-instruments-45-4502": {
+      "path": "/catalogue/products/surgical-gynecology-instruments-45-4502.avif",
+      "width": 392,
+      "height": 49,
+      "bytes": 1484,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-gynecology-instruments-45-5100": {
+      "path": "/catalogue/products/surgical-gynecology-instruments-45-5100.avif",
+      "width": 402,
+      "height": 307,
+      "bytes": 4953,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-gynecology-instruments-45-5301": {
+      "path": "/catalogue/products/surgical-gynecology-instruments-45-5301.avif",
+      "width": 398,
+      "height": 143,
+      "bytes": 2771,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-gynecology-instruments-45-4300": {
+      "path": "/catalogue/products/surgical-gynecology-instruments-45-4300.avif",
+      "width": 367,
+      "height": 255,
+      "bytes": 6215,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-neurosurgery-instruments-38-2811": {
+      "path": "/catalogue/products/surgical-neurosurgery-instruments-38-2811.avif",
+      "width": 400,
+      "height": 192,
+      "bytes": 3619,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-neurosurgery-instruments-38-2915": {
+      "path": "/catalogue/products/surgical-neurosurgery-instruments-38-2915.avif",
+      "width": 401,
+      "height": 198,
+      "bytes": 3923,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-neurosurgery-instruments-38-3011": {
+      "path": "/catalogue/products/surgical-neurosurgery-instruments-38-3011.avif",
+      "width": 400,
+      "height": 194,
+      "bytes": 3889,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-neurosurgery-instruments-38-4203": {
+      "path": "/catalogue/products/surgical-neurosurgery-instruments-38-4203.avif",
+      "width": 418,
+      "height": 181,
+      "bytes": 3179,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-neurosurgery-instruments-38-4303": {
+      "path": "/catalogue/products/surgical-neurosurgery-instruments-38-4303.avif",
+      "width": 418,
+      "height": 173,
+      "bytes": 3123,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-neurosurgery-instruments-vt-1040": {
+      "path": "/catalogue/products/surgical-neurosurgery-instruments-vt-1040.avif",
+      "width": 399,
+      "height": 41,
+      "bytes": 1163,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-neurosurgery-instruments-17-2701": {
+      "path": "/catalogue/products/surgical-neurosurgery-instruments-17-2701.avif",
+      "width": 402,
+      "height": 39,
+      "bytes": 932,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-neurosurgery-instruments-17-3501": {
+      "path": "/catalogue/products/surgical-neurosurgery-instruments-17-3501.avif",
+      "width": 407,
+      "height": 44,
+      "bytes": 942,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-neurosurgery-instruments-38-1104": {
+      "path": "/catalogue/products/surgical-neurosurgery-instruments-38-1104.avif",
+      "width": 401,
+      "height": 38,
+      "bytes": 880,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-neurosurgery-instruments-39-0700": {
+      "path": "/catalogue/products/surgical-neurosurgery-instruments-39-0700.avif",
+      "width": 290,
+      "height": 197,
+      "bytes": 3576,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-neurosurgery-instruments-16-5100": {
+      "path": "/catalogue/products/surgical-neurosurgery-instruments-16-5100.avif",
+      "width": 356,
+      "height": 170,
+      "bytes": 3422,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-neurosurgery-instruments-38-0101": {
+      "path": "/catalogue/products/surgical-neurosurgery-instruments-38-0101.avif",
+      "width": 278,
+      "height": 160,
+      "bytes": 3230,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-neurosurgery-instruments-38-0108": {
+      "path": "/catalogue/products/surgical-neurosurgery-instruments-38-0108.avif",
+      "width": 335,
+      "height": 32,
+      "bytes": 754,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-neurosurgery-instruments-38-0109": {
+      "path": "/catalogue/products/surgical-neurosurgery-instruments-38-0109.avif",
+      "width": 222,
+      "height": 199,
+      "bytes": 1706,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-neurosurgery-instruments-38-0220": {
+      "path": "/catalogue/products/surgical-neurosurgery-instruments-38-0220.avif",
+      "width": 418,
+      "height": 207,
+      "bytes": 3465,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-neurosurgery-instruments-15-3001": {
+      "path": "/catalogue/products/surgical-neurosurgery-instruments-15-3001.avif",
+      "width": 282,
+      "height": 267,
+      "bytes": 1737,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-neurosurgery-instruments-15-6701": {
+      "path": "/catalogue/products/surgical-neurosurgery-instruments-15-6701.avif",
+      "width": 378,
+      "height": 92,
+      "bytes": 1558,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-ophthalmology-instruments-40-0201": {
+      "path": "/catalogue/products/surgical-ophthalmology-instruments-40-0201.avif",
+      "width": 293,
+      "height": 146,
+      "bytes": 3021,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-ophthalmology-instruments-40-1101": {
+      "path": "/catalogue/products/surgical-ophthalmology-instruments-40-1101.avif",
+      "width": 344,
+      "height": 67,
+      "bytes": 1235,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-ophthalmology-instruments-40-1200": {
+      "path": "/catalogue/products/surgical-ophthalmology-instruments-40-1200.avif",
+      "width": 292,
+      "height": 76,
+      "bytes": 1662,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-ophthalmology-instruments-40-1301": {
+      "path": "/catalogue/products/surgical-ophthalmology-instruments-40-1301.avif",
+      "width": 321,
+      "height": 133,
+      "bytes": 2708,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-ophthalmology-instruments-40-0601": {
+      "path": "/catalogue/products/surgical-ophthalmology-instruments-40-0601.avif",
+      "width": 330,
+      "height": 92,
+      "bytes": 2225,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-ophthalmology-instruments-40-0701": {
+      "path": "/catalogue/products/surgical-ophthalmology-instruments-40-0701.avif",
+      "width": 360,
+      "height": 164,
+      "bytes": 3621,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-ophthalmology-instruments-40-1500": {
+      "path": "/catalogue/products/surgical-ophthalmology-instruments-40-1500.avif",
+      "width": 344,
+      "height": 149,
+      "bytes": 3203,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-ophthalmology-instruments-40-1700": {
+      "path": "/catalogue/products/surgical-ophthalmology-instruments-40-1700.avif",
+      "width": 387,
+      "height": 46,
+      "bytes": 1088,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-ophthalmology-instruments-01-4101": {
+      "path": "/catalogue/products/surgical-ophthalmology-instruments-01-4101.avif",
+      "width": 304,
+      "height": 63,
+      "bytes": 1603,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-ophthalmology-instruments-01-3801": {
+      "path": "/catalogue/products/surgical-ophthalmology-instruments-01-3801.avif",
+      "width": 321,
+      "height": 61,
+      "bytes": 1712,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-ophthalmology-instruments-01-3601": {
+      "path": "/catalogue/products/surgical-ophthalmology-instruments-01-3601.avif",
+      "width": 317,
+      "height": 58,
+      "bytes": 1342,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-ent-instruments-41-4400": {
+      "path": "/catalogue/products/surgical-ent-instruments-41-4400.avif",
+      "width": 118,
+      "height": 181,
+      "bytes": 1942,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-ent-instruments-41-1801": {
+      "path": "/catalogue/products/surgical-ent-instruments-41-1801.avif",
+      "width": 402,
+      "height": 41,
+      "bytes": 958,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-ent-instruments-41-3100": {
+      "path": "/catalogue/products/surgical-ent-instruments-41-3100.avif",
+      "width": 394,
+      "height": 45,
+      "bytes": 993,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-ent-instruments-41-3300": {
+      "path": "/catalogue/products/surgical-ent-instruments-41-3300.avif",
+      "width": 391,
+      "height": 39,
+      "bytes": 868,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-ent-instruments-41-4150": {
+      "path": "/catalogue/products/surgical-ent-instruments-41-4150.avif",
+      "width": 405,
+      "height": 39,
+      "bytes": 1153,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-ent-instruments-38-2351": {
+      "path": "/catalogue/products/surgical-ent-instruments-38-2351.avif",
+      "width": 389,
+      "height": 72,
+      "bytes": 1713,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-ent-instruments-38-2365": {
+      "path": "/catalogue/products/surgical-ent-instruments-38-2365.avif",
+      "width": 368,
+      "height": 58,
+      "bytes": 1648,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-ent-instruments-38-2380": {
+      "path": "/catalogue/products/surgical-ent-instruments-38-2380.avif",
+      "width": 378,
+      "height": 68,
+      "bytes": 1366,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-ent-instruments-38-2390": {
+      "path": "/catalogue/products/surgical-ent-instruments-38-2390.avif",
+      "width": 338,
+      "height": 109,
+      "bytes": 2303,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-ent-instruments-41-0101": {
+      "path": "/catalogue/products/surgical-ent-instruments-41-0101.avif",
+      "width": 320,
+      "height": 202,
+      "bytes": 3573,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-ent-instruments-41-0201": {
+      "path": "/catalogue/products/surgical-ent-instruments-41-0201.avif",
+      "width": 362,
+      "height": 232,
+      "bytes": 4104,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-ent-instruments-41-0701": {
+      "path": "/catalogue/products/surgical-ent-instruments-41-0701.avif",
+      "width": 352,
+      "height": 221,
+      "bytes": 3627,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-ent-instruments-41-0301": {
+      "path": "/catalogue/products/surgical-ent-instruments-41-0301.avif",
+      "width": 375,
+      "height": 228,
+      "bytes": 4232,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-ent-instruments-41-0501": {
+      "path": "/catalogue/products/surgical-ent-instruments-41-0501.avif",
+      "width": 360,
+      "height": 186,
+      "bytes": 3114,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-ent-instruments-42-0210": {
+      "path": "/catalogue/products/surgical-ent-instruments-42-0210.avif",
+      "width": 368,
+      "height": 144,
+      "bytes": 2957,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-ent-instruments-42-0220": {
+      "path": "/catalogue/products/surgical-ent-instruments-42-0220.avif",
+      "width": 378,
+      "height": 151,
+      "bytes": 3521,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-ent-instruments-42-0309": {
+      "path": "/catalogue/products/surgical-ent-instruments-42-0309.avif",
+      "width": 309,
+      "height": 261,
+      "bytes": 3691,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-ent-instruments-38-4001": {
+      "path": "/catalogue/products/surgical-ent-instruments-38-4001.avif",
+      "width": 311,
+      "height": 268,
+      "bytes": 3478,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-ent-instruments-42-1101": {
+      "path": "/catalogue/products/surgical-ent-instruments-42-1101.avif",
+      "width": 244,
+      "height": 195,
+      "bytes": 1962,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-ent-instruments-04-3202": {
+      "path": "/catalogue/products/surgical-ent-instruments-04-3202.avif",
+      "width": 414,
+      "height": 158,
+      "bytes": 3672,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-ent-instruments-42-1810": {
+      "path": "/catalogue/products/surgical-ent-instruments-42-1810.avif",
+      "width": 347,
+      "height": 190,
+      "bytes": 2918,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-ent-instruments-42-2000": {
+      "path": "/catalogue/products/surgical-ent-instruments-42-2000.avif",
+      "width": 380,
+      "height": 177,
+      "bytes": 4269,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-ent-instruments-42-2301": {
+      "path": "/catalogue/products/surgical-ent-instruments-42-2301.avif",
+      "width": 431,
+      "height": 104,
+      "bytes": 2283,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-ent-instruments-42-3602": {
+      "path": "/catalogue/products/surgical-ent-instruments-42-3602.avif",
+      "width": 385,
+      "height": 53,
+      "bytes": 1030,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-ent-instruments-42-4200": {
+      "path": "/catalogue/products/surgical-ent-instruments-42-4200.avif",
+      "width": 390,
+      "height": 104,
+      "bytes": 2518,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-ent-instruments-42-4301": {
+      "path": "/catalogue/products/surgical-ent-instruments-42-4301.avif",
+      "width": 393,
+      "height": 133,
+      "bytes": 2870,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-ent-instruments-42-0400": {
+      "path": "/catalogue/products/surgical-ent-instruments-42-0400.avif",
+      "width": 373,
+      "height": 113,
+      "bytes": 2829,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-ent-instruments-42-0412": {
+      "path": "/catalogue/products/surgical-ent-instruments-42-0412.avif",
+      "width": 352,
+      "height": 137,
+      "bytes": 3263,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-ent-instruments-42-0413": {
+      "path": "/catalogue/products/surgical-ent-instruments-42-0413.avif",
+      "width": 330,
+      "height": 126,
+      "bytes": 3080,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-orthopedic-instruments-99-1351": {
+      "path": "/catalogue/products/surgical-orthopedic-instruments-99-1351.avif",
+      "width": 391,
+      "height": 80,
+      "bytes": 2173,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-orthopedic-instruments-36-8507": {
+      "path": "/catalogue/products/surgical-orthopedic-instruments-36-8507.avif",
+      "width": 391,
+      "height": 67,
+      "bytes": 1455,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-orthopedic-instruments-36-8508": {
+      "path": "/catalogue/products/surgical-orthopedic-instruments-36-8508.avif",
+      "width": 391,
+      "height": 72,
+      "bytes": 1406,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-orthopedic-instruments-37-3501": {
+      "path": "/catalogue/products/surgical-orthopedic-instruments-37-3501.avif",
+      "width": 394,
+      "height": 96,
+      "bytes": 1623,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-orthopedic-instruments-37-3503": {
+      "path": "/catalogue/products/surgical-orthopedic-instruments-37-3503.avif",
+      "width": 381,
+      "height": 97,
+      "bytes": 1439,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-orthopedic-instruments-36-9201": {
+      "path": "/catalogue/products/surgical-orthopedic-instruments-36-9201.avif",
+      "width": 356,
+      "height": 196,
+      "bytes": 4486,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-orthopedic-instruments-37-6300": {
+      "path": "/catalogue/products/surgical-orthopedic-instruments-37-6300.avif",
+      "width": 367,
+      "height": 88,
+      "bytes": 2227,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-orthopedic-instruments-37-4300": {
+      "path": "/catalogue/products/surgical-orthopedic-instruments-37-4300.avif",
+      "width": 376,
+      "height": 137,
+      "bytes": 3131,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-orthopedic-instruments-37-4401": {
+      "path": "/catalogue/products/surgical-orthopedic-instruments-37-4401.avif",
+      "width": 360,
+      "height": 135,
+      "bytes": 3915,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-orthopedic-instruments-37-4500": {
+      "path": "/catalogue/products/surgical-orthopedic-instruments-37-4500.avif",
+      "width": 352,
+      "height": 179,
+      "bytes": 3787,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-orthopedic-instruments-37-4600": {
+      "path": "/catalogue/products/surgical-orthopedic-instruments-37-4600.avif",
+      "width": 368,
+      "height": 110,
+      "bytes": 3977,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-orthopedic-instruments-37-4510": {
+      "path": "/catalogue/products/surgical-orthopedic-instruments-37-4510.avif",
+      "width": 358,
+      "height": 174,
+      "bytes": 4153,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-orthopedic-instruments-36-9101": {
+      "path": "/catalogue/products/surgical-orthopedic-instruments-36-9101.avif",
+      "width": 314,
+      "height": 219,
+      "bytes": 2925,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-orthopedic-instruments-37-4701": {
+      "path": "/catalogue/products/surgical-orthopedic-instruments-37-4701.avif",
+      "width": 334,
+      "height": 165,
+      "bytes": 4011,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-orthopedic-instruments-11-3400": {
+      "path": "/catalogue/products/surgical-orthopedic-instruments-11-3400.avif",
+      "width": 383,
+      "height": 202,
+      "bytes": 4156,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-orthopedic-instruments-37-4901": {
+      "path": "/catalogue/products/surgical-orthopedic-instruments-37-4901.avif",
+      "width": 354,
+      "height": 159,
+      "bytes": 3609,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-orthopedic-instruments-37-4903": {
+      "path": "/catalogue/products/surgical-orthopedic-instruments-37-4903.avif",
+      "width": 346,
+      "height": 158,
+      "bytes": 3323,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-orthopedic-instruments-37-5410": {
+      "path": "/catalogue/products/surgical-orthopedic-instruments-37-5410.avif",
+      "width": 392,
+      "height": 179,
+      "bytes": 3229,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-orthopedic-instruments-37-5420": {
+      "path": "/catalogue/products/surgical-orthopedic-instruments-37-5420.avif",
+      "width": 374,
+      "height": 93,
+      "bytes": 1683,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-orthopedic-instruments-37-1402": {
+      "path": "/catalogue/products/surgical-orthopedic-instruments-37-1402.avif",
+      "width": 367,
+      "height": 65,
+      "bytes": 1783,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-orthopedic-instruments-37-1105": {
+      "path": "/catalogue/products/surgical-orthopedic-instruments-37-1105.avif",
+      "width": 341,
+      "height": 52,
+      "bytes": 1119,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-orthopedic-instruments-37-1201": {
+      "path": "/catalogue/products/surgical-orthopedic-instruments-37-1201.avif",
+      "width": 335,
+      "height": 63,
+      "bytes": 1686,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-orthopedic-instruments-37-5720": {
+      "path": "/catalogue/products/surgical-orthopedic-instruments-37-5720.avif",
+      "width": 380,
+      "height": 156,
+      "bytes": 2769,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-orthopedic-instruments-37-5721": {
+      "path": "/catalogue/products/surgical-orthopedic-instruments-37-5721.avif",
+      "width": 370,
+      "height": 155,
+      "bytes": 2531,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-orthopedic-instruments-37-8722": {
+      "path": "/catalogue/products/surgical-orthopedic-instruments-37-8722.avif",
+      "width": 372,
+      "height": 103,
+      "bytes": 3267,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-orthopedic-instruments-37-5800": {
+      "path": "/catalogue/products/surgical-orthopedic-instruments-37-5800.avif",
+      "width": 378,
+      "height": 95,
+      "bytes": 2597,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    },
+    "surgical-orthopedic-instruments-37-1300": {
+      "path": "/catalogue/products/surgical-orthopedic-instruments-37-1300.avif",
+      "width": 354,
+      "height": 162,
+      "bytes": 2291,
+      "format": "avif",
+      "source": "FineMed organized instrument extraction"
+    }
+  }
+}

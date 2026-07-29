@@ -16,7 +16,7 @@ export function ProductCatalogue({ products }: { products: readonly PreviewProdu
 
   const handleAdd = (product: PreviewProduct) => {
     const result = addProduct({ code: product.code, name: product.name });
-    setAnnouncement(result === "added" ? `${product.name} added to the inquiry.` : `${product.name} is already in the inquiry.`);
+    setAnnouncement(result === "added" ? `${product.name} added to the inquiry.` : `${product.name} quantity increased.`);
   };
 
   return <>

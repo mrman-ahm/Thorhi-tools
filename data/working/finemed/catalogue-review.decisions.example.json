@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "reviewer": "Client reviewer name",
+  "exportedAt": "2026-07-30T00:00:00.000Z",
+  "decisions": [
+    {
+      "productId": "dental-ligature-and-wire-cutters-sc-01t",
+      "status": "approved",
+      "reviewedAt": "2026-07-30T00:00:00.000Z",
+      "approvedName": "",
+      "approvedCode": "",
+      "approvedFamily": "",
+      "confirmImage": true,
+      "confirmVariants": true,
+      "confirmSourceReference": true,
+      "notes": ""
+    }
+  ]
+}

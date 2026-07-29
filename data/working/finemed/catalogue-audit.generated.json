@@ -1,0 +1,1452 @@
+{
+  "generatedAt": "2026-07-27T00:00:00.000Z",
+  "sourceStatus": "source-derived",
+  "technicalStatus": "pending-verification",
+  "counts": {
+    "divisions": 2,
+    "families": 53,
+    "products": 626,
+    "variants": 1434,
+    "images": 626,
+    "reviewQueue": 175,
+    "duplicateCodes": 0,
+    "duplicateSprites": 0
+  },
+  "duplicateCodes": [],
+  "duplicateSprites": [],
+  "reviewQueue": [
+    {
+      "id": "dental-distal-and-flush-end-cutters-lp-03t",
+      "code": "LP-03T",
+      "name": "Flush End Cutter Long Handle",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-distal-and-flush-end-cutters-sc-15t",
+      "code": "SC-15T",
+      "name": "Distal End Cutter Round Body",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-distal-and-flush-end-cutters-sc-15tlh",
+      "code": "SC-15TLH",
+      "name": "Distal End Cutter Long Handle",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-distal-and-flush-end-cutters-sc-189t",
+      "code": "SC-189T",
+      "name": "Distal End Cutter",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-distal-and-flush-end-cutters-sc-189tw",
+      "code": "SC-189TW",
+      "name": "Flush End Cutter",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-distal-and-flush-end-cutters-sc-215t",
+      "code": "SC-215T",
+      "name": "Mini Distal End Cutter Flat Body",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-distal-and-flush-end-cutters-sc-215tlh",
+      "code": "SC-215TLH",
+      "name": "Mini Distal End Cutter Flat Body Long Handle",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-distal-and-flush-end-cutters-sc-215ta",
+      "code": "SC-215TA",
+      "name": "Mini Distal End Cutter L-key Type",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-wire-bending-and-loop-forming-pliers-sp-26",
+      "code": "SP-26",
+      "name": "JARABAK LOOP FORMING PLIER",
+      "flags": [
+        "dangling-copy"
+      ]
+    },
+    {
+      "id": "dental-wire-bending-and-loop-forming-pliers-sp-27",
+      "code": "SP-27",
+      "name": "ANGLE BIRD BEAK PLIER",
+      "flags": [
+        "dangling-copy"
+      ]
+    },
+    {
+      "id": "dental-wire-bending-and-loop-forming-pliers-sp-27t",
+      "code": "SP-27T",
+      "name": "ANGLE BIRD BEAK PLIER",
+      "flags": [
+        "ocr-punctuation",
+        "dangling-copy"
+      ]
+    },
+    {
+      "id": "dental-wire-bending-and-loop-forming-pliers-sp-38",
+      "code": "SP-38",
+      "name": "ADAMS WIRE BENDING PLIER",
+      "flags": [
+        "dangling-copy"
+      ]
+    },
+    {
+      "id": "dental-wire-bending-and-loop-forming-pliers-sp-41",
+      "code": "SP-41",
+      "name": "Lingual Arch Bending Pliers",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-wire-bending-and-loop-forming-pliers-sp-43",
+      "code": "SP-43",
+      "name": "TWEED WIRE FORMING & —",
+      "flags": [
+        "ocr-punctuation"
+      ]
+    },
+    {
+      "id": "dental-wire-bending-and-loop-forming-pliers-sp-47",
+      "code": "SP-47",
+      "name": "TWEED LOOP FORMING PLIER",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-wire-bending-and-loop-forming-pliers-sp-51",
+      "code": "SP-51",
+      "name": "Tweed bending pliers",
+      "flags": [
+        "long-name",
+        "dangling-copy"
+      ]
+    },
+    {
+      "id": "dental-wire-bending-and-loop-forming-pliers-sp-52",
+      "code": "SP-52",
+      "name": "Tweed Bending Pliers",
+      "flags": [
+        "long-name",
+        "dangling-copy"
+      ]
+    },
+    {
+      "id": "dental-wire-bending-and-loop-forming-pliers-sp-58",
+      "code": "SP-58",
+      "name": "JARABAK LOOP FORMING PLIER",
+      "flags": [
+        "dangling-copy"
+      ]
+    },
+    {
+      "id": "dental-wire-bending-and-loop-forming-pliers-sp-84",
+      "code": "SP-84",
+      "name": "OLIVER WIRE BENDING PLIER",
+      "flags": [
+        "long-name",
+        "dangling-copy",
+        "known-ocr-token"
+      ]
+    },
+    {
+      "id": "dental-wire-bending-and-loop-forming-pliers-sp-92",
+      "code": "SP-92",
+      "name": "SWARTZ Arrow clasp forming plier",
+      "flags": [
+        "dangling-copy"
+      ]
+    },
+    {
+      "id": "dental-wire-bending-and-loop-forming-pliers-sp-94",
+      "code": "SP-94",
+      "name": "MALLOTHY three jaw plier",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-wire-bending-and-loop-forming-pliers-sp-199",
+      "code": "SP-199",
+      "name": "LIGATURE FORMING PLIER Shape ligature wire easily into a performed ligature 2 soft",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-wire-bending-and-loop-forming-pliers-sp-216",
+      "code": "SP-216",
+      "name": "TWEED LOOP FORMING &",
+      "flags": [
+        "long-name",
+        "ocr-punctuation"
+      ]
+    },
+    {
+      "id": "dental-wire-bending-and-loop-forming-pliers-sp-236",
+      "code": "SP-236",
+      "name": "Palatal Strap Pliers The inner surface of the jaws is designed to ensure easy access to the lingual molar locks",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-wire-bending-and-loop-forming-pliers-sp-237",
+      "code": "SP-237",
+      "name": "Langbeck Flat needle pliers",
+      "flags": [
+        "dangling-copy"
+      ]
+    },
+    {
+      "id": "dental-wire-bending-and-loop-forming-pliers-sp-241",
+      "code": "SP-241",
+      "name": "LIGHT Loop FORMING PLIER",
+      "flags": [
+        "dangling-copy"
+      ]
+    },
+    {
+      "id": "dental-step-and-torque-contouring-and-universal-pliers-sp-191",
+      "code": "SP-191",
+      "name": "DETAILING STEP PLIER Step-up and Step-down bends TM step in arch wires corrugated",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-step-and-torque-contouring-and-universal-pliers-sp-192",
+      "code": "SP-192",
+      "name": "DETAILING STEP PLIER Step-up and Step-down bends",
+      "flags": [
+        "long-name",
+        "ocr-punctuation"
+      ]
+    },
+    {
+      "id": "dental-step-and-torque-contouring-and-universal-pliers-sp-193",
+      "code": "SP-193",
+      "name": "DETAILING STEP PLIER Step-up and Step-down bends. step in arch wires corrugated",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-step-and-torque-contouring-and-universal-pliers-sp-194",
+      "code": "SP-194",
+      "name": "DETAILING STEP PLIER Step-up and Step-down bends",
+      "flags": [
+        "long-name",
+        "ocr-punctuation"
+      ]
+    },
+    {
+      "id": "dental-step-and-torque-contouring-and-universal-pliers-sp-197",
+      "code": "SP-197",
+      "name": "TORQUE PLIER FEMALE PART STANDARD PATTERN Step-up and Step-down bends step in arch wires corrugated",
+      "flags": [
+        "long-name",
+        "dangling-copy"
+      ]
+    },
+    {
+      "id": "dental-step-and-torque-contouring-and-universal-pliers-sp-46",
+      "code": "SP-46",
+      "name": "DE LA ROSA Arch Contouring Plier",
+      "flags": [
+        "long-name",
+        "dangling-copy"
+      ]
+    },
+    {
+      "id": "dental-step-and-torque-contouring-and-universal-pliers-sp-46a",
+      "code": "SP-46A",
+      "name": "DE LA ROSA Arch Contouring Plier without Grooves",
+      "flags": [
+        "long-name",
+        "dangling-copy"
+      ]
+    },
+    {
+      "id": "dental-step-and-torque-contouring-and-universal-pliers-sp-46s",
+      "code": "SP-46S",
+      "name": "DE LA ROSA Arch Contouring Plier",
+      "flags": [
+        "long-name",
+        "dangling-copy"
+      ]
+    },
+    {
+      "id": "dental-universal-and-wire-gripping-pliers-sp-30",
+      "code": "SP-30",
+      "name": "WEINGART Universal Plier Blunt Points regular Pattern",
+      "flags": [
+        "long-name",
+        "dangling-copy"
+      ]
+    },
+    {
+      "id": "dental-universal-and-wire-gripping-pliers-sp-30s",
+      "code": "SP-30S",
+      "name": "WEINGART Universal Plier Sharp Points delicate Pattern",
+      "flags": [
+        "long-name",
+        "dangling-copy"
+      ]
+    },
+    {
+      "id": "dental-universal-and-wire-gripping-pliers-lp-01",
+      "code": "LP-01",
+      "name": "WEINGART Universal Plier",
+      "flags": [
+        "long-name",
+        "dangling-copy"
+      ]
+    },
+    {
+      "id": "dental-universal-and-wire-gripping-pliers-lp-01t",
+      "code": "LP-01T",
+      "name": "WEINGART Universal Plier",
+      "flags": [
+        "long-name",
+        "dangling-copy"
+      ]
+    },
+    {
+      "id": "dental-universal-and-wire-gripping-pliers-sp-31t",
+      "code": "SP-31T",
+      "name": "WEINGART Universal Plier",
+      "flags": [
+        "long-name",
+        "dangling-copy"
+      ]
+    },
+    {
+      "id": "dental-universal-and-wire-gripping-pliers-sp-32",
+      "code": "SP-32",
+      "name": "WEINGART Universal Plier Allows you to effortlessly guide and bend the Arch wire during placement and removal",
+      "flags": [
+        "long-name",
+        "dangling-copy"
+      ]
+    },
+    {
+      "id": "dental-universal-and-wire-gripping-pliers-sp-204t",
+      "code": "SP-204T",
+      "name": "WEINGART Universal Plier",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-universal-and-wire-gripping-pliers-sp-204lh",
+      "code": "SP-204LH",
+      "name": "WEINGART Universal Plier Long Handle",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-universal-and-wire-gripping-pliers-sp-33sa",
+      "code": "SP-33SA",
+      "name": "HOW Universal Plier STR",
+      "flags": [
+        "long-name",
+        "dangling-copy"
+      ]
+    },
+    {
+      "id": "dental-universal-and-wire-gripping-pliers-sp-34sa",
+      "code": "SP-34SA",
+      "name": "HOW Universal Plier CVD",
+      "flags": [
+        "long-name",
+        "dangling-copy"
+      ]
+    },
+    {
+      "id": "dental-universal-and-wire-gripping-pliers-sp-118",
+      "code": "SP-118",
+      "name": "ths Parallel Action Flat Pliers without cutter The jaws of parallel-action pliers remain parallel regardless of the range of motion the pliers themselves are put through. Their jaws hold the object securely",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-universal-and-wire-gripping-pliers-sp-119",
+      "code": "SP-119",
+      "name": "Parallel Action Flat Pliers",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-hook-crimping-pliers-sp-110",
+      "code": "SP-110",
+      "name": "BALL HOOK CRIMPING PLIER. Angled Special press pliers",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-hook-crimping-pliers-sp-200",
+      "code": "SP-200",
+      "name": "Hook Crimping Pliers STR Without TC Specially made to crimp hooks",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-hook-crimping-pliers-sp-200t",
+      "code": "SP-200T",
+      "name": "Hook Crimping Pliers — STR",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-hook-crimping-pliers-sp-222t",
+      "code": "SP-222T",
+      "name": "Hook Crimping Pliers Specially made to crimp hooks",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-bracket-band-and-bond-removing-pliers-sp-64",
+      "code": "SP-64",
+      "name": "DIRECT BOND REMOVING PLIER STR The streight tips of the forceps remove brackets easily and gently in a tooth-friendly Manner",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-bracket-band-and-bond-removing-pliers-sp-65",
+      "code": "SP-65",
+      "name": "DIRECT BOND REMOVING PLIER",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-bracket-band-and-bond-removing-pliers-sp-66",
+      "code": "SP-66",
+      "name": "Debonding Plier Straight Can effortlessly remove all bonding attachments. and any remaining adhesives during Debonding",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-bracket-band-and-bond-removing-pliers-sp-67",
+      "code": "SP-67",
+      "name": "ADERER Posterior Band Removing Plier",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-bracket-band-and-bond-removing-pliers-sp-68",
+      "code": "SP-68",
+      "name": "Ligament Posterior Band Removing Plier Short",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-bracket-band-and-bond-removing-pliers-sp-68t",
+      "code": "SP-68T",
+      "name": "Ligament Posterior Band Removing Plier Short",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-bracket-band-and-bond-removing-pliers-sp-233",
+      "code": "SP-233",
+      "name": "DIRECT BOND REMOVING PLIER",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-bracket-band-and-bond-removing-pliers-sp-238",
+      "code": "SP-238",
+      "name": "Offset Bracket Removing Plier",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-bracket-band-and-bond-removing-pliers-sp-253",
+      "code": "SP-253",
+      "name": "SAPPHIRE Debonding & Bracket Removing Plier Easily grip the upper and the lower wing of the bracket and",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-bracket-band-and-bond-removing-pliers-sp-254",
+      "code": "SP-254",
+      "name": "Composite (Adhesive) Removing Pliers",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-bracket-band-and-bond-removing-pliers-sp-500",
+      "code": "SP-500",
+      "name": "Buccal tube Convertible Cap Removing Plier By utilizing this specialized tool",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-ligature-technic-pliers-lp-03t-2",
+      "code": "LP-03T-2",
+      "name": "Flush End Cutter Long Handle",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-ligature-technic-pliers-lp-05s",
+      "code": "LP-05S",
+      "name": "NiTi Distal Cinch Back Plier",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-ligature-technic-pliers-lp-05lh",
+      "code": "LP-05LH",
+      "name": "NiTi Distal Cinch Back Plier —— Long Handle",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-ligature-technic-pliers-lp-05lhs",
+      "code": "LP-05LHS",
+      "name": "NiTi Distal Cinch Back Plier Long Handle",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-ligature-technic-pliers-lp-05m",
+      "code": "LP-05M",
+      "name": "NiTi Distal Cinch Back Plier Long Handle & Mini Head",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-aligner-technic-pliers-b-190",
+      "code": "B-190",
+      "name": "Alinger Lifter Aspecial patient tool",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-aligner-technic-pliers-ca-05",
+      "code": "CA-05",
+      "name": "Vertical Notch Forming Plier This plier creats a vertical notch on clear aligners. to control rotated teeth",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-aligner-technic-pliers-ca-06",
+      "code": "CA-06",
+      "name": "Horizontal Notch Forming Plier This plier creats a horizontal notch on clear aligners to accent individual root torque",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-aligner-technic-pliers-ca-07",
+      "code": "CA-07",
+      "name": "Tear Drop Forming Plier This plier creats a notch at the gingival margin of clear aligners to hold elastics",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-aligner-technic-pliers-ca-08",
+      "code": "CA-08",
+      "name": "Hole Forming Plier This plier creats a half-moon cutout at the gingival margin of clear aligners",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-aligner-technic-pliers-ca-21",
+      "code": "CA-21",
+      "name": "Aligner Cutter U cutt",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-aligner-technic-pliers-ca-22",
+      "code": "CA-22",
+      "name": "Aligner Cutter V cutt",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-aligner-technic-pliers-ca-23",
+      "code": "CA-23",
+      "name": "Indentation Forming Plier When increased retention is required in an aligner or retainer",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-aligner-technic-pliers-ca-24",
+      "code": "CA-24",
+      "name": "Invisalign Hole Punch Plier",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-ligature-and-elastic-placing-and-separating-sn-136",
+      "code": "SN-136",
+      "name": "ELTEE SMAHA elastomeric. Ligature Placing Plier CVD Vertical serration &",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-ligature-and-elastic-placing-and-separating-sn-135c",
+      "code": "SN-135C",
+      "name": "ELTEE SMAHA elastomeric Ligature Placing Plier STR Cross serration &",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-ligature-and-elastic-placing-and-separating-sn-136c",
+      "code": "SN-136C",
+      "name": "ELTEE SMAHA elastomeric Ligature Placing Plier CVD Cross serration &",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-ligature-and-elastic-placing-and-separating-sn-137",
+      "code": "SN-137",
+      "name": "ELTEE SMAHA elastic placing plier Cross serration &",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-ligature-and-elastic-placing-and-separating-sn-137s",
+      "code": "SN-137S",
+      "name": "ELTEE SMAHA MINI elastic placing plier Cross serration &",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-ligature-and-elastic-placing-and-separating-sn-138",
+      "code": "SN-138",
+      "name": "ELTEE SMAHA MINI elastic. Placing plier «Cross serration &",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-ligature-and-elastic-placing-and-separating-sn-138m",
+      "code": "SN-138M",
+      "name": "ELTEE SMAHA MINI elastic — Placing plier. Smooth jaws &",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-ligature-and-elastic-placing-and-separating-sn-149",
+      "code": "SN-149",
+      "name": "ELTEE SMAHA MINI Ligature Placing Plier Cross serration &",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-scissors-and-needle-holders-ss-128",
+      "code": "SS-128",
+      "name": "BEEBE Scissors STR blunt points",
+      "flags": [
+        "long-name",
+        "ocr-punctuation"
+      ]
+    },
+    {
+      "id": "dental-scissors-and-needle-holders-ss-129",
+      "code": "SS-129",
+      "name": "BEEBE Scissors N Slightly CVD blunt points One serrated jaw",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-scissors-and-needle-holders-ss-126a",
+      "code": "SS-126A",
+      "name": "XX BEEBE Scissors Heavy Model Slightly CVD sharp points ~ One serrated jaw",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-scissors-and-needle-holders-ss-127a",
+      "code": "SS-127A",
+      "name": "BEEBE Scissors Heavy Model CVD sharp points One serrated jaw",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-scissors-and-needle-holders-ss-135",
+      "code": "SS-135",
+      "name": "PEDO Crown Scissors 9em CVD One serrated jaw",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-scissors-and-needle-holders-sn-140",
+      "code": "SN-140",
+      "name": "> MATHIEU Needle Holder Fine cross serration",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-scissors-and-needle-holders-sn-141",
+      "code": "SN-141",
+      "name": "MATHIEU Needle Holder Fine cross serration",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-scissors-and-needle-holders-sn-140t",
+      "code": "SN-140T",
+      "name": "} \"TC MATHIEU Needle Holder TC inserts",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-scissors-and-needle-holders-sn-141t",
+      "code": "SN-141T",
+      "name": "MATHIEU Needle Holder a ? TC inserts",
+      "flags": [
+        "long-name",
+        "ocr-punctuation"
+      ]
+    },
+    {
+      "id": "dental-scissors-and-needle-holders-sn-142t",
+      "code": "SN-142T",
+      "name": "MATHIEU Needle Holder TC inserts",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-scissors-and-needle-holders-sn-144",
+      "code": "SN-144",
+      "name": "MATHIEU Needle Holder Slim Model Fine cross serration",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-scissors-and-needle-holders-sn-145",
+      "code": "SN-145",
+      "name": "MATHIEU Needle Holder Standard Model Fine cross serration",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-scissors-and-needle-holders-sn-144t",
+      "code": "SN-144T",
+      "name": "MATHIEU Needle Holder Slim Model TC inserts",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-scissors-and-needle-holders-sn-1445t",
+      "code": "SN-1445T",
+      "name": "MATHIEU Needle Holder Standard Model TC inserts",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-ligature-directors-and-band-pushers-sb-152",
+      "code": "SB-152",
+      "name": "Ligature Placer D/E Solid Handle To push orthodontic bands into place during try-in and cementing phases Characteristic",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-ligature-directors-and-band-pushers-sb-188",
+      "code": "SB-188",
+      "name": "Ligature Tucker D/E Solid Handle To push orthodontic bands into place during try-in and cementing phases Characteristic",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-ligature-directors-and-band-pushers-sb-239",
+      "code": "SB-239",
+      "name": "Ligature Placer & Detacher D/E Solid Handle Dental instruments that are",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-ligature-directors-and-band-pushers-sb-239r",
+      "code": "SB-239R",
+      "name": "Ligature Placer & Detacher D/E Solid Handle Dental instruments that are",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-ligature-directors-and-band-pushers-sb-246",
+      "code": "SB-246",
+      "name": "Ligature Director D/E Solid Handle Dental instruments that are",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-ligature-directors-and-band-pushers-sb-148a",
+      "code": "SB-148A",
+      "name": "BAND Pusher D/E Hollow Handle Dental instruments that are",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-ligature-directors-and-band-pushers-sb-150a",
+      "code": "SB-150A",
+      "name": "Ligature Director D/E Hollow Handle To push orthodontic bands into place during try-in and cementing phases Characteristic",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-ligature-directors-and-band-pushers-sb-188a",
+      "code": "SB-188A",
+      "name": "Ligature. Tucker D/E Hollow Handle To push orthodontic bands into place during try-in and cementing Phases Characteristic",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-ligature-directors-and-band-pushers-sb-234",
+      "code": "SB-234",
+      "name": "Adhesive Remover D/E Hollow Handle Dental instruments that are",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-ligature-directors-and-band-pushers-sb-252",
+      "code": "SB-252",
+      "name": "Ligature Director D/E Hollow Handle Dental instruments that are",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-ligature-directors-and-band-pushers-sb-88a",
+      "code": "SB-88A",
+      "name": "Ligature Director & DETACHER D/E Hollow Handle Dental instruments that are",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-ligature-directors-and-band-pushers-sb-147",
+      "code": "SB-147",
+      "name": "BAND PUSHER HOLLOW HANDLE Dental instruments that are",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-ligature-directors-and-band-pushers-sb-209",
+      "code": "SB-209",
+      "name": "Self Ligating Instrument Opening Tool Brackets Braces Clip Single Ended Can easily be applied to the archwire of the fixed brackets of an orthodontic appliance without having to remove the archwire from the brackets",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-ligature-directors-and-band-pushers-sb-256",
+      "code": "SB-256",
+      "name": "Self Ligating Instrument Opening Tool Brackets Braces Clip Double Ended Can easily be applied to the archwire of the fixed brackets of an orthodontic appliance without having to Remove the archwire from the brackets",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-ligature-directors-and-band-pushers-sb-260",
+      "code": "SB-260",
+      "name": "Ligature Director D/E Can easily be applied to the archwire of the fixed brackets of an orthodontic appliance without having to remove the Archwire from the brackets",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-ligature-directors-and-band-pushers-sb-261",
+      "code": "SB-261",
+      "name": "YES Bracket Tool Unique: Clip: Opening: Tool specifically",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-ligature-directors-and-band-pushers-sb-250",
+      "code": "SB-250",
+      "name": "OPEN/CLOSE Tool D/E Can easily be applied to the archwire of the fixed brackets of an orthodontic appliance without having to remove the archwire from the brackets",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-ligature-directors-and-band-pushers-sb-227",
+      "code": "SB-227",
+      "name": "BAND SEATER Band seaters allow the patients bite to push The bands into proper position",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-ligature-directors-and-band-pushers-sb-257",
+      "code": "SB-257",
+      "name": "BAND Pusher D/E Hollow Handle Dental instruments that are",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-measuring-instruments-sg-257",
+      "code": "SG-257",
+      "name": "Dynamometer Stress Tension Bands Elastics Meter Force Measure Gauge",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-measuring-instruments-sg-146",
+      "code": "SG-146",
+      "name": "Positive (Bracket) Positioner Precise placement of direct bond tubes or attachments Made simple",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-measuring-instruments-sg-210m",
+      "code": "SG-210M",
+      "name": "Bracket Height Gauge",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-measuring-instruments-sg-210",
+      "code": "SG-210",
+      "name": "Bracket Height Gauge",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-measuring-instruments-sg-210a",
+      "code": "SG-210A",
+      "name": "Bracket Height Gauge",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-measuring-instruments-sg-211",
+      "code": "SG-211",
+      "name": "Bracket Height Gauge",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-measuring-instruments-sg-212",
+      "code": "SG-212",
+      "name": "Bracket Height Gauge",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-measuring-instruments-sg-207",
+      "code": "SG-207",
+      "name": "Star-Like Bracket Positioning Gauge",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-measuring-instruments-sg-221",
+      "code": "SG-221",
+      "name": "Vernier Gauge/Dental Ruler An oral-facial tool and",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-crown-grippers-forceps-and-twisters-sf-159",
+      "code": "SF-159",
+      "name": "Halsted Mosquito Forceps",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-crown-grippers-forceps-and-twisters-sf-158c",
+      "code": "SF-158C",
+      "name": "Halsted Mosquito Forceps Cross Serrated",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-crown-grippers-forceps-and-twisters-sf-459c",
+      "code": "SF-459C",
+      "name": "Halsted Mosquito Forceps Cross Serrated",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-crown-grippers-forceps-and-twisters-sf-201",
+      "code": "SF-201",
+      "name": "Halsted Mosquito Forceps",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-crown-grippers-forceps-and-twisters-sb-247",
+      "code": "SB-247",
+      "name": "LIGATURE TIE PENCIL",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-crown-grippers-forceps-and-twisters-sp-198",
+      "code": "SP-198",
+      "name": "Ligature Wire Twister Holds pre-twisted ligatures & kobayashi Ties",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-bracket-positioning-forceps-sf-163s",
+      "code": "SF-163S",
+      "name": "Bracket Positioning Reverse action Forceps",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-bracket-positioning-forceps-sf-163",
+      "code": "SF-163",
+      "name": "Bracket Positioning Reverse action Forceps Small tip as our regular posterior bracket tweezer",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-bracket-positioning-forceps-sf-163a",
+      "code": "SF-163A",
+      "name": "Bracket Positioning Reverse action Forceps",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-bracket-positioning-forceps-sf-164",
+      "code": "SF-164",
+      "name": "Bracket Positioning Reverse action Forceps",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-bracket-positioning-forceps-sf-185",
+      "code": "SF-185",
+      "name": "Multi Purpose Orthodontic Tweezers Reverse action",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-bracket-positioning-forceps-sf-245",
+      "code": "SF-245",
+      "name": "Bracket Positioning Reverse action Forceps CVD Reverse action will not release bracket until desired. Designed",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-bracket-positioning-forceps-sf-247",
+      "code": "SF-247",
+      "name": "Bracket Positioning Reverse action Forceps Fine Points Designed to fit snugly around button pad type. special clawtype tweezers to grip the button securely until final placement. Heat sterilizable",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-bracket-positioning-forceps-sf-224",
+      "code": "SF-224",
+      "name": "Bracket Positioning Reverse action Forceps «Small tip as our regular posterior bracket tweezer",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-bracket-positioning-forceps-sf-208",
+      "code": "SF-208",
+      "name": "Bracket Positioning Reverse action Forceps",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-bracket-positioning-forceps-sf-228",
+      "code": "SF-228",
+      "name": "Lingual Bracket & Bondable Tube Holder Reverse action Very slender tip that inserts easily into the slot on the molar bracket. Heat sterilizable",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-bracket-positioning-forceps-sf-228s",
+      "code": "SF-228S",
+      "name": "Lingual Bracket & Bondable Tube Holder Reverse Action",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-bracket-positioning-forceps-sf-228al",
+      "code": "SF-228AL",
+      "name": "Keat Tube Placing Tweezers The curved body of the tweezers provides an unobstructed view",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-bracket-positioning-forceps-sf-259",
+      "code": "SF-259",
+      "name": "Lingual Bracket & Bondable Tube Holder Reverse action",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-miscellaneous-sw-186",
+      "code": "SW-186",
+      "name": "RIGID SPATULAS",
+      "flags": [
+        "long-name",
+        "ocr-punctuation"
+      ]
+    },
+    {
+      "id": "dental-miscellaneous-sa-220",
+      "code": "SA-220",
+      "name": "Dental Pliers Stand L",
+      "flags": [
+        "ocr-punctuation"
+      ]
+    },
+    {
+      "id": "dental-miscellaneous-sa-220a",
+      "code": "SA-220A",
+      "name": "Dental Pliers Stand L",
+      "flags": [
+        "ocr-punctuation"
+      ]
+    },
+    {
+      "id": "dental-miscellaneous-sp-219",
+      "code": "SP-219",
+      "name": "Punch Hole Pliers",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-miscellaneous-sb-231",
+      "code": "SB-231",
+      "name": "Orthodontic Interproximal Enamel Reduction Strip Handle",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-miscellaneous-sp-221",
+      "code": "SP-221",
+      "name": "Dental Chuck Or Key",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-special-heat-pliers-collection-tp-01",
+      "code": "TP-01",
+      "name": "«Special Plier",
+      "flags": [
+        "long-name",
+        "ocr-punctuation"
+      ]
+    },
+    {
+      "id": "dental-special-heat-pliers-collection-tp-02",
+      "code": "TP-02",
+      "name": "Special Plier",
+      "flags": [
+        "long-name",
+        "ocr-punctuation"
+      ]
+    },
+    {
+      "id": "dental-special-heat-pliers-collection-tp-05",
+      "code": "TP-05",
+      "name": "Special Plier",
+      "flags": [
+        "long-name",
+        "ocr-punctuation",
+        "dangling-copy"
+      ]
+    },
+    {
+      "id": "dental-special-heat-pliers-collection-tp-06",
+      "code": "TP-06",
+      "name": "Special Plier",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-special-heat-pliers-collection-tp-07",
+      "code": "TP-07",
+      "name": "Special Plier",
+      "flags": [
+        "long-name",
+        "ocr-punctuation"
+      ]
+    },
+    {
+      "id": "dental-special-heat-pliers-collection-tp-11",
+      "code": "TP-11",
+      "name": "Special Plier",
+      "flags": [
+        "long-name",
+        "ocr-punctuation"
+      ]
+    },
+    {
+      "id": "dental-special-heat-pliers-collection-tp-12",
+      "code": "TP-12",
+      "name": "Special Plier",
+      "flags": [
+        "long-name",
+        "ocr-punctuation"
+      ]
+    },
+    {
+      "id": "dental-special-heat-pliers-collection-tp-13",
+      "code": "TP-13",
+      "name": "Special Plier",
+      "flags": [
+        "long-name",
+        "ocr-punctuation"
+      ]
+    },
+    {
+      "id": "dental-special-cold-pliers-collection-tp-14",
+      "code": "TP-14",
+      "name": "Special Plier",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-special-cold-pliers-collection-tp-15",
+      "code": "TP-15",
+      "name": "Special Plier",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-special-cold-pliers-collection-tp-17",
+      "code": "TP-17",
+      "name": "Special Plier",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-special-cold-pliers-collection-tp-18",
+      "code": "TP-18",
+      "name": "Special Plier",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-special-hybrid-pliers-collection-tp-03",
+      "code": "TP-03",
+      "name": "Special Plier",
+      "flags": [
+        "long-name",
+        "dangling-copy"
+      ]
+    },
+    {
+      "id": "dental-special-hybrid-pliers-collection-tp-12-2",
+      "code": "TP-12-2",
+      "name": "Special Plier",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-special-hybrid-pliers-collection-tp-06-2",
+      "code": "TP-06-2",
+      "name": "Special Plier",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "dental-special-hybrid-pliers-collection-tp-16",
+      "code": "TP-16",
+      "name": "Special Plier",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "surgical-scissors-06-1913",
+      "code": "06-1913",
+      "name": "METZENBAUM ScissorsSTR cum",
+      "flags": [
+        "missing-variants"
+      ]
+    },
+    {
+      "id": "surgical-scissors-04-3102-2",
+      "code": "04-3102-2",
+      "name": "Pane Scissors ANGLED",
+      "flags": [
+        "missing-variants"
+      ]
+    },
+    {
+      "id": "surgical-micro-forceps-02-2950",
+      "code": "02-2950",
+      "name": "BONN Iris Forceps",
+      "flags": [
+        "ocr-punctuation"
+      ]
+    },
+    {
+      "id": "surgical-hemostatic-forceps-13-1911",
+      "code": "13-1911",
+      "name": "Senne ee",
+      "flags": [
+        "ocr-punctuation"
+      ]
+    },
+    {
+      "id": "surgical-self-retaining-retractors-16-2950",
+      "code": "16-2950",
+      "name": "BALFOUR BALFOUR PEDIATRIC RETRACTOR",
+      "flags": [
+        "long-name"
+      ]
+    },
+    {
+      "id": "surgical-anesthesia-and-mouth-instruments-24-0200",
+      "code": "24-0200",
+      "name": "YOUNG Tongue Holding",
+      "flags": [
+        "dangling-copy"
+      ]
+    },
+    {
+      "id": "surgical-rectal-instruments-21-0104-2",
+      "code": "21-0104-2",
+      "name": "ARAGAWA Rectal Speculum HJM PATT",
+      "flags": [
+        "missing-variants"
+      ]
+    },
+    {
+      "id": "surgical-vein-hooks-and-strippers-17-5015",
+      "code": "17-5015",
+      "name": "Microphlebectomy Hook S",
+      "flags": [
+        "ocr-punctuation",
+        "dangling-copy"
+      ]
+    },
+    {
+      "id": "surgical-orthopedic-instruments-11-3400",
+      "code": "11-3400",
+      "name": "'Wire TWISTER 18.5.ROUNDTip HEAVEY PATTERN",
+      "flags": [
+        "known-ocr-token"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "generatedAt": "2026-07-27T00:00:00.000Z",
+  "source": "FineMed supplied catalogue bundle; identity fields only",
+  "publicationStatus": "source-derived",
+  "technicalStatus": "pending-verification",
+  "counts": {
+    "divisions": 2,
+    "families": 53,
+    "products": 626,
+    "variants": 1434,
+    "images": 626
+  },
+  "sprite": {
+    "path": "/catalogue/catalogue-sheet.avif",
+    "columns": 26,
+    "rows": 25,
+    "cellSize": 192,
+    "width": 4992,
+    "height": 4800,
+    "format": "avif"
+  }
+}

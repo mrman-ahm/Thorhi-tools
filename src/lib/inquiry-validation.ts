@@ -1,11 +1,23 @@
-import { products } from "@/lib/catalogue";
+import { products as legacyProducts } from "@/lib/catalogue";
+import { getRebuildProduct } from "@/lib/rebuild-catalogue";
 
 export const allowedAttachmentTypes = ["application/pdf", "image/jpeg", "image/png", "image/webp"] as const;
 export const maxAttachmentBytes = 8 * 1024 * 1024;
 
 export type InquiryPayload = {
   submissionToken: string;
-  items: { code: string; name: string; quantity: number; note?: string; manual?: boolean }[];
+  items: {
+    key: string;
+    productId?: string;
+    productCode?: string;
+    variantId?: string;
+    variantLabel?: string;
+    code: string;
+    name: string;
+    quantity: number;
+    note?: string;
+    manual?: boolean;
+  }[];
   buyer: {
     fullName: string;
     companyName: string;
@@ -40,15 +52,51 @@ export function validateInquiry(input: unknown): ValidationResult {
   const rawItems = Array.isArray(raw.items) ? raw.items : [];
   const items = rawItems.slice(0, 100).map((entry, index) => {
     const item = entry && typeof entry === "object" ? entry as Record<string, unknown> : {};
+    const key = text(item.key, 240);
+    const productId = text(item.productId, 240);
+    const productCode = text(item.productCode, 80).toUpperCase();
+    const variantId = text(item.variantId, 240);
+    const variantLabel = text(item.variantLabel, 80).toUpperCase();
     const code = text(item.code, 80).toUpperCase();
-    const name = text(item.name, 160);
+    let name = text(item.name, 160);
     const quantity = Number(item.quantity);
     const manual = Boolean(item.manual);
+    if (!key) errors[`items.${index}.key`] = "The inquiry line identifier is missing.";
     if (!code) errors[`items.${index}.code`] = "Product code or manual reference is required.";
     if (!name) errors[`items.${index}.name`] = "Product name is required.";
     if (!Number.isInteger(quantity) || quantity < 1 || quantity > 9999) errors[`items.${index}.quantity`] = "Quantity must be between 1 and 9999.";
-    if (!manual && code && !products.some(product => product.code === code)) errors[`items.${index}.code`] = "The product code does not match the current catalogue.";
-    return { code, name, quantity, note: text(item.note, 1000), manual };
+
+    if (!manual && code) {
+      const runtimeProduct = productId ? getRebuildProduct(productId) : undefined;
+      const legacyProduct = legacyProducts.find(product => product.code === code);
+      if (runtimeProduct) {
+        const selectedVariant = variantId
+          ? runtimeProduct.variants.find(variant => variant.id === variantId)
+          : undefined;
+        const validCode = selectedVariant
+          ? selectedVariant.code === code
+          : runtimeProduct.code === code && !variantId;
+        if (!validCode) errors[`items.${index}.code`] = "The selected product or variant code does not match the current catalogue.";
+        name = runtimeProduct.name;
+      } else if (legacyProduct) {
+        name = legacyProduct.name;
+      } else {
+        errors[`items.${index}.code`] = "The product code does not match the current catalogue.";
+      }
+    }
+
+    return {
+      key,
+      productId: productId || undefined,
+      productCode: productCode || undefined,
+      variantId: variantId || undefined,
+      variantLabel: variantLabel || undefined,
+      code,
+      name,
+      quantity,
+      note: text(item.note, 1000),
+      manual
+    };
   });
   if (items.length === 0) errors.items = "Add at least one product or manual item.";
 

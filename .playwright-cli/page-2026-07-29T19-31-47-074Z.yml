@@ -1,0 +1,1231 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - link "Skip to content" [ref=e5] [cursor=pointer]:
+      - /url: "#main"
+    - generic [ref=e6]:
+      - link "THROHI Medical Tools rebuild home" [ref=e7] [cursor=pointer]:
+        - /url: /rebuild
+        - img "THROHI Medical Tools" [ref=e8]
+      - navigation "Primary navigation" [ref=e9]:
+        - button "Products" [ref=e11] [cursor=pointer]:
+          - text: Products
+          - generic [ref=e12]: +
+        - link "Company" [ref=e13] [cursor=pointer]:
+          - /url: /rebuild#company
+        - link "Contact" [ref=e14] [cursor=pointer]:
+          - /url: /rebuild#contact
+      - generic [ref=e15]:
+        - button "Search" [ref=e16] [cursor=pointer]
+        - link "0 instruments in Inquiry List" [ref=e17] [cursor=pointer]:
+          - /url: /rebuild/inquiry
+          - generic [ref=e18]: Inquiry List
+          - generic [ref=e19]: "00"
+  - main [ref=e20]:
+    - generic [ref=e21]:
+      - generic [ref=e22]:
+        - generic [ref=e23]:
+          - paragraph [ref=e24]: Phase 11 / Internal catalogue control
+          - heading "Catalogue review" [level=1] [ref=e25]
+          - paragraph [ref=e26]: Validate identity records before any promotion into approved data. Technical claims remain unavailable in this tool.
+        - generic [ref=e27]:
+          - generic [ref=e28]:
+            - strong [ref=e29]: "0"
+            - text: / 175 reviewed
+          - progressbar [ref=e30]: 0 of 175
+      - complementary [ref=e31]:
+        - strong [ref=e32]: Development-only workspace.
+        - generic [ref=e33]: Drafts stay in this browser. This route is no-indexed but not access-controlled; do not deploy it publicly without authentication.
+      - region "Review controls" [ref=e34]:
+        - generic [ref=e35]:
+          - generic [ref=e36]: Reviewer name
+          - textbox "Reviewer name" [ref=e37]:
+            - /placeholder: Required for export
+        - generic [ref=e38]:
+          - button "Import JSON" [ref=e39] [cursor=pointer]
+          - button "Export review" [ref=e40] [cursor=pointer]
+          - button "Clear draft" [ref=e41] [cursor=pointer]
+        - paragraph
+      - generic [ref=e42]:
+        - complementary [ref=e43]:
+          - generic [ref=e44]:
+            - generic [ref=e45]:
+              - generic [ref=e46]: Search queue
+              - searchbox "Search queue" [ref=e47]
+            - generic [ref=e48]:
+              - generic [ref=e49]:
+                - generic [ref=e50]: Status
+                - combobox "Status" [ref=e51]:
+                  - option "All statuses" [selected]
+                  - option "pending"
+                  - option "approved"
+                  - option "corrected"
+                  - option "needs-client"
+                  - option "rejected"
+              - generic [ref=e52]:
+                - generic [ref=e53]: Audit flag
+                - combobox "Audit flag" [ref=e54]:
+                  - option "All flags" [selected]
+                  - option "Possible trailing copy"
+                  - option "Known OCR token"
+                  - option "Long source name"
+                  - option "No variant record"
+                  - option "OCR punctuation"
+              - generic [ref=e55]:
+                - generic [ref=e56]: Division
+                - combobox "Division" [ref=e57]:
+                  - option "All divisions" [selected]
+                  - option "Dental & Orthodontic Instruments"
+                  - option "Surgical Instruments"
+          - paragraph [ref=e58]: 175 records shown
+          - generic [ref=e59]:
+            - button "LP-03T pending Flush End Cutter Long Handle Long source name" [ref=e60] [cursor=pointer]:
+              - generic [ref=e61]:
+                - code [ref=e62]: LP-03T
+                - generic [ref=e63]: pending
+              - strong [ref=e64]: Flush End Cutter Long Handle
+              - emphasis [ref=e65]: Long source name
+            - button "SC-15T pending Distal End Cutter Round Body Long source name" [ref=e66] [cursor=pointer]:
+              - generic [ref=e67]:
+                - code [ref=e68]: SC-15T
+                - generic [ref=e69]: pending
+              - strong [ref=e70]: Distal End Cutter Round Body
+              - emphasis [ref=e71]: Long source name
+            - button "SC-15TLH pending Distal End Cutter Long Handle Long source name" [ref=e72] [cursor=pointer]:
+              - generic [ref=e73]:
+                - code [ref=e74]: SC-15TLH
+                - generic [ref=e75]: pending
+              - strong [ref=e76]: Distal End Cutter Long Handle
+              - emphasis [ref=e77]: Long source name
+            - button "SC-189T pending Distal End Cutter Long source name" [ref=e78] [cursor=pointer]:
+              - generic [ref=e79]:
+                - code [ref=e80]: SC-189T
+                - generic [ref=e81]: pending
+              - strong [ref=e82]: Distal End Cutter
+              - emphasis [ref=e83]: Long source name
+            - button "SC-189TW pending Flush End Cutter Long source name" [ref=e84] [cursor=pointer]:
+              - generic [ref=e85]:
+                - code [ref=e86]: SC-189TW
+                - generic [ref=e87]: pending
+              - strong [ref=e88]: Flush End Cutter
+              - emphasis [ref=e89]: Long source name
+            - button "SC-215T pending Mini Distal End Cutter Flat Body Long source name" [ref=e90] [cursor=pointer]:
+              - generic [ref=e91]:
+                - code [ref=e92]: SC-215T
+                - generic [ref=e93]: pending
+              - strong [ref=e94]: Mini Distal End Cutter Flat Body
+              - emphasis [ref=e95]: Long source name
+            - button "SC-215TLH pending Mini Distal End Cutter Flat Body Long Handle Long source name" [ref=e96] [cursor=pointer]:
+              - generic [ref=e97]:
+                - code [ref=e98]: SC-215TLH
+                - generic [ref=e99]: pending
+              - strong [ref=e100]: Mini Distal End Cutter Flat Body Long Handle
+              - emphasis [ref=e101]: Long source name
+            - button "SC-215TA pending Mini Distal End Cutter L-key Type Long source name" [ref=e102] [cursor=pointer]:
+              - generic [ref=e103]:
+                - code [ref=e104]: SC-215TA
+                - generic [ref=e105]: pending
+              - strong [ref=e106]: Mini Distal End Cutter L-key Type
+              - emphasis [ref=e107]: Long source name
+            - button "SP-26 pending JARABAK LOOP FORMING PLIER Possible trailing copy" [ref=e108] [cursor=pointer]:
+              - generic [ref=e109]:
+                - code [ref=e110]: SP-26
+                - generic [ref=e111]: pending
+              - strong [ref=e112]: JARABAK LOOP FORMING PLIER
+              - emphasis [ref=e113]: Possible trailing copy
+            - button "SP-27 pending ANGLE BIRD BEAK PLIER Possible trailing copy" [ref=e114] [cursor=pointer]:
+              - generic [ref=e115]:
+                - code [ref=e116]: SP-27
+                - generic [ref=e117]: pending
+              - strong [ref=e118]: ANGLE BIRD BEAK PLIER
+              - emphasis [ref=e119]: Possible trailing copy
+            - button "SP-27T pending ANGLE BIRD BEAK PLIER OCR punctuation / Possible trailing copy" [ref=e120] [cursor=pointer]:
+              - generic [ref=e121]:
+                - code [ref=e122]: SP-27T
+                - generic [ref=e123]: pending
+              - strong [ref=e124]: ANGLE BIRD BEAK PLIER
+              - emphasis [ref=e125]: OCR punctuation / Possible trailing copy
+            - button "SP-38 pending ADAMS WIRE BENDING PLIER Possible trailing copy" [ref=e126] [cursor=pointer]:
+              - generic [ref=e127]:
+                - code [ref=e128]: SP-38
+                - generic [ref=e129]: pending
+              - strong [ref=e130]: ADAMS WIRE BENDING PLIER
+              - emphasis [ref=e131]: Possible trailing copy
+            - button "SP-41 pending Lingual Arch Bending Pliers Long source name" [ref=e132] [cursor=pointer]:
+              - generic [ref=e133]:
+                - code [ref=e134]: SP-41
+                - generic [ref=e135]: pending
+              - strong [ref=e136]: Lingual Arch Bending Pliers
+              - emphasis [ref=e137]: Long source name
+            - button "SP-43 pending TWEED WIRE FORMING & — OCR punctuation" [ref=e138] [cursor=pointer]:
+              - generic [ref=e139]:
+                - code [ref=e140]: SP-43
+                - generic [ref=e141]: pending
+              - strong [ref=e142]: TWEED WIRE FORMING & —
+              - emphasis [ref=e143]: OCR punctuation
+            - button "SP-47 pending TWEED LOOP FORMING PLIER Long source name" [ref=e144] [cursor=pointer]:
+              - generic [ref=e145]:
+                - code [ref=e146]: SP-47
+                - generic [ref=e147]: pending
+              - strong [ref=e148]: TWEED LOOP FORMING PLIER
+              - emphasis [ref=e149]: Long source name
+            - button "SP-51 pending Tweed bending pliers Long source name / Possible trailing copy" [ref=e150] [cursor=pointer]:
+              - generic [ref=e151]:
+                - code [ref=e152]: SP-51
+                - generic [ref=e153]: pending
+              - strong [ref=e154]: Tweed bending pliers
+              - emphasis [ref=e155]: Long source name / Possible trailing copy
+            - button "SP-52 pending Tweed Bending Pliers Long source name / Possible trailing copy" [ref=e156] [cursor=pointer]:
+              - generic [ref=e157]:
+                - code [ref=e158]: SP-52
+                - generic [ref=e159]: pending
+              - strong [ref=e160]: Tweed Bending Pliers
+              - emphasis [ref=e161]: Long source name / Possible trailing copy
+            - button "SP-58 pending JARABAK LOOP FORMING PLIER Possible trailing copy" [ref=e162] [cursor=pointer]:
+              - generic [ref=e163]:
+                - code [ref=e164]: SP-58
+                - generic [ref=e165]: pending
+              - strong [ref=e166]: JARABAK LOOP FORMING PLIER
+              - emphasis [ref=e167]: Possible trailing copy
+            - button "SP-84 pending OLIVER WIRE BENDING PLIER Long source name / Possible trailing copy / Known OCR token" [ref=e168] [cursor=pointer]:
+              - generic [ref=e169]:
+                - code [ref=e170]: SP-84
+                - generic [ref=e171]: pending
+              - strong [ref=e172]: OLIVER WIRE BENDING PLIER
+              - emphasis [ref=e173]: Long source name / Possible trailing copy / Known OCR token
+            - button "SP-92 pending SWARTZ Arrow clasp forming plier Possible trailing copy" [ref=e174] [cursor=pointer]:
+              - generic [ref=e175]:
+                - code [ref=e176]: SP-92
+                - generic [ref=e177]: pending
+              - strong [ref=e178]: SWARTZ Arrow clasp forming plier
+              - emphasis [ref=e179]: Possible trailing copy
+            - button "SP-94 pending MALLOTHY three jaw plier Long source name" [ref=e180] [cursor=pointer]:
+              - generic [ref=e181]:
+                - code [ref=e182]: SP-94
+                - generic [ref=e183]: pending
+              - strong [ref=e184]: MALLOTHY three jaw plier
+              - emphasis [ref=e185]: Long source name
+            - button "SP-199 pending LIGATURE FORMING PLIER Shape ligature wire easily into a performed ligature 2 soft Long source name" [ref=e186] [cursor=pointer]:
+              - generic [ref=e187]:
+                - code [ref=e188]: SP-199
+                - generic [ref=e189]: pending
+              - strong [ref=e190]: LIGATURE FORMING PLIER Shape ligature wire easily into a performed ligature 2 soft
+              - emphasis [ref=e191]: Long source name
+            - button "SP-216 pending TWEED LOOP FORMING & Long source name / OCR punctuation" [ref=e192] [cursor=pointer]:
+              - generic [ref=e193]:
+                - code [ref=e194]: SP-216
+                - generic [ref=e195]: pending
+              - strong [ref=e196]: TWEED LOOP FORMING &
+              - emphasis [ref=e197]: Long source name / OCR punctuation
+            - button "SP-236 pending Palatal Strap Pliers The inner surface of the jaws is designed to ensure easy access to the lingual molar locks Long source name" [ref=e198] [cursor=pointer]:
+              - generic [ref=e199]:
+                - code [ref=e200]: SP-236
+                - generic [ref=e201]: pending
+              - strong [ref=e202]: Palatal Strap Pliers The inner surface of the jaws is designed to ensure easy access to the lingual molar locks
+              - emphasis [ref=e203]: Long source name
+            - button "SP-237 pending Langbeck Flat needle pliers Possible trailing copy" [ref=e204] [cursor=pointer]:
+              - generic [ref=e205]:
+                - code [ref=e206]: SP-237
+                - generic [ref=e207]: pending
+              - strong [ref=e208]: Langbeck Flat needle pliers
+              - emphasis [ref=e209]: Possible trailing copy
+            - button "SP-241 pending LIGHT Loop FORMING PLIER Possible trailing copy" [ref=e210] [cursor=pointer]:
+              - generic [ref=e211]:
+                - code [ref=e212]: SP-241
+                - generic [ref=e213]: pending
+              - strong [ref=e214]: LIGHT Loop FORMING PLIER
+              - emphasis [ref=e215]: Possible trailing copy
+            - button "SP-191 pending DETAILING STEP PLIER Step-up and Step-down bends TM step in arch wires corrugated Long source name" [ref=e216] [cursor=pointer]:
+              - generic [ref=e217]:
+                - code [ref=e218]: SP-191
+                - generic [ref=e219]: pending
+              - strong [ref=e220]: DETAILING STEP PLIER Step-up and Step-down bends TM step in arch wires corrugated
+              - emphasis [ref=e221]: Long source name
+            - button "SP-192 pending DETAILING STEP PLIER Step-up and Step-down bends Long source name / OCR punctuation" [ref=e222] [cursor=pointer]:
+              - generic [ref=e223]:
+                - code [ref=e224]: SP-192
+                - generic [ref=e225]: pending
+              - strong [ref=e226]: DETAILING STEP PLIER Step-up and Step-down bends
+              - emphasis [ref=e227]: Long source name / OCR punctuation
+            - button "SP-193 pending DETAILING STEP PLIER Step-up and Step-down bends. step in arch wires corrugated Long source name" [ref=e228] [cursor=pointer]:
+              - generic [ref=e229]:
+                - code [ref=e230]: SP-193
+                - generic [ref=e231]: pending
+              - strong [ref=e232]: DETAILING STEP PLIER Step-up and Step-down bends. step in arch wires corrugated
+              - emphasis [ref=e233]: Long source name
+            - button "SP-194 pending DETAILING STEP PLIER Step-up and Step-down bends Long source name / OCR punctuation" [ref=e234] [cursor=pointer]:
+              - generic [ref=e235]:
+                - code [ref=e236]: SP-194
+                - generic [ref=e237]: pending
+              - strong [ref=e238]: DETAILING STEP PLIER Step-up and Step-down bends
+              - emphasis [ref=e239]: Long source name / OCR punctuation
+            - button "SP-197 pending TORQUE PLIER FEMALE PART STANDARD PATTERN Step-up and Step-down bends step in arch wires corrugated Long source name / Possible trailing copy" [ref=e240] [cursor=pointer]:
+              - generic [ref=e241]:
+                - code [ref=e242]: SP-197
+                - generic [ref=e243]: pending
+              - strong [ref=e244]: TORQUE PLIER FEMALE PART STANDARD PATTERN Step-up and Step-down bends step in arch wires corrugated
+              - emphasis [ref=e245]: Long source name / Possible trailing copy
+            - button "SP-46 pending DE LA ROSA Arch Contouring Plier Long source name / Possible trailing copy" [ref=e246] [cursor=pointer]:
+              - generic [ref=e247]:
+                - code [ref=e248]: SP-46
+                - generic [ref=e249]: pending
+              - strong [ref=e250]: DE LA ROSA Arch Contouring Plier
+              - emphasis [ref=e251]: Long source name / Possible trailing copy
+            - button "SP-46A pending DE LA ROSA Arch Contouring Plier without Grooves Long source name / Possible trailing copy" [ref=e252] [cursor=pointer]:
+              - generic [ref=e253]:
+                - code [ref=e254]: SP-46A
+                - generic [ref=e255]: pending
+              - strong [ref=e256]: DE LA ROSA Arch Contouring Plier without Grooves
+              - emphasis [ref=e257]: Long source name / Possible trailing copy
+            - button "SP-46S pending DE LA ROSA Arch Contouring Plier Long source name / Possible trailing copy" [ref=e258] [cursor=pointer]:
+              - generic [ref=e259]:
+                - code [ref=e260]: SP-46S
+                - generic [ref=e261]: pending
+              - strong [ref=e262]: DE LA ROSA Arch Contouring Plier
+              - emphasis [ref=e263]: Long source name / Possible trailing copy
+            - button "SP-30 pending WEINGART Universal Plier Blunt Points regular Pattern Long source name / Possible trailing copy" [ref=e264] [cursor=pointer]:
+              - generic [ref=e265]:
+                - code [ref=e266]: SP-30
+                - generic [ref=e267]: pending
+              - strong [ref=e268]: WEINGART Universal Plier Blunt Points regular Pattern
+              - emphasis [ref=e269]: Long source name / Possible trailing copy
+            - button "SP-30S pending WEINGART Universal Plier Sharp Points delicate Pattern Long source name / Possible trailing copy" [ref=e270] [cursor=pointer]:
+              - generic [ref=e271]:
+                - code [ref=e272]: SP-30S
+                - generic [ref=e273]: pending
+              - strong [ref=e274]: WEINGART Universal Plier Sharp Points delicate Pattern
+              - emphasis [ref=e275]: Long source name / Possible trailing copy
+            - button "LP-01 pending WEINGART Universal Plier Long source name / Possible trailing copy" [ref=e276] [cursor=pointer]:
+              - generic [ref=e277]:
+                - code [ref=e278]: LP-01
+                - generic [ref=e279]: pending
+              - strong [ref=e280]: WEINGART Universal Plier
+              - emphasis [ref=e281]: Long source name / Possible trailing copy
+            - button "LP-01T pending WEINGART Universal Plier Long source name / Possible trailing copy" [ref=e282] [cursor=pointer]:
+              - generic [ref=e283]:
+                - code [ref=e284]: LP-01T
+                - generic [ref=e285]: pending
+              - strong [ref=e286]: WEINGART Universal Plier
+              - emphasis [ref=e287]: Long source name / Possible trailing copy
+            - button "SP-31T pending WEINGART Universal Plier Long source name / Possible trailing copy" [ref=e288] [cursor=pointer]:
+              - generic [ref=e289]:
+                - code [ref=e290]: SP-31T
+                - generic [ref=e291]: pending
+              - strong [ref=e292]: WEINGART Universal Plier
+              - emphasis [ref=e293]: Long source name / Possible trailing copy
+            - button "SP-32 pending WEINGART Universal Plier Allows you to effortlessly guide and bend the Arch wire during placement and removal Long source name / Possible trailing copy" [ref=e294] [cursor=pointer]:
+              - generic [ref=e295]:
+                - code [ref=e296]: SP-32
+                - generic [ref=e297]: pending
+              - strong [ref=e298]: WEINGART Universal Plier Allows you to effortlessly guide and bend the Arch wire during placement and removal
+              - emphasis [ref=e299]: Long source name / Possible trailing copy
+            - button "SP-204T pending WEINGART Universal Plier Long source name" [ref=e300] [cursor=pointer]:
+              - generic [ref=e301]:
+                - code [ref=e302]: SP-204T
+                - generic [ref=e303]: pending
+              - strong [ref=e304]: WEINGART Universal Plier
+              - emphasis [ref=e305]: Long source name
+            - button "SP-204LH pending WEINGART Universal Plier Long Handle Long source name" [ref=e306] [cursor=pointer]:
+              - generic [ref=e307]:
+                - code [ref=e308]: SP-204LH
+                - generic [ref=e309]: pending
+              - strong [ref=e310]: WEINGART Universal Plier Long Handle
+              - emphasis [ref=e311]: Long source name
+            - button "SP-33SA pending HOW Universal Plier STR Long source name / Possible trailing copy" [ref=e312] [cursor=pointer]:
+              - generic [ref=e313]:
+                - code [ref=e314]: SP-33SA
+                - generic [ref=e315]: pending
+              - strong [ref=e316]: HOW Universal Plier STR
+              - emphasis [ref=e317]: Long source name / Possible trailing copy
+            - button "SP-34SA pending HOW Universal Plier CVD Long source name / Possible trailing copy" [ref=e318] [cursor=pointer]:
+              - generic [ref=e319]:
+                - code [ref=e320]: SP-34SA
+                - generic [ref=e321]: pending
+              - strong [ref=e322]: HOW Universal Plier CVD
+              - emphasis [ref=e323]: Long source name / Possible trailing copy
+            - button "SP-118 pending ths Parallel Action Flat Pliers without cutter The jaws of parallel-action pliers remain parallel regardless of the range of motion the pliers themselves are put through. Their jaws hold the object securely Long source name" [ref=e324] [cursor=pointer]:
+              - generic [ref=e325]:
+                - code [ref=e326]: SP-118
+                - generic [ref=e327]: pending
+              - strong [ref=e328]: ths Parallel Action Flat Pliers without cutter The jaws of parallel-action pliers remain parallel regardless of the range of motion the pliers themselves are put through. Their jaws hold the object securely
+              - emphasis [ref=e329]: Long source name
+            - button "SP-119 pending Parallel Action Flat Pliers Long source name" [ref=e330] [cursor=pointer]:
+              - generic [ref=e331]:
+                - code [ref=e332]: SP-119
+                - generic [ref=e333]: pending
+              - strong [ref=e334]: Parallel Action Flat Pliers
+              - emphasis [ref=e335]: Long source name
+            - button "SP-110 pending BALL HOOK CRIMPING PLIER. Angled Special press pliers Long source name" [ref=e336] [cursor=pointer]:
+              - generic [ref=e337]:
+                - code [ref=e338]: SP-110
+                - generic [ref=e339]: pending
+              - strong [ref=e340]: BALL HOOK CRIMPING PLIER. Angled Special press pliers
+              - emphasis [ref=e341]: Long source name
+            - button "SP-200 pending Hook Crimping Pliers STR Without TC Specially made to crimp hooks Long source name" [ref=e342] [cursor=pointer]:
+              - generic [ref=e343]:
+                - code [ref=e344]: SP-200
+                - generic [ref=e345]: pending
+              - strong [ref=e346]: Hook Crimping Pliers STR Without TC Specially made to crimp hooks
+              - emphasis [ref=e347]: Long source name
+            - button "SP-200T pending Hook Crimping Pliers — STR Long source name" [ref=e348] [cursor=pointer]:
+              - generic [ref=e349]:
+                - code [ref=e350]: SP-200T
+                - generic [ref=e351]: pending
+              - strong [ref=e352]: Hook Crimping Pliers — STR
+              - emphasis [ref=e353]: Long source name
+            - button "SP-222T pending Hook Crimping Pliers Specially made to crimp hooks Long source name" [ref=e354] [cursor=pointer]:
+              - generic [ref=e355]:
+                - code [ref=e356]: SP-222T
+                - generic [ref=e357]: pending
+              - strong [ref=e358]: Hook Crimping Pliers Specially made to crimp hooks
+              - emphasis [ref=e359]: Long source name
+            - button "SP-64 pending DIRECT BOND REMOVING PLIER STR The streight tips of the forceps remove brackets easily and gently in a tooth-friendly Manner Long source name" [ref=e360] [cursor=pointer]:
+              - generic [ref=e361]:
+                - code [ref=e362]: SP-64
+                - generic [ref=e363]: pending
+              - strong [ref=e364]: DIRECT BOND REMOVING PLIER STR The streight tips of the forceps remove brackets easily and gently in a tooth-friendly Manner
+              - emphasis [ref=e365]: Long source name
+            - button "SP-65 pending DIRECT BOND REMOVING PLIER Long source name" [ref=e366] [cursor=pointer]:
+              - generic [ref=e367]:
+                - code [ref=e368]: SP-65
+                - generic [ref=e369]: pending
+              - strong [ref=e370]: DIRECT BOND REMOVING PLIER
+              - emphasis [ref=e371]: Long source name
+            - button "SP-66 pending Debonding Plier Straight Can effortlessly remove all bonding attachments. and any remaining adhesives during Debonding Long source name" [ref=e372] [cursor=pointer]:
+              - generic [ref=e373]:
+                - code [ref=e374]: SP-66
+                - generic [ref=e375]: pending
+              - strong [ref=e376]: Debonding Plier Straight Can effortlessly remove all bonding attachments. and any remaining adhesives during Debonding
+              - emphasis [ref=e377]: Long source name
+            - button "SP-67 pending ADERER Posterior Band Removing Plier Long source name" [ref=e378] [cursor=pointer]:
+              - generic [ref=e379]:
+                - code [ref=e380]: SP-67
+                - generic [ref=e381]: pending
+              - strong [ref=e382]: ADERER Posterior Band Removing Plier
+              - emphasis [ref=e383]: Long source name
+            - button "SP-68 pending Ligament Posterior Band Removing Plier Short Long source name" [ref=e384] [cursor=pointer]:
+              - generic [ref=e385]:
+                - code [ref=e386]: SP-68
+                - generic [ref=e387]: pending
+              - strong [ref=e388]: Ligament Posterior Band Removing Plier Short
+              - emphasis [ref=e389]: Long source name
+            - button "SP-68T pending Ligament Posterior Band Removing Plier Short Long source name" [ref=e390] [cursor=pointer]:
+              - generic [ref=e391]:
+                - code [ref=e392]: SP-68T
+                - generic [ref=e393]: pending
+              - strong [ref=e394]: Ligament Posterior Band Removing Plier Short
+              - emphasis [ref=e395]: Long source name
+            - button "SP-233 pending DIRECT BOND REMOVING PLIER Long source name" [ref=e396] [cursor=pointer]:
+              - generic [ref=e397]:
+                - code [ref=e398]: SP-233
+                - generic [ref=e399]: pending
+              - strong [ref=e400]: DIRECT BOND REMOVING PLIER
+              - emphasis [ref=e401]: Long source name
+            - button "SP-238 pending Offset Bracket Removing Plier Long source name" [ref=e402] [cursor=pointer]:
+              - generic [ref=e403]:
+                - code [ref=e404]: SP-238
+                - generic [ref=e405]: pending
+              - strong [ref=e406]: Offset Bracket Removing Plier
+              - emphasis [ref=e407]: Long source name
+            - button "SP-253 pending SAPPHIRE Debonding & Bracket Removing Plier Easily grip the upper and the lower wing of the bracket and Long source name" [ref=e408] [cursor=pointer]:
+              - generic [ref=e409]:
+                - code [ref=e410]: SP-253
+                - generic [ref=e411]: pending
+              - strong [ref=e412]: SAPPHIRE Debonding & Bracket Removing Plier Easily grip the upper and the lower wing of the bracket and
+              - emphasis [ref=e413]: Long source name
+            - button "SP-254 pending Composite (Adhesive) Removing Pliers Long source name" [ref=e414] [cursor=pointer]:
+              - generic [ref=e415]:
+                - code [ref=e416]: SP-254
+                - generic [ref=e417]: pending
+              - strong [ref=e418]: Composite (Adhesive) Removing Pliers
+              - emphasis [ref=e419]: Long source name
+            - button "SP-500 pending Buccal tube Convertible Cap Removing Plier By utilizing this specialized tool Long source name" [ref=e420] [cursor=pointer]:
+              - generic [ref=e421]:
+                - code [ref=e422]: SP-500
+                - generic [ref=e423]: pending
+              - strong [ref=e424]: Buccal tube Convertible Cap Removing Plier By utilizing this specialized tool
+              - emphasis [ref=e425]: Long source name
+            - button "LP-03T-2 pending Flush End Cutter Long Handle Long source name" [ref=e426] [cursor=pointer]:
+              - generic [ref=e427]:
+                - code [ref=e428]: LP-03T-2
+                - generic [ref=e429]: pending
+              - strong [ref=e430]: Flush End Cutter Long Handle
+              - emphasis [ref=e431]: Long source name
+            - button "LP-05S pending NiTi Distal Cinch Back Plier Long source name" [ref=e432] [cursor=pointer]:
+              - generic [ref=e433]:
+                - code [ref=e434]: LP-05S
+                - generic [ref=e435]: pending
+              - strong [ref=e436]: NiTi Distal Cinch Back Plier
+              - emphasis [ref=e437]: Long source name
+            - button "LP-05LH pending NiTi Distal Cinch Back Plier —— Long Handle Long source name" [ref=e438] [cursor=pointer]:
+              - generic [ref=e439]:
+                - code [ref=e440]: LP-05LH
+                - generic [ref=e441]: pending
+              - strong [ref=e442]: NiTi Distal Cinch Back Plier —— Long Handle
+              - emphasis [ref=e443]: Long source name
+            - button "LP-05LHS pending NiTi Distal Cinch Back Plier Long Handle Long source name" [ref=e444] [cursor=pointer]:
+              - generic [ref=e445]:
+                - code [ref=e446]: LP-05LHS
+                - generic [ref=e447]: pending
+              - strong [ref=e448]: NiTi Distal Cinch Back Plier Long Handle
+              - emphasis [ref=e449]: Long source name
+            - button "LP-05M pending NiTi Distal Cinch Back Plier Long Handle & Mini Head Long source name" [ref=e450] [cursor=pointer]:
+              - generic [ref=e451]:
+                - code [ref=e452]: LP-05M
+                - generic [ref=e453]: pending
+              - strong [ref=e454]: NiTi Distal Cinch Back Plier Long Handle & Mini Head
+              - emphasis [ref=e455]: Long source name
+            - button "B-190 pending Alinger Lifter Aspecial patient tool Long source name" [ref=e456] [cursor=pointer]:
+              - generic [ref=e457]:
+                - code [ref=e458]: B-190
+                - generic [ref=e459]: pending
+              - strong [ref=e460]: Alinger Lifter Aspecial patient tool
+              - emphasis [ref=e461]: Long source name
+            - button "CA-05 pending Vertical Notch Forming Plier This plier creats a vertical notch on clear aligners. to control rotated teeth Long source name" [ref=e462] [cursor=pointer]:
+              - generic [ref=e463]:
+                - code [ref=e464]: CA-05
+                - generic [ref=e465]: pending
+              - strong [ref=e466]: Vertical Notch Forming Plier This plier creats a vertical notch on clear aligners. to control rotated teeth
+              - emphasis [ref=e467]: Long source name
+            - button "CA-06 pending Horizontal Notch Forming Plier This plier creats a horizontal notch on clear aligners to accent individual root torque Long source name" [ref=e468] [cursor=pointer]:
+              - generic [ref=e469]:
+                - code [ref=e470]: CA-06
+                - generic [ref=e471]: pending
+              - strong [ref=e472]: Horizontal Notch Forming Plier This plier creats a horizontal notch on clear aligners to accent individual root torque
+              - emphasis [ref=e473]: Long source name
+            - button "CA-07 pending Tear Drop Forming Plier This plier creats a notch at the gingival margin of clear aligners to hold elastics Long source name" [ref=e474] [cursor=pointer]:
+              - generic [ref=e475]:
+                - code [ref=e476]: CA-07
+                - generic [ref=e477]: pending
+              - strong [ref=e478]: Tear Drop Forming Plier This plier creats a notch at the gingival margin of clear aligners to hold elastics
+              - emphasis [ref=e479]: Long source name
+            - button "CA-08 pending Hole Forming Plier This plier creats a half-moon cutout at the gingival margin of clear aligners Long source name" [ref=e480] [cursor=pointer]:
+              - generic [ref=e481]:
+                - code [ref=e482]: CA-08
+                - generic [ref=e483]: pending
+              - strong [ref=e484]: Hole Forming Plier This plier creats a half-moon cutout at the gingival margin of clear aligners
+              - emphasis [ref=e485]: Long source name
+            - button "CA-21 pending Aligner Cutter U cutt Long source name" [ref=e486] [cursor=pointer]:
+              - generic [ref=e487]:
+                - code [ref=e488]: CA-21
+                - generic [ref=e489]: pending
+              - strong [ref=e490]: Aligner Cutter U cutt
+              - emphasis [ref=e491]: Long source name
+            - button "CA-22 pending Aligner Cutter V cutt Long source name" [ref=e492] [cursor=pointer]:
+              - generic [ref=e493]:
+                - code [ref=e494]: CA-22
+                - generic [ref=e495]: pending
+              - strong [ref=e496]: Aligner Cutter V cutt
+              - emphasis [ref=e497]: Long source name
+            - button "CA-23 pending Indentation Forming Plier When increased retention is required in an aligner or retainer Long source name" [ref=e498] [cursor=pointer]:
+              - generic [ref=e499]:
+                - code [ref=e500]: CA-23
+                - generic [ref=e501]: pending
+              - strong [ref=e502]: Indentation Forming Plier When increased retention is required in an aligner or retainer
+              - emphasis [ref=e503]: Long source name
+            - button "CA-24 pending Invisalign Hole Punch Plier Long source name" [ref=e504] [cursor=pointer]:
+              - generic [ref=e505]:
+                - code [ref=e506]: CA-24
+                - generic [ref=e507]: pending
+              - strong [ref=e508]: Invisalign Hole Punch Plier
+              - emphasis [ref=e509]: Long source name
+            - button "SN-136 pending ELTEE SMAHA elastomeric. Ligature Placing Plier CVD Vertical serration & Long source name" [ref=e510] [cursor=pointer]:
+              - generic [ref=e511]:
+                - code [ref=e512]: SN-136
+                - generic [ref=e513]: pending
+              - strong [ref=e514]: ELTEE SMAHA elastomeric. Ligature Placing Plier CVD Vertical serration &
+              - emphasis [ref=e515]: Long source name
+            - button "SN-135C pending ELTEE SMAHA elastomeric Ligature Placing Plier STR Cross serration & Long source name" [ref=e516] [cursor=pointer]:
+              - generic [ref=e517]:
+                - code [ref=e518]: SN-135C
+                - generic [ref=e519]: pending
+              - strong [ref=e520]: ELTEE SMAHA elastomeric Ligature Placing Plier STR Cross serration &
+              - emphasis [ref=e521]: Long source name
+            - button "SN-136C pending ELTEE SMAHA elastomeric Ligature Placing Plier CVD Cross serration & Long source name" [ref=e522] [cursor=pointer]:
+              - generic [ref=e523]:
+                - code [ref=e524]: SN-136C
+                - generic [ref=e525]: pending
+              - strong [ref=e526]: ELTEE SMAHA elastomeric Ligature Placing Plier CVD Cross serration &
+              - emphasis [ref=e527]: Long source name
+            - button "SN-137 pending ELTEE SMAHA elastic placing plier Cross serration & Long source name" [ref=e528] [cursor=pointer]:
+              - generic [ref=e529]:
+                - code [ref=e530]: SN-137
+                - generic [ref=e531]: pending
+              - strong [ref=e532]: ELTEE SMAHA elastic placing plier Cross serration &
+              - emphasis [ref=e533]: Long source name
+            - button "SN-137S pending ELTEE SMAHA MINI elastic placing plier Cross serration & Long source name" [ref=e534] [cursor=pointer]:
+              - generic [ref=e535]:
+                - code [ref=e536]: SN-137S
+                - generic [ref=e537]: pending
+              - strong [ref=e538]: ELTEE SMAHA MINI elastic placing plier Cross serration &
+              - emphasis [ref=e539]: Long source name
+            - button "SN-138 pending ELTEE SMAHA MINI elastic. Placing plier «Cross serration & Long source name" [ref=e540] [cursor=pointer]:
+              - generic [ref=e541]:
+                - code [ref=e542]: SN-138
+                - generic [ref=e543]: pending
+              - strong [ref=e544]: ELTEE SMAHA MINI elastic. Placing plier «Cross serration &
+              - emphasis [ref=e545]: Long source name
+            - button "SN-138M pending ELTEE SMAHA MINI elastic — Placing plier. Smooth jaws & Long source name" [ref=e546] [cursor=pointer]:
+              - generic [ref=e547]:
+                - code [ref=e548]: SN-138M
+                - generic [ref=e549]: pending
+              - strong [ref=e550]: ELTEE SMAHA MINI elastic — Placing plier. Smooth jaws &
+              - emphasis [ref=e551]: Long source name
+            - button "SN-149 pending ELTEE SMAHA MINI Ligature Placing Plier Cross serration & Long source name" [ref=e552] [cursor=pointer]:
+              - generic [ref=e553]:
+                - code [ref=e554]: SN-149
+                - generic [ref=e555]: pending
+              - strong [ref=e556]: ELTEE SMAHA MINI Ligature Placing Plier Cross serration &
+              - emphasis [ref=e557]: Long source name
+            - button "SS-128 pending BEEBE Scissors STR blunt points Long source name / OCR punctuation" [ref=e558] [cursor=pointer]:
+              - generic [ref=e559]:
+                - code [ref=e560]: SS-128
+                - generic [ref=e561]: pending
+              - strong [ref=e562]: BEEBE Scissors STR blunt points
+              - emphasis [ref=e563]: Long source name / OCR punctuation
+            - button "SS-129 pending BEEBE Scissors N Slightly CVD blunt points One serrated jaw Long source name" [ref=e564] [cursor=pointer]:
+              - generic [ref=e565]:
+                - code [ref=e566]: SS-129
+                - generic [ref=e567]: pending
+              - strong [ref=e568]: BEEBE Scissors N Slightly CVD blunt points One serrated jaw
+              - emphasis [ref=e569]: Long source name
+            - button "SS-126A pending XX BEEBE Scissors Heavy Model Slightly CVD sharp points ~ One serrated jaw Long source name" [ref=e570] [cursor=pointer]:
+              - generic [ref=e571]:
+                - code [ref=e572]: SS-126A
+                - generic [ref=e573]: pending
+              - strong [ref=e574]: XX BEEBE Scissors Heavy Model Slightly CVD sharp points ~ One serrated jaw
+              - emphasis [ref=e575]: Long source name
+            - button "SS-127A pending BEEBE Scissors Heavy Model CVD sharp points One serrated jaw Long source name" [ref=e576] [cursor=pointer]:
+              - generic [ref=e577]:
+                - code [ref=e578]: SS-127A
+                - generic [ref=e579]: pending
+              - strong [ref=e580]: BEEBE Scissors Heavy Model CVD sharp points One serrated jaw
+              - emphasis [ref=e581]: Long source name
+            - button "SS-135 pending PEDO Crown Scissors 9em CVD One serrated jaw Long source name" [ref=e582] [cursor=pointer]:
+              - generic [ref=e583]:
+                - code [ref=e584]: SS-135
+                - generic [ref=e585]: pending
+              - strong [ref=e586]: PEDO Crown Scissors 9em CVD One serrated jaw
+              - emphasis [ref=e587]: Long source name
+            - button "SN-140 pending > MATHIEU Needle Holder Fine cross serration Long source name" [ref=e588] [cursor=pointer]:
+              - generic [ref=e589]:
+                - code [ref=e590]: SN-140
+                - generic [ref=e591]: pending
+              - strong [ref=e592]: "> MATHIEU Needle Holder Fine cross serration"
+              - emphasis [ref=e593]: Long source name
+            - button "SN-141 pending MATHIEU Needle Holder Fine cross serration Long source name" [ref=e594] [cursor=pointer]:
+              - generic [ref=e595]:
+                - code [ref=e596]: SN-141
+                - generic [ref=e597]: pending
+              - strong [ref=e598]: MATHIEU Needle Holder Fine cross serration
+              - emphasis [ref=e599]: Long source name
+            - 'button "SN-140T pending } \"TC MATHIEU Needle Holder TC inserts Long source name" [ref=e600] [cursor=pointer]':
+              - generic [ref=e601]:
+                - code [ref=e602]: SN-140T
+                - generic [ref=e603]: pending
+              - strong [ref=e604]: "} \"TC MATHIEU Needle Holder TC inserts"
+              - emphasis [ref=e605]: Long source name
+            - button "SN-141T pending MATHIEU Needle Holder a ? TC inserts Long source name / OCR punctuation" [ref=e606] [cursor=pointer]:
+              - generic [ref=e607]:
+                - code [ref=e608]: SN-141T
+                - generic [ref=e609]: pending
+              - strong [ref=e610]: MATHIEU Needle Holder a ? TC inserts
+              - emphasis [ref=e611]: Long source name / OCR punctuation
+            - button "SN-142T pending MATHIEU Needle Holder TC inserts Long source name" [ref=e612] [cursor=pointer]:
+              - generic [ref=e613]:
+                - code [ref=e614]: SN-142T
+                - generic [ref=e615]: pending
+              - strong [ref=e616]: MATHIEU Needle Holder TC inserts
+              - emphasis [ref=e617]: Long source name
+            - button "SN-144 pending MATHIEU Needle Holder Slim Model Fine cross serration Long source name" [ref=e618] [cursor=pointer]:
+              - generic [ref=e619]:
+                - code [ref=e620]: SN-144
+                - generic [ref=e621]: pending
+              - strong [ref=e622]: MATHIEU Needle Holder Slim Model Fine cross serration
+              - emphasis [ref=e623]: Long source name
+            - button "SN-145 pending MATHIEU Needle Holder Standard Model Fine cross serration Long source name" [ref=e624] [cursor=pointer]:
+              - generic [ref=e625]:
+                - code [ref=e626]: SN-145
+                - generic [ref=e627]: pending
+              - strong [ref=e628]: MATHIEU Needle Holder Standard Model Fine cross serration
+              - emphasis [ref=e629]: Long source name
+            - button "SN-144T pending MATHIEU Needle Holder Slim Model TC inserts Long source name" [ref=e630] [cursor=pointer]:
+              - generic [ref=e631]:
+                - code [ref=e632]: SN-144T
+                - generic [ref=e633]: pending
+              - strong [ref=e634]: MATHIEU Needle Holder Slim Model TC inserts
+              - emphasis [ref=e635]: Long source name
+            - button "SN-1445T pending MATHIEU Needle Holder Standard Model TC inserts Long source name" [ref=e636] [cursor=pointer]:
+              - generic [ref=e637]:
+                - code [ref=e638]: SN-1445T
+                - generic [ref=e639]: pending
+              - strong [ref=e640]: MATHIEU Needle Holder Standard Model TC inserts
+              - emphasis [ref=e641]: Long source name
+            - button "SB-152 pending Ligature Placer D/E Solid Handle To push orthodontic bands into place during try-in and cementing phases Characteristic Long source name" [ref=e642] [cursor=pointer]:
+              - generic [ref=e643]:
+                - code [ref=e644]: SB-152
+                - generic [ref=e645]: pending
+              - strong [ref=e646]: Ligature Placer D/E Solid Handle To push orthodontic bands into place during try-in and cementing phases Characteristic
+              - emphasis [ref=e647]: Long source name
+            - button "SB-188 pending Ligature Tucker D/E Solid Handle To push orthodontic bands into place during try-in and cementing phases Characteristic Long source name" [ref=e648] [cursor=pointer]:
+              - generic [ref=e649]:
+                - code [ref=e650]: SB-188
+                - generic [ref=e651]: pending
+              - strong [ref=e652]: Ligature Tucker D/E Solid Handle To push orthodontic bands into place during try-in and cementing phases Characteristic
+              - emphasis [ref=e653]: Long source name
+            - button "SB-239 pending Ligature Placer & Detacher D/E Solid Handle Dental instruments that are Long source name" [ref=e654] [cursor=pointer]:
+              - generic [ref=e655]:
+                - code [ref=e656]: SB-239
+                - generic [ref=e657]: pending
+              - strong [ref=e658]: Ligature Placer & Detacher D/E Solid Handle Dental instruments that are
+              - emphasis [ref=e659]: Long source name
+            - button "SB-239R pending Ligature Placer & Detacher D/E Solid Handle Dental instruments that are Long source name" [ref=e660] [cursor=pointer]:
+              - generic [ref=e661]:
+                - code [ref=e662]: SB-239R
+                - generic [ref=e663]: pending
+              - strong [ref=e664]: Ligature Placer & Detacher D/E Solid Handle Dental instruments that are
+              - emphasis [ref=e665]: Long source name
+            - button "SB-246 pending Ligature Director D/E Solid Handle Dental instruments that are Long source name" [ref=e666] [cursor=pointer]:
+              - generic [ref=e667]:
+                - code [ref=e668]: SB-246
+                - generic [ref=e669]: pending
+              - strong [ref=e670]: Ligature Director D/E Solid Handle Dental instruments that are
+              - emphasis [ref=e671]: Long source name
+            - button "SB-148A pending BAND Pusher D/E Hollow Handle Dental instruments that are Long source name" [ref=e672] [cursor=pointer]:
+              - generic [ref=e673]:
+                - code [ref=e674]: SB-148A
+                - generic [ref=e675]: pending
+              - strong [ref=e676]: BAND Pusher D/E Hollow Handle Dental instruments that are
+              - emphasis [ref=e677]: Long source name
+            - button "SB-150A pending Ligature Director D/E Hollow Handle To push orthodontic bands into place during try-in and cementing phases Characteristic Long source name" [ref=e678] [cursor=pointer]:
+              - generic [ref=e679]:
+                - code [ref=e680]: SB-150A
+                - generic [ref=e681]: pending
+              - strong [ref=e682]: Ligature Director D/E Hollow Handle To push orthodontic bands into place during try-in and cementing phases Characteristic
+              - emphasis [ref=e683]: Long source name
+            - button "SB-188A pending Ligature. Tucker D/E Hollow Handle To push orthodontic bands into place during try-in and cementing Phases Characteristic Long source name" [ref=e684] [cursor=pointer]:
+              - generic [ref=e685]:
+                - code [ref=e686]: SB-188A
+                - generic [ref=e687]: pending
+              - strong [ref=e688]: Ligature. Tucker D/E Hollow Handle To push orthodontic bands into place during try-in and cementing Phases Characteristic
+              - emphasis [ref=e689]: Long source name
+            - button "SB-234 pending Adhesive Remover D/E Hollow Handle Dental instruments that are Long source name" [ref=e690] [cursor=pointer]:
+              - generic [ref=e691]:
+                - code [ref=e692]: SB-234
+                - generic [ref=e693]: pending
+              - strong [ref=e694]: Adhesive Remover D/E Hollow Handle Dental instruments that are
+              - emphasis [ref=e695]: Long source name
+            - button "SB-252 pending Ligature Director D/E Hollow Handle Dental instruments that are Long source name" [ref=e696] [cursor=pointer]:
+              - generic [ref=e697]:
+                - code [ref=e698]: SB-252
+                - generic [ref=e699]: pending
+              - strong [ref=e700]: Ligature Director D/E Hollow Handle Dental instruments that are
+              - emphasis [ref=e701]: Long source name
+            - button "SB-88A pending Ligature Director & DETACHER D/E Hollow Handle Dental instruments that are Long source name" [ref=e702] [cursor=pointer]:
+              - generic [ref=e703]:
+                - code [ref=e704]: SB-88A
+                - generic [ref=e705]: pending
+              - strong [ref=e706]: Ligature Director & DETACHER D/E Hollow Handle Dental instruments that are
+              - emphasis [ref=e707]: Long source name
+            - button "SB-147 pending BAND PUSHER HOLLOW HANDLE Dental instruments that are Long source name" [ref=e708] [cursor=pointer]:
+              - generic [ref=e709]:
+                - code [ref=e710]: SB-147
+                - generic [ref=e711]: pending
+              - strong [ref=e712]: BAND PUSHER HOLLOW HANDLE Dental instruments that are
+              - emphasis [ref=e713]: Long source name
+            - button "SB-209 pending Self Ligating Instrument Opening Tool Brackets Braces Clip Single Ended Can easily be applied to the archwire of the fixed brackets of an orthodontic appliance without having to remove the archwire from the brackets Long source name" [ref=e714] [cursor=pointer]:
+              - generic [ref=e715]:
+                - code [ref=e716]: SB-209
+                - generic [ref=e717]: pending
+              - strong [ref=e718]: Self Ligating Instrument Opening Tool Brackets Braces Clip Single Ended Can easily be applied to the archwire of the fixed brackets of an orthodontic appliance without having to remove the archwire from the brackets
+              - emphasis [ref=e719]: Long source name
+            - button "SB-256 pending Self Ligating Instrument Opening Tool Brackets Braces Clip Double Ended Can easily be applied to the archwire of the fixed brackets of an orthodontic appliance without having to Remove the archwire from the brackets Long source name" [ref=e720] [cursor=pointer]:
+              - generic [ref=e721]:
+                - code [ref=e722]: SB-256
+                - generic [ref=e723]: pending
+              - strong [ref=e724]: Self Ligating Instrument Opening Tool Brackets Braces Clip Double Ended Can easily be applied to the archwire of the fixed brackets of an orthodontic appliance without having to Remove the archwire from the brackets
+              - emphasis [ref=e725]: Long source name
+            - button "SB-260 pending Ligature Director D/E Can easily be applied to the archwire of the fixed brackets of an orthodontic appliance without having to remove the Archwire from the brackets Long source name" [ref=e726] [cursor=pointer]:
+              - generic [ref=e727]:
+                - code [ref=e728]: SB-260
+                - generic [ref=e729]: pending
+              - strong [ref=e730]: Ligature Director D/E Can easily be applied to the archwire of the fixed brackets of an orthodontic appliance without having to remove the Archwire from the brackets
+              - emphasis [ref=e731]: Long source name
+            - 'button "SB-261 pending YES Bracket Tool Unique: Clip: Opening: Tool specifically Long source name" [ref=e732] [cursor=pointer]':
+              - generic [ref=e733]:
+                - code [ref=e734]: SB-261
+                - generic [ref=e735]: pending
+              - strong [ref=e736]: "YES Bracket Tool Unique: Clip: Opening: Tool specifically"
+              - emphasis [ref=e737]: Long source name
+            - button "SB-250 pending OPEN/CLOSE Tool D/E Can easily be applied to the archwire of the fixed brackets of an orthodontic appliance without having to remove the archwire from the brackets Long source name" [ref=e738] [cursor=pointer]:
+              - generic [ref=e739]:
+                - code [ref=e740]: SB-250
+                - generic [ref=e741]: pending
+              - strong [ref=e742]: OPEN/CLOSE Tool D/E Can easily be applied to the archwire of the fixed brackets of an orthodontic appliance without having to remove the archwire from the brackets
+              - emphasis [ref=e743]: Long source name
+            - button "SB-227 pending BAND SEATER Band seaters allow the patients bite to push The bands into proper position Long source name" [ref=e744] [cursor=pointer]:
+              - generic [ref=e745]:
+                - code [ref=e746]: SB-227
+                - generic [ref=e747]: pending
+              - strong [ref=e748]: BAND SEATER Band seaters allow the patients bite to push The bands into proper position
+              - emphasis [ref=e749]: Long source name
+            - button "SB-257 pending BAND Pusher D/E Hollow Handle Dental instruments that are Long source name" [ref=e750] [cursor=pointer]:
+              - generic [ref=e751]:
+                - code [ref=e752]: SB-257
+                - generic [ref=e753]: pending
+              - strong [ref=e754]: BAND Pusher D/E Hollow Handle Dental instruments that are
+              - emphasis [ref=e755]: Long source name
+            - button "SG-257 pending Dynamometer Stress Tension Bands Elastics Meter Force Measure Gauge Long source name" [ref=e756] [cursor=pointer]:
+              - generic [ref=e757]:
+                - code [ref=e758]: SG-257
+                - generic [ref=e759]: pending
+              - strong [ref=e760]: Dynamometer Stress Tension Bands Elastics Meter Force Measure Gauge
+              - emphasis [ref=e761]: Long source name
+            - button "SG-146 pending Positive (Bracket) Positioner Precise placement of direct bond tubes or attachments Made simple Long source name" [ref=e762] [cursor=pointer]:
+              - generic [ref=e763]:
+                - code [ref=e764]: SG-146
+                - generic [ref=e765]: pending
+              - strong [ref=e766]: Positive (Bracket) Positioner Precise placement of direct bond tubes or attachments Made simple
+              - emphasis [ref=e767]: Long source name
+            - button "SG-210M pending Bracket Height Gauge Long source name" [ref=e768] [cursor=pointer]:
+              - generic [ref=e769]:
+                - code [ref=e770]: SG-210M
+                - generic [ref=e771]: pending
+              - strong [ref=e772]: Bracket Height Gauge
+              - emphasis [ref=e773]: Long source name
+            - button "SG-210 pending Bracket Height Gauge Long source name" [ref=e774] [cursor=pointer]:
+              - generic [ref=e775]:
+                - code [ref=e776]: SG-210
+                - generic [ref=e777]: pending
+              - strong [ref=e778]: Bracket Height Gauge
+              - emphasis [ref=e779]: Long source name
+            - button "SG-210A pending Bracket Height Gauge Long source name" [ref=e780] [cursor=pointer]:
+              - generic [ref=e781]:
+                - code [ref=e782]: SG-210A
+                - generic [ref=e783]: pending
+              - strong [ref=e784]: Bracket Height Gauge
+              - emphasis [ref=e785]: Long source name
+            - button "SG-211 pending Bracket Height Gauge Long source name" [ref=e786] [cursor=pointer]:
+              - generic [ref=e787]:
+                - code [ref=e788]: SG-211
+                - generic [ref=e789]: pending
+              - strong [ref=e790]: Bracket Height Gauge
+              - emphasis [ref=e791]: Long source name
+            - button "SG-212 pending Bracket Height Gauge Long source name" [ref=e792] [cursor=pointer]:
+              - generic [ref=e793]:
+                - code [ref=e794]: SG-212
+                - generic [ref=e795]: pending
+              - strong [ref=e796]: Bracket Height Gauge
+              - emphasis [ref=e797]: Long source name
+            - button "SG-207 pending Star-Like Bracket Positioning Gauge Long source name" [ref=e798] [cursor=pointer]:
+              - generic [ref=e799]:
+                - code [ref=e800]: SG-207
+                - generic [ref=e801]: pending
+              - strong [ref=e802]: Star-Like Bracket Positioning Gauge
+              - emphasis [ref=e803]: Long source name
+            - button "SG-221 pending Vernier Gauge/Dental Ruler An oral-facial tool and Long source name" [ref=e804] [cursor=pointer]:
+              - generic [ref=e805]:
+                - code [ref=e806]: SG-221
+                - generic [ref=e807]: pending
+              - strong [ref=e808]: Vernier Gauge/Dental Ruler An oral-facial tool and
+              - emphasis [ref=e809]: Long source name
+            - button "SF-159 pending Halsted Mosquito Forceps Long source name" [ref=e810] [cursor=pointer]:
+              - generic [ref=e811]:
+                - code [ref=e812]: SF-159
+                - generic [ref=e813]: pending
+              - strong [ref=e814]: Halsted Mosquito Forceps
+              - emphasis [ref=e815]: Long source name
+            - button "SF-158C pending Halsted Mosquito Forceps Cross Serrated Long source name" [ref=e816] [cursor=pointer]:
+              - generic [ref=e817]:
+                - code [ref=e818]: SF-158C
+                - generic [ref=e819]: pending
+              - strong [ref=e820]: Halsted Mosquito Forceps Cross Serrated
+              - emphasis [ref=e821]: Long source name
+            - button "SF-459C pending Halsted Mosquito Forceps Cross Serrated Long source name" [ref=e822] [cursor=pointer]:
+              - generic [ref=e823]:
+                - code [ref=e824]: SF-459C
+                - generic [ref=e825]: pending
+              - strong [ref=e826]: Halsted Mosquito Forceps Cross Serrated
+              - emphasis [ref=e827]: Long source name
+            - button "SF-201 pending Halsted Mosquito Forceps Long source name" [ref=e828] [cursor=pointer]:
+              - generic [ref=e829]:
+                - code [ref=e830]: SF-201
+                - generic [ref=e831]: pending
+              - strong [ref=e832]: Halsted Mosquito Forceps
+              - emphasis [ref=e833]: Long source name
+            - button "SB-247 pending LIGATURE TIE PENCIL Long source name" [ref=e834] [cursor=pointer]:
+              - generic [ref=e835]:
+                - code [ref=e836]: SB-247
+                - generic [ref=e837]: pending
+              - strong [ref=e838]: LIGATURE TIE PENCIL
+              - emphasis [ref=e839]: Long source name
+            - button "SP-198 pending Ligature Wire Twister Holds pre-twisted ligatures & kobayashi Ties Long source name" [ref=e840] [cursor=pointer]:
+              - generic [ref=e841]:
+                - code [ref=e842]: SP-198
+                - generic [ref=e843]: pending
+              - strong [ref=e844]: Ligature Wire Twister Holds pre-twisted ligatures & kobayashi Ties
+              - emphasis [ref=e845]: Long source name
+            - button "SF-163S pending Bracket Positioning Reverse action Forceps Long source name" [ref=e846] [cursor=pointer]:
+              - generic [ref=e847]:
+                - code [ref=e848]: SF-163S
+                - generic [ref=e849]: pending
+              - strong [ref=e850]: Bracket Positioning Reverse action Forceps
+              - emphasis [ref=e851]: Long source name
+            - button "SF-163 pending Bracket Positioning Reverse action Forceps Small tip as our regular posterior bracket tweezer Long source name" [ref=e852] [cursor=pointer]:
+              - generic [ref=e853]:
+                - code [ref=e854]: SF-163
+                - generic [ref=e855]: pending
+              - strong [ref=e856]: Bracket Positioning Reverse action Forceps Small tip as our regular posterior bracket tweezer
+              - emphasis [ref=e857]: Long source name
+            - button "SF-163A pending Bracket Positioning Reverse action Forceps Long source name" [ref=e858] [cursor=pointer]:
+              - generic [ref=e859]:
+                - code [ref=e860]: SF-163A
+                - generic [ref=e861]: pending
+              - strong [ref=e862]: Bracket Positioning Reverse action Forceps
+              - emphasis [ref=e863]: Long source name
+            - button "SF-164 pending Bracket Positioning Reverse action Forceps Long source name" [ref=e864] [cursor=pointer]:
+              - generic [ref=e865]:
+                - code [ref=e866]: SF-164
+                - generic [ref=e867]: pending
+              - strong [ref=e868]: Bracket Positioning Reverse action Forceps
+              - emphasis [ref=e869]: Long source name
+            - button "SF-185 pending Multi Purpose Orthodontic Tweezers Reverse action Long source name" [ref=e870] [cursor=pointer]:
+              - generic [ref=e871]:
+                - code [ref=e872]: SF-185
+                - generic [ref=e873]: pending
+              - strong [ref=e874]: Multi Purpose Orthodontic Tweezers Reverse action
+              - emphasis [ref=e875]: Long source name
+            - button "SF-245 pending Bracket Positioning Reverse action Forceps CVD Reverse action will not release bracket until desired. Designed Long source name" [ref=e876] [cursor=pointer]:
+              - generic [ref=e877]:
+                - code [ref=e878]: SF-245
+                - generic [ref=e879]: pending
+              - strong [ref=e880]: Bracket Positioning Reverse action Forceps CVD Reverse action will not release bracket until desired. Designed
+              - emphasis [ref=e881]: Long source name
+            - button "SF-247 pending Bracket Positioning Reverse action Forceps Fine Points Designed to fit snugly around button pad type. special clawtype tweezers to grip the button securely until final placement. Heat sterilizable Long source name" [ref=e882] [cursor=pointer]:
+              - generic [ref=e883]:
+                - code [ref=e884]: SF-247
+                - generic [ref=e885]: pending
+              - strong [ref=e886]: Bracket Positioning Reverse action Forceps Fine Points Designed to fit snugly around button pad type. special clawtype tweezers to grip the button securely until final placement. Heat sterilizable
+              - emphasis [ref=e887]: Long source name
+            - button "SF-224 pending Bracket Positioning Reverse action Forceps «Small tip as our regular posterior bracket tweezer Long source name" [ref=e888] [cursor=pointer]:
+              - generic [ref=e889]:
+                - code [ref=e890]: SF-224
+                - generic [ref=e891]: pending
+              - strong [ref=e892]: Bracket Positioning Reverse action Forceps «Small tip as our regular posterior bracket tweezer
+              - emphasis [ref=e893]: Long source name
+            - button "SF-208 pending Bracket Positioning Reverse action Forceps Long source name" [ref=e894] [cursor=pointer]:
+              - generic [ref=e895]:
+                - code [ref=e896]: SF-208
+                - generic [ref=e897]: pending
+              - strong [ref=e898]: Bracket Positioning Reverse action Forceps
+              - emphasis [ref=e899]: Long source name
+            - button "SF-228 pending Lingual Bracket & Bondable Tube Holder Reverse action Very slender tip that inserts easily into the slot on the molar bracket. Heat sterilizable Long source name" [ref=e900] [cursor=pointer]:
+              - generic [ref=e901]:
+                - code [ref=e902]: SF-228
+                - generic [ref=e903]: pending
+              - strong [ref=e904]: Lingual Bracket & Bondable Tube Holder Reverse action Very slender tip that inserts easily into the slot on the molar bracket. Heat sterilizable
+              - emphasis [ref=e905]: Long source name
+            - button "SF-228S pending Lingual Bracket & Bondable Tube Holder Reverse Action Long source name" [ref=e906] [cursor=pointer]:
+              - generic [ref=e907]:
+                - code [ref=e908]: SF-228S
+                - generic [ref=e909]: pending
+              - strong [ref=e910]: Lingual Bracket & Bondable Tube Holder Reverse Action
+              - emphasis [ref=e911]: Long source name
+            - button "SF-228AL pending Keat Tube Placing Tweezers The curved body of the tweezers provides an unobstructed view Long source name" [ref=e912] [cursor=pointer]:
+              - generic [ref=e913]:
+                - code [ref=e914]: SF-228AL
+                - generic [ref=e915]: pending
+              - strong [ref=e916]: Keat Tube Placing Tweezers The curved body of the tweezers provides an unobstructed view
+              - emphasis [ref=e917]: Long source name
+            - button "SF-259 pending Lingual Bracket & Bondable Tube Holder Reverse action Long source name" [ref=e918] [cursor=pointer]:
+              - generic [ref=e919]:
+                - code [ref=e920]: SF-259
+                - generic [ref=e921]: pending
+              - strong [ref=e922]: Lingual Bracket & Bondable Tube Holder Reverse action
+              - emphasis [ref=e923]: Long source name
+            - button "SW-186 pending RIGID SPATULAS Long source name / OCR punctuation" [ref=e924] [cursor=pointer]:
+              - generic [ref=e925]:
+                - code [ref=e926]: SW-186
+                - generic [ref=e927]: pending
+              - strong [ref=e928]: RIGID SPATULAS
+              - emphasis [ref=e929]: Long source name / OCR punctuation
+            - button "SA-220 pending Dental Pliers Stand L OCR punctuation" [ref=e930] [cursor=pointer]:
+              - generic [ref=e931]:
+                - code [ref=e932]: SA-220
+                - generic [ref=e933]: pending
+              - strong [ref=e934]: Dental Pliers Stand L
+              - emphasis [ref=e935]: OCR punctuation
+            - button "SA-220A pending Dental Pliers Stand L OCR punctuation" [ref=e936] [cursor=pointer]:
+              - generic [ref=e937]:
+                - code [ref=e938]: SA-220A
+                - generic [ref=e939]: pending
+              - strong [ref=e940]: Dental Pliers Stand L
+              - emphasis [ref=e941]: OCR punctuation
+            - button "SP-219 pending Punch Hole Pliers Long source name" [ref=e942] [cursor=pointer]:
+              - generic [ref=e943]:
+                - code [ref=e944]: SP-219
+                - generic [ref=e945]: pending
+              - strong [ref=e946]: Punch Hole Pliers
+              - emphasis [ref=e947]: Long source name
+            - button "SB-231 pending Orthodontic Interproximal Enamel Reduction Strip Handle Long source name" [ref=e948] [cursor=pointer]:
+              - generic [ref=e949]:
+                - code [ref=e950]: SB-231
+                - generic [ref=e951]: pending
+              - strong [ref=e952]: Orthodontic Interproximal Enamel Reduction Strip Handle
+              - emphasis [ref=e953]: Long source name
+            - button "SP-221 pending Dental Chuck Or Key Long source name" [ref=e954] [cursor=pointer]:
+              - generic [ref=e955]:
+                - code [ref=e956]: SP-221
+                - generic [ref=e957]: pending
+              - strong [ref=e958]: Dental Chuck Or Key
+              - emphasis [ref=e959]: Long source name
+            - button "TP-01 pending «Special Plier Long source name / OCR punctuation" [ref=e960] [cursor=pointer]:
+              - generic [ref=e961]:
+                - code [ref=e962]: TP-01
+                - generic [ref=e963]: pending
+              - strong [ref=e964]: «Special Plier
+              - emphasis [ref=e965]: Long source name / OCR punctuation
+            - button "TP-02 pending Special Plier Long source name / OCR punctuation" [ref=e966] [cursor=pointer]:
+              - generic [ref=e967]:
+                - code [ref=e968]: TP-02
+                - generic [ref=e969]: pending
+              - strong [ref=e970]: Special Plier
+              - emphasis [ref=e971]: Long source name / OCR punctuation
+            - button "TP-05 pending Special Plier Long source name / OCR punctuation / Possible trailing copy" [ref=e972] [cursor=pointer]:
+              - generic [ref=e973]:
+                - code [ref=e974]: TP-05
+                - generic [ref=e975]: pending
+              - strong [ref=e976]: Special Plier
+              - emphasis [ref=e977]: Long source name / OCR punctuation / Possible trailing copy
+            - button "TP-06 pending Special Plier Long source name" [ref=e978] [cursor=pointer]:
+              - generic [ref=e979]:
+                - code [ref=e980]: TP-06
+                - generic [ref=e981]: pending
+              - strong [ref=e982]: Special Plier
+              - emphasis [ref=e983]: Long source name
+            - button "TP-07 pending Special Plier Long source name / OCR punctuation" [ref=e984] [cursor=pointer]:
+              - generic [ref=e985]:
+                - code [ref=e986]: TP-07
+                - generic [ref=e987]: pending
+              - strong [ref=e988]: Special Plier
+              - emphasis [ref=e989]: Long source name / OCR punctuation
+            - button "TP-11 pending Special Plier Long source name / OCR punctuation" [ref=e990] [cursor=pointer]:
+              - generic [ref=e991]:
+                - code [ref=e992]: TP-11
+                - generic [ref=e993]: pending
+              - strong [ref=e994]: Special Plier
+              - emphasis [ref=e995]: Long source name / OCR punctuation
+            - button "TP-12 pending Special Plier Long source name / OCR punctuation" [ref=e996] [cursor=pointer]:
+              - generic [ref=e997]:
+                - code [ref=e998]: TP-12
+                - generic [ref=e999]: pending
+              - strong [ref=e1000]: Special Plier
+              - emphasis [ref=e1001]: Long source name / OCR punctuation
+            - button "TP-13 pending Special Plier Long source name / OCR punctuation" [ref=e1002] [cursor=pointer]:
+              - generic [ref=e1003]:
+                - code [ref=e1004]: TP-13
+                - generic [ref=e1005]: pending
+              - strong [ref=e1006]: Special Plier
+              - emphasis [ref=e1007]: Long source name / OCR punctuation
+            - button "TP-14 pending Special Plier Long source name" [ref=e1008] [cursor=pointer]:
+              - generic [ref=e1009]:
+                - code [ref=e1010]: TP-14
+                - generic [ref=e1011]: pending
+              - strong [ref=e1012]: Special Plier
+              - emphasis [ref=e1013]: Long source name
+            - button "TP-15 pending Special Plier Long source name" [ref=e1014] [cursor=pointer]:
+              - generic [ref=e1015]:
+                - code [ref=e1016]: TP-15
+                - generic [ref=e1017]: pending
+              - strong [ref=e1018]: Special Plier
+              - emphasis [ref=e1019]: Long source name
+            - button "TP-17 pending Special Plier Long source name" [ref=e1020] [cursor=pointer]:
+              - generic [ref=e1021]:
+                - code [ref=e1022]: TP-17
+                - generic [ref=e1023]: pending
+              - strong [ref=e1024]: Special Plier
+              - emphasis [ref=e1025]: Long source name
+            - button "TP-18 pending Special Plier Long source name" [ref=e1026] [cursor=pointer]:
+              - generic [ref=e1027]:
+                - code [ref=e1028]: TP-18
+                - generic [ref=e1029]: pending
+              - strong [ref=e1030]: Special Plier
+              - emphasis [ref=e1031]: Long source name
+            - button "TP-03 pending Special Plier Long source name / Possible trailing copy" [ref=e1032] [cursor=pointer]:
+              - generic [ref=e1033]:
+                - code [ref=e1034]: TP-03
+                - generic [ref=e1035]: pending
+              - strong [ref=e1036]: Special Plier
+              - emphasis [ref=e1037]: Long source name / Possible trailing copy
+            - button "TP-12-2 pending Special Plier Long source name" [ref=e1038] [cursor=pointer]:
+              - generic [ref=e1039]:
+                - code [ref=e1040]: TP-12-2
+                - generic [ref=e1041]: pending
+              - strong [ref=e1042]: Special Plier
+              - emphasis [ref=e1043]: Long source name
+            - button "TP-06-2 pending Special Plier Long source name" [ref=e1044] [cursor=pointer]:
+              - generic [ref=e1045]:
+                - code [ref=e1046]: TP-06-2
+                - generic [ref=e1047]: pending
+              - strong [ref=e1048]: Special Plier
+              - emphasis [ref=e1049]: Long source name
+            - button "TP-16 pending Special Plier Long source name" [ref=e1050] [cursor=pointer]:
+              - generic [ref=e1051]:
+                - code [ref=e1052]: TP-16
+                - generic [ref=e1053]: pending
+              - strong [ref=e1054]: Special Plier
+              - emphasis [ref=e1055]: Long source name
+            - button "06-1913 pending METZENBAUM ScissorsSTR cum No variant record" [ref=e1056] [cursor=pointer]:
+              - generic [ref=e1057]:
+                - code [ref=e1058]: 06-1913
+                - generic [ref=e1059]: pending
+              - strong [ref=e1060]: METZENBAUM ScissorsSTR cum
+              - emphasis [ref=e1061]: No variant record
+            - button "04-3102-2 pending Pane Scissors ANGLED No variant record" [ref=e1062] [cursor=pointer]:
+              - generic [ref=e1063]:
+                - code [ref=e1064]: 04-3102-2
+                - generic [ref=e1065]: pending
+              - strong [ref=e1066]: Pane Scissors ANGLED
+              - emphasis [ref=e1067]: No variant record
+            - button "02-2950 pending BONN Iris Forceps OCR punctuation" [ref=e1068] [cursor=pointer]:
+              - generic [ref=e1069]:
+                - code [ref=e1070]: 02-2950
+                - generic [ref=e1071]: pending
+              - strong [ref=e1072]: BONN Iris Forceps
+              - emphasis [ref=e1073]: OCR punctuation
+            - button "13-1911 pending Senne ee OCR punctuation" [ref=e1074] [cursor=pointer]:
+              - generic [ref=e1075]:
+                - code [ref=e1076]: 13-1911
+                - generic [ref=e1077]: pending
+              - strong [ref=e1078]: Senne ee
+              - emphasis [ref=e1079]: OCR punctuation
+            - button "16-2950 pending BALFOUR BALFOUR PEDIATRIC RETRACTOR Long source name" [ref=e1080] [cursor=pointer]:
+              - generic [ref=e1081]:
+                - code [ref=e1082]: 16-2950
+                - generic [ref=e1083]: pending
+              - strong [ref=e1084]: BALFOUR BALFOUR PEDIATRIC RETRACTOR
+              - emphasis [ref=e1085]: Long source name
+            - button "24-0200 pending YOUNG Tongue Holding Possible trailing copy" [ref=e1086] [cursor=pointer]:
+              - generic [ref=e1087]:
+                - code [ref=e1088]: 24-0200
+                - generic [ref=e1089]: pending
+              - strong [ref=e1090]: YOUNG Tongue Holding
+              - emphasis [ref=e1091]: Possible trailing copy
+            - button "21-0104-2 pending ARAGAWA Rectal Speculum HJM PATT No variant record" [ref=e1092] [cursor=pointer]:
+              - generic [ref=e1093]:
+                - code [ref=e1094]: 21-0104-2
+                - generic [ref=e1095]: pending
+              - strong [ref=e1096]: ARAGAWA Rectal Speculum HJM PATT
+              - emphasis [ref=e1097]: No variant record
+            - button "17-5015 pending Microphlebectomy Hook S OCR punctuation / Possible trailing copy" [ref=e1098] [cursor=pointer]:
+              - generic [ref=e1099]:
+                - code [ref=e1100]: 17-5015
+                - generic [ref=e1101]: pending
+              - strong [ref=e1102]: Microphlebectomy Hook S
+              - emphasis [ref=e1103]: OCR punctuation / Possible trailing copy
+            - button "11-3400 pending 'Wire TWISTER 18.5.ROUNDTip HEAVEY PATTERN Known OCR token" [ref=e1104] [cursor=pointer]:
+              - generic [ref=e1105]:
+                - code [ref=e1106]: 11-3400
+                - generic [ref=e1107]: pending
+              - strong [ref=e1108]: "'Wire TWISTER 18.5.ROUNDTip HEAVEY PATTERN"
+              - emphasis [ref=e1109]: Known OCR token
+        - article [ref=e1110]:
+          - generic [ref=e1111]:
+            - generic [ref=e1112]: Dental & Orthodontic Instruments
+            - code [ref=e1113]: LP-03T
+          - generic [ref=e1114]:
+            - generic [ref=e1115]:
+              - generic [ref=e1116]: LP-03T
+              - img "Flush End Cutter Long Handle, catalogue code LP-03T" [ref=e1119]
+            - generic [ref=e1120]:
+              - paragraph [ref=e1121]: Source-derived identity
+              - heading "Flush End Cutter Long Handle" [level=2] [ref=e1122]
+              - generic [ref=e1123]:
+                - generic [ref=e1124]:
+                  - term [ref=e1125]: Family
+                  - definition [ref=e1126]: Distal & Flush End Cutters
+                - generic [ref=e1127]:
+                  - term [ref=e1128]: Variants
+                  - definition [ref=e1129]: "1"
+                - generic [ref=e1130]:
+                  - term [ref=e1131]: PDF page
+                  - definition [ref=e1132]: "19"
+                - generic [ref=e1133]:
+                  - term [ref=e1134]: Printed page
+                  - definition [ref=e1135]: "18"
+          - generic [ref=e1136]:
+            - paragraph [ref=e1137]: Why this record is queued
+            - generic [ref=e1138]: Long source name
+          - group "Review decision" [ref=e1140]:
+            - generic [ref=e1142]:
+              - button "pending" [ref=e1143] [cursor=pointer]
+              - button "approved" [ref=e1144] [cursor=pointer]
+              - button "corrected" [ref=e1145] [cursor=pointer]
+              - button "needs-client" [ref=e1146] [cursor=pointer]
+              - button "rejected" [ref=e1147] [cursor=pointer]
+          - generic [ref=e1148]:
+            - generic [ref=e1149]:
+              - generic [ref=e1150]: Approved product name
+              - textbox "Approved product name" [ref=e1151]: Flush End Cutter Long Handle
+            - generic [ref=e1152]:
+              - generic [ref=e1153]: Approved product code
+              - textbox "Approved product code" [ref=e1154]: LP-03T
+            - generic [ref=e1155]:
+              - generic [ref=e1156]: Approved family
+              - combobox "Approved family" [ref=e1157]:
+                - option "Ligature & Wire Cutters"
+                - option "Distal & Flush End Cutters" [selected]
+                - option "Wire Bending & Loop Forming Pliers"
+                - option "Step & Torque, Contouring & Universal Pliers"
+                - option "Universal & Wire Gripping Pliers"
+                - option "Hook Crimping Pliers"
+                - option "Bracket, Band & Bond Removing Pliers"
+                - option "Ligature Technic Pliers"
+                - option "Aligner Technic Pliers"
+                - option "Ligature & Elastic Placing & Separating"
+                - option "Scissors & Needle Holders"
+                - option "Ligature Directors & Band Pushers"
+                - option "Measuring Instruments"
+                - option "Crown Grippers, Forceps & Twisters"
+                - option "Bracket Positioning Forceps"
+                - option "Miscellaneous"
+                - option "Special Heat Pliers Collection"
+                - option "Special Cold Pliers Collection"
+                - option "Special Hybrid Pliers Collection"
+          - group "Confirm reviewed source elements" [ref=e1158]:
+            - generic [ref=e1160]:
+              - checkbox "Representative image matches this product family" [ref=e1161]
+              - generic [ref=e1162]: Representative image matches this product family
+            - generic [ref=e1163]:
+              - checkbox "1 variant code records are confirmed" [ref=e1164]
+              - generic [ref=e1165]: 1 variant code records are confirmed
+            - generic [ref=e1166]:
+              - checkbox "Catalogue file and page reference are confirmed" [ref=e1167]
+              - generic [ref=e1168]: Catalogue file and page reference are confirmed
+          - generic [ref=e1169]:
+            - generic [ref=e1170]: Review notes
+            - textbox "Review notes" [ref=e1171]:
+              - /placeholder: Record only identity-review context. Do not add technical claims.
+          - generic [ref=e1172]:
+            - generic [ref=e1173]: "Source: FineMed Orthodontics New.pdf"
+            - button "Next record" [ref=e1174] [cursor=pointer]
+  - contentinfo [ref=e1175]:
+    - generic [ref=e1176]:
+      - generic [ref=e1177]:
+        - img "THROHI Medical Tools" [ref=e1178]
+        - paragraph [ref=e1179]: Medical instrument catalogue and structured inquiry workspace.
+      - navigation "Footer navigation" [ref=e1180]:
+        - generic [ref=e1181]:
+          - paragraph [ref=e1182]: Catalogue
+          - link "Browse products" [ref=e1183] [cursor=pointer]:
+            - /url: /rebuild/products
+          - link "Inquiry List" [ref=e1184] [cursor=pointer]:
+            - /url: /rebuild/inquiry
+        - generic [ref=e1185]:
+          - paragraph [ref=e1186]: Rebuild
+          - link "Company" [ref=e1187] [cursor=pointer]:
+            - /url: /rebuild#company
+          - link "Contact" [ref=e1188] [cursor=pointer]:
+            - /url: /rebuild#contact
+    - generic [ref=e1189]:
+      - paragraph [ref=e1190]: Development preview. Search indexing is disabled.
+      - paragraph [ref=e1191]: Technical catalogue details remain under client review.
