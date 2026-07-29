@@ -14,7 +14,7 @@ const options = [
     description: "Combine selected instruments, quantities and notes into one structured request.",
   },
   {
-    href: "/rebuild/inquiry?manual=1#unlisted-instrument",
+    href: "/rebuild/inquiry?manual=1",
     title: "Request an unlisted instrument",
     description: "Add a known name, reference code or description when the product is not yet indexed.",
   },
