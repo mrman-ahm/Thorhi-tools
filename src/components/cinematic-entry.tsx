@@ -167,6 +167,10 @@ export function CinematicEntry({
   };
 
   const entryReady = videoEnded || mediaState === "error" || !motionAllowed;
+  const actionLabel = entryReady ? "ENTER WEBSITE" : "SKIP INTRO";
+  const actionDescription = entryReady
+    ? "Enter the THROHI website by sliding the opening cover away"
+    : "Skip the THROHI opening film and enter the website";
 
   return (
     <section
@@ -217,9 +221,9 @@ export function CinematicEntry({
           className="cinematic-entry-scroll"
           type="button"
           onClick={skip}
-          aria-label="Enter the THROHI website by sliding the opening cover away"
+          aria-label={actionDescription}
         >
-          <span>ENTER WEBSITE</span>
+          <span>{actionLabel}</span>
           <b aria-hidden="true">↓</b>
         </button>
       </div>
