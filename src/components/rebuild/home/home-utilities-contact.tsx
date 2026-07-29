@@ -30,48 +30,50 @@ export function HomeUtilitiesContact() {
   return (
     <section
       id="contact"
-      className={styles.utilities}
+      className={styles.utilitiesBand}
       aria-labelledby="home-utilities-title"
       aria-label="Catalogue and inquiry options"
     >
-      <header className={styles.utilitiesHeading}>
-        <h2 id="home-utilities-title">Continue with a precise request.</h2>
-        <p>
-          Use the catalogue when the instrument is known, or describe the
-          requirement directly in the Inquiry List.
-        </p>
-      </header>
+      <div className={styles.utilities}>
+        <header className={styles.utilitiesHeading}>
+          <h2 id="home-utilities-title">Continue with a precise request.</h2>
+          <p>
+            Use the catalogue when the instrument is known, or describe the
+            requirement directly in the Inquiry List.
+          </p>
+        </header>
 
-      <div className={styles.utilityRows}>
-        {options.map((option) => (
-          <Link href={option.href} key={option.href}>
-            <span>
-              <strong>{option.title}</strong>
-              <small>{option.description}</small>
-            </span>
-            <b aria-hidden="true">↗</b>
-          </Link>
-        ))}
-      </div>
-
-      <div className={styles.contactLine}>
-        <div>
-          <span>Location</span>
-          <strong>{verifiedContact.location}</strong>
+        <div className={styles.utilityRows}>
+          {options.map((option) => (
+            <Link href={option.href} key={option.href}>
+              <span>
+                <strong>{option.title}</strong>
+                <small>{option.description}</small>
+              </span>
+              <b aria-hidden="true">↗</b>
+            </Link>
+          ))}
         </div>
-        <div className={styles.contactActions}>
-          {verifiedContact.email ? (
-            <a href={`mailto:${verifiedContact.email}`}>{verifiedContact.email}</a>
-          ) : null}
-          {verifiedContact.phoneHref && verifiedContact.phoneDisplay ? (
-            <a href={verifiedContact.phoneHref}>{verifiedContact.phoneDisplay}</a>
-          ) : null}
-          {verifiedContact.whatsappHref ? (
-            <a href={verifiedContact.whatsappHref}>Continue through WhatsApp</a>
-          ) : null}
-          {!hasDirectContact ? (
-            <Link href="/rebuild/inquiry">Start a structured inquiry</Link>
-          ) : null}
+
+        <div className={styles.contactLine}>
+          <div>
+            <span>Location</span>
+            <strong>{verifiedContact.location}</strong>
+          </div>
+          <div className={styles.contactActions}>
+            {verifiedContact.email ? (
+              <a href={`mailto:${verifiedContact.email}`}>{verifiedContact.email}</a>
+            ) : null}
+            {verifiedContact.phoneHref && verifiedContact.phoneDisplay ? (
+              <a href={verifiedContact.phoneHref}>{verifiedContact.phoneDisplay}</a>
+            ) : null}
+            {verifiedContact.whatsappHref ? (
+              <a href={verifiedContact.whatsappHref}>Continue through WhatsApp</a>
+            ) : null}
+            {!hasDirectContact ? (
+              <Link href="/rebuild/inquiry">Start a structured inquiry</Link>
+            ) : null}
+          </div>
         </div>
       </div>
     </section>
