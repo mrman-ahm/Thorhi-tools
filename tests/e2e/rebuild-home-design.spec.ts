@@ -16,18 +16,21 @@ async function enterRebuild(page: Page) {
 
 test("company identity and catalogue search lead the real homepage", async ({ page }) => {
   await enterRebuild(page);
+  const hero = page.locator("[data-home-hero]");
   await expect(
-    page.getByRole("heading", { level: 1, name: /THROHI Medical Tools/i }),
+    hero.getByRole("heading", { level: 1, name: /THROHI Medical Tools/i }),
   ).toBeVisible();
-  await expect(page.getByText(/Sialkot, Pakistan/i).first()).toBeVisible();
-  await expect(page.getByRole("search", { name: /catalogue/i })).toBeVisible();
-  await expect(page.getByRole("link", { name: /Browse instruments/i })).toBeVisible();
-  await expect(page.getByRole("link", { name: /Build an inquiry/i })).toBeVisible();
+  await expect(hero.getByText(/Sialkot, Pakistan/i)).toBeVisible();
+  await expect(hero.getByRole("search", { name: /catalogue/i })).toBeVisible();
+  await expect(hero.getByRole("link", { name: /Browse instruments/i })).toBeVisible();
+  await expect(hero.getByRole("link", { name: /Build an inquiry/i })).toBeVisible();
 });
 
 test("homepage search submits the query to the catalogue", async ({ page }) => {
   await enterRebuild(page);
-  const search = page.getByRole("search", { name: /catalogue/i });
+  const search = page
+    .locator("[data-home-hero]")
+    .getByRole("search", { name: /catalogue/i });
   await search.getByRole("searchbox").fill("04-0101");
   await search.getByRole("button", { name: /Find product/i }).click();
   await expect(page).toHaveURL(/\/rebuild\/products\?q=04-0101/);
@@ -35,16 +38,18 @@ test("homepage search submits the query to the catalogue", async ({ page }) => {
 
 test("all four truthful divisions are visible", async ({ page }) => {
   await enterRebuild(page);
+  const divisions = page.getByRole("region", { name: "Instrument divisions" });
   for (const division of [
     "Surgical Instruments",
     "Dental & Orthodontic Instruments",
     "Veterinary Instruments",
     "Beauty Instruments",
   ]) {
-    await expect(page.getByText(division, { exact: true }).first()).toBeVisible();
+    await expect(divisions.getByText(division, { exact: true })).toBeVisible();
   }
-  await expect(page.getByText(/Veterinary.*detailed catalogue.*not yet published/i)).toBeVisible();
-  await expect(page.getByText(/Beauty.*detailed catalogue.*not yet published/i)).toBeVisible();
+  await expect(
+    divisions.getByText("Detailed catalogue not yet published", { exact: true }),
+  ).toHaveCount(2);
 });
 
 test("homepage avoids unverified promotional claims", async ({ page }) => {
@@ -112,8 +117,10 @@ test("cinematic cover does not replace the real homepage h1", async ({ page }) =
 });
 
 test("cinematic skip reveals usable content", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/rebuild");
   const enter = page.getByRole("button", { name: /enter the THROHI website/i });
+  await expect(enter).toBeVisible();
   await enter.click();
   await expect(
     page.getByRole("heading", { level: 1, name: /THROHI Medical Tools/i }),
@@ -129,15 +136,16 @@ test("hero uses one signature scissors composition", async ({ page }) => {
 
 test("structured divisions link to filtered catalogue and pending divisions do not fake links", async ({ page }) => {
   await enterRebuild(page);
-  await expect(page.getByRole("link", { name: /Surgical Instruments/i }).first()).toHaveAttribute(
+  const divisions = page.getByRole("region", { name: "Instrument divisions" });
+  await expect(divisions.getByRole("link", { name: /Surgical Instruments/i })).toHaveAttribute(
     "href",
     /division=surgical/,
   );
   await expect(
-    page.getByRole("link", { name: /Dental & Orthodontic Instruments/i }).first(),
+    divisions.getByRole("link", { name: /Dental & Orthodontic Instruments/i }),
   ).toHaveAttribute("href", /division=dental/);
-  await expect(page.getByRole("link", { name: /Veterinary Instruments/i })).toHaveCount(0);
-  await expect(page.getByRole("link", { name: /Beauty Instruments/i })).toHaveCount(0);
+  await expect(divisions.getByRole("link", { name: /Veterinary Instruments/i })).toHaveCount(0);
+  await expect(divisions.getByRole("link", { name: /Beauty Instruments/i })).toHaveCount(0);
 });
 
 test("selected families use real product routes", async ({ page }) => {
@@ -225,7 +233,9 @@ test("media failure never blocks the homepage", async ({ page }) => {
   await expect(
     page.getByRole("heading", { level: 1, name: /THROHI Medical Tools/i }),
   ).toBeVisible();
-  await expect(page.getByRole("search", { name: /catalogue/i })).toBeVisible();
+  await expect(
+    page.locator("[data-home-hero]").getByRole("search", { name: /catalogue/i }),
+  ).toBeVisible();
 });
 
 test("stable homepage has no serious axe violations", async ({ page }) => {
