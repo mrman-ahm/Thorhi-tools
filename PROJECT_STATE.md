@@ -4,9 +4,9 @@ This file is the single decision source of truth for the current rebuild. Chat d
 
 ## Current phase
 
-**Phase 5: browser-native low-fidelity visual foundation**
+**Phase 6: real-route static integration and browser review**
 
-Research, catalogue strategy, information architecture, user journeys, and structural wireframes are approved. Production styling and advanced motion have not begun.
+Research, catalogue strategy, information architecture, user journeys, structural wireframes, and the shared Surgical Contrast visual foundation are complete on the rebuild branch. Public routes remain unchanged. Advanced motion and full catalogue ingestion have not begun.
 
 ## Approved project purpose
 
@@ -28,6 +28,9 @@ THROHI Medical Tools needs a professional corporate and catalogue website that:
 - Strong animation without a gaming, cyberpunk, SaaS, or creative-agency appearance.
 - Real instrument imagery is the primary visual material.
 - One major cinematic moment and one secondary signature interaction; interface motion remains restrained.
+- Instrument Sans is the display face, Archivo is the interface and reading face, and IBM Plex Mono is reserved for product codes and technical data.
+- Surgical green is the primary action colour; steel blue is a restrained supporting accent rather than a glow effect.
+- Borders, spacing, and moderate radii define grouping. Generic card shells, excessive pills, and decorative glass panels are not part of the foundation.
 
 ## Approved information architecture
 
@@ -217,12 +220,12 @@ Previous layouts, copy, visual stages, and component decisions are not binding.
 
 ## Next milestone
 
-Build and review the browser-native static visual foundation for:
+Integrate and review the approved static foundation on real rebuild routes:
 
-1. global header and navigation;
-2. homepage through the early catalogue-search and division-entry sections;
-3. catalogue hub;
-4. product-family page;
-5. mobile header and navigation behaviour.
+1. reusable global header and Products navigation;
+2. homepage hero, catalogue search, division routes, company introduction, utilities, and contact structure;
+3. existing SearchCommand and live Inquiry List state;
+4. desktop, tablet, and mobile browser screenshots;
+5. local lint, typecheck, build, and focused browser validation before any pull request.
 
-Advanced animation and full catalogue ingestion remain outside this milestone.
+The current public implementation must remain available until the rebuild routes pass review. The cinematic entry, full scissors-evolution motion, and complete catalogue ingestion remain deferred until the static real-route UX is approved.
