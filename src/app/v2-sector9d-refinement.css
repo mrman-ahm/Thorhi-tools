@@ -83,6 +83,9 @@
 }
 
 .cinematic-entry[data-variant="rebuild"] .cinematic-entry-scroll{
+  opacity:1;
+  transform:none;
+  pointer-events:auto;
   border-radius:4px;
   background:rgb(4 19 31/.72);
 }
@@ -130,7 +133,7 @@
 }
 
 .frame-evolution-section[data-variant="preview"]{
-  height:410svh;
+  height:360svh;
   background:#04131f;
 }
 
@@ -167,7 +170,7 @@
   }
 
   .frame-evolution-section[data-variant="preview"]{
-    height:360svh;
+    height:310svh;
   }
 }
 
@@ -199,7 +202,7 @@
   }
 
   .frame-evolution-section[data-variant="preview"]{
-    height:330svh;
+    height:280svh;
   }
 }
 
@@ -231,21 +234,35 @@
   .frame-evolution-section[data-variant="preview"] .frame-evolution-sticky{
     position:relative;
     height:auto;
-    min-height:100svh;
+    min-height:0;
     overflow:visible;
+    padding-bottom:3rem;
   }
 
   .frame-evolution-section[data-variant="preview"] .frame-evolution-layout{
-    min-height:calc(100svh - 11rem);
     height:auto;
+    min-height:0;
+    padding-top:2rem;
+    padding-bottom:2rem;
   }
 
-  .frame-evolution-section[data-variant="preview"] .frame-evolution-copy{
-    position:relative;
-    display:none;
+  .frame-evolution-section[data-variant="preview"] .frame-evolution-copy-stack{
+    min-height:0;
+    display:grid;
   }
 
+  .frame-evolution-section[data-variant="preview"] .frame-evolution-copy,
   .frame-evolution-section[data-variant="preview"] .frame-evolution-copy[data-active="true"]{
+    position:relative;
+    inset:auto;
     display:flex;
+    opacity:1;
+    pointer-events:auto;
+    padding:1.25rem 0;
+    border-top:1px solid rgb(201 224 212/.12);
+  }
+
+  .frame-evolution-section[data-variant="preview"] .frame-evolution-timeline{
+    display:none;
   }
 }
