@@ -1,0 +1,9 @@
+.band {
+  color: #dfe9ec;
+  background: var(--throhi-navy-900, #071f33);
+  overflow: hidden;
+}
+
+.band :global(a:focus-visible) {
+  outline-color: var(--throhi-green-300, #8fd6b3);
+}
