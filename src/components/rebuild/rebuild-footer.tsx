@@ -13,16 +13,20 @@ export function RebuildFooter() {
             width={1086}
             height={816}
           />
-          <p>Medical instrument catalogue and structured inquiry workspace.</p>
+          <p>
+            Surgical, dental, orthodontic, veterinary and beauty instrument
+            ranges from Sialkot, Pakistan.
+          </p>
+          <span>Sialkot, Pakistan</span>
         </div>
         <nav aria-label="Footer navigation">
           <div>
-            <p>Catalogue</p>
+            <p>Products</p>
             <Link href="/rebuild/products">Browse products</Link>
             <Link href="/rebuild/inquiry">Inquiry List</Link>
           </div>
           <div>
-            <p>Rebuild</p>
+            <p>THROHI</p>
             <Link href="/rebuild#company">Company</Link>
             <Link href="/rebuild#contact">Contact</Link>
           </div>
@@ -30,7 +34,7 @@ export function RebuildFooter() {
       </div>
       <div className={styles.status}>
         <p>Development preview. Search indexing is disabled.</p>
-        <p>Technical catalogue details remain under client review.</p>
+        <p>Catalogue details remain under client review.</p>
       </div>
     </footer>
   );
