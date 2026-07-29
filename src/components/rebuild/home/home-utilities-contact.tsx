@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { verifiedContact } from "@/rebuild/contact";
 import styles from "./home-sections.module.css";
+import utilityStyles from "./home-utilities.module.css";
 
 const options = [
   {
@@ -30,7 +31,7 @@ export function HomeUtilitiesContact() {
   return (
     <section
       id="contact"
-      className={styles.utilitiesBand}
+      className={utilityStyles.band}
       aria-labelledby="home-utilities-title"
       aria-label="Catalogue and inquiry options"
     >
