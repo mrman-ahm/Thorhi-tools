@@ -39,33 +39,59 @@ No pull request is open. The Quality workflow currently runs for pull requests a
 - TypeScript/TSX syntax transpilation with zero syntax diagnostics.
 - Re-read committed preview files from GitHub after creation.
 
-### Not yet claimed
+## Milestone 02 — Shared Surgical Contrast foundation
+
+**Status:** completed
+
+### Delivered
+
+- Approved navigation extracted into one shared data source.
+- Verified preview catalogue records extracted into one shared data source.
+- Reusable production header created without replacing the existing public header.
+- Existing InquiryProvider and search command behaviour retained for later integration.
+- Preview refactored into focused route components.
+- Unified Surgical Contrast visual roles applied to the preview and reusable header.
+- Instrument Sans assigned to display typography, Archivo to interface and body copy, and IBM Plex Mono to product codes.
+- Restrained charcoal, steel-blue, surgical-green, and light catalogue surfaces established.
+- Shared responsive spacing, containers, borders, moderate radii, and interaction states established.
+- Hover, focus, active, disabled, loading, invalid, error, success, and reduced-motion states defined.
+- Desktop, tablet, and mobile layout rules applied.
+
+### Validation completed
+
+- Replacement styles were reviewed locally for CSS structure and responsive calculations.
+- The committed preview stylesheet exactly matches local Git blob `3d6c4c4d02b480b7534f18e12b583ab1b846ad64`.
+- The committed reusable-header stylesheet exactly matches local Git blob `a98929cf5e209ebfea9c1dc743e37a4173750d58`.
+- GitHub write access was restored and both files were committed to `rebuild/surgical-contrast`.
+- No pull request was opened.
+
+## Validation not yet claimed
 
 - Full Next.js production build.
 - ESLint, repository typecheck, unit tests, or Playwright suite on the branch.
 - Cross-browser production validation.
-- Accessibility audit of the integrated route.
+- Accessibility audit of the integrated real routes.
 - Performance measurement.
 
 Those checks will be batched before the first intentional pull request and CI run.
 
-## Milestone 02 — Shared rebuild foundation
+## Milestone 03 — Real-route static integration
 
-**Status:** active
+**Status:** next
 
 ### Scope
 
-- Extract approved navigation into one shared data source.
-- Extract verified preview catalogue records into one shared data source.
-- Build the reusable production header without changing the existing site header yet.
-- Preserve the existing InquiryProvider and search command behaviours while restyling them later.
-- Define the reusable Surgical Contrast visual tokens and responsive rules.
-- Refactor the isolated preview to consume the shared foundation.
+- Integrate the reusable rebuild header into the new real-route shell without altering `main`.
+- Convert the approved homepage structure from the isolated preview into maintainable production components.
+- Connect the existing search command and live Inquiry List count to the new presentation.
+- Preserve the existing cinematic and evolution assets but do not add advanced motion yet.
+- Keep the current public implementation available until the rebuild routes pass visual and functional review.
+- Perform local lint, typecheck, build, and focused browser screenshots before opening any pull request.
 
 ### Exit criteria
 
-- No duplicated navigation labels or division routes.
-- No duplicated verified sample product data.
-- Header supports keyboard access, Escape, focus restoration, mobile navigation, search, Inquiry List count, and Products division routes.
-- Preview remains isolated from production pages.
-- All new TS/TSX files pass local syntax validation before the first CI batch.
+- New real-route header and homepage static composition are complete on the rebuild branch.
+- Desktop, tablet, and mobile compositions are reviewed and corrected.
+- Search and Inquiry List entry points use existing working state rather than duplicate implementations.
+- No unsupported company claims or fabricated catalogue content are introduced.
+- Advanced cinematic and scissors-evolution motion remain deferred until static UX is approved.
