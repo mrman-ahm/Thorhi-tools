@@ -167,7 +167,7 @@ export function CinematicEntry({
   };
 
   const entryReady = videoEnded || mediaState === "error" || !motionAllowed;
-  const actionLabel = entryReady ? "ENTER WEBSITE" : "SKIP INTRO";
+  const actionLabel = entryReady ? "SCROLL TO ENTER" : "SKIP INTRO";
   const actionDescription = entryReady
     ? "Enter the THROHI website by sliding the opening cover away"
     : "Skip the THROHI opening film and enter the website";
