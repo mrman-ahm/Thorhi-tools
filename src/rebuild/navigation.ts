@@ -25,7 +25,7 @@ export const rebuildDivisionNavigation: readonly RebuildDivisionRoute[] = [
     label: "Surgical Instruments",
     shortLabel: "Surgical",
     href: "/rebuild/products?division=surgical",
-    description: "Browse the supplied surgical catalogue by instrument name, family, or code.",
+    description: "Browse surgical instrument families by product name, family, or catalogue code.",
     catalogueState: "structured",
   },
   {
@@ -33,21 +33,21 @@ export const rebuildDivisionNavigation: readonly RebuildDivisionRoute[] = [
     label: "Dental & Orthodontic Instruments",
     shortLabel: "Dental & Orthodontic",
     href: "/rebuild/products?division=dental",
-    description: "Browse the supplied dental and orthodontic catalogue by name, family, or code.",
+    description: "Browse dental and orthodontic instrument families by name, family, or catalogue code.",
     catalogueState: "structured",
   },
   {
     slug: "veterinary",
     label: "Veterinary Instruments",
     shortLabel: "Veterinary",
-    description: "Catalogue source not yet supplied for this rebuild.",
+    description: "Detailed catalogue records are not yet published. Send THROHI a product reference or requirement.",
     catalogueState: "pending",
   },
   {
     slug: "beauty",
     label: "Beauty Instruments",
     shortLabel: "Beauty",
-    description: "Catalogue source not yet supplied for this rebuild.",
+    description: "Detailed catalogue records are not yet published. Send THROHI a product reference or requirement.",
     catalogueState: "pending",
   },
 ] as const;
