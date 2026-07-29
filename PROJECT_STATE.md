@@ -4,9 +4,13 @@ This file is the single decision source of truth for the current rebuild. Chat d
 
 ## Current phase
 
-**Phase 6: real-route static integration and browser review**
+**Design Milestone 1: homepage and shared shell implemented; verification pending**
 
-Research, catalogue strategy, information architecture, user journeys, structural wireframes, and the shared Surgical Contrast visual foundation are complete on the rebuild branch. Public routes remain unchanged. Advanced motion and full catalogue ingestion have not begun.
+The approved `Surgical Precision Archive` homepage and shared-shell implementation is isolated on `design/surgical-precision-archive`, based on `rebuild/surgical-contrast`. The implementation and its Playwright acceptance contract have received a static specification review.
+
+The milestone is **not complete** until a real checkout passes lint, type checking, unit tests, production build, desktop and mobile Playwright coverage, Axe checks, media-failure checks, and screenshot-based visual review. Those commands were not available in the connector-only implementation session and must not be treated as passing.
+
+The existing catalogue-validation campaign remains a parallel content dependency. Public routes remain unchanged and `/rebuild` remains non-indexed.
 
 ## Approved project purpose
 
@@ -21,16 +25,18 @@ THROHI Medical Tools needs a professional corporate and catalogue website that:
 
 ## Approved design direction
 
-**Surgical Contrast**
+**Surgical Contrast**, with the approved visual subdirection **Surgical Precision Archive**.
 
-- Dark, cinematic identity moments built around black, charcoal, steel, restrained blue, and restrained green.
-- High-clarity catalogue and form surfaces; lighter surfaces are allowed where reading and comparison benefit.
+- Dark, cinematic identity moments built around near-black navy, steel, restrained blue, and restrained green.
+- High-clarity catalogue and form surfaces; lighter surfaces are used where reading and comparison benefit.
 - Strong animation without a gaming, cyberpunk, SaaS, or creative-agency appearance.
 - Real instrument imagery is the primary visual material.
 - One major cinematic moment and one secondary signature interaction; interface motion remains restrained.
 - Instrument Sans is the display face, Archivo is the interface and reading face, and IBM Plex Mono is reserved for product codes and technical data.
 - Surgical green is the primary action colour; steel blue is a restrained supporting accent rather than a glow effect.
 - Borders, spacing, and moderate radii define grouping. Generic card shells, excessive pills, and decorative glass panels are not part of the foundation.
+- The homepage uses a company-led clean split: large `THROHI Medical Tools` identity and supporting Sialkot copy on the left, one real signature surgical scissors composition on the right, and catalogue search attached to the first real screen.
+- The audience hierarchy balances procurement buyers/importers with distributors/business partners.
 
 ## Approved information architecture
 
@@ -59,27 +65,28 @@ Primary routes:
 
 - Products
 - Company
-- Catalogues
+- Catalogues when that route exists
 - Contact
 
 Persistent utilities:
 
 - Search
 - Inquiry List with item count
-- WhatsApp
+- WhatsApp after final contact verification
 
-The Products menu exposes only the four divisions, Browse All Products, and Search by Name or Code. It must not expose the entire category tree.
+The Products menu exposes only the four divisions, Browse All Products, and Search by Name or Code. It must not expose the entire category tree. Structured divisions are links; pending divisions remain truthful non-links until meaningful destinations exist.
 
 ## Approved homepage structure
 
-1. Skippable cinematic cover with reduced-motion fallback.
-2. Real homepage hero explaining what THROHI provides and where it is based.
+1. Skippable cinematic cover using the supplied MP4, with media-failure and reduced-motion fallbacks.
+2. Company-led hero identifying THROHI, its instrument ranges, and Sialkot, Pakistan.
 3. Early catalogue search by instrument name or product code.
-4. Four product-division entry routes.
-5. Concise verified company introduction.
-6. Short scissors-evolution preview linking to the complete Company-page experience.
-7. Catalogue, document, and Inquiry List utilities.
-8. Direct contact methods and a compact form.
+4. Four truthful product-division entries.
+5. Three selected real product families demonstrating the catalogue.
+6. Concise verified company introduction.
+7. Compact scissors-evolution preview using the supplied 260-frame sequence.
+8. Catalogue, Inquiry List, and unlisted-instrument utilities.
+9. Verified contact methods only; until confirmed, location and the structured Inquiry List remain the honest contact entry.
 
 Do not add a logo marquee, fake statistics, testimonials, generic feature grid, repeated CTA section, decorative dashboard, newsletter, pricing, or FAQ without verified need.
 
@@ -120,7 +127,7 @@ Visitors may:
 - set quantities;
 - add notes or an unlisted instrument reference;
 - provide contact details;
-- submit one structured inquiry or continue through WhatsApp.
+- submit one structured inquiry or continue through WhatsApp after that channel is verified.
 
 No account is required.
 
@@ -134,6 +141,8 @@ Major motion:
 Supporting motion is limited to navigation, search, filters, inquiry feedback, product-image transitions, and controlled steel-light responses.
 
 Do not use universal fade-up entrances, random cursor trails, constant tilting, excessive parallax, moving buttons, auto-scrolling product carousels, or animation that delays access to content.
+
+The rebuild cinematic exposes a Skip action during playback. Reduced-motion evolution presents one representative visual with all chapter copy readable without sticky progression.
 
 ## Anti-AI design rules
 
@@ -153,7 +162,7 @@ Do not use universal fade-up entrances, random cursor trails, constant tilting, 
 Currently safe:
 
 - THROHI Medical Tools is based in Sialkot, Pakistan.
-- The public range includes Surgical, Dental, Veterinary, and Beauty instruments.
+- The public range includes Surgical, Dental and Orthodontic, Veterinary, and Beauty instruments.
 - Existing catalogue/product data and public contact routes may be used after validation.
 
 Pending client confirmation:
@@ -186,7 +195,7 @@ Order:
 7. accessibility, performance, security, and QA;
 8. production audit and deployment.
 
-Work is batched locally where possible. GitHub pushes are limited to meaningful validated milestones. Pull requests are opened only when remote CI is intentionally required.
+Work is batched locally where possible. GitHub pushes are limited to meaningful validated milestones. Pull requests are opened only when remote CI is intentionally required and the user explicitly authorizes it.
 
 ## Existing assets to preserve as source material
 
@@ -218,14 +227,32 @@ Previous layouts, copy, visual stages, and component decisions are not binding.
 - When two instructions materially conflict, stop that affected decision and ask the user once with the exact conflict and recommended resolution.
 - Minor implementation choices that do not alter approved UX, brand direction, content truth, scope, or architecture may be resolved professionally without interruption.
 
+## Design Milestone 1 verification gate
+
+Run from a real checkout of `design/surgical-precision-archive`:
+
+```bash
+npm run lint
+npm run typecheck
+npm run test
+npm run build
+npm run test:e2e -- tests/e2e/rebuild-home-design.spec.ts --project=desktop-chromium
+npm run test:e2e -- tests/e2e/rebuild-home-design.spec.ts --project=mobile-chromium
+```
+
+Then capture and review at minimum:
+
+- 1440 × 1000 desktop;
+- 1280 × 800 laptop;
+- 390 × 844 mobile;
+- 320 × 700 narrow mobile;
+- reduced motion;
+- failed cinematic/evolution manifest.
+
+Do not mark Milestone 1 complete or open a pull request until these checks pass and concrete visual findings are corrected.
+
 ## Next milestone
 
-Integrate and review the approved static foundation on real rebuild routes:
+After Milestone 1 verification and user review, plan the catalogue-discovery redesign while preserving URL-backed search, filters, pagination, product routes, and Inquiry List behavior. Client catalogue validation continues in parallel.
 
-1. reusable global header and Products navigation;
-2. homepage hero, catalogue search, division routes, company introduction, utilities, and contact structure;
-3. existing SearchCommand and live Inquiry List state;
-4. desktop, tablet, and mobile browser screenshots;
-5. local lint, typecheck, build, and focused browser validation before any pull request.
-
-The current public implementation must remain available until the rebuild routes pass review. The cinematic entry, full scissors-evolution motion, and complete catalogue ingestion remain deferred until the static real-route UX is approved.
+The current public implementation remains available until the rebuild passes review and receives explicit cutover approval.
