@@ -15,8 +15,9 @@ export type RebuildDivisionRoute = {
 
 export const rebuildPrimaryNavigation: readonly RebuildPrimaryRoute[] = [
   { label: "Products", href: "/rebuild/products", productsMenu: true },
-  { label: "Company", href: "/rebuild#company" },
-  { label: "Contact", href: "/rebuild#contact" },
+  { label: "Company", href: "/rebuild/company" },
+  { label: "Catalogues", href: "/rebuild/catalogues" },
+  { label: "Contact", href: "/rebuild/contact" },
 ] as const;
 
 export const rebuildDivisionNavigation: readonly RebuildDivisionRoute[] = [
@@ -62,7 +63,6 @@ export const rebuildPersistentUtilities = {
 } as const;
 
 export function isRebuildRouteActive(pathname: string, href: string) {
-  if (href.includes("#")) return false;
   const routePath = href.split("#", 1)[0].split("?", 1)[0];
   if (routePath === "/rebuild") return pathname === "/rebuild";
   return pathname === routePath || pathname.startsWith(`${routePath}/`);
