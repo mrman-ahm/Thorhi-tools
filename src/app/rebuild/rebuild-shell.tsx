@@ -9,6 +9,7 @@ export function RebuildShell({ children }: { children: ReactNode }) {
     <div
       className={`${legacyStyles.root} ${shellStyles.root}`}
       data-rebuild-shell
+      data-milestone-contract="surgical-precision-archive-v1"
     >
       <RebuildHeader />
       {children}
