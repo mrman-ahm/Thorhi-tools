@@ -35,6 +35,7 @@ test("inquiry client sends the actual attachment in multipart form data", async 
   assert.match(client, /formData\.set\(\s*"payload"/);
   assert.match(client, /formData\.set\("attachment", selectedAttachment\)/);
   assert.match(client, /attachmentInputRef\.current\?\.files\?\.\[0\]/);
+  assert.match(client, /TurnstileField/);
   assert.doesNotMatch(client, /headers:\s*\{\s*"Content-Type": "application\/json"/);
 });
 
@@ -64,9 +65,10 @@ test("Cloudflare inquiry worker persists D1 records, R2 attachments, and deliver
 });
 
 test("backend documentation exposes setup without committing real secrets or resource ids", async () => {
-  const [docs, vars, config] = await Promise.all([
+  const [docs, workerVars, websiteVars, config] = await Promise.all([
     read("docs/backend/INQUIRY_BACKEND.md"),
     read("workers/inquiry-api/.dev.vars.example"),
+    read(".env.example"),
     read("workers/inquiry-api/wrangler.example.jsonc"),
   ]);
 
@@ -74,8 +76,11 @@ test("backend documentation exposes setup without committing real secrets or res
   assert.match(docs, /R2/i);
   assert.match(docs, /Turnstile/i);
   assert.match(docs, /production fails closed/i);
-  assert.match(vars, /INQUIRY_API_SECRET=/);
-  assert.match(vars, /FINGERPRINT_SECRET=/);
+  assert.match(workerVars, /INQUIRY_API_SECRET=/);
+  assert.match(websiteVars, /INQUIRY_FINGERPRINT_SECRET=/);
   assert.match(config, /REPLACE_WITH_D1_DATABASE_ID/);
-  assert.doesNotMatch(`${docs}\n${vars}`, /sk_live_|AIza|BEGIN PRIVATE KEY/);
+  assert.doesNotMatch(
+    `${docs}\n${workerVars}\n${websiteVars}`,
+    /sk_live_|AIza|BEGIN PRIVATE KEY/,
+  );
 });
