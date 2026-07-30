@@ -62,9 +62,10 @@ env PLAYWRIGHT_PORT=3100 PLAYWRIGHT_REUSE_SERVER=0 \
 
 Only apply the documented contrast and focus fixes when the fresh production run reproduces those failures. Do not change company or utility copy merely to satisfy a stale-render symptom.
 
-## File-list correction
+## File-list corrections
 
-Parent Task 1 does not need a direct edit to `src/components/rebuild/home/home-hero.module.css` if the contrast fix is made through `--throhi-green-600` in `src/app/rebuild/surgical-precision-shell.module.css`. Remove `home-hero.module.css` from the Task 1 commit unless fresh Axe evidence identifies a separate selector-level problem.
+- The existing verification-harness test is `tests/design-verification-harness.test.mjs`. Every parent-plan reference to `tests/verification-harness.test.mjs` must be executed against `tests/design-verification-harness.test.mjs` instead.
+- Parent Task 1 does not need a direct edit to `src/components/rebuild/home/home-hero.module.css` if the contrast fix is made through `--throhi-green-600` in `src/app/rebuild/surgical-precision-shell.module.css`. Remove `home-hero.module.css` from the Task 1 commit unless fresh Axe evidence identifies a separate selector-level problem.
 
 ## Execution gate
 
