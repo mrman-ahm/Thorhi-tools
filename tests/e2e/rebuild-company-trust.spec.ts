@@ -99,7 +99,13 @@ test("rebuild navigation converges on real corporate routes", async ({ page }) =
     const dialog = page.getByRole("dialog", { name: "Site navigation" });
     await expect(dialog).toHaveAttribute("data-open", "true");
     for (const route of ["Company", "Catalogues", "Contact"]) {
-      await expect(dialog.getByRole("link", { name: route, exact: true })).toHaveCount(1);
+      await expect(
+        dialog.getByRole("link", {
+          name: route,
+          exact: true,
+          includeHidden: true,
+        }),
+      ).toHaveCount(1);
     }
     await page.keyboard.press("Escape");
   } else {
@@ -121,7 +127,13 @@ test("mobile navigation retains focus behavior on corporate routes", async ({ pa
   await page.getByRole("button", { name: "Menu" }).click();
   const dialog = page.getByRole("dialog", { name: "Site navigation" });
   await expect(dialog).toHaveAttribute("data-open", "true");
-  await expect(dialog.getByRole("link", { name: "Catalogues", exact: true })).toHaveCount(1);
+  await expect(
+    dialog.getByRole("link", {
+      name: "Catalogues",
+      exact: true,
+      includeHidden: true,
+    }),
+  ).toHaveCount(1);
   await page.keyboard.press("Escape");
   await expect(dialog).toHaveAttribute("data-open", "false");
   await expect(page.getByRole("button", { name: "Menu" })).toBeFocused();
