@@ -32,7 +32,6 @@ export function HomeUtilitiesContact() {
     <section
       id="contact"
       className={utilityStyles.band}
-      aria-labelledby="home-utilities-title"
       aria-label="Catalogue and inquiry options"
     >
       <div className={styles.utilities}>
