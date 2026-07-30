@@ -1,8 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import type { ChangeEvent, CSSProperties } from "react";
+import type { ChangeEvent } from "react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useInquiry } from "@/components/inquiry-provider";
 import {
@@ -11,18 +10,21 @@ import {
   type RuntimeFamily,
   type RuntimeProduct,
 } from "@/lib/rebuild-catalogue";
-import { CatalogueMedia } from "./catalogue-media";
+import { CatalogueEmptyState } from "./catalogue-empty-state";
+import {
+  CatalogueFilterControls,
+  familyKey,
+} from "./catalogue-filter-controls";
+import { CatalogueProductEntry } from "./catalogue-product-entry";
+import {
+  CatalogueResultsToolbar,
+  type CatalogueSortMode,
+} from "./catalogue-results-toolbar";
 import styles from "./catalogue.module.css";
 
 const PAGE_SIZE = 24;
 const validDivisions = new Set(["all", "surgical", "dental"]);
 const validSorts = new Set(["relevance", "name", "code"]);
-
-type SortMode = "relevance" | "name" | "code";
-
-function familyKey(family: RuntimeFamily) {
-  return `${family.division}:${family.slug}`;
-}
 
 export function CatalogueClient() {
   const pathname = usePathname();
@@ -40,18 +42,20 @@ export function CatalogueClient() {
   const { items, addProduct } = useInquiry();
 
   const division = validDivisions.has(divisionParam) ? divisionParam : "all";
-  const sort = (validSorts.has(sortParam) ? sortParam : "relevance") as SortMode;
+  const sort = (validSorts.has(sortParam)
+    ? sortParam
+    : "relevance") as CatalogueSortMode;
 
   const selectedFamily = useMemo(() => {
     if (familyParam === "all") return undefined;
     const exact = rebuildCatalogue.families.find(
-      (family) => familyKey(family) === familyParam
+      (family) => familyKey(family) === familyParam,
     );
     if (exact) return exact;
     return rebuildCatalogue.families.find(
       (family) =>
         family.slug === familyParam &&
-        (division === "all" || family.division === division)
+        (division === "all" || family.division === division),
     );
   }, [division, familyParam]);
 
@@ -61,16 +65,15 @@ export function CatalogueClient() {
         .filter((family) => division === "all" || family.division === division)
         .sort(
           (left, right) =>
-            left.division.localeCompare(right.division) ||
-            left.order - right.order
+            left.division.localeCompare(right.division) || left.order - right.order,
         ),
-    [division]
+    [division],
   );
 
   const updateParams = useCallback(
     (
       updates: Record<string, string | null>,
-      mode: "push" | "replace" = "push"
+      mode: "push" | "replace" = "push",
     ) => {
       const next = new URLSearchParams(paramsKey);
       Object.entries(updates).forEach(([key, value]) => {
@@ -83,7 +86,7 @@ export function CatalogueClient() {
       const search = next.toString();
       router[mode](search ? `${pathname}?${search}` : pathname, { scroll: false });
     },
-    [paramsKey, pathname, router]
+    [paramsKey, pathname, router],
   );
 
   useEffect(() => {
@@ -111,7 +114,7 @@ export function CatalogueClient() {
           (division === "all" || product.division === division) &&
           (!selectedFamily ||
             (product.division === selectedFamily.division &&
-              product.family === selectedFamily.slug))
+              product.family === selectedFamily.slug)),
       );
 
     matches.sort((left, right) => {
@@ -127,8 +130,7 @@ export function CatalogueClient() {
         });
       }
       return (
-        right.rank - left.rank ||
-        left.product.name.localeCompare(right.product.name)
+        right.rank - left.rank || left.product.name.localeCompare(right.product.name)
       );
     });
 
@@ -155,8 +157,7 @@ export function CatalogueClient() {
   };
 
   const setFamily = (event: ChangeEvent<HTMLSelectElement>) => {
-    const value = event.target.value;
-    updateParams({ family: value, page: null });
+    updateParams({ family: event.target.value, page: null });
   };
 
   const reset = () => {
@@ -174,15 +175,31 @@ export function CatalogueClient() {
     setAnnouncement(
       result === "added"
         ? `${product.name} added to the Inquiry List.`
-        : `${product.name} quantity increased in the Inquiry List.`
+        : `${product.name} quantity increased in the Inquiry List.`,
     );
+  };
+
+  const movePage = (nextPage: number) => {
+    updateParams({ page: String(nextPage) });
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        const ledger = document.querySelector<HTMLElement>("[data-catalogue-ledger]");
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        ledger?.scrollIntoView({
+          behavior: reducedMotion ? "auto" : "smooth",
+          block: "start",
+        });
+      });
+    });
   };
 
   return (
     <section className={styles.catalogueWorkspace}>
-      <span className={styles.srOnly} aria-live="polite">{announcement}</span>
+      <span className={styles.srOnly} aria-live="polite">
+        {announcement}
+      </span>
       <div className={styles.workspaceInner}>
-        <div className={styles.primarySearch}>
+        <div className={styles.primarySearch} data-catalogue-search>
           <label htmlFor="catalogue-query">Search by product name or code</label>
           <div>
             <input
@@ -194,38 +211,54 @@ export function CatalogueClient() {
               autoComplete="off"
             />
             {query ? (
-              <button type="button" onClick={() => setQuery("")}>Clear</button>
+              <button type="button" onClick={() => setQuery("")}>
+                Clear
+              </button>
             ) : (
-              <span>Search</span>
+              <span aria-hidden="true">Search</span>
             )}
           </div>
         </div>
 
         <details className={styles.mobileFilters}>
           <summary>
-            Filters
-            <span>{activeFilterCount ? `${activeFilterCount} active` : "All products"}</span>
+            <span>Filters</span>
+            <strong>
+              {activeFilterCount ? `${activeFilterCount} active` : "All products"}
+            </strong>
           </summary>
-          <FilterControls
-            prefix="mobile"
-            division={division}
-            family={selectedFamily ? familyKey(selectedFamily) : "all"}
-            families={availableFamilies}
-            onDivision={setDivision}
-            onFamily={setFamily}
-          />
+          <div className={styles.mobileFilterBody}>
+            <CatalogueFilterControls
+              prefix="mobile"
+              division={division}
+              family={selectedFamily ? familyKey(selectedFamily) : "all"}
+              families={availableFamilies}
+              onDivision={setDivision}
+              onFamily={setFamily}
+            />
+            {activeFilterCount ? (
+              <button type="button" className={styles.mobileReset} onClick={reset}>
+                Reset catalogue
+              </button>
+            ) : null}
+          </div>
         </details>
 
         <div className={styles.catalogueLayout}>
           <aside className={styles.desktopFilters} aria-label="Catalogue filters">
             <div className={styles.stickyFilters}>
               <div className={styles.filterHeading}>
-                <p>Refine catalogue</p>
+                <div>
+                  <p>Refine catalogue</p>
+                  <span>{activeFilterCount} active filters</span>
+                </div>
                 {activeFilterCount ? (
-                  <button type="button" onClick={reset}>Reset</button>
+                  <button type="button" onClick={reset}>
+                    Reset
+                  </button>
                 ) : null}
               </div>
-              <FilterControls
+              <CatalogueFilterControls
                 prefix="desktop"
                 division={division}
                 family={selectedFamily ? familyKey(selectedFamily) : "all"}
@@ -235,143 +268,73 @@ export function CatalogueClient() {
               />
               <div className={styles.sourceBoundary}>
                 <strong>Source status</strong>
-                <p>Product identity and catalogue references are indexed. Technical details remain under review.</p>
+                <p>
+                  Product identities, catalogue references, and imagery are indexed.
+                  Technical specifications remain under review.
+                </p>
               </div>
             </div>
           </aside>
 
-          <div className={styles.results}>
-            <div className={styles.resultToolbar}>
-              <div aria-live="polite">
-                <strong>{results.length}</strong>
-                <span>{results.length === 1 ? "product match" : "product matches"}</span>
-                {selectedFamily ? <small>{selectedFamily.label}</small> : null}
-              </div>
-              <label>
-                <span>Sort</span>
-                <select
-                  value={sort}
-                  onChange={(event) =>
-                    updateParams({ sort: event.target.value, page: null })
-                  }
-                >
-                  <option value="relevance">Best match</option>
-                  <option value="name">Name A–Z</option>
-                  <option value="code">Catalogue code</option>
-                </select>
-              </label>
-            </div>
-
-            {activeFilterCount ? (
-              <div className={styles.activeContext}>
-                {queryParam ? (
-                  <button type="button" onClick={() => setQuery("")}>
-                    Search: {queryParam} <span aria-hidden="true">×</span>
-                  </button>
-                ) : null}
-                {division !== "all" ? (
-                  <button type="button" onClick={() => setDivision("all")}>
-                    {division === "dental" ? "Dental & Orthodontic" : "Surgical"}
-                    <span aria-hidden="true">×</span>
-                  </button>
-                ) : null}
-                {selectedFamily ? (
-                  <button
-                    type="button"
-                    onClick={() => updateParams({ family: null, page: null })}
-                  >
-                    {selectedFamily.label} <span aria-hidden="true">×</span>
-                  </button>
-                ) : null}
-              </div>
-            ) : null}
+          <div className={styles.results} data-catalogue-ledger>
+            <CatalogueResultsToolbar
+              resultCount={results.length}
+              selectedFamilyLabel={selectedFamily?.label}
+              sort={sort}
+              query={queryParam}
+              division={division}
+              onSort={(nextSort) => updateParams({ sort: nextSort, page: null })}
+              onClearQuery={() => setQuery("")}
+              onClearDivision={() => setDivision("all")}
+              onClearFamily={() => updateParams({ family: null, page: null })}
+            />
 
             {pageResults.length ? (
-              <div className={styles.productGrid}>
+              <div className={styles.catalogueLedger}>
                 {pageResults.map((product, index) => {
                   const inquiryItem = items.find((item) => item.key === product.id);
-                  const currentLocation = `${pathname}${paramsKey ? `?${paramsKey}` : ""}`;
-                  const detailHref = `/rebuild/products/${product.id}?from=${encodeURIComponent(currentLocation)}`;
+                  const currentLocation = `${pathname}${
+                    paramsKey ? `?${paramsKey}` : ""
+                  }`;
+                  const detailHref = `/rebuild/products/${product.id}?from=${encodeURIComponent(
+                    currentLocation,
+                  )}`;
+
                   return (
-                    <article
-                      className={styles.productCard}
+                    <CatalogueProductEntry
                       key={product.id}
-                      style={{ "--result-order": index } as CSSProperties}
-                    >
-                      <Link
-                        href={detailHref}
-                        className={styles.cardStage}
-                        aria-label={`View ${product.name}, catalogue code ${product.code}`}
-                      >
-                        <CatalogueMedia
-                          product={product}
-                          className={styles.cardSprite}
-                        />
-                        <span className={styles.stageCode}>{product.code}</span>
-                        <span className={styles.viewLabel}>View instrument <b aria-hidden="true">↗</b></span>
-                      </Link>
-                      <div className={styles.cardCopy}>
-                        <p>
-                          {product.division === "dental"
-                            ? "Dental & Orthodontic"
-                            : "Surgical"}
-                          <span>{product.familyLabel}</span>
-                        </p>
-                        <h2>
-                          <Link href={detailHref}>
-                            {product.name}
-                          </Link>
-                        </h2>
-                        <div className={styles.cardMeta}>
-                          <span>
-                            {product.variants.length
-                              ? `${product.variants.length} ${
-                                  product.variants.length === 1
-                                    ? "variant code"
-                                    : "variant codes"
-                                }`
-                              : "Single catalogue code"}
-                          </span>
-                          <button
-                            type="button"
-                            data-selected={Boolean(inquiryItem)}
-                            onClick={() => add(product)}
-                          >
-                            {inquiryItem ? `Add another · ${inquiryItem.quantity}` : "Add to Inquiry"}
-                          </button>
-                        </div>
-                      </div>
-                    </article>
+                      product={product}
+                      detailHref={detailHref}
+                      inquiryQuantity={inquiryItem?.quantity ?? 0}
+                      resultOrder={index}
+                      onAdd={add}
+                    />
                   );
                 })}
               </div>
             ) : (
-              <NoResults query={queryParam} onReset={reset} />
+              <CatalogueEmptyState query={queryParam} onReset={reset} />
             )}
 
             {results.length > PAGE_SIZE ? (
               <nav className={styles.pagination} aria-label="Catalogue pagination">
                 {currentPage > 1 ? (
-                  <button
-                    type="button"
-                    onClick={() =>
-                      updateParams({ page: String(currentPage - 1) })
-                    }
-                  >
+                  <button type="button" onClick={() => movePage(currentPage - 1)}>
                     Previous
                   </button>
-                ) : <span />}
-                <p>Page <strong>{currentPage}</strong> of {pageCount}</p>
+                ) : (
+                  <span />
+                )}
+                <p>
+                  Page <strong>{currentPage}</strong> of {pageCount}
+                </p>
                 {currentPage < pageCount ? (
-                  <button
-                    type="button"
-                    onClick={() =>
-                      updateParams({ page: String(currentPage + 1) })
-                    }
-                  >
+                  <button type="button" onClick={() => movePage(currentPage + 1)}>
                     Next
                   </button>
-                ) : <span />}
+                ) : (
+                  <span />
+                )}
               </nav>
             ) : null}
           </div>
@@ -381,81 +344,4 @@ export function CatalogueClient() {
   );
 }
 
-type FilterControlsProps = {
-  prefix: string;
-  division: string;
-  family: string;
-  families: RuntimeFamily[];
-  onDivision: (division: string) => void;
-  onFamily: (event: ChangeEvent<HTMLSelectElement>) => void;
-};
-
-function FilterControls({
-  prefix,
-  division,
-  family,
-  families,
-  onDivision,
-  onFamily,
-}: FilterControlsProps) {
-  return (
-    <div className={styles.filterControls}>
-      <fieldset>
-        <legend>Division</legend>
-        {[
-          ["all", "All"],
-          ["surgical", "Surgical"],
-          ["dental", "Dental"],
-        ].map(([value, label]) => (
-          <label key={value}>
-            <input
-              type="radio"
-              name={`${prefix}-division`}
-              value={value}
-              checked={division === value}
-              onChange={() => onDivision(value)}
-            />
-            <span>{label}</span>
-          </label>
-        ))}
-      </fieldset>
-      <label className={styles.familySelect} htmlFor={`${prefix}-family`}>
-        <span>Product family</span>
-        <select id={`${prefix}-family`} value={family} onChange={onFamily}>
-          <option value="all">All available families</option>
-          {families.map((item) => (
-            <option key={familyKey(item)} value={familyKey(item)}>
-              {division === "all"
-                ? `${item.division === "dental" ? "Dental" : "Surgical"} — `
-                : ""}
-              {item.label} ({item.productCount})
-            </option>
-          ))}
-        </select>
-      </label>
-    </div>
-  );
-}
-
-function NoResults({
-  query,
-  onReset,
-}: {
-  query: string;
-  onReset: () => void;
-}) {
-  return (
-    <section className={styles.noResults}>
-      <p>No catalogue match</p>
-      <h2>{query ? `Nothing matched “${query}”.` : "No products match these filters."}</h2>
-      <p>
-        Try a shorter catalogue code, clear one filter, or add the known
-        reference directly to the Inquiry List.
-      </p>
-      <div>
-        <button type="button" onClick={onReset}>Reset catalogue</button>
-        <Link href="/rebuild/inquiry?manual=1">Add an unlisted reference</Link>
-      </div>
-    </section>
-  );
-}
+export type { RuntimeFamily };
