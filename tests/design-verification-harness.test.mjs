@@ -17,3 +17,10 @@ test("design milestone verification uses an isolated production server", async (
   assert.match(script, /--project=desktop-chromium/);
   assert.match(script, /--project=mobile-chromium/);
 });
+
+test("eslint excludes generated browser-test artifacts", async () => {
+  const config = await read("eslint.config.mjs");
+
+  assert.match(config, /playwright-report\/\*\*/);
+  assert.match(config, /test-results\/\*\*/);
+});
