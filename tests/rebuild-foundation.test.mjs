@@ -20,8 +20,11 @@ test("rebuild navigation stays scoped and contains no direct-contact shortcut", 
 
   assert.match(navigation, /\/rebuild\/products/);
   assert.match(navigation, /\/rebuild\/inquiry/);
+  assert.match(navigation, /\/rebuild\/company/);
+  assert.match(navigation, /\/rebuild\/catalogues/);
+  assert.match(navigation, /\/rebuild\/contact/);
   assert.match(navigation, /catalogueState: "pending"/);
-  assert.match(navigation, /href\.includes\("#"\)/);
+  assert.doesNotMatch(navigation, /href: "\/rebuild#/);
   assert.doesNotMatch(`${navigation}\n${header}`, /wa\.me|WhatsApp/);
   assert.doesNotMatch(navigation, /href: "\/products"/);
 });
