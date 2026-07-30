@@ -12,6 +12,8 @@ test("design milestone verification uses an isolated production server", async (
 
   assert.match(config, /PLAYWRIGHT_PORT/);
   assert.match(config, /PLAYWRIGHT_REUSE_SERVER/);
+  assert.match(script, /rm -rf playwright-report test-results/);
+  assert.match(script, /rm -rf \.next/);
   assert.match(script, /PLAYWRIGHT_PORT=3100/);
   assert.match(script, /PLAYWRIGHT_REUSE_SERVER=0/);
   assert.match(script, /--project=desktop-chromium/);
