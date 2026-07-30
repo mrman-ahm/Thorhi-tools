@@ -27,7 +27,8 @@ export class DurableInquiryError extends Error {
 export function isDurableInquiryConfigured() {
   return Boolean(
     process.env.INQUIRY_API_URL?.trim() &&
-      process.env.INQUIRY_API_SECRET?.trim(),
+      process.env.INQUIRY_API_SECRET?.trim() &&
+      process.env.INQUIRY_FINGERPRINT_SECRET?.trim(),
   );
 }
 
@@ -48,9 +49,7 @@ export async function createClientFingerprint(request: Request) {
     256,
   );
   const day = new Date().toISOString().slice(0, 10);
-  const secret =
-    process.env.INQUIRY_FINGERPRINT_SECRET?.trim() ??
-    process.env.INQUIRY_API_SECRET?.trim();
+  const secret = process.env.INQUIRY_FINGERPRINT_SECRET?.trim();
 
   if (!secret) {
     throw new DurableInquiryError(
