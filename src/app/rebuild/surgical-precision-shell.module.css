@@ -47,7 +47,3 @@
   outline: 2px solid var(--throhi-green-600);
   outline-offset: 4px;
 }
-
-:global(body[data-rebuild-menu-open="true"]) {
-  overflow: hidden;
-}
