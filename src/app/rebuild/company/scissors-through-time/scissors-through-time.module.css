@@ -1,0 +1,45 @@
+.page { background: var(--throhi-paper-50); color: var(--throhi-text); }
+
+.editorialNote,
+.closing {
+  width: min(var(--throhi-container), calc(100vw - (2 * var(--throhi-gutter))));
+  margin-inline: auto;
+}
+
+.editorialNote {
+  padding: clamp(3rem, 6vw, 6rem) 0;
+  display: grid;
+  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1fr);
+  gap: clamp(2.5rem, 7vw, 7rem);
+  border-bottom: 1px solid var(--throhi-line);
+}
+
+.editorialNote h2,
+.closing h2 {
+  margin: 0;
+  font-family: var(--font-instrument), Arial, sans-serif;
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  line-height: 0.96;
+  letter-spacing: -0.05em;
+}
+
+.editorialNote p,
+.closing p { margin: 0; color: var(--throhi-muted); line-height: 1.75; }
+
+.evolutionWrap {
+  background: var(--throhi-steel-100);
+  border-block: 1px solid var(--throhi-line);
+}
+
+.closing {
+  padding: clamp(4rem, 8vw, 8rem) 0 1rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.55fr);
+  gap: clamp(3rem, 8vw, 8rem);
+  align-items: end;
+}
+
+@media (max-width: 760px) {
+  .editorialNote,
+  .closing { grid-template-columns: 1fr; }
+}
