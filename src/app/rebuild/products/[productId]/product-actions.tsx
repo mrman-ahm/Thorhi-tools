@@ -43,6 +43,7 @@ export function ProductActions({
       <div
         className={styles.variantAction}
         data-product-action
+        data-product-action-key={key}
         data-selected={Boolean(existing)}
         data-quantity={existing?.quantity ?? 0}
       >
@@ -65,6 +66,7 @@ export function ProductActions({
     <div
       className={styles.detailActions}
       data-product-action
+      data-product-action-key={key}
       data-selected={Boolean(existing)}
       data-quantity={existing?.quantity ?? 0}
     >
