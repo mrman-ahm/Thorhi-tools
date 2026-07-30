@@ -1,16 +1,27 @@
 # THROHI Rebuild — Project State
 
-This file is the single decision source of truth for the current rebuild. Chat discussion, earlier branches, screenshots, and previous implementations are reference material unless a decision is recorded here.
+This file is the single decision source of truth for the current rebuild. Chat discussion,
+earlier branches, screenshots, and previous implementations are reference material unless a
+decision is recorded here.
 
 ## Current phase
 
-**Design Milestone 1: homepage and shared shell implemented; verification pending**
+**Design Milestone 3: Precision Catalogue Ledger implementation present; combined verification and visual review pending.**
 
-The approved `Surgical Precision Archive` homepage and shared-shell implementation is isolated on `design/surgical-precision-archive`, based on `rebuild/surgical-contrast`. The implementation and its Playwright acceptance contract have received a static specification review.
+Work remains isolated on `design/surgical-precision-archive`, based on
+`rebuild/surgical-contrast`. Public routes remain unchanged and all `/rebuild` routes remain
+non-indexed.
 
-The milestone is **not complete** until a real checkout passes lint, type checking, unit tests, production build, desktop and mobile Playwright coverage, Axe checks, media-failure checks, and screenshot-based visual review. Those commands were not available in the connector-only implementation session and must not be treated as passing.
+Implemented rebuild milestones:
 
-The existing catalogue-validation campaign remains a parallel content dependency. Public routes remain unchanged and `/rebuild` remains non-indexed.
+1. Surgical Precision Archive homepage and shared shell
+2. Company & Trust Spine
+3. Precision Catalogue Ledger
+
+A milestone is not complete until a real checkout passes the critical build, type, unit,
+production, desktop/mobile browser, serious accessibility, responsive-overflow, and visual
+review gates. Harmless pre-existing warnings, deprecations, and obsolete syntax-only assertions
+are deferred rather than allowed to derail layout and visual implementation.
 
 ## Approved project purpose
 
@@ -18,25 +29,50 @@ THROHI Medical Tools needs a professional corporate and catalogue website that:
 
 - introduces the company and its instrument ranges to the market;
 - presents Surgical, Dental and Orthodontic, Veterinary, and Beauty divisions;
-- provides a searchable digital catalogue using real product names, codes, images, families, and variants;
+- provides a searchable digital catalogue using real product names, codes, images, families,
+  and variants;
 - provides downloadable catalogue documents when real files are available;
-- lets visitors create a non-commerce Inquiry List and contact THROHI through form, email, phone, or WhatsApp;
-- integrates the supplied cinematic entry and scissors-evolution media without obstructing practical browsing.
+- lets visitors create a non-commerce Inquiry List and contact THROHI through verified routes;
+- integrates the supplied cinematic entry and scissors-evolution media without obstructing
+  practical browsing.
+
+## Primary implementation preference
+
+Layout, imagery, visual hierarchy, spacing, responsive composition, and overall design quality
+are the primary decision criteria.
+
+Critical issues that block progress:
+
+- build or type-check failure;
+- broken search, filters, pagination, routing, inquiry state, or data integrity;
+- serious or critical accessibility violations;
+- keyboard traps or unusable controls;
+- broken responsive layout or horizontal overflow;
+- missing approved real imagery;
+- invented catalogue records, claims, or contact details.
+
+Non-critical issues may remain in deferred work:
+
+- harmless pre-existing lint warnings;
+- toolchain deprecation warnings outside the touched surface;
+- cosmetic differences that do not damage hierarchy or usability;
+- tests that enforce superseded implementation syntax instead of user behavior.
 
 ## Approved design direction
 
-**Surgical Contrast**, with the approved visual subdirection **Surgical Precision Archive**.
+**Surgical Contrast**, with the visual system **Surgical Precision Archive**.
 
-- Dark, cinematic identity moments built around near-black navy, steel, restrained blue, and restrained green.
-- High-clarity catalogue and form surfaces; lighter surfaces are used where reading and comparison benefit.
-- Strong animation without a gaming, cyberpunk, SaaS, or creative-agency appearance.
+- Dark identity moments use near-black navy, steel, restrained blue, and restrained green.
+- Catalogue and form surfaces use lighter paper/steel backgrounds for reading and comparison.
 - Real instrument imagery is the primary visual material.
-- One major cinematic moment and one secondary signature interaction; interface motion remains restrained.
-- Instrument Sans is the display face, Archivo is the interface and reading face, and IBM Plex Mono is reserved for product codes and technical data.
-- Surgical green is the primary action colour; steel blue is a restrained supporting accent rather than a glow effect.
-- Borders, spacing, and moderate radii define grouping. Generic card shells, excessive pills, and decorative glass panels are not part of the foundation.
-- The homepage uses a company-led clean split: large `THROHI Medical Tools` identity and supporting Sialkot copy on the left, one real signature surgical scissors composition on the right, and catalogue search attached to the first real screen.
-- The audience hierarchy balances procurement buyers/importers with distributors/business partners.
+- Strong signature motion is reserved for the cinematic cover and the full evolution sequence.
+- Repeated buyer tasks use restrained state and navigation motion only.
+- Instrument Sans is the display face, Archivo is the interface/reading face, and IBM Plex Mono
+  is reserved for product codes and technical counters.
+- Surgical green is the primary action color; steel blue is a supporting interaction accent.
+- Borders, whitespace, and moderate radii define grouping.
+- Generic SaaS cards, excessive pills, decorative glass panels, cyberpunk effects, and design-
+  agency presentation are rejected.
 
 ## Approved information architecture
 
@@ -47,8 +83,7 @@ THROHI Medical Tools needs a professional corporate and catalogue website that:
   - Dental and Orthodontic Instruments
   - Veterinary Instruments
   - Beauty Instruments
-  - Category routes
-  - Product-family routes with variants
+  - Product-family and product-detail routes
 - Company
   - About THROHI
   - Scissors Through Time
@@ -57,7 +92,8 @@ THROHI Medical Tools needs a professional corporate and catalogue website that:
 - Contact
 - Search and utility/error routes
 
-Company, About, and general company story content belong on one Company page. Do not create repetitive Mission, Vision, Why Choose Us, or Our Story pages without unique verified content.
+Company, About, and general company story content stay on one Company page. Do not create
+repetitive Mission, Vision, Why Choose Us, or Our Story pages without unique verified content.
 
 ## Approved global navigation
 
@@ -65,30 +101,87 @@ Primary routes:
 
 - Products
 - Company
-- Catalogues when that route exists
+- Catalogues
 - Contact
 
 Persistent utilities:
 
 - Search
 - Inquiry List with item count
-- WhatsApp after final contact verification
+- WhatsApp only after final contact verification
 
-The Products menu exposes only the four divisions, Browse All Products, and Search by Name or Code. It must not expose the entire category tree. Structured divisions are links; pending divisions remain truthful non-links until meaningful destinations exist.
+The Products menu exposes the four divisions, Browse All Products, and Search by Name or Code.
+Structured divisions are links; pending divisions remain truthful non-links until meaningful
+catalogue destinations exist.
 
-## Approved homepage structure
+## Implemented Milestone 1 — homepage and shell
 
-1. Skippable cinematic cover using the supplied MP4, with media-failure and reduced-motion fallbacks.
-2. Company-led hero identifying THROHI, its instrument ranges, and Sialkot, Pakistan.
-3. Early catalogue search by instrument name or product code.
-4. Four truthful product-division entries.
-5. Three selected real product families demonstrating the catalogue.
-6. Concise verified company introduction.
-7. Compact scissors-evolution preview using the supplied 260-frame sequence.
-8. Catalogue, Inquiry List, and unlisted-instrument utilities.
-9. Verified contact methods only; until confirmed, location and the structured Inquiry List remain the honest contact entry.
+- Skippable cinematic cover using the supplied MP4
+- Company-led hero identifying THROHI, instrument ranges, and Sialkot, Pakistan
+- Early catalogue search by instrument name or code
+- Four truthful division entries
+- Three selected real product families
+- Concise verified company introduction
+- Compact 260-frame evolution preview
+- Catalogue, Inquiry List, and unlisted-instrument utilities
+- Verified-contact boundary with no empty direct-contact controls
+- Responsive shared header/footer and mobile navigation
 
-Do not add a logo marquee, fake statistics, testimonials, generic feature grid, repeated CTA section, decorative dashboard, newsletter, pricing, or FAQ without verified need.
+## Implemented Milestone 2 — Company & Trust Spine
+
+Routes:
+
+- `/rebuild/company`
+- `/rebuild/company/scissors-through-time`
+- `/rebuild/catalogues`
+- `/rebuild/contact`
+
+Features:
+
+- typed verified company-content boundary;
+- four-division ledger;
+- customer-facing publication boundary without internal filler;
+- full 260-frame evolution route with reduced-motion and media-failure parity;
+- real-files-only downloadable catalogue model;
+- structured Inquiry List and unlisted-instrument contact routing;
+- header/footer navigation converged on real rebuild routes.
+
+## Implemented Milestone 3 — Precision Catalogue Ledger
+
+`/rebuild/products` preserves the existing data and interaction model but now uses a stronger
+procurement-focused design.
+
+- Compact dark editorial masthead
+- Real Operating Scissors specimen stage
+- Live product, variant, structured-division, and source-status ledger
+- Large URL-backed command search
+- Sticky desktop filter ledger
+- Deliberate native mobile filter sheet
+- Two-column desktop instrument ledger
+- One-column mobile instrument records
+- Visible catalogue code, division, family, variant count, product route, and Inquiry action
+- Separate detail and Inquiry controls
+- Pagination with result-context restoration
+- Reduced-motion-safe image and steel-line responses
+- Focused visual components for filters, product entries, toolbar, and no-results recovery
+
+Preserved URL parameters:
+
+- `q`
+- `division`
+- `family`
+- `sort`
+- `page`
+
+Preserved behaviors:
+
+- debounced search;
+- scoring and sorting;
+- page size of 24;
+- product-detail return context;
+- real optimized catalogue media;
+- Inquiry List quantity increments and live announcements;
+- pending Veterinary and Beauty truth boundary.
 
 ## Approved catalogue model
 
@@ -102,7 +195,8 @@ Current supplied structured data contains approximately:
 - 626 representative product families
 - 1,434 variants
 
-The family is the normal catalogue-listing unit. Near-identical variants remain consolidated inside the product-family route.
+The product family is the normal listing unit. Near-identical variants remain consolidated
+inside the product route.
 
 Search priority:
 
@@ -113,11 +207,10 @@ Search priority:
 5. category;
 6. broader text match.
 
-Initial filters may include division, category, product family, variant count, and image availability. Technical filters such as size, curvature, tip pattern, material, or finish are added only after reliable data validation.
+Surgical and Dental/Orthodontic have the strongest structured data. Beauty and Veterinary remain
+visible but are not populated with invented product records.
 
-Surgical and Dental/Orthodontic have the strongest supplied structured data. Beauty and Veterinary remain visible but must not be populated with invented catalogue records.
-
-## Approved Inquiry List behaviour
+## Approved Inquiry List behavior
 
 The Inquiry List is not a shopping cart and has no checkout or public pricing.
 
@@ -127,7 +220,7 @@ Visitors may:
 - set quantities;
 - add notes or an unlisted instrument reference;
 - provide contact details;
-- submit one structured inquiry or continue through WhatsApp after that channel is verified.
+- submit one structured inquiry or continue through WhatsApp after verification.
 
 No account is required.
 
@@ -138,32 +231,32 @@ Major motion:
 1. cinematic cover and slide-away reveal;
 2. complete scissors-evolution experience.
 
-Supporting motion is limited to navigation, search, filters, inquiry feedback, product-image transitions, and controlled steel-light responses.
+Supporting motion is limited to navigation, search, filters, inquiry feedback, product-image
+responses, and controlled steel-line feedback.
 
-Do not use universal fade-up entrances, random cursor trails, constant tilting, excessive parallax, moving buttons, auto-scrolling product carousels, or animation that delays access to content.
-
-The rebuild cinematic exposes a Skip action during playback. Reduced-motion evolution presents one representative visual with all chapter copy readable without sticky progression.
+Do not use universal fade-up entrances, cursor trails, constant tilting, excessive parallax,
+moving buttons, auto-scrolling product carousels, or animation that delays access to content.
 
 ## Anti-AI design rules
 
-- Every section must answer a unique visitor question.
-- Every visible component must perform a real function or communicate unique information.
-- Do not place ordinary text in cards by default.
-- Do not place an eyebrow label above every heading.
-- Do not repeat the same message in labels, headings, paragraphs, cards, and CTAs.
-- Do not invent facts, testimonials, certifications, customers, metrics, awards, export markets, materials, manufacturing capabilities, minimum orders, or company history.
-- Use component libraries only as implementation raw material and restyle them into one coherent system.
-- Empty space is permitted; decoration must earn its place.
-- Mobile is designed deliberately rather than created by stacking desktop sections.
-- The website must remain understandable when animation fails or reduced motion is enabled.
+- Every section answers a unique visitor question.
+- Every visible component performs a real function or communicates unique information.
+- Ordinary text is not placed in cards by default.
+- Eyebrow labels are not placed above every heading.
+- Messages are not repeated across labels, headings, paragraphs, cards, and CTAs.
+- Facts, testimonials, certifications, customers, metrics, awards, markets, materials,
+  manufacturing capabilities, minimum orders, and company history are never invented.
+- Empty space is allowed; decoration must earn its place.
+- Mobile is designed deliberately rather than produced by stacking desktop sections.
+- The website remains understandable when animation or media fails.
 
 ## Verified facts and public-safe content
 
-Currently safe:
+Safe:
 
 - THROHI Medical Tools is based in Sialkot, Pakistan.
 - The public range includes Surgical, Dental and Orthodontic, Veterinary, and Beauty instruments.
-- Existing catalogue/product data and public contact routes may be used after validation.
+- Validated catalogue/product data may be used.
 
 Pending client confirmation:
 
@@ -176,83 +269,65 @@ Pending client confirmation:
 - minimum order quantities and lead times;
 - final approved company description;
 - final contact formatting;
-- complete Beauty and Veterinary catalogue data.
+- complete Beauty and Veterinary catalogue data;
+- real catalogue PDFs and metadata.
 
-Pending facts must remain absent from production or be explicitly marked as internal placeholders during development.
+Pending facts remain absent from production.
 
 ## Production workflow
-
-The core workflow is browser-first inside the Next.js repository. Figma is optional only for a specific design problem where it clearly improves the result. Canva is not part of website production.
-
-Order:
 
 1. static responsive composition;
 2. visual foundation and design tokens;
 3. browser screenshot review;
 4. responsive corrections;
 5. component and catalogue functionality;
-6. motion integration;
+6. restrained motion integration;
 7. accessibility, performance, security, and QA;
 8. production audit and deployment.
 
-Work is batched locally where possible. GitHub pushes are limited to meaningful validated milestones. Pull requests are opened only when remote CI is intentionally required and the user explicitly authorizes it.
+Work is batched locally where possible. Pull requests, CI, merges, deployment, and public cutover
+occur only with explicit user approval.
 
-## Existing assets to preserve as source material
+## Current verification gate
 
-- supplied THROHI logos, after cleanup and verification;
-- supplied instrument cinematic video;
-- supplied 260-frame scissors-evolution sequence;
-- supplied catalogue workbook, catalogue bundle, and instrument-image archive;
-- existing working search, inquiry, accessibility, and testing foundations where they remain useful.
-
-Previous layouts, copy, visual stages, and component decisions are not binding.
-
-## Explicitly rejected patterns
-
-- gaming, cyberpunk, or edgy design-company presentation;
-- generic SaaS structure;
-- random glass panels, blobs, neon, grids, or particles;
-- low-resolution product imagery;
-- fake or vector-like instrument substitutes when real assets exist;
-- huge elements that weaken product and company clarity;
-- every section enclosed in rounded cards;
-- filler headings, fake proof, and decorative section numbering;
-- coding major visuals before structure and content responsibilities are clear.
-
-## Change control
-
-- Latest explicit user instruction overrides this file.
-- A new approved decision must update this file before or with implementation.
-- Do not silently reverse an approved decision.
-- When two instructions materially conflict, stop that affected decision and ask the user once with the exact conflict and recommended resolution.
-- Minor implementation choices that do not alter approved UX, brand direction, content truth, scope, or architecture may be resolved professionally without interruption.
-
-## Design Milestone 1 verification gate
-
-Run from a real checkout of `design/surgical-precision-archive`:
+Run from the real checkout:
 
 ```bash
-npm run lint
-npm run typecheck
-npm run test
-npm run build
-npm run test:e2e -- tests/e2e/rebuild-home-design.spec.ts --project=desktop-chromium
-npm run test:e2e -- tests/e2e/rebuild-home-design.spec.ts --project=mobile-chromium
+bash scripts/verify-design-milestone-3.sh
 ```
 
-Then capture and review at minimum:
+This runs lint, typecheck, all unit tests, production build, and homepage, Company & Trust, and
+catalogue design Playwright suites on desktop and mobile through an isolated port `3102` server.
 
-- 1440 × 1000 desktop;
-- 1280 × 800 laptop;
-- 390 × 844 mobile;
-- 320 × 700 narrow mobile;
-- reduced motion;
-- failed cinematic/evolution manifest.
+Critical failures must be corrected. Harmless pre-existing warnings do not block.
 
-Do not mark Milestone 1 complete or open a pull request until these checks pass and concrete visual findings are corrected.
+Then review at minimum:
+
+- 1440 × 1000
+- 1280 × 800
+- 768 × 1024
+- 390 × 844
+- 320 × 700
+- default catalogue
+- exact-code search
+- active division/family filters
+- no-results state
+- selected Inquiry List state
+- pagination
+- reduced motion
 
 ## Next milestone
 
-After Milestone 1 verification and user review, plan the catalogue-discovery redesign while preserving URL-backed search, filters, pagination, product routes, and Inquiry List behavior. Client catalogue validation continues in parallel.
+After Milestone 3 critical verification and visual corrections, design and implement the
+**Product Examination & Inquiry Conversion** milestone:
 
-The current public implementation remains available until the rebuild passes review and receives explicit cutover approval.
+- product-detail visual refinement;
+- clearer base-product and variant hierarchy;
+- stronger product image examination;
+- sticky but non-ecommerce Inquiry controls;
+- improved mobile quantity/notes interaction;
+- Inquiry List visual convergence and unlisted-instrument flow;
+- preservation of catalogue return context and verified-data boundaries.
+
+The current public implementation remains available until the rebuild passes review and receives
+explicit cutover approval.
