@@ -38,6 +38,20 @@ test("company trust verification runs the full isolated regression gate", async 
   assert.match(script, /--project=mobile-chromium/);
 });
 
+test("catalogue discovery verification runs every rebuild regression suite", async () => {
+  const script = await read("scripts/verify-design-milestone-3.sh");
+
+  assert.match(script, /rm -rf playwright-report test-results/);
+  assert.match(script, /rm -rf \.next/);
+  assert.match(script, /PLAYWRIGHT_PORT=3102/);
+  assert.match(script, /PLAYWRIGHT_REUSE_SERVER=0/);
+  assert.match(script, /rebuild-home-design\.spec\.ts/);
+  assert.match(script, /rebuild-company-trust\.spec\.ts/);
+  assert.match(script, /rebuild-catalogue-design\.spec\.ts/);
+  assert.match(script, /--project=desktop-chromium/);
+  assert.match(script, /--project=mobile-chromium/);
+});
+
 test("eslint excludes generated browser-test artifacts", async () => {
   const config = await read("eslint.config.mjs");
 
