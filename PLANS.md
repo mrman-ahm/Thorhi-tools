@@ -2,149 +2,138 @@
 
 ## Current objective
 
-Verify and visually review **Design Milestone 3: Precision Catalogue Ledger** on
-`design/surgical-precision-archive` while the client catalogue-validation campaign
-continues in parallel.
+Verify and visually review **Design Milestone 4: Instrument Examination & Inquiry Desk** on `design/surgical-precision-archive` while catalogue validation continues in parallel.
 
-The homepage/shared shell, Company & Trust Spine, and catalogue discovery redesign
-are implementation-present on `/rebuild`. They remain non-indexed and are not
-approved for public cutover until the combined local gate and screenshot review pass.
+The homepage/shared shell, Company & Trust Spine, Precision Catalogue Ledger, product examination, and Inquiry List redesign are implementation-present on `/rebuild`. They remain non-indexed and are not approved for public cutover until the combined local gate and screenshot review pass.
 
 ## Cross-phase quality standard
 
-Layout, hierarchy, imagery, spacing, responsive composition, and procurement usability
-are the primary design criteria.
+Layout, hierarchy, imagery, spacing, responsive composition, and procurement usability are the primary design criteria.
 
-- Every touched surface must look deliberately designed rather than generated from a
-  generic card or dashboard pattern.
+- Every touched surface must look deliberately designed rather than generated from a generic card or dashboard pattern.
 - Real supplied or source-derived instrument imagery is the primary visual material.
-- Catalogue, product, form, and inquiry routes remain calm, precise, and
-  procurement-focused.
-- Motion must clarify hierarchy, state, or navigation and must include reduced-motion
-  parity.
-- Critical build, type, data-integrity, core-interaction, accessibility, and responsive
-  failures block a milestone.
-- Harmless pre-existing warnings, deprecations, and obsolete syntax-only assertions are
-  recorded in deferred work and do not derail design implementation.
+- Catalogue, product, form, and inquiry routes remain calm, precise, and procurement-focused.
+- Motion clarifies state or navigation and includes reduced-motion parity.
+- Critical build, type, data-integrity, core-interaction, accessibility, and responsive failures block a milestone.
+- Harmless pre-existing warnings, deprecations, and obsolete syntax-only assertions remain deferred.
 - A milestone cannot be marked complete from static review alone.
 
 ## Completed foundations
 
-- Project intake, strategic direction, reference analysis, project brief, sitemap, and
-  core user flows
-- Responsive wireframes and design-system foundations
-- Next.js production scaffold and non-indexed `/rebuild` route
-- Accessibility and reduced-motion foundations
-- Deterministic FineMed source importer and catalogue audit
-- Source-derived runtime catalogue with 626 representative product families and 1,434
-  variants
-- Real optimized catalogue imagery with deterministic sprite fallback
-- Shared inquiry schema, migration, structured API workflow, and live Inquiry List state
-- URL-backed catalogue filtering, sorting, pagination, product routes, and inquiry
-  feedback
-- Product examination routes with variant inquiry state and related-family discovery
-- Deterministic approval schema and no-index catalogue review workspace
+- project intake, strategy, references, brief, sitemap, and user flows;
+- responsive wireframes and Surgical Precision Archive design system;
+- Next.js scaffold and non-indexed `/rebuild` surface;
+- accessibility and reduced-motion foundations;
+- deterministic FineMed importer, catalogue audit, and approval workflow;
+- 626 source-derived product records, 1,434 variants, and optimized media;
+- shared inquiry schema, migration, API, and live Inquiry List state;
+- URL-backed catalogue filtering, sorting, pagination, and product routes.
 
-## Design Milestone 1 — homepage and shared shell implementation present
+## Milestone 1 — homepage and shared shell
 
-- Surgical Precision Archive token layer
-- Corporate header and footer with Search and live Inquiry List state
-- Skippable cinematic cover with reduced-motion and media-failure behavior
-- Company-led homepage hero with one real signature instrument
-- Early catalogue search
-- Truthful four-division index
-- Three selected real product families
-- Verified company introduction
-- 260-frame evolution preview
-- Catalogue and structured inquiry utilities
+- skippable supplied MP4 cinematic cover;
+- company-led hero and early catalogue search;
+- four divisions and selected real product families;
+- verified company introduction;
+- 260-frame evolution preview;
+- responsive corporate header/footer and Inquiry utility.
 
-## Design Milestone 2 — Company & Trust Spine implementation present
+## Milestone 2 — Company & Trust Spine
+
+Routes:
 
 - `/rebuild/company`
 - `/rebuild/company/scissors-through-time`
 - `/rebuild/catalogues`
 - `/rebuild/contact`
-- Shared corporate route components
-- Full 260-frame editorial experience
-- Verified-content boundary
-- Real-files-only catalogue-document boundary
-- Structured contact and unlisted-instrument routes
-- Header and footer navigation converged on real destinations
 
-## Design Milestone 3 — Precision Catalogue Ledger implementation present
+Includes verified-content boundaries, full evolution route, real-files-only documents, and structured contact/inquiry routing.
 
-The catalogue route has been redesigned around procurement scanning and real instrument
-imagery without changing data or URL behavior.
+## Milestone 3 — Precision Catalogue Ledger
 
-- Compact dark editorial catalogue masthead
-- Real Operating Scissors specimen stage
-- Product, variant, division, and source-status ledger
-- Large command search by name or catalogue code
-- Sticky desktop filter ledger
-- Deliberate native mobile filter sheet
-- Focused presentation components for filters, product records, toolbar, and empty state
-- Two-column desktop instrument ledger and one-column mobile records
-- Visible code, division, family, variant count, detail route, and Inquiry List state
-- Pagination that restores result context
-- Reduced-motion-safe image and line transitions
-- New source and Playwright contracts
-- Isolated verification on port `3102`
+- dark editorial masthead with real specimen media;
+- product, variant, division, and source-status ledger;
+- URL-backed command search and sorting;
+- sticky desktop filters and native mobile filter disclosure;
+- procurement product records with real imagery and live Inquiry state;
+- pagination, no-results recovery, responsive and reduced-motion parity.
 
-### Milestone 3 verification
+## Milestone 4 — Instrument Examination & Inquiry Desk
 
-Run from the real branch checkout:
+### Product detail
+
+- compact return/context rail preserving the full catalogue URL;
+- large real-media examination stage;
+- dark identity/procurement rail;
+- code, division, family, source, variant-count, and technical-status ledger;
+- selected quantity feedback in the primary Inquiry action;
+- independent base and variant inquiry identities;
+- structured variant-code ledger;
+- related-family comparison preserving return context;
+- responsive and reduced-motion-safe design.
+
+### Inquiry List
+
+- dark procurement masthead and four-stage ledger;
+- explicit non-order/non-payment boundary;
+- focused product records with quantity, note, remove, and undo;
+- unlisted-instrument panel;
+- requirements and attachment metadata section;
+- buyer-details grid and consent validation;
+- sticky desktop review desk and mobile flow convergence;
+- preserved local persistence, migration, validation, API submission, token, and success routing.
+
+## Milestone 4 verification
+
+Run once from the real checkout at the milestone boundary:
 
 ```bash
-bash scripts/verify-design-milestone-3.sh
+bash scripts/verify-design-milestone-4.sh
 ```
 
-The script runs lint, typecheck, unit tests, production build, and all rebuild desktop
-and mobile Playwright suites. Pre-existing warnings are non-blocking unless they affect
-build output or runtime behavior.
+The gate runs lint, typecheck, all unit tests, production build, and all rebuild browser suites on desktop and mobile through isolated port `3103`.
 
-Then review:
+Manual review:
 
-- 1440 × 1000 desktop
-- 1280 × 800 laptop
-- 768 × 1024 tablet
-- 390 × 844 mobile
-- 320 × 700 narrow mobile
-- default catalogue
-- exact-code search
-- active division/family filters
-- no-results state
-- selected Inquiry List state
-- pagination
+- 1440 × 1000
+- 1280 × 800
+- 768 × 1024
+- 390 × 844
+- 320 × 700
+- base product selected/unselected
+- true variant selected/unselected
+- Inquiry empty/manual/populated
+- quantity, notes, remove/undo
+- buyer validation and submission error state
 - reduced motion
 
 No pull request, merge, deployment, or public cutover occurs automatically.
 
-## Parallel phase — client catalogue validation campaign
+## Parallel client catalogue validation
 
-1. Review the generated 175-record audit queue in `/rebuild/review/catalogue`.
-2. Confirm identities, taxonomy, codes, source pages, variants, and images.
-3. Export signed review decisions into `data/working/finemed/`.
-4. Run `npm run data:approve` and inspect the approved publication set.
+1. Review the 175-record audit queue in `/rebuild/review/catalogue`.
+2. Confirm identity, taxonomy, codes, source pages, variants, and images.
+3. Export signed decisions into `data/working/finemed/`.
+4. Run `npm run data:approve` and inspect the publication set.
 5. Resolve needs-client records and repeat.
 6. Keep `/rebuild` isolated and non-indexed until cutover approval.
 
 ## Next implementation phases
 
-1. Product-detail and Inquiry List visual refinement
-2. Durable inquiry storage, attachment storage, and approved delivery integration
-3. Verified content completion for contact, catalogues, Veterinary, and Beauty
-4. Whole-site visual convergence and legacy-style removal
-5. Accessibility, security, performance, and production audit
-6. Cloudflare deployment preparation and explicit cutover approval
+1. Durable inquiry and attachment storage with approved delivery integration
+2. Verified contact and catalogue-document completion
+3. Veterinary and Beauty content completion after real source data
+4. Whole-site visual convergence, legal/error routes, and final logo treatment
+5. Accessibility, security, performance, metadata, and Cloudflare production audit
+6. Explicit public cutover approval
 
 ## Current dependencies
 
-- Combined Milestone 3 local verification and screenshot review
-- Validated product taxonomy, names, codes, variants, and imagery
-- Approved business facts and final contact formatting
-- Real catalogue PDFs and metadata
-- Final logo treatment
-- Backend and delivery decisions for inquiries and attachments
+- combined Milestone 4 local verification and screenshot review;
+- validated product taxonomy, names, codes, variants, and imagery;
+- approved business facts and final contact formatting;
+- real catalogue PDFs and metadata;
+- final logo treatment;
+- backend and delivery decisions for inquiries and attachments.
 
-The current transparent raster logo remains temporary. Technical product copy remains
-inside the verified catalogue boundary until confirmed against original sources.
+Technical product copy remains inside the verified catalogue boundary until confirmed against original sources.
