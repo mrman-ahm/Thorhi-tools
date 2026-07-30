@@ -32,6 +32,23 @@ All meaningful project changes are recorded here.
 - Focused Playwright acceptance contract for company identity, search, divisions,
   shell navigation, Inquiry List state, cinematic behavior, evolution behavior,
   responsive overflow, keyboard access, media failure, and Axe findings
+- Rebuild-native Company, Scissors Through Time, Catalogues, and Contact routes
+- Shared corporate page hero, heading, division-ledger, truth-boundary, action,
+  document-ledger, and contact-route components
+- Typed verified company-copy and real-files-only catalogue-document boundaries
+- Full 260-frame Scissors Through Time editorial route with reduced-motion and
+  missing-manifest fallbacks
+- Company & Trust Spine browser contract and isolated Milestone 2 verification gate
+- Approved Precision Catalogue Ledger design specification and implementation plan
+- Compact dark catalogue masthead with real instrument specimen stage and live
+  product, variant, division, and source-status ledger
+- Focused catalogue filter, product-entry, result-toolbar, and empty-state components
+- Procurement-oriented desktop catalogue ledger and deliberate one-column mobile records
+- Large URL-backed command search, sticky desktop filter ledger, and native mobile
+  filter sheet with active-filter state
+- Catalogue-design source and Playwright contracts covering search, filters,
+  pagination, inquiry state, responsive overflow, reduced motion, and Axe
+- Isolated combined Milestone 3 verification gate on port `3102`
 
 ### Changed
 
@@ -48,9 +65,18 @@ All meaningful project changes are recorded here.
 - Kept approved catalogue output partial by design: unresolved and rejected
   records are excluded, while technical and commercial fields cannot enter the
   Phase 11 promotion schema
-- Recorded Design Milestone 1 as implemented but not complete; local lint,
-  typecheck, tests, production build, browser screenshots, and Playwright/Axe
-  execution remain required before approval
+- Routed Company, Catalogues, and Contact navigation to real rebuild destinations
+  instead of homepage anchors
+- Replaced the oversized catalogue intro and generic two-card presentation with
+  the Precision Catalogue Ledger visual system
+- Preserved catalogue scoring, URL parameters, page size, product-detail return
+  context, source-derived imagery, and Inquiry List behavior during the redesign
+- Removed universal staggered catalogue-card entrance animation in favor of
+  restrained image and steel-line responses with reduced-motion parity
+- Classified harmless pre-existing lint/deprecation warnings and obsolete
+  syntax-only assertions as deferred rather than design-blocking
+- Recorded Design Milestones 1–3 as implementation-present but not approved for
+  merge or public cutover until combined local and visual verification passes
 
 ## 2026-07-29
 
