@@ -13,7 +13,6 @@ export function HomeCompanyIntro() {
     <section
       id="company"
       className={styles.company}
-      aria-labelledby="home-company-title"
       aria-label="About THROHI"
     >
       <div className={styles.companyHeading}>
