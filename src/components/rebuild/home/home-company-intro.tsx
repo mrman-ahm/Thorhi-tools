@@ -12,6 +12,7 @@ export function HomeCompanyIntro() {
   return (
     <section
       id="company"
+      role="region"
       className={styles.company}
       aria-label="About THROHI"
     >
