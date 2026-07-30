@@ -20,24 +20,50 @@ const catalogueInstrument = getRebuildProductByCode("04-0101");
 export default function ProductsPage() {
   return (
     <main id="main" className={styles.cataloguePage}>
-      <section className={styles.intro}>
-        {catalogueInstrument ? (
-          <CatalogueMedia
-            product={catalogueInstrument}
-            className={styles.introInstrument}
-            priority
-          />
-        ) : null}
-        <div className={styles.introInner}>
-          <p>THROHI / Product catalogue</p>
-          <h1>Find the right instrument.</h1>
-          <p>
-            Search {rebuildCatalogue.counts.products} indexed product records
-            and {rebuildCatalogue.counts.variants} variant codes across the
-            supplied Surgical and Dental &amp; Orthodontic catalogues.
-          </p>
+      <section className={styles.catalogueMasthead} data-catalogue-masthead>
+        <div className={styles.mastheadInner}>
+          <div className={styles.mastheadCopy}>
+            <p>THROHI / Structured instrument archive</p>
+            <h1>Product catalogue</h1>
+            <p>
+              Search validated Surgical and Dental &amp; Orthodontic instrument
+              families by product name or catalogue code.
+            </p>
+          </div>
+
+          <div className={styles.mastheadSpecimen}>
+            <span>Reference specimen / 04-0101</span>
+            {catalogueInstrument ? (
+              <CatalogueMedia
+                product={catalogueInstrument}
+                className={styles.mastheadInstrument}
+                priority
+              />
+            ) : null}
+            <small>Operating Scissors</small>
+          </div>
         </div>
+
+        <dl className={styles.mastheadLedger}>
+          <div>
+            <dt>Indexed products</dt>
+            <dd>{rebuildCatalogue.counts.products}</dd>
+          </div>
+          <div>
+            <dt>Variant codes</dt>
+            <dd>{rebuildCatalogue.counts.variants}</dd>
+          </div>
+          <div>
+            <dt>Structured divisions</dt>
+            <dd>02</dd>
+          </div>
+          <div>
+            <dt>Catalogue status</dt>
+            <dd>Source-derived</dd>
+          </div>
+        </dl>
       </section>
+
       <Suspense fallback={<CatalogueLoading />}>
         <CatalogueClient />
       </Suspense>
