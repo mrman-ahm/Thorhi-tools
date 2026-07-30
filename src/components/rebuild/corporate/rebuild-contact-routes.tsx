@@ -2,16 +2,28 @@ import Link from "next/link";
 import type { VerifiedContactConfig } from "@/rebuild/contact";
 import styles from "./corporate-components.module.css";
 
+type DirectContactRoute = {
+  label: string;
+  href: string;
+  value: string;
+};
+
 export function RebuildContactRoutes({ contact }: { contact: VerifiedContactConfig }) {
-  const direct = [
-    contact.email ? { label: "Email", href: `mailto:${contact.email}`, value: contact.email } : null,
-    contact.phoneDisplay && contact.phoneHref
-      ? { label: "Phone", href: contact.phoneHref, value: contact.phoneDisplay }
-      : null,
-    contact.whatsappHref
-      ? { label: "WhatsApp", href: contact.whatsappHref, value: "Continue through WhatsApp" }
-      : null,
-  ].filter((item): item is { label: string; href: string; value: string } => Boolean(item));
+  const direct: DirectContactRoute[] = [];
+
+  if (contact.email) {
+    direct.push({ label: "Email", href: `mailto:${contact.email}`, value: contact.email });
+  }
+  if (contact.phoneDisplay && contact.phoneHref) {
+    direct.push({ label: "Phone", href: contact.phoneHref, value: contact.phoneDisplay });
+  }
+  if (contact.whatsappHref) {
+    direct.push({
+      label: "WhatsApp",
+      href: contact.whatsappHref,
+      value: "Continue through WhatsApp",
+    });
+  }
 
   return (
     <section className={styles.contactRoutes} aria-label="Contact and inquiry routes">
