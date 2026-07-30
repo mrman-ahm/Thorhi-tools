@@ -19,7 +19,7 @@ export function RebuildPageHero({
   children,
 }: RebuildPageHeroProps) {
   return (
-    <header className={styles.hero} data-tone={tone}>
+    <header className={styles.hero} data-corporate-hero data-tone={tone}>
       <div className={styles.heroInner}>
         <div>
           <p className={styles.heroEyebrow}>{eyebrow}</p>
