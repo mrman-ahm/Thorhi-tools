@@ -4,7 +4,7 @@ This file is the single decision source of truth for the current rebuild. Earlie
 
 ## Current phase
 
-**Design Milestone 4: Instrument Examination & Inquiry Desk implementation present; combined runtime verification and visual review pending.**
+**Milestone 5: Durable Inquiry Backend implementation present; real Cloudflare resource configuration and runtime verification pending.**
 
 Work remains isolated on `design/surgical-precision-archive`, based on `rebuild/surgical-contrast`. Public routes remain unchanged and `/rebuild` remains non-indexed.
 
@@ -14,6 +14,7 @@ Implemented milestones:
 2. Company & Trust Spine
 3. Precision Catalogue Ledger
 4. Instrument Examination & Inquiry Desk
+5. Durable Inquiry Backend
 
 No pull request, merge, deployment, public cutover, or GitHub Actions run is authorized.
 
@@ -28,8 +29,9 @@ Critical blockers:
 - serious or critical accessibility violations;
 - keyboard traps or unusable controls;
 - desktop/mobile horizontal overflow;
+- silent production data loss or successful responses without durable storage;
 - missing approved real imagery;
-- invented data, claims, contact details, or downloadable documents.
+- invented data, claims, contact details, recipients, or downloadable documents.
 
 Deferred nonblockers:
 
@@ -152,10 +154,55 @@ Preserved URL parameters: `q`, `division`, `family`, `sort`, `page`.
 - focused `InquiryItemRecord` product rows;
 - quantity, item note, remove, and undo behavior;
 - unlisted instrument panel;
-- requirements and metadata-only attachment section;
+- requirements and real attachment selection up to 8 MiB;
 - disciplined buyer-details grid;
+- optional Turnstile field activated only when a public site key exists;
 - sticky desktop `InquiryReviewDesk` and non-sticky mobile review;
-- preserved local storage, migration, validation, one-time submission token, `/api/inquiries`, and success routing.
+- preserved local browser state, migration, validation, one-time submission token, `/api/inquiries`, and success routing.
+
+Milestone 4 verification history:
+
+- lint completed with zero errors and three deferred warnings;
+- typecheck passed;
+- all 84 unit tests passed;
+- production build passed;
+- browser verification was reduced to one remaining failure before the final serial Axe test was split into isolated route checks;
+- no additional rerun is required before continuing implementation, per user instruction;
+- Milestone 4 is not represented as freshly runtime-green after that final test-only correction.
+
+## Implemented Milestone 5 — Durable Inquiry Backend
+
+### Website proxy
+
+- same-origin `/api/inquiries` accepts multipart form data and legacy JSON;
+- catalogue and buyer validation remains server-side;
+- uploaded file metadata is checked against actual file bytes;
+- a daily SHA-256 client fingerprint is derived from forwarded IP, user agent, and an independent secret;
+- sanitized inquiries are forwarded to a dedicated Worker using a shared secret;
+- production returns HTTP 503 when durable configuration is absent;
+- the memory adapter remains available only outside production;
+- duplicate responses preserve the original inquiry reference.
+
+### Cloudflare Worker
+
+- dependency-free Worker entry under `workers/inquiry-api`;
+- D1 tables for inquiries, normalized line items, delivery outbox, and rate limits;
+- unique `submission_token` and `reference` constraints;
+- private R2 attachment storage with reference-scoped object keys;
+- attachment rollback when D1 persistence fails;
+- optional mandatory Turnstile Siteverify validation when the secret is configured;
+- five-new-submissions-per-ten-minute privacy-preserving rate limit;
+- optional signed delivery webhook using HMAC-SHA256 and inquiry-reference idempotency;
+- pending/delivered/retry delivery state stored durably;
+- health endpoint reports configuration state without exposing secret values.
+
+### Operations
+
+- example website and Worker environment files contain no real values;
+- example Wrangler config contains placeholder resource IDs only;
+- local Worker configuration and secrets are ignored by Git;
+- exact D1/R2 creation, migration, secrets, deployment, health, privacy, and failure procedures are documented in `docs/backend/INQUIRY_BACKEND.md`;
+- source contract command: `npm run backend:check`.
 
 ## Catalogue truth boundary
 
@@ -182,8 +229,9 @@ Visitors may:
 - set quantities;
 - add item notes and general requirements;
 - add an unlisted reference;
-- attach validated PDF/JPG/PNG/WebP metadata up to 8 MB in the development build;
+- attach PDF/JPG/PNG/WebP files up to 8 MiB;
 - provide buyer and preferred-contact details;
+- complete optional anti-spam verification when configured;
 - submit one structured inquiry.
 
 No account is required.
@@ -207,41 +255,28 @@ Pending and therefore absent:
 - minimum orders and lead times;
 - final contact formatting;
 - complete Beauty and Veterinary catalogue data;
-- real catalogue PDFs and metadata.
+- real catalogue PDFs and metadata;
+- approved inquiry recipient/delivery endpoint;
+- approved retention and deletion periods.
 
-## Current verification gate
+## Current backend gate
 
-Run from the real checkout only at the milestone boundary:
+Source contract:
 
 ```bash
-bash scripts/verify-design-milestone-4.sh
+npm run backend:check
 ```
 
-The gate performs:
+Real Cloudflare runtime verification remains pending until D1, R2, Worker secrets, website environment variables, and optional delivery/Turnstile settings are configured.
 
-- clean lint, typecheck, unit tests, and production build;
-- homepage, Company & Trust, catalogue, product-detail, and Inquiry List browser suites;
-- desktop and mobile projects through isolated port `3103`;
-- serious accessibility and horizontal-overflow checks.
-
-Harmless warnings do not block. Critical failures must be corrected.
-
-Manual review sizes:
-
-- 1440 × 1000
-- 1280 × 800
-- 768 × 1024
-- 390 × 844
-- 320 × 700
-
-Review product base/variant states, Inquiry empty/manual/populated states, validation, selected quantities, reduced motion, and media quality.
+The operational verification matrix is defined in `docs/backend/INQUIRY_BACKEND.md` and includes storage, attachments, duplicate retries, invalid files, rate limits, Turnstile, delivery state, and test-data cleanup.
 
 ## Next phases
 
-1. Durable inquiry and attachment storage plus approved delivery integration
-2. Client catalogue validation and real downloadable documents
-3. Whole-site visual convergence, legal/error routes, and final logo/contact content
-4. Accessibility, performance, security, metadata, and Cloudflare production audit
-5. Explicit public cutover approval
+1. Configure and verify real Cloudflare D1/R2/Worker resources and approved inquiry delivery.
+2. Client catalogue validation and real downloadable documents.
+3. Whole-site visual convergence, legal/error routes, and final logo/contact content.
+4. Accessibility, performance, security, metadata, retention, and Cloudflare production audit.
+5. Explicit public cutover approval.
 
 The current public implementation remains available until the rebuild passes review and receives explicit cutover approval.
