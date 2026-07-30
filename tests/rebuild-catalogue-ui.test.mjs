@@ -17,33 +17,45 @@ test("catalogue discovery state is URL-backed", async () => {
 });
 
 test("catalogue offers compact desktop and native mobile filtering", async () => {
-  const [client, styles] = await Promise.all([
+  const [client, controls, styles] = await Promise.all([
     read("src/app/rebuild/products/catalogue-client.tsx"),
+    read("src/app/rebuild/products/catalogue-filter-controls.tsx"),
     read("src/app/rebuild/products/catalogue.module.css"),
   ]);
 
   assert.match(client, /<details className=\{styles\.mobileFilters\}>/);
   assert.match(client, /<aside className=\{styles\.desktopFilters\}/);
-  assert.match(client, /type="radio"/);
+  assert.match(client, /CatalogueFilterControls/);
+  assert.match(controls, /type="radio"/);
+  assert.match(controls, /<select id=\{`\$\{prefix\}-family`\}/);
   assert.match(styles, /\.stickyFilters[\s\S]*position: sticky/);
-  assert.match(styles, /@media \(max-width: 820px\)/);
+  assert.match(styles, /@media \(max-width: 760px\)/);
+  assert.match(styles, /\.desktopFilters[\s\S]*display: none/);
+  assert.match(styles, /\.mobileFilters[\s\S]*display: block/);
 });
 
-test("catalogue cards preserve real imagery, codes, and inquiry state", async () => {
-  const client = await read("src/app/rebuild/products/catalogue-client.tsx");
+test("catalogue entries preserve real imagery, codes, and inquiry state", async () => {
+  const [client, entry] = await Promise.all([
+    read("src/app/rebuild/products/catalogue-client.tsx"),
+    read("src/app/rebuild/products/catalogue-product-entry.tsx"),
+  ]);
 
-  assert.match(client, /CatalogueMedia/);
-  assert.match(client, /stageCode/);
-  assert.match(client, /Add to Inquiry/);
-  assert.match(client, /data-selected=\{Boolean\(inquiryItem\)\}/);
   assert.match(client, /aria-live="polite"/);
+  assert.match(client, /inquiryQuantity=\{inquiryItem\?\.quantity \?\? 0\}/);
+  assert.match(entry, /CatalogueMedia/);
+  assert.match(entry, /styles\.entryCode/);
+  assert.match(entry, /Add to Inquiry/);
+  assert.match(entry, /data-selected=\{inquiryQuantity > 0\}/);
+  assert.match(entry, /onClick=\{\(\) => onAdd\(product\)\}/);
 });
 
 test("catalogue motion is restrained and has reduced-motion parity", async () => {
   const styles = await read("src/app/rebuild/products/catalogue.module.css");
 
-  assert.match(styles, /@keyframes catalogue-enter/);
+  assert.doesNotMatch(styles, /@keyframes catalogue-enter|animation:\s*catalogue-enter/);
   assert.match(styles, /@media \(prefers-reduced-motion: reduce\)/);
-  assert.match(styles, /\.productCard,[\s\S]*animation: none/);
-  assert.doesNotMatch(styles, /scroll-behavior|perspective:|translateZ|position: fixed/);
+  assert.match(styles, /animation-duration: 0\.01ms !important/);
+  assert.match(styles, /transition-duration: 0\.01ms !important/);
+  assert.match(styles, /\.entryStage:hover \.entryMedia/);
+  assert.doesNotMatch(styles, /perspective:|translateZ|position: fixed/);
 });
