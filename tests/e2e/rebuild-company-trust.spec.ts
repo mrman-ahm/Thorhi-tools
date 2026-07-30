@@ -27,10 +27,11 @@ test("all company trust routes expose one visible heading", async ({ page }) => 
 
 test("Company presents verified identity, divisions and next routes", async ({ page }) => {
   await page.goto("/rebuild/company");
-  await expect(page.getByRole("heading", { level: 1, name: /THROHI Medical Tools/i })).toBeVisible();
-  await expect(page.getByText(/Sialkot, Pakistan/i).first()).toBeVisible();
+  const main = page.locator("main");
+  await expect(main.getByRole("heading", { level: 1, name: /THROHI Medical Tools/i })).toBeVisible();
+  await expect(main.getByText(/Sialkot, Pakistan/i).first()).toBeVisible();
 
-  const ledger = page.getByRole("region", { name: /Instrument divisions/i });
+  const ledger = main.getByRole("region", { name: /Instrument divisions/i });
   for (const division of [
     "Surgical Instruments",
     "Dental and Orthodontic Instruments",
@@ -41,50 +42,53 @@ test("Company presents verified identity, divisions and next routes", async ({ p
   }
 
   for (const name of [/Browse products/i, /View catalogues/i, /Scissors through time/i, /Build an inquiry/i]) {
-    await expect(page.getByRole("link", { name })).toBeVisible();
+    await expect(main.getByRole("link", { name })).toBeVisible();
   }
 });
 
 test("Scissors Through Time exposes full, reduced-motion and failure content", async ({ page }) => {
   await page.goto("/rebuild/company/scissors-through-time");
-  await expect(page.getByRole("region", { name: /Scissors through time evolution/i })).toBeVisible();
-  await expect(page.getByText(/not presented as THROHI corporate history/i)).toBeVisible();
+  const main = page.locator("main");
+  await expect(main.getByRole("region", { name: /Scissors through time evolution/i })).toBeVisible();
+  await expect(main.getByText(/not presented as THROHI corporate history/i)).toBeVisible();
 
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.reload();
-  await expect(page.locator(".frame-evolution-copy")).toHaveCount(4);
+  await expect(main.locator(".frame-evolution-copy")).toHaveCount(4);
 
   await page.route("**/media/sector9d/manifest.json", (route) =>
     route.fulfill({ status: 500, body: "" }),
   );
   await page.reload();
-  await expect(page.getByText(/instrument form/i).first()).toBeVisible();
-  await expect(page.getByRole("link", { name: /Browse products/i })).toBeVisible();
+  await expect(main.getByText(/instrument form/i).first()).toBeVisible();
+  await expect(main.getByRole("link", { name: /Browse products/i })).toBeVisible();
 });
 
 test("Catalogues separates digital discovery from real documents", async ({ page }) => {
   await page.goto("/rebuild/catalogues");
-  await expect(page.getByRole("heading", { level: 1, name: /Catalogues/i })).toBeVisible();
-  await expect(page.getByRole("region", { name: /Digital catalogue/i })).toBeVisible();
-  await expect(page.getByRole("region", { name: /Downloadable documents/i })).toBeVisible();
-  await expect(page.getByRole("link", { name: /Download/i })).toHaveCount(0);
-  await expect(page.getByRole("link", { name: /Browse surgical/i })).toBeVisible();
-  await expect(page.getByRole("link", { name: /Browse dental/i })).toBeVisible();
+  const main = page.locator("main");
+  await expect(main.getByRole("heading", { level: 1, name: /Catalogues/i })).toBeVisible();
+  await expect(main.getByRole("region", { name: /Digital catalogue/i })).toBeVisible();
+  await expect(main.getByRole("region", { name: /Downloadable documents/i })).toBeVisible();
+  await expect(main.getByRole("link", { name: /Download/i })).toHaveCount(0);
+  await expect(main.getByRole("link", { name: /Browse surgical/i })).toBeVisible();
+  await expect(main.getByRole("link", { name: /Browse dental/i })).toBeVisible();
 });
 
 test("Contact routes product requests through the Inquiry List", async ({ page }) => {
   await page.goto("/rebuild/contact");
-  await expect(page.getByRole("heading", { level: 1, name: /Contact THROHI/i })).toBeVisible();
-  await expect(page.getByRole("link", { name: /Open Inquiry List/i })).toHaveAttribute(
+  const main = page.locator("main");
+  await expect(main.getByRole("heading", { level: 1, name: /Contact THROHI/i })).toBeVisible();
+  await expect(main.getByRole("link", { name: /Open Inquiry List/i })).toHaveAttribute(
     "href",
     "/rebuild/inquiry",
   );
-  await expect(page.getByRole("link", { name: /Add an unlisted instrument/i })).toHaveAttribute(
+  await expect(main.getByRole("link", { name: /Add an unlisted instrument/i })).toHaveAttribute(
     "href",
     "/rebuild/inquiry?manual=1",
   );
-  await expect(page.locator('a[href="mailto:"]')).toHaveCount(0);
-  await expect(page.locator('a[href="tel:"]')).toHaveCount(0);
+  await expect(main.locator('a[href="mailto:"]')).toHaveCount(0);
+  await expect(main.locator('a[href="tel:"]')).toHaveCount(0);
 });
 
 test("rebuild navigation converges on real corporate routes", async ({ page }) => {
