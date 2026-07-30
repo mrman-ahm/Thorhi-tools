@@ -8,7 +8,7 @@ export function RebuildDocumentLedger({
   documents: readonly RebuildCatalogueDocument[];
 }) {
   return (
-    <section className={styles.documents} aria-label="Downloadable documents">
+    <section className={styles.documents} role="region" aria-label="Downloadable documents">
       {documents.length ? (
         documents.map((document) => (
           <article className={styles.documentRow} key={document.id}>
