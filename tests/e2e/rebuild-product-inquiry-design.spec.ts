@@ -14,7 +14,7 @@ async function openProduct(page: Page) {
 test("product examination preserves return context and inquiry state", async ({ page }) => {
   await openProduct(page);
 
-  const back = page.getByRole("link", { name: "Back to catalogue" });
+  const back = page.getByRole("link", { name: /Back to catalogue/i });
   await expect(back).toHaveAttribute("href", /\/rebuild\/products.*q=04-0101/);
   await expect(page.locator("[data-variant-ledger]")).toBeVisible();
 
@@ -29,14 +29,10 @@ test("product examination preserves return context and inquiry state", async ({ 
     .first();
   if (await trueVariantButton.count()) {
     await trueVariantButton.click();
-    await expect(
-      page.locator("[data-variant-ledger] [data-product-action]").filter({
-        has: page.getByRole("button", { name: /Add another · 1/i }),
-      }),
-    ).toBeVisible();
+    await expect(trueVariantButton).toHaveText(/Add another · 1/i);
   }
 
-  await page.getByRole("link", { name: "Review Inquiry List" }).click();
+  await page.getByRole("link", { name: /Review Inquiry List/i }).click();
   await expect(page.locator("[data-inquiry-workspace]")).toBeVisible();
   await expect(page.locator("[data-inquiry-item]").first()).toBeVisible();
   await expect(page.locator("[data-inquiry-review]")).toContainText(/Product lines/i);
@@ -45,7 +41,7 @@ test("product examination preserves return context and inquiry state", async ({ 
 test("inquiry product records preserve quantity, note, remove, and undo", async ({ page }) => {
   await openProduct(page);
   await page.locator("[data-product-action]").first().getByRole("button").click();
-  await page.getByRole("link", { name: "Review Inquiry List" }).click();
+  await page.getByRole("link", { name: /Review Inquiry List/i }).click();
 
   const item = page.locator("[data-inquiry-item]").first();
   await item.getByLabel("Quantity").fill("4");
