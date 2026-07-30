@@ -39,7 +39,7 @@ export default function RebuildCataloguesPage() {
         tone="steel"
       />
 
-      <section className={styles.digital} aria-label="Digital catalogue">
+      <section className={styles.digital} role="region" aria-label="Digital catalogue">
         <h2>Browse structured product information now.</h2>
         <div className={styles.digitalCopy}>
           <p>
@@ -62,7 +62,7 @@ export default function RebuildCataloguesPage() {
         </div>
       </section>
 
-      <section className={styles.documentsSection} aria-label="Catalogue document archive">
+      <section className={styles.documentsSection} role="region" aria-label="Catalogue document archive">
         <div className={styles.documentsHeading}>
           <h2>Downloadable documents</h2>
           <p>
