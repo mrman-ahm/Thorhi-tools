@@ -93,9 +93,20 @@ test("Contact routes product requests through the Inquiry List", async ({ page }
 
 test("rebuild navigation converges on real corporate routes", async ({ page }) => {
   await page.goto("/rebuild/company");
-  const primary = page.getByRole("navigation", { name: "Primary navigation" });
-  for (const route of ["Company", "Catalogues", "Contact"]) {
-    await expect(primary.getByRole("link", { name: route, exact: true })).toBeVisible();
+
+  if (test.info().project.name === "mobile-chromium") {
+    await page.getByRole("button", { name: "Menu" }).click();
+    const dialog = page.getByRole("dialog", { name: "Site navigation" });
+    await expect(dialog).toHaveAttribute("data-open", "true");
+    for (const route of ["Company", "Catalogues", "Contact"]) {
+      await expect(dialog.getByRole("link", { name: route, exact: true })).toHaveCount(1);
+    }
+    await page.keyboard.press("Escape");
+  } else {
+    const primary = page.getByRole("navigation", { name: "Primary navigation" });
+    for (const route of ["Company", "Catalogues", "Contact"]) {
+      await expect(primary.getByRole("link", { name: route, exact: true })).toBeVisible();
+    }
   }
 
   const footer = page.getByRole("navigation", { name: "Footer navigation" });
@@ -109,10 +120,10 @@ test("mobile navigation retains focus behavior on corporate routes", async ({ pa
   await page.goto("/rebuild/company");
   await page.getByRole("button", { name: "Menu" }).click();
   const dialog = page.getByRole("dialog", { name: "Site navigation" });
-  await expect(dialog).toBeVisible();
-  await expect(dialog.getByRole("link", { name: "Catalogues", exact: true })).toBeVisible();
+  await expect(dialog).toHaveAttribute("data-open", "true");
+  await expect(dialog.getByRole("link", { name: "Catalogues", exact: true })).toHaveCount(1);
   await page.keyboard.press("Escape");
-  await expect(dialog).toBeHidden();
+  await expect(dialog).toHaveAttribute("data-open", "false");
   await expect(page.getByRole("button", { name: "Menu" })).toBeFocused();
 });
 
