@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import styles from "./turnstile-field.module.css";
 
 const scriptId = "throhi-turnstile-script";
 const scriptSrc = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
@@ -41,6 +42,7 @@ export function TurnstileField({
     if (!siteKey) return;
     let widgetId: string | undefined;
     let cancelled = false;
+    let scriptElement = document.getElementById(scriptId) as HTMLScriptElement | null;
 
     const render = () => {
       if (cancelled || widgetId || !containerRef.current || !window.turnstile) return;
@@ -63,29 +65,28 @@ export function TurnstileField({
       });
     };
 
-    const existing = document.getElementById(scriptId) as HTMLScriptElement | null;
     if (window.turnstile) {
       render();
-    } else if (existing) {
-      existing.addEventListener("load", render, { once: true });
+    } else if (scriptElement) {
+      scriptElement.addEventListener("load", render, { once: true });
     } else {
-      const script = document.createElement("script");
-      script.id = scriptId;
-      script.src = scriptSrc;
-      script.async = true;
-      script.defer = true;
-      script.addEventListener("load", render, { once: true });
-      script.addEventListener(
+      scriptElement = document.createElement("script");
+      scriptElement.id = scriptId;
+      scriptElement.src = scriptSrc;
+      scriptElement.async = true;
+      scriptElement.defer = true;
+      scriptElement.addEventListener("load", render, { once: true });
+      scriptElement.addEventListener(
         "error",
         () => setMessage("Verification could not load. Refresh the page and try again."),
         { once: true },
       );
-      document.head.appendChild(script);
+      document.head.appendChild(scriptElement);
     }
 
     return () => {
       cancelled = true;
-      existing?.removeEventListener("load", render);
+      scriptElement?.removeEventListener("load", render);
       if (widgetId && window.turnstile) window.turnstile.remove(widgetId);
     };
   }, [onToken, siteKey]);
@@ -93,7 +94,7 @@ export function TurnstileField({
   if (!siteKey) return null;
 
   return (
-    <div data-turnstile-field>
+    <div className={styles.field} data-turnstile-field>
       <div ref={containerRef} />
       <input type="hidden" name="turnstileToken" value={token} readOnly />
       {message ? <p role="alert">{message}</p> : null}
