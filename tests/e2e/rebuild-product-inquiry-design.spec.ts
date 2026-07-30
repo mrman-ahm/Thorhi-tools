@@ -23,13 +23,17 @@ test("product examination preserves return context and inquiry state", async ({ 
   await primaryAction.getByRole("button").click();
   await expect(primaryAction).toContainText(/1 in list|Add another · 1/i);
 
-  const trueVariantButton = page
-    .locator("[data-variant-ledger]")
-    .getByRole("button", { name: "Add variant" })
+  const firstVariantAction = page
+    .locator('[data-variant-ledger] [data-product-action-key*=":"]')
     .first();
-  if (await trueVariantButton.count()) {
-    await trueVariantButton.click();
-    await expect(trueVariantButton).toHaveText(/Add another · 1/i);
+  if (await firstVariantAction.count()) {
+    const actionKey = await firstVariantAction.getAttribute("data-product-action-key");
+    expect(actionKey).toBeTruthy();
+    const stableVariantAction = page.locator(
+      `[data-product-action-key="${actionKey}"]`,
+    );
+    await stableVariantAction.getByRole("button", { name: "Add variant" }).click();
+    await expect(stableVariantAction).toContainText(/Add another · 1/i);
   }
 
   await page.getByRole("link", { name: /Review Inquiry List/i }).click();
