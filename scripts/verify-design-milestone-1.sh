@@ -11,6 +11,9 @@ run() {
   "$@"
 }
 
+rm -rf playwright-report test-results
+rm -rf .next
+
 run npm run lint
 run npm run typecheck
 run npm run test
