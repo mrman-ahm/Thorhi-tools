@@ -141,11 +141,11 @@ for (const width of [320, 390, 768, 1280, 1440]) {
   });
 }
 
-test("company trust routes have no serious Axe violations", async ({ page }) => {
-  test.setTimeout(90_000);
-  for (const route of routes) {
+for (const route of routes) {
+  test(`company trust route ${route} has no serious Axe violations`, async ({ page }) => {
+    test.setTimeout(90_000);
     await page.emulateMedia({ reducedMotion: "reduce" });
     await page.goto(route);
     await expectNoSeriousAxeViolations(page);
-  }
-});
+  });
+}
