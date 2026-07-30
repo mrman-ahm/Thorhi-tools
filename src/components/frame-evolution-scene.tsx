@@ -358,7 +358,7 @@ export function FrameEvolutionScene({
         </div>
 
         <div className="frame-evolution-timeline container" aria-hidden="true">
-          {EVOLUTION_CHAPTERS.map((chapter, index) => (
+          {EVOLUTION_CHAPTERS.map((chapter) => (
             <span className="frame-evolution-chapter-marker" key={chapter.id}>
               <i />
               {chapter.index}
