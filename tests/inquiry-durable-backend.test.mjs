@@ -30,10 +30,11 @@ test("production inquiry route proxies multipart submissions and fails closed", 
 test("inquiry client sends the actual attachment in multipart form data", async () => {
   const client = await read("src/app/rebuild/inquiry/inquiry-client.tsx");
 
-  assert.match(client, /useState<File \| undefined>/);
+  assert.match(client, /useRef<HTMLInputElement>/);
   assert.match(client, /new FormData\(\)/);
-  assert.match(client, /formData\.set\("payload"/);
+  assert.match(client, /formData\.set\(\s*"payload"/);
   assert.match(client, /formData\.set\("attachment", selectedAttachment\)/);
+  assert.match(client, /attachmentInputRef\.current\?\.files\?\.\[0\]/);
   assert.doesNotMatch(client, /headers:\s*\{\s*"Content-Type": "application\/json"/);
 });
 
