@@ -10,6 +10,7 @@ import {
 } from "@/lib/inquiry-validation";
 import { InquiryItemRecord } from "./inquiry-item-record";
 import { InquiryReviewDesk } from "./inquiry-review-desk";
+import { TurnstileField } from "./turnstile-field";
 import styles from "./inquiry.module.css";
 
 const countries = [
@@ -65,6 +66,7 @@ export function InquiryClient() {
   const [submitting, setSubmitting] = useState(false);
   const [serverMessage, setServerMessage] = useState("");
   const [removed, setRemoved] = useState<InquiryItem | null>(null);
+  const [turnstileToken, setTurnstileToken] = useState("");
   const [submissionToken] = useState(() => crypto.randomUUID());
 
   useEffect(() => {
@@ -175,6 +177,9 @@ export function InquiryClient() {
       const selectedAttachment = attachmentInputRef.current?.files?.[0];
       if (selectedAttachment) {
         formData.set("attachment", selectedAttachment);
+      }
+      if (turnstileToken) {
+        formData.set("turnstileToken", turnstileToken);
       }
 
       const response = await fetch("/api/inquiries", {
@@ -503,6 +508,8 @@ export function InquiryClient() {
               </label>
             </div>
           </div>
+
+          <TurnstileField token={turnstileToken} onToken={setTurnstileToken} />
 
           <label className={styles.consentRow}>
             <input
