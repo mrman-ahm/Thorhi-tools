@@ -107,7 +107,7 @@ test("mobile navigation traps focus and exposes inquiry state", async ({ page })
   const dialog = page.getByRole("dialog", { name: "Site navigation" });
   await expect(dialog).toBeVisible();
   await expect(dialog.getByRole("search")).toBeVisible();
-  await expect(dialog.getByText(/Inquiry List/i)).toBeVisible();
+  await expect(dialog.getByRole("link", { name: /Review Inquiry List/i })).toBeVisible();
   await page.keyboard.press("Escape");
   await expect(dialog).toBeHidden();
   await expect(page.getByRole("button", { name: "Menu" })).toBeFocused();
