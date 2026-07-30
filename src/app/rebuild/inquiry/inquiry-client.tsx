@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useInquiry, type InquiryItem } from "@/components/inquiry-provider";
 import {
   allowedAttachmentTypes,
@@ -54,6 +54,7 @@ export function InquiryClient() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const inquiry = useInquiry();
+  const attachmentInputRef = useRef<HTMLInputElement>(null);
   const [buyer, setBuyer] = useState<BuyerState>(initialBuyer);
   const [manualName, setManualName] = useState("");
   const [manualCode, setManualCode] = useState("");
@@ -119,9 +120,14 @@ export function InquiryClient() {
     return Object.keys(next).length === 0;
   };
 
+  const clearAttachment = () => {
+    inquiry.setAttachment(undefined);
+    if (attachmentInputRef.current) attachmentInputRef.current.value = "";
+  };
+
   const onAttachment = (file?: File) => {
     if (!file) {
-      inquiry.setAttachment(undefined);
+      clearAttachment();
       return;
     }
     if (
@@ -129,6 +135,7 @@ export function InquiryClient() {
         file.type as (typeof allowedAttachmentTypes)[number],
       )
     ) {
+      clearAttachment();
       setErrors((current) => ({
         ...current,
         attachment: "Use PDF, JPG, PNG, or WebP.",
@@ -136,6 +143,7 @@ export function InquiryClient() {
       return;
     }
     if (file.size > maxAttachmentBytes) {
+      clearAttachment();
       setErrors((current) => ({
         ...current,
         attachment: "Attachment must be smaller than 8 MB.",
@@ -152,10 +160,10 @@ export function InquiryClient() {
     setSubmitting(true);
     setServerMessage("");
     try {
-      const response = await fetch("/api/inquiries", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
+      const formData = new FormData();
+      formData.set(
+        "payload",
+        JSON.stringify({
           submissionToken,
           items: inquiry.items,
           buyer,
@@ -163,6 +171,15 @@ export function InquiryClient() {
           attachment: inquiry.attachment,
           consent: buyer.consent,
         }),
+      );
+      const selectedAttachment = attachmentInputRef.current?.files?.[0];
+      if (selectedAttachment) {
+        formData.set("attachment", selectedAttachment);
+      }
+
+      const response = await fetch("/api/inquiries", {
+        method: "POST",
+        body: formData,
       });
       const result = (await response.json()) as {
         ok: boolean;
@@ -331,14 +348,16 @@ export function InquiryClient() {
               Optional reference attachment
             </label>
             <input
+              ref={attachmentInputRef}
               id="rebuild-attachment"
+              name="attachment"
               type="file"
               accept={allowedAttachmentTypes.join(",")}
               onChange={(event) => onAttachment(event.target.files?.[0])}
             />
             <p className={styles.helperText}>
-              PDF, JPG, PNG, or WebP. Maximum 8 MB. This development build
-              validates file metadata only.
+              PDF, JPG, PNG, or WebP. Maximum 8 MB. The selected file is sent
+              only when you submit the inquiry.
             </p>
             <FieldError error={errors.attachment} />
           </div>
@@ -347,14 +366,9 @@ export function InquiryClient() {
             <div className={styles.attachmentSummary}>
               <span>
                 <strong>{inquiry.attachment.name}</strong>
-                <small>
-                  {Math.ceil(inquiry.attachment.size / 1024)} KB · metadata only
-                </small>
+                <small>{Math.ceil(inquiry.attachment.size / 1024)} KB</small>
               </span>
-              <button
-                type="button"
-                onClick={() => inquiry.setAttachment(undefined)}
-              >
+              <button type="button" onClick={clearAttachment}>
                 Remove
               </button>
             </div>
