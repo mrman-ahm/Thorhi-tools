@@ -55,10 +55,12 @@ test("company content is verified and contains the four divisions", () => {
 });
 
 test("full evolution route uses the approved renderer and truth boundary", () => {
-  const source = read("src/app/rebuild/company/scissors-through-time/page.tsx");
-  assert.match(source, /FrameEvolutionScene/);
-  assert.match(source, /variant="full"/);
-  assert.match(source, /not presented as THROHI corporate history/i);
+  const route = read("src/app/rebuild/company/scissors-through-time/page.tsx");
+  const content = read("src/rebuild/company-content.ts");
+  assert.match(route, /FrameEvolutionScene/);
+  assert.match(route, /variant="full"/);
+  assert.match(route, /scissorsEditorialCopy\.disclaimer/);
+  assert.match(content, /not presented as THROHI corporate history/i);
 });
 
 test("rebuild navigation points to real corporate routes", () => {
