@@ -85,10 +85,11 @@ export function RebuildHeader() {
   useEffect(() => {
     if (!mobileOpen) return;
 
+    const trigger = mobileTriggerRef.current;
     const previousFocus =
       document.activeElement instanceof HTMLElement
         ? document.activeElement
-        : mobileTriggerRef.current;
+        : trigger;
     const previousOverflow = document.body.style.overflow;
     document.body.dataset.rebuildMenuOpen = "true";
     document.body.style.overflow = "hidden";
@@ -127,7 +128,10 @@ export function RebuildHeader() {
       delete document.body.dataset.rebuildMenuOpen;
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", handleKeyboard);
-      if (previousFocus?.isConnected) previousFocus.focus();
+      window.requestAnimationFrame(() => {
+        if (trigger?.isConnected) trigger.focus();
+        else if (previousFocus?.isConnected) previousFocus.focus();
+      });
     };
   }, [mobileOpen]);
 
