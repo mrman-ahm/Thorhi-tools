@@ -1,0 +1,31 @@
+.page { background: var(--throhi-paper-50); color: var(--throhi-text); }
+
+.routes,
+.guidance,
+.safety {
+  width: min(var(--throhi-container), calc(100vw - (2 * var(--throhi-gutter))));
+  margin-inline: auto;
+}
+
+.routes { padding: clamp(4rem, 8vw, 8rem) 0 1rem; }
+
+.guidance { padding: clamp(5rem, 9vw, 9rem) 0; }
+.guidance h2 { margin: 0; max-width: 13ch; font-family: var(--font-instrument), Arial, sans-serif; font-size: clamp(2.7rem, 5.3vw, 5.5rem); line-height: 0.95; letter-spacing: -0.05em; }
+.guidanceIntro { display: grid; grid-template-columns: minmax(0, 0.7fr) minmax(18rem, 0.55fr); gap: clamp(3rem, 8vw, 8rem); align-items: end; margin-bottom: 2.5rem; }
+.guidanceIntro p { margin: 0; color: var(--throhi-muted); line-height: 1.7; }
+.guidanceList { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--throhi-line); }
+.guidanceList li { min-height: 6rem; display: grid; grid-template-columns: 4rem minmax(0, 0.55fr) minmax(18rem, 1fr); gap: 1.5rem; align-items: center; border-bottom: 1px solid var(--throhi-line); }
+.guidanceList span { color: var(--throhi-green-600); font-family: var(--font-plex), monospace; font-size: 0.7rem; }
+.guidanceList strong { font-size: 1.3rem; }
+.guidanceList p { margin: 0; color: var(--throhi-muted); line-height: 1.6; }
+
+.safety { margin-bottom: clamp(5rem, 9vw, 9rem); padding: 1.5rem 0; border-block: 1px solid var(--throhi-line); display: grid; grid-template-columns: minmax(12rem, 0.4fr) minmax(0, 1fr); gap: 2rem; }
+.safety strong { font-family: var(--font-plex), monospace; font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--throhi-green-600); }
+.safety p { margin: 0; color: var(--throhi-muted); line-height: 1.65; }
+
+@media (max-width: 760px) {
+  .guidanceIntro,
+  .safety { grid-template-columns: 1fr; }
+  .guidanceList li { grid-template-columns: 2.5rem 1fr; padding-block: 1.25rem; }
+  .guidanceList p { grid-column: 2; }
+}
