@@ -99,6 +99,7 @@
 
 .status p {
   margin: 0;
+  color: #81959b;
 }
 
 @media (max-width: 760px) {
