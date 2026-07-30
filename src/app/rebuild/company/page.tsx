@@ -53,7 +53,6 @@ export default function RebuildCompanyPage() {
             The company experience connects verified identity, searchable product records,
             document availability, and a practical Inquiry List without introducing public pricing.
           </p>
-          <Link href="/rebuild/products">Browse products</Link>
         </div>
       </section>
 
