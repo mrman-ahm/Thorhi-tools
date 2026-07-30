@@ -8,6 +8,7 @@ import {
 import {
   InquiryRequestError,
   parseInquiryRequest,
+  type ParsedInquiryRequest,
 } from "@/lib/inquiry-request";
 import {
   createInquiryReference,
@@ -19,7 +20,7 @@ import { validateInquiry } from "@/lib/inquiry-validation";
 export const runtime = "nodejs";
 
 export async function POST(request: Request) {
-  let parsed;
+  let parsed: ParsedInquiryRequest;
   try {
     parsed = await parseInquiryRequest(request);
   } catch (error) {
