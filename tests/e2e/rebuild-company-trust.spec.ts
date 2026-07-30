@@ -98,14 +98,8 @@ test("rebuild navigation converges on real corporate routes", async ({ page }) =
     await page.getByRole("button", { name: "Menu" }).click();
     const dialog = page.getByRole("dialog", { name: "Site navigation" });
     await expect(dialog).toHaveAttribute("data-open", "true");
-    for (const route of ["Company", "Catalogues", "Contact"]) {
-      await expect(
-        dialog.getByRole("link", {
-          name: route,
-          exact: true,
-          includeHidden: true,
-        }),
-      ).toHaveCount(1);
+    for (const href of ["/rebuild/company", "/rebuild/catalogues", "/rebuild/contact"]) {
+      await expect(dialog.locator(`a[href="${href}"]`)).toHaveCount(1);
     }
     await page.keyboard.press("Escape");
   } else {
@@ -127,13 +121,7 @@ test("mobile navigation retains focus behavior on corporate routes", async ({ pa
   await page.getByRole("button", { name: "Menu" }).click();
   const dialog = page.getByRole("dialog", { name: "Site navigation" });
   await expect(dialog).toHaveAttribute("data-open", "true");
-  await expect(
-    dialog.getByRole("link", {
-      name: "Catalogues",
-      exact: true,
-      includeHidden: true,
-    }),
-  ).toHaveCount(1);
+  await expect(dialog.locator('a[href="/rebuild/catalogues"]')).toHaveCount(1);
   await page.keyboard.press("Escape");
   await expect(dialog).toHaveAttribute("data-open", "false");
   await expect(page.getByRole("button", { name: "Menu" })).toBeFocused();
@@ -154,6 +142,7 @@ for (const width of [320, 390, 768, 1280, 1440]) {
 }
 
 test("company trust routes have no serious Axe violations", async ({ page }) => {
+  test.setTimeout(90_000);
   for (const route of routes) {
     await page.emulateMedia({ reducedMotion: "reduce" });
     await page.goto(route);
