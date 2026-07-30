@@ -1,0 +1,26 @@
+{
+  "$schema": "https://raw.githubusercontent.com/cloudflare/workers-sdk/main/packages/wrangler/config-schema.json",
+  "name": "throhi-inquiry-api",
+  "main": "src/index.mjs",
+  "compatibility_date": "2026-07-30",
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "throhi-inquiries",
+      "database_id": "REPLACE_WITH_D1_DATABASE_ID",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "ATTACHMENTS",
+      "bucket_name": "REPLACE_WITH_R2_BUCKET_NAME"
+    }
+  ],
+  "vars": {
+    "ALLOWED_ORIGINS": "https://REPLACE_WITH_WEBSITE_HOST"
+  },
+  "observability": {
+    "enabled": true
+  }
+}
