@@ -53,14 +53,18 @@ export default function ScissorsThroughTimePage() {
         </div>
       </section>
 
-      <div className={styles.evolutionWrap}>
+      <section
+        className={styles.evolutionWrap}
+        role="region"
+        aria-label="Scissors through time evolution"
+      >
         <FrameEvolutionScene
           variant="full"
           eyebrow="Scissors through time"
           title={<>Form, joint, handle and working end.</>}
           accessibleLabel="Scissors through time evolution"
         />
-      </div>
+      </section>
 
       <section className={styles.closing} aria-label="Present-day catalogue connection">
         <h2>From instrument form to catalogue identity.</h2>
