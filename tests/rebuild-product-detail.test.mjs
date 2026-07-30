@@ -5,12 +5,16 @@ import test from "node:test";
 const read = (path) => readFile(new URL(`../${path}`, import.meta.url), "utf8");
 
 test("product detail preserves catalogue return context and related-family routes", async () => {
-  const [catalogue, detail] = await Promise.all([
+  const [catalogue, entry, detail] = await Promise.all([
     read("src/app/rebuild/products/catalogue-client.tsx"),
+    read("src/app/rebuild/products/catalogue-product-entry.tsx"),
     read("src/app/rebuild/products/[productId]/page.tsx"),
   ]);
 
-  assert.match(catalogue, /from=\$\{encodeURIComponent\(currentLocation\)\}/);
+  assert.match(catalogue, /const currentLocation/);
+  assert.match(catalogue, /encodeURIComponent\(/);
+  assert.match(catalogue, /detailHref=\{detailHref\}/);
+  assert.match(entry, /href=\{detailHref\}/);
   assert.match(detail, /safeReturnPath/);
   assert.match(detail, /Back to catalogue/);
   assert.match(detail, /candidate\.family === product\.family/);
