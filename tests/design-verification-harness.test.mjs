@@ -5,9 +5,10 @@ import test from "node:test";
 const read = (path) => readFile(new URL(`../${path}`, import.meta.url), "utf8");
 
 test("design milestone verification uses an isolated production server", async () => {
-  const [config, script] = await Promise.all([
+  const [config, script, shell] = await Promise.all([
     read("playwright.config.ts"),
     read("scripts/verify-design-milestone-1.sh"),
+    read("src/app/rebuild/rebuild-shell.tsx"),
   ]);
 
   assert.match(config, /PLAYWRIGHT_PORT/);
@@ -18,6 +19,10 @@ test("design milestone verification uses an isolated production server", async (
   assert.match(script, /PLAYWRIGHT_REUSE_SERVER=0/);
   assert.match(script, /--project=desktop-chromium/);
   assert.match(script, /--project=mobile-chromium/);
+  assert.match(
+    shell,
+    /data-milestone-contract="surgical-precision-archive-v1"/,
+  );
 });
 
 test("eslint excludes generated browser-test artifacts", async () => {
