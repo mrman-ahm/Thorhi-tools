@@ -12,6 +12,7 @@
     "typecheck": "tsc --noEmit",
     "test": "node --test tests/*.test.mjs",
     "test:e2e": "playwright test",
+    "backend:check": "node --test tests/inquiry-durable-backend.test.mjs",
     "data:process": "node scripts/process-catalogue.mjs",
     "data:finemed": "node scripts/import-finemed-catalogue.mjs && node scripts/prepare-product-media.mjs",
     "data:media": "node scripts/prepare-product-media.mjs",
