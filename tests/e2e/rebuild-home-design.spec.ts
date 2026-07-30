@@ -3,6 +3,9 @@ import { expect, test, type Page } from "@playwright/test";
 
 async function enterRebuild(page: Page) {
   await page.goto("/rebuild");
+  await expect(
+    page.locator('[data-milestone-contract="surgical-precision-archive-v1"]'),
+  ).toHaveCount(1);
   const enter = page.getByRole("button", {
     name: /enter the THROHI website|slide the opening cover away/i,
   });
