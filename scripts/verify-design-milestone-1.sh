@@ -15,8 +15,7 @@ run npm run lint
 run npm run typecheck
 run npm run test
 run npm run build
-run npm run test:e2e -- tests/e2e/rebuild-home-design.spec.ts --project=desktop-chromium
-run npm run test:e2e -- tests/e2e/rebuild-home-design.spec.ts --project=mobile-chromium
+run env PLAYWRIGHT_PORT=3100 PLAYWRIGHT_REUSE_SERVER=0 npm run test:e2e -- tests/e2e/rebuild-home-design.spec.ts --project=desktop-chromium --project=mobile-chromium
 
 printf '\nAll automated milestone commands completed.\n'
 printf 'Manual screenshot review is still required at 1440x1000, 1280x800, 390x844, and 320x700.\n'
