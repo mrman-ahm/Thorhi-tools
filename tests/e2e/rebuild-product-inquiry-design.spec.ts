@@ -23,10 +23,17 @@ test("product examination preserves return context and inquiry state", async ({ 
   await primaryAction.getByRole("button").click();
   await expect(primaryAction).toContainText(/1 in list|Add another · 1/i);
 
-  const variantAction = page.locator("[data-variant-ledger] [data-product-action]").first();
-  if (await variantAction.count()) {
-    await variantAction.getByRole("button").click();
-    await expect(variantAction).toContainText(/Add another · 1/i);
+  const trueVariantButton = page
+    .locator("[data-variant-ledger]")
+    .getByRole("button", { name: "Add variant" })
+    .first();
+  if (await trueVariantButton.count()) {
+    await trueVariantButton.click();
+    await expect(
+      page.locator("[data-variant-ledger] [data-product-action]").filter({
+        has: page.getByRole("button", { name: /Add another · 1/i }),
+      }),
+    ).toBeVisible();
   }
 
   await page.getByRole("link", { name: "Review Inquiry List" }).click();
