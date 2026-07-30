@@ -7,7 +7,6 @@ import { useInquiry } from "@/components/inquiry-provider";
 import {
   rebuildCatalogue,
   scoreRebuildProduct,
-  type RuntimeFamily,
   type RuntimeProduct,
 } from "@/lib/rebuild-catalogue";
 import { CatalogueEmptyState } from "./catalogue-empty-state";
@@ -343,5 +342,3 @@ export function CatalogueClient() {
     </section>
   );
 }
-
-export type { RuntimeFamily };
