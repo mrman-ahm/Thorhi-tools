@@ -135,7 +135,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
               <p>Inquiry references</p>
               <h2 id="variants-title">
                 {product.variants.length
-                  ? "Catalogue variant ledger"
+                  ? "Catalogue variant codes"
                   : "Base catalogue reference"}
               </h2>
             </div>
