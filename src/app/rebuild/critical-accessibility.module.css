@@ -1,0 +1,12 @@
+.root {
+  min-width: 0;
+}
+
+:global([data-corporate-hero][data-tone="steel"] > div > div:first-child > p:first-child) {
+  color: #1f684a !important;
+}
+
+:global([data-variant-ledger] > header > div > p:first-child),
+:global([data-related-products] > header > div > p:first-child) {
+  color: #526b77 !important;
+}
