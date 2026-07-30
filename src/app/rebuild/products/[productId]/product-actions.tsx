@@ -34,14 +34,21 @@ export function ProductActions({
     setAnnouncement(
       result === "added"
         ? `${product.name} added to the Inquiry List.`
-        : `${product.name} quantity increased in the Inquiry List.`
+        : `${product.name} quantity increased in the Inquiry List.`,
     );
   };
 
   if (compact) {
     return (
-      <>
-        <span className={styles.srOnly} aria-live="polite">{announcement}</span>
+      <div
+        className={styles.variantAction}
+        data-product-action
+        data-selected={Boolean(existing)}
+        data-quantity={existing?.quantity ?? 0}
+      >
+        <span className={styles.srOnly} aria-live="polite">
+          {announcement}
+        </span>
         <button
           className={styles.compactAdd}
           type="button"
@@ -50,17 +57,28 @@ export function ProductActions({
         >
           {existing ? `Add another · ${existing.quantity}` : "Add variant"}
         </button>
-      </>
+      </div>
     );
   }
 
   return (
-    <div className={styles.detailActions}>
-      <span className={styles.srOnly} aria-live="polite">{announcement}</span>
+    <div
+      className={styles.detailActions}
+      data-product-action
+      data-selected={Boolean(existing)}
+      data-quantity={existing?.quantity ?? 0}
+    >
+      <span className={styles.srOnly} aria-live="polite">
+        {announcement}
+      </span>
       <button type="button" data-selected={Boolean(existing)} onClick={add}>
-        {existing ? `Add another · ${existing.quantity} in list` : "Add to Inquiry"}
+        <span>{existing ? "Added to Inquiry List" : "Add to Inquiry"}</span>
+        <strong>{existing ? `${existing.quantity} in list` : product.code}</strong>
       </button>
-      <Link href="/rebuild/inquiry">Review Inquiry List</Link>
+      <Link href="/rebuild/inquiry">
+        <span>Review Inquiry List</span>
+        <b aria-hidden="true">↗</b>
+      </Link>
     </div>
   );
 }
