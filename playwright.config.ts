@@ -2,7 +2,13 @@ import { defineConfig, devices } from "@playwright/test";
 
 const ci = Boolean(process.env.CI);
 const externalBaseUrl = process.env.PLAYWRIGHT_BASE_URL;
-const baseURL = externalBaseUrl ?? "http://127.0.0.1:3000";
+const localPort = process.env.PLAYWRIGHT_PORT ?? "3000";
+const localBaseUrl = `http://127.0.0.1:${localPort}`;
+const baseURL = externalBaseUrl ?? localBaseUrl;
+const reuseExistingServer =
+  process.env.PLAYWRIGHT_REUSE_SERVER === undefined
+    ? !ci
+    : process.env.PLAYWRIGHT_REUSE_SERVER === "1";
 
 export default defineConfig({
   testDir: "./tests/e2e",
@@ -26,9 +32,9 @@ export default defineConfig({
   webServer: externalBaseUrl
     ? undefined
     : {
-        command: "npm run start -- -p 3000",
-        url: "http://127.0.0.1:3000",
-        reuseExistingServer: !ci,
+        command: `npm run start -- -p ${localPort}`,
+        url: localBaseUrl,
+        reuseExistingServer,
         timeout: 120000
       }
 });
