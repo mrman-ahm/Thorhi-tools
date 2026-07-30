@@ -13,7 +13,7 @@ test("catalogue masthead and command search lead discovery", async ({ page }) =>
   await expect(page.getByRole("heading", { level: 1, name: "Product catalogue" })).toBeVisible();
   await expect(page.getByRole("searchbox", { name: /Search by product name or code/i })).toBeVisible();
   await expect(page.getByText(/indexed products/i)).toBeVisible();
-  await expect(page.getByText(/variant codes/i)).toBeVisible();
+  await expect(page.getByText("Variant codes", { exact: true })).toBeVisible();
 });
 
 test("exact catalogue-code search remains URL-backed", async ({ page }) => {
@@ -35,7 +35,7 @@ test("division and family filters remain URL-backed", async ({ page }) => {
     await filters.locator("summary").click();
   }
 
-  await filters.getByLabel("Surgical", { exact: true }).check();
+  await filters.getByText("Surgical", { exact: true }).click();
   await expect(page).toHaveURL(/division=surgical/);
 
   const family = filters.getByLabel("Product family");
@@ -75,7 +75,7 @@ test("mobile filters expose active context", async ({ page }) => {
   await openCatalogue(page);
   const details = page.locator("details").filter({ hasText: "Filters" });
   await details.locator("summary").click();
-  await details.getByLabel("Dental", { exact: true }).check();
+  await details.getByText("Dental", { exact: true }).click();
   await expect(page).toHaveURL(/division=dental/);
   await expect(details.locator("summary")).toContainText("1 active");
 });
