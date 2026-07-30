@@ -40,7 +40,7 @@ test("inquiry client sends the actual attachment in multipart form data", async 
 
 test("Cloudflare inquiry worker persists D1 records, R2 attachments, and delivery outbox", async () => {
   const [worker, migration, config] = await Promise.all([
-    read("workers/inquiry-api/src/index.ts"),
+    read("workers/inquiry-api/src/index.mjs"),
     read("workers/inquiry-api/migrations/0001_inquiry_backend.sql"),
     read("workers/inquiry-api/wrangler.example.jsonc"),
   ]);
