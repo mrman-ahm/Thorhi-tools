@@ -15,7 +15,8 @@ All meaningful project changes are recorded here.
   and source-page references
 - Approval-boundary and review-workspace contract tests
 - Approved Surgical Precision Archive homepage, Company & Trust Spine, Precision
-  Catalogue Ledger, and Instrument Examination & Inquiry Desk specifications and plans
+  Catalogue Ledger, Instrument Examination & Inquiry Desk, and Durable Inquiry
+  Backend specifications and plans
 - Isolated Surgical Precision Archive design-token layer for rebuild routes
 - Company-led rebuild hero with one real Operating Scissors composition and immediate
   catalogue search
@@ -42,11 +43,21 @@ All meaningful project changes are recorded here.
 - Structured product variant-code ledger with independent base and variant Inquiry state
 - Procurement Inquiry Desk masthead and four-stage workflow ledger
 - Focused Inquiry product-record and sticky review-desk components
-- Quantity, notes, remove, undo, unlisted reference, attachment, buyer details, and
-  validation presentation integrated without changing provider or API behavior
+- Quantity, notes, remove, undo, unlisted reference, real attachment selection, buyer
+  details, and validation presentation
+- Optional Turnstile field that activates only when a public site key is configured
 - Product/Inquiry source and Playwright contracts covering routes, persistence,
   responsive overflow, reduced motion, validation, and Axe
 - Isolated combined verification gates through Milestone 4 on ports `3100`–`3103`
+- Same-origin durable inquiry proxy with multipart parsing, attachment verification,
+  privacy-preserving request fingerprinting, shared-secret Worker authentication, and
+  production fail-closed behavior
+- Cloudflare Worker service with D1 inquiry/item/outbox/rate-limit persistence, private
+  R2 attachments, optional Turnstile validation, and optional signed delivery webhook
+- D1 migration with unique inquiry reference and submission-token constraints
+- Placeholder-only Wrangler, website environment, Worker secret, and Git-ignore templates
+- Durable backend source contracts and `npm run backend:check`
+- Full D1/R2/Turnstile/delivery setup and operations guide
 
 ### Changed
 
@@ -68,10 +79,17 @@ All meaningful project changes are recorded here.
   procurement workspace and sticky review desk
 - Preserved base/variant identity, local migration, manual items, attachment validation,
   one-time submission token, `/api/inquiries`, and success routing during Inquiry redesign
+- Upgraded inquiry submission from metadata-only JSON to multipart transport carrying the
+  actual selected attachment bytes
+- Restricted process-memory inquiry storage to non-production development
+- Required production Worker URL, shared secret, and independent fingerprint secret before
+  the website may report a successful inquiry submission
+- Split the serial four-route corporate Axe aggregation into isolated route checks without
+  weakening serious/critical accessibility assertions
 - Classified harmless pre-existing lint/deprecation warnings and obsolete syntax-only
   assertions as deferred rather than design-blocking
-- Recorded Design Milestones 1–4 as implementation-present but not approved for merge or
-  public cutover until combined local and visual verification passes
+- Recorded Design Milestones 1–5 as implementation-present but not approved for merge or
+  public cutover until their applicable runtime and operational verification passes
 
 ## 2026-07-29
 
