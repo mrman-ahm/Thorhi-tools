@@ -27,8 +27,10 @@ export function RebuildFooter() {
           </div>
           <div>
             <p>THROHI</p>
-            <Link href="/rebuild#company">Company</Link>
-            <Link href="/rebuild#contact">Contact</Link>
+            <Link href="/rebuild/company">Company</Link>
+            <Link href="/rebuild/company/scissors-through-time">Scissors Through Time</Link>
+            <Link href="/rebuild/catalogues">Catalogues</Link>
+            <Link href="/rebuild/contact">Contact</Link>
           </div>
         </nav>
       </div>
