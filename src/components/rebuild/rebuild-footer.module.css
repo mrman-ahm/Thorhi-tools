@@ -32,8 +32,8 @@
 .inner {
   min-height: 340px;
   display: grid;
-  grid-template-columns: minmax(320px, 1.25fr) minmax(360px, 0.75fr);
-  gap: clamp(4rem, 8vw, 8rem);
+  grid-template-columns: minmax(300px, 0.9fr) minmax(520px, 1.1fr);
+  gap: clamp(3rem, 7vw, 7rem);
   padding: clamp(4.5rem, 7vw, 7rem) 0 clamp(3.5rem, 6vw, 5.5rem);
 }
 
@@ -88,13 +88,14 @@
 
 .inner nav {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(2.5rem, 5vw, 4.5rem);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.5rem, 3vw, 3.25rem);
   align-content: start;
   padding-top: 0.5rem;
 }
 
 .inner nav div {
+  min-width: 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -120,7 +121,8 @@
   align-items: center;
   border-bottom: 1px solid rgba(239, 243, 239, 0.1);
   color: #d9e2e5;
-  font-size: 1.125rem;
+  font-size: 1.0625rem;
+  line-height: 1.35;
   transition: color 150ms ease, padding 150ms ease, border-color 150ms ease;
 }
 
@@ -145,20 +147,28 @@
 
 .status p { margin: 0; color: inherit; }
 
-@media (max-width: 760px) {
-  .inner,
-  .status { width: calc(100vw - 2rem); }
-
+@media (max-width: 1040px) {
   .inner {
     grid-template-columns: 1fr;
     gap: 3.5rem;
-    padding-block: 4.25rem;
   }
-
   .identity { padding-right: 0; padding-bottom: 3rem; }
-  .identity::after { inset: auto 0 0; width: 100%; height: 1px; background: linear-gradient(90deg, transparent, rgba(216, 189, 132, 0.34), transparent); }
+  .identity::after {
+    inset: auto 0 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(216, 189, 132, 0.34), transparent);
+  }
+  .identity p { max-width: 18ch; }
+}
+
+@media (max-width: 760px) {
+  .inner,
+  .status { width: calc(100vw - 2rem); }
+  .inner { padding-block: 4.25rem; }
   .identity p { max-width: 16ch; font-size: clamp(2.35rem, 10vw, 3.8rem); }
-  .inner nav { gap: 2.25rem; padding-top: 0; }
+  .inner nav { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.25rem; padding-top: 0; }
+  .inner nav div:last-child { grid-column: 1 / -1; }
   .status { display: grid; gap: 0.55rem; padding: 1.2rem 0; }
 }
 
@@ -166,6 +176,7 @@
   .inner,
   .status { width: calc(100vw - 1.25rem); }
   .inner nav { grid-template-columns: 1fr; }
+  .inner nav div:last-child { grid-column: auto; }
   .inner nav a { min-height: 50px; }
 }
 
