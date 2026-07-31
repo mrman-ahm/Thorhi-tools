@@ -8,6 +8,7 @@ import {
 } from "@/lib/rebuild-catalogue";
 import { ProductActions } from "./product-actions";
 import styles from "./product-detail.module.css";
+import heritageStyles from "./product-heritage.module.css";
 
 type Props = {
   params: Promise<{ productId: string }>;
@@ -52,8 +53,13 @@ export default async function ProductPage({ params, searchParams }: Props) {
   const variantCount = product.variants.length || 1;
 
   return (
-    <main id="main" className={styles.detailPage} data-product-page>
-      <div className={styles.detailShell}>
+    <main
+      id="main"
+      className={`${styles.detailPage} ${heritageStyles.detail}`}
+      data-product-page
+      data-redesign-product
+    >
+      <div className={styles.detailShell} data-product-shell>
         <nav
           className={styles.returnRail}
           aria-label="Product context"
@@ -89,14 +95,18 @@ export default async function ProductPage({ params, searchParams }: Props) {
             </div>
           </div>
 
-          <aside className={styles.identityRail} aria-label="Product inquiry details">
-            <div className={styles.identityLead}>
+          <aside
+            className={styles.identityRail}
+            aria-label="Product inquiry details"
+            data-product-dossier
+          >
+            <div className={styles.identityLead} data-product-identity>
               <p>{divisionLabel} / {product.familyLabel}</p>
               <h1>{product.name}</h1>
               <code>{product.code}</code>
             </div>
 
-            <p className={styles.boundary}>
+            <p className={styles.boundary} data-product-boundary>
               Catalogue identity, source references, and available variant codes
               can be used for inquiry. Technical specifications, materials,
               finishes, and availability remain under client review.
@@ -133,8 +143,9 @@ export default async function ProductPage({ params, searchParams }: Props) {
           className={styles.variantSection}
           aria-labelledby="variants-title"
           data-variant-ledger
+          data-product-section
         >
-          <header className={styles.sectionHeader}>
+          <header className={styles.sectionHeader} data-product-section-header>
             <div>
               <p>Inquiry references</p>
               <h2 id="variants-title">
@@ -192,15 +203,16 @@ export default async function ProductPage({ params, searchParams }: Props) {
             className={styles.related}
             aria-labelledby="related-title"
             data-related-products
+            data-product-section
           >
-            <header className={styles.sectionHeader}>
+            <header className={styles.sectionHeader} data-product-section-header>
               <div>
                 <p>Same product family</p>
                 <h2 id="related-title">Continue comparing.</h2>
               </div>
               <Link href={returnPath}>Return to catalogue</Link>
             </header>
-            <div className={styles.relatedGrid}>
+            <div className={styles.relatedGrid} data-related-grid>
               {relatedProducts.map((related) => (
                 <article key={related.id} data-related-record>
                   <Link
