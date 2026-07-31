@@ -193,11 +193,11 @@ export function CatalogueClient() {
   };
 
   return (
-    <section className={styles.catalogueWorkspace}>
+    <section className={styles.catalogueWorkspace} data-catalogue-body>
       <span className={styles.srOnly} aria-live="polite">
         {announcement}
       </span>
-      <div className={styles.workspaceInner}>
+      <div className={styles.workspaceInner} data-catalogue-inner>
         <div className={styles.primarySearch} data-catalogue-search>
           <label htmlFor="catalogue-query">Search by product name or code</label>
           <div>
@@ -219,7 +219,7 @@ export function CatalogueClient() {
           </div>
         </div>
 
-        <details className={styles.mobileFilters}>
+        <details className={styles.mobileFilters} data-catalogue-mobile-filters>
           <summary>
             <span>Filters</span>
             <strong>
@@ -243,8 +243,12 @@ export function CatalogueClient() {
           </div>
         </details>
 
-        <div className={styles.catalogueLayout}>
-          <aside className={styles.desktopFilters} aria-label="Catalogue filters">
+        <div className={styles.catalogueLayout} data-catalogue-layout>
+          <aside
+            className={styles.desktopFilters}
+            aria-label="Catalogue filters"
+            data-catalogue-desktop-filters
+          >
             <div className={styles.stickyFilters}>
               <div className={styles.filterHeading}>
                 <div>
@@ -289,7 +293,7 @@ export function CatalogueClient() {
             />
 
             {pageResults.length ? (
-              <div className={styles.catalogueLedger}>
+              <div className={styles.catalogueLedger} data-catalogue-results>
                 {pageResults.map((product, index) => {
                   const inquiryItem = items.find((item) => item.key === product.id);
                   const currentLocation = `${pathname}${
@@ -316,7 +320,11 @@ export function CatalogueClient() {
             )}
 
             {results.length > PAGE_SIZE ? (
-              <nav className={styles.pagination} aria-label="Catalogue pagination">
+              <nav
+                className={styles.pagination}
+                aria-label="Catalogue pagination"
+                data-catalogue-pagination
+              >
                 {currentPage > 1 ? (
                   <button type="button" onClick={() => movePage(currentPage - 1)}>
                     Previous
