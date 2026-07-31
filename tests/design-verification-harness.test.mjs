@@ -79,6 +79,7 @@ test("premium convergence verification runs the complete rebuild visual gate", a
   assert.match(script, /rebuild-catalogue-design\.spec\.ts/);
   assert.match(script, /rebuild-product-inquiry-design\.spec\.ts/);
   assert.match(script, /rebuild-premium-convergence\.spec\.ts/);
+  assert.match(script, /rebuild-premium-utility-states\.spec\.ts/);
   assert.match(script, /--project=desktop-chromium/);
   assert.match(script, /--project=mobile-chromium/);
   assert.match(shell, /data-premium-contract="premium-visual-convergence-v1"/);
