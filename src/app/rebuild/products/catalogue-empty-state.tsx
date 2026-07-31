@@ -9,7 +9,11 @@ export function CatalogueEmptyState({
   onReset: () => void;
 }) {
   return (
-    <section className={styles.noResults} aria-label="No catalogue results">
+    <section
+      className={styles.noResults}
+      aria-label="No catalogue results"
+      data-catalogue-empty
+    >
       <p>No catalogue match</p>
       <h2>{query ? `Nothing matched “${query}”.` : "No products match these filters."}</h2>
       <p>
