@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import { useInquiry } from "@/components/inquiry-provider";
+import premiumStyles from "./success-premium.module.css";
 import styles from "../../rebuild.module.css";
 
 const storageLabels: Record<string, string> = {
@@ -21,7 +22,10 @@ export function RebuildInquirySuccess() {
   useEffect(() => clearInquiry(), [clearInquiry]);
 
   return (
-    <article className={styles.successPanel}>
+    <article
+      className={`${styles.successPanel} ${premiumStyles.panel}`}
+      data-inquiry-success
+    >
       <p>{durable ? "Inquiry received" : "Inquiry validated"}</p>
       <h1>
         {durable
@@ -32,7 +36,9 @@ export function RebuildInquirySuccess() {
       <dl>
         <div>
           <dt>Reference</dt>
-          <dd><code>{reference}</code></dd>
+          <dd>
+            <code>{reference}</code>
+          </dd>
         </div>
         <div>
           <dt>Storage mode</dt>
