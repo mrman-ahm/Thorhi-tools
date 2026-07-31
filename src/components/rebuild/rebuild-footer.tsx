@@ -4,20 +4,32 @@ import styles from "./rebuild-footer.module.css";
 
 export function RebuildFooter() {
   return (
-    <footer className={styles.footer}>
+    <footer className={styles.footer} data-redesign-footer>
       <div className={styles.inner}>
         <div className={styles.identity}>
-          <Image
-            src="/brand/throhi-logo-temporary.webp"
-            alt="THROHI Medical Tools"
-            width={1086}
-            height={816}
-          />
+          <div className={styles.identityMark}>
+            <Image
+              src="/brand/throhi-logo-temporary.webp"
+              alt="THROHI Medical Tools"
+              width={1086}
+              height={816}
+            />
+            <span>Instrument archive</span>
+          </div>
           <p>
             Surgical, dental, orthodontic, veterinary and beauty instrument
             ranges from Sialkot, Pakistan.
           </p>
-          <span>Sialkot, Pakistan</span>
+          <dl className={styles.identityLedger}>
+            <div>
+              <dt>Origin</dt>
+              <dd>Sialkot, Pakistan</dd>
+            </div>
+            <div>
+              <dt>Website status</dt>
+              <dd>Catalogue preview</dd>
+            </div>
+          </dl>
         </div>
         <nav aria-label="Footer navigation">
           <div>
@@ -40,8 +52,8 @@ export function RebuildFooter() {
         </nav>
       </div>
       <div className={styles.status}>
-        <p>Development preview. Search indexing is disabled.</p>
-        <p>Catalogue and legal details remain under review.</p>
+        <p>Development preview · search indexing disabled</p>
+        <p>Catalogue and legal details remain under review</p>
       </div>
     </footer>
   );
