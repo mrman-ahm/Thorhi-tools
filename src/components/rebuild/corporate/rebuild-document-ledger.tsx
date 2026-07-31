@@ -8,10 +8,15 @@ export function RebuildDocumentLedger({
   documents: readonly RebuildCatalogueDocument[];
 }) {
   return (
-    <section className={styles.documents} role="region" aria-label="Downloadable documents">
+    <section
+      className={styles.documents}
+      role="region"
+      aria-label="Downloadable documents"
+      data-corporate-documents
+    >
       {documents.length ? (
         documents.map((document) => (
-          <article className={styles.documentRow} key={document.id}>
+          <article className={styles.documentRow} key={document.id} data-corporate-document>
             <h3>{document.title}</h3>
             <div className={styles.documentMeta}>
               <span>{document.division}</span>
@@ -23,7 +28,7 @@ export function RebuildDocumentLedger({
           </article>
         ))
       ) : (
-        <div className={styles.emptyDocuments}>
+        <div className={styles.emptyDocuments} data-corporate-documents-empty>
           <h3>No approved downloadable catalogue is published yet.</h3>
           <p>
             Use the searchable digital catalogue now, or add a known document or
