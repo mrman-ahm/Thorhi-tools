@@ -19,10 +19,7 @@ test("design milestone verification uses an isolated production server", async (
   assert.match(script, /PLAYWRIGHT_REUSE_SERVER=0/);
   assert.match(script, /--project=desktop-chromium/);
   assert.match(script, /--project=mobile-chromium/);
-  assert.match(
-    shell,
-    /data-milestone-contract="surgical-precision-archive-v1"/,
-  );
+  assert.match(shell, /data-milestone-contract="surgical-precision-archive-v1"/);
 });
 
 test("company trust verification runs the full isolated regression gate", async () => {
@@ -65,6 +62,26 @@ test("product inquiry verification runs every rebuild regression suite", async (
   assert.match(script, /rebuild-product-inquiry-design\.spec\.ts/);
   assert.match(script, /--project=desktop-chromium/);
   assert.match(script, /--project=mobile-chromium/);
+});
+
+test("premium convergence verification runs the complete rebuild visual gate", async () => {
+  const [script, shell] = await Promise.all([
+    read("scripts/verify-design-milestone-6.sh"),
+    read("src/app/rebuild/rebuild-shell.tsx"),
+  ]);
+
+  assert.match(script, /rm -rf playwright-report test-results/);
+  assert.match(script, /rm -rf \.next/);
+  assert.match(script, /PLAYWRIGHT_PORT=3104/);
+  assert.match(script, /PLAYWRIGHT_REUSE_SERVER=0/);
+  assert.match(script, /rebuild-home-design\.spec\.ts/);
+  assert.match(script, /rebuild-company-trust\.spec\.ts/);
+  assert.match(script, /rebuild-catalogue-design\.spec\.ts/);
+  assert.match(script, /rebuild-product-inquiry-design\.spec\.ts/);
+  assert.match(script, /rebuild-premium-convergence\.spec\.ts/);
+  assert.match(script, /--project=desktop-chromium/);
+  assert.match(script, /--project=mobile-chromium/);
+  assert.match(shell, /data-premium-contract="premium-visual-convergence-v1"/);
 });
 
 test("eslint excludes generated browser-test artifacts", async () => {
