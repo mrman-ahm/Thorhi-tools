@@ -38,18 +38,23 @@ test("legal content remains inside the verified truth boundary", async () => {
 });
 
 test("missing, error, and loading states provide useful recovery", async () => {
-  const [missing, error, loading] = await Promise.all([
+  const [missing, catchAll, error, loading, footer] = await Promise.all([
     read("src/app/rebuild/not-found.tsx"),
+    read("src/app/rebuild/[...missing]/page.tsx"),
     read("src/app/rebuild/error.tsx"),
     read("src/app/rebuild/loading.tsx"),
+    read("src/components/rebuild/rebuild-footer.tsx"),
   ]);
 
   assert.match(missing, /\/rebuild\/products/);
   assert.match(missing, /\/rebuild\/inquiry\?manual=1/);
+  assert.match(catchAll, /notFound\(\)/);
   assert.match(error, /"use client"/);
   assert.match(error, /reset\(\)/);
   assert.match(loading, /role="status"/);
   assert.match(loading, /aria-live="polite"/);
   assert.doesNotMatch(loading, /spinner/i);
   assert.doesNotMatch(loading, /\d+%/);
+  assert.match(footer, /\/rebuild\/privacy/);
+  assert.match(footer, /\/rebuild\/terms/);
 });
