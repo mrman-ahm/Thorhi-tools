@@ -2,6 +2,31 @@
 
 All meaningful project changes are recorded here.
 
+## 2026-07-31
+
+### Added
+
+- Approved Regal Technical Corporate visual-convergence specification and implementation plan
+- Cormorant Garamond display typography exposed through `--font-regal`
+- Premium ivory, brass, navy, readable-type, spacing, line, and shadow tokens
+- Scoped `premium-convergence.module.css` layer applied to every `/rebuild` route
+- Stable `data-premium-contract="premium-visual-convergence-v1"` marker while preserving the original rebuild regression contract
+- Regal hierarchy for homepage, catalogue, product examination, Inquiry List, and corporate-route headings
+- Warm editorial catalogue search, product-record, inquiry-review, and corporate-hero treatments
+- Premium source contract and representative desktop/mobile browser contract
+- Isolated Milestone 6 verification gate on port `3104`
+
+### Changed
+
+- Increased the persistent header to 80 px desktop and 66 px mobile with more readable navigation
+- Reworked header search and product panels into warm paper/ivory editorial surfaces
+- Strengthened Inquiry List prominence in the persistent header and mobile navigation
+- Reworked mobile navigation into a full-height ink/navy editorial composition
+- Reworked the footer into a regal manufacturer statement with brass route hierarchy and verified Sialkot origin
+- Applied explicit readable minimum sizes to important controls, labels, navigation, and form fields
+- Added restrained brass rules and premium depth without changing catalogue or inquiry behavior
+- Recorded Milestone 6 as implementation-present and pending runtime/manual visual review
+
 ## 2026-07-30
 
 ### Added
