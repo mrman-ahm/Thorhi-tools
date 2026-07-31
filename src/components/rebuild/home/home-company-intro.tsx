@@ -15,6 +15,7 @@ export function HomeCompanyIntro() {
       role="region"
       className={styles.company}
       aria-label="About THROHI"
+      data-home-company
     >
       <div className={styles.companyHeading}>
         <h2 id="home-company-title">{homeCompanyCopy.heading}</h2>
