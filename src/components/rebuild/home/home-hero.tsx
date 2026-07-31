@@ -20,12 +20,19 @@ export function HomeHero({
     <section
       className={styles.hero}
       data-home-hero
+      data-redesign-hero
       aria-labelledby="rebuild-home-title"
     >
       <div className={styles.inner}>
         <div className={styles.copy}>
+          <div className={styles.indexLine} aria-hidden="true">
+            <span>THR / 01</span>
+            <span>Instrument archive</span>
+          </div>
+          <p className={styles.kicker}>Sialkot, Pakistan</p>
           <h1 id="rebuild-home-title">{homeHeroCopy.title}</h1>
-          <p>{homeHeroCopy.description}</p>
+          <p className={styles.lead}>Instrument catalogue and inquiry desk.</p>
+          <p className={styles.description}>{homeHeroCopy.description}</p>
           <div className={styles.actions}>
             <Link href="/rebuild/products">Browse instruments</Link>
             <Link href="/rebuild/inquiry">Build an inquiry</Link>
@@ -33,7 +40,12 @@ export function HomeHero({
         </div>
 
         <div className={styles.instrument} data-hero-instrument>
+          <div className={styles.specimenIndex} aria-hidden="true">
+            <span>Reference specimen</span>
+            <code>{scissors.code}</code>
+          </div>
           <CatalogueMedia product={scissors} priority labelled />
+          <p>{scissors.name}</p>
         </div>
 
         <HomeCatalogueSearch />
