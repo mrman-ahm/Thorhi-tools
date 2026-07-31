@@ -6,34 +6,36 @@ All meaningful project changes are recorded here. Detailed current decisions liv
 
 ### Added
 
-- Regal Technical Corporate visual system with Cormorant Garamond, premium ivory/navy/brass tokens, readable typography, and route-wide convergence.
-- Premium header, product/search panels, mobile navigation, footer, and inquiry confirmation.
-- Rebuild-native Privacy, Terms, loading, error, and not-found states.
-- Typed legal-content boundary without invented dates, jurisdictions, contacts, retention promises, or governing law.
-- Production Readiness Convergence specification and plan.
-- Fail-closed `robots.ts` and explicit future indexing gate.
-- Permanent rebuild/API metadata and HTTP no-index boundaries.
-- Expanded safe response headers and API no-store behavior.
-- Increased-contrast and forced-colors rebuild support.
-- Dependency-free post-build static, JavaScript, CSS, and file-count budgets.
-- Readiness source and Playwright contracts.
-- `docs/production/PRODUCTION_READINESS.md`.
-- Rendered Visual QA Refinement specification and implementation plan.
-- Stable homepage, catalogue, product, inquiry, variant, and related-record QA markers.
-- Scoped `visual-qa-refinements.module.css` layer and `rendered-visual-qa-v1` shell contract.
-- Rendered browser contracts for secondary serif hierarchy, readable procurement labels, laptop-fold product composition, and five-width overflow checks.
+- Full-site **Precision Heritage House** redesign specification and implementation plan.
+- New `precision-heritage-house-v1` redesign contract.
+- Archival ivory/paper, surgical ink/navy/green, restrained brass, readable typography, spacing, focus, contrast, forced-colors, and reduced-motion foundation.
+- Rebuilt ivory desktop header, cinematic transparent state, editorial catalogue/search overlays, full-screen mobile route index, and live Inquiry List utility.
+- Rebuilt dark manufacturer-dossier footer.
+- Full homepage replacement covering cinematic handoff, company-led hero, division dossiers, asymmetric selected instruments, verified company introduction, evolution bridge, and closing action path.
+- Route-owned catalogue redesign module with compact index masthead, dominant search, filter ledger, alternating procurement records, and native mobile filtering.
+- Route-owned product examination redesign with museum-grade media stage, dark procurement dossier, formal variants, and related comparison records.
+- Route-owned Inquiry List redesign with formal worksheet sections, editable instrument records, forms, attachment state, and dark review dossier.
+- Shared corporate redesign layer covering Company, Catalogues, Contact, division ledgers, truth boundaries, action rails, document records, and contact routing.
+- Precision Heritage replacements for Scissors Through Time, Privacy, Terms, loading, error, not-found, and inquiry confirmation routes.
+- Stable redesign data contracts across homepage, catalogue, product, inquiry, corporate, and utility surfaces.
+- Dedicated full-redesign source and Playwright contracts.
+- Isolated `npm run verify:redesign` gate on port `3105`.
 
 ### Changed
 
-- Added Privacy and Terms to the premium footer.
-- Registered utility-state, production-readiness, and rendered visual-QA suites in the Milestone 6 gate.
-- Added `npm run readiness:check` immediately after the production build.
-- Aligned homepage and product composition to the 80px desktop and 66px mobile premium headers.
-- Extended regal typography through homepage secondary headings, family names, inquiry section headings, and related-product names.
-- Raised essential catalogue, product, and inquiry labels to at least 12px and important helper copy to at least 14px.
-- Tightened product examination, catalogue masthead, and inquiry masthead composition for 1280 × 800 laptop screens without changing route behavior.
-- Kept CSP, HSTS, indexing, canonical URLs, sitemap, and social metadata deferred until real runtime and content approval.
-- Recorded Milestone 8 as source implementation present without a runtime or screenshot-quality claim.
+- Replaced the previous layered premium/visual-QA approach with one authoritative design system.
+- Removed `premium-convergence.module.css` and `visual-qa-refinements.module.css`.
+- Changed the desktop header from 80px to 78px while retaining the 66px mobile shell.
+- Preserved catalogue search, filters, sorting, pagination, product return context, base/variant identity, Inquiry state, validation, attachments, Turnstile hooks, and durable submission behavior during the redesign.
+- Preserved supplied cinematic and scissors-evolution media.
+- Preserved no-index, security-header, accessibility, reduced-motion, and production-readiness boundaries.
+- Kept CSP, HSTS, indexing, canonical URLs, sitemap, social metadata, Cloudflare runtime configuration, and public cutover deferred.
+
+### Earlier 2026-07-31 work retained
+
+- Production Readiness Convergence with fail-closed indexing, safe response headers, forced-colors support, and post-build budgets.
+- Rebuild-native Privacy, Terms, loading, error, and not-found routes.
+- Durable inquiry configuration and operations documentation.
 
 ## 2026-07-30
 
@@ -47,7 +49,6 @@ All meaningful project changes are recorded here. Detailed current decisions liv
 
 ### Changed
 
-- Replaced generic layouts with procurement-focused catalogue, product, and inquiry systems.
 - Preserved search, routing, base/variant identity, local migration, validation, and success behavior.
 - Restricted process-memory inquiry storage to non-production.
 - Classified harmless pre-existing warnings as deferred.
@@ -60,7 +61,6 @@ All meaningful project changes are recorded here. Detailed current decisions liv
 - Deterministic FineMed importer and 175-record review queue.
 - 626 source-derived products, 1,434 variant codes, and optimized product imagery.
 - Shared inquiry schema, API, and live Inquiry List state.
-- Consolidated rebuild header, footer, catalogue, product, and inquiry foundations.
 
 ## 2026-07-22
 
