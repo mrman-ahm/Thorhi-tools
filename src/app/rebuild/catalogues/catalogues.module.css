@@ -1,44 +1,133 @@
-.page { background: var(--throhi-paper-50); color: var(--throhi-text); }
+.page {
+  color: var(--heritage-text, #17313e);
+  background: var(--heritage-paper, #fbf9f3);
+}
 
 .digital,
 .documentsSection {
-  width: min(var(--throhi-container), calc(100vw - (2 * var(--throhi-gutter))));
+  width: min(
+    var(--heritage-container, 90rem),
+    calc(100vw - (2 * var(--heritage-gutter, 2rem)))
+  );
   margin-inline: auto;
 }
 
 .digital {
-  padding: clamp(4rem, 8vw, 8rem) 0 1rem;
+  padding: var(--heritage-section, clamp(5.5rem, 9vw, 9.5rem)) 0 1rem;
   display: grid;
-  grid-template-columns: minmax(0, 0.6fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 0.62fr) minmax(0, 1fr);
   gap: clamp(3rem, 8vw, 8rem);
 }
 
 .digital h2,
 .documentsSection h2 {
+  max-width: 12ch;
   margin: 0;
-  font-family: var(--font-instrument), Arial, sans-serif;
-  font-size: clamp(2.7rem, 5.3vw, 5.5rem);
-  line-height: 0.95;
-  letter-spacing: -0.05em;
+  color: var(--heritage-ink, #071722);
+  font-family: var(--font-regal), Georgia, serif;
+  font-size: clamp(3rem, 5.5vw, 5.8rem);
+  font-weight: 650;
+  letter-spacing: -0.052em;
+  line-height: 0.88;
 }
 
-.digitalCopy { display: grid; gap: 1.4rem; }
-.digitalCopy > p { margin: 0; color: var(--throhi-muted); line-height: 1.7; }
+.digitalCopy {
+  display: grid;
+  gap: 1.5rem;
+}
 
-.divisions { border-top: 1px solid var(--throhi-line); }
-.division { min-height: 6.5rem; display: grid; grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.7fr) auto; gap: 1.5rem; align-items: center; border-bottom: 1px solid var(--throhi-line); }
-.division h3 { margin: 0; font-size: clamp(1.4rem, 2.5vw, 2.3rem); letter-spacing: -0.025em; }
-.division p { margin: 0; color: var(--throhi-muted); line-height: 1.55; }
-.division a { min-height: 44px; display: inline-flex; align-items: center; border-bottom: 1px solid var(--throhi-green-600); }
-.division span { color: var(--throhi-muted); font-family: var(--font-plex), monospace; font-size: 0.68rem; text-transform: uppercase; }
+.digitalCopy > p {
+  max-width: 44rem;
+  margin: 0;
+  color: var(--heritage-muted, #5b6d74);
+  line-height: 1.72;
+}
 
-.documentsSection { padding: clamp(5rem, 9vw, 9rem) 0; }
-.documentsHeading { display: grid; grid-template-columns: minmax(0, 0.7fr) minmax(18rem, 0.55fr); gap: clamp(3rem, 8vw, 8rem); align-items: end; margin-bottom: 2.5rem; }
-.documentsHeading p { margin: 0; color: var(--throhi-muted); line-height: 1.7; }
+.divisions {
+  border-top: 1px solid var(--heritage-line-strong, rgba(7, 23, 34, 0.3));
+}
 
-@media (max-width: 760px) {
+.division {
+  min-height: 7.5rem;
+  display: grid;
+  grid-template-columns: minmax(0, 0.7fr) minmax(17rem, 1fr) auto;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--heritage-line, rgba(7, 23, 34, 0.18));
+}
+
+.division h3 {
+  max-width: 13ch;
+  margin: 0;
+  color: var(--heritage-ink, #071722);
+  font-family: var(--font-regal), Georgia, serif;
+  font-size: clamp(1.7rem, 2.8vw, 2.7rem);
+  font-weight: 650;
+  letter-spacing: -0.035em;
+  line-height: 0.95;
+}
+
+.division p {
+  margin: 0;
+  color: var(--heritage-muted, #5b6d74);
+  line-height: 1.58;
+}
+
+.division a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  border-bottom: 1px solid var(--heritage-green, #2e7254);
+  font-size: 0.875rem;
+  font-weight: 650;
+}
+
+.division span {
+  color: var(--heritage-muted, #5b6d74);
+  font-family: var(--font-plex), monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+}
+
+.documentsSection {
+  padding: var(--heritage-section, clamp(5.5rem, 9vw, 9.5rem)) 0;
+}
+
+.documentsHeading {
+  display: grid;
+  grid-template-columns: minmax(0, 0.72fr) minmax(20rem, 0.55fr);
+  gap: clamp(3rem, 8vw, 8rem);
+  align-items: end;
+  margin-bottom: 2.7rem;
+}
+
+.documentsHeading p {
+  margin: 0;
+  color: var(--heritage-muted, #5b6d74);
+  line-height: 1.72;
+}
+
+@media (max-width: 820px) {
   .digital,
-  .documentsHeading { grid-template-columns: 1fr; }
-  .division { grid-template-columns: 1fr; gap: 0.65rem; padding-block: 1.5rem; }
-  .division a { justify-self: start; }
+  .documentsHeading {
+    grid-template-columns: 1fr;
+  }
+
+  .division {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+    padding-block: 1.5rem;
+  }
+
+  .division a {
+    justify-self: start;
+  }
+}
+
+@media (max-width: 420px) {
+  .digital,
+  .documentsSection {
+    width: calc(100vw - 1.5rem);
+  }
 }
