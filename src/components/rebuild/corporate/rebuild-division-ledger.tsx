@@ -8,11 +8,17 @@ export function RebuildDivisionLedger({
   divisions: readonly CompanyDivisionContent[];
 }) {
   return (
-    <section className={styles.ledger} role="region" aria-label="Instrument divisions">
+    <section
+      className={styles.ledger}
+      role="region"
+      aria-label="Instrument divisions"
+      data-corporate-ledger
+    >
       {divisions.map((division, index) => (
         <article
           className={`${styles.ledgerRow} ${division.catalogueState === "pending" ? styles.pending : ""}`}
           key={division.slug}
+          data-corporate-ledger-row
         >
           <span className={styles.ledgerIndex}>{String(index + 1).padStart(2, "0")}</span>
           <h3>{division.label}</h3>
