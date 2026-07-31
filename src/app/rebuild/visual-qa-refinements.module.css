@@ -1,0 +1,247 @@
+.root {
+  --qa-essential-label: 12px;
+  --qa-body-min: 14px;
+}
+
+.root :is(
+  [data-home-divisions] h2,
+  [data-home-selected] h2,
+  [data-home-company] h2,
+  [data-home-utilities] h2,
+  [data-home-divisions] strong,
+  [data-home-selected] strong,
+  [data-home-utilities] strong,
+  [data-inquiry-workspace] h2,
+  [data-inquiry-workspace] h3,
+  [data-related-record] strong
+) {
+  font-family: var(--font-regal), Georgia, serif !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.04em !important;
+  text-wrap: balance;
+}
+
+.root :is(
+  [data-home-divisions] small,
+  [data-home-selected] em,
+  [data-home-utilities] small,
+  [data-home-company] p,
+  [data-home-company] li
+) {
+  font-size: max(var(--qa-body-min), 0.875rem) !important;
+  line-height: 1.65;
+}
+
+.root :is(
+  [data-home-hero] dt,
+  [data-home-selected] code,
+  [data-home-selected] small,
+  [data-home-divisions] [data-division-state]
+) {
+  font-size: max(var(--qa-essential-label), 0.75rem) !important;
+  line-height: 1.45;
+}
+
+.root [data-home-hero] dd {
+  font-size: max(var(--qa-body-min), 0.875rem) !important;
+}
+
+.root [data-home-hero] :is(a, button) {
+  font-size: max(var(--qa-body-min), 0.875rem) !important;
+}
+
+.root [data-home-hero] [role="search"] :is(label, input, button) {
+  font-size: max(var(--qa-body-min), 0.875rem) !important;
+}
+
+.root [data-home-selected] strong {
+  font-size: clamp(1.9rem, 2.8vw, 2.75rem) !important;
+  line-height: 0.98 !important;
+}
+
+.root [data-home-divisions] strong {
+  font-size: clamp(2rem, 3.7vw, 3.5rem) !important;
+  line-height: 0.96 !important;
+}
+
+.root [data-home-utilities] strong {
+  font-size: clamp(1.75rem, 3vw, 2.8rem) !important;
+  line-height: 1 !important;
+}
+
+.root [data-home-utilities] a {
+  font-size: max(var(--qa-body-min), 0.875rem);
+}
+
+.root [data-catalogue-workspace] :is(small, code, dt, legend) {
+  font-size: max(var(--qa-essential-label), 0.75rem) !important;
+  line-height: 1.45;
+}
+
+.root [data-catalogue-workspace] :is(label, button, select) {
+  font-size: max(var(--qa-body-min), 0.875rem) !important;
+}
+
+.root [data-catalogue-workspace] p {
+  font-size: max(var(--qa-body-min), 0.875rem);
+}
+
+.root [data-catalogue-search] label {
+  font-size: max(13px, 0.8125rem) !important;
+}
+
+.root [data-catalogue-masthead] dt {
+  font-size: max(var(--qa-essential-label), 0.75rem) !important;
+}
+
+.root [data-product-page] {
+  padding-top: 80px !important;
+}
+
+.root [data-product-return] {
+  font-size: max(var(--qa-essential-label), 0.75rem) !important;
+}
+
+.root [data-product-return] code {
+  font-size: max(13px, 0.8125rem) !important;
+}
+
+.root [data-product-media-stage] > div span {
+  font-size: max(11px, 0.6875rem) !important;
+}
+
+.root [data-product-examination] :is(button, a) {
+  font-size: max(var(--qa-body-min), 0.875rem) !important;
+}
+
+.root [data-product-examination] button strong {
+  font-size: max(var(--qa-essential-label), 0.75rem) !important;
+}
+
+.root [data-product-spec-ledger] dt,
+.root [data-variant-record] :is(small, > span),
+.root [data-related-record] :is(code, small) {
+  font-size: max(var(--qa-essential-label), 0.75rem) !important;
+  line-height: 1.45;
+}
+
+.root [data-product-spec-ledger] dd,
+.root [data-variant-record] p,
+.root [data-variant-record] button,
+.root [data-related-record] small {
+  font-size: max(var(--qa-body-min), 0.875rem) !important;
+  line-height: 1.55;
+}
+
+.root [data-variant-record] code {
+  font-size: max(15px, 0.9375rem) !important;
+}
+
+.root [data-related-record] strong {
+  font-size: clamp(1.45rem, 2.2vw, 2rem) !important;
+  line-height: 1 !important;
+}
+
+.root [data-inquiry-stages] span,
+.root [data-inquiry-workspace] :is(small, code, dt),
+.root [data-inquiry-item] small,
+.root [data-inquiry-review] dt {
+  font-size: max(var(--qa-essential-label), 0.75rem) !important;
+  line-height: 1.45;
+}
+
+.root [data-inquiry-workspace] :is(label, button, select, input, textarea) {
+  font-size: max(var(--qa-body-min), 0.875rem) !important;
+}
+
+.root [data-inquiry-workspace] p,
+.root [data-inquiry-review] :is(p, dd, small) {
+  font-size: max(var(--qa-body-min), 0.875rem) !important;
+  line-height: 1.6;
+}
+
+.root [data-inquiry-item] h3 {
+  font-size: clamp(1.55rem, 2.2vw, 2.15rem) !important;
+  line-height: 1 !important;
+}
+
+.root :is(
+  [data-home-divisions],
+  [data-home-selected],
+  [data-home-company],
+  [data-home-utilities],
+  [data-catalogue-workspace],
+  [data-product-page],
+  [data-inquiry-workspace]
+) :is(h1, h2, h3, p, strong, small, span, code, dd) {
+  overflow-wrap: anywhere;
+}
+
+@media (min-width: 981px) {
+  .root [data-product-examination] {
+    min-height: clamp(620px, calc(100svh - 156px), 700px) !important;
+  }
+
+  .root [data-product-media-stage] {
+    min-height: 0 !important;
+  }
+}
+
+@media (min-width: 981px) and (max-width: 1280px) and (max-height: 850px) {
+  .root [data-catalogue-masthead] > div:first-child {
+    min-height: 310px !important;
+    padding-top: 3rem !important;
+    padding-bottom: 2.5rem !important;
+  }
+
+  .root [data-inquiry-masthead] {
+    padding-top: 112px !important;
+  }
+
+  .root [data-inquiry-masthead] > div > div:first-child {
+    padding-bottom: 40px !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .root [data-product-page] {
+    padding-top: 66px !important;
+  }
+
+  .root [data-home-divisions] strong,
+  .root [data-home-selected] strong,
+  .root [data-home-utilities] strong {
+    max-width: none;
+  }
+
+  .root [data-inquiry-stages] span {
+    min-height: 64px;
+  }
+}
+
+@media (max-width: 390px) {
+  .root [data-product-return] {
+    gap: 0.65rem;
+  }
+
+  .root [data-product-return] > a span:last-child {
+    max-width: 9rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .root [data-catalogue-workspace] :is(button, select),
+  .root [data-inquiry-workspace] :is(button, select, input) {
+    min-height: 46px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root [data-product-media-stage],
+  .root [data-product-examination],
+  .root [data-home-divisions],
+  .root [data-home-selected] {
+    scroll-behavior: auto;
+  }
+}
