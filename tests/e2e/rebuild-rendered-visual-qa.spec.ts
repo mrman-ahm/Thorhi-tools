@@ -43,7 +43,7 @@ test("homepage secondary hierarchy continues the regal display system", async ({
   }
 });
 
-test("essential procurement labels meet the visual QA minimums", async ({ page }) => {
+test("essential procurement labels meet the redesign minimums", async ({ page }) => {
   await enterHomepage(page);
   const divisionState = page.locator("[data-division-state]").first();
   await divisionState.scrollIntoViewIfNeeded();
@@ -72,13 +72,13 @@ test("essential procurement labels meet the visual QA minimums", async ({ page }
   ).toBeGreaterThanOrEqual(12);
 });
 
-test("product examination respects the premium header and laptop fold", async ({ page }) => {
+test("product examination respects the heritage header and laptop fold", async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 800 });
   await openProduct(page);
 
   const returnRail = await page.locator("[data-product-return]").boundingBox();
   expect(returnRail).not.toBeNull();
-  expect(returnRail?.y ?? 0).toBeGreaterThanOrEqual(79);
+  expect(returnRail?.y ?? 0).toBeGreaterThanOrEqual(77);
 
   const action = page.locator("[data-product-action]").first();
   await expect(action).toBeVisible();
@@ -92,7 +92,7 @@ test("product examination respects the premium header and laptop fold", async ({
 });
 
 for (const width of [320, 390, 768, 1280, 1440]) {
-  test(`premium QA routes avoid horizontal overflow at ${width}px`, async ({ page }) => {
+  test(`precision heritage routes avoid horizontal overflow at ${width}px`, async ({ page }) => {
     const height = width <= 390 ? 844 : width === 768 ? 1024 : width === 1280 ? 800 : 1000;
     await page.setViewportSize({ width, height });
 
