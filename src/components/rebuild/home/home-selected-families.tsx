@@ -14,29 +14,35 @@ export function HomeSelectedFamilies({ products }: HomeSelectedFamiliesProps) {
       aria-labelledby="selected-families-title"
       aria-label="Selected instrument families"
       data-home-selected
+      data-redesign-section
     >
       <header className={styles.sectionHeading}>
-        <h2 id="selected-families-title">Selected instrument families</h2>
+        <div>
+          <p>03 / Catalogue selection</p>
+          <h2 id="selected-families-title">Selected instrument families</h2>
+        </div>
         <Link href="/rebuild/products">View the complete catalogue</Link>
       </header>
 
       <div className={styles.productGrid}>
-        {products.map((product) => (
+        {products.map((product, index) => (
           <article key={product.id}>
             <Link href={`/rebuild/products/${product.id}`}>
               <span className={styles.productMedia}>
                 <CatalogueMedia product={product} labelled />
               </span>
               <span className={styles.productMeta}>
-                <span>
+                <span className={styles.productIndex}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
                   <code>{product.code}</code>
-                  <small>{product.division}</small>
                 </span>
                 <strong>{product.name}</strong>
                 <em>{product.familyLabel}</em>
-                <small>
-                  {product.variants.length} {product.variants.length === 1 ? "variant" : "variants"}
-                </small>
+                <span className={styles.productFooter}>
+                  <small>{product.division}</small>
+                  <small>{product.variants.length} variants</small>
+                  <b aria-hidden="true">↗</b>
+                </span>
               </span>
             </Link>
           </article>
