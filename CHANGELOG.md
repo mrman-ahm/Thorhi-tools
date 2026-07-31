@@ -18,14 +18,22 @@ All meaningful project changes are recorded here. Detailed current decisions liv
 - Dependency-free post-build static, JavaScript, CSS, and file-count budgets.
 - Readiness source and Playwright contracts.
 - `docs/production/PRODUCTION_READINESS.md`.
+- Rendered Visual QA Refinement specification and implementation plan.
+- Stable homepage, catalogue, product, inquiry, variant, and related-record QA markers.
+- Scoped `visual-qa-refinements.module.css` layer and `rendered-visual-qa-v1` shell contract.
+- Rendered browser contracts for secondary serif hierarchy, readable procurement labels, laptop-fold product composition, and five-width overflow checks.
 
 ### Changed
 
 - Added Privacy and Terms to the premium footer.
-- Registered utility-state and production-readiness suites in the Milestone 6 gate.
+- Registered utility-state, production-readiness, and rendered visual-QA suites in the Milestone 6 gate.
 - Added `npm run readiness:check` immediately after the production build.
+- Aligned homepage and product composition to the 80px desktop and 66px mobile premium headers.
+- Extended regal typography through homepage secondary headings, family names, inquiry section headings, and related-product names.
+- Raised essential catalogue, product, and inquiry labels to at least 12px and important helper copy to at least 14px.
+- Tightened product examination, catalogue masthead, and inquiry masthead composition for 1280 × 800 laptop screens without changing route behavior.
 - Kept CSP, HSTS, indexing, canonical URLs, sitemap, and social metadata deferred until real runtime and content approval.
-- Recorded Milestone 7 as source implementation present without a runtime-green claim.
+- Recorded Milestone 8 as source implementation present without a runtime or screenshot-quality claim.
 
 ## 2026-07-30
 
