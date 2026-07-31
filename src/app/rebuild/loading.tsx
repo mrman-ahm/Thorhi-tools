@@ -25,7 +25,6 @@ export default function RebuildLoading() {
             </div>
           ))}
         </div>
-        <span className={styles.srOnly}>Preparing the requested THROHI page.</span>
       </div>
     </main>
   );
