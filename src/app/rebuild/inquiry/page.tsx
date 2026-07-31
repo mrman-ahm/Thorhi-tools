@@ -27,7 +27,11 @@ export default function InquiryPage() {
             </p>
           </div>
 
-          <div className={styles.stageLedger} aria-label="Inquiry stages">
+          <div
+            className={styles.stageLedger}
+            aria-label="Inquiry stages"
+            data-inquiry-stages
+          >
             <span><b>01</b> Products</span>
             <span><b>02</b> Requirements</span>
             <span><b>03</b> Buyer details</span>
