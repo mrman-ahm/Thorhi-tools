@@ -1,28 +1,41 @@
 .root {
-  --throhi-ink-950: #04131f;
-  --throhi-navy-900: #071f33;
-  --throhi-navy-800: #0d2d46;
-  --throhi-steel-100: #dce8ed;
-  --throhi-steel-200: #c7d9e1;
-  --throhi-paper-50: #f6f8f7;
+  --throhi-ink-950: #06131d;
+  --throhi-navy-900: #0a2233;
+  --throhi-navy-800: #12384f;
+  --throhi-steel-100: #d9e3e7;
+  --throhi-steel-200: #c4d2d8;
+  --throhi-ivory-50: #f7f3ea;
+  --throhi-paper-50: #fbfaf6;
   --throhi-white: #ffffff;
-  --throhi-green-600: #2a805a;
-  --throhi-green-300: #8fd6b3;
-  --throhi-blue-600: #2f6f91;
-  --throhi-red-600: #a94348;
-  --throhi-text: #0a2a3d;
-  --throhi-muted: #526b77;
-  --throhi-line: rgba(7, 31, 51, 0.17);
-  --throhi-line-light: rgba(238, 246, 241, 0.18);
-  --throhi-gutter: clamp(1rem, 4vw, 4rem);
-  --throhi-container: 87.5rem;
-  --throhi-reading: 45rem;
+  --throhi-green-600: #236b4b;
+  --throhi-green-300: #a7d8bd;
+  --throhi-blue-600: #2d6f92;
+  --throhi-brass-500: #ad8950;
+  --throhi-brass-300: #d8bd84;
+  --throhi-red-600: #9b3e42;
+  --throhi-text: #152b36;
+  --throhi-muted: #586b73;
+  --throhi-line: rgba(6, 19, 29, 0.17);
+  --throhi-line-strong: rgba(6, 19, 29, 0.28);
+  --throhi-line-light: rgba(239, 243, 239, 0.2);
+  --throhi-body-size: clamp(1rem, 0.96rem + 0.18vw, 1.125rem);
+  --throhi-control-size: 0.875rem;
+  --throhi-small-size: 0.75rem;
+  --throhi-gutter: clamp(1rem, 4vw, 4.5rem);
+  --throhi-container: 92rem;
+  --throhi-reading: 47rem;
+  --throhi-section-space: clamp(5rem, 9vw, 9rem);
   --throhi-radius-sm: 0.25rem;
   --throhi-radius-md: 0.625rem;
+  --throhi-shadow-premium: 0 30px 90px rgba(3, 15, 24, 0.14);
+  --throhi-shadow-panel: 0 18px 55px rgba(3, 15, 24, 0.1);
   min-height: 100vh;
   color: var(--throhi-text);
   background: var(--throhi-paper-50);
-  font-family: var(--font-archivo), Arial, sans-serif;
+  font-family: var(--font-instrument), var(--font-archivo), Arial, sans-serif;
+  font-size: var(--throhi-body-size);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 .root *,
@@ -46,4 +59,9 @@
 .root :focus-visible {
   outline: 2px solid var(--throhi-green-600);
   outline-offset: 4px;
+}
+
+.root ::selection {
+  color: var(--throhi-ink-950);
+  background: var(--throhi-brass-300);
 }
