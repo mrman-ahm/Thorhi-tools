@@ -2,22 +2,40 @@
 
 ## Current objective
 
-Complete **Milestone 8: Rendered Visual QA Refinement** on `design/surgical-precision-archive` without indexing, deploying, or cutting over the rebuild.
+Verify and refine the **Precision Heritage House full-site redesign** on `design/surgical-precision-archive` without deploying, indexing, merging, or cutting over the rebuild.
 
-A live branch preview is not currently recorded or discoverable. Source refinement and rendered contracts are present; screenshot evidence remains pending until a real preview or checkout exists.
+The redesign replaces the previous layered premium/QA approach and now covers every `/rebuild` route at source level.
 
-## Implemented milestones
+## Active visual system
 
-1. Homepage and shared shell
-2. Company & Trust Spine
-3. Precision Catalogue Ledger
-4. Instrument Examination & Inquiry Desk
-5. Durable Inquiry Backend
-6. Premium Visual Convergence and Utility States
-7. Production Readiness Convergence
-8. Rendered Visual QA Refinement source implementation
+- `precision-heritage-house-v1`
+- 78px desktop header
+- 66px mobile header
+- regal editorial typography
+- archival ivory and paper
+- surgical ink, navy, and green
+- restrained brass indexing
+- real instrument imagery
+- no filler, fake luxury, SaaS cards, or ecommerce framing
 
-## Current gates
+## Redesigned areas
+
+1. Shared header, overlays, full-screen mobile navigation, and footer
+2. Homepage cinematic handoff, hero, divisions, selected instruments, company, history, and closing actions
+3. Catalogue masthead, search, filters, records, empty/loading states, and pagination
+4. Product media examination, procurement dossier, variant ledger, and related comparisons
+5. Inquiry worksheet, editable records, forms, attachment state, review dossier, and confirmation
+6. Company, history, Catalogues, Contact, Privacy, Terms, loading, error, success, and not-found routes
+
+Functional catalogue, Inquiry List, media, accessibility, backend, no-index, and production-readiness contracts remain preserved.
+
+## Verification commands
+
+Source tests:
+
+```bash
+npm run test
+```
 
 Backend source:
 
@@ -31,52 +49,44 @@ Post-build budgets:
 npm run readiness:check
 ```
 
-Combined design/readiness gate:
+Complete full-redesign gate:
 
 ```bash
-bash scripts/verify-design-milestone-6.sh
+npm run verify:redesign
 ```
 
-The combined gate runs lint, typecheck, source tests, production build, static budgets, and desktop/mobile Playwright suites, including `rebuild-rendered-visual-qa.spec.ts`.
+The redesign gate uses isolated port `3105` and runs:
 
-No fresh runtime-green or screenshot-quality claim is made until the gate runs in a real checkout or preview.
+- lint;
+- typecheck;
+- source tests;
+- production build;
+- readiness budgets;
+- representative desktop and mobile Playwright suites;
+- the dedicated `rebuild-full-redesign.spec.ts` contract.
 
-## Rendered Visual QA coverage
+No fresh runtime-green claim is made until that command runs in a real checkout.
 
-- current 80px desktop and 66px mobile shell offsets;
-- continuous regal hierarchy through homepage secondary sections and inquiry/product surfaces;
-- 12px minimum for essential procurement labels and states;
-- 14px minimum for body/helper copy that affects browsing or inquiry completion;
-- product examination constrained for a 1280 × 800 first viewport;
-- large product media stage preserved;
-- catalogue and inquiry mastheads tightened on laptop-height screens;
-- overflow protection at 320, 390, 768, 1280, and 1440 widths;
-- reduced-motion continuity;
-- stable route markers for future screenshot and regression tooling.
+## Immediate sequence
 
-## Next sequence
-
-1. Run the combined gate in a real checkout.
-2. Review real screenshots at 1440 × 1000, 1280 × 800, 768 × 1024, 390 × 844, and 320 × 700.
-3. Correct only visible hierarchy, spacing, wrapping, image placement, contrast, or overflow defects.
-4. Configure the Next.js-compatible Cloudflare Worker/OpenNext website runtime.
-5. Configure real D1, R2, secrets, optional Turnstile, and approved inquiry delivery.
-6. Validate CSP against Next.js, cinematic media, catalogue media, and Turnstile.
-7. Decide HSTS only after final HTTPS origin approval.
-8. Measure deployed LCP, INP, and CLS.
-9. Complete catalogue, documents, logo, contacts, company facts, legal language, and retention approval.
-10. Obtain explicit merge, deployment, indexing, and public cutover approval.
+1. Run `npm run verify:redesign` in a real checkout.
+2. Fix only critical build, interaction, accessibility, overflow, or data-integrity failures.
+3. Review screenshots at 1440 × 1000, 1280 × 800, 768 × 1024, 390 × 844, and 320 × 700 when preview work is intentionally resumed.
+4. Complete verified catalogue documents, final logo, contact details, company facts, and missing division data.
+5. Configure Cloudflare/OpenNext, D1, R2, Turnstile, and inquiry delivery later, as requested.
+6. Validate CSP, HSTS, Core Web Vitals, metadata, and final launch controls.
+7. Obtain explicit merge, deployment, indexing, and public cutover approval.
 
 ## Current blockers
 
-- runnable repository checkout or live rebuild preview;
-- real Cloudflare resource identifiers and secrets;
-- approved production origin and inquiry recipient;
-- approved retention/deletion rules;
+- fresh full-redesign runtime evidence;
+- real screenshot review;
 - final catalogue validation and documents;
 - complete Beauty and Veterinary source data;
-- verified contact and company information;
-- final logo, icons, canonical URLs, sitemap, and social metadata;
-- fresh runtime and manual visual evidence.
+- verified contact and company details;
+- final logo and metadata assets;
+- approved inquiry recipient and retention rules;
+- real Cloudflare resource identifiers and secrets;
+- explicit cutover approval.
 
 No pull request, merge, deployment, indexing activation, or public cutover occurs automatically.
