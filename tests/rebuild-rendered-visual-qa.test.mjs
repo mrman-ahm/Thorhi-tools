@@ -4,26 +4,25 @@ import test from "node:test";
 
 const read = (path) => readFile(new URL(`../${path}`, import.meta.url), "utf8");
 
-test("rendered visual QA uses one scoped rebuild refinement layer", async () => {
-  const [shell, styles] = await Promise.all([
+test("rendered visual QA uses the replacement heritage foundation", async () => {
+  const [shell, heritage, product, inquiry] = await Promise.all([
     read("src/app/rebuild/rebuild-shell.tsx"),
-    read("src/app/rebuild/visual-qa-refinements.module.css"),
+    read("src/app/rebuild/precision-heritage.module.css"),
+    read("src/app/rebuild/products/[productId]/product-heritage.module.css"),
+    read("src/app/rebuild/inquiry/inquiry-heritage.module.css"),
   ]);
 
-  assert.match(shell, /visual-qa-refinements\.module\.css/);
-  assert.match(shell, /qaStyles\.root/);
-  assert.match(shell, /data-visual-qa-contract="rendered-visual-qa-v1"/);
-  assert.match(styles, /12px/);
-  assert.match(styles, /14px/);
-  assert.match(styles, /80px/);
-  assert.match(styles, /66px/);
-  assert.match(styles, /1280px/);
-  assert.match(styles, /850px/);
-  assert.match(styles, /prefers-reduced-motion/);
-  assert.match(styles, /var\(--font-regal\)/);
+  assert.match(shell, /data-redesign-contract="precision-heritage-house-v1"/);
+  assert.match(heritage, /--heritage-label:\s*0\.75rem/);
+  assert.match(heritage, /--heritage-body/);
+  assert.match(heritage, /--heritage-header:\s*78px/);
+  assert.match(heritage, /--heritage-header-mobile:\s*66px/);
+  assert.match(heritage, /prefers-reduced-motion/);
+  assert.match(product, /100svh - 148px/);
+  assert.match(inquiry, /data-inquiry-review/);
 });
 
-test("representative routes expose stable visual QA markers", async () => {
+test("representative routes expose stable redesign markers", async () => {
   const [
     divisions,
     selected,
@@ -47,23 +46,25 @@ test("representative routes expose stable visual QA markers", async () => {
   assert.match(selected, /data-home-selected/);
   assert.match(company, /data-home-company/);
   assert.match(utilities, /data-home-utilities/);
-  assert.match(catalogue, /data-catalogue-workspace/);
-  assert.match(product, /data-product-page/);
-  assert.match(product, /data-product-return/);
-  assert.match(product, /data-product-media-stage/);
-  assert.match(product, /data-product-spec-ledger/);
+  assert.match(catalogue, /data-redesign-catalogue/);
+  assert.match(product, /data-redesign-product/);
+  assert.match(product, /data-product-dossier/);
   assert.match(product, /data-variant-record/);
-  assert.match(product, /data-related-record/);
+  assert.match(inquiry, /data-redesign-inquiry/);
   assert.match(inquiry, /data-inquiry-stages/);
 });
 
-test("homepage and product composition use current premium shell heights", async () => {
-  const styles = await read("src/app/rebuild/visual-qa-refinements.module.css");
-  assert.match(styles, /\[data-home-hero\]::before/);
-  assert.match(styles, /inset:\s*80px 44% 0 auto/);
-  assert.match(styles, /min-width:\s*821px/);
-  assert.match(styles, /max-height:\s*850px/);
-  assert.match(styles, /\[data-product-page\][\s\S]*padding-top:\s*80px/);
-  assert.match(styles, /padding-top:\s*66px/);
-  assert.match(styles, /100svh - 156px/);
+test("route-owned redesign modules replace legacy corrective styling", async () => {
+  const [catalogue, product, inquiry, shell] = await Promise.all([
+    read("src/app/rebuild/products/catalogue-heritage.module.css"),
+    read("src/app/rebuild/products/[productId]/product-heritage.module.css"),
+    read("src/app/rebuild/inquiry/inquiry-heritage.module.css"),
+    read("src/app/rebuild/rebuild-shell.tsx"),
+  ]);
+
+  assert.match(catalogue, /data-catalogue-record/);
+  assert.match(product, /data-product-examination/);
+  assert.match(inquiry, /data-inquiry-workspace/);
+  assert.doesNotMatch(shell, /premiumStyles/);
+  assert.doesNotMatch(shell, /qaStyles/);
 });
