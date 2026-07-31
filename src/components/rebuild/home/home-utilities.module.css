@@ -1,9 +1,26 @@
 .band {
-  color: #dfe9ec;
-  background: var(--throhi-navy-900, #071f33);
+  position: relative;
   overflow: hidden;
+  color: #e8eeec;
+  background:
+    radial-gradient(circle at 12% 110%, rgba(46, 114, 84, 0.16), transparent 34%),
+    radial-gradient(circle at 88% -8%, rgba(167, 137, 85, 0.16), transparent 28%),
+    linear-gradient(150deg, var(--heritage-ink, #071722), var(--heritage-navy, #0b2b3f) 64%, var(--heritage-blue, #123e56));
+  border-top: 1px solid rgba(214, 195, 154, 0.24);
+}
+
+.band::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(243, 239, 229, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(243, 239, 229, 0.028) 1px, transparent 1px);
+  background-size: 96px 96px;
+  mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.75), transparent 82%);
 }
 
 .band :global(a:focus-visible) {
-  outline-color: var(--throhi-green-300, #8fd6b3);
+  outline-color: var(--heritage-green-light, #9bcbb1);
 }
