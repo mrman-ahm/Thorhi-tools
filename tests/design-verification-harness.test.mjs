@@ -74,12 +74,14 @@ test("premium convergence verification runs the complete rebuild visual gate", a
   assert.match(script, /rm -rf \.next/);
   assert.match(script, /PLAYWRIGHT_PORT=3104/);
   assert.match(script, /PLAYWRIGHT_REUSE_SERVER=0/);
+  assert.match(script, /npm run readiness:check/);
   assert.match(script, /rebuild-home-design\.spec\.ts/);
   assert.match(script, /rebuild-company-trust\.spec\.ts/);
   assert.match(script, /rebuild-catalogue-design\.spec\.ts/);
   assert.match(script, /rebuild-product-inquiry-design\.spec\.ts/);
   assert.match(script, /rebuild-premium-convergence\.spec\.ts/);
   assert.match(script, /rebuild-premium-utility-states\.spec\.ts/);
+  assert.match(script, /rebuild-production-readiness\.spec\.ts/);
   assert.match(script, /--project=desktop-chromium/);
   assert.match(script, /--project=mobile-chromium/);
   assert.match(shell, /data-premium-contract="premium-visual-convergence-v1"/);
