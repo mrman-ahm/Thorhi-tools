@@ -13,6 +13,7 @@ export function HomeSelectedFamilies({ products }: HomeSelectedFamiliesProps) {
       className={styles.selected}
       aria-labelledby="selected-families-title"
       aria-label="Selected instrument families"
+      data-home-selected
     >
       <header className={styles.sectionHeading}>
         <h2 id="selected-families-title">Selected instrument families</h2>
