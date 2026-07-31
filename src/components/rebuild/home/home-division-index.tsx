@@ -19,6 +19,7 @@ export function HomeDivisionIndex({
     <section
       className={styles.divisions}
       aria-labelledby="home-divisions-title"
+      data-home-divisions
     >
       <header className={styles.sectionHeading}>
         <h2 id="home-divisions-title">Instrument divisions</h2>
