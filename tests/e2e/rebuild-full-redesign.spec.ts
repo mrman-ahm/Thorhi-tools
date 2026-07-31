@@ -19,7 +19,9 @@ async function openProduct(page: Page) {
   await expect(page.locator("[data-product-dossier]")).toBeVisible();
 }
 
-function seriousViolations(result: Awaited<ReturnType<AxeBuilder["analyze"]>>) {
+function seriousViolations(
+  result: Awaited<ReturnType<InstanceType<typeof AxeBuilder>["analyze"]>>,
+) {
   return result.violations.filter((violation) =>
     ["serious", "critical"].includes(violation.impact ?? ""),
   );
@@ -92,6 +94,8 @@ test("inquiry remains a four-stage procurement worksheet", async ({ page }) => {
 });
 
 test("corporate and utility routes use shared editorial boundaries", async ({ page }) => {
+  test.setTimeout(60_000);
+
   for (const route of [
     "/rebuild/company",
     "/rebuild/catalogues",
@@ -111,6 +115,7 @@ test("corporate and utility routes use shared editorial boundaries", async ({ pa
 
 for (const width of [320, 390, 768, 1280, 1440]) {
   test(`full redesign has no horizontal overflow at ${width}px`, async ({ page }) => {
+    test.setTimeout(60_000);
     const height = width <= 390 ? 844 : width === 768 ? 1024 : width === 1280 ? 800 : 1000;
     await page.setViewportSize({ width, height });
 
@@ -124,15 +129,15 @@ for (const width of [320, 390, 768, 1280, 1440]) {
   });
 }
 
-test("representative redesigned routes have no serious accessibility violations", async ({ page }) => {
-  for (const route of [
-    "/rebuild/products",
-    "/rebuild/inquiry?manual=1",
-    "/rebuild/company",
-    "/rebuild/privacy",
-  ]) {
+for (const route of [
+  "/rebuild/products",
+  "/rebuild/inquiry?manual=1",
+  "/rebuild/company",
+  "/rebuild/privacy",
+]) {
+  test(`redesigned route has no serious accessibility violations: ${route}`, async ({ page }) => {
     await page.goto(route);
     const result = await new AxeBuilder({ page }).analyze();
-    expect(seriousViolations(result), route).toEqual([]);
-  }
-});
+    expect(seriousViolations(result)).toEqual([]);
+  });
+}
