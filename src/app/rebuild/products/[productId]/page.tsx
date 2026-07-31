@@ -52,9 +52,13 @@ export default async function ProductPage({ params, searchParams }: Props) {
   const variantCount = product.variants.length || 1;
 
   return (
-    <main id="main" className={styles.detailPage}>
+    <main id="main" className={styles.detailPage} data-product-page>
       <div className={styles.detailShell}>
-        <nav className={styles.returnRail} aria-label="Product context">
+        <nav
+          className={styles.returnRail}
+          aria-label="Product context"
+          data-product-return
+        >
           <Link href={returnPath}>
             <span aria-hidden="true">←</span>
             <span>Back to catalogue</span>
@@ -68,7 +72,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
         </nav>
 
         <section className={styles.examination} data-product-examination>
-          <div className={styles.mediaStage}>
+          <div className={styles.mediaStage} data-product-media-stage>
             <div className={styles.stageIndex} aria-hidden="true">
               <span>THR / EXAMINATION</span>
               <span>01</span>
@@ -100,7 +104,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
 
             <ProductActions product={product} />
 
-            <dl className={styles.specLedger}>
+            <dl className={styles.specLedger} data-product-spec-ledger>
               <div>
                 <dt>Division</dt>
                 <dd>{divisionLabel}</dd>
@@ -147,7 +151,11 @@ export default async function ProductPage({ params, searchParams }: Props) {
           <div className={styles.variantList}>
             {product.variants.length ? (
               product.variants.map((variant, index) => (
-                <article className={styles.variantRecord} key={variant.id}>
+                <article
+                  className={styles.variantRecord}
+                  key={variant.id}
+                  data-variant-record
+                >
                   <span>{String(index + 1).padStart(2, "0")}</span>
                   <div>
                     <small>Variant code</small>
@@ -162,7 +170,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
                 </article>
               ))
             ) : (
-              <article className={styles.variantRecord}>
+              <article className={styles.variantRecord} data-variant-record>
                 <span>01</span>
                 <div>
                   <small>Base code</small>
@@ -194,7 +202,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
             </header>
             <div className={styles.relatedGrid}>
               {relatedProducts.map((related) => (
-                <article key={related.id}>
+                <article key={related.id} data-related-record>
                   <Link
                     href={`/rebuild/products/${related.id}?from=${encodeURIComponent(returnPath)}`}
                   >
