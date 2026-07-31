@@ -5,14 +5,16 @@ import criticalStyles from "./critical-accessibility.module.css";
 import premiumStyles from "./premium-convergence.module.css";
 import legacyStyles from "./rebuild.module.css";
 import shellStyles from "./surgical-precision-shell.module.css";
+import qaStyles from "./visual-qa-refinements.module.css";
 
 export function RebuildShell({ children }: { children: ReactNode }) {
   return (
     <div
-      className={`${legacyStyles.root} ${shellStyles.root} ${criticalStyles.root} ${premiumStyles.root}`}
+      className={`${legacyStyles.root} ${shellStyles.root} ${criticalStyles.root} ${premiumStyles.root} ${qaStyles.root}`}
       data-rebuild-shell
       data-milestone-contract="surgical-precision-archive-v1"
       data-premium-contract="premium-visual-convergence-v1"
+      data-visual-qa-contract="rendered-visual-qa-v1"
     >
       <RebuildHeader />
       {children}
