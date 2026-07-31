@@ -23,10 +23,10 @@ async function expectRegalHeading(page: Page, route: string) {
   expect(family.toLowerCase()).toContain("cormorant");
 }
 
-test("rebuild exposes the premium convergence contract", async ({ page }) => {
+test("rebuild exposes the precision heritage redesign contract", async ({ page }) => {
   await enterHomepage(page);
   await expect(
-    page.locator('[data-premium-contract="premium-visual-convergence-v1"]'),
+    page.locator('[data-redesign-contract="precision-heritage-house-v1"]'),
   ).toHaveCount(1);
   await expect(
     page.locator('[data-milestone-contract="surgical-precision-archive-v1"]'),
@@ -42,6 +42,7 @@ test("representative rebuild routes render the regal display hierarchy", async (
     "/rebuild/company",
     "/rebuild/catalogues",
     "/rebuild/contact",
+    "/rebuild/privacy",
   ]) {
     if (route === "/rebuild") {
       await enterHomepage(page);
