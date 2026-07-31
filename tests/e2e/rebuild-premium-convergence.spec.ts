@@ -38,6 +38,7 @@ test("representative rebuild routes render the regal display hierarchy", async (
     "/rebuild",
     "/rebuild/products",
     "/rebuild/inquiry?manual=1",
+    "/rebuild/inquiry/success?reference=THR-PREVIEW&storage=development-memory",
     "/rebuild/company",
     "/rebuild/catalogues",
     "/rebuild/contact",
