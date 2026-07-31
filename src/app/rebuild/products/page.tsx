@@ -19,7 +19,11 @@ const catalogueInstrument = getRebuildProductByCode("04-0101");
 
 export default function ProductsPage() {
   return (
-    <main id="main" className={styles.cataloguePage}>
+    <main
+      id="main"
+      className={styles.cataloguePage}
+      data-catalogue-workspace
+    >
       <section className={styles.catalogueMasthead} data-catalogue-masthead>
         <div className={styles.mastheadInner}>
           <div className={styles.mastheadCopy}>
