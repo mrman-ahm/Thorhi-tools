@@ -50,7 +50,7 @@ export function HomeDivisionIndex({
                   <strong>{division.label}</strong>
                   <small>{division.summary}</small>
                 </span>
-                <span className={styles.divisionState}>
+                <span className={styles.divisionState} data-division-state>
                   {counts[division.slug]} indexed families
                 </span>
                 <b aria-hidden="true">↗</b>
@@ -65,7 +65,7 @@ export function HomeDivisionIndex({
                 <strong>{division.label}</strong>
                 <small>{division.summary}</small>
               </span>
-              <span className={styles.divisionState}>
+              <span className={styles.divisionState} data-division-state>
                 Detailed catalogue not yet published
               </span>
             </article>
