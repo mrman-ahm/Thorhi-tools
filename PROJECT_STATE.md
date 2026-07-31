@@ -4,7 +4,7 @@ This file is the single source of truth for the rebuild.
 
 ## Current phase
 
-**Milestone 7: Production Readiness Convergence implementation present. Runtime verification, real Cloudflare configuration, content approval, and public cutover remain pending.**
+**Milestone 8: Rendered Visual QA Refinement source implementation present. A live rebuild preview, full runtime gate, and manual screenshot review remain pending.**
 
 Work remains isolated on `design/surgical-precision-archive`.
 
@@ -21,6 +21,7 @@ Work remains isolated on `design/surgical-precision-archive`.
 5. Durable Inquiry Backend
 6. Premium Visual Convergence and Utility States
 7. Production Readiness Convergence
+8. Rendered Visual QA Refinement source implementation
 
 ## Quality rules
 
@@ -34,7 +35,7 @@ Work remains isolated on `design/surgical-precision-archive`.
 
 - Skippable supplied MP4 cinematic cover and 260-frame evolution media.
 - Company-led homepage with Sialkot origin and catalogue search.
-- Company, Scissors Through Time, Catalogues, and Contact routes.
+- Company, Scissors Through Time, Catalogues, Contact, Privacy, and Terms routes.
 - URL-backed catalogue search, filtering, sorting, pagination, real imagery, codes, taxonomy, variants, and Inquiry state.
 - Product examination with return context, base/variant identities, variant ledger, and related-family discovery.
 - Non-commerce Inquiry List with quantities, notes, attachments, buyer details, optional Turnstile, review, and confirmation.
@@ -95,13 +96,49 @@ The command requires `.next/static` and fails on:
 - any emitted CSS file above 512 KiB raw;
 - more than 20,000 static/public files.
 
-Combined gate:
+Production register: `docs/production/PRODUCTION_READINESS.md`
+
+## Rendered Visual QA Refinement
+
+A public rebuild preview is not currently recorded or discoverable, and the branch has no deployment workflow run. The completed pass therefore uses route-source composition review, stable visual markers, and rendered Playwright contracts without claiming screenshot evidence.
+
+Implemented corrections:
+
+- new `rendered-visual-qa-v1` shell contract;
+- stable markers across homepage, catalogue, product, and inquiry surfaces;
+- homepage divider aligned to the current 80px desktop header;
+- product pages offset to 80px desktop and 66px mobile header heights;
+- laptop-height product examination constrained to keep the primary inquiry action reachable while retaining a large media stage;
+- laptop-height catalogue and inquiry mastheads tightened without changing route behavior;
+- regal typography extended through homepage secondary headings, family names, inquiry section headings, and related products;
+- essential procurement labels raised to at least 12px;
+- body and helper copy raised to at least 14px where the information affects navigation, comparison, or inquiry completion;
+- overflow-wrap and narrow-mobile safeguards added;
+- no new entrance motion introduced.
+
+Verification assets:
+
+- `tests/rebuild-rendered-visual-qa.test.mjs`
+- `tests/e2e/rebuild-rendered-visual-qa.spec.ts`
+- `src/app/rebuild/visual-qa-refinements.module.css`
+
+The Milestone 6 combined gate now includes the rendered visual-QA suite:
 
 ```bash
 bash scripts/verify-design-milestone-6.sh
 ```
 
-Production register: `docs/production/PRODUCTION_READINESS.md`
+Internally checked in the available environment:
+
+- all selectors in `visual-qa-refinements.module.css` compile through `cssselect2`;
+- the new Playwright suite transpiles with zero TypeScript diagnostics.
+
+Not yet proven:
+
+- Next.js production build after this refinement;
+- Playwright runtime results;
+- screenshot appearance at the five target viewports;
+- deployed font/media behavior.
 
 ## Truth boundary
 
@@ -127,7 +164,8 @@ Pending and absent:
 ## Runtime and cutover blockers
 
 - fresh combined runtime evidence;
-- manual visual review at 1440, 1280, 768, 390, and 320 px;
+- a live rebuild preview or local rendered checkout;
+- manual screenshot review at 1440 × 1000, 1280 × 800, 768 × 1024, 390 × 844, and 320 × 700;
 - Next.js-compatible Cloudflare Worker/OpenNext configuration;
 - real D1, R2, secrets, Turnstile, and delivery configuration;
 - CSP validation against Next.js, media, and Turnstile;
@@ -138,7 +176,7 @@ Pending and absent:
 
 ## Next phases
 
-1. Correct any critical issues found by the combined gate.
+1. Correct any critical issues from the combined gate or first available screenshots.
 2. Configure and verify the real Cloudflare website and inquiry runtimes.
 3. Complete catalogue validation, documents, logo, contacts, and approved content.
 4. Validate CSP, field performance, and final launch controls.
