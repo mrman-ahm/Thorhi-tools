@@ -6,8 +6,8 @@ import {
   rebuildCatalogue,
 } from "@/lib/rebuild-catalogue";
 import { CatalogueClient } from "./catalogue-client";
-import heritageStyles from "./catalogue-heritage.module.css";
 import styles from "./catalogue.module.css";
+import heritageStyles from "./catalogue-heritage.module.css";
 
 export const metadata: Metadata = {
   title: "Product Catalogue | THROHI Medical Tools",
