@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import {
   Archivo,
   Cormorant_Garamond,
@@ -53,12 +53,30 @@ const plex = IBM_Plex_Mono({
   display: "swap",
 });
 
+const allowIndexing = process.env.NEXT_PUBLIC_ALLOW_INDEXING === "true";
+
 export const metadata: Metadata = {
+  applicationName: "THROHI Medical Tools",
   title: { default: "THROHI Medical Tools", template: "%s | THROHI" },
   description:
     "Explore surgical, dental, veterinary, and beauty instruments by division, family, product name, or code.",
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://throhi.com"),
-  robots: { index: false, follow: false },
+  formatDetection: {
+    telephone: false,
+    email: false,
+    address: false,
+  },
+  robots: allowIndexing
+    ? { index: true, follow: true }
+    : { index: false, follow: false, nocache: true },
+};
+
+export const viewport: Viewport = {
+  colorScheme: "light",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#fbfaf6" },
+    { media: "(prefers-color-scheme: dark)", color: "#06131d" },
+  ],
 };
 
 export default function RootLayout({
