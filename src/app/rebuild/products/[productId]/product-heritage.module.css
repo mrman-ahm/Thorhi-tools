@@ -1,0 +1,435 @@
+.detail {
+  min-height: 100vh;
+  padding: var(--heritage-header, 78px) 0 8rem !important;
+  color: var(--heritage-text, #17313e);
+  background: var(--heritage-paper, #fbf9f3) !important;
+}
+
+.detail :global([data-product-shell]) {
+  width: min(
+    var(--heritage-container, 90rem),
+    calc(100vw - (2 * var(--heritage-gutter, 2rem)))
+  ) !important;
+  margin-inline: auto !important;
+}
+
+.detail :global([data-product-return]) {
+  min-height: 70px !important;
+  grid-template-columns: auto minmax(0, 1fr) auto !important;
+  border-bottom: 1px solid var(--heritage-line-strong, rgba(7, 23, 34, 0.3)) !important;
+  color: var(--heritage-muted, #5b6d74) !important;
+  font-size: 0.75rem !important;
+}
+
+.detail :global([data-product-return]) > a {
+  color: var(--heritage-ink, #071722) !important;
+  font-weight: 650;
+}
+
+.detail :global([data-product-return]) code {
+  color: var(--heritage-blue, #123e56) !important;
+  font-size: 0.84rem !important;
+}
+
+.detail :global([data-product-examination]) {
+  min-height: clamp(640px, calc(100svh - 148px), 760px) !important;
+  grid-template-columns: minmax(0, 1.16fr) minmax(420px, 0.84fr) !important;
+  border-inline: 1px solid var(--heritage-line, rgba(7, 23, 34, 0.18)) !important;
+  border-bottom: 1px solid var(--heritage-line-strong, rgba(7, 23, 34, 0.3)) !important;
+  background: var(--heritage-paper, #fbf9f3) !important;
+}
+
+.detail :global([data-product-media-stage]) {
+  min-width: 0;
+  border-right: 1px solid var(--heritage-line, rgba(7, 23, 34, 0.18)) !important;
+  background:
+    linear-gradient(rgba(7, 23, 34, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(7, 23, 34, 0.026) 1px, transparent 1px),
+    linear-gradient(145deg, #ffffff, #e7ecea) !important;
+  background-size: 72px 72px, 72px 72px, auto !important;
+}
+
+.detail :global([data-product-media-stage])::after {
+  inset: 24px !important;
+  border-color: rgba(7, 23, 34, 0.12) !important;
+}
+
+.detail :global([data-product-media-stage]) > div:first-child,
+.detail :global([data-product-media-stage]) > div:last-child {
+  color: #60747d !important;
+  font-size: 0.72rem !important;
+}
+
+.detail :global([data-product-media-stage]) > span {
+  width: min(89%, 780px) !important;
+  filter: drop-shadow(0 2.1rem 2.8rem rgba(7, 23, 34, 0.16));
+}
+
+.detail :global([data-product-dossier]) {
+  min-width: 0;
+  padding: clamp(2.5rem, 4.8vw, 4.8rem) !important;
+  color: #edf2f1 !important;
+  background:
+    radial-gradient(circle at 84% 9%, rgba(167, 137, 85, 0.16), transparent 30%),
+    linear-gradient(150deg, var(--heritage-ink, #071722), var(--heritage-navy, #0b2b3f) 60%, var(--heritage-blue, #123e56)) !important;
+}
+
+.detail :global([data-product-identity]) > p {
+  margin: 0 0 1.2rem !important;
+  color: var(--heritage-brass-light, #d6c39a) !important;
+  font-size: 0.75rem !important;
+}
+
+.detail :global([data-product-identity]) h1 {
+  max-width: 10ch;
+  color: #f6f2e9 !important;
+  font-family: var(--font-regal), Georgia, serif !important;
+  font-size: clamp(3.7rem, 5.5vw, 6.7rem) !important;
+  font-weight: 650 !important;
+  letter-spacing: -0.055em !important;
+  line-height: 0.84 !important;
+}
+
+.detail :global([data-product-identity]) > code {
+  margin-top: 1.6rem !important;
+  color: var(--heritage-green-light, #9bcbb1) !important;
+  font-size: 1rem !important;
+}
+
+.detail :global([data-product-boundary]) {
+  max-width: 38rem;
+  margin: 1.8rem 0 0 !important;
+  color: #bdc9cc !important;
+  font-size: 0.95rem !important;
+  line-height: 1.68 !important;
+}
+
+.detail :global([data-product-action]) {
+  margin-top: 2rem;
+}
+
+.detail :global([data-product-action]) > button,
+.detail :global([data-product-action]) > a {
+  min-height: 56px !important;
+  padding-inline: 1rem !important;
+  border-color: rgba(243, 239, 229, 0.24) !important;
+  font-size: 0.875rem !important;
+}
+
+.detail :global([data-product-action]) > button {
+  color: #ffffff !important;
+  background: var(--heritage-green, #2e7254) !important;
+  border-color: var(--heritage-green, #2e7254) !important;
+}
+
+.detail :global([data-product-action]) > button[data-selected="true"] {
+  color: var(--heritage-ink, #071722) !important;
+  background: var(--heritage-green-light, #9bcbb1) !important;
+  border-color: var(--heritage-green-light, #9bcbb1) !important;
+}
+
+.detail :global([data-product-action]) strong {
+  font-size: 0.75rem !important;
+}
+
+.detail :global([data-product-spec-ledger]) {
+  margin-top: auto !important;
+  padding-top: 2.2rem !important;
+}
+
+.detail :global([data-product-spec-ledger]) > div {
+  grid-template-columns: 9.5rem minmax(0, 1fr) !important;
+  gap: 1.4rem !important;
+  padding: 0.75rem 0 !important;
+  border-top-color: rgba(243, 239, 229, 0.17) !important;
+}
+
+.detail :global([data-product-spec-ledger]) dt {
+  color: #95a8ae !important;
+  font-size: 0.72rem !important;
+}
+
+.detail :global([data-product-spec-ledger]) dd {
+  color: #e4ebec !important;
+  font-size: 0.875rem !important;
+  line-height: 1.45;
+}
+
+.detail :global([data-product-section]) {
+  padding: var(--heritage-section, clamp(5.5rem, 9vw, 9.5rem)) 0 !important;
+}
+
+.detail :global([data-product-section-header]) {
+  margin-bottom: 2.8rem !important;
+}
+
+.detail :global([data-product-section-header]) p {
+  margin: 0 0 1rem !important;
+  color: var(--heritage-brass, #a78955) !important;
+  font-size: 0.75rem !important;
+}
+
+.detail :global([data-product-section-header]) h2 {
+  max-width: 12ch;
+  color: var(--heritage-ink, #071722) !important;
+  font-family: var(--font-regal), Georgia, serif !important;
+  font-size: clamp(3.2rem, 5.5vw, 5.8rem) !important;
+  font-weight: 650 !important;
+  letter-spacing: -0.05em !important;
+  line-height: 0.88 !important;
+}
+
+.detail :global([data-product-section-header]) > :is(span, a) {
+  color: var(--heritage-muted, #5b6d74) !important;
+  border-bottom-color: var(--heritage-green, #2e7254) !important;
+  font-size: 0.75rem !important;
+}
+
+.detail :global([data-variant-ledger]) {
+  border-bottom: 1px solid var(--heritage-line-strong, rgba(7, 23, 34, 0.3));
+}
+
+.detail :global([data-variant-ledger]) > div:last-child {
+  border-top: 1px solid var(--heritage-line-strong, rgba(7, 23, 34, 0.3)) !important;
+}
+
+.detail :global([data-variant-record]) {
+  min-height: 102px !important;
+  grid-template-columns: 48px minmax(190px, 235px) minmax(0, 1fr) auto !important;
+  gap: clamp(1.25rem, 3vw, 2.75rem) !important;
+  padding: 1rem 0 !important;
+  border-bottom-color: var(--heritage-line, rgba(7, 23, 34, 0.18)) !important;
+}
+
+.detail :global([data-variant-record]) > span,
+.detail :global([data-variant-record]) small {
+  color: var(--heritage-muted, #5b6d74) !important;
+  font-size: 0.75rem !important;
+}
+
+.detail :global([data-variant-record]) code {
+  color: var(--heritage-blue, #123e56) !important;
+  font-size: 1.05rem !important;
+}
+
+.detail :global([data-variant-record]) p {
+  color: var(--heritage-muted, #5b6d74) !important;
+  font-size: 0.875rem !important;
+}
+
+.detail :global([data-variant-record]) :global([data-product-action]) {
+  margin-top: 0;
+}
+
+.detail :global([data-variant-record]) button {
+  min-width: 148px !important;
+  min-height: 46px !important;
+  border-color: var(--heritage-line-strong, rgba(7, 23, 34, 0.3)) !important;
+  color: var(--heritage-ink, #071722) !important;
+  background: transparent !important;
+  font-size: 0.8rem !important;
+}
+
+.detail :global([data-variant-record]) button:is(:hover, :focus-visible, [data-selected="true"]) {
+  color: #ffffff !important;
+  background: var(--heritage-green, #2e7254) !important;
+  border-color: var(--heritage-green, #2e7254) !important;
+}
+
+.detail :global([data-related-products]) {
+  border-top: 0 !important;
+}
+
+.detail :global([data-related-grid]) {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr) !important;
+  grid-template-rows: auto auto;
+  gap: 1px;
+  background: var(--heritage-line, rgba(7, 23, 34, 0.18));
+  border: 1px solid var(--heritage-line, rgba(7, 23, 34, 0.18)) !important;
+}
+
+.detail :global([data-related-record]) {
+  min-width: 0;
+  border: 0 !important;
+  background: var(--heritage-paper, #fbf9f3);
+}
+
+.detail :global([data-related-record]:first-child) {
+  grid-row: 1 / span 2;
+}
+
+.detail :global([data-related-record]) > a {
+  height: 100%;
+  display: grid !important;
+  grid-template-rows: minmax(260px, 1fr) auto;
+}
+
+.detail :global([data-related-record]:first-child) > a {
+  grid-template-rows: minmax(470px, 1fr) auto;
+}
+
+.detail :global([data-related-record]) > a > span:last-child {
+  min-height: 176px !important;
+  padding: 1.5rem !important;
+  border-top: 1px solid var(--heritage-line, rgba(7, 23, 34, 0.18)) !important;
+}
+
+.detail :global([data-related-record]) code {
+  color: var(--heritage-blue, #123e56) !important;
+  font-size: 0.75rem !important;
+}
+
+.detail :global([data-related-record]) strong {
+  max-width: 14ch;
+  color: var(--heritage-ink, #071722);
+  font-family: var(--font-regal), Georgia, serif;
+  font-size: clamp(1.8rem, 3vw, 3rem) !important;
+  font-weight: 650 !important;
+  letter-spacing: -0.04em;
+  line-height: 0.92;
+}
+
+.detail :global([data-related-record]) small {
+  color: var(--heritage-muted, #5b6d74) !important;
+  font-size: 0.8rem !important;
+}
+
+@media (max-width: 1100px) {
+  .detail :global([data-product-examination]) {
+    grid-template-columns: minmax(0, 1fr) minmax(390px, 0.88fr) !important;
+  }
+
+  .detail :global([data-product-dossier]) {
+    padding: 2.8rem 2.4rem !important;
+  }
+}
+
+@media (max-width: 980px) {
+  .detail :global([data-product-examination]) {
+    grid-template-columns: 1fr !important;
+    min-height: 0 !important;
+  }
+
+  .detail :global([data-product-media-stage]) {
+    min-height: 560px !important;
+    border-right: 0 !important;
+    border-bottom: 1px solid var(--heritage-line, rgba(7, 23, 34, 0.18)) !important;
+  }
+
+  .detail :global([data-product-dossier]) {
+    min-height: 0 !important;
+  }
+
+  .detail :global([data-related-grid]) {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .detail :global([data-related-record]:first-child) {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+
+  .detail :global([data-related-record]:first-child) > a {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    grid-template-rows: auto;
+  }
+}
+
+@media (max-width: 700px) {
+  .detail {
+    padding-top: var(--heritage-header-mobile, 66px) !important;
+  }
+
+  .detail :global([data-product-shell]) {
+    width: calc(100vw - 2rem) !important;
+  }
+
+  .detail :global([data-product-return]) {
+    min-height: 64px !important;
+    grid-template-columns: 1fr auto !important;
+  }
+
+  .detail :global([data-product-return]) > div {
+    display: none !important;
+  }
+
+  .detail :global([data-product-media-stage]) {
+    min-height: 420px !important;
+  }
+
+  .detail :global([data-product-dossier]) {
+    padding: 2.6rem 1.5rem !important;
+  }
+
+  .detail :global([data-product-identity]) h1 {
+    font-size: clamp(3.2rem, 15vw, 5rem) !important;
+  }
+
+  .detail :global([data-product-spec-ledger]) > div {
+    grid-template-columns: 1fr !important;
+    gap: 0.35rem !important;
+  }
+
+  .detail :global([data-product-section-header]) {
+    display: grid !important;
+    gap: 1.4rem !important;
+  }
+
+  .detail :global([data-variant-record]) {
+    grid-template-columns: 34px minmax(0, 1fr) auto !important;
+    gap: 0.8rem !important;
+  }
+
+  .detail :global([data-variant-record]) p {
+    grid-column: 2 / -1 !important;
+  }
+
+  .detail :global([data-related-grid]) {
+    grid-template-columns: 1fr !important;
+  }
+
+  .detail :global([data-related-record]:first-child) {
+    grid-column: auto;
+  }
+
+  .detail :global([data-related-record]:first-child) > a,
+  .detail :global([data-related-record]) > a {
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(280px, auto) auto;
+  }
+}
+
+@media (max-width: 420px) {
+  .detail :global([data-product-shell]) {
+    width: calc(100vw - 1.25rem) !important;
+  }
+
+  .detail :global([data-product-media-stage]) {
+    min-height: 340px !important;
+  }
+
+  .detail :global([data-product-dossier]) {
+    padding-inline: 1.15rem !important;
+  }
+
+  .detail :global([data-variant-record]) {
+    grid-template-columns: 28px minmax(0, 1fr) !important;
+  }
+
+  .detail :global([data-variant-record]) :global([data-product-action]) {
+    grid-column: 2;
+  }
+
+  .detail :global([data-variant-record]) button {
+    width: 100% !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .detail *,
+  .detail *::before,
+  .detail *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
