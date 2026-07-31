@@ -29,7 +29,7 @@ export function CatalogueResultsToolbar({
   const divisionLabel = division === "dental" ? "Dental & Orthodontic" : "Surgical";
 
   return (
-    <div className={styles.resultsHeader}>
+    <div className={styles.resultsHeader} data-catalogue-results-header>
       <div className={styles.resultToolbar}>
         <div aria-live="polite">
           <strong>{resultCount}</strong>
@@ -50,7 +50,11 @@ export function CatalogueResultsToolbar({
       </div>
 
       {hasContext ? (
-        <div className={styles.activeContext} aria-label="Active catalogue filters">
+        <div
+          className={styles.activeContext}
+          aria-label="Active catalogue filters"
+          data-catalogue-active-filters
+        >
           {query ? (
             <button type="button" onClick={onClearQuery}>
               Search: {query} <span aria-hidden="true">×</span>
