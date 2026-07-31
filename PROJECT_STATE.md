@@ -4,7 +4,7 @@ This file is the single decision source of truth for the current rebuild. Earlie
 
 ## Current phase
 
-**Milestone 5: Durable Inquiry Backend implementation present; real Cloudflare resource configuration and runtime verification pending.**
+**Milestone 6: Premium Visual Convergence implementation present; runtime and manual visual verification pending.**
 
 Work remains isolated on `design/surgical-precision-archive`, based on `rebuild/surgical-contrast`. Public routes remain unchanged and `/rebuild` remains non-indexed.
 
@@ -15,12 +15,13 @@ Implemented milestones:
 3. Precision Catalogue Ledger
 4. Instrument Examination & Inquiry Desk
 5. Durable Inquiry Backend
+6. Premium Visual Convergence
 
 No pull request, merge, deployment, public cutover, or GitHub Actions run is authorized.
 
 ## Primary implementation preference
 
-Layout, imagery, visual hierarchy, spacing, responsive composition, and overall design quality are the primary decision criteria.
+Layout, imagery, visual hierarchy, typography, spacing, responsive composition, and overall design quality are the primary decision criteria.
 
 Critical blockers:
 
@@ -53,16 +54,22 @@ THROHI Medical Tools needs a professional corporate and catalogue website that:
 
 ## Approved design system
 
-**Surgical Contrast / Surgical Precision Archive**
+**Regal Technical Corporate / Surgical Precision Archive**
 
-- Dark identity moments use near-black navy, steel, restrained blue, and restrained green.
-- Catalogue and form surfaces use paper/steel backgrounds for reading and comparison.
+- Cormorant Garamond is the display face for primary titles and major editorial headings.
+- Instrument Sans is the body and interface face.
+- IBM Plex Mono is reserved for catalogue codes, status, and concise technical metadata.
+- Major headings are regal and editorial; dense controls and body copy remain clean sans-serif.
+- Important body, navigation, form, and action text must remain comfortably readable.
+- Dark identity moments use ink/navy, restrained surgical green, steel, and sparing muted brass.
+- Catalogue and form surfaces use warm paper/ivory backgrounds for reading and comparison.
 - Real instrument imagery is the primary visual material.
-- Instrument Sans is the display face, Archivo is the interface face, and IBM Plex Mono is used for codes and technical counters.
-- Borders, whitespace, and precise alignment define grouping.
-- Generic SaaS cards, excessive pills, decorative glass, cyberpunk styling, gaming presentation, and design-agency spectacle are rejected.
+- Borders, whitespace, precise alignment, and restrained depth define grouping.
+- Generic SaaS cards, excessive pills, decorative glass, cyberpunk styling, gaming presentation, fake luxury, and design-agency spectacle are rejected.
 - Major signature motion is reserved for the cinematic cover and full evolution sequence.
 - Repeated buyer tasks use only restrained state, line, image, and navigation motion.
+
+Core premium tokens include ink `#06131d`, navy `#0a2233`, warm ivory `#f7f3ea`, paper `#fbfaf6`, surgical green `#236b4b`, muted brass `#ad8950`, and light brass `#d8bd84`.
 
 ## Information architecture
 
@@ -136,7 +143,7 @@ Preserved URL parameters: `q`, `division`, `family`, `sort`, `page`.
 
 ### Product detail
 
-- compact catalogue return rail preserving the full `from` URL;
+- catalogue return rail preserving the full `from` URL;
 - large real-media examination stage;
 - dark product identity and procurement rail;
 - catalogue code, division, family, source, variant-count, and technical-status ledger;
@@ -144,21 +151,20 @@ Preserved URL parameters: `q`, `division`, `family`, `sort`, `page`.
 - independent base-product and variant inquiry identities;
 - structured variant-code ledger;
 - same-family related instruments preserving return context;
-- 1100, 980, 700, and 420 responsive layouts;
-- reduced-motion-safe media and interaction states.
+- responsive and reduced-motion-safe states.
 
 ### Inquiry List
 
 - dark procurement masthead with four-stage ledger;
 - explicit non-order/non-payment boundary;
-- focused `InquiryItemRecord` product rows;
+- focused product rows;
 - quantity, item note, remove, and undo behavior;
 - unlisted instrument panel;
-- requirements and real attachment selection up to 8 MiB;
-- disciplined buyer-details grid;
-- optional Turnstile field activated only when a public site key exists;
-- sticky desktop `InquiryReviewDesk` and non-sticky mobile review;
-- preserved local browser state, migration, validation, one-time submission token, `/api/inquiries`, and success routing.
+- requirements and attachment selection up to 8 MiB;
+- buyer-details grid;
+- optional Turnstile field when configured;
+- sticky desktop review desk and mobile review;
+- preserved browser state, migration, validation, one-time submission token, `/api/inquiries`, and success routing.
 
 Milestone 4 verification history:
 
@@ -167,7 +173,7 @@ Milestone 4 verification history:
 - all 84 unit tests passed;
 - production build passed;
 - browser verification was reduced to one remaining failure before the final serial Axe test was split into isolated route checks;
-- no additional rerun is required before continuing implementation, per user instruction;
+- no additional rerun was required before continuing implementation, per user instruction;
 - Milestone 4 is not represented as freshly runtime-green after that final test-only correction.
 
 ## Implemented Milestone 5 — Durable Inquiry Backend
@@ -190,19 +196,39 @@ Milestone 4 verification history:
 - unique `submission_token` and `reference` constraints;
 - private R2 attachment storage with reference-scoped object keys;
 - attachment rollback when D1 persistence fails;
-- optional mandatory Turnstile Siteverify validation when the secret is configured;
-- five-new-submissions-per-ten-minute privacy-preserving rate limit;
-- optional signed delivery webhook using HMAC-SHA256 and inquiry-reference idempotency;
-- pending/delivered/retry delivery state stored durably;
-- health endpoint reports configuration state without exposing secret values.
+- optional mandatory Turnstile validation when configured;
+- privacy-preserving submission rate limit;
+- optional signed delivery webhook;
+- pending/delivered/retry delivery state;
+- health endpoint without secret exposure.
 
 ### Operations
 
-- example website and Worker environment files contain no real values;
-- example Wrangler config contains placeholder resource IDs only;
+- example environment and Wrangler files contain no real values;
 - local Worker configuration and secrets are ignored by Git;
-- exact D1/R2 creation, migration, secrets, deployment, health, privacy, and failure procedures are documented in `docs/backend/INQUIRY_BACKEND.md`;
+- setup and failure procedures are documented in `docs/backend/INQUIRY_BACKEND.md`;
 - source contract command: `npm run backend:check`.
+
+## Implemented Milestone 6 — Premium Visual Convergence
+
+- Cormorant Garamond added through `next/font/google` as `--font-regal`;
+- premium ivory, brass, navy, typography, spacing, line, and shadow tokens added to the shared rebuild shell;
+- stable original rebuild milestone contract preserved;
+- new `data-premium-contract="premium-visual-convergence-v1"` marker added;
+- route-wide scoped convergence layer applied through `RebuildShell`;
+- homepage, catalogue, product examination, Inquiry List, and corporate heroes use one regal display hierarchy;
+- important body, navigation, form, and action text receives explicit readable minimum sizing;
+- catalogue search, product records, variant/related sections, inquiry review, and corporate routes receive coordinated premium surfaces and editorial rules;
+- desktop header increased to 80 px and mobile header to 66 px;
+- header search/products panels changed to warm editorial surfaces with readable family titles;
+- mobile navigation uses a full-height ink/navy editorial composition;
+- Inquiry List remains the principal persistent utility;
+- footer upgraded with a regal manufacturer statement, brass route hierarchy, and verified origin;
+- responsive and reduced-motion safeguards preserved;
+- source and browser contracts added;
+- isolated Milestone 6 verification gate added on port `3104`.
+
+Milestone 6 is implementation-present only. Runtime and manual screenshot review remain pending.
 
 ## Catalogue truth boundary
 
@@ -223,18 +249,7 @@ Surgical and Dental/Orthodontic have the strongest structured data. Beauty and V
 
 The Inquiry List is not a shopping cart and has no checkout, pricing, or payment.
 
-Visitors may:
-
-- add product families or selected variants;
-- set quantities;
-- add item notes and general requirements;
-- add an unlisted reference;
-- attach PDF/JPG/PNG/WebP files up to 8 MiB;
-- provide buyer and preferred-contact details;
-- complete optional anti-spam verification when configured;
-- submit one structured inquiry.
-
-No account is required.
+Visitors may add products or variants, set quantities, add notes and requirements, add an unlisted reference, attach supported files up to 8 MiB, provide buyer details, complete anti-spam verification when configured, and submit one structured inquiry. No account is required.
 
 ## Verified facts
 
@@ -259,9 +274,15 @@ Pending and therefore absent:
 - approved inquiry recipient/delivery endpoint;
 - approved retention and deletion periods.
 
-## Current backend gate
+## Current gates
 
-Source contract:
+Premium visual convergence:
+
+```bash
+bash scripts/verify-design-milestone-6.sh
+```
+
+Backend source contract:
 
 ```bash
 npm run backend:check
@@ -269,14 +290,12 @@ npm run backend:check
 
 Real Cloudflare runtime verification remains pending until D1, R2, Worker secrets, website environment variables, and optional delivery/Turnstile settings are configured.
 
-The operational verification matrix is defined in `docs/backend/INQUIRY_BACKEND.md` and includes storage, attachments, duplicate retries, invalid files, rate limits, Turnstile, delivery state, and test-data cleanup.
-
 ## Next phases
 
-1. Configure and verify real Cloudflare D1/R2/Worker resources and approved inquiry delivery.
-2. Client catalogue validation and real downloadable documents.
-3. Whole-site visual convergence, legal/error routes, and final logo/contact content.
-4. Accessibility, performance, security, metadata, retention, and Cloudflare production audit.
+1. Manual premium visual review and targeted refinement at 1440, 1280, 768, 390, and 320 px.
+2. Configure and verify real Cloudflare D1/R2/Worker resources and approved inquiry delivery.
+3. Client catalogue validation, real catalogue documents, final logo, and verified contact/content completion.
+4. Legal/error route convergence and full accessibility, performance, security, metadata, and retention audit.
 5. Explicit public cutover approval.
 
 The current public implementation remains available until the rebuild passes review and receives explicit cutover approval.
