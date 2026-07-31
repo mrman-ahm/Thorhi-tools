@@ -160,7 +160,7 @@ export function RebuildHeader() {
   const inquiryLabel = `${count} ${count === 1 ? "instrument" : "instruments"} in Inquiry List`;
 
   return (
-    <header className={styles.header}>
+    <header className={styles.header} data-redesign-header>
       <a className={styles.skipLink} href="#main">
         Skip to content
       </a>
@@ -173,11 +173,15 @@ export function RebuildHeader() {
         >
           <Image
             src="/brand/throhi-logo-temporary.webp"
-            alt="THROHI Medical Tools"
+            alt=""
             width={1086}
             height={816}
             priority
           />
+          <span className={styles.brandText} aria-hidden="true">
+            <strong>THROHI</strong>
+            <small>Medical Tools · Sialkot</small>
+          </span>
         </Link>
 
         <nav className={styles.desktopNav} aria-label="Primary navigation">
@@ -256,17 +260,21 @@ export function RebuildHeader() {
         inert={!searchOpen}
       >
         <form role="search" aria-label="Header catalogue search" onSubmit={submitSearch}>
-          <label htmlFor="rebuild-desktop-search">Search by name or code</label>
-          <div>
+          <div className={styles.panelIndex} aria-hidden="true">
+            <span>01</span>
+            <span>Catalogue search</span>
+          </div>
+          <label htmlFor="rebuild-desktop-search">Search by instrument name or catalogue code</label>
+          <div className={styles.searchField}>
             <input
               ref={searchInputRef}
               id="rebuild-desktop-search"
               type="search"
               value={query}
               onChange={(event) => setQuery(event.target.value)}
-              placeholder="Product name or code"
+              placeholder="Operating scissors or 04-0101"
             />
-            <button type="submit">Search</button>
+            <button type="submit">Search catalogue</button>
           </div>
         </form>
       </div>
@@ -280,7 +288,10 @@ export function RebuildHeader() {
         inert={!productsOpen}
       >
         <div className={styles.productsPanelInner}>
-          <p>Instrument divisions</p>
+          <div className={styles.panelIndex} aria-hidden="true">
+            <span>02</span>
+            <span>Instrument divisions</span>
+          </div>
           <nav aria-label="Product divisions">
             {rebuildDivisionNavigation.map((division) =>
               division.catalogueState === "structured" && division.href ? (
@@ -325,20 +336,24 @@ export function RebuildHeader() {
         aria-label="Site navigation"
       >
         <div className={styles.mobilePanelInner}>
+          <header className={styles.mobileIndex}>
+            <p>THROHI Medical Tools</p>
+            <span>Sialkot · Instrument archive</span>
+          </header>
           <form
             className={styles.mobileSearchForm}
             role="search"
             aria-label="Mobile catalogue search"
             onSubmit={submitSearch}
           >
-            <label htmlFor="rebuild-mobile-search">Search by name or code</label>
+            <label htmlFor="rebuild-mobile-search">Search catalogue</label>
             <div>
               <input
                 id="rebuild-mobile-search"
                 type="search"
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
-                placeholder="Product name or code"
+                placeholder="Name or code"
               />
               <button type="submit">Search</button>
             </div>
