@@ -24,7 +24,7 @@ export function CatalogueFilterControls({
   onFamily,
 }: CatalogueFilterControlsProps) {
   return (
-    <div className={styles.filterControls}>
+    <div className={styles.filterControls} data-catalogue-filter-controls>
       <fieldset>
         <legend>Division</legend>
         {[
