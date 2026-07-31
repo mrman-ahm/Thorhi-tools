@@ -19,12 +19,12 @@ export function InquiryReviewDesk({
 }: InquiryReviewDeskProps) {
   return (
     <aside className={styles.reviewDesk} data-inquiry-review>
-      <div className={styles.reviewHeading}>
+      <div className={styles.reviewHeading} data-inquiry-review-heading>
         <p>04 · Final review</p>
         <h2>Inquiry summary</h2>
       </div>
 
-      <dl>
+      <dl data-inquiry-review-ledger>
         <div>
           <dt>Product lines</dt>
           <dd>{lineCount.toString().padStart(2, "0")}</dd>
@@ -47,7 +47,7 @@ export function InquiryReviewDesk({
         <p className={styles.reviewAttachment}>{attachmentName}</p>
       ) : null}
 
-      <p className={styles.reviewBoundary}>
+      <p className={styles.reviewBoundary} data-inquiry-review-boundary>
         This is a product inquiry, not an online order or payment.
       </p>
 
