@@ -12,7 +12,7 @@ export function RebuildTruthBoundary({
   paragraphs,
 }: RebuildTruthBoundaryProps) {
   return (
-    <section className={styles.truth} aria-label={label}>
+    <section className={styles.truth} aria-label={label} data-corporate-truth>
       <div className={styles.truthLabel}>
         <span>{label}</span>
         <h2>{title}</h2>
