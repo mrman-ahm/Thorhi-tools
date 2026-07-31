@@ -26,8 +26,12 @@ export function RebuildContactRoutes({ contact }: { contact: VerifiedContactConf
   }
 
   return (
-    <section className={styles.contactRoutes} aria-label="Contact and inquiry routes">
-      <div className={styles.contactPrimary}>
+    <section
+      className={styles.contactRoutes}
+      aria-label="Contact and inquiry routes"
+      data-corporate-contact
+    >
+      <div className={styles.contactPrimary} data-corporate-contact-primary>
         <p className={styles.contactLabel}>Recommended product-request route</p>
         <h2>Send one organized instrument request.</h2>
         <p>
@@ -39,7 +43,11 @@ export function RebuildContactRoutes({ contact }: { contact: VerifiedContactConf
           <Link href="/rebuild/inquiry?manual=1">Add an unlisted instrument</Link>
         </div>
       </div>
-      <aside className={styles.contactDirect} aria-label="Verified direct contact">
+      <aside
+        className={styles.contactDirect}
+        aria-label="Verified direct contact"
+        data-corporate-contact-direct
+      >
         <p className={styles.contactLabel}>Verified public details</p>
         <dl>
           <div>
