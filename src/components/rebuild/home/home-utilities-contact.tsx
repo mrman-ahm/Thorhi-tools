@@ -34,19 +34,26 @@ export function HomeUtilitiesContact() {
       className={utilityStyles.band}
       aria-label="Catalogue and inquiry options"
       data-home-utilities
+      data-redesign-dark
     >
-      <div className={styles.utilities}>
+      <div className={styles.utilities} data-redesign-section>
         <header className={styles.utilitiesHeading}>
-          <h2 id="home-utilities-title">Continue with a precise request.</h2>
+          <div>
+            <p>06 / Next action</p>
+            <h2 id="home-utilities-title">Continue with a precise request.</h2>
+          </div>
           <p>
             Use the catalogue when the instrument is known, or describe the
             requirement directly in the Inquiry List.
           </p>
         </header>
 
-        <div className={styles.utilityRows}>
-          {options.map((option) => (
+        <div className={styles.utilityRows} data-redesign-ledger>
+          {options.map((option, index) => (
             <Link href={option.href} key={option.href}>
+              <span className={styles.utilityNumber}>
+                {String(index + 1).padStart(2, "0")}
+              </span>
               <span>
                 <strong>{option.title}</strong>
                 <small>{option.description}</small>
@@ -58,7 +65,7 @@ export function HomeUtilitiesContact() {
 
         <div className={styles.contactLine}>
           <div>
-            <span>Location</span>
+            <span>Verified location</span>
             <strong>{verifiedContact.location}</strong>
           </div>
           <div className={styles.contactActions}>
