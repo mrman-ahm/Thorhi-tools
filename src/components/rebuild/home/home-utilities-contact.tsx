@@ -33,6 +33,7 @@ export function HomeUtilitiesContact() {
       id="contact"
       className={utilityStyles.band}
       aria-label="Catalogue and inquiry options"
+      data-home-utilities
     >
       <div className={styles.utilities}>
         <header className={styles.utilitiesHeading}>
