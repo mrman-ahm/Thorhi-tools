@@ -1,5 +1,11 @@
 import { expect, test, type Page } from "@playwright/test";
 
+async function waitForFonts(page: Page) {
+  await page.evaluate(async () => {
+    await document.fonts.ready;
+  });
+}
+
 async function enterHomepage(page: Page) {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/rebuild");
@@ -12,7 +18,7 @@ async function expectRegalHeading(page: Page, route: string) {
   await page.goto(route);
   const heading = page.locator("h1").first();
   await expect(heading).toBeVisible();
-  await page.evaluate(() => document.fonts.ready);
+  await waitForFonts(page);
   const family = await heading.evaluate((element) => getComputedStyle(element).fontFamily);
   expect(family.toLowerCase()).toContain("cormorant");
 }
@@ -22,7 +28,9 @@ test("rebuild exposes the premium convergence contract", async ({ page }) => {
   await expect(
     page.locator('[data-premium-contract="premium-visual-convergence-v1"]'),
   ).toHaveCount(1);
-  await expect(page.locator('[data-milestone-contract="surgical-precision-archive-v1"]')).toHaveCount(1);
+  await expect(
+    page.locator('[data-milestone-contract="surgical-precision-archive-v1"]'),
+  ).toHaveCount(1);
 });
 
 test("representative rebuild routes render the regal display hierarchy", async ({ page }) => {
@@ -37,7 +45,7 @@ test("representative rebuild routes render the regal display hierarchy", async (
     if (route === "/rebuild") {
       await enterHomepage(page);
       const heading = page.locator("h1").first();
-      await page.evaluate(() => document.fonts.ready);
+      await waitForFonts(page);
       const family = await heading.evaluate((element) => getComputedStyle(element).fontFamily);
       expect(family.toLowerCase(), route).toContain("cormorant");
     } else {
@@ -53,7 +61,9 @@ test("important navigation and form labels remain readable", async ({ page }) =>
     const company = page
       .getByRole("navigation", { name: "Primary navigation" })
       .getByRole("link", { name: "Company", exact: true });
-    const size = await company.evaluate((element) => Number.parseFloat(getComputedStyle(element).fontSize));
+    const size = await company.evaluate((element) =>
+      Number.parseFloat(getComputedStyle(element).fontSize),
+    );
     expect(size).toBeGreaterThanOrEqual(14);
   } else {
     await page.getByRole("button", { name: "Menu" }).click();
