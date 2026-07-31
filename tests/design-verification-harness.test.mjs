@@ -82,9 +82,11 @@ test("premium convergence verification runs the complete rebuild visual gate", a
   assert.match(script, /rebuild-premium-convergence\.spec\.ts/);
   assert.match(script, /rebuild-premium-utility-states\.spec\.ts/);
   assert.match(script, /rebuild-production-readiness\.spec\.ts/);
+  assert.match(script, /rebuild-rendered-visual-qa\.spec\.ts/);
   assert.match(script, /--project=desktop-chromium/);
   assert.match(script, /--project=mobile-chromium/);
   assert.match(shell, /data-premium-contract="premium-visual-convergence-v1"/);
+  assert.match(shell, /data-visual-qa-contract="rendered-visual-qa-v1"/);
 });
 
 test("eslint excludes generated browser-test artifacts", async () => {
