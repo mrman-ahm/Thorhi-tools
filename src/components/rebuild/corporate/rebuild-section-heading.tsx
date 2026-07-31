@@ -12,7 +12,7 @@ export function RebuildSectionHeading({
   description,
 }: RebuildSectionHeadingProps) {
   return (
-    <header className={styles.sectionHeading}>
+    <header className={styles.sectionHeading} data-corporate-section-heading>
       <div className={styles.sectionInner}>
         <div>
           <p className={styles.sectionEyebrow}>{eyebrow}</p>
