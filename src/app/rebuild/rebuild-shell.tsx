@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { RebuildFooter } from "@/components/rebuild/rebuild-footer";
 import { RebuildHeader } from "@/components/rebuild/rebuild-header";
 import criticalStyles from "./critical-accessibility.module.css";
+import heritageStyles from "./precision-heritage.module.css";
 import premiumStyles from "./premium-convergence.module.css";
 import legacyStyles from "./rebuild.module.css";
 import shellStyles from "./surgical-precision-shell.module.css";
@@ -10,11 +11,12 @@ import qaStyles from "./visual-qa-refinements.module.css";
 export function RebuildShell({ children }: { children: ReactNode }) {
   return (
     <div
-      className={`${legacyStyles.root} ${shellStyles.root} ${criticalStyles.root} ${premiumStyles.root} ${qaStyles.root}`}
+      className={`${legacyStyles.root} ${shellStyles.root} ${criticalStyles.root} ${premiumStyles.root} ${qaStyles.root} ${heritageStyles.root}`}
       data-rebuild-shell
       data-milestone-contract="surgical-precision-archive-v1"
       data-premium-contract="premium-visual-convergence-v1"
       data-visual-qa-contract="rendered-visual-qa-v1"
+      data-redesign-contract="precision-heritage-house-v1"
     >
       <RebuildHeader />
       {children}
