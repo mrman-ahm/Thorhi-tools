@@ -23,11 +23,15 @@ export default function ProductsPage() {
       id="main"
       className={styles.cataloguePage}
       data-catalogue-workspace
+      data-redesign-catalogue
     >
       <section className={styles.catalogueMasthead} data-catalogue-masthead>
         <div className={styles.mastheadInner}>
           <div className={styles.mastheadCopy}>
-            <p>THROHI / Structured instrument archive</p>
+            <div className={styles.mastheadIndex}>
+              <span>THR / 02</span>
+              <span>Structured instrument archive</span>
+            </div>
             <h1>Product catalogue</h1>
             <p>
               Search validated Surgical and Dental &amp; Orthodontic instrument
@@ -36,7 +40,7 @@ export default function ProductsPage() {
           </div>
 
           <div className={styles.mastheadSpecimen}>
-            <span>Reference specimen / 04-0101</span>
+            <span>Reference specimen</span>
             {catalogueInstrument ? (
               <CatalogueMedia
                 product={catalogueInstrument}
@@ -44,7 +48,10 @@ export default function ProductsPage() {
                 priority
               />
             ) : null}
-            <small>Operating Scissors</small>
+            <div>
+              <code>04-0101</code>
+              <small>Operating Scissors</small>
+            </div>
           </div>
         </div>
 
@@ -77,7 +84,7 @@ export default function ProductsPage() {
 
 function CatalogueLoading() {
   return (
-    <section className={styles.loading} aria-label="Loading catalogue">
+    <section className={styles.loading} aria-label="Loading catalogue" role="status">
       <div />
       <div />
       <div />
