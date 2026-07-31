@@ -20,15 +20,15 @@ export function RebuildPageHero({
 }: RebuildPageHeroProps) {
   return (
     <header className={styles.hero} data-corporate-hero data-tone={tone}>
-      <div className={styles.heroInner}>
-        <div>
+      <div className={styles.heroInner} data-corporate-hero-inner>
+        <div data-corporate-hero-title>
           <p className={styles.heroEyebrow}>{eyebrow}</p>
           <h1>{title}</h1>
         </div>
-        <div className={styles.heroCopy}>
+        <div className={styles.heroCopy} data-corporate-hero-copy>
           <p>{summary}</p>
           {meta.length ? (
-            <ul className={styles.meta} aria-label="Page facts">
+            <ul className={styles.meta} aria-label="Page facts" data-corporate-meta>
               {meta.map((item) => <li key={item}>{item}</li>)}
             </ul>
           ) : null}
