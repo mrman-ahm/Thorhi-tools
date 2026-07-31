@@ -21,13 +21,15 @@ export function InquiryItemRecord({
 
   return (
     <article className={styles.itemRecord} data-inquiry-item>
-      <span className={styles.itemIndex}>{String(index + 1).padStart(2, "0")}</span>
-      <div className={styles.itemIdentity}>
+      <span className={styles.itemIndex} data-inquiry-item-index>
+        {String(index + 1).padStart(2, "0")}
+      </span>
+      <div className={styles.itemIdentity} data-inquiry-item-identity>
         <small>{item.manual ? "Unlisted reference" : "Catalogue instrument"}</small>
         <h3>{item.name}</h3>
         <code>{code}</code>
       </div>
-      <label className={styles.quantityField}>
+      <label className={styles.quantityField} data-inquiry-item-field>
         <span>Quantity</span>
         <input
           type="number"
@@ -39,7 +41,7 @@ export function InquiryItemRecord({
           }
         />
       </label>
-      <label className={styles.noteField}>
+      <label className={styles.noteField} data-inquiry-item-field>
         <span>Item note</span>
         <input
           value={item.note}
@@ -52,6 +54,7 @@ export function InquiryItemRecord({
         className={styles.removeItem}
         type="button"
         onClick={() => onRemove(item.key)}
+        data-inquiry-remove
       >
         Remove
       </button>
