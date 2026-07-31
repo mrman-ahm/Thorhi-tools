@@ -65,3 +65,45 @@
   color: var(--throhi-ink-950);
   background: var(--throhi-brass-300);
 }
+
+@media (prefers-contrast: more) {
+  .root {
+    --throhi-muted: #394d56;
+    --throhi-line: rgba(6, 19, 29, 0.36);
+    --throhi-line-strong: rgba(6, 19, 29, 0.58);
+    --throhi-line-light: rgba(255, 255, 255, 0.42);
+  }
+
+  .root :focus-visible {
+    outline-width: 3px;
+  }
+}
+
+@media (forced-colors: active) {
+  .root {
+    color: CanvasText;
+    background: Canvas;
+    forced-color-adjust: auto;
+  }
+
+  .root a {
+    color: LinkText;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .root :is(button, input, select, textarea) {
+    color: CanvasText;
+    background: Canvas;
+    border: 1px solid CanvasText;
+  }
+
+  .root :focus-visible {
+    outline: 3px solid Highlight;
+  }
+
+  .root ::selection {
+    color: HighlightText;
+    background: Highlight;
+  }
+}
