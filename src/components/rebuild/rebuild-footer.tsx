@@ -32,11 +32,16 @@ export function RebuildFooter() {
             <Link href="/rebuild/catalogues">Catalogues</Link>
             <Link href="/rebuild/contact">Contact</Link>
           </div>
+          <div>
+            <p>Review</p>
+            <Link href="/rebuild/privacy">Privacy notice</Link>
+            <Link href="/rebuild/terms">Terms of use</Link>
+          </div>
         </nav>
       </div>
       <div className={styles.status}>
         <p>Development preview. Search indexing is disabled.</p>
-        <p>Catalogue details remain under client review.</p>
+        <p>Catalogue and legal details remain under review.</p>
       </div>
     </footer>
   );
