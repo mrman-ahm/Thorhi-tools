@@ -18,6 +18,7 @@ run npm run lint
 run npm run typecheck
 run npm run test
 run npm run build
+run npm run readiness:check
 run env PLAYWRIGHT_PORT=3104 PLAYWRIGHT_REUSE_SERVER=0 npm run test:e2e -- \
   tests/e2e/rebuild-home-design.spec.ts \
   tests/e2e/rebuild-company-trust.spec.ts \
@@ -30,4 +31,4 @@ run env PLAYWRIGHT_PORT=3104 PLAYWRIGHT_REUSE_SERVER=0 npm run test:e2e -- \
 
 printf '\nAll automated Milestone 6 commands completed.\n'
 printf 'Manual premium visual review remains required at 1440x1000, 1280x800, 768x1024, 390x844, and 320x700.\n'
-printf 'Inspect typography loading, hierarchy, header panels, mobile navigation, footer, legal reading pages, terminal states, forms, product records, and reduced motion.\n'
+printf 'Inspect typography, hierarchy, header panels, mobile navigation, footer, legal pages, terminal states, forms, product records, response headers, crawler boundaries, and reduced motion.\n'
