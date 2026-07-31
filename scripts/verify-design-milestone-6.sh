@@ -24,9 +24,10 @@ run env PLAYWRIGHT_PORT=3104 PLAYWRIGHT_REUSE_SERVER=0 npm run test:e2e -- \
   tests/e2e/rebuild-catalogue-design.spec.ts \
   tests/e2e/rebuild-product-inquiry-design.spec.ts \
   tests/e2e/rebuild-premium-convergence.spec.ts \
+  tests/e2e/rebuild-premium-utility-states.spec.ts \
   --project=desktop-chromium \
   --project=mobile-chromium
 
 printf '\nAll automated Milestone 6 commands completed.\n'
 printf 'Manual premium visual review remains required at 1440x1000, 1280x800, 768x1024, 390x844, and 320x700.\n'
-printf 'Inspect typography loading, hierarchy, header panels, mobile navigation, footer, forms, product records, and reduced motion.\n'
+printf 'Inspect typography loading, hierarchy, header panels, mobile navigation, footer, legal reading pages, terminal states, forms, product records, and reduced motion.\n'
