@@ -20,17 +20,23 @@ export function HomeDivisionIndex({
       className={styles.divisions}
       aria-labelledby="home-divisions-title"
       data-home-divisions
+      data-redesign-section
     >
       <header className={styles.sectionHeading}>
-        <h2 id="home-divisions-title">Instrument divisions</h2>
+        <div>
+          <p>02 / Product ranges</p>
+          <h2 id="home-divisions-title">Instrument divisions</h2>
+        </div>
         <p>
           Enter a validated catalogue where records are available, or send a
           reference for ranges still under catalogue review.
         </p>
       </header>
 
-      <div className={styles.divisionList}>
-        {homeDivisionPresentation.map((division) => {
+      <div className={styles.divisionList} data-redesign-ledger>
+        {homeDivisionPresentation.map((division, index) => {
+          const sequence = String(index + 1).padStart(2, "0");
+
           if (
             division.state === "structured" &&
             division.href &&
@@ -43,6 +49,7 @@ export function HomeDivisionIndex({
                 href={division.href}
                 key={division.slug}
               >
+                <span className={styles.divisionNumber}>{sequence}</span>
                 <span className={styles.divisionMedia}>
                   <CatalogueMedia product={product} />
                 </span>
@@ -60,6 +67,7 @@ export function HomeDivisionIndex({
 
           return (
             <article className={styles.pendingDivision} key={division.slug}>
+              <span className={styles.divisionNumber}>{sequence}</span>
               <span className={styles.pendingMark} aria-hidden="true" />
               <span className={styles.divisionCopy}>
                 <strong>{division.label}</strong>
