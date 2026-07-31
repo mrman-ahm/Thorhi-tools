@@ -6,6 +6,7 @@ import {
   rebuildCatalogue,
 } from "@/lib/rebuild-catalogue";
 import { CatalogueClient } from "./catalogue-client";
+import heritageStyles from "./catalogue-heritage.module.css";
 import styles from "./catalogue.module.css";
 
 export const metadata: Metadata = {
@@ -21,13 +22,13 @@ export default function ProductsPage() {
   return (
     <main
       id="main"
-      className={styles.cataloguePage}
+      className={`${styles.cataloguePage} ${heritageStyles.catalogue}`}
       data-catalogue-workspace
       data-redesign-catalogue
     >
       <section className={styles.catalogueMasthead} data-catalogue-masthead>
-        <div className={styles.mastheadInner}>
-          <div className={styles.mastheadCopy}>
+        <div className={styles.mastheadInner} data-catalogue-masthead-inner>
+          <div className={styles.mastheadCopy} data-catalogue-masthead-copy>
             <div className={styles.mastheadIndex}>
               <span>THR / 02</span>
               <span>Structured instrument archive</span>
@@ -39,7 +40,7 @@ export default function ProductsPage() {
             </p>
           </div>
 
-          <div className={styles.mastheadSpecimen}>
+          <div className={styles.mastheadSpecimen} data-catalogue-specimen>
             <span>Reference specimen</span>
             {catalogueInstrument ? (
               <CatalogueMedia
@@ -55,7 +56,7 @@ export default function ProductsPage() {
           </div>
         </div>
 
-        <dl className={styles.mastheadLedger}>
+        <dl className={styles.mastheadLedger} data-catalogue-summary>
           <div>
             <dt>Indexed products</dt>
             <dd>{rebuildCatalogue.counts.products}</dd>
@@ -84,7 +85,12 @@ export default function ProductsPage() {
 
 function CatalogueLoading() {
   return (
-    <section className={styles.loading} aria-label="Loading catalogue" role="status">
+    <section
+      className={styles.loading}
+      aria-label="Loading catalogue"
+      role="status"
+      data-catalogue-loading
+    >
       <div />
       <div />
       <div />
