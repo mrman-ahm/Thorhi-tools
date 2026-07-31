@@ -4,154 +4,216 @@ This file is the single source of truth for the rebuild.
 
 ## Current phase
 
-**Milestone 8: Rendered Visual QA Refinement source implementation present. A live rebuild preview, full runtime gate, and manual screenshot review remain pending.**
-
-Work remains isolated on `design/surgical-precision-archive`.
+**Full-site Precision Heritage House redesign source implementation is present on `design/surgical-precision-archive`. Fresh runtime verification and real screenshot review remain pending.**
 
 - `/rebuild` remains non-indexed.
 - Public routes remain unchanged.
 - No pull request, merge, deployment, redirect switch, indexing activation, public cutover, or GitHub Actions run is authorized.
 
-## Implemented milestones
+## Current design direction
 
-1. Surgical Precision Archive homepage and shared shell
-2. Company & Trust Spine
-3. Precision Catalogue Ledger
-4. Instrument Examination & Inquiry Desk
-5. Durable Inquiry Backend
-6. Premium Visual Convergence and Utility States
-7. Production Readiness Convergence
-8. Rendered Visual QA Refinement source implementation
+**Precision Heritage House**
 
-## Quality rules
+A restrained instrument-manufacturer system using:
 
-- Premium, regal, trustworthy, medically appropriate presentation.
-- Important information remains readable.
-- Real instrument imagery is the primary visual material.
-- No filler, generic SaaS presentation, fake luxury, ecommerce framing, or invented claims.
-- Build/type failures, broken core interactions, accessibility violations, overflow, silent data loss, security-boundary failures, and deployment-limit violations block cutover.
+- Cormorant Garamond for major editorial hierarchy;
+- Instrument Sans for navigation, body, forms, and controls;
+- IBM Plex Mono for codes, counts, status, and concise metadata;
+- surgical ink and navy;
+- archival ivory and paper;
+- surgical green for verified actions;
+- muted brass for indexing and rules;
+- real catalogue and supplied media as the primary visual material.
 
-## Product experience
+Rejected patterns:
 
-- Skippable supplied MP4 cinematic cover and 260-frame evolution media.
-- Company-led homepage with Sialkot origin and catalogue search.
-- Company, Scissors Through Time, Catalogues, Contact, Privacy, and Terms routes.
-- URL-backed catalogue search, filtering, sorting, pagination, real imagery, codes, taxonomy, variants, and Inquiry state.
-- Product examination with return context, base/variant identities, variant ledger, and related-family discovery.
-- Non-commerce Inquiry List with quantities, notes, attachments, buyer details, optional Turnstile, review, and confirmation.
-- Premium header, panels, mobile navigation, footer, legal pages, loading, error, success, and rebuild-specific not-found states.
+- generic SaaS cards and dashboards;
+- fake black-and-gold luxury;
+- cyberpunk, gaming, glassmorphism, or design-agency spectacle;
+- filler slogans and decorative sections;
+- tiny important text;
+- ecommerce, cart, checkout, price, or payment framing;
+- invented company or technical claims.
 
-## Durable inquiry backend
+## Active redesign contract
 
-- Same-origin multipart proxy with server validation and real attachment bytes.
-- Production fails closed when durable settings are absent.
-- D1 stores inquiry, item, delivery, and rate-limit records.
-- R2 stores private attachments.
-- Optional Turnstile and signed delivery webhook.
-- Memory storage is development-only.
+```text
+precision-heritage-house-v1
+```
 
-Operations: `docs/backend/INQUIRY_BACKEND.md`
+Global foundation:
+
+- `src/app/rebuild/precision-heritage.module.css`
+- `src/app/rebuild/corporate-heritage.module.css`
+- `data-redesign-contract="precision-heritage-house-v1"`
+- 78px desktop header
+- 66px mobile header
+- fluid 90rem maximum content grid
+- readable label/body scales
+- forced-colors, increased-contrast, and reduced-motion support
+
+The superseded global files were removed:
+
+- `premium-convergence.module.css`
+- `visual-qa-refinements.module.css`
+
+## Redesigned shared shell
+
+### Header
+
+- archival ivory desktop shell;
+- transparent cinematic state over the supplied intro;
+- balanced brand, navigation, and utility layout;
+- editorial catalogue search overlay;
+- editorial product-division overlay;
+- full-screen mobile route index;
+- preserved focus trap, Escape handling, body lock, outside-click handling, search routing, and live Inquiry List count.
+
+### Footer
+
+- dark manufacturer dossier;
+- company identity and verified Sialkot origin;
+- product, company, and legal route groups;
+- explicit preview/indexing status;
+- responsive tablet and mobile layouts.
+
+## Redesigned homepage
+
+The route sequence remains:
+
+1. supplied cinematic entry;
+2. company-led instrument hero;
+3. four division dossiers;
+4. selected instrument showcase;
+5. verified company introduction;
+6. supplied scissors-evolution bridge;
+7. catalogue/inquiry decision path.
+
+Key characteristics:
+
+- large real instrument specimen;
+- factual Sialkot identity;
+- integrated catalogue search;
+- readable product and variant counts;
+- structured/pending division truth;
+- asymmetric selected product records;
+- no invented company history or manufacturing claims.
+
+## Redesigned catalogue
+
+- compact dark catalogue index;
+- dominant search;
+- desktop filter ledger and native mobile disclosure;
+- URL-backed `q`, `division`, `family`, `sort`, and `page` behavior preserved;
+- alternating procurement records with real media, code, name, family, variants, product route, and Inquiry state;
+- empty, loading, active-filter, sorting, and pagination states preserved;
+- route-owned redesign module: `catalogue-heritage.module.css`.
+
+## Redesigned product examination
+
+- museum-grade real-media stage;
+- dark procurement dossier;
+- safe catalogue return context preserved;
+- base and variant Inquiry identities preserved;
+- readable source/specification ledger;
+- formal variant records;
+- asymmetric related-product comparison;
+- primary Inquiry action designed to remain reachable on a 1280 × 800 first viewport;
+- route-owned redesign module: `product-heritage.module.css`.
+
+## Redesigned Inquiry List
+
+- formal procurement worksheet, not a cart;
+- four-stage masthead and ledger;
+- editable instrument records;
+- quantity, notes, remove, undo, manual item, attachment, buyer, consent, and Turnstile behavior preserved;
+- dark final review dossier;
+- multipart API submission, one-time token, durable-storage contract, error recovery, and success routing preserved;
+- route-owned redesign module: `inquiry-heritage.module.css`.
+
+## Redesigned corporate and utility routes
+
+Shared corporate components now expose one editorial system for:
+
+- Company;
+- Scissors Through Time;
+- Catalogues;
+- Contact;
+- division ledgers;
+- truth boundaries;
+- document ledgers;
+- action rails;
+- contact routes.
+
+Privacy, Terms, not-found, runtime error, loading, and inquiry confirmation also use the Precision Heritage system.
+
+No legal date, jurisdiction, contact, retention period, governing law, certificate, material, market, or manufacturing claim was invented.
+
+## Preserved platform behavior
+
+- supplied cinematic video and skip/reduced-motion behavior;
+- supplied 260-frame evolution media;
+- 626 source-derived products and 1,434 variant codes;
+- catalogue search, filters, sorting, pagination, product context, and Inquiry state;
+- local Inquiry migration and browser persistence;
+- real attachment bytes and validation;
+- production fail-closed durable inquiry proxy;
+- D1/R2/Turnstile/delivery source implementation;
+- rebuild no-index metadata and response headers;
+- static asset, JavaScript, CSS, and file-count budgets.
+
+Backend operations remain documented in:
+
+```text
+docs/backend/INQUIRY_BACKEND.md
+```
+
+## Verification
+
+Source contract:
+
+```bash
+npm run test
+```
+
+Backend contract:
 
 ```bash
 npm run backend:check
 ```
 
-## Production Readiness Convergence
-
-### Indexing and metadata
-
-- `NEXT_PUBLIC_ALLOW_INDEXING` is the explicit indexing gate.
-- Default `robots.txt` disallows all crawling.
-- An indexing-enabled build still disallows `/rebuild/` and `/api/`.
-- `/rebuild` always exports `index: false, follow: false` metadata.
-- Rebuild and API responses use `X-Robots-Tag: noindex, nofollow, noarchive`.
-- Root metadata includes application name, contact-detection protection, and browser theme colors.
-
-### Response safety
-
-Global responses declare content-type, referrer, permissions, frame, cross-domain-policy, and DNS-prefetch protections.
-
-API responses additionally declare:
-
-```text
-Cache-Control: no-store, max-age=0
-```
-
-### Accessibility resilience
-
-- `prefers-contrast: more` strengthens muted text and boundaries.
-- `forced-colors: active` uses system colors for text, actions, fields, selection, and focus.
-- Existing Axe, keyboard, readable-size, overflow, and reduced-motion contracts remain active.
-
-### Deterministic build budgets
+Post-build budgets:
 
 ```bash
 npm run readiness:check
 ```
 
-The command requires `.next/static` and fails on:
-
-- any deployed static/public file above 25 MiB;
-- any emitted JavaScript chunk above 768 KiB raw;
-- any emitted CSS file above 512 KiB raw;
-- more than 20,000 static/public files.
-
-Production register: `docs/production/PRODUCTION_READINESS.md`
-
-## Rendered Visual QA Refinement
-
-A public rebuild preview is not currently recorded or discoverable, and the branch has no deployment workflow run. The completed pass therefore uses route-source composition review, stable visual markers, and rendered Playwright contracts without claiming screenshot evidence.
-
-Implemented corrections:
-
-- new `rendered-visual-qa-v1` shell contract;
-- stable markers across homepage, catalogue, product, and inquiry surfaces;
-- homepage divider aligned to the current 80px desktop header;
-- product pages offset to 80px desktop and 66px mobile header heights;
-- laptop-height product examination constrained to keep the primary inquiry action reachable while retaining a large media stage;
-- laptop-height catalogue and inquiry mastheads tightened without changing route behavior;
-- regal typography extended through homepage secondary headings, family names, inquiry section headings, and related products;
-- essential procurement labels raised to at least 12px;
-- body and helper copy raised to at least 14px where the information affects navigation, comparison, or inquiry completion;
-- overflow-wrap and narrow-mobile safeguards added;
-- no new entrance motion introduced.
-
-Verification assets:
-
-- `tests/rebuild-rendered-visual-qa.test.mjs`
-- `tests/e2e/rebuild-rendered-visual-qa.spec.ts`
-- `src/app/rebuild/visual-qa-refinements.module.css`
-
-The Milestone 6 combined gate now includes the rendered visual-QA suite:
+Complete redesign gate:
 
 ```bash
-bash scripts/verify-design-milestone-6.sh
+npm run verify:redesign
 ```
 
-Internally checked in the available environment:
+The redesign gate runs lint, typecheck, source tests, production build, readiness budgets, and all representative desktop/mobile Playwright suites on isolated port `3105`.
 
-- all selectors in `visual-qa-refinements.module.css` compile through `cssselect2`;
-- the new Playwright suite transpiles with zero TypeScript diagnostics.
-
-Not yet proven:
-
-- Next.js production build after this refinement;
-- Playwright runtime results;
-- screenshot appearance at the five target viewports;
-- deployed font/media behavior.
+No fresh runtime-green claim is made in this environment.
 
 ## Truth boundary
 
-Safe facts:
+Verified and safe:
 
 - THROHI Medical Tools is based in Sialkot, Pakistan.
 - Public ranges include Surgical, Dental and Orthodontic, Veterinary, and Beauty instruments.
-- Validated catalogue identities and imagery may be used.
+- Validated catalogue identities, codes, references, and imagery may be used.
 
-Pending and absent:
+Pending or absent:
 
 - founding year and operating history;
-- certifications, materials, capacity, export markets, and OEM claims;
+- certifications;
+- materials and steel grades;
+- manufacturing capabilities and capacity;
+- export markets;
+- OEM/private-label services;
 - minimum orders and lead times;
 - final contact formatting;
 - complete Beauty and Veterinary catalogue data;
@@ -163,21 +225,20 @@ Pending and absent:
 
 ## Runtime and cutover blockers
 
-- fresh combined runtime evidence;
-- a live rebuild preview or local rendered checkout;
-- manual screenshot review at 1440 × 1000, 1280 × 800, 768 × 1024, 390 × 844, and 320 × 700;
+- fresh `npm run verify:redesign` evidence;
+- real screenshot review at 1440 × 1000, 1280 × 800, 768 × 1024, 390 × 844, and 320 × 700;
 - Next.js-compatible Cloudflare Worker/OpenNext configuration;
-- real D1, R2, secrets, Turnstile, and delivery configuration;
-- CSP validation against Next.js, media, and Turnstile;
+- real D1, R2, secrets, optional Turnstile, and approved inquiry delivery;
+- CSP validation against Next.js, cinematic media, catalogue media, and Turnstile;
 - HSTS decision after final HTTPS origin approval;
 - deployed LCP, INP, and CLS measurement;
-- final catalogue, contact, company, logo, document, legal, and retention approval;
+- approved catalogue, documents, logo, contacts, company facts, legal language, and retention rules;
 - explicit merge, deployment, indexing, and public cutover approval.
 
-## Next phases
+## Next work
 
-1. Correct any critical issues from the combined gate or first available screenshots.
-2. Configure and verify the real Cloudflare website and inquiry runtimes.
-3. Complete catalogue validation, documents, logo, contacts, and approved content.
-4. Validate CSP, field performance, and final launch controls.
-5. Explicit public cutover approval.
+1. Correct only failures found by the full redesign gate.
+2. Perform real visual review when a preview or checkout is intentionally enabled.
+3. Complete verified catalogue documents, contacts, logo, company facts, and missing division content.
+4. Configure the real Cloudflare website and inquiry runtimes later, as requested.
+5. Obtain explicit public cutover approval.
