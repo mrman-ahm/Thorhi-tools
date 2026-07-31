@@ -26,6 +26,7 @@ run env PLAYWRIGHT_PORT=3104 PLAYWRIGHT_REUSE_SERVER=0 npm run test:e2e -- \
   tests/e2e/rebuild-product-inquiry-design.spec.ts \
   tests/e2e/rebuild-premium-convergence.spec.ts \
   tests/e2e/rebuild-premium-utility-states.spec.ts \
+  tests/e2e/rebuild-production-readiness.spec.ts \
   --project=desktop-chromium \
   --project=mobile-chromium
 
