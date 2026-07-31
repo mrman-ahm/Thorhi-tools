@@ -11,7 +11,8 @@ export function RebuildShell({ children }: { children: ReactNode }) {
     <div
       className={`${legacyStyles.root} ${shellStyles.root} ${criticalStyles.root} ${premiumStyles.root}`}
       data-rebuild-shell
-      data-milestone-contract="premium-visual-convergence-v1"
+      data-milestone-contract="surgical-precision-archive-v1"
+      data-premium-contract="premium-visual-convergence-v1"
     >
       <RebuildHeader />
       {children}
