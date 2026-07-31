@@ -10,11 +10,12 @@ export type RebuildAction = {
 
 export function RebuildActionRail({ actions }: { actions: readonly RebuildAction[] }) {
   return (
-    <nav className={styles.actions} aria-label="Next actions">
+    <nav className={styles.actions} aria-label="Next actions" data-corporate-actions>
       {actions.map((action) => (
         <Link
           className={styles.action}
           data-emphasis={action.emphasis ?? "secondary"}
+          data-corporate-action
           href={action.href}
           key={action.href}
         >
