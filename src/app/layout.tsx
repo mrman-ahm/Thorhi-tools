@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
-import { Archivo, IBM_Plex_Mono, Instrument_Sans } from "next/font/google";
+import {
+  Archivo,
+  Cormorant_Garamond,
+  IBM_Plex_Mono,
+  Instrument_Sans,
+} from "next/font/google";
 import { InquiryProvider } from "@/components/inquiry-provider";
 import { MotionShell } from "@/components/motion-shell";
 import { SearchCommand } from "@/components/search-command";
@@ -25,17 +30,53 @@ import "./v2-sector9d.css";
 import "./v2-sector9d-fixes.css";
 import "./v2-sector9d-refinement.css";
 
-const archivo = Archivo({ subsets: ["latin"], variable: "--font-archivo", display: "swap" });
-const instrument = Instrument_Sans({ subsets: ["latin"], variable: "--font-instrument", display: "swap" });
-const plex = IBM_Plex_Mono({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-plex", display: "swap" });
+const archivo = Archivo({
+  subsets: ["latin"],
+  variable: "--font-archivo",
+  display: "swap",
+});
+const instrument = Instrument_Sans({
+  subsets: ["latin"],
+  variable: "--font-instrument",
+  display: "swap",
+});
+const regal = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-regal",
+  display: "swap",
+});
+const plex = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-plex",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: { default: "THROHI Medical Tools", template: "%s | THROHI" },
-  description: "Explore surgical, dental, veterinary, and beauty instruments by division, family, product name, or code.",
+  description:
+    "Explore surgical, dental, veterinary, and beauty instruments by division, family, product name, or code.",
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://throhi.com"),
-  robots: { index: false, follow: false }
+  robots: { index: false, follow: false },
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en" className={`${archivo.variable} ${instrument.variable} ${plex.variable}`}><body><InquiryProvider><MotionShell><SearchCommand />{children}</MotionShell></InquiryProvider></body></html>;
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
+  return (
+    <html
+      lang="en"
+      className={`${archivo.variable} ${instrument.variable} ${regal.variable} ${plex.variable}`}
+    >
+      <body>
+        <InquiryProvider>
+          <MotionShell>
+            <SearchCommand />
+            {children}
+          </MotionShell>
+        </InquiryProvider>
+      </body>
+    </html>
+  );
 }
