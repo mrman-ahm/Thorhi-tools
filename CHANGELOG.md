@@ -15,6 +15,12 @@ All meaningful project changes are recorded here.
 - Warm editorial catalogue search, product-record, inquiry-review, and corporate-hero treatments
 - Premium source contract and representative desktop/mobile browser contract
 - Isolated Milestone 6 verification gate on port `3104`
+- Premium Utility States design specification and implementation plan
+- Typed rebuild legal-content boundary for Privacy and Terms
+- Rebuild-native `/rebuild/privacy` and `/rebuild/terms` routes
+- Rebuild-scoped premium not-found, runtime-error, and semantic loading states
+- Low-priority rebuild catch-all route for unknown `/rebuild/*` addresses
+- Utility-state source and Playwright contracts covering legal truth, recovery, readability, overflow, reduced motion, and accessibility
 
 ### Changed
 
@@ -23,8 +29,11 @@ All meaningful project changes are recorded here.
 - Strengthened Inquiry List prominence in the persistent header and mobile navigation
 - Reworked mobile navigation into a full-height ink/navy editorial composition
 - Reworked the footer into a regal manufacturer statement with brass route hierarchy and verified Sialkot origin
+- Expanded footer navigation with discoverable Privacy and Terms routes and responsive three-group layout
 - Applied explicit readable minimum sizes to important controls, labels, navigation, and form fields
 - Added restrained brass rules and premium depth without changing catalogue or inquiry behavior
+- Added premium utility-state coverage to the Milestone 6 combined verification gate
+- Kept legacy public Privacy, Terms, and root not-found routes unchanged until cutover
 - Recorded Milestone 6 as implementation-present and pending runtime/manual visual review
 
 ## 2026-07-30
