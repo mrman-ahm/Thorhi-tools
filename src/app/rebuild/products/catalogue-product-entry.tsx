@@ -31,12 +31,14 @@ export function CatalogueProductEntry({
     <article
       className={styles.productEntry}
       data-product-entry
+      data-catalogue-record
       style={{ "--result-order": resultOrder } as CSSProperties}
     >
       <Link
         href={detailHref}
         className={styles.entryStage}
         aria-label={`View ${product.name}, catalogue code ${product.code}`}
+        data-catalogue-record-stage
       >
         <CatalogueMedia product={product} className={styles.entryMedia} />
         <span className={styles.entryCode}>{product.code}</span>
@@ -45,15 +47,15 @@ export function CatalogueProductEntry({
         </span>
       </Link>
 
-      <div className={styles.entryCopy}>
-        <div className={styles.entryTaxonomy}>
+      <div className={styles.entryCopy} data-catalogue-record-copy>
+        <div className={styles.entryTaxonomy} data-catalogue-record-taxonomy>
           <span>{divisionLabel}</span>
           <span>{product.familyLabel}</span>
         </div>
         <h2>
           <Link href={detailHref}>{product.name}</Link>
         </h2>
-        <div className={styles.entryFooter}>
+        <div className={styles.entryFooter} data-catalogue-record-footer>
           <span>{variantLabel}</span>
           <button
             type="button"
