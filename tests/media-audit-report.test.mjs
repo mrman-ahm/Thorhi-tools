@@ -7,11 +7,21 @@ import {
 } from "../scripts/media/build-media-audit-report.mjs";
 
 async function sourceRegistry() {
-  return JSON.parse(await readFile("data/media/catalogue-sources.json", "utf8"));
+  return JSON.parse(
+    await readFile("data/media/catalogue-sources.json", "utf8")
+  );
 }
 
 async function placementMap() {
-  return JSON.parse(await readFile("data/media/placement-map.json", "utf8"));
+  return JSON.parse(
+    await readFile("data/media/placement-map.json", "utf8")
+  );
+}
+
+async function codeOwnership() {
+  return JSON.parse(
+    await readFile("data/media/code-ownership.json", "utf8")
+  );
 }
 
 function productInventory() {
@@ -54,22 +64,28 @@ test("combined report preserves deterministic sections and blocker truth", async
   const audit = buildMediaAudit({
     sourcesRegistry: await sourceRegistry(),
     placementMap: await placementMap(),
+    codeOwnership: await codeOwnership(),
     productInventory: productInventory(),
     generatedAt: "2026-08-01T00:00:00.000Z",
   });
   assert.equal(audit.generatedAt, "2026-08-01T00:00:00.000Z");
   assert.equal(audit.sourceCatalogues.total, 5);
   assert.equal(audit.placementSummary.required, 13);
+  assert.equal(audit.codeSummary.mapped, 16);
+  assert.equal(audit.codeSummary.blocked, 2);
   assert.equal(audit.productSummary.runtimeProducts, 2);
-  assert.equal(audit.blockers.length, 13);
-  assert.ok(audit.blockers.every((blocker) => blocker.severity === "blocker"));
-  assert.equal(audit.nextQueue[0].id, "home.division.dental");
+  assert.equal(audit.blockers.length, 15);
+  assert.ok(
+    audit.blockers.every((blocker) => blocker.severity === "blocker")
+  );
+  assert.equal(audit.nextQueue[0].id, "global.public-division-scope");
 
   const markdown = renderMediaAuditMarkdown(audit);
   const headings = [
     "# THROHI Media Audit Report",
     "## Source Catalogues",
     "## Placement Coverage",
+    "## Frontend Ownership",
     "## Existing Product Media",
     "## Blocking Issues",
     "## Next Review Queue",
@@ -89,8 +105,13 @@ test("product media inconsistencies become blockers", async () => {
   const audit = buildMediaAudit({
     sourcesRegistry: await sourceRegistry(),
     placementMap: await placementMap(),
+    codeOwnership: await codeOwnership(),
     productInventory: inventory,
   });
-  assert.ok(audit.blockers.some((blocker) => blocker.type === "product-media"));
-  assert.ok(audit.blockers.some((blocker) => blocker.type === "duplicate-assets"));
+  assert.ok(
+    audit.blockers.some((blocker) => blocker.type === "product-media")
+  );
+  assert.ok(
+    audit.blockers.some((blocker) => blocker.type === "duplicate-assets")
+  );
 });
