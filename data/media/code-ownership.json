@@ -1,0 +1,274 @@
+{
+  "schemaVersion": 1,
+  "auditedAt": "2026-08-01",
+  "branch": "media/production-imagery-system",
+  "approvedPublicDivisions": [
+    "surgical",
+    "dental"
+  ],
+  "observedPublicDivisions": [
+    "surgical",
+    "dental",
+    "veterinary",
+    "beauty"
+  ],
+  "unexpectedPublicDivisions": [
+    "veterinary",
+    "beauty"
+  ],
+  "missingRoutes": [
+    "/catalogues"
+  ],
+  "evidence": [
+    {
+      "path": "src/lib/catalogue.ts",
+      "finding": "Four public division slugs are defined."
+    },
+    {
+      "path": "src/components/discovery-experience.tsx",
+      "finding": "Home renders four division routes and Veterinary/Beauty family links."
+    },
+    {
+      "path": "src/components/hero-experience.tsx",
+      "finding": "Hero copy names Surgical, Dental, Veterinary, and Beauty."
+    },
+    {
+      "path": "src/app/products/page.tsx",
+      "finding": "Product hub renders all divisions from the four-division seed model."
+    },
+    {
+      "path": "src/components/catalogue-preview.tsx",
+      "finding": "Home featured products render temporary image placeholders."
+    },
+    {
+      "path": "src/components/catalogue-ui.tsx",
+      "finding": "Product cards and product detail use a CSS object placeholder."
+    },
+    {
+      "path": "src/components/inquiry-workflow.tsx",
+      "finding": "Inquiry rows use text thumbnails instead of product media."
+    },
+    {
+      "path": "src/app/company/page.tsx",
+      "finding": "Company page exposes an approved-media placeholder."
+    }
+  ],
+  "placements": [
+    {
+      "placementId": "home.hero.primary",
+      "codeOwner": "src/components/hero-experience.tsx#HeroExperience",
+      "status": "mapped",
+      "evidence": [
+        "/brand/throhi-logo-temporary.webp",
+        "src/components/hero-experience.tsx"
+      ],
+      "blockingReasons": [
+        "temporary-brand-logo-used",
+        "public-division-copy-conflict"
+      ]
+    },
+    {
+      "placementId": "home.division.surgical",
+      "codeOwner": "src/components/discovery-experience.tsx#DiscoveryExperience",
+      "status": "mapped",
+      "evidence": [
+        "src/components/discovery-experience.tsx"
+      ],
+      "blockingReasons": [
+        "css-placeholder-object-used",
+        "public-division-scope-conflict"
+      ]
+    },
+    {
+      "placementId": "home.division.dental",
+      "codeOwner": "src/components/discovery-experience.tsx#DiscoveryExperience",
+      "status": "mapped",
+      "evidence": [
+        "src/components/discovery-experience.tsx"
+      ],
+      "blockingReasons": [
+        "css-placeholder-object-used",
+        "public-division-scope-conflict"
+      ]
+    },
+    {
+      "placementId": "home.products.featured",
+      "codeOwner": "src/components/catalogue-preview.tsx#ProductCatalogue",
+      "status": "mapped",
+      "evidence": [
+        "src/components/catalogue-preview.tsx",
+        "src/app/page.tsx"
+      ],
+      "blockingReasons": [
+        "temporary-product-placeholder-used",
+        "seed-product-identity-only"
+      ]
+    },
+    {
+      "placementId": "home.company.primary",
+      "codeOwner": "src/app/page.tsx#HomePage",
+      "status": "mapped",
+      "evidence": [
+        "src/app/page.tsx"
+      ],
+      "blockingReasons": [
+        "dedicated-image-slot-not-implemented"
+      ]
+    },
+    {
+      "placementId": "home.catalogues.surgical",
+      "codeOwner": "src/app/page.tsx#HomePage",
+      "status": "mapped",
+      "evidence": [
+        "src/app/page.tsx"
+      ],
+      "blockingReasons": [
+        "catalogue-cover-not-rendered",
+        "catalogue-route-missing"
+      ]
+    },
+    {
+      "placementId": "company.sialkot.context",
+      "codeOwner": "src/app/company/page.tsx#CompanyPage",
+      "status": "mapped",
+      "evidence": [
+        "src/app/company/page.tsx"
+      ],
+      "blockingReasons": [
+        "approved-company-media-missing"
+      ]
+    },
+    {
+      "placementId": "company.evolution.static-fallback",
+      "codeOwner": "src/components/frame-evolution-scene.tsx#FrameEvolutionScene",
+      "status": "mapped",
+      "evidence": [
+        "src/components/frame-evolution-scene.tsx",
+        "/media/sector9d/manifest.json"
+      ],
+      "blockingReasons": [
+        "responsive-fallback-not-figma-reviewed"
+      ]
+    },
+    {
+      "placementId": "company.present-day.primary",
+      "codeOwner": "src/app/company/page.tsx#CompanyPage",
+      "status": "mapped",
+      "evidence": [
+        "src/app/company/page.tsx"
+      ],
+      "blockingReasons": [
+        "approved-company-media-missing"
+      ]
+    },
+    {
+      "placementId": "products.division.surgical",
+      "codeOwner": "src/app/products/page.tsx#ProductsPage",
+      "status": "mapped",
+      "evidence": [
+        "src/app/products/page.tsx",
+        "src/lib/catalogue.ts"
+      ],
+      "blockingReasons": [
+        "division-image-slot-not-implemented",
+        "public-division-scope-conflict"
+      ]
+    },
+    {
+      "placementId": "products.division.dental",
+      "codeOwner": "src/app/products/page.tsx#ProductsPage",
+      "status": "mapped",
+      "evidence": [
+        "src/app/products/page.tsx",
+        "src/lib/catalogue.ts"
+      ],
+      "blockingReasons": [
+        "division-image-slot-not-implemented",
+        "public-division-scope-conflict"
+      ]
+    },
+    {
+      "placementId": "catalogues.surgical.cover",
+      "codeOwner": null,
+      "status": "blocked-missing-route",
+      "evidence": [],
+      "blockingReasons": [
+        "catalogue-route-missing",
+        "first-page-thumbnail-not-generated"
+      ]
+    },
+    {
+      "placementId": "catalogues.dental.cover",
+      "codeOwner": null,
+      "status": "blocked-missing-route",
+      "evidence": [],
+      "blockingReasons": [
+        "catalogue-route-missing",
+        "approved-dental-catalogue-source-not-registered"
+      ]
+    },
+    {
+      "placementId": "pattern.product-card.image",
+      "codeOwner": "src/components/catalogue-ui.tsx#ProductImage",
+      "status": "mapped",
+      "evidence": [
+        "src/components/catalogue-ui.tsx"
+      ],
+      "blockingReasons": [
+        "css-placeholder-object-used",
+        "runtime-media-not-integrated"
+      ]
+    },
+    {
+      "placementId": "pattern.product-detail.primary",
+      "codeOwner": "src/components/product-examination-motion.tsx#ProductExaminationMotion",
+      "status": "mapped",
+      "evidence": [
+        "src/components/product-examination-motion.tsx",
+        "src/components/catalogue-ui.tsx"
+      ],
+      "blockingReasons": [
+        "css-placeholder-object-used",
+        "runtime-media-not-integrated"
+      ]
+    },
+    {
+      "placementId": "pattern.related-product.image",
+      "codeOwner": "src/components/catalogue-ui.tsx#ProductImage",
+      "status": "mapped",
+      "evidence": [
+        "src/components/catalogue-ui.tsx",
+        "src/app/products/[division]/[family]/[product]/page.tsx"
+      ],
+      "blockingReasons": [
+        "css-placeholder-object-used",
+        "runtime-media-not-integrated"
+      ]
+    },
+    {
+      "placementId": "pattern.inquiry-snapshot.image",
+      "codeOwner": "src/components/inquiry-workflow.tsx#InquiryWorkflow",
+      "status": "mapped",
+      "evidence": [
+        "src/components/inquiry-workflow.tsx"
+      ],
+      "blockingReasons": [
+        "text-thumbnail-placeholder-used",
+        "runtime-media-not-integrated"
+      ]
+    },
+    {
+      "placementId": "pattern.search-result.image",
+      "codeOwner": "src/components/catalogue-ui.tsx#ProductImage",
+      "status": "mapped",
+      "evidence": [
+        "src/app/search/page.tsx",
+        "src/components/catalogue-ui.tsx"
+      ],
+      "blockingReasons": [
+        "css-placeholder-object-used",
+        "runtime-media-not-integrated"
+      ]
+    }
+  ]
+}
