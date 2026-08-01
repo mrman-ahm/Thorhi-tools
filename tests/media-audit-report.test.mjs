@@ -14,6 +14,10 @@ async function placementMap() {
   return JSON.parse(await readFile("data/media/placement-map.json", "utf8"));
 }
 
+async function figmaEvidence() {
+  return JSON.parse(await readFile("data/media/figma-placement-evidence.json", "utf8"));
+}
+
 function productInventory() {
   return {
     schemaVersion: 1,
@@ -50,10 +54,11 @@ function productInventory() {
   };
 }
 
-test("combined report preserves deterministic sections and blocker truth", async () => {
+test("combined report uses observed Figma evidence instead of requesting decorative images", async () => {
   const audit = buildMediaAudit({
     sourcesRegistry: await sourceRegistry(),
     placementMap: await placementMap(),
+    figmaEvidence: await figmaEvidence(),
     productInventory: productInventory(),
     generatedAt: "2026-08-01T00:00:00.000Z",
   });
@@ -61,15 +66,27 @@ test("combined report preserves deterministic sections and blocker truth", async
   assert.equal(audit.sourceCatalogues.total, 5);
   assert.equal(audit.placementSummary.required, 13);
   assert.equal(audit.productSummary.runtimeProducts, 2);
-  assert.equal(audit.blockers.length, 13);
-  assert.ok(audit.blockers.every((blocker) => blocker.severity === "blocker"));
-  assert.equal(audit.nextQueue[0].id, "home.division.dental");
+  assert.equal(audit.figmaEvidence.productionReady, false);
+  assert.equal(audit.figmaEvidence.mapped, 17);
+  assert.equal(audit.figmaEvidence.unmapped, 1);
+  assert.equal(audit.figmaEvidence.dedicatedImageNodes, 5);
+  assert.equal(audit.figmaEvidence.noDedicatedImageSlot, 12);
+  assert.deepEqual(audit.figmaEvidence.emptyProductionPages, ["04 Desktop", "05 Tablet", "06 Mobile"]);
+  assert.equal(audit.blockers.length, 2);
+  assert.deepEqual(
+    audit.blockers.map((blocker) => blocker.id).sort(),
+    ["company.evolution.static-fallback", "home.hero.primary"]
+  );
+  assert.equal(audit.nextQueue[0].id, "home.hero.primary");
+  assert.ok(!audit.nextQueue.some((item) => item.id === "home.division.dental"));
+  assert.ok(!audit.nextQueue.some((item) => item.id === "company.sialkot.context"));
 
   const markdown = renderMediaAuditMarkdown(audit);
   const headings = [
     "# THROHI Media Audit Report",
     "## Source Catalogues",
     "## Placement Coverage",
+    "## Figma Placement Evidence",
     "## Existing Product Media",
     "## Blocking Issues",
     "## Next Review Queue",
@@ -82,15 +99,35 @@ test("combined report preserves deterministic sections and blocker truth", async
   }
 });
 
-test("product media inconsistencies become blockers", async () => {
+test("product media inconsistencies remain blockers alongside image-bearing placements", async () => {
   const inventory = productInventory();
   inventory.summary.missingMedia = 1;
   inventory.summary.duplicatePaths = 1;
   const audit = buildMediaAudit({
     sourcesRegistry: await sourceRegistry(),
     placementMap: await placementMap(),
+    figmaEvidence: await figmaEvidence(),
     productInventory: inventory,
   });
   assert.ok(audit.blockers.some((blocker) => blocker.type === "product-media"));
   assert.ok(audit.blockers.some((blocker) => blocker.type === "duplicate-assets"));
+  assert.equal(audit.blockers.filter((blocker) => blocker.type === "placement").length, 2);
 });
+
+test("Figma evidence must match the approved file and placement registry", async () => {
+  const evidence = await figmaEvidence();
+  evidence.figmaFileKey = "wrong-file";
+  assert.throws(
+    () =>
+      buildMediaAudit({
+        sourcesRegistry: awaitableSourceRegistry,
+        placementMap: awaitablePlacementMap,
+        figmaEvidence: evidence,
+        productInventory: productInventory(),
+      }),
+    /Figma evidence file key/
+  );
+});
+
+const awaitableSourceRegistry = await sourceRegistry();
+const awaitablePlacementMap = await placementMap();
