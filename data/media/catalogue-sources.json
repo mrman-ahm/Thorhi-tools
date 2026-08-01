@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "sourcePathEnv": "THROHI_CATALOGUE_SOURCE_DIR",
+  "sources": [
+    {
+      "id": "knives",
+      "fileName": "Knives Catalog(1).pdf",
+      "division": "surgical",
+      "category": "knives",
+      "pageCount": 15,
+      "byteSize": 4783754,
+      "sha256": "babb328d97f5dda7cf3903bc716828ddb2589c9cf64de522294973b099b49175",
+      "pageWidthPt": 612,
+      "pageHeightPt": 858,
+      "pdfVersion": "1.6",
+      "availability": "attached-not-mounted",
+      "licenseStatus": "client-owned"
+    },
+    {
+      "id": "cutters",
+      "fileName": "Cutters Catalog(1).pdf",
+      "division": "surgical",
+      "category": "cutters",
+      "pageCount": 13,
+      "byteSize": 8796374,
+      "sha256": "79c0051f5298dea217ea8d99c2feec3a683667e44143dabb920a1d21ba68a6df",
+      "pageWidthPt": 612,
+      "pageHeightPt": 858,
+      "pdfVersion": "1.6",
+      "availability": "attached-not-mounted",
+      "licenseStatus": "client-owned"
+    },
+    {
+      "id": "scissors",
+      "fileName": "Scissors Catalog(1).pdf",
+      "division": "surgical",
+      "category": "scissors",
+      "pageCount": 11,
+      "byteSize": 9886964,
+      "sha256": "d55e98a41ddab4c87b328b8b4750a5a06f904f86f123d7618497a5f4de067901",
+      "pageWidthPt": 612,
+      "pageHeightPt": 858,
+      "pdfVersion": "1.6",
+      "availability": "attached-not-mounted",
+      "licenseStatus": "client-owned"
+    },
+    {
+      "id": "punches",
+      "fileName": "Punches Catalog(1).pdf",
+      "division": "surgical",
+      "category": "punches",
+      "pageCount": 31,
+      "byteSize": 15930907,
+      "sha256": "124db1af5b108bb1439b76750b23f7dd4aaa050cfe9f5d225bf49426ff0ff09f",
+      "pageWidthPt": 612,
+      "pageHeightPt": 858,
+      "pdfVersion": "1.6",
+      "availability": "attached-not-mounted",
+      "licenseStatus": "client-owned"
+    },
+    {
+      "id": "chisels",
+      "fileName": "Chisels Catalog(1).pdf",
+      "division": "surgical",
+      "category": "chisels-and-osteotomes",
+      "pageCount": 21,
+      "byteSize": 9477868,
+      "sha256": "52ed46c5e88008566e0ee5c65e87dc853bf6a928e05625f5d382724071c5b3a0",
+      "pageWidthPt": 612,
+      "pageHeightPt": 858,
+      "pdfVersion": "1.6",
+      "availability": "attached-not-mounted",
+      "licenseStatus": "client-owned"
+    }
+  ]
+}
