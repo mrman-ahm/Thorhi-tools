@@ -2,6 +2,43 @@
 
 All meaningful project changes are recorded here. Detailed current decisions live in `PROJECT_STATE.md`.
 
+## 2026-08-01
+
+### Added
+
+- Approved THROHI website foundation specification consolidating business, brand, typography, color, geometry, imagery, motion, navigation, Home, Company, Products, Catalogues, Inquiry, Contact, owner-admin, responsive, accessibility, and truth-boundary decisions.
+- Master foundation-to-production implementation plan organized into five independently reviewable execution layers.
+- Isolated implementation branch `implementation/throhi-foundation-layer-1`.
+- `docs/content/THROHI_CONTENT_MATRIX.md` with approved, source-derived, pending, hidden, and prohibited publication states.
+- `docs/qa/THROHI_ACCEPTANCE_MATRIX.md` with stable requirement IDs and design/implementation/verification mapping.
+- `tests/throhi-foundation-contract.test.mjs` as a deliberate red contract for the approved future implementation.
+- Figma production page structure from `00 Cover` through `10 Archive`.
+- Three THROHI variable collections with 72 explicitly scoped variables, CSS code syntax, primitive aliases, and Light/Cinematic semantic modes.
+- Fifteen typography styles using DM Serif Display Regular for H1/H2, Instrument Sans for practical hierarchy, and IBM Plex Mono for technical metadata.
+- Raised, dialog, and focus effect styles plus desktop, tablet, mobile, and baseline grids.
+- Inspected Figma Cover, Foundations, and Archive pages.
+- Inspected Button component set with 15 variants and editable label property.
+- Inspected Field component set with 16 variants and editable label, value/placeholder, and helper properties.
+
+### Changed
+
+- Replaced Precision Heritage House as the current authority with the approved August 1 foundation wherever conflicts exist.
+- Reset `PROJECT_STATE.md` and `PLANS.md` around layered design-first execution.
+- Public division contract changed from four visible divisions to Surgical and Dental only.
+- Beauty and Veterinary changed to hidden future admin divisions.
+- Typography changed from Cormorant Garamond/Archivo assumptions to restrained DM Serif Display Regular, Instrument Sans, and IBM Plex Mono roles.
+- Page atmosphere changed from dark/heritage-led presentation to warm-light emerald/technical-blue presentation with limited cinematic dark sections.
+- Full scissors evolution moved from Home/separate-history assumptions to the Company page only.
+- Inquiry contract changed to guest product snapshots without public file uploads or customer accounts.
+- Disabled-opacity variable corrected to Figma's percentage scale so components resolve to 48% rather than roughly 0.5% opacity.
+- Historical visual studies, rejected wireframes, and typography comparisons moved into explicitly named Archive pages.
+
+### Verification status
+
+- Cover, Foundations, Archive, Button, and Field were inspected through Figma screenshots and component metadata/design context.
+- The red source contract has not been executed in the connector-only environment and is expected to fail until implementation layers replace known conflicts.
+- No source implementation, production build, deployment, merge, PR, indexing change, public cutover, or intentional GitHub Actions run has occurred in Layer 1.
+
 ## 2026-07-31
 
 ### Added
