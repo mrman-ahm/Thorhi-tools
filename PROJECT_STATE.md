@@ -1,244 +1,290 @@
 # THROHI Rebuild — Project State
 
-This file is the single source of truth for the rebuild.
+This file is the repository source of truth for the current THROHI redesign and implementation.
 
 ## Current phase
 
-**Full-site Precision Heritage House redesign source implementation is present on `design/surgical-precision-archive`. Fresh runtime verification and real screenshot review remain pending.**
+**Layer 1 — Design source of truth and requirement traceability is active on `implementation/throhi-foundation-layer-1`.**
 
+The approved August 1 foundation specification and implementation plan now supersede the earlier Precision Heritage House direction wherever they conflict.
+
+Authoritative documents:
+
+- `docs/superpowers/specs/2026-08-01-throhi-website-foundation-design.md`
+- `docs/superpowers/plans/2026-08-01-throhi-foundation-to-production.md`
+- `docs/content/THROHI_CONTENT_MATRIX.md`
+- `docs/qa/THROHI_ACCEPTANCE_MATRIX.md`
+
+The previous implementation remains an engineering and regression reference. It is not the approved visual, content, division, inquiry, or page-structure source of truth.
+
+## Execution boundary
+
+- Work is isolated on `implementation/throhi-foundation-layer-1`.
 - `/rebuild` remains non-indexed.
 - Public routes remain unchanged.
 - No pull request, merge, deployment, redirect switch, indexing activation, public cutover, or GitHub Actions run is authorized.
+- Local runtime verification has not been performed in the connector-only execution environment.
 
-## Current design direction
+## Approved business and content direction
 
-**Precision Heritage House**
+THROHI is presented as a Surgical and Dental instrument manufacturer/supplier based in Sialkot, Pakistan.
 
-A restrained instrument-manufacturer system using:
+The website must:
 
-- Cormorant Garamond for major editorial hierarchy;
-- Instrument Sans for navigation, body, forms, and controls;
-- IBM Plex Mono for codes, counts, status, and concise metadata;
-- surgical ink and navy;
-- archival ivory and paper;
-- surgical green for verified actions;
-- muted brass for indexing and rules;
-- real catalogue and supplied media as the primary visual material.
+1. establish a credible international-facing company identity;
+2. provide practical product discovery by division, family, name, and reference code;
+3. support direct guest quotation inquiry and Contact;
+4. provide controlled single-owner publishing without inventing business facts.
 
-Rejected patterns:
+Only two divisions are public:
 
-- generic SaaS cards and dashboards;
-- fake black-and-gold luxury;
-- cyberpunk, gaming, glassmorphism, or design-agency spectacle;
-- filler slogans and decorative sections;
-- tiny important text;
-- ecommerce, cart, checkout, price, or payment framing;
-- invented company or technical claims.
+- Surgical
+- Dental
 
-## Active redesign contract
+Beauty and Veterinary may remain in future admin data only as draft, hidden, or archived divisions. They must not appear in public navigation, search, counts, metadata, sitemap, or content until explicitly activated with complete approved material.
+
+## Approved design foundation
+
+### Typography
+
+- DM Serif Display Regular — major H1/H2 only.
+- Instrument Sans — H3-H6, body, navigation, product names, forms, filters, buttons, and admin controls.
+- IBM Plex Mono — product references, variants, dimensions, quantities, and compact technical metadata.
+
+The serif must never be faux-bold, uppercase, tightly compressed, or spread across practical interface text.
+
+### Color and atmosphere
+
+- warm paper/light surfaces dominate;
+- emerald is the primary action color;
+- technical blue supports structure and secondary actions;
+- deep ink is reserved for text, footer, and selected cinematic/editorial contexts;
+- muted brass is rare and must not create a luxury or antique identity.
+
+### Geometry and layout
+
+- 4-8px radii for cards, controls, and media stages;
+- pills only for tags, filters, and compact statuses;
+- spacing and fine borders establish structure before shadows;
+- Home and Company may use controlled editorial asymmetry;
+- catalogue, product, inquiry, contact, and admin use strict aligned grids;
+- desktop catalogue uses three products per row;
+- tablet uses two where practical;
+- mobile uses one.
+
+### Product imagery
+
+- contained clinical-specimen stages;
+- full instrument silhouette preserved;
+- no aggressive crops, fake reflections, excessive glow, or dramatic grading;
+- lower-resolution Surgical images remain smaller and sharper;
+- higher-resolution Dental images may receive more space without breaking stage consistency.
+
+### Motion
+
+Only two signature experiences are approved:
+
+1. the brief first-visit intro;
+2. the Company-page scissors evolution sequence.
+
+All other motion is restrained and functional. Reduced-motion users receive the same content immediately.
+
+## Figma source of truth
+
+File:
 
 ```text
-precision-heritage-house-v1
+THROHI Website & Admin Dashboard — Design System and UX
+w12E41un4krAwBqlo8fHa6
 ```
 
-Global foundation:
+Production page structure now exists:
 
-- `src/app/rebuild/precision-heritage.module.css`
-- `src/app/rebuild/corporate-heritage.module.css`
-- `data-redesign-contract="precision-heritage-house-v1"`
-- 78px desktop header
-- 66px mobile header
-- fluid 90rem maximum content grid
-- readable label/body scales
-- forced-colors, increased-contrast, and reduced-motion support
+- 00 Cover
+- 01 Foundations
+- 02 Components
+- 03 Wireframes
+- 04 Desktop
+- 05 Tablet
+- 06 Mobile
+- 07 Prototypes
+- 08 Edge Cases
+- 09 Handoff
+- 10 Archive
 
-The superseded global files were removed:
+Historical pages are explicitly archived:
 
-- `premium-convergence.module.css`
-- `visual-qa-refinements.module.css`
+- Visual Direction Studies — reference only;
+- Rejected Public Website Wireframes — do not implement;
+- Typography Direction Studies — decision record.
 
-## Redesigned shared shell
+Completed Figma work:
 
-### Header
+- three local variable collections;
+- 72 scoped variables with CSS code syntax;
+- Light and Cinematic semantic modes using primitive aliases;
+- 15 approved text styles;
+- three elevation/focus effect styles;
+- desktop, tablet, mobile, and baseline grid styles;
+- inspected Cover, Foundations, and Archive pages;
+- inspected Button component set: 15 variants;
+- inspected Field component set: 16 variants.
 
-- archival ivory desktop shell;
-- transparent cinematic state over the supplied intro;
-- balanced brand, navigation, and utility layout;
-- editorial catalogue search overlay;
-- editorial product-division overlay;
-- full-screen mobile route index;
-- preserved focus trap, Escape handling, body lock, outside-click handling, search routing, and live Inquiry List count.
+Current Figma work:
 
-### Footer
+- completing core controls;
+- then feedback/overlay components;
+- then catalogue, inquiry, shell, and owner-admin patterns;
+- responsive wireframes and high-fidelity pages follow only after component foundations are complete.
 
-- dark manufacturer dossier;
-- company identity and verified Sialkot origin;
-- product, company, and legal route groups;
-- explicit preview/indexing status;
-- responsive tablet and mobile layouts.
+## Public experience contract
 
-## Redesigned homepage
+### Home
 
-The route sequence remains:
+Approved hierarchy:
 
-1. supplied cinematic entry;
-2. company-led instrument hero;
-3. four division dossiers;
-4. selected instrument showcase;
-5. verified company introduction;
-6. supplied scissors-evolution bridge;
-7. catalogue/inquiry decision path.
+1. brief intro handoff;
+2. THROHI identity and Sialkot origin;
+3. Surgical and Dental entry points;
+4. catalogue search by name or reference code;
+5. representative source-derived families/products;
+6. concise verified company introduction;
+7. authentic document access or factual unavailable states;
+8. Contact and Inquiry conclusion.
 
-Key characteristics:
+The full scissors evolution must not appear on Home.
 
-- large real instrument specimen;
-- factual Sialkot identity;
-- integrated catalogue search;
-- readable product and variant counts;
-- structured/pending division truth;
-- asymmetric selected product records;
-- no invented company history or manufacturing claims.
+### Company
 
-## Redesigned catalogue
+Approved hierarchy:
 
-- compact dark catalogue index;
-- dominant search;
-- desktop filter ledger and native mobile disclosure;
-- URL-backed `q`, `division`, `family`, `sort`, and `page` behavior preserved;
-- alternating procurement records with real media, code, name, family, variants, product route, and Inquiry state;
-- empty, loading, active-filter, sorting, and pagination states preserved;
-- route-owned redesign module: `catalogue-heritage.module.css`.
+1. THROHI introduction;
+2. concise Sialkot context;
+3. general instrument evolution using supplied frames;
+4. THROHI today using verified facts only;
+5. Contact conclusion.
 
-## Redesigned product examination
+The evolution sequence must not imply that THROHI invented or manufactured the historical instruments shown.
 
-- museum-grade real-media stage;
-- dark procurement dossier;
-- safe catalogue return context preserved;
-- base and variant Inquiry identities preserved;
-- readable source/specification ledger;
-- formal variant records;
-- asymmetric related-product comparison;
-- primary Inquiry action designed to remain reachable on a 1280 × 800 first viewport;
-- route-owned redesign module: `product-heritage.module.css`.
+### Products
 
-## Redesigned Inquiry List
+- division first;
+- family second;
+- one searchable catalogue;
+- search by product name, product code, and variant code;
+- contained product cards with source-derived identity;
+- Product Detail with variants, verified specifications, related products, Quick Inquiry, and Add to Inquiry;
+- default price state is `Contact for quotation`;
+- no fake stock, reviews, ratings, or delivery claims.
 
-- formal procurement worksheet, not a cart;
-- four-stage masthead and ledger;
-- editable instrument records;
-- quantity, notes, remove, undo, manual item, attachment, buyer, consent, and Turnstile behavior preserved;
-- dark final review dossier;
-- multipart API submission, one-time token, durable-storage contract, error recovery, and success routing preserved;
-- route-owned redesign module: `inquiry-heritage.module.css`.
+### Catalogues
 
-## Redesigned corporate and utility routes
+- separate Surgical and Dental groups;
+- direct access to authentic supplied PDFs;
+- no email gate or account;
+- no generated, merged, rewritten, or placeholder PDFs;
+- factual unavailable state until real files are supplied.
 
-Shared corporate components now expose one editorial system for:
+### Inquiry and Contact
 
-- Company;
-- Scissors Through Time;
-- Catalogues;
-- Contact;
-- division ledgers;
-- truth boundaries;
-- document ledgers;
-- action rails;
-- contact routes.
+- guest Quick Inquiry for one product;
+- guest Inquiry List for multiple products;
+- product snapshot keeps name, reference, quantity, and optional notes;
+- archived/deleted products cannot erase retained inquiry identity;
+- no public file uploads;
+- no customer accounts;
+- no cart, basket, checkout, payment, or order framing;
+- general Contact remains separate from product-based Inquiry;
+- email, phone, WhatsApp, address, map, operating hours, and response expectations remain unpublished until verified.
 
-Privacy, Terms, not-found, runtime error, loading, and inquiry confirmation also use the Precision Heritage system.
+## Owner admin contract
 
-No legal date, jurisdiction, contact, retention period, governing law, certificate, material, market, or manufacturing claim was invented.
+- one owner account;
+- no public registration or staff-role system;
+- dashboard based on real state only;
+- manage approved website content, products, families, variants, media, optional pricing, documents, contact information, division visibility, and latest inquiries;
+- Draft → Preview → Publish;
+- retain latest five published versions;
+- restore creates a new draft;
+- archive is the default removal action;
+- permanent deletion is separate and strongly confirmed;
+- retain latest 20 lightweight inquiry records;
+- no CRM status pipeline.
 
-## Preserved platform behavior
+Authentication provider, database, object storage, email delivery, backup, and deployment boundaries remain an architecture-stage decision.
 
-- supplied cinematic video and skip/reduced-motion behavior;
+## Current code conflicts to replace deliberately
+
+The existing branch still contains behavior and presentation that conflict with the approved foundation, including:
+
+- Cormorant Garamond and Archivo in the global font stack;
+- Precision Heritage House visual contracts and CSS modules;
+- four-division public company language;
+- homepage evolution preview;
+- a separate scissors-history route rather than the approved Company-page placement;
+- public inquiry attachments and R2 attachment infrastructure;
+- dark-first catalogue/product presentation;
+- older page hierarchy and heritage-heavy wording.
+
+These are known red contracts, not accidental discoveries. They will be replaced in isolated implementation tasks after Figma Layer 1 is complete.
+
+## Existing engineering assets to preserve where compatible
+
+- supplied intro media and skip/reduced-motion behavior;
 - supplied 260-frame evolution media;
 - 626 source-derived products and 1,434 variant codes;
-- catalogue search, filters, sorting, pagination, product context, and Inquiry state;
-- local Inquiry migration and browser persistence;
-- real attachment bytes and validation;
-- production fail-closed durable inquiry proxy;
-- D1/R2/Turnstile/delivery source implementation;
-- rebuild no-index metadata and response headers;
-- static asset, JavaScript, CSS, and file-count budgets.
+- catalogue search, filtering, sorting, pagination, product context, and Inquiry state where they meet the new contract;
+- catalogue and media preparation scripts;
+- non-indexed rebuild boundary;
+- existing source tests, Playwright infrastructure, and readiness tooling;
+- production fail-closed principles for unconfigured inquiry delivery.
 
-Backend operations remain documented in:
+Existing attachment-specific behavior is not preserved because the approved public inquiry contract explicitly removes uploads.
+
+## Verification state
+
+A new red source contract exists:
 
 ```text
-docs/backend/INQUIRY_BACKEND.md
+tests/throhi-foundation-contract.test.mjs
 ```
 
-## Verification
+It intentionally describes the approved future state and is expected to fail against the current conflicting implementation.
 
-Source contract:
+It has not been executed in this connector-only environment. No test-pass claim is made.
+
+Later local production verification will include:
 
 ```bash
+npm run lint
+npm run typecheck
 npm run test
+npm run build
+npm run test:e2e
+bash scripts/verify-throhi-production.sh
 ```
 
-Backend contract:
+GitHub Actions must not be triggered intentionally without explicit permission.
 
-```bash
-npm run backend:check
-```
+## Release blockers and required client inputs
 
-Post-build budgets:
+- final logo master;
+- verified email, phone, WhatsApp, exact address, and map;
+- inquiry recipient and delivery configuration;
+- authentic Surgical and Dental PDFs and metadata;
+- final legal/privacy/retention wording;
+- approved company history, certifications, materials, capabilities, capacity, markets, OEM information, MOQ, and lead times when available;
+- approved response-time statement;
+- final pricing policy if public prices are enabled;
+- production hosting, authentication, storage, backup, monitoring, and security configuration;
+- explicit merge, deployment, indexing, and cutover approval.
 
-```bash
-npm run readiness:check
-```
-
-Complete redesign gate:
-
-```bash
-npm run verify:redesign
-```
-
-The redesign gate runs lint, typecheck, source tests, production build, readiness budgets, and all representative desktop/mobile Playwright suites on isolated port `3105`.
-
-No fresh runtime-green claim is made in this environment.
-
-## Truth boundary
-
-Verified and safe:
-
-- THROHI Medical Tools is based in Sialkot, Pakistan.
-- Public ranges include Surgical, Dental and Orthodontic, Veterinary, and Beauty instruments.
-- Validated catalogue identities, codes, references, and imagery may be used.
-
-Pending or absent:
-
-- founding year and operating history;
-- certifications;
-- materials and steel grades;
-- manufacturing capabilities and capacity;
-- export markets;
-- OEM/private-label services;
-- minimum orders and lead times;
-- final contact formatting;
-- complete Beauty and Veterinary catalogue data;
-- real catalogue PDFs and metadata;
-- approved inquiry recipient and delivery endpoint;
-- retention and deletion periods;
-- final legal wording and dates;
-- final logo, icons, canonical URLs, sitemap, and social metadata.
-
-## Runtime and cutover blockers
-
-- fresh `npm run verify:redesign` evidence;
-- real screenshot review at 1440 × 1000, 1280 × 800, 768 × 1024, 390 × 844, and 320 × 700;
-- Next.js-compatible Cloudflare Worker/OpenNext configuration;
-- real D1, R2, secrets, optional Turnstile, and approved inquiry delivery;
-- CSP validation against Next.js, cinematic media, catalogue media, and Turnstile;
-- HSTS decision after final HTTPS origin approval;
-- deployed LCP, INP, and CLS measurement;
-- approved catalogue, documents, logo, contacts, company facts, legal language, and retention rules;
-- explicit merge, deployment, indexing, and public cutover approval.
+A missing release input blocks only that content or feature. It never authorizes an invented substitute.
 
 ## Next work
 
-1. Correct only failures found by the full redesign gate.
-2. Perform real visual review when a preview or checkout is intentionally enabled.
-3. Complete verified catalogue documents, contacts, logo, company facts, and missing division content.
-4. Configure the real Cloudflare website and inquiry runtimes later, as requested.
-5. Obtain explicit public cutover approval.
+1. Complete Layer 1 component foundations in Figma.
+2. Produce responsive public/admin wireframes using only approved components and content boundaries.
+3. Complete high-fidelity desktop, tablet, mobile, edge-state, prototype, and handoff pages.
+4. Record final Figma-to-code token/component mapping and motion specification.
+5. Begin Layer 2 implementation only after the complete Layer 1 checkpoint review.
