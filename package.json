@@ -21,10 +21,12 @@
     "data:media": "node scripts/prepare-product-media.mjs",
     "data:approve": "node scripts/promote-approved-catalogue.mjs",
     "media:sources": "node scripts/media/register-catalogue-sources.mjs",
+    "media:catalogue-pages:generate": "python3 scripts/media/build_catalogue_page_evidence.py --source-dir \"$THROHI_CATALOGUE_SOURCE_DIR\" --output data/media/catalogue-page-evidence.generated.json",
+    "media:catalogue-pages:validate": "node scripts/media/validate-catalogue-page-evidence.mjs",
     "media:audit:placements": "node scripts/media/audit-placement-map.mjs",
     "media:audit:products": "node scripts/media/audit-product-media.mjs",
     "media:audit:report": "node scripts/media/build-media-audit-report.mjs",
-    "media:audit": "npm run media:sources && npm run media:audit:placements && npm run media:audit:products && npm run media:audit:report"
+    "media:audit": "npm run media:sources && npm run media:catalogue-pages:validate && npm run media:audit:placements && npm run media:audit:products && npm run media:audit:report"
   },
   "dependencies": {
     "animejs": "4.5.0",
