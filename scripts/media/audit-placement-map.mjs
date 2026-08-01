@@ -41,8 +41,14 @@ function validateResponsiveRecord(placement, key, errors) {
     errors.push(`${placement.id}: ${key} geometry is required`);
     return;
   }
-  if (!record.figmaPage || typeof record.figmaPage !== "string") {
-    errors.push(`${placement.id}: ${key}.figmaPage is required`);
+  if (!record.plannedFigmaPage || typeof record.plannedFigmaPage !== "string") {
+    errors.push(`${placement.id}: ${key}.plannedFigmaPage is required`);
+  }
+  if (record.figmaPage !== null && typeof record.figmaPage !== "string") {
+    errors.push(`${placement.id}: ${key}.figmaPage must be null or a string`);
+  }
+  if (record.figmaPageId !== null && !/^\d+[:-]\d+$/.test(record.figmaPageId ?? "")) {
+    errors.push(`${placement.id}: ${key}.figmaPageId must be null or a Figma node id`);
   }
   if (!/^\d+(?:\.\d+)?:\d+(?:\.\d+)?$/.test(record.aspectRatio ?? "")) {
     errors.push(`${placement.id}: ${key}.aspectRatio must use width:height`);
@@ -62,6 +68,18 @@ export function auditPlacementMap(map) {
   if (map?.figmaFileKey !== "w12E41un4krAwBqlo8fHa6") {
     errors.push("figmaFileKey must match the approved THROHI Figma file");
   }
+  if (map?.figmaAudit?.status !== "blocked-production-pages-missing") {
+    errors.push("figmaAudit must record the missing production pages");
+  }
+  const observedPages = map?.figmaAudit?.topLevelPages;
+  if (
+    !Array.isArray(observedPages) ||
+    observedPages.length !== 1 ||
+    observedPages[0]?.id !== "22:2" ||
+    observedPages[0]?.name !== "00 Cover"
+  ) {
+    errors.push("figmaAudit must preserve the observed 00 Cover page evidence");
+  }
   if (!Array.isArray(map?.placements)) {
     return { errors: [...errors, "placements must be an array"], blockers, summary: null };
   }
@@ -79,7 +97,15 @@ export function auditPlacementMap(map) {
     if (placement.division !== null && !PUBLIC_DIVISIONS.includes(placement.division)) {
       errors.push(`${placement.id}: invalid public division`);
     }
-    if (!placement.figmaPage || typeof placement.figmaPage !== "string") errors.push(`${placement.id}: figmaPage is required`);
+    if (!placement.plannedFigmaPage || typeof placement.plannedFigmaPage !== "string") {
+      errors.push(`${placement.id}: plannedFigmaPage is required`);
+    }
+    if (placement.figmaPage !== null && typeof placement.figmaPage !== "string") {
+      errors.push(`${placement.id}: figmaPage must be null or a string`);
+    }
+    if (placement.figmaPageId !== null && !/^\d+[:-]\d+$/.test(placement.figmaPageId ?? "")) {
+      errors.push(`${placement.id}: figmaPageId must be null or a Figma node id`);
+    }
     if (!CROP_POLICIES.includes(placement.cropPolicy)) errors.push(`${placement.id}: invalid cropPolicy`);
     if (!ALT_TEXT_POLICIES.has(placement.altTextPolicy)) errors.push(`${placement.id}: invalid altTextPolicy`);
     if (!PLACEMENT_STATUSES.includes(placement.status)) errors.push(`${placement.id}: invalid status`);
@@ -88,6 +114,9 @@ export function auditPlacementMap(map) {
       errors.push(`${placement.id}: product patterns must use contain`);
     }
     if (placement.status === "production-approved") {
+      if (!placement.figmaPage || !placement.figmaPageId) {
+        errors.push(`${placement.id}: approved placement requires an observed Figma page`);
+      }
       if (!placement.figmaNodeId) errors.push(`${placement.id}: approved placement requires figmaNodeId`);
       if (!placement.codeOwner) errors.push(`${placement.id}: approved placement requires codeOwner`);
       if (!placement.assetId) errors.push(`${placement.id}: approved placement requires assetId`);
