@@ -1,92 +1,154 @@
-# THROHI Website — Execution Plan
+# THROHI Website — Layered Execution Plan
 
-## Current objective
+## Authority
 
-Verify and refine the **Precision Heritage House full-site redesign** on `design/surgical-precision-archive` without deploying, indexing, merging, or cutting over the rebuild.
+- Design specification: `docs/superpowers/specs/2026-08-01-throhi-website-foundation-design.md`
+- Master implementation plan: `docs/superpowers/plans/2026-08-01-throhi-foundation-to-production.md`
+- Content truth: `docs/content/THROHI_CONTENT_MATRIX.md`
+- Acceptance traceability: `docs/qa/THROHI_ACCEPTANCE_MATRIX.md`
+- Active isolated branch: `implementation/throhi-foundation-layer-1`
 
-The redesign replaces the previous layered premium/QA approach and now covers every `/rebuild` route at source level.
+Older Precision Heritage House plans remain historical engineering records. They do not override the August 1 approvals.
 
-## Active visual system
+## Execution model
 
-- `precision-heritage-house-v1`
-- 78px desktop header
-- 66px mobile header
-- regal editorial typography
-- archival ivory and paper
-- surgical ink, navy, and green
-- restrained brass indexing
-- real instrument imagery
-- no filler, fake luxury, SaaS cards, or ecommerce framing
+Work proceeds inline in five clean layers. Each layer has internal phases and one meaningful checkpoint. Minor design and engineering decisions are resolved within the approved system instead of repeatedly stopping for micro-approval.
 
-## Redesigned areas
+### Layer 1 — Design source of truth
 
-1. Shared header, overlays, full-screen mobile navigation, and footer
-2. Homepage cinematic handoff, hero, divisions, selected instruments, company, history, and closing actions
-3. Catalogue masthead, search, filters, records, empty/loading states, and pagination
-4. Product media examination, procurement dossier, variant ledger, and related comparisons
-5. Inquiry worksheet, editable records, forms, attachment state, review dossier, and confirmation
-6. Company, history, Catalogues, Contact, Privacy, Terms, loading, error, success, and not-found routes
+**Goal:** Finish a complete, inspected Figma system before implementation changes begin.
 
-Functional catalogue, Inquiry List, media, accessibility, backend, no-index, and production-readiness contracts remain preserved.
+Phases:
 
-## Verification commands
+1. Requirement traceability and content boundaries
+2. Figma variables, styles, grid, and file organization
+3. Reusable public/admin components and all relevant states
+4. Responsive public/admin wireframes
+5. High-fidelity desktop, tablet, mobile, and narrow-mobile pages
+6. Intro/evolution prototypes and motion specification
+7. Edge cases, handoff mapping, subtractive review, independent visual audit
 
-Source tests:
+Current progress:
 
-```bash
-npm run test
-```
+- content matrix created;
+- acceptance matrix created;
+- red foundation source contract created;
+- PROJECT_STATE reset to approved authority;
+- Figma production pages created;
+- Cover, Foundations, and Archive created and inspected;
+- 72 variables, 15 text styles, three effect styles, and responsive grids created;
+- Button component set created and inspected;
+- Field component set created and inspected;
+- remaining core, feedback, catalogue, inquiry, shell, and admin components are active work.
 
-Backend source:
+Layer 1 exit gate:
 
-```bash
-npm run backend:check
-```
+- all required Figma pages complete;
+- component and state inventory complete;
+- desktop/tablet/mobile/narrow-mobile frames complete;
+- motion and reduced-motion behavior specified;
+- creator and independent design reviews corrected;
+- Figma-to-code token/component mapping documented;
+- no unresolved conflict with approved specification.
 
-Post-build budgets:
+### Layer 2 — Public frontend foundation
 
-```bash
-npm run readiness:check
-```
+**Goal:** Replace conflicting global presentation and rebuild the shared public experience without stacking another temporary CSS override layer.
 
-Complete full-redesign gate:
+Phases:
 
-```bash
-npm run verify:redesign
-```
+1. canonical font/token foundation;
+2. project-owned accessible UI primitives;
+3. shared header, Products navigation, Search entry, Inquiry indicator, mobile navigation, footer;
+4. Home implementation;
+5. Company implementation with Company-only evolution;
+6. removal of superseded visual contracts after selector coverage is proven.
 
-The redesign gate uses isolated port `3105` and runs:
+Exit gate:
 
-- lint;
-- typecheck;
-- source tests;
-- production build;
-- readiness budgets;
-- representative desktop and mobile Playwright suites;
-- the dedicated `rebuild-full-redesign.spec.ts` contract.
+- approved typography, color, geometry, navigation, Home, and Company contracts implemented;
+- two public divisions only;
+- no Home evolution preview;
+- keyboard, reduced motion, zoom, and 320px behavior verified locally.
 
-No fresh runtime-green claim is made until that command runs in a real checkout.
+### Layer 3 — Catalogue and conversion
 
-## Immediate sequence
+**Goal:** Complete product discovery, Product Detail, Inquiry, Contact, and authentic Catalogues behavior.
 
-1. Run `npm run verify:redesign` in a real checkout.
-2. Fix only critical build, interaction, accessibility, overflow, or data-integrity failures.
-3. Review screenshots at 1440 × 1000, 1280 × 800, 768 × 1024, 390 × 844, and 320 × 700 when preview work is intentionally resumed.
-4. Complete verified catalogue documents, final logo, contact details, company facts, and missing division data.
-5. Configure Cloudflare/OpenNext, D1, R2, Turnstile, and inquiry delivery later, as requested.
-6. Validate CSP, HSTS, Core Web Vitals, metadata, and final launch controls.
-7. Obtain explicit merge, deployment, indexing, and public cutover approval.
+Phases:
 
-## Current blockers
+1. typed catalogue/query contracts;
+2. division/family/search/filter/grid/pagination experience;
+3. Product Detail media, variants, specifications, related products;
+4. Quick Inquiry and multi-product Inquiry List;
+5. remove public upload/attachment behavior;
+6. general Contact form;
+7. authentic Surgical/Dental document states.
 
-- fresh full-redesign runtime evidence;
-- real screenshot review;
-- final catalogue validation and documents;
-- complete Beauty and Veterinary source data;
-- verified contact and company details;
-- final logo and metadata assets;
-- approved inquiry recipient and retention rules;
-- real Cloudflare resource identifiers and secrets;
-- explicit cutover approval.
+Exit gate:
 
-No pull request, merge, deployment, indexing activation, or public cutover occurs automatically.
+- product identity remains source-derived;
+- guest inquiry snapshots persist name/reference/quantity/notes;
+- no upload, account, or ecommerce language;
+- failure, refresh, back-navigation, no-results, missing-image, and mobile-keyboard states verified.
+
+### Layer 4 — Owner admin and backend alignment
+
+**Goal:** Implement secure single-owner content/product/document/contact/inquiry management and controlled publishing.
+
+Phases:
+
+1. architecture decision for authentication, database, storage, email, backup, deployment;
+2. single-owner authentication/authorization;
+3. content, catalogue, media, document, contact, and optional-price management;
+4. latest-20 inquiry retention;
+5. Draft → Preview → Publish;
+6. latest-five versions and restore-to-draft;
+7. archive default and strongly confirmed permanent deletion;
+8. hidden Beauty/Veterinary division states.
+
+Exit gate:
+
+- unauthorized mutation is impossible;
+- owner flows and failure recovery verified;
+- no fabricated dashboard data;
+- production fails clearly when required delivery/configuration is absent.
+
+### Layer 5 — Verification and release candidate
+
+**Goal:** Produce a locally verified, reviewable, reversible release candidate without automatically deploying or merging it.
+
+Phases:
+
+1. source/unit/integration tests;
+2. production build and readiness budgets;
+3. desktop/tablet/mobile/narrow-mobile Playwright journeys;
+4. axe, keyboard, focus, zoom, forced-colors, reduced-motion review;
+5. visual audit and corrections;
+6. performance and security review;
+7. client-input/release-blocker check;
+8. cutover and rollback proposal.
+
+Exit gate:
+
+- `scripts/verify-throhi-production.sh` passes in a real checkout;
+- exact evidence and known limitations recorded;
+- final logo, contact, documents, legal text, and delivery configuration either supplied or explicitly blocking release;
+- explicit user approval obtained before PR, merge, deployment, indexing, or public cutover.
+
+## Working constraints
+
+- Work only on the isolated implementation branch until a later explicit branch decision.
+- Do not deploy, merge, open a PR, enable indexing, or intentionally run GitHub Actions without explicit permission.
+- Prefer local checks to hosted Actions.
+- Preserve existing catalogue data, media preparation, and proven behavior where compatible.
+- Do not preserve attachment behavior because the approved inquiry contract removes uploads.
+- Do not publish unsupported company, product, certification, material, market, contact, pricing, legal, or response-time claims.
+- Public divisions are Surgical and Dental only.
+- Beauty and Veterinary remain hidden until explicit activation.
+
+## Current verification status
+
+`tests/throhi-foundation-contract.test.mjs` is a deliberate red contract describing the approved future state. It has not been executed in the connector-only environment and is expected to fail until Layers 2 and 3 replace the known conflicts.
+
+No runtime-green, build-green, deployment, or production-readiness claim is currently made.
