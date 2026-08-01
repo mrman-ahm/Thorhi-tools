@@ -14,6 +14,10 @@ async function loadMap() {
 test("placement map covers the approved required image roles", async () => {
   const map = await loadMap();
   assert.equal(map.figmaFileKey, "w12E41un4krAwBqlo8fHa6");
+  assert.deepEqual(map.figmaAudit.topLevelPages, [{ id: "22:2", name: "00 Cover" }]);
+  assert.equal(map.figmaAudit.status, "blocked-production-pages-missing");
+  assert.ok(map.placements.every((slot) => slot.figmaPage === null));
+  assert.ok(map.placements.every((slot) => slot.figmaNodeId === null));
   assert.deepEqual(
     map.placements.filter((slot) => slot.required).map((slot) => slot.id).sort(),
     [...REQUIRED_PLACEMENT_IDS].sort()
@@ -48,6 +52,7 @@ test("production approval requires Figma node, code owner, and asset", async () 
   const hero = broken.placements.find((slot) => slot.id === "home.hero.primary");
   hero.status = "production-approved";
   const result = auditPlacementMap(broken);
+  assert.ok(result.errors.includes("home.hero.primary: approved placement requires an observed Figma page"));
   assert.ok(result.errors.includes("home.hero.primary: approved placement requires figmaNodeId"));
   assert.ok(result.errors.includes("home.hero.primary: approved placement requires codeOwner"));
   assert.ok(result.errors.includes("home.hero.primary: approved placement requires assetId"));
