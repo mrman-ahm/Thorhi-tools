@@ -31,4 +31,6 @@ pnpm-debug.log*
 tmp/
 .cache/
 public/media/sector9d/
+sources/local-catalogues/
+.tmp/media-audit-renders/
 *.tsbuildinfo
