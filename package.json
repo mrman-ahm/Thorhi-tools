@@ -22,9 +22,10 @@
     "data:approve": "node scripts/promote-approved-catalogue.mjs",
     "media:sources": "node scripts/media/register-catalogue-sources.mjs",
     "media:audit:placements": "node scripts/media/audit-placement-map.mjs",
+    "media:audit:code": "node scripts/media/audit-code-ownership.mjs",
     "media:audit:products": "node scripts/media/audit-product-media.mjs",
     "media:audit:report": "node scripts/media/build-media-audit-report.mjs",
-    "media:audit": "npm run media:sources && npm run media:audit:placements && npm run media:audit:products && npm run media:audit:report"
+    "media:audit": "npm run media:sources && npm run media:audit:placements && npm run media:audit:code && npm run media:audit:products && npm run media:audit:report"
   },
   "dependencies": {
     "animejs": "4.5.0",
