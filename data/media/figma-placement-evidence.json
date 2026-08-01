@@ -1,0 +1,223 @@
+{
+  "schemaVersion": 1,
+  "auditedAt": "2026-08-01T17:30:00.000Z",
+  "figmaFileKey": "w12E41un4krAwBqlo8fHa6",
+  "figmaFileName": "THROHI Website & Admin Dashboard — Design System and UX",
+  "sourcePages": [
+    { "id": "22:4", "name": "02 Components", "role": "component-evidence" },
+    { "id": "22:5", "name": "03 Wireframes", "role": "wireframe-evidence" }
+  ],
+  "productionPages": [
+    { "id": "22:6", "name": "04 Desktop", "childCount": 0 },
+    { "id": "22:7", "name": "05 Tablet", "childCount": 0 },
+    { "id": "22:8", "name": "06 Mobile", "childCount": 0 }
+  ],
+  "productionReady": false,
+  "summary": {
+    "placements": 18,
+    "mapped": 17,
+    "unmapped": 1,
+    "dedicatedImageNodes": 5,
+    "noDedicatedImageSlot": 12
+  },
+  "placements": [
+    {
+      "id": "home.hero.primary",
+      "pageId": "22:5",
+      "pageName": "03 Wireframes",
+      "nodeId": "93:59",
+      "nodeName": "Home Hero Product Media",
+      "evidenceStatus": "wireframe-node",
+      "supportsImage": true,
+      "productionApproved": false,
+      "note": "Dedicated product-media placeholder exists in the desktop Home wireframe. High-fidelity production pages remain empty."
+    },
+    {
+      "id": "home.division.surgical",
+      "pageId": "22:5",
+      "pageName": "03 Wireframes",
+      "nodeId": "93:69",
+      "nodeName": "Home Surgical Division",
+      "evidenceStatus": "wireframe-node",
+      "supportsImage": false,
+      "productionApproved": false,
+      "note": "Current wireframe is a text-led division panel without a dedicated media slot."
+    },
+    {
+      "id": "home.division.dental",
+      "pageId": "22:5",
+      "pageName": "03 Wireframes",
+      "nodeId": "93:74",
+      "nodeName": "Home Dental Division",
+      "evidenceStatus": "wireframe-node",
+      "supportsImage": false,
+      "productionApproved": false,
+      "note": "Current wireframe is a text-led division panel without a dedicated media slot."
+    },
+    {
+      "id": "home.products.featured",
+      "pageId": "22:5",
+      "pageName": "03 Wireframes",
+      "nodeId": "93:79",
+      "nodeName": "Home Representative Families",
+      "evidenceStatus": "wireframe-node",
+      "supportsImage": false,
+      "productionApproved": false,
+      "note": "The current Home wireframe shows representative family links, not product-image cards."
+    },
+    {
+      "id": "home.company.primary",
+      "pageId": "22:5",
+      "pageName": "03 Wireframes",
+      "nodeId": "93:105",
+      "nodeName": "Home Company Introduction",
+      "evidenceStatus": "wireframe-node",
+      "supportsImage": false,
+      "productionApproved": false,
+      "note": "The section contains copy and an evidence note, with no dedicated image placeholder."
+    },
+    {
+      "id": "home.catalogues.surgical",
+      "pageId": "22:5",
+      "pageName": "03 Wireframes",
+      "nodeId": "93:123",
+      "nodeName": "Home Surgical Catalogue",
+      "evidenceStatus": "wireframe-node",
+      "supportsImage": false,
+      "productionApproved": false,
+      "note": "Current wireframe uses a document-row instance; an authentic cover slot is not designed yet."
+    },
+    {
+      "id": "company.sialkot.context",
+      "pageId": "22:5",
+      "pageName": "03 Wireframes",
+      "nodeId": "99:253",
+      "nodeName": "Company Sialkot Context",
+      "evidenceStatus": "wireframe-node",
+      "supportsImage": false,
+      "productionApproved": false,
+      "note": "Current wireframe uses factual copy and a location ledger without documentary imagery."
+    },
+    {
+      "id": "company.evolution.static-fallback",
+      "pageId": "22:5",
+      "pageName": "03 Wireframes",
+      "nodeId": "99:267",
+      "nodeName": "Company Evolution Timeline",
+      "evidenceStatus": "wireframe-node",
+      "supportsImage": true,
+      "productionApproved": false,
+      "note": "The timeline contains four explicit media placeholders for the reduced-motion/static fallback."
+    },
+    {
+      "id": "company.present-day.primary",
+      "pageId": "22:5",
+      "pageName": "03 Wireframes",
+      "nodeId": "99:292",
+      "nodeName": "Company THROHI Today",
+      "evidenceStatus": "wireframe-node",
+      "supportsImage": false,
+      "productionApproved": false,
+      "note": "Current wireframe is text-led with Surgical and Dental panels and no media slot."
+    },
+    {
+      "id": "products.division.surgical",
+      "pageId": "22:5",
+      "pageName": "03 Wireframes",
+      "nodeId": "97:115",
+      "nodeName": "Products Surgical Division",
+      "evidenceStatus": "wireframe-node",
+      "supportsImage": false,
+      "productionApproved": false,
+      "note": "The division is currently represented by a filter control rather than an image."
+    },
+    {
+      "id": "products.division.dental",
+      "pageId": "22:5",
+      "pageName": "03 Wireframes",
+      "nodeId": "97:117",
+      "nodeName": "Products Dental Division",
+      "evidenceStatus": "wireframe-node",
+      "supportsImage": false,
+      "productionApproved": false,
+      "note": "The division is currently represented by a filter control rather than an image."
+    },
+    {
+      "id": "catalogues.surgical.cover",
+      "pageId": "22:5",
+      "pageName": "03 Wireframes",
+      "nodeId": "104:370",
+      "nodeName": "Catalogues Surgical Unavailable",
+      "evidenceStatus": "wireframe-node",
+      "supportsImage": false,
+      "productionApproved": false,
+      "note": "The current truthful state is an unavailable document row, not a fabricated cover."
+    },
+    {
+      "id": "catalogues.dental.cover",
+      "pageId": "22:5",
+      "pageName": "03 Wireframes",
+      "nodeId": "104:379",
+      "nodeName": "Catalogues Dental Unavailable",
+      "evidenceStatus": "wireframe-node",
+      "supportsImage": false,
+      "productionApproved": false,
+      "note": "The current truthful state is an unavailable document row, not a fabricated cover."
+    },
+    {
+      "id": "pattern.product-card.image",
+      "pageId": "22:4",
+      "pageName": "02 Components",
+      "nodeId": "57:39",
+      "nodeName": "Product Media Stage",
+      "evidenceStatus": "component-node",
+      "supportsImage": true,
+      "productionApproved": false,
+      "note": "The component defines contained Card and Detail media states, including low-resolution and missing states."
+    },
+    {
+      "id": "pattern.product-detail.primary",
+      "pageId": "22:5",
+      "pageName": "03 Wireframes",
+      "nodeId": "102:292",
+      "nodeName": "Product Detail Main Media",
+      "evidenceStatus": "wireframe-node",
+      "supportsImage": true,
+      "productionApproved": false,
+      "note": "The Product Detail wireframe contains an explicit 620 by 480 media-stage instance."
+    },
+    {
+      "id": "pattern.related-product.image",
+      "pageId": "22:4",
+      "pageName": "02 Components",
+      "nodeId": "58:121",
+      "nodeName": "Product Card",
+      "evidenceStatus": "component-node",
+      "supportsImage": true,
+      "productionApproved": false,
+      "note": "Related products can reuse the approved contained Product Card media contract; no route-specific related-products frame exists yet."
+    },
+    {
+      "id": "pattern.inquiry-snapshot.image",
+      "pageId": "22:4",
+      "pageName": "02 Components",
+      "nodeId": "63:122",
+      "nodeName": "Inquiry Item",
+      "evidenceStatus": "component-node",
+      "supportsImage": false,
+      "productionApproved": false,
+      "note": "The approved Inquiry Item preserves product identity as text and currently has no image stage."
+    },
+    {
+      "id": "pattern.search-result.image",
+      "pageId": "22:4",
+      "pageName": "02 Components",
+      "nodeId": null,
+      "nodeName": null,
+      "evidenceStatus": "missing-dedicated-node",
+      "supportsImage": false,
+      "productionApproved": false,
+      "note": "No dedicated search-result component or image slot exists in the current component library."
+    }
+  ]
+}
