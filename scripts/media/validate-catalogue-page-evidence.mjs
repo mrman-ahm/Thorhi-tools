@@ -14,6 +14,35 @@ function object(value) {
   return value && typeof value === "object" && !Array.isArray(value);
 }
 
+export async function loadCataloguePageEvidence(rootDir = process.cwd()) {
+  const indexPath = path.join(
+    rootDir,
+    "data/media/catalogue-page-evidence.generated.json"
+  );
+  const index = JSON.parse(await readFile(indexPath, "utf8"));
+  const sources = await Promise.all(
+    (index.sources ?? []).map(async (source) => {
+      if (!source.pagesFile || typeof source.pagesFile !== "string") {
+        throw new Error(`${source.id ?? "unknown"}: pagesFile is required`);
+      }
+      const shard = JSON.parse(
+        await readFile(path.join(rootDir, source.pagesFile), "utf8")
+      );
+      if (shard.schemaVersion !== 1) {
+        throw new Error(`${source.id}: page shard must use schemaVersion 1`);
+      }
+      if (shard.sourceId !== source.id) {
+        throw new Error(`${source.id}: page shard sourceId mismatch`);
+      }
+      if (!Array.isArray(shard.pages)) {
+        throw new Error(`${source.id}: page shard pages must be an array`);
+      }
+      return { ...source, pages: shard.pages };
+    })
+  );
+  return { ...index, sources };
+}
+
 export function validateCataloguePageEvidence(evidence) {
   const errors = [];
   if (!object(evidence)) {
@@ -155,10 +184,9 @@ export function validateCataloguePageEvidence(evidence) {
 }
 
 async function main() {
-  const filePath =
-    process.argv[2] ??
-    path.join(process.cwd(), "data/media/catalogue-page-evidence.generated.json");
-  const evidence = JSON.parse(await readFile(filePath, "utf8"));
+  const evidence = process.argv[2]
+    ? JSON.parse(await readFile(path.resolve(process.argv[2]), "utf8"))
+    : await loadCataloguePageEvidence(process.cwd());
   const result = validateCataloguePageEvidence(evidence);
   if (result.errors.length) throw new Error(result.errors.join("\n"));
   console.log(JSON.stringify(result));
