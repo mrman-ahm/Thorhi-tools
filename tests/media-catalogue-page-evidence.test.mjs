@@ -1,14 +1,12 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { readFile } from "node:fs/promises";
 import {
+  loadCataloguePageEvidence,
   validateCataloguePageEvidence,
 } from "../scripts/media/validate-catalogue-page-evidence.mjs";
 
 async function loadEvidence() {
-  return JSON.parse(
-    await readFile("data/media/catalogue-page-evidence.generated.json", "utf8")
-  );
+  return loadCataloguePageEvidence(process.cwd());
 }
 
 const expectedSources = [
@@ -84,6 +82,7 @@ test("every PDF page has stable render evidence and contiguous numbering", async
   const evidence = await loadEvidence();
   for (const source of evidence.sources) {
     assert.equal(source.pages.length, source.pageCount);
+    assert.equal(source.pagesFile, `data/media/catalogue-pages/${source.id}.generated.json`);
     for (const [index, page] of source.pages.entries()) {
       assert.equal(page.sourceId, source.id);
       assert.equal(page.pageNumber, index + 1);
