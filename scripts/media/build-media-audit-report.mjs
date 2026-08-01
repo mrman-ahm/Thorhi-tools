@@ -24,9 +24,111 @@ function placementOrder(placement) {
   return 45;
 }
 
-function buildNextQueue(placementMap, inventory) {
+function assertObject(value, label) {
+  if (!value || typeof value !== "object" || Array.isArray(value)) {
+    throw new Error(`${label} must be an object`);
+  }
+}
+
+function validateFigmaEvidence(figmaEvidence, placementMap) {
+  if (figmaEvidence === null || figmaEvidence === undefined) {
+    return { lookup: null, summary: null };
+  }
+
+  assertObject(figmaEvidence, "Figma evidence");
+  if (figmaEvidence.schemaVersion !== 1) {
+    throw new Error("Figma evidence must use schemaVersion 1");
+  }
+  if (figmaEvidence.figmaFileKey !== placementMap.figmaFileKey) {
+    throw new Error("Figma evidence file key must match the approved placement registry");
+  }
+  if (!Array.isArray(figmaEvidence.productionPages)) {
+    throw new Error("Figma evidence productionPages must be an array");
+  }
+  if (!Array.isArray(figmaEvidence.placements)) {
+    throw new Error("Figma evidence placements must be an array");
+  }
+
+  const placementIds = new Set(placementMap.placements.map((placement) => placement.id));
+  const lookup = new Map();
+  for (const record of figmaEvidence.placements) {
+    assertObject(record, "Figma placement evidence");
+    if (!record.id || typeof record.id !== "string") {
+      throw new Error("Figma placement evidence id is required");
+    }
+    if (lookup.has(record.id)) {
+      throw new Error(`Duplicate Figma placement evidence: ${record.id}`);
+    }
+    if (!placementIds.has(record.id)) {
+      throw new Error(`Unknown Figma placement evidence: ${record.id}`);
+    }
+    if (typeof record.supportsImage !== "boolean") {
+      throw new Error(`${record.id}: Figma evidence supportsImage must be boolean`);
+    }
+    if (typeof record.productionApproved !== "boolean") {
+      throw new Error(`${record.id}: Figma evidence productionApproved must be boolean`);
+    }
+    lookup.set(record.id, record);
+  }
+
+  for (const placement of placementMap.placements) {
+    if (!lookup.has(placement.id)) {
+      throw new Error(`Missing Figma placement evidence: ${placement.id}`);
+    }
+  }
+
+  const mapped = figmaEvidence.placements.filter((record) => Boolean(record.nodeId)).length;
+  const unmapped = figmaEvidence.placements.length - mapped;
+  const dedicatedImageNodes = figmaEvidence.placements.filter(
+    (record) => record.supportsImage && Boolean(record.nodeId)
+  ).length;
+  const noDedicatedImageSlot = figmaEvidence.placements.filter(
+    (record) => !record.supportsImage && Boolean(record.nodeId)
+  ).length;
+  const emptyProductionPages = figmaEvidence.productionPages
+    .filter((page) => page?.childCount === 0)
+    .map((page) => page.name);
+
+  const computedSummary = {
+    placements: figmaEvidence.placements.length,
+    mapped,
+    unmapped,
+    dedicatedImageNodes,
+    noDedicatedImageSlot,
+  };
+  for (const [key, value] of Object.entries(computedSummary)) {
+    if (figmaEvidence.summary?.[key] !== value) {
+      throw new Error(`Figma evidence summary ${key} must equal ${value}`);
+    }
+  }
+
+  return {
+    lookup,
+    summary: {
+      productionReady: figmaEvidence.productionReady === true,
+      mapped,
+      unmapped,
+      dedicatedImageNodes,
+      noDedicatedImageSlot,
+      emptyProductionPages,
+      sourcePages: figmaEvidence.sourcePages ?? [],
+    },
+  };
+}
+
+function supportsImage(placement, evidenceLookup) {
+  if (!evidenceLookup) return true;
+  return evidenceLookup.get(placement.id)?.supportsImage === true;
+}
+
+function buildNextQueue(placementMap, inventory, evidenceLookup) {
   const queue = placementMap.placements
-    .filter((placement) => placement.required && placement.status !== "production-approved")
+    .filter(
+      (placement) =>
+        placement.required &&
+        placement.status !== "production-approved" &&
+        supportsImage(placement, evidenceLookup)
+    )
     .map((placement) => queuePlacement(placement, placementOrder(placement)));
 
   const qualityProducts = inventory.products
@@ -69,15 +171,19 @@ function buildNextQueue(placementMap, inventory) {
   );
 }
 
-function buildBlockers(placementMap, inventory) {
+function buildBlockers(placementMap, inventory, evidenceLookup) {
   const blockers = [];
   for (const placement of placementMap.placements) {
-    if (placement.required && placement.status !== "production-approved") {
+    if (
+      placement.required &&
+      placement.status !== "production-approved" &&
+      supportsImage(placement, evidenceLookup)
+    ) {
       blockers.push({
         severity: "blocker",
         type: "placement",
         id: placement.id,
-        message: `Required placement is ${placement.status}.`,
+        message: `Required image-bearing placement is ${placement.status}.`,
       });
     }
   }
@@ -97,6 +203,7 @@ function buildBlockers(placementMap, inventory) {
 export function buildMediaAudit({
   sourcesRegistry,
   placementMap,
+  figmaEvidence = null,
   productInventory,
   generatedAt = new Date().toISOString(),
 }) {
@@ -110,7 +217,8 @@ export function buildMediaAudit({
     throw new Error("product inventory must use schemaVersion 1 and include products");
   }
 
-  const blockers = buildBlockers(placementMap, productInventory);
+  const validatedEvidence = validateFigmaEvidence(figmaEvidence, placementMap);
+  const blockers = buildBlockers(placementMap, productInventory, validatedEvidence.lookup);
   const reviews = [
     {
       severity: "review",
@@ -124,7 +232,30 @@ export function buildMediaAudit({
       count: productInventory.summary.qualityReviewRequired,
       message: "Measurable source-image findings require review without implying identity failure.",
     },
-  ].filter((finding) => finding.count > 0);
+    validatedEvidence.summary && !validatedEvidence.summary.productionReady
+      ? {
+          severity: "review",
+          type: "figma-production-pages",
+          count: validatedEvidence.summary.emptyProductionPages.length,
+          message: "High-fidelity production pages are empty; wireframe/component nodes are evidence, not production approval.",
+        }
+      : null,
+    validatedEvidence.summary?.unmapped > 0
+      ? {
+          severity: "review",
+          type: "figma-unmapped-placement",
+          count: validatedEvidence.summary.unmapped,
+          message: "One or more placement contracts have no dedicated Figma node.",
+        }
+      : null,
+  ].filter((finding) => finding && finding.count > 0);
+
+  const textOnlyPlacements = validatedEvidence.lookup
+    ? placementMap.placements
+        .filter((placement) => validatedEvidence.lookup.get(placement.id)?.supportsImage === false)
+        .map((placement) => placement.id)
+        .sort()
+    : [];
 
   return {
     schemaVersion: 1,
@@ -145,6 +276,7 @@ export function buildMediaAudit({
       })),
     },
     placementSummary: placementAudit.summary,
+    figmaEvidence: validatedEvidence.summary,
     productSummary: productInventory.summary,
     blockers,
     reviews,
@@ -154,8 +286,19 @@ export function buildMediaAudit({
         type: "public-divisions",
         value: ["surgical", "dental"],
       },
+      ...(validatedEvidence.summary
+        ? [
+            {
+              severity: "information",
+              type: "text-only-placements",
+              count: textOnlyPlacements.length,
+              placementIds: textOnlyPlacements,
+              message: "These observed Figma sections have no dedicated image slot and must not trigger decorative image sourcing.",
+            },
+          ]
+        : []),
     ],
-    nextQueue: buildNextQueue(placementMap, productInventory),
+    nextQueue: buildNextQueue(placementMap, productInventory, validatedEvidence.lookup),
   };
 }
 
@@ -181,15 +324,29 @@ export function renderMediaAuditMarkdown(audit) {
     "",
     "## Placement Coverage",
     "",
-    `Required editorial placements: **${audit.placementSummary.required}**. Product patterns: **${audit.placementSummary.productPatterns}**. Production-approved: **${audit.placementSummary.productionApproved}**. Blocked: **${audit.placementSummary.blocked}**.`,
+    `Required editorial placements: **${audit.placementSummary.required}**. Product patterns: **${audit.placementSummary.productPatterns}**. Production-approved: **${audit.placementSummary.productionApproved}**. Blocked in the placement registry: **${audit.placementSummary.blocked}**.`,
     "",
+  ];
+
+  if (audit.figmaEvidence) {
+    lines.push(
+      "## Figma Placement Evidence",
+      "",
+      `Mapped nodes: **${audit.figmaEvidence.mapped}**. Unmapped contracts: **${audit.figmaEvidence.unmapped}**. Dedicated image nodes: **${audit.figmaEvidence.dedicatedImageNodes}**. Observed nodes without image slots: **${audit.figmaEvidence.noDedicatedImageSlot}**.`,
+      "",
+      `High-fidelity production pages ready: **${audit.figmaEvidence.productionReady ? "yes" : "no"}**. Empty production pages: **${audit.figmaEvidence.emptyProductionPages.join(", ") || "none"}**.`,
+      ""
+    );
+  }
+
+  lines.push(
     "## Existing Product Media",
     "",
     `Runtime products: **${audit.productSummary.runtimeProducts}**. Media records: **${audit.productSummary.mediaRecords}**. Variant codes: **${audit.productSummary.variantCodes}**. Missing media: **${audit.productSummary.missingMedia}**. Duplicate paths: **${audit.productSummary.duplicatePaths}**.`,
     "",
     "## Blocking Issues",
-    "",
-  ];
+    ""
+  );
   if (audit.blockers.length === 0) lines.push("No production-integration blockers were detected.");
   else for (const blocker of audit.blockers) lines.push(`- **${blocker.id ?? blocker.type}:** ${blocker.message}`);
 
@@ -218,13 +375,15 @@ export async function writeMediaAuditReport(rootDir, options = {}) {
       generatedAt: options.generatedAt,
     });
   }
-  const [sourcesRegistry, placementMap] = await Promise.all([
+  const [sourcesRegistry, placementMap, figmaEvidence] = await Promise.all([
     readJson(path.join(rootDir, "data/media/catalogue-sources.json")),
     readJson(path.join(rootDir, "data/media/placement-map.json")),
+    readJson(path.join(rootDir, "data/media/figma-placement-evidence.json")),
   ]);
   const audit = buildMediaAudit({
     sourcesRegistry,
     placementMap,
+    figmaEvidence,
     productInventory,
     generatedAt: options.generatedAt,
   });
@@ -247,6 +406,7 @@ async function main() {
     JSON.stringify({
       sources: audit.sourceCatalogues.total,
       placements: audit.placementSummary.total,
+      imagePlacements: audit.figmaEvidence?.dedicatedImageNodes ?? null,
       products: audit.productSummary.runtimeProducts,
       blockers: audit.blockers.length,
       queueItems: audit.nextQueue.length,
