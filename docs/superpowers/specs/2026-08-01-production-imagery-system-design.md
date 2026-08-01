@@ -1,42 +1,42 @@
 # THROHI Production Imagery System Design
 
 **Date:** 2026-08-01  
-**Status:** Approved for specification; implementation pending written-plan review  
+**Status:** Awaiting user review  
 **Repository:** `mrman-ahm/Thorhi-tools`  
 **Working branch:** `media/production-imagery-system`  
 **Base branch:** `implementation/throhi-foundation-layer-1`  
 **Figma source of truth:** `THROHI Website & Admin Dashboard — Design System and UX` (`w12E41un4krAwBqlo8fHa6`)
 
-## 1. Purpose
+## 1. Goal
 
-This specification defines how THROHI will replace image placeholders with accurate, commercially safe, production-ready imagery across the public website, owner-admin interface, Figma handoff, and product catalogue.
+Replace every production image placeholder with accurate, commercially safe, responsive imagery that fits the approved THROHI layouts and preserves exact product identity.
 
-The work is not a generic stock-photo exercise. Every image must serve a known page, component, product identity, responsive crop, or procurement task.
+The work has two coordinated tracks:
 
-The system has two coordinated tracks:
+1. **Editorial imagery** for Home, Company, division entry points, catalogue documents, Contact, Inquiry, and owner-admin previews.
+2. **Product imagery** for catalogue cards, Product Detail, related products, search results, and Inquiry snapshots.
 
-1. **Editorial and interface imagery** for Home, Company, division entry points, catalogues, Contact, Inquiry, and admin previews.
-2. **Product imagery** for Surgical and Dental catalogue records, product cards, Product Detail, related products, Inquiry snapshots, and search results.
+This is a media-production system, not a stock-photo sweep. Every asset must have a documented purpose, source, license state, Figma placement, code path, responsive behavior, and approval state.
 
-## 2. Source-of-truth hierarchy
+## 2. Authority and isolation
 
 When sources conflict, use this order:
 
-1. Latest explicit user instruction.
-2. This specification.
-3. August 1 THROHI website foundation specification.
-4. Current Figma production file and approved component/page hierarchy.
-5. Client-supplied catalogues and images.
-6. Existing source-derived repository catalogue data.
-7. External research used only under the licensing and traceability rules below.
+1. latest explicit user instruction;
+2. this specification;
+3. the August 1 THROHI foundation specification;
+4. the current Figma production file;
+5. client-supplied catalogues and images;
+6. existing source-derived repository data;
+7. external research under the licensing rules below.
 
-Historical wireframes, rejected visual studies, old placeholder imagery, dark-first catalogue treatments, and earlier four-division assumptions are not authoritative.
+The media branch must not overwrite the frontend agent's layout work. Integration happens through stable asset paths and generated manifests that can be merged into the active frontend branch later.
 
-## 3. Approved source materials
+No merge, deployment, indexing change, public cutover, or intentional GitHub Actions run is authorized.
 
-### 3.1 Client-supplied catalogue set
+## 3. Approved catalogue source set
 
-The current Surgical catalogue source set is:
+The current attached instrument catalogues are:
 
 - `Knives Catalog(1).pdf`
 - `Cutters Catalog(1).pdf`
@@ -44,23 +44,22 @@ The current Surgical catalogue source set is:
 - `Punches Catalog(1).pdf`
 - `Chisels Catalog(1).pdf`
 
-Every distinct product family, named instrument, reference code, dimensional variant, straight/curved configuration, jaw or blade form, coating state, and materially different silhouette shown in these catalogues must be inventoried.
+Every meaningful catalogue identity must be inventoried:
 
-A catalogue page may contain:
-
-- one product with multiple codes;
-- one family with multiple dimensions;
-- regular, Super Cut, and TC variants;
-- straight and curved variants;
-- multiple tip or jaw geometries;
+- family and named instrument;
+- product and representative code;
+- dimensional variants;
+- straight, curved, angled, left, and right configurations;
+- regular, Super Cut, TC, coated, or other visibly distinct states;
+- jaw, blade, tip, punch, cup, gouge, handle, and shaft forms;
 - diagram-only variants;
-- one product photograph representing several codes.
+- cases where one image legitimately represents several codes.
 
-The inventory must preserve those distinctions rather than flattening a page into a single image record.
+The inventory must not flatten a page into one product merely because the page uses one representative photograph.
 
-### 3.2 Existing repository media
+## 4. Existing repository baseline
 
-The repository already contains a source-derived media pipeline for 626 products and 1,434 variants, including:
+The repository already contains a 626-product, 1,434-variant source-derived media pipeline, including:
 
 - `src/data/catalogue.runtime.generated.json`
 - `src/data/catalogue.media.generated.json`
@@ -70,69 +69,78 @@ The repository already contains a source-derived media pipeline for 626 products
 - `public/catalogue/media-manifest.json`
 - `scripts/prepare-product-media.mjs`
 
-These assets are an engineering baseline, not automatic final approval. Each product image must be checked for:
+These assets are an engineering baseline, not automatic final approval. Each assignment must be checked for:
 
-- identity match;
-- silhouette match;
-- source traceability;
-- crop quality;
-- resolution;
-- background consistency;
+- exact identity;
+- silhouette and visible geometry;
+- correct variant relationship;
 - duplicate or swapped assignment;
-- appropriateness for the new Figma layout.
+- source traceability;
+- resolution and crop quality;
+- background consistency;
+- suitability for the approved Figma stage.
 
-### 3.3 Supplied cinematic and historical media
+Existing product IDs and variant codes remain stable. Media attaches to those identities; it does not silently rename, merge, or split catalogue records.
 
-The approved first-visit intro and Company-page scissors evolution media remain separate from the catalogue image system. They must not be repurposed as generic product thumbnails.
-
-## 4. Commercial-use and licensing rule
+## 5. Commercial-use rule
 
 Production images may come from:
 
 1. client-owned catalogue imagery;
 2. client-supplied photography;
-3. images with explicit commercial reuse rights compatible with the website;
+3. images with explicit commercial reuse permission compatible with the website;
 4. commissioned or newly photographed THROHI imagery;
 5. carefully restored catalogue extracts when no legitimate higher-resolution replacement exists.
 
-Images found on competing manufacturers, distributors, marketplaces, social media, or search results may be retained as identification references only unless commercial reuse permission is explicit and recorded.
+Images found on competitors, distributors, marketplaces, social media, or search results are **reference-only** unless commercial reuse permission is explicit and recorded.
 
-The system must never silently copy a competitor image into production.
+The system must never silently ship a competitor image.
 
-Generated images may be used for non-product editorial backgrounds only when they do not imply a false factory, certification, facility, employee, or exact instrument. Generated imagery must not represent a precise catalogue product, because small geometric errors can misrepresent surgical or dental instruments.
+Generated imagery may be used only for non-product editorial backgrounds when it does not imply a false factory, employee, facility, certification, export market, historical event, or exact instrument. Generated imagery must not represent precise catalogue products.
 
-## 5. Product identity and matching rules
+## 6. Exact product-matching rule
 
-A product image is considered a valid match only when all applicable visible characteristics agree:
+A product image is valid only when all applicable visible characteristics agree:
 
-- instrument family and common name;
-- reference code or documented representative code;
-- overall silhouette;
-- handle form;
-- ring, spring, plier, or shaft structure;
+- family and instrument name;
+- reference or representative code;
+- overall silhouette and proportions;
+- handle, ring, spring, plier, ratchet, or shaft structure;
 - straight, curved, angled, left, or right orientation;
 - jaw, tip, blade, cutting edge, cup, punch, or gouge profile;
-- length class and proportion;
-- regular, Super Cut, TC, or coated state when visible;
-- number and placement of joints, ratchets, screws, or springs;
+- number and placement of joints, screws, springs, or ratchets;
+- visible coating or TC state;
 - catalogue diagrams and detail callouts.
 
 A name-only match is insufficient.
 
-When one photograph legitimately represents several dimensional variants, the media record may be shared but the variant identities must remain separate.
+When one photograph legitimately represents multiple dimensional variants, the image may be shared while variant identities remain separate.
 
-When no exact high-resolution image exists, retain the source catalogue image and mark the record as `source-restoration-required`. Do not substitute a merely similar instrument.
+When no exact high-resolution image exists, retain the verified catalogue extract and set `qualityStatus` to `restoration-required`. Do not substitute a merely similar instrument.
 
-## 6. Image inventory model
+## 7. Central inventory model
 
-The image inventory is the central authority for all placement and approval work.
-
-Each record must contain:
+No production page may reference an asset that lacks an approved inventory record.
 
 ```ts
 type MediaInventoryRecord = {
   id: string;
-  mediaRole: "editorial" | "division" | "family" | "product" | "document" | "ui-preview";
+  workflowState:
+    | "discovered"
+    | "identity-verified"
+    | "license-verified"
+    | "prepared"
+    | "figma-reviewed"
+    | "production-approved"
+    | "rejected"
+    | "blocked-client-input";
+  mediaRole:
+    | "editorial"
+    | "division"
+    | "family"
+    | "product"
+    | "document"
+    | "ui-preview";
   division: "surgical" | "dental" | null;
   familyId: string | null;
   productId: string | null;
@@ -150,6 +158,7 @@ type MediaInventoryRecord = {
     | "generated-editorial";
   sourceUrl: string | null;
   sourceFile: string | null;
+  retrievedAt: string | null;
   licenseStatus:
     | "client-owned"
     | "commercial-approved"
@@ -164,139 +173,131 @@ type MediaInventoryRecord = {
     | "restoration-required"
     | "replacement-required"
     | "reference-only";
-  backgroundStatus: "transparent" | "clean-neutral" | "needs-isolation" | "editorial";
+  backgroundStatus:
+    | "transparent"
+    | "clean-neutral"
+    | "needs-isolation"
+    | "editorial";
   approvedPlacements: string[];
   responsiveCropPolicy: "contain" | "editorial-cover" | "document-cover";
   focalPoint: { x: number; y: number } | null;
+  width: number | null;
+  height: number | null;
   altText: string;
   notes: string[];
 };
 ```
 
-No production asset may be referenced directly from a page component without a corresponding approved inventory record.
+An asset reaches production only after identity and license verification. Client catalogue extracts satisfy licensing as client-owned but still require identity and quality review.
 
-## 7. Editorial imagery system
+## 8. Editorial imagery direction
 
-### 7.1 Home
+### Home
 
 Home imagery must support:
 
-- THROHI identity and Sialkot origin;
-- Surgical and Dental division entry points;
+- THROHI identity and verified Sialkot origin;
+- Surgical and Dental entry points;
 - representative source-derived families or products;
 - catalogue access;
 - concise company introduction;
-- final Contact and Inquiry actions.
+- Contact and Inquiry actions.
 
 Preferred visual language:
 
 - controlled macro photography of stainless-steel instruments;
 - clean neutral specimen arrangements;
-- precise workshop details only when genuinely sourced;
 - restrained paper, pale steel, emerald, and technical-blue surroundings;
-- human context only when factual and visually necessary.
+- authentic workshop detail only when genuinely sourced;
+- human context only when factual and necessary.
 
 Prohibited Home imagery:
 
 - generic surgeons posing at camera;
-- graphic operations, blood, tissue, or anatomy;
+- blood, tissue, anatomy, or graphic operations;
 - fake factories or unnamed workers presented as THROHI;
 - generic laboratory stock unrelated to instruments;
-- dramatic luxury-watch lighting repeated across sections;
-- fake certificates, awards, export maps, or facility claims.
+- repeated luxury-watch lighting;
+- fake certificates, awards, testimonials, or export maps.
 
-### 7.2 Division entry imagery
+### Division entry points
 
-Surgical and Dental entry images must be visibly distinct while belonging to one system.
+- **Surgical:** representative scissors, forceps, punches, chisels, knives, or other verified Surgical instruments.
+- **Dental:** representative orthodontic pliers, cutters, forceps, or other verified Dental instruments.
 
-- **Surgical:** scissors, forceps, punches, chisels, knives, or other source-derived instruments arranged with disciplined clinical spacing.
-- **Dental:** orthodontic pliers, cutters, forceps, or other source-derived dental instruments with the same neutral-stage logic.
+Both divisions use the same clinical-stage system but must remain visually distinguishable.
 
-Division imagery must remain representative rather than implying that one featured instrument is the entire division.
+### Company
 
-### 7.3 Company
+Company imagery may use commercially safe Sialkot documentary context, the supplied scissors evolution sequence, present-day product imagery, and factual catalogue depth.
 
-Company imagery may include:
+No image may imply an unverified THROHI factory, founder, workforce, certification, capacity, market, or history.
 
-- concise Sialkot context from commercially usable documentary photography;
-- supplied scissors evolution sequence;
-- present-day product imagery;
-- factual catalogue depth.
+### Catalogues
 
-No image may imply an unverified THROHI factory, founder, workforce, certification, export market, capacity, or historical event.
+Catalogue cards use authentic supplied PDF covers or thumbnails derived from the real first page. No fabricated catalogue document is allowed.
 
-### 7.4 Catalogues
+### Contact and Inquiry
 
-Catalogue cards use authentic supplied document covers or neutral generated thumbnails derived from the real PDF first page. They must not use fabricated catalogue documents.
+These pages remain primarily functional. Supporting imagery is optional and must not compete with forms, selected products, or contact actions.
 
-### 7.5 Contact and Inquiry
-
-Contact and Inquiry should remain primarily functional. Supporting imagery may be used only when it improves hierarchy without distracting from forms, selected products, and contact actions.
-
-## 8. Product stage design
+## 9. Product-stage design
 
 Product cards and Product Detail use a contained clinical-specimen stage.
 
 Rules:
 
-- preserve the full silhouette;
-- use `object-fit: contain` or equivalent;
-- maintain consistent stage proportions;
+- preserve the full instrument silhouette;
+- use contain behavior rather than destructive crops;
+- use consistent stage proportions;
 - use warm neutral, white, or pale-steel backgrounds;
-- avoid aggressive crops;
-- avoid fake reflections, mirrored floors, excessive glow, and dramatic color grading;
-- keep lower-resolution Surgical images smaller rather than enlarging them to fill the card;
-- allow higher-resolution Dental images more space without changing card geometry;
+- avoid fake reflections, mirrored floors, excessive glow, and dramatic grading;
+- keep lower-resolution Surgical images smaller and sharper;
+- allow stronger Dental images more visual space without changing card geometry;
+- preserve visible coatings and material differences;
 - keep shadows subtle and physically plausible;
-- do not erase visible coatings or material differences;
-- do not rotate an instrument merely for decoration when orientation communicates product identity.
+- preserve meaningful catalogue orientation.
 
-Desktop catalogue remains three columns, tablet two where practical, and mobile one.
+The approved grid remains three columns on desktop, two on tablet where practical, and one on mobile.
 
-## 9. Responsive image behavior
+## 10. Responsive behavior
 
-Every approved placement must define its responsive behavior.
+### Product media
 
-### 9.1 Product images
+- always preserve the full silhouette;
+- never introduce breakpoint-specific destructive crops;
+- allow reduced stage padding on smaller screens;
+- rotate thin or long instruments only when family policy is consistent and identity remains clear.
 
-- always contain the full instrument;
-- no breakpoint-specific destructive crops;
-- stage padding may reduce on smaller screens;
-- thin or long instruments may use a rotated stage only when the catalogue orientation remains understandable and the same policy is consistently applied to the family.
-
-### 9.2 Editorial images
+### Editorial media
 
 - desktop, tablet, and mobile crops may differ;
-- focal point must be stored in the inventory;
-- text-safe areas must be reviewed against actual Figma frames;
-- mobile may switch from cover crop to contained crop if the subject would otherwise be lost;
-- essential product identity must never sit beneath text overlays.
+- store a focal point for each placement;
+- review actual text-safe areas in Figma;
+- switch to contain on mobile when cover cropping would lose the subject;
+- never place essential product identity beneath text overlays.
 
-### 9.3 Image dimensions
+Final output sizes must come from actual rendered container dimensions, not arbitrary desktop-only exports.
 
-Final output dimensions will be selected from actual rendered container sizes. Assets must not be generated at arbitrary desktop-only dimensions.
+## 11. Figma coordination
 
-## 10. Figma coordination
+The Figma file remains the placement authority.
 
-The Figma file remains the visual placement authority.
+For every image-bearing production node:
 
-The media workflow must:
+1. record page and node ID;
+2. record natural frame dimensions and aspect ratio;
+3. classify crop mode and text-safe area;
+4. attach candidate assets to the inventory;
+5. review desktop, tablet, and mobile states;
+6. place only approved imagery;
+7. record final code path and usage in `09 Handoff`.
 
-1. inspect each production frame that contains or requires imagery;
-2. identify the exact node, aspect ratio, crop mode, and text-safe area;
-3. create an inventory placement record;
-4. supply candidate imagery for review;
-5. place only approved imagery into Figma;
-6. preserve original source files outside Figma;
-7. record the final asset path and code mapping in the `09 Handoff` page.
+Rejected candidates belong in a clearly labeled review/archive area, not among approved assets.
 
-Rejected candidates belong in a clearly labeled review or archive area, not mixed with approved assets.
+Original source files remain outside Figma.
 
-The media branch must not overwrite the frontend agent’s layout work. Code integration occurs through stable asset paths and a manifest that the frontend branch can consume or merge.
-
-## 11. Repository architecture
-
-The proposed media architecture is:
+## 12. Repository architecture
 
 ```text
 data/media/
@@ -335,82 +336,41 @@ tests/
   media-output.test.mjs
 ```
 
-Existing catalogue runtime and product identifiers must remain stable. The media system attaches to products; it does not silently rename or merge them.
+## 13. Processing workflow
 
-## 12. Processing pipeline
+### A. Placement audit
 
-### Stage A — Placement audit
+Inspect the Figma production pages and current frontend routes. Record every image-bearing node, placeholder, component state, aspect ratio, crop mode, focal point, responsive variant, and priority.
 
-- inspect Figma production pages and current frontend routes;
-- list every image-bearing node and every placeholder;
-- record role, dimensions, crop mode, focal point, responsive variants, and page priority;
-- classify each placement as product, editorial, document, or UI preview.
+### B. Catalogue extraction
 
-### Stage B — Catalogue extraction
+Parse all five attached PDFs. Extract page text and images, identify products and variants, and generate page-level contact sheets and structured inventory records without publishing anything.
 
-- parse all five supplied catalogue PDFs;
-- extract page images and text;
-- identify products, codes, variants, dimensions, and diagrams;
-- create page-level contact sheets for review;
-- generate inventory records without publishing images.
+### C. Reconciliation
 
-### Stage C — Existing-media reconciliation
+Match the catalogue inventory against the existing 626-product runtime. Detect exact matches, missing records, duplicate assignments, swapped images, ambiguous names, and variant mismatches. Ambiguous records require review.
 
-- match extracted catalogue identities against the existing 626-product runtime;
-- detect exact matches, missing records, duplicates, swapped assignments, and ambiguous names;
-- preserve variant relationships;
-- require manual review for ambiguous matches.
+### D. External research
 
-### Stage D — External research
+Search for high-resolution identification references and commercially reusable candidates. Record URL, ownership, license, retrieval date, and silhouette comparison. Unknown licenses remain reference-only.
 
-- search for higher-resolution identification references and commercially reusable candidates;
-- record source URLs, ownership, license, and retrieval date;
-- reject unknown or incompatible licenses from production;
-- compare silhouette and detail callouts against the catalogue.
+### E. Restoration and preparation
 
-### Stage E — Restoration and preparation
+Isolate catalogue products where needed, normalize neutral backgrounds and exposure, and remove page text only when product geometry is untouched.
 
-- isolate catalogue products when needed;
-- correct neutral background and exposure without changing instrument geometry;
-- remove page text and unrelated objects only when this does not alter the product;
-- avoid AI reconstruction of tips, jaws, serrations, blades, screws, or coatings;
-- export responsive, color-managed production files;
-- preserve originals and processing provenance.
+Do not use AI reconstruction on tips, jaws, serrations, blades, screws, springs, coatings, or other identity-bearing geometry.
 
-### Stage F — Figma placement review
+### F. Figma review
 
-- place candidates in actual production frames;
-- review desktop, tablet, and mobile crops;
-- reject images that look acceptable in isolation but fail in context;
-- record approval state.
+Place candidates in actual production frames and review desktop, tablet, and mobile crops. Images that fail in context are rejected even when they look acceptable in isolation.
 
-### Stage G — Code integration
+### G. Code integration
 
-- publish stable asset paths and generated manifests;
-- replace placeholders through data mappings rather than repeated component-specific hardcoding;
-- preserve lazy loading, priority media, width/height metadata, and accessible alt text;
-- run image integrity, unit, build, and rendered-browser checks.
+Publish stable paths and generated manifests. Replace placeholders through data mappings rather than repeated component-specific hardcoding. Preserve dimensions, alt text, priority loading, and lazy loading.
 
-## 13. Approval states
+## 14. Accessibility
 
-Every media record uses one of these workflow states:
-
-- `discovered`
-- `identity-verified`
-- `license-verified`
-- `prepared`
-- `figma-reviewed`
-- `production-approved`
-- `rejected`
-- `blocked-client-input`
-
-An image reaches production only after both identity and licensing verification.
-
-Client catalogue extracts may satisfy licensing as client-owned, but still require identity and quality review.
-
-## 14. Alt text and accessibility
-
-Product alt text should identify the instrument and useful visible configuration without stuffing codes or marketing language.
+Product alt text identifies the instrument and useful visible configuration without keyword stuffing.
 
 Examples:
 
@@ -418,85 +378,84 @@ Examples:
 - `Straight orthodontic ligature cutter, reference SC-01T`
 - `Stille osteotome with broad straight blade`
 
-Decorative editorial textures use empty alt text. Informative editorial imagery receives concise factual alt text.
+Decorative textures use empty alt text. Informative editorial imagery uses concise factual alt text.
 
-The image itself must not be the only place where a product name, reference code, variant, or action is communicated.
+Product names, codes, variants, and actions must remain available as text outside the image.
 
-## 15. Performance and output rules
+## 15. Performance
 
 - retain explicit width and height metadata;
-- use modern production formats supported by the existing Next.js pipeline;
-- preserve original source files outside public delivery folders;
-- do not upscale low-resolution images beyond useful sharpness;
-- use responsive derivatives based on actual layout needs;
+- use modern formats supported by the existing Next.js pipeline;
+- preserve originals outside public delivery folders;
+- do not enlarge low-resolution images beyond useful sharpness;
+- produce responsive derivatives from real layout needs;
 - priority-load only above-the-fold media;
 - lazy-load catalogue grids below the initial viewport;
 - prevent cumulative layout shift;
-- avoid a single oversized global sprite as the only delivery path when individual product files are available;
-- keep a factual fallback for missing or blocked imagery.
+- keep individual product files available instead of relying only on one oversized sprite;
+- provide a factual fallback for blocked or missing imagery.
 
-## 16. Failure behavior
+## 16. Fail-closed behavior
 
-The system must fail closed.
+- unknown license: reference-only;
+- ambiguous identity: no automatic assignment;
+- missing exact image: verified source extract or factual unavailable stage;
+- corrupt file: excluded and reported;
+- missing Figma mapping: no code integration;
+- missing dimensions or alt text: validation failure;
+- incompatible duplicate assignment: validation failure;
+- frontend layout changes during media work: refresh placement audit before integration.
 
-- Unknown license: image remains reference-only.
-- Ambiguous product identity: no automatic assignment.
-- Missing exact image: retain verified source extract or factual unavailable stage.
-- Corrupt file: exclude it and report the record.
-- Missing Figma placement mapping: do not integrate the asset into code.
-- Missing dimensions or alt text: validation fails.
-- Duplicate production assignment to incompatible products: validation fails.
-- Frontend branch changes during media work: regenerate the placement audit before integration.
+## 17. Acceptance criteria
 
-## 17. Testing and acceptance
+The finished system must prove that:
 
-The finished system must prove:
-
-1. every image-bearing production placement has a mapped approved asset or an explicit factual blocked state;
+1. every production image placement has an approved asset or explicit blocked state;
 2. every public product image maps to a stable product identity;
 3. every external production asset has recorded commercial-use permission;
-4. no reference-only competitor image is shipped;
+4. no reference-only competitor image ships;
 5. no product silhouette is destructively cropped;
-6. desktop, tablet, and mobile Figma frames have reviewed crops;
-7. Product cards maintain consistent stages across mixed source quality;
-8. all assets expose dimensions and alt-text policy;
-9. build and browser tests find no broken image paths;
-10. existing intro and evolution media continue to work;
-11. no GitHub Actions run, deployment, merge, or public cutover occurs without explicit permission.
+6. desktop, tablet, and mobile crops are reviewed in Figma;
+7. mixed source quality still produces consistent product stages;
+8. all production assets provide dimensions and correct alt-text behavior;
+9. no broken image path appears in tests or rendered browser review;
+10. the supplied intro and evolution media continue to work;
+11. the media branch does not overwrite concurrent frontend layout work;
+12. no GitHub Actions run, deployment, merge, or public cutover occurs without permission.
 
 ## 18. Work decomposition
 
-This specification will be implemented through three independently reviewable plans:
+Implementation is split into three independently reviewable plans:
 
 1. **Media inventory and placement audit** — Figma nodes, frontend placeholders, catalogue extraction, and source reconciliation.
 2. **Editorial imagery sourcing and preparation** — Home, Company, divisions, catalogues, Contact, Inquiry, and responsive placement review.
-3. **Product imagery verification and production pipeline** — exact product matching, licensing, restoration, manifests, code integration, and rendered QA.
+3. **Product imagery verification and production pipeline** — exact product matching, licensing, restoration, manifests, integration, and rendered QA.
 
-The first plan must be completed before broad image sourcing, because it defines exactly what imagery is required and prevents wasted searches or mismatched crops.
+The first plan must complete before broad sourcing. It defines exactly what images are needed and prevents wasted searches or unsuitable crops.
 
 ## 19. Non-goals
 
 This work does not:
 
-- redesign the approved Figma layouts;
-- invent new public divisions;
-- fabricate company photography or operational claims;
+- redesign approved layouts;
+- invent public divisions;
+- fabricate company photography or claims;
 - create fake product variants;
-- change product naming without a separate catalogue-data review;
+- rename catalogue products without a separate data review;
 - build ecommerce behavior;
-- publish unverified contact information;
-- merge or deploy the frontend agent’s branch;
+- publish unverified contact details;
+- merge or deploy the frontend agent's work;
 - intentionally trigger GitHub Actions.
 
 ## 20. Completion definition
 
 The imagery program is complete when:
 
-- all production placeholders have been audited;
+- all production placeholders are audited;
 - all approved placements have suitable, traceable imagery;
-- all five supplied catalogues have a structured product and variant inventory;
-- existing repository product media has been reconciled against that inventory;
+- all five attached catalogues have a structured product and variant inventory;
+- existing repository media is reconciled against that inventory;
 - production product images are identity-verified and commercially safe;
-- Figma and code use the same approved asset manifest;
+- Figma and code use the same approved manifest;
 - responsive crops and product stages pass rendered review;
-- blocked client inputs are explicitly documented rather than hidden by placeholders.
+- blocked client inputs are documented rather than hidden by placeholders.
