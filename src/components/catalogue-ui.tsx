@@ -5,6 +5,8 @@ import { useState } from "react";
 import { useInquiry } from "@/components/inquiry-provider";
 import { productHref, type CatalogueDocument, type Product } from "@/lib/catalogue";
 
+type ProductWithPreviewImage = Product & { imagePath?: string };
+
 export function SeedDataNotice() {
   return <aside className="seed-notice catalogue-seed-notice" role="note"><span className="seed-mark" aria-hidden="true">SEED / 00</span><div><strong>Demonstration catalogue data</strong><span>Names and codes on this development build are seed records pending approval and migration.</span></div></aside>;
 }
@@ -14,7 +16,19 @@ export function Breadcrumbs({ items }: { items: readonly { label: string; href?:
 }
 
 export function ProductImage({ product, compact = false }: { product: Product; compact?: boolean }) {
+  const productWithImage = product as ProductWithPreviewImage;
   const label = product.imageState === "available" ? product.name : `Temporary image placeholder for ${product.name}`;
+
+  if (productWithImage.imagePath) {
+    return <div className={`catalogue-image catalogue-object-visual ${compact ? "compact" : ""} state-available`} style={{ background: "#f4f2ec", position: "relative", overflow: "hidden" }}>
+      <img
+        src={productWithImage.imagePath}
+        alt={product.name}
+        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "contain", padding: compact ? "1rem" : "1.5rem", zIndex: 2 }}
+      />
+    </div>;
+  }
+
   return <div className={`catalogue-image catalogue-object-visual ${compact ? "compact" : ""} state-${product.imageState}`} role="img" aria-label={label}>
     <span className="catalogue-object-grid" aria-hidden="true" />
     <span className="catalogue-object-form" aria-hidden="true"><i className="object-arm one" /><i className="object-arm two" /><i className="object-joint" /><i className="object-ring one" /><i className="object-ring two" /></span>
@@ -60,14 +74,15 @@ export function ProductInquiryControls({ product }: { product: Product }) {
   </div>;
 }
 
-export function ProductCard({ product, compact = false }: { product: Product; compact?: boolean }) {
+export function ProductCard({ product, compact = false, hrefOverride }: { product: Product; compact?: boolean; hrefOverride?: string }) {
+  const href = hrefOverride ?? productHref(product);
   return <article className={`product-card catalogue-product-card catalogue-object-card ${compact ? "compact" : ""}`}>
-    <Link className="catalogue-card-media" href={productHref(product)} aria-label={`View ${product.name}`}><ProductImage product={product} compact={compact} /><span className="catalogue-card-open" aria-hidden="true">OPEN OBJECT ↗</span></Link>
+    <Link className="catalogue-card-media" href={href} aria-label={`View ${product.name}`}><ProductImage product={product} compact={compact} /><span className="catalogue-card-open" aria-hidden="true">OPEN OBJECT ↗</span></Link>
     <div className="catalogue-card-body">
       <div className="catalogue-card-index"><small>{product.division.toUpperCase()} · {product.family.replaceAll("-", " ").toUpperCase()}</small><code>{product.code}</code></div>
-      <h3><Link href={productHref(product)}>{product.name}</Link></h3>
+      <h3><Link href={href}>{product.name}</Link></h3>
       <p>{product.status === "seed" ? "Seed record · specifications pending approval" : product.description}</p>
-      <div className="card-actions catalogue-card-actions"><Link className="catalogue-text-link" href={productHref(product)}>View details <span aria-hidden="true">↗</span></Link><AddProductButton product={product} /></div>
+      <div className="card-actions catalogue-card-actions"><Link className="catalogue-text-link" href={href}>View details <span aria-hidden="true">↗</span></Link><AddProductButton product={product} /></div>
     </div>
   </article>;
 }
