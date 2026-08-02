@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-02T05:09:00+05:00",
+  "source": {
+    "fileName": "Scissors Catalog(1).pdf",
+    "pageCount": 11,
+    "productPages": 10,
+    "authority": "client-supplied-catalogue",
+    "identityPolicy": "Catalogue codes and printed labels are authoritative. Ambiguous labels remain blocked for client confirmation. No web image or OCR inference may approve product identity."
+  },
+  "summary": {
+    "productGroups": 68,
+    "variants": 276,
+    "currentStableIdsReferenced": 34,
+    "groupsWithCurrentRecords": 27,
+    "actionCounts": {
+      "add": 41,
+      "client-confirm": 1,
+      "correct-and-expand": 4,
+      "correct-code": 2,
+      "keep": 7,
+      "keep-and-expand": 7,
+      "merge-and-correct": 2,
+      "merge-correct-and-expand": 2,
+      "replace-invalid-code": 1,
+      "replace-malformed-record": 1
+    }
+  },
+  "pageFiles": [
+    "page-02.json",
+    "page-03.json",
+    "page-04.json",
+    "page-05.json",
+    "page-06.json",
+    "page-07.json",
+    "page-08.json",
+    "page-09.json",
+    "page-10.json",
+    "page-11.json"
+  ]
+}
