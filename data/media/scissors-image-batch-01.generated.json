@@ -1,3 +1,337 @@
 {
-  "placeholder": true
+  "schemaVersion": 1,
+  "sourceFile": "Scissors Catalog(1).pdf",
+  "policy": "Client-supplied catalogue imagery only. Product geometry is not generated or altered.",
+  "summary": {
+    "products": 15,
+    "pages": [
+      2,
+      3,
+      4
+    ]
+  },
+  "products": [
+    {
+      "id": "scissors-iris-regular",
+      "sourceFile": "Scissors Catalog(1).pdf",
+      "sourcePdfPage": 2,
+      "sourceBboxPdf": [
+        85.48,
+        120.1,
+        166.65,
+        300.1
+      ],
+      "extraction": "rendered-visible-clip",
+      "renderScale": 6,
+      "width": 785,
+      "height": 1600,
+      "format": "avif",
+      "path": "public/media/products/scissors/scissors-iris-regular.avif",
+      "bytes": 26366,
+      "sha256": "44aefa1897f22f031f23358dbcde964f0b35da63562842ee7e418bcd03b59b63",
+      "identityApproved": false,
+      "reviewStatus": "visual-match-pending-final"
+    },
+    {
+      "id": "scissors-iris-super-cut",
+      "sourceFile": "Scissors Catalog(1).pdf",
+      "sourcePdfPage": 2,
+      "sourceBboxPdf": [
+        256.49,
+        119.15,
+        347.72,
+        299.15
+      ],
+      "extraction": "rendered-visible-clip",
+      "renderScale": 6,
+      "width": 874,
+      "height": 1600,
+      "format": "avif",
+      "path": "public/media/products/scissors/scissors-iris-super-cut.avif",
+      "bytes": 33186,
+      "sha256": "453c1eaec0bb6253e1f5af505d70eee101318f27339b057c891fc4fa965c53ca",
+      "identityApproved": false,
+      "reviewStatus": "visual-match-pending-final"
+    },
+    {
+      "id": "scissors-iris-tc",
+      "sourceFile": "Scissors Catalog(1).pdf",
+      "sourcePdfPage": 2,
+      "sourceBboxPdf": [
+        432.13,
+        121.55,
+        524.16,
+        299.93
+      ],
+      "extraction": "rendered-visible-clip",
+      "renderScale": 6,
+      "width": 888,
+      "height": 1600,
+      "format": "avif",
+      "path": "public/media/products/scissors/scissors-iris-tc.avif",
+      "bytes": 35827,
+      "sha256": "e864caa710da768a2f3f7a18065e369b2977b62925dc955bc249eaf659757227",
+      "identityApproved": false,
+      "reviewStatus": "visual-match-pending-final"
+    },
+    {
+      "id": "scissors-stevens-regular",
+      "sourceFile": "Scissors Catalog(1).pdf",
+      "sourcePdfPage": 2,
+      "sourceBboxPdf": [
+        80.79,
+        501.15,
+        171.34,
+        681.15
+      ],
+      "extraction": "rendered-visible-clip",
+      "renderScale": 6,
+      "width": 868,
+      "height": 1600,
+      "format": "avif",
+      "path": "public/media/products/scissors/scissors-stevens-regular.avif",
+      "bytes": 30746,
+      "sha256": "450a641ea982d18b889ce9bee1ae259d5a7bfcf173a0e5b78a9becdae0ae0cbe",
+      "identityApproved": false,
+      "reviewStatus": "visual-match-pending-final"
+    },
+    {
+      "id": "scissors-stevens-super-cut",
+      "sourceFile": "Scissors Catalog(1).pdf",
+      "sourcePdfPage": 2,
+      "sourceBboxPdf": [
+        263.03,
+        501.15,
+        341.18,
+        681.15
+      ],
+      "extraction": "rendered-visible-clip",
+      "renderScale": 6,
+      "width": 758,
+      "height": 1600,
+      "format": "avif",
+      "path": "public/media/products/scissors/scissors-stevens-super-cut.avif",
+      "bytes": 26435,
+      "sha256": "5aebadd068fd1263366b43e022ef5f41fa56dc5aba4aad4b552db6d95e74cf36",
+      "identityApproved": false,
+      "reviewStatus": "visual-match-pending-final"
+    },
+    {
+      "id": "scissors-stevens-tc",
+      "sourceFile": "Scissors Catalog(1).pdf",
+      "sourcePdfPage": 2,
+      "sourceBboxPdf": [
+        437.28,
+        501.15,
+        519.01,
+        681.15
+      ],
+      "extraction": "rendered-visible-clip",
+      "renderScale": 6,
+      "width": 789,
+      "height": 1600,
+      "format": "avif",
+      "path": "public/media/products/scissors/scissors-stevens-tc.avif",
+      "bytes": 31776,
+      "sha256": "82fd79514458b49585624bc7c3b1a58a7c08d845d04d93d766a9b353e496200b",
+      "identityApproved": false,
+      "reviewStatus": "visual-match-pending-final"
+    },
+    {
+      "id": "scissors-operating-regular",
+      "sourceFile": "Scissors Catalog(1).pdf",
+      "sourcePdfPage": 3,
+      "sourceBboxPdf": [
+        98.62,
+        85.94,
+        168.67,
+        266.79
+      ],
+      "extraction": "rendered-visible-clip",
+      "renderScale": 6,
+      "width": 674,
+      "height": 1600,
+      "format": "avif",
+      "path": "public/media/products/scissors/scissors-operating-regular.avif",
+      "bytes": 21541,
+      "sha256": "c10bb8a3dfecb5b803f54193f2f5cd6b0486c25870fddbf82a67aca972825090",
+      "identityApproved": false,
+      "reviewStatus": "visual-match-pending-final"
+    },
+    {
+      "id": "scissors-operating-super-cut",
+      "sourceFile": "Scissors Catalog(1).pdf",
+      "sourcePdfPage": 3,
+      "sourceBboxPdf": [
+        266.31,
+        86.36,
+        338.07,
+        266.36
+      ],
+      "extraction": "rendered-visible-clip",
+      "renderScale": 6,
+      "width": 703,
+      "height": 1600,
+      "format": "avif",
+      "path": "public/media/products/scissors/scissors-operating-super-cut.avif",
+      "bytes": 28262,
+      "sha256": "656db13cf6295e72404ae5ada53ac9d4778aee85a69550e3c8e67dc113f2e7f6",
+      "identityApproved": false,
+      "reviewStatus": "visual-match-pending-final"
+    },
+    {
+      "id": "scissors-operating-tc",
+      "sourceFile": "Scissors Catalog(1).pdf",
+      "sourcePdfPage": 3,
+      "sourceBboxPdf": [
+        463.87,
+        86.36,
+        525.24,
+        266.36
+      ],
+      "extraction": "rendered-visible-clip",
+      "renderScale": 6,
+      "width": 610,
+      "height": 1600,
+      "format": "avif",
+      "path": "public/media/products/scissors/scissors-operating-tc.avif",
+      "bytes": 27112,
+      "sha256": "c184bb818d4c322ad64eae63c4545d5815cbdc829d21d5db59be8590b34efe06",
+      "identityApproved": false,
+      "reviewStatus": "visual-match-pending-final"
+    },
+    {
+      "id": "scissors-mayo-regular",
+      "sourceFile": "Scissors Catalog(1).pdf",
+      "sourcePdfPage": 3,
+      "sourceBboxPdf": [
+        96.43,
+        512.22,
+        170.63,
+        692.22
+      ],
+      "extraction": "rendered-visible-clip",
+      "renderScale": 6,
+      "width": 723,
+      "height": 1600,
+      "format": "avif",
+      "path": "public/media/products/scissors/scissors-mayo-regular.avif",
+      "bytes": 25636,
+      "sha256": "9d7b0afd73636ab07f5341b9efcf14ea80658eac8c0c0ee8290875990c03f49c",
+      "identityApproved": false,
+      "reviewStatus": "visual-match-pending-final"
+    },
+    {
+      "id": "scissors-mayo-super-cut",
+      "sourceFile": "Scissors Catalog(1).pdf",
+      "sourcePdfPage": 3,
+      "sourceBboxPdf": [
+        272.76,
+        512.22,
+        345.26,
+        692.22
+      ],
+      "extraction": "rendered-visible-clip",
+      "renderScale": 6,
+      "width": 709,
+      "height": 1600,
+      "format": "avif",
+      "path": "public/media/products/scissors/scissors-mayo-super-cut.avif",
+      "bytes": 26603,
+      "sha256": "fea8b3d19cf96c0104f1d5bc875a815ec6589772e48a640af04562388dad7b7a",
+      "identityApproved": false,
+      "reviewStatus": "visual-match-pending-final"
+    },
+    {
+      "id": "scissors-mayo-tc",
+      "sourceFile": "Scissors Catalog(1).pdf",
+      "sourcePdfPage": 3,
+      "sourceBboxPdf": [
+        462.16,
+        512.22,
+        526.96,
+        692.22
+      ],
+      "extraction": "rendered-visible-clip",
+      "renderScale": 6,
+      "width": 627,
+      "height": 1600,
+      "format": "avif",
+      "path": "public/media/products/scissors/scissors-mayo-tc.avif",
+      "bytes": 27258,
+      "sha256": "eeec8a0efb0d38de5c9e0fffafdbdc2623821250863141b717016fac01811759",
+      "identityApproved": false,
+      "reviewStatus": "visual-match-pending-final"
+    },
+    {
+      "id": "scissors-metzenbaum-regular",
+      "sourceFile": "Scissors Catalog(1).pdf",
+      "sourcePdfPage": 4,
+      "sourceBboxPdf": [
+        93.34,
+        77.44,
+        158.8,
+        257.44
+      ],
+      "extraction": "rendered-visible-clip",
+      "renderScale": 6,
+      "width": 646,
+      "height": 1600,
+      "format": "avif",
+      "path": "public/media/products/scissors/scissors-metzenbaum-regular.avif",
+      "bytes": 21727,
+      "sha256": "b311d1c4c629adb29197de9bce6ffdd3f9d0504102a0179f4b085a0f14b54502",
+      "identityApproved": false,
+      "reviewStatus": "visual-match-pending-final"
+    },
+    {
+      "id": "scissors-metzenbaum-super-cut",
+      "sourceFile": "Scissors Catalog(1).pdf",
+      "sourcePdfPage": 4,
+      "sourceBboxPdf": [
+        264.97,
+        77.44,
+        339.25,
+        257.44
+      ],
+      "extraction": "rendered-visible-clip",
+      "renderScale": 6,
+      "width": 725,
+      "height": 1600,
+      "format": "avif",
+      "path": "public/media/products/scissors/scissors-metzenbaum-super-cut.avif",
+      "bytes": 23800,
+      "sha256": "a25f56b1faeba607442c1702befb0d2c8ccceb84c79e0ebb58b3d11a294f8193",
+      "identityApproved": false,
+      "reviewStatus": "visual-match-pending-final"
+    },
+    {
+      "id": "scissors-metzenbaum-tc",
+      "sourceFile": "Scissors Catalog(1).pdf",
+      "sourcePdfPage": 4,
+      "sourceBboxPdf": [
+        439.57,
+        77.44,
+        516.72,
+        257.44
+      ],
+      "extraction": "rendered-visible-clip",
+      "renderScale": 6,
+      "width": 749,
+      "height": 1600,
+      "format": "avif",
+      "path": "public/media/products/scissors/scissors-metzenbaum-tc.avif",
+      "bytes": 29635,
+      "sha256": "aa4f331e4f10d931042c538495532f5b8cdd1d349a30e1cee86b3fdf6418a954",
+      "identityApproved": false,
+      "reviewStatus": "visual-match-pending-final"
+    }
+  ],
+  "delivery": {
+    "status": "local-package-ready",
+    "packageFile": "scissors-image-batch-01.zip",
+    "packageBytes": 425243,
+    "packageSha256": "3962577505d555d3545f2ebe45b8a9b50d37679eea372656cedd3ef9d5a28987",
+    "note": "Binary AVIF assets were generated and verified outside the connector-only repository checkout."
+  }
 }
